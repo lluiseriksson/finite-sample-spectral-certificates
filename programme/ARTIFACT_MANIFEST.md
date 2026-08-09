@@ -33,7 +33,7 @@ paper.
 - Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
   and Linear-Phase MIMO FIR Filters*
 - Pages: 13
-- Local SHA-256: `4a8de0af6f5892ca605c6c553d3e6593a23915a635a1e73d1a1c2b8a4934ef19`
+- Local SHA-256: `00cfbbbfdd8afd56a7e03f0a6e18f17d58f97ea4a40e4bfff735e3a1a76b5ed9`
 - Status: **unfrozen research draft**.  It contains the quantified Week-3
   theorem proof, exact affine and full-spark quadratic witnesses, an exact
   palindromic five-tap FIR realization, a rational commuting lower bound under
@@ -47,7 +47,10 @@ paper.
   frozen held-out cospectra the leading modal direction moves by at most
   `0.2217` degrees and the leading ordinate changes by at most `2.40e-5`
   relatively.  Gate G1 remains open pending the remaining full-text/FIR
-  priority audit and an independent adversarial review.
+  priority audit and an independent adversarial review.  The audit now also
+  treats Kootsookos's 1991 fixed-length MIMO `H-infinity` thesis and
+  Alpay--Lewkowicz's structured matrix-polynomial interpolation as direct
+  collisions with broader formulations of the claim.
 
 This draft must not be scored as a final 7+ submission.  If it is reviewed,
 the evaluator must quote the title and hash above so the feedback can be

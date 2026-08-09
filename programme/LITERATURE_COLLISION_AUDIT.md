@@ -83,6 +83,7 @@ hierarchy or the Mortimer finite-shot constraints fails Gate G1.
 |---|---|---|
 | Matrix orthogonal-polynomial theory; e.g. S. Delvaux and H. Dette, [*Zeros and ratio asymptotics for matrix orthogonal polynomials*](https://arxiv.org/abs/1108.5155) | Matrix recurrences, matrix Chebyshev measures, zero and ratio asymptotics | `Matrix Chebyshev polynomial' is established terminology and cannot itself be a novelty claim. |
 | P. A. Fuhrmann, [*On tangential matrix interpolation*](https://doi.org/10.1016/j.laa.2010.07.018) (2010) | Algebraic polynomial and rational matrix interpolation with tangential Lagrange/Hermite/Newton data | **Direct collision:** existence and parametrization of matrix polynomials satisfying `P(lambda_j)v_j=w_j` are classical.  Novelty can only concern the fixed-degree stopband minimax separation and its spectral-certificate role. |
+| D. Alpay and I. Lewkowicz, [*Interpolation by Polynomials with Symmetries*](https://arxiv.org/abs/1208.1869) (2014), Props. 3.1 and 6.1--6.2 | Minimal-degree matrix-polynomial interpolation with Hermitian, positive-semidefinite and related symmetries on the imaginary axis | **Direct structure collision:** Hermitian/structured matrix-polynomial interpolation is established.  Section 9(v) explicitly leaves tangential structured interpolation for future work; the paper has no stopband minimax or commuting lower bound. |
 | J. A. Ball and J. Kang, [*Matrix polynomial solutions of tangential Lagrange--Sylvester interpolation conditions of low McMillan degree*](https://doi.org/10.1016/0024-3795(90)90145-3) (1990) | Explicit realization-form matrix-polynomial solutions for tangential Lagrange--Sylvester data with low McMillan degree | **Direct collision:** low-complexity tangential polynomial construction predates the proposed work.  The candidate theorem must be a norm separation under a fixed ordinary degree, not an existence or low-degree interpolation claim. |
 | J. A. Ball and V. Bolotnikov, [*The bitangential matrix Nevanlinna--Pick interpolation problem revisited*](https://arxiv.org/abs/1611.07097) (2016) | Schur-class matrix interpolants, Pick-matrix criteria and linear-fractional parametrization for bitangential data | A minimum-supremum-norm tangential interpolant without a fixed polynomial-degree restriction belongs to established Nevanlinna--Pick theory. |
 | A. Blomqvist, A. Lindquist and R. Nagamune, [*Matrix-valued Nevanlinna--Pick interpolation with complexity constraint: an optimization approach*](https://doi.org/10.1109/TAC.2003.820227) (2003) | Matrix-valued analytic interpolation with bounded complexity, convex parametrization and robust-control applications | Collides with any broad claim that combining a matrix norm, interpolation and a complexity constraint is new.  Its Schur-class/rational setting is not the same as the fixed ordinary-degree interval-polynomial commuting obstruction. |
@@ -93,6 +94,7 @@ hierarchy or the Mortimer finite-shot constraints fails Gate G1.
 | M. Hartz, [*On von Neumann's inequality on the polydisc*](https://doi.org/10.1007/s00208-024-03040-2) (2025), Sec. 2 | Sharp and near-sharp norm inequalities for one-variable polynomials with operator coefficients, including distinct commuting and noncommuting regimes | Confirms that separations caused by operator coefficients are established phenomena.  Our exact interpolation-constrained separation must not be advertised as the first benefit of noncommuting coefficients. |
 | F. Gama, A. G. Marques, A. Ribeiro and G. Leus, [*MIMO Graph Filters for Convolutional Neural Networks*](https://arxiv.org/abs/1803.02247) (2018), Eqs. (5)--(7) | Standard MIMO graph-filter architecture `Y=sum S^k X H_k^T`, with general and parsimonious matrix taps | Matrix-coefficient graph/FIR filtering is established.  The paper does not state a fixed-basis scalar lower bound or exponential tangential separation. |
 | S.-P. Wu, S. Boyd and L. Vandenberghe, [*FIR Filter Design via Spectral Factorization and Convex Optimization*](https://web.stanford.edu/~boyd/papers/fir_spectral_fact.html) (1998) | Scalar FIR design with frequency-domain magnitude constraints and convex optimization | Convex/minimax FIR stopband design is classical.  Only the fixed-latency, directional MIMO-vs-fixed-basis separation can remain candidate novelty. |
+| P. J. Kootsookos, [*FIR(q) Filter Designs Using H-infinity Techniques*](https://doi.org/10.25911/5d63c22060b88) (1991), Problems 1.1--1.2 and Lemmas 3.4, 6.1 | Fixed-length MIMO FIR matrix-polynomial approximation in the uniform-frequency/operator norm, with global lower bounds and MIMO/linear-phase algorithms | **Direct fixed-order MIMO H-infinity collision:** fixed latency, matrix coefficients, uniform norm and linear phase are all classical together.  The surviving delta must include the exact directional calibrations and the lower bound for the full simultaneously diagonalizable subclass. |
 | G. Ljungars and M. Fu, [*Design of Multi-Channel Linear Phase FIR Filters*](https://maths.anu.edu.au/files/CMAProcVol36-LjungarsFu.pdf) (1998), Sec. 4.1 | Matrix-valued multi-channel linear-phase FIR design with operator-norm error minimized over a frequency grid by SDP | **Direct MIMO-FIR minimax collision:** multi-channel linear phase plus spectral-norm minimax optimization is established.  It has no tangential pass constraints, reciprocal-symmetric channel taps, commuting comparator or class-separation theorem. |
 
 The detailed clause comparison is maintained in
@@ -119,10 +121,12 @@ allowed.  The polynomial theorem now also has an exact reciprocal linear-phase
 MIMO FIR corollary and rational five-tap certificate.  The public VBL-VA001
 calibration, exact FDD modal-component invariance lemma and held-out cospectral
 replay close the measured task-meaning bar at the preprocessing level.  The
-full Ljungars--Fu audit closes the broad multi-channel linear-phase minimax
-branch.  The remaining G1 bar is a proof-level check of the inaccessible closest
-interpolation papers, a reciprocal/passive-FIR collision search, and independent
-adversarial review.
+full Kootsookos and Ljungars--Fu audits close the broad fixed-length MIMO
+`H-infinity`/linear-phase minimax branch.  A targeted reciprocal/passive-FIR and
+simultaneous-diagonalization search found no theorem with the surviving
+conjunction, but that negative search is not evidence of priority.  The remaining
+G1 bar is a proof-level check of the inaccessible closest interpolation papers and
+independent adversarial review.
 
 ## Provisional Gate-G1 ranking
 

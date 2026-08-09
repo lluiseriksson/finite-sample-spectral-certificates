@@ -822,7 +822,11 @@ an example merely because it matches the theorem's notation.
 \section{Relation to established work and open gates}
 
 Tangential matrix-polynomial interpolation is classical
-\cite{BallKang1990,Fuhrmann2010}.  Matrix-valued Nevanlinna--Pick theory handles
+\cite{BallKang1990,Fuhrmann2010}.  Structured matrix-polynomial interpolation
+with Hermitian, positive-semidefinite and related symmetries is also established
+\cite{AlpayLewkowicz2014}; that work treats full matrix values and lists the
+tangential structured variant as a future problem.  Matrix-valued
+Nevanlinna--Pick theory handles
 supremum-norm analytic interpolation, including complexity constraints
 \cite{BlomqvistEtAl2003,BallBolotnikov2016}.  Kuroiwa and Lindquist treat the
 bitangential problem with explicit McMillan-degree constraints
@@ -849,12 +853,16 @@ formulations have a long numerical-linear-algebra history
 Krylov methods \cite{RinelliVandebril2026}.  General MIMO graph filters already
 use matrix taps in precisely the form $\sum_k S^kXC_k$
 \cite{GamaEtAl2018}, while scalar FIR minimax design by convex optimization is
-classical \cite{WuBoydVandenberghe1998}.  More closely, Ljungars and Fu optimize
+classical \cite{WuBoydVandenberghe1998}.  Kootsookos already formulates
+fixed-length MIMO FIR approximation of matrix transfer functions in the
+uniform $H_\infty$ norm, proves global error lower bounds, and gives MIMO and
+linear-phase design algorithms \cite{Kootsookos1991}.  More closely, Ljungars
+and Fu optimize
 the operator-norm error of matrix-valued multi-channel linear-phase FIR filters
 on a frequency grid by SDP \cite{LjungarsFu1998}.  Their formulation has neither
 directional pass interpolation nor a commuting/simultaneously-diagonalizable
-comparator.  Accordingly, MIMO linear phase, operator-norm minimax design, and
-SDP are not claimed as new.
+comparator.  Accordingly, fixed-length MIMO $H_\infty$ approximation, MIMO
+linear phase, operator-norm minimax design, and SDP are not claimed as new.
 
 The candidate novelty is therefore narrower than norm-constrained or
 degree-constrained tangential interpolation or FIR design alone.  Under a fixed
@@ -896,6 +904,7 @@ the
 and the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ARTIFACT_MANIFEST.md}{artifact manifest with the PDF hash}.
 
+\small
 \bibliographystyle{plain}
 \bibliography{references}
 \end{document}
