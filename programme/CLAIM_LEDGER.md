@@ -15,7 +15,7 @@ in this ledger.
 | B3 | Shrinking anytime-valid confidence sets plus the joint hierarchy give a statistically valid and almost-surely terminating semidecision whenever `gamma` is strictly above the true bulk gap. | Candidate, current lead | Need the finite-level robust-neighbourhood lemma, stopping-time coverage proof, and an explicit calibration model/sample bound. |
 | B4 | The method proves a positive Yang--Mills mass gap. | **Forbidden** | The proposed result concerns lattice Hamiltonian bulk-gap exclusion/upper bounds, not constructive four-dimensional Yang--Mills. |
 | C0 | Matrix Chebyshev polynomials or block Krylov methods are new. | **Forbidden** | Both are established bodies of literature. |
-| C1 | A matrix-polynomial minimax filter can have a provably noncommuting optimizer with a dimension-dependent strict advantage over every commuting/scalar filter. | Candidate, unverified | Smallest exact counterexample/optimizer, analytic lower bound for commuting filters, and targeted operator-approximation collision audit. |
+| C1 | Tangential degree-`N` matrix-polynomial filtering admits an exponential-in-`N=sqrt(d)` separation between real-symmetric noncommuting coefficients and pairwise-commuting real-symmetric coefficients. | Candidate, proof skeleton found | Exact `2x2` witness and asymptotic existence argument recorded; still needs a typeset proof, norm-level stability details, targeted tangential-interpolation collision audit, and an application with genuine scientific payoff. |
 
 ## Current headline under test
 
@@ -35,4 +35,3 @@ dual-margin assumption.
 - No claim that optional stopping or confidence sequences are new.
 - No claim that numerical SDP solver output is a proof without rational or
   interval replay.
-

@@ -7,8 +7,8 @@ diagonalization do not close any row by themselves.
 | Blocking criticism | What the later Wishart paper already changes | Evidence required for the next paper | Status |
 |---|---|---|---|
 | Individual ingredients are classical | Adds an exact Loewner band, SDP alternative, power theorem, and rational replay | A theorem whose conclusion is not obtained by composing standard moment/localizer and concentration results | Open |
-| Visibility is external | Still labels every conclusion as a visible gap | Derive a quantitative overlap/form-factor lower bound from the Hamiltonian, symmetry, and probe construction, uniformly in volume; or prove an equivalent noisy-data-to-bulk theorem that removes the external datum | Open, headline blocker |
-| No thermodynamic result | Extends finite ANNNI numerics only to `L=16` | A theorem uniform in `L` with a controlled `L -> infinity` passage, or a certified bulk hierarchy with finite-sample coverage | Open, headline blocker |
+| Visibility is external | Still labels every conclusion as a visible gap | If the new paper remains about Hamiltonian gaps, derive visibility or a noisy-data-to-bulk theorem.  If Route C wins, make no Hamiltonian-gap claim and instead prove the block-Krylov error theorem under explicit spectral-signature hypotheses. | Open; route-dependent |
+| No thermodynamic result | Extends finite ANNNI numerics only to `L=16` | A Hamiltonian paper needs a uniform thermodynamic result.  A Route-C numerical-linear-algebra paper instead needs a dimension/degree asymptotic theorem and experiments beyond a toy matrix. | Open; route-dependent |
 | Chebyshev layer is not formalized | Replaces that layer in a different paper but does not formalize the old positive theorem | Machine-check or exact-certify the decisive new lemma, not merely an auxiliary identity | Open |
 | Componentwise noise ignores correlations | Closed by the simultaneous Wishart--Loewner set | Retain correlated uncertainty and compare to modern covariance-aware baselines | Closed as infrastructure |
 | Sign condition is only sufficient | Exact SDP compatibility is necessary and sufficient for the chosen finite relaxation | State clearly what remains relaxation-dependent; prove hierarchy convergence or a sharp alternative if this is part of the headline | Partly closed |
@@ -25,11 +25,12 @@ The next manuscript must contain all of the following before Gate G4:
    primary references, including hypotheses and conclusions.
 2. **Hard theorem:** a proof with a nontrivial uniform or noncommutative step;
    an SDP formulation alone is insufficient.
-3. **Physical closure:** the observable/probe must be linked to the Hamiltonian
-   gap without an unexplained external visibility floor.
-4. **Beyond finite ED:** either a thermodynamic proof or a certified hierarchy
-   whose validity is uniform in volume.
+3. **Scientific closure:** a Hamiltonian claim must link the probe to the gap
+   without an unexplained visibility floor; a block-Krylov claim must link the
+   extremal theorem to a rigorous subspace-error bound and a realistic workload.
+4. **Beyond finite ED/toy SDP:** either a thermodynamic proof, a certified
+   hierarchy uniform in volume, or a dimension/degree asymptotic theorem backed
+   by modern block-Krylov baselines.
 5. **Adversarial evidence:** attempted counterexamples, a negative-results
    ledger, baseline failures, and reproduction from a clean environment.
 6. **Artifact identity:** exact public hash included in every evaluation prompt.
-

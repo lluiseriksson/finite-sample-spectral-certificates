@@ -21,7 +21,7 @@ already assume enough gap information to make the inference circular.  The
 proof must separate a reference-phase stability assumption from the unknown
 numerical value being certified.
 
-### Route B — calibration-robust bulk-gap semidecision (current priority)
+### Route B — calibration-robust bulk-gap semidecision (thermodynamic pivot)
 
 Let the finite-range interaction itself be known only through a shrinking
 simultaneous confidence set for its local coefficients.  Extend the
@@ -44,16 +44,21 @@ model may be too artificial.  Gate G1 requires a precise theorem and a
 theorem-to-theorem delta against both Xu et al. and Mortimer et al.; optional
 stopping alone is not novel.
 
-### Route C — noncommutative minimax filters (high-risk alternative)
+### Route C — noncommutative minimax filters (current lead)
 
 Replace scalar Chebyshev filters with matrix-valued polynomials for
-multichannel spectral measures.  Seek a family in which the minimax optimum is
-provably noncommuting and beats every scalar or rank-one construction by a
-dimension-dependent factor.
+multichannel spectral measures and block Krylov spaces.  The Week-3 pilot has
+found an exact `2 by 2` witness and an asymptotic theorem candidate: at degree
+`N` and channel dimension `d=N^2`, real-symmetric noncommuting coefficients can
+obey full-spark tangential pass constraints with stopband leakage
+`C exp(-cN)`, while every pairwise-commuting real-symmetric family satisfying
+the same constraints is identically the identity.  Reproducible SDPs show a
+large finite-dimensional gap in the first symmetric-surjective case.
 
-Main danger: operator-valued Chebyshev and matrix approximation theory may
-already contain the desired result, or the physical interpretation may remain
-too methodological for a 7+ paper.
+Main danger: norm-constrained tangential interpolation or matrix approximation
+theory may already imply the separation, or the block-Krylov interpretation may
+remain too methodological for a 7+ paper.  G1 therefore stays open until the
+quantified proof and closest-theorem comparison are complete.
 
 ## Weekly outputs and gates
 
@@ -82,3 +87,16 @@ too methodological for a 7+ paper.
   supplies the claimed advantage.
 - A failed route is recorded with code/counterexample and is not repackaged as
   a positive headline.
+
+## Live status after the first Week-3 pilots
+
+- Weeks 1--2 are complete: artifact identity, rubric, claim ledger and
+  three-route primary-literature collision map are public on the research
+  branch.
+- Week 3 is active.  Route A's naive claim and the broad forms of Route B were
+  killed by prior literature.  Route C survived the algebraic counterexample
+  search and is the current lead.
+- Gate G1 is **not yet passed**.  Exit requires a typeset quantified proof, a
+  direct comparison with the closest norm-constrained tangential interpolation
+  results, and a block-Krylov experiment showing that the theorem controls an
+  actual subspace-filtering error.

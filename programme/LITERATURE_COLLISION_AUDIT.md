@@ -83,7 +83,11 @@ hierarchy or the Mortimer finite-shot constraints fails Gate G1.
 |---|---|---|
 | Matrix orthogonal-polynomial theory; e.g. S. Delvaux and H. Dette, [*Zeros and ratio asymptotics for matrix orthogonal polynomials*](https://arxiv.org/abs/1108.5155) | Matrix recurrences, matrix Chebyshev measures, zero and ratio asymptotics | `Matrix Chebyshev polynomial' is established terminology and cannot itself be a novelty claim. |
 | P. A. Fuhrmann, [*On tangential matrix interpolation*](https://doi.org/10.1016/j.laa.2010.07.018) (2010) | Algebraic polynomial and rational matrix interpolation with tangential Lagrange/Hermite/Newton data | **Direct collision:** existence and parametrization of matrix polynomials satisfying `P(lambda_j)v_j=w_j` are classical.  Novelty can only concern the fixed-degree stopband minimax separation and its spectral-certificate role. |
+| J. A. Ball and J. Kang, [*Matrix polynomial solutions of tangential Lagrange--Sylvester interpolation conditions of low McMillan degree*](https://doi.org/10.1016/0024-3795(90)90145-3) (1990) | Explicit realization-form matrix-polynomial solutions for tangential Lagrange--Sylvester data with low McMillan degree | **Direct collision:** low-complexity tangential polynomial construction predates the proposed work.  The candidate theorem must be a norm separation under a fixed ordinary degree, not an existence or low-degree interpolation claim. |
 | J. A. Ball and V. Bolotnikov, [*The bitangential matrix Nevanlinna--Pick interpolation problem revisited*](https://arxiv.org/abs/1611.07097) (2016) | Schur-class matrix interpolants, Pick-matrix criteria and linear-fractional parametrization for bitangential data | A minimum-supremum-norm tangential interpolant without a fixed polynomial-degree restriction belongs to established Nevanlinna--Pick theory. |
+| A. Blomqvist, A. Lindquist and R. Nagamune, [*Matrix-valued Nevanlinna--Pick interpolation with complexity constraint: an optimization approach*](https://doi.org/10.1109/TAC.2003.820227) (2003) | Matrix-valued analytic interpolation with bounded complexity, convex parametrization and robust-control applications | Collides with any broad claim that combining a matrix norm, interpolation and a complexity constraint is new.  Its Schur-class/rational setting is not the same as the fixed ordinary-degree interval-polynomial commuting obstruction. |
+| K.-C. Toh and L. N. Trefethen, [*The Chebyshev polynomials of a matrix*](https://doi.org/10.1137/S0895479896303739) (1998) | Monic scalar polynomials minimizing `||p(A)||_2`, computed by SDP, with Krylov motivation | Minimax polynomial filtering and SDP formulations are classical.  This work does not use matrix coefficients or tangential pass constraints. |
+| M. Rinelli and R. Vandebril, [*Block Krylov subspaces and orthogonal matrix polynomials: a structural correspondence with applications to unitary matrices*](https://arxiv.org/abs/2605.16954) (2026) | Isometric correspondence between block Krylov spaces and matrix-polynomial spaces; spectral matrix measures and short recurrences | Supplies the natural application language and prevents claiming the block-Krylov/matrix-polynomial correspondence.  Its stated theorems concern orthogonality and recurrences, not a commuting-vs-noncommuting stopband minimax gap. |
 | M. Hartz, [*On von Neumann's inequality on the polydisc*](https://doi.org/10.1007/s00208-024-03040-2) (2025), Sec. 2 | Sharp and near-sharp norm inequalities for one-variable polynomials with operator coefficients, including distinct commuting and noncommuting regimes | Confirms that separations caused by operator coefficients are established phenomena.  Our exact interpolation-constrained separation must not be advertised as the first benefit of noncommuting coefficients. |
 
 The search has not yet found a primary source proving or disproving the precise
@@ -93,22 +97,27 @@ classical, so this absence is not evidence of novelty.
 
 ### Required pilot before a novelty claim
 
-The first part is now met in dimension two: an exact rational affine filter has
+The first part is met in dimension two: an exact rational affine filter has
 stopband norm below `0.882`, whereas every commuting symmetric affine filter
-has norm at least one.  The next bar is a dimension/degree-dependent strict gap,
-followed by a theorem-level comparison with tangential interpolation, robust
-control and block-Krylov literature.  The two-dimensional example alone is not
-a paper-scale contribution.
+has norm at least one.  A candidate asymptotic theorem now gives leakage
+`C exp(-cN)` for noncommuting symmetric coefficients versus exactly one for the
+commuting class at dimension `d=N^2`.  The proof skeleton includes an explicit
+full-spark perturbation and a block-Krylov interpretation.  The remaining G1
+bar is a line-by-line norm-constrained interpolation collision check and a
+fully quantified proof; the two-dimensional example alone is not a paper-scale
+contribution.
 
 ## Provisional Gate-G1 ranking
 
-1. **Route B, reformulated as joint uncertainty--state polynomial
+1. **Route C:** now has an exact finite witness, an asymptotic exponential
+   separation proof skeleton in the symmetric/Hermitian class, reproducible
+   SDP stress tests, and a block-Krylov interpretation.  Novelty collision and
+   quantitative proof closure remain mandatory before G1 passes.
+2. **Route B, reformulated as joint uncertainty--state polynomial
    completeness:** strongest thermodynamic architecture, but it needs a real
    compactness/robust-infeasibility proof and must beat Mortimer's scope.
-2. **Route C:** now has an exact noncommuting separation lemma and reproducible
-   SDP pilot, but not yet the scaling theorem or physical payoff needed for G1.
 3. **Route A, explicit bare-probe residue in nonintegrable ANNNI:** strongest
    physical payoff, but Yarotsky already supplies the qualitative mechanism
    and circularity is a major risk.
 
-No route has passed Gate G1 yet.
+No route has passed Gate G1 yet, but Route C is the current lead.

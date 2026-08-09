@@ -90,72 +90,171 @@ commutator norm        0.098647696.
 The rational construction is deliberately slightly suboptimal so that every
 claim can be replayed without trusting a solver.
 
-## 4. Scaling theorem under investigation
+## 4. Scaling theorem candidate
 
-Let `M` distinct pass points and target vectors in `R^d` satisfy the full-spark
-condition that every `d` targets span `R^d`.  If `M >= d+N`, then every common
-eigenvector of commuting normal coefficient matrices overlaps at least
-`M-d+1 >= N+1` target vectors.  A scalar degree-`N` entry satisfying the
-corresponding tangential constraints is therefore identically one.  Thus every
-simultaneously unitarily diagonalizable degree-`N` filter has stopband norm at
-least one.
+For every sufficiently large `N`, set `d=N^2` and `M=d+N`.  There exist `M`
+distinct pass points `lambda_j>0` and full-spark unit vectors `v_j in R^d` for
+which the following two statements hold:
 
-The constructive side starts at a rank-deficient but exactly solvable data set.
-Take `d=N^2` coordinate target directions and `M=d+N` distinct pass points.
-Assign two pass points to each of the first `N` coordinate directions and one
-pass point to every remaining direction.  For a direction with one pass point,
-a normalized degree-`N` Chebyshev polynomial has exponentially small stopband
-norm.  For a direction with two pass points `y_1,y_2>1` after mapping the
-stopband to `[-1,1]`, solve
+1. every degree-`N` matrix polynomial with pairwise commuting real symmetric
+   coefficients and `P(lambda_j)v_j=v_j` is identically the identity; but
+2. a degree-`N` polynomial with real symmetric, generally noncommuting
+   coefficients obeys all the same constraints and has
 
 ```text
-c_N T_N(y_i) + c_(N-1) T_(N-1)(y_i) = 1,  i=1,2.
+sup_{x in [-1,0]} ||P(x)||_op <= C exp(-cN).
 ```
 
-The determinant is nonzero for distinct positive pass points.  Hyperbolic
-cosine asymptotics give
+Here `C,c>0` are independent of `N`.  Consequently the noncommuting Hermitian
+class has an exponential advantage in `N=sqrt(d)` over its commuting subclass.
+
+This is now supported by a complete existence-proof skeleton below.  It remains
+a **candidate theorem**, rather than a priority claim, until the proof is fully
+written and the collision audit is complete.
+
+### 4.1 Exact commuting obstruction
+
+Let the targets be full spark, meaning that every `d` of them span `R^d`.  Any
+nonzero vector can be orthogonal to at most `d-1` targets.  If the symmetric
+coefficient matrices commute, choose their common orthonormal eigenbasis
+`u_r`, and let `p_r` be the scalar degree-`N` polynomial on the `r`-th common
+eigenspace.  Projecting `P(lambda_j)v_j=v_j` onto `u_r` gives
 
 ```text
-|c_N|+|c_(N-1)| <= poly(N) exp(-N eta_min),
-eta_min = min_i arcosh(y_i)>0,
+(p_r(lambda_j)-1) <u_r,v_j> = 0.
 ```
 
-when the pass-point separation is only polynomially small.  Placing these
-scalar polynomials on the diagonal produces a degree-`N` matrix polynomial with
-stopband leakage `poly(N) exp(-N eta_min)`.
+Since `M=d+N`, at least `N+1` of these overlaps are nonzero.  The pass points
+are distinct, so `p_r-1` has at least `N+1` roots and is zero identically.
+This holds for every `r`; hence `P(x)=I` and its stopband norm is exactly one.
 
-At the coordinate data, the tangential interpolation map is surjective: after
-splitting by input coordinate it is a direct sum of Vandermonde evaluation maps
-with at most two distinct nodes, well below the `N+1` available coefficients.
-Surjectivity is open.  Full-spark target tuples are dense, so the vectors can be
-perturbed by an arbitrarily small amount to become full spark while retaining a
-nearby interpolant and essentially the same stopband norm.  The commuting lower
-bound then becomes one.
+### 4.2 Exponentially small diagonal base point
 
-If every stability estimate closes, this yields an existence separation of the
+Start with coordinate targets.  Assign two pass points to each of the first
+`N` coordinate directions and one pass point to every remaining direction.
+For a direction with one pass point `lambda`, use
+
+```text
+q_lambda(x) = T_N(2x+1) / T_N(2lambda+1).
+```
+
+For a direction with two pass points `lambda_1 != lambda_2`, use the explicit
+degree-`N` Lagrange--Chebyshev interpolant
+
+```text
+q(x) = ((x-lambda_2)/(lambda_1-lambda_2))
+       T_(N-1)(2x+1)/T_(N-1)(2lambda_1+1)
+     + ((x-lambda_1)/(lambda_2-lambda_1))
+       T_(N-1)(2x+1)/T_(N-1)(2lambda_2+1).
+```
+
+Choose paired nodes in two fixed, disjoint compact subintervals of
+`(0,infinity)` and put all single nodes in another compact subinterval bounded
+away from zero.  All `M` nodes can be distinct.  On the stopband,
+`|T_k(2x+1)|<=1`; off it,
+`T_k(2lambda+1)=cosh(k arcosh(2lambda+1))`.  The Lagrange factors are uniformly
+bounded because paired nodes have a fixed separation.  Therefore every scalar
+entry is bounded by `C exp(-cN)`.  Placing them on the diagonal gives a real
+symmetric base polynomial `P_0` with that stopband leakage.
+
+### 4.3 Symmetric interpolation survives a full-spark perturbation
+
+Let `L_v` map the `N+1` real symmetric coefficient matrices to the stacked
+vectors `(P(lambda_j)v_j)_j`.  At the coordinate target tuple, an off-diagonal
+entry polynomial `p_rs=p_sr` is evaluated at the union of the nodes assigned to
+coordinates `r` and `s`.  Each coordinate has one or two assigned nodes, so
+this union has at most four nodes.  For `N>=3`, the corresponding Vandermonde
+evaluation map is onto.  Diagonal entries see at most two nodes.  Entry by
+entry, `L_v` is therefore surjective.
+
+Surjectivity is open in finite dimension and supplies a continuous local right
+inverse.  The perturbation can be made explicit.  Choose distinct rational
+numbers `t_j in (0,1)`, put
+
+```text
+w_j = (1,t_j,...,t_j^(d-1))^T,
+v_j(epsilon) = normalize(e_(g(j)) + epsilon w_j),
+epsilon = exp(-N^3),
+```
+
+where `g(j)` is the coordinate group at the base point.  For any `d`-element
+subset, the unnormalized target determinant is a polynomial in `epsilon` with
+rational coefficients.  Its leading coefficient is the nonzero Vandermonde
+determinant of the corresponding `w_j`.  Since `exp(-N^3)` is transcendental,
+none of these finitely many nonzero rational polynomials vanishes.  The
+normalized target tuple is therefore full spark.
+
+Choose all pass nodes rationally in fixed compact subintervals and with minimum
+separation `N^(-O(1))`.  At the coordinate point, a right inverse of `L_v` is
+obtained entrywise from Lagrange polynomials on at most four nodes; its
+stopband and evaluation norms are `N^O(1)`.  Across the compact pass-node set,
+the off-target values of `P_0` grow at most `exp(O(N))`.  Hence the interpolation
+residual caused by the target perturbation is
+
+```text
+epsilon exp(O(N)) = exp(-N^3+O(N)).
+```
+
+A Neumann-series correction through the base right inverse is valid for large
+`N` and has the same bound up to polynomial factors.  This is negligible beside
+the base leakage `C exp(-cN)`.  The corrected coefficients remain real
+symmetric and the total leakage is at most `2C exp(-cN)`.  Once this is below
+one, the commuting obstruction forces the corrected coefficient family to be
+noncommuting.
+
+The current proof is existential: the perturbation radius is not explicit and
+may be extremely small.  The remaining gates are:
+
+1. write the Neumann-series correction with fixed coefficient/output norms and
+   explicit `N^O(1)` bounds;
+2. verify the phenomenon is not already an immediate corollary of tangential
+   interpolation or `H-infinity` control theory; and
+3. connect the extremal problem to a concrete block-Krylov or multichannel
+   spectral-estimation task without overstating physical consequences.
+
+The earlier algebraic obstacles are now removed: the two-node interpolant is
+explicit, the construction lies in the real-symmetric/Hermitian coefficient
+class, and the full-spark perturbation is deterministic.
+
+### 4.4 Block-Krylov interpretation
+
+For a Hermitian matrix `H` and starting block `B`, a block Krylov output has the
 form
 
 ```text
-general matrix optimum <= poly(N) exp(-c N),
-simultaneously diagonalizable optimum = 1,
-dimension d = N^2.
+sum_(k=0)^N H^k B C_k.
 ```
 
-Thus the advantage is exponential in `sqrt(d)`.  This argument is presently a
-proof sketch, not a theorem.  The unresolved points are:
+In an eigenbasis `H q_j=lambda_j q_j`, the row signature
+`b_j^*=q_j^*B` is transformed to `b_j^* P(lambda_j)`, up to the harmless choice
+of left-versus-right convention.  Tangential pass constraints preserve selected
+spectral signatures, while `sup ||P(x)||` controls every unwanted signature in
+the stopband.  Pairwise commuting symmetric `C_k` reduce, after one fixed
+orthogonal channel rotation, to independent scalar filters.  The theorem
+candidate therefore separates genuinely coupled block postprocessing from all
+fixed-basis scalar filtering.  Turning this interpretation into an algorithmic
+gain requires convergence and cost experiments; the algebraic separation alone
+does not establish a faster eigensolver.
 
-1. an explicit right-inverse bound for the perturbed interpolation operator;
-2. an explicit full-spark perturbation small enough to preserve the exponential
-   leakage, rather than a purely existential density argument;
-3. extension from arbitrary real coefficient matrices to a physically natural
-   Hermitian or adjoint-paired filter class; and
-4. whether the separation is already a corollary of tangential interpolation or
-   `H-infinity` control theory.
+## 5. Scaling numerical stress test
 
-Without these four items, the 2 by 2 example is a useful lemma but not a 7+
-paper.
+`research/route_c_scaling_pilot.py` perturbs the coordinate tuple, checks every
+`d`-target minor numerically, and solves the real-symmetric coefficient SDP.
+For the first dimension in the surjective regime, `N=3`, `d=9`, `M=12`, seed 7
+and perturbations `0.001`, `0.01`, and `0.03`, an 81-point optimization grid
+gives respective objective values approximately `0.29835`, `0.31998`, and
+`0.39771`, versus the exact commuting lower bound one whenever the numerical
+full-spark check is trusted.  The coefficient commutator norms are respectively
+about `0.467`, `0.391`, and `0.709`.  The script also evaluates the returned
+polynomial on an independent 4001-point validation grid to expose between-node
+overshoot.
 
-## 5. Literature collision warning
+For `N=2`, where symmetric surjectivity is not claimed, the strict advantage
+persists but shrinks to approximately `0.99635`, `0.97016`, and `0.94834` over
+the same perturbations.  This is exploratory evidence only: neither a
+floating-point minor test nor a discretized stopband is a proof.
+
+## 6. Literature collision warning
 
 Bitangential matrix Nevanlinna--Pick interpolation supplies general matrix
 Schur-class interpolation criteria, and matrix-valued polynomial interpolation
