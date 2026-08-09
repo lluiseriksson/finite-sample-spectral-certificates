@@ -1,6 +1,6 @@
 # Finite-Sample Spectral Certificates
 
-[![verify](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml/badge.svg?branch=agent%2Fwishart-loewner-certificates)](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml)
+[![verify](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml)
 
 Research artifact for finite-sample upper-support and visible-gap tests from
 noisy block moments.  The central method combines a Wishart--Loewner confidence
