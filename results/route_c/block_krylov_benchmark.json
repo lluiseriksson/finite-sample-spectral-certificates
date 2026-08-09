@@ -1,0 +1,139 @@
+{
+  "experiment": "route_c_block_krylov_adversarial_benchmark",
+  "seed": 20260809,
+  "dimension": 256,
+  "block_width": 2,
+  "degree_per_iteration": 2,
+  "initial_stop_to_pass_ratio": 5.0,
+  "exact_certificate_bound": 0.9901315789473685,
+  "target_matrix_residual": 1.1102230246251565e-16,
+  "empirical_matrix_stop_norm_10001_grid": 0.9774965612039475,
+  "empirical_scalar_stop_max_10001_grid": 0.14285714285714285,
+  "scalar_pass_multipliers": [
+    1.0,
+    2.4285714285714284,
+    4.428571428571429,
+    7.0
+  ],
+  "interpretation": {
+    "fair_exact_constraint_comparator": "The commuting degree-two comparator is the identity because four full-spark tangential constraints force it exactly.",
+    "adversarial_unconstrained_comparator": "The scalar Chebyshev filter suppresses the stopband much faster, but violates three of the four pass constraints and changes the desired clean block subspace."
+  },
+  "snapshots": {
+    "0": {
+      "noncommuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      }
+    },
+    "1": {
+      "noncommuting_exact_tangential": {
+        "pass_geometry_relative_error": 5.139333957141231e-17,
+        "best_global_rescaled_pass_error": 5.139333957141231e-17,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 3.5775714951046944,
+        "desired_subspace_largest_sine": 0.9719202326800838
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 3.850712705226452,
+        "best_global_rescaled_pass_error": 0.5615785430805081,
+        "best_global_rescaling": 0.1784406779661017,
+        "stop_to_pass_frobenius_ratio": 0.10153409335871194,
+        "desired_subspace_largest_sine": 0.5567740398871899
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      }
+    },
+    "5": {
+      "noncommuting_exact_tangential": {
+        "pass_geometry_relative_error": 2.2791463737245075e-16,
+        "best_global_rescaled_pass_error": 2.2791463737245075e-16,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 2.435217113619807,
+        "desired_subspace_largest_sine": 0.9458341317487077
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 10064.146024403024,
+        "best_global_rescaled_pass_error": 0.7831763180790298,
+        "best_global_rescaling": 6.177983466725273e-05,
+        "stop_to_pass_frobenius_ratio": 1.3127279083562641e-08,
+        "desired_subspace_largest_sine": 0.9727256381866487
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      }
+    },
+    "20": {
+      "noncommuting_exact_tangential": {
+        "pass_geometry_relative_error": 5.941805046373537e-16,
+        "best_global_rescaled_pass_error": 5.414624309271853e-16,
+        "best_global_rescaling": 1.0000000000000002,
+        "stop_to_pass_frobenius_ratio": 1.0318307272027538,
+        "desired_subspace_largest_sine": 0.7754960721003828
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 4.768499984744563e+16,
+        "best_global_rescaled_pass_error": 0.8017649260351115,
+        "best_global_rescaling": 1.2533071787741248e-17,
+        "stop_to_pass_frobenius_ratio": 4.030477621080438e-34,
+        "desired_subspace_largest_sine": 0.9870860785126516
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      }
+    },
+    "100": {
+      "noncommuting_exact_tangential": {
+        "pass_geometry_relative_error": 5.941805046373537e-16,
+        "best_global_rescaled_pass_error": 5.414624309271853e-16,
+        "best_global_rescaling": 1.0000000000000002,
+        "stop_to_pass_frobenius_ratio": 0.04429689439465421,
+        "desired_subspace_largest_sine": 0.05250875808780209
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 1.9329694302617824e+84,
+        "best_global_rescaled_pass_error": 0.8017837257372732,
+        "best_global_rescaling": 3.091690408090219e-85,
+        "stop_to_pass_frobenius_ratio": 1.621330215492983e-169,
+        "desired_subspace_largest_sine": 0.9981648436899744
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "best_global_rescaling": 1.0,
+        "stop_to_pass_frobenius_ratio": 5.0,
+        "desired_subspace_largest_sine": 0.9892482224626175
+      }
+    }
+  }
+}

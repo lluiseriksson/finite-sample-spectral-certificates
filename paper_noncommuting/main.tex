@@ -12,6 +12,10 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\cS}{\mathcal{S}}
@@ -41,7 +45,8 @@ noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
 pairwise-commuting symmetric filter is identically the identity and has leakage
 one.  We give an explicit full-spark perturbation and a block-Krylov error
 interpretation.  Numerical semidefinite programs support the finite-dimensional
-mechanism, but are not used in the proof.  This draft makes no claim that
+mechanism, and a controlled Hermitian block iteration tests the resulting
+subspace error, but neither is used in the proof.  This draft makes no claim that
 tangential matrix interpolation or matrix-valued Krylov theory is new; priority
 of the specific minimax separation remains under audit.
 \end{abstract}
@@ -150,12 +155,19 @@ These polynomials equal one at their assigned node or nodes.  Put them on the
 diagonal of $P_0(x)$ according to the coordinate partition.
 
 \begin{lemma}\label{lem:base}
-There are absolute $C_0,c_0>0$ such that
+Let
 \[
- \sup_{x\in I_-}\|P_0(x)\|_{\op}\le C_0e^{-c_0N}.
+ \eta_0=\operatorname{arcosh}(3),\qquad
+ \eta_1=\operatorname{arcosh}(8),\qquad \Delta\eta=\eta_1-\eta_0.
+\]
+Then
+\[
+ \sup_{x\in I_-}\|P_0(x)\|_{\op}
+ \le \frac{52}{5}e^{\eta_0}e^{-\eta_0N}.
 \]
 Moreover, at every pass node $\lambda_j\in[1,7/2]$,
-$\|P_0(\lambda_j)\|_{\op}\le e^{O(N)}$ uniformly in the group labels.
+$\|P_0(\lambda_j)\|_{\op}\le10e^{N\Delta\eta}$ uniformly in the
+group labels.
 \end{lemma}
 
 \begin{proof}
@@ -166,23 +178,22 @@ For $x\in I_-$, $|T_m(\phi(x))|\le1$.  For $\lambda\ge1$,
  \ge \tfrac12e^{m\eta_0},
  \quad \eta_0=\operatorname{arcosh}(3).
 \]
-The one-point bound follows immediately.  In \eqref{eq:pairednodes},
-$b_r-a_r=1$, while the two Lagrange factors in \eqref{eq:twopoint} are
-uniformly bounded on $I_-$.  This gives the two-point bound with exponent
-$(N-1)\eta_0$.  The operator norm of the diagonal polynomial is the largest
-entry magnitude.
+The one-point stopband bound is $2e^{-N\eta_0}$.  In
+\eqref{eq:pairednodes}, $b_r-a_r=1$.  On $I_-$, the sum of the absolute
+Lagrange factors in \eqref{eq:twopoint} is at most
+$31/10+21/10=26/5$.  The two-point bound is therefore
+$(52/5)e^{-(N-1)\eta_0}$.
 
-At a pass node, all arguments of the Chebyshev polynomials stay in a fixed
-compact interval outside or including $[-1,1]$.  Ratios of their hyperbolic
-cosine representations are bounded by $e^{O(N)}$; the remaining Lagrange
-factors are uniformly bounded for the paired nodes.  This proves the final
-claim.
+At a pass node, $2\lambda+1\le8$, so a Chebyshev ratio is at most
+$2e^{N\Delta\eta}$.  For the paired construction, the sum of the absolute
+Lagrange factors is at most five.  This gives the stated pass-node bound.  The
+operator norm of a diagonal polynomial is its largest entry magnitude.
 \end{proof}
 
 \subsection{An explicit full-spark perturbation}
 
-Index all pass nodes by $j=1,\ldots,M$, and let $g(j)$ be the coordinate group
-of node $j$.  Choose distinct rational $t_j\in(0,1)$ and define
+Index all pass nodes by $j=1,\ldots,M$, let $g(j)$ be the coordinate group of
+node $j$, and set $t_j=j/(M+1)$.  Define
 \begin{equation}\label{eq:momentperturb}
  w_j=(1,t_j,\ldots,t_j^{d-1})^\top,\quad
  \varepsilon_N=e^{-N^3},\quad
@@ -210,7 +221,7 @@ For all sufficiently large $N$, there is a real-symmetric coefficient
 polynomial $P_N$ satisfying $P_N(\lambda_j)\widetilde v_j=\widetilde v_j$ and
 \[
  \sup_{x\in I_-}\|P_N(x)-P_0(x)\|_{\op}
- \le \exp(-N^3+O(N+\log N)).
+ \le 64152\,N^9\exp(-N^3+N\Delta\eta).
 \]
 \end{lemma}
 
@@ -228,19 +239,25 @@ assigned to coordinates $r$ and $s$.  That union contains at most four nodes.
 For $N\ge3$, ordinary Lagrange interpolation is onto on those nodes.  A
 diagonal entry sees at most two nodes.
 
-This argument also constructs a right inverse $R_N$ entry by entry.  The node
-separation is at least $(2N^2)^{-1}$ and all nodes and stopband points remain in
-a fixed compact interval.  Lagrange polynomials on at most four nodes therefore
-give
-\begin{equation}\label{eq:rightinversebound}
- \|R_N\|_{\text{output}\to\text{stop}}+ 
- \|R_N\|_{\text{output}\to\text{pass}}\le N^{O(1)},
-\end{equation}
-where the output norm is the maximum Euclidean block norm and the other norms
-are maximum operator norms.  The factors $\|w_j\|_2\le\sqrt d=N$ can be
-absorbed into the polynomial bound.  Hence
+Equip the output space with the maximum Euclidean block norm and $\cS_N$ with
 \[
- L_\varepsilon R_N=I+E_N,qquad \|E_N\|\le\varepsilon N^{O(1)}.
+ \|P\|_X=\max\left\{\sup_{x\in I_-}\|P(x)\|_{\op},
+                     \max_j\|P(\lambda_j)\|_{\op}\right\}.
+\]
+The entrywise construction gives a right inverse $R_N$.  For $N\ge5$, the node
+separation is at least $(2N^2)^{-1}$, while any two points in the stop/pass
+domain are at distance at most $9/2$.  A Lagrange basis polynomial on at most
+four nodes is bounded by $(9N^2)^3$.  Summing at most four basis polynomials and
+using $\|A\|_{\op}\le d\max_{r,s}|A_{rs}|$ gives
+\begin{equation}\label{eq:rightinversebound}
+ \|R_N\|_{Y\to X}\le4(9N^2)^3d=2916N^8.
+\end{equation}
+
+Write $L_\varepsilon=L_0+\varepsilon K_N$.  Since
+$\|w_j\|_2\le\sqrt d=N$, $\|K_N\|_{X\to Y}\le N$.  Hence
+\[
+ L_\varepsilon R_N=I+E_N,\qquad
+ \|E_N\|\le2916\varepsilon N^9.
 \]
 For $\varepsilon=\varepsilon_N$ and large $N$, the inverse
 $(I+E_N)^{-1}$ exists and has norm at most two.
@@ -250,23 +267,38 @@ Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
  r_N=(\widetilde v_j)_j-L_{\varepsilon_N}(P_0)
  =\varepsilon_N\bigl((I-P_0(\lambda_j))w_j\bigr)_j.
 \]
-By \cref{lem:base}, $\|r_N\|\le\varepsilon_Ne^{O(N)}$.  Set
+By Lemma~\ref{lem:base},
+\[
+ \|r_N\|_Y\le\varepsilon_NN(1+10e^{N\Delta\eta})
+ \le11\varepsilon_NNe^{N\Delta\eta}.
+\]
+Set
 \[
  \Delta P_N=R_N(I+E_N)^{-1}r_N,
  \qquad P_N=P_0+\Delta P_N.
 \]
-Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$, and
-\eqref{eq:rightinversebound} gives the claimed stopband bound.  Every
-coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
+Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$.  Using
+\eqref{eq:rightinversebound} and $\|(I+E_N)^{-1}\|\le2$ gives
+\[
+ \|\Delta P_N\|_X
+ \le2(2916N^8)(11\varepsilon_NNe^{N\Delta\eta})
+ =64152N^9e^{-N^3+N\Delta\eta}.
+\]
+Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main}]
 The normalized and unnormalized interpolation constraints are equivalent.
-Combine \cref{lem:base,lem:fullspark,lem:stability}; the correction is
-negligible compared with $e^{-c_0N}$.  This proves the first conclusion after
-adjusting absolute constants.  The second is \cref{lem:commuting}.  For large
-$N$, the first leakage is below one, so the constructed coefficients cannot
-commute pairwise.
+Combine Lemmas~\ref{lem:base}, \ref{lem:fullspark}, and \ref{lem:stability}.
+Choose $N_0\ge5$ so that $2916e^{-N^3}N^9\le1/2$ and the correction in
+Lemma~\ref{lem:stability} is at most
+$(52/5)e^{\eta_0}e^{-\eta_0N}$ for $N\ge N_0$.  The first conclusion holds
+with
+\[
+ C=\frac{104}{5}e^{\eta_0},\qquad c=\eta_0.
+\]
+The second conclusion is Lemma~\ref{lem:commuting}.  For large $N$, the first
+leakage is below one, so the constructed coefficients cannot commute pairwise.
 \end{proof}
 
 \section{Block-Krylov meaning}
@@ -383,7 +415,7 @@ $\lambda_{\min}(S)\ge\det(S)/\operatorname{tr}(S)$.  Consequently
 \]
 which proves the norm bound.
 
-For the commuting class, apply \cref{lem:commuting} with
+For the commuting class, apply Lemma~\ref{lem:commuting} with
 $M=4=d+N$.  Every scalar common-eigenbasis entry has three distinct roots of
 $q-1$ and is identically one.
 \end{proof}
@@ -441,6 +473,46 @@ points.  Clarabel labels these solves \texttt{optimal\_inaccurate}; they are
 diagnostics, not proof.  The exact witnesses and \cref{thm:main} do not depend
 on solver output.
 
+\subsection{Controlled block-iteration benchmark}
+
+The script \texttt{research/route\_c\_block\_krylov\_benchmark.py} embeds the
+quadratic certificate in a $256$-dimensional Hermitian eigenproblem.  The four
+pass eigenvalues are $1/2,1,3/2,2$, the other $252$ eigenvalues fill $[-1,0]$,
+and the initial stop/pass Frobenius ratio is five.  We repeatedly apply the
+degree-two matrix filter and compare it with
+
+\[
+ q(x)=\frac{8x^2+8x+1}{7},
+\]
+
+the scalar degree-two Chebyshev stopband filter normalized only at $x=1/2$.
+Let $\sin\theta$ denote the largest principal-angle sine from the filtered
+block to the clean two-dimensional block defined by the four prescribed pass
+rows.  The scalar pass error below is minimized over one global rescaling, so
+it does not merely report scalar amplitude growth.
+
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Iterations & Matrix stop/pass & Matrix $\sin\theta$ & Scalar pass error & Scalar $\sin\theta$\\
+\midrule
+$0$   & $5.0000$ & $0.9892$ & $0.0000$ & $0.9892$\\
+$1$   & $3.5776$ & $0.9719$ & $0.5616$ & $0.5568$\\
+$5$   & $2.4352$ & $0.9458$ & $0.7832$ & $0.9727$\\
+$20$  & $1.0318$ & $0.7755$ & $0.8018$ & $0.9871$\\
+$100$ & $0.0443$ & $0.0525$ & $0.8018$ & $0.9982$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The matrix pass error stays below $6\times10^{-16}$.  The scalar filter has
+stopband maximum $1/7$ and initially suppresses contamination much faster, but
+its pass multipliers are $(1,17/7,31/7,7)$; iteration consequently rotates the
+clean block away from the prescribed one.  The fair commuting comparator under
+all four exact tangential constraints is the identity and remains at stop/pass
+ratio $5$ and $\sin\theta=0.9892$.  This controlled construction demonstrates
+the theorem's error mechanism, not a runtime advantage on a natural problem.
+
 \section{Relation to established work and open gates}
 
 Tangential matrix-polynomial interpolation is classical
@@ -468,10 +540,9 @@ the full pairwise commuting subclass.  Before submission, these gates remain:
 \begin{enumerate}
 \item compare \cref{thm:main} line by line with full texts on norm-constrained
       tangential interpolation, rather than relying on titles or abstracts;
-\item replace the $N^{O(1)}$ notation in \cref{lem:stability} by explicit
-      constants or a precisely stated norm-equivalence lemma;
-\item benchmark the block filter on realistic Hermitian eigenproblems against
-      scalar Chebyshev-filtered subspace iteration.
+\item test a naturally arising multichannel eigenproblem in which pass-row
+      geometry is scientifically mandated, including adaptive and
+      nonstationary scalar baselines beyond the controlled construction above.
 \end{enumerate}
 
 \bibliographystyle{plain}

@@ -241,33 +241,44 @@ determinant of the corresponding `w_j`.  Since `exp(-N^3)` is transcendental,
 none of these finitely many nonzero rational polynomials vanishes.  The
 normalized target tuple is therefore full spark.
 
-Choose all pass nodes rationally in fixed compact subintervals and with minimum
-separation `N^(-O(1))`.  At the coordinate point, a right inverse of `L_v` is
-obtained entrywise from Lagrange polynomials on at most four nodes; its
-stopband and evaluation norms are `N^O(1)`.  Across the compact pass-node set,
-the off-target values of `P_0` grow at most `exp(O(N))`.  Hence the interpolation
-residual caused by the target perturbation is
+Choose the rational pass nodes as in the manuscript.  Their minimum separation
+is at least `(2N^2)^(-1)`.  With the maximum stop/pass operator norm on
+polynomials and maximum Euclidean block norm on the data, entrywise Lagrange
+interpolation on at most four nodes gives the explicit right-inverse bound
 
 ```text
-epsilon exp(O(N)) = exp(-N^3+O(N)).
+||R_N|| <= 2916 N^8.
 ```
 
-A Neumann-series correction through the base right inverse is valid for large
-`N` and has the same bound up to polynomial factors.  This is negligible beside
-the base leakage `C exp(-cN)`.  The corrected coefficients remain real
-symmetric and the total leakage is at most `2C exp(-cN)`.  Once this is below
-one, the commuting obstruction forces the corrected coefficient family to be
-noncommuting.
+The perturbation operator has norm at most `N`, while the base interpolant is
+at most `10 exp(N DeltaEta)` at every pass node.  Hence the interpolation
+residual caused by the target perturbation is at most
 
-The current proof is existential: the perturbation radius is not explicit and
-may be extremely small.  The remaining gates are:
+```text
+11 N exp(-N^3 + N DeltaEta).
+```
 
-1. write the Neumann-series correction with fixed coefficient/output norms and
-   explicit `N^O(1)` bounds;
-2. verify the phenomenon is not already an immediate corollary of tangential
+A Neumann-series correction through the base right inverse is valid once
+`2916 exp(-N^3) N^9 <= 1/2`, and its stop/pass norm is at most
+
+```text
+64152 N^9 exp(-N^3 + N DeltaEta).
+```
+
+This is negligible beside the explicit base leakage
+`(52/5) exp(Eta0) exp(-Eta0 N)`.  The corrected coefficients remain real
+symmetric and the theorem holds with
+`C=(104/5) exp(Eta0)` and `c=Eta0`.  Once this is below one, the commuting
+obstruction forces the corrected coefficient family to be noncommuting.
+
+The perturbation is explicit but extremely small.  The remaining gates are:
+
+1. verify the phenomenon is not already an immediate corollary of tangential
    interpolation or `H-infinity` control theory; and
-3. connect the extremal problem to a concrete block-Krylov or multichannel
-   spectral-estimation task without overstating physical consequences.
+2. move beyond the controlled Hermitian block benchmark to a naturally arising
+   multichannel task that genuinely mandates multipoint pass-row geometry, and
+   test adaptive/nonstationary scalar baselines without overstating physical
+   consequences.
 
 The earlier algebraic obstacles are now removed: the two-node interpolant is
 explicit, the construction lies in the real-symmetric/Hermitian coefficient

@@ -58,6 +58,23 @@ commuting symmetric optimum = 1.
 The replay script uses only Python's exact `Fraction` arithmetic and is included
 in CI as `verification/verify_quadratic_filter_witness.py`.
 
+## Controlled Hermitian block benchmark
+
+`research/route_c_block_krylov_benchmark.py` embeds the exact quadratic witness
+in a deterministic `256 by 256` Hermitian problem with four pass eigenvalues
+and 252 stopband eigenvalues.  After 100 degree-2 applications, the
+noncommuting filter keeps pass geometry to `6e-16`, reduces the stop/pass ratio
+from `5` to `0.0443`, and reduces the desired-subspace largest-angle sine from
+`0.9892` to `0.0525`.  The exact-feasible commuting comparator is the identity.
+
+The adversarial scalar degree-2 Chebyshev filter has stopband maximum `1/7` and
+suppresses stop components much faster, but its pass multipliers are
+`(1,17/7,31/7,7)`.  Even after optimal global rescaling, its pass-geometry error
+is `0.8018` at 100 iterations and the desired-subspace sine is `0.9982`.  This
+supports the theorem's controlled error interpretation but also exposes the
+limitation: a natural application must genuinely require multipoint pass-row
+geometry.  The construction is not evidence of a runtime advantage.
+
 ## Collision outcome so far
 
 Tangential polynomial interpolation, matrix-valued Nevanlinna--Pick theory,
@@ -69,13 +86,12 @@ this search is not evidence of priority.
 
 ## Gate G1 blockers
 
-1. typeset the full proof with fixed norms and explicit `N^O(1)` stability
-   bounds;
-2. inspect the full statements of the closest norm-constrained tangential
+1. inspect the full statements of the closest norm-constrained tangential
    interpolation papers, not only abstracts;
-3. benchmark the proved block-Krylov pass/stop proposition against independent
-   scalar Chebyshev filtering on realistic eigenproblems.
+2. find a naturally arising multichannel problem that mandates pass-row
+   geometry, and test adaptive/nonstationary scalar baselines; the controlled
+   Hermitian benchmark alone is not sufficient scientific payoff.
 
-The former fourth blocker, a rational or interval-certified non-affine finite
-witness, is closed.  Until the remaining three close, Route C is the lead but
+The quantified stability proof and the former rational non-affine-witness
+blocker are closed.  Until the remaining two close, Route C is the lead but
 Gate G1 remains open.

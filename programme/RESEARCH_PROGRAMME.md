@@ -96,7 +96,8 @@ quantified proof and closest-theorem comparison are complete.
 - Week 3 is active.  Route A's naive claim and the broad forms of Route B were
   killed by prior literature.  Route C survived the algebraic counterexample
   search and is the current lead.
-- Gate G1 is **not yet passed**.  Exit requires a typeset quantified proof, a
+- Gate G1 is **not yet passed**.  The typeset quantified proof and a controlled
+  block-Krylov subspace-error benchmark are now closed.  Exit still requires a
   direct comparison with the closest norm-constrained tangential interpolation
-  results, and a block-Krylov experiment showing that the theorem controls an
-  actual subspace-filtering error.
+  results and evidence that a natural multichannel problem genuinely requires
+  the preserved pass-row geometry.

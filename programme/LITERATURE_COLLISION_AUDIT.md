@@ -106,18 +106,18 @@ The first part is met in dimension two: an exact rational affine filter has
 stopband norm below `0.882`, whereas every commuting symmetric affine filter
 has norm at least one.  A candidate asymptotic theorem now gives leakage
 `C exp(-cN)` for noncommuting symmetric coefficients versus exactly one for the
-commuting class at dimension `d=N^2`.  The proof skeleton includes an explicit
-full-spark perturbation and a block-Krylov interpretation.  The remaining G1
-bar is a line-by-line norm-constrained interpolation collision check and a
-fully quantified proof; the two-dimensional example alone is not a paper-scale
-contribution.
+commuting class at dimension `d=N^2`.  The proof now includes an explicit
+full-spark perturbation, fixed norms, a quantified right inverse and correction,
+and a block-Krylov interpretation.  The remaining G1 bar is a line-by-line
+norm-constrained interpolation collision check and an application benchmark;
+the two-dimensional example alone is not a paper-scale contribution.
 
 ## Provisional Gate-G1 ranking
 
 1. **Route C:** now has an exact finite witness, an asymptotic exponential
-   separation proof skeleton in the symmetric/Hermitian class, reproducible
-   SDP stress tests, and a block-Krylov interpretation.  Novelty collision and
-   quantitative proof closure remain mandatory before G1 passes.
+   separation proof in the symmetric/Hermitian class, reproducible SDP stress
+   tests, and a block-Krylov interpretation.  Novelty collision and application
+   closure remain mandatory before G1 passes.
 2. **Route B, reformulated as joint uncertainty--state polynomial
    completeness:** strongest thermodynamic architecture, but it needs a real
    compactness/robust-infeasibility proof and must beat Mortimer's scope.
