@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "setup": {
+    "trials": 1000,
+    "seed": 20260816,
+    "output": "results\\verification\\localizer_adjoint.json"
+  },
+  "maximum_absolute_error": 2.7284841053187847e-12,
+  "maximum_relative_error": 4.4894702667161444e-14,
+  "first_five": [
+    {
+      "degree": 1,
+      "channels": 1,
+      "theta": 0.7807515565954852,
+      "lhs": -103.63173572796293,
+      "rhs": -103.63173572796293
+    },
+    {
+      "degree": 4,
+      "channels": 1,
+      "theta": 0.2994879098927991,
+      "lhs": -327.47054145674207,
+      "rhs": -327.4705414567419
+    },
+    {
+      "degree": 2,
+      "channels": 2,
+      "theta": 0.2673117799717659,
+      "lhs": 54.833946858714576,
+      "rhs": 54.833946858714576
+    },
+    {
+      "degree": 3,
+      "channels": 1,
+      "theta": 0.6457771738569259,
+      "lhs": -11.784473820191502,
+      "rhs": -11.7844738201915
+    },
+    {
+      "degree": 1,
+      "channels": 3,
+      "theta": 0.49856926712456706,
+      "lhs": -131.23431065410298,
+      "rhs": -131.234310654103
+    }
+  ]
+}
