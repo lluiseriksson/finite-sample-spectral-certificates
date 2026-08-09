@@ -78,6 +78,8 @@ def main():
     assert indices.tolist() == frozen["fft_bins"]
     assert np.max(np.abs(train_directions - np.array(frozen["training_directions"]))) < 5e-13
     assert np.max(np.abs(held_out_directions - np.array(frozen["held_out_directions"]))) < 5e-13
+    assert np.max(np.abs(train[indices].real - np.array(frozen["training_cospectral_matrices"]))) < 5e-11
+    assert np.max(np.abs(held_out[indices].real - np.array(frozen["held_out_cospectral_matrices"]))) < 5e-11
     angles = np.degrees(
         np.arccos(np.clip(np.abs(np.sum(train_directions * held_out_directions, axis=1)), 0, 1))
     )
@@ -85,6 +87,7 @@ def main():
     print("frequencies_hz", frequencies[indices].tolist())
     print("train_to_held_out_angles_degrees", angles.tolist())
     print("maximum_angle_degrees", float(angles.max()))
+    print("selected cospectral matrices: PASS")
 
 
 if __name__ == "__main__":

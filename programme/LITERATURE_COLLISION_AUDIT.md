@@ -93,6 +93,7 @@ hierarchy or the Mortimer finite-shot constraints fails Gate G1.
 | M. Hartz, [*On von Neumann's inequality on the polydisc*](https://doi.org/10.1007/s00208-024-03040-2) (2025), Sec. 2 | Sharp and near-sharp norm inequalities for one-variable polynomials with operator coefficients, including distinct commuting and noncommuting regimes | Confirms that separations caused by operator coefficients are established phenomena.  Our exact interpolation-constrained separation must not be advertised as the first benefit of noncommuting coefficients. |
 | F. Gama, A. G. Marques, A. Ribeiro and G. Leus, [*MIMO Graph Filters for Convolutional Neural Networks*](https://arxiv.org/abs/1803.02247) (2018), Eqs. (5)--(7) | Standard MIMO graph-filter architecture `Y=sum S^k X H_k^T`, with general and parsimonious matrix taps | Matrix-coefficient graph/FIR filtering is established.  The paper does not state a fixed-basis scalar lower bound or exponential tangential separation. |
 | S.-P. Wu, S. Boyd and L. Vandenberghe, [*FIR Filter Design via Spectral Factorization and Convex Optimization*](https://web.stanford.edu/~boyd/papers/fir_spectral_fact.html) (1998) | Scalar FIR design with frequency-domain magnitude constraints and convex optimization | Convex/minimax FIR stopband design is classical.  Only the fixed-latency, directional MIMO-vs-fixed-basis separation can remain candidate novelty. |
+| G. Ljungars and M. Fu, [*Design of Multi-Channel Linear Phase FIR Filters*](https://maths.anu.edu.au/files/CMAProcVol36-LjungarsFu.pdf) (1998), Sec. 4.1 | Matrix-valued multi-channel linear-phase FIR design with operator-norm error minimized over a frequency grid by SDP | **Direct MIMO-FIR minimax collision:** multi-channel linear phase plus spectral-norm minimax optimization is established.  It has no tangential pass constraints, reciprocal-symmetric channel taps, commuting comparator or class-separation theorem. |
 
 The detailed clause comparison is maintained in
 [`ROUTE_C_PRIORITY_MATRIX.md`](ROUTE_C_PRIORITY_MATRIX.md).  The search has not
@@ -115,10 +116,13 @@ full-spark perturbation, fixed norms, a quantified right inverse and correction,
 and a block-Krylov interpretation.  A natural grid-graph denoising pilot was
 negative: a scalar Chebyshev filter dominated when a small pass distortion was
 allowed.  The polynomial theorem now also has an exact reciprocal linear-phase
-MIMO FIR corollary and rational five-tap certificate.  The remaining G1 bar is
-a line-by-line collision check, especially in FIR approximation, and a measured
-or standards-derived directional calibration; the two-dimensional example
-alone is not a paper-scale contribution.
+MIMO FIR corollary and rational five-tap certificate.  The public VBL-VA001
+calibration, exact FDD modal-component invariance lemma and held-out cospectral
+replay close the measured task-meaning bar at the preprocessing level.  The
+full Ljungars--Fu audit closes the broad multi-channel linear-phase minimax
+branch.  The remaining G1 bar is a proof-level check of the inaccessible closest
+interpolation papers, a reciprocal/passive-FIR collision search, and independent
+adversarial review.
 
 ## Provisional Gate-G1 ranking
 

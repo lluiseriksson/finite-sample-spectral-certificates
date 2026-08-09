@@ -51,7 +51,10 @@ that its advantage survives commuting calibration errors
 $\delta<3/32300$.  A second exact-arithmetic certificate is calibrated from a
 public triaxial pump-vibration data set: it gives leakage below $0.96$ versus
 one for the exactly calibrated commuting class, while its maximum directional
-error on six held-out records is $0.00385$.  Numerical programs test the
+error on six held-out records is $0.00385$.  In a frequency-domain-decomposition
+test on the frozen held-out cospectra, filtering rotates the leading modal
+direction by at most $0.222^\circ$ and changes its leading spectral ordinate by
+at most $2.4\times10^{-5}$ relatively.  Numerical programs test the
 mechanism and expose an ordinary graph-denoising setting in which scalar
 Chebyshev filtering is instead preferable.  Tangential matrix
 interpolation, MIMO filtering and convex FIR design are not claimed as new;
@@ -651,7 +654,12 @@ the theorem's error mechanism, not a runtime advantage on a natural problem.
 
 We next use VBL-VA001, an open lab-scale pump-vibration data set with triaxial
 acceleration records sampled at $20$ kHz \cite{AtmajaEtAl2024,VBLVA001}.
-This is a calibration experiment, not a fault classifier.  We selected twelve
+The task is frequency-domain-decomposition (FDD) preprocessing, not fault
+classification.  FDD extracts mode-shape estimates as leading singular vectors
+of cross-spectral matrices at spectral peaks \cite{BrinckerZhangAndersen2001};
+filter-induced perturbations are therefore a scientifically relevant failure
+mode, and filtering artifacts can corrupt modal estimates \cite{WynneEtAl2022}.
+We selected twelve
 normal-condition records by the archive prefixes \texttt{normal\_000} and
 \texttt{normal\_001}, using all six records under the first prefix for fitting
 and retaining all six under the second prefix.  The file names, CRC-32 and
@@ -666,6 +674,26 @@ node is $x=\cos(2\pi f/2500)$.  Table~\ref{tab:vblcalibration} reports the
 six-decimal rationalization used by the exact certificate; every displayed
 component and node differs from its measured value by less than
 $5\times10^{-7}$.
+
+\begin{lemma}[Modal-component invariance]\label{lem:fddinvariance}
+Let the cospectral matrix at a modal frequency have the decomposition
+$G_j=\lambda_jv_jv_j^\top+R_j$, where $\lambda_j\ge0$, $\|v_j\|_2=1$, and
+$R_j\succeq0$.  If a real-symmetric response $P$ obeys
+$P(x_j)v_j=v_j$, then the reciprocal palindromic FIR response
+$H(e^{\mathrm{i}\omega})=e^{-\mathrm{i}N\omega}P(\cos\omega)$ obeys
+\[
+ H(e^{\mathrm{i}\omega_j})G_jH(e^{\mathrm{i}\omega_j})^*
+ =\lambda_jv_jv_j^\top+P(x_j)R_jP(x_j).
+\]
+Thus the rank-one modal component, its channel shape, and its amplitude are
+preserved exactly, up to one common $N$-sample delay, while the residual
+cospectrum is filtered.
+\end{lemma}
+
+\begin{proof}
+The scalar phase cancels in $H G_j H^*$, and symmetry gives
+$P(x_j)v_jv_j^\top P(x_j)=v_jv_j^\top$.
+\end{proof}
 
 \begin{table}[H]
 \centering
@@ -737,6 +765,17 @@ Frobenius norm is $36.06$, compared with $2.623$ for the rational symmetric
 witness.  This single split suggests a reciprocity--robustness tradeoff; it
 does not establish a statistical generalization theorem.
 
+For a task-level replay, we froze the full $3$ by $3$ training and held-out
+cospectral matrices at the five peaks, applied $P(x_j)G_jP(x_j)$ on the
+held-out split, and recomputed the FDD leading eigenpair.  Across the five
+frequencies, the angle between the unfiltered and filtered leading directions
+is at most $0.2217^\circ$; the leading eigenvalue ratio differs from one by at
+most $2.40\times10^{-5}$.  These figures are outputs of the offline replay,
+not consequences of the exact certificate.  Lemma~\ref{lem:fddinvariance}
+explains the specification: exact calibration preserves an ideal modal
+component, while the held-out calculation measures the effect of residual
+components and train--test drift.
+
 \begin{table}[H]
 \centering
 \small
@@ -757,11 +796,13 @@ test, not a global optimization certificate over orthogonal bases.}
 \label{tab:vblresults}
 \end{table}
 
-Thus the measured instance closes the purely constructed-data objection: its
-calibration and validation use disjoint sensor records, and the exact $0.96$-versus-$1$
-gap is not solver-dependent.  It does not show that a deployed pump must impose
-these exact directional constraints, nor that the filter improves diagnosis,
-latency or hardware performance.
+Thus the measured instance closes both the purely constructed-data objection
+and the objection that tangential preservation has no task meaning: its
+calibration and validation use disjoint sensor records, FDD supplies the
+mode-shape objective, and the exact $0.96$-versus-$1$ gap is not
+solver-dependent.  It does not show improved fault diagnosis, damping
+estimation, hardware cost or deployment performance; those claims are outside
+the present experiment.
 
 \subsection{A failed graph-denoising application gate}
 
@@ -797,16 +838,23 @@ bridge between MIMO model reduction and Krylov projection
 matrix-valued weights, noisy-data comparisons, and tangential interpolation
 mechanisms \cite{GoseaGuettel2021}.  Recent iterative MIMO schemes even select
 low-rank tangential data using maximum-error criteria \cite{JonasBamieh2026}.
-Those works use rational transfer-function approximation and do not provide a
-fixed-degree Hermitian-polynomial separation from the simultaneously
-diagonalizable subclass.  Minimax polynomial filtering and SDP
+Their maximum-error step selects the next interpolation frequency, whereas
+their proved monotonicity concerns a weighted $H_2$ error; monotone $H_\infty$
+bounds are stated as future work.  Gallivan et al.'s main result instead gives
+a generically unique minimal-McMillan-degree rational interpolant.  Neither
+result provides a fixed-degree Hermitian-polynomial minimax separation from the
+simultaneously diagonalizable subclass.  Minimax polynomial filtering and SDP
 formulations have a long numerical-linear-algebra history
 \cite{TohTrefethen1998}, and matrix-polynomial spaces arise naturally in block
 Krylov methods \cite{RinelliVandebril2026}.  General MIMO graph filters already
 use matrix taps in precisely the form $\sum_k S^kXC_k$
 \cite{GamaEtAl2018}, while scalar FIR minimax design by convex optimization is
-classical \cite{WuBoydVandenberghe1998}.  Accordingly, none of these ingredients
-is claimed as new.
+classical \cite{WuBoydVandenberghe1998}.  More closely, Ljungars and Fu optimize
+the operator-norm error of matrix-valued multi-channel linear-phase FIR filters
+on a frequency grid by SDP \cite{LjungarsFu1998}.  Their formulation has neither
+directional pass interpolation nor a commuting/simultaneously-diagonalizable
+comparator.  Accordingly, MIMO linear phase, operator-norm minimax design, and
+SDP are not claimed as new.
 
 The candidate novelty is therefore narrower than norm-constrained or
 degree-constrained tangential interpolation or FIR design alone.  Under a fixed
@@ -818,11 +866,10 @@ subclass.  Before submission, these gates remain:
 \item complete full-text checks of the closest polynomial, rational regional,
       and linear-phase MIMO FIR results; the current clause-by-clause audit is
       not a proof of priority;
-\item strengthen the measured calibration into a task-level validation in
-      which directional preservation and fixed delay are mandated rather than
-      inferred from a normal-condition spectral summary.  The present split,
-      approximate-calibration controls and unconstrained MIMO baseline close
-      the data-grounding gate but not a deployment claim.
+\item obtain an external adversarial review of the proof and of the claim that
+      the surviving conjunction is new.  The FDD invariance lemma and held-out
+      cospectral replay close the task-meaning gate at the preprocessing level,
+      but do not constitute a deployment or diagnostic study.
 \end{enumerate}
 
 \paragraph{Reproducibility.}

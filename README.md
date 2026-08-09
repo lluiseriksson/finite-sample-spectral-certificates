@@ -11,7 +11,10 @@ The active research branch also contains a separate new paper on
 noncommuting reciprocal MIMO FIR filters.  Its headline theorem gives a
 fixed-degree exponential separation from every fixed orthogonal bank of scalar
 filters; an exact five-tap witness and a second certificate grounded in the
-public VBL-VA001 triaxial vibration data are replayed in standard Python.
+public VBL-VA001 triaxial vibration data are replayed in standard Python.  An
+FDD invariance lemma gives the directional calibrations a modal-preprocessing
+meaning, and the held-out cospectral replay measures less than `0.222` degrees
+of leading-direction drift.
 
 The current frontier experiment studies Gaussian sketches of Euclidean
 correlators in the interacting axial next-nearest-neighbour Ising (ANNNI)

@@ -40,6 +40,42 @@
       0.0009934766609753748,
       0.00384905282359036
     ],
+    "held_out_fdd_invariance": {
+      "per_frequency": [
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.18909692595743133,
+          "training_to_filtered_angle_degrees": 0.29070118683854,
+          "leading_eigenvalue_ratio": 1.0000181536725627,
+          "rayleigh_ratio_along_unfiltered_direction": 1.0000084652136763
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.01629392956477813,
+          "training_to_filtered_angle_degrees": 0.1341757827892286,
+          "leading_eigenvalue_ratio": 1.0000003954765644,
+          "rayleigh_ratio_along_unfiltered_direction": 1.00000031653474
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.22115909678789955,
+          "training_to_filtered_angle_degrees": 0.4463905876173343,
+          "leading_eigenvalue_ratio": 1.0000239060523342,
+          "rayleigh_ratio_along_unfiltered_direction": 1.0000148340638395
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.08110899976908785,
+          "training_to_filtered_angle_degrees": 0.37080270748157024,
+          "leading_eigenvalue_ratio": 0.9999982982161472,
+          "rayleigh_ratio_along_unfiltered_direction": 0.9999968471445074
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.22165199146416692,
+          "training_to_filtered_angle_degrees": 0.3722675797865208,
+          "leading_eigenvalue_ratio": 0.9999785318546102,
+          "rayleigh_ratio_along_unfiltered_direction": 0.9999635776948861
+        }
+      ],
+      "maximum_unfiltered_to_filtered_angle_degrees": 0.22165199146416692,
+      "maximum_absolute_leading_eigenvalue_ratio_error": 2.3906052334154992e-05
+    },
     "coefficient_frobenius_norms": [
       2.622611116613623,
       1.8407684323889553,

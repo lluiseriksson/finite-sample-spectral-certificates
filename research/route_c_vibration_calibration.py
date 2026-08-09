@@ -31,6 +31,46 @@ def pass_residuals(coefficients, nodes, directions):
     ]
 
 
+def leading_direction(matrix):
+    eigenvalues, eigenvectors = np.linalg.eigh(matrix)
+    direction = eigenvectors[:, -1]
+    if direction[np.argmax(np.abs(direction))] < 0:
+        direction = -direction
+    return eigenvalues, direction
+
+
+def acute_angle_degrees(left, right):
+    return float(np.degrees(np.arccos(np.clip(abs(left @ right), 0, 1))))
+
+
+def fdd_invariance_metrics(coefficients, nodes, training, held_out_cospectra):
+    rows = []
+    for node, target, cospectrum in zip(nodes, training, held_out_cospectra, strict=True):
+        eigenvalues, original = leading_direction(cospectrum)
+        response = matrix_value(coefficients, node)
+        filtered_cospectrum = response @ cospectrum @ response.T
+        filtered_eigenvalues, filtered = leading_direction(filtered_cospectrum)
+        rows.append(
+            {
+                "unfiltered_to_filtered_angle_degrees": acute_angle_degrees(original, filtered),
+                "training_to_filtered_angle_degrees": acute_angle_degrees(target, filtered),
+                "leading_eigenvalue_ratio": float(filtered_eigenvalues[-1] / eigenvalues[-1]),
+                "rayleigh_ratio_along_unfiltered_direction": float(
+                    original @ filtered_cospectrum @ original / (original @ cospectrum @ original)
+                ),
+            }
+        )
+    return {
+        "per_frequency": rows,
+        "maximum_unfiltered_to_filtered_angle_degrees": max(
+            row["unfiltered_to_filtered_angle_degrees"] for row in rows
+        ),
+        "maximum_absolute_leading_eigenvalue_ratio_error": max(
+            abs(row["leading_eigenvalue_ratio"] - 1) for row in rows
+        ),
+    }
+
+
 def solve_matrix(nodes, directions, symmetric):
     dimension = directions.shape[1]
     coefficients = [cp.Variable((dimension, dimension), symmetric=symmetric) for _ in range(3)]
@@ -139,6 +179,7 @@ def main():
     rational_nodes = np.array([float(value) for value in calibration["rational_nodes"]])
     training = np.array(calibration["training_directions"])
     held_out = np.array(calibration["held_out_directions"])
+    held_out_cospectra = np.array(calibration["held_out_cospectral_matrices"])
     rational_training = np.array(calibration["rational_training_directions"], dtype=float)
 
     exact = np.array(
@@ -189,6 +230,9 @@ def main():
             "maximum_measured_training_residual": float(max(measured_training_residuals)),
             "maximum_held_out_residual": float(max(held_out_residuals)),
             "held_out_residuals": held_out_residuals,
+            "held_out_fdd_invariance": fdd_invariance_metrics(
+                exact, nodes, training, held_out_cospectra
+            ),
             "coefficient_frobenius_norms": [float(np.linalg.norm(value)) for value in exact],
             "maximum_commutator_norm": float(exact_commutator),
             "commuting_exact_calibration_lower_bound": 1.0,

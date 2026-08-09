@@ -32,8 +32,8 @@ paper.
 - File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
   and Linear-Phase MIMO FIR Filters*
-- Pages: 12
-- Local SHA-256: `d5a79b1f5a0ff627ebf052929fe0167b907b34240b702df6aa20bde49446bba8`
+- Pages: 13
+- Local SHA-256: `4a8de0af6f5892ca605c6c553d3e6593a23915a635a1e73d1a1c2b8a4934ef19`
 - Status: **unfrozen research draft**.  It contains the quantified Week-3
   theorem proof, exact affine and full-spark quadratic witnesses, an exact
   palindromic five-tap FIR realization, a rational commuting lower bound under
@@ -42,9 +42,12 @@ paper.
   graph pilot.  It now also contains a public VBL-VA001 triaxial calibration:
   exact rational arithmetic proves continuum leakage below `24/25` versus one
   for the exactly calibrated commuting class, and six held-out records give
-  maximum directional residual `0.0038491`.  Gate G1 remains open pending the
-  full-text/FIR priority audit and a task-level validation that mandates the
-  directional frequency calibrations and fixed delay.
+  maximum directional residual `0.0038491`.  An exact FDD modal-component
+  invariance lemma gives the directional constraints a task-level meaning; on
+  frozen held-out cospectra the leading modal direction moves by at most
+  `0.2217` degrees and the leading ordinate changes by at most `2.40e-5`
+  relatively.  Gate G1 remains open pending the remaining full-text/FIR
+  priority audit and an independent adversarial review.
 
 This draft must not be scored as a final 7+ submission.  If it is reviewed,
 the evaluator must quote the title and hash above so the feedback can be

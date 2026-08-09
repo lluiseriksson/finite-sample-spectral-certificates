@@ -287,10 +287,18 @@ A scalar quadratic allowed 1% calibration error reaches `0.97520`; the best of
 64 seeded fixed orthogonal bases reaches `0.96966`.  The latter is explicitly a
 stress test, not a global certificate over bases.
 
-Decision: **the measured-data grounding gate passes**.  The deployment gate
-does not: this experiment does not prove that exact directional preservation
-is mandated by a pump diagnostic, nor a classification, latency, hardware or
-runtime advantage.  Replays are
+For a task-level check, the complete `3`-by-`3` cospectral matrices at all five
+peaks were frozen and replayed as an FDD preprocessing problem.  The constraint
+`P(x_j)v_j=v_j` exactly preserves an ideal rank-one modal component
+`lambda_j v_j v_j^T`, up to the common FIR delay.  On the held-out cospectra,
+the rational witness rotates the recomputed leading FDD direction by at most
+`0.2217` degrees and changes its leading spectral ordinate by at most `2.40e-5`
+relatively.
+
+Decision: **the measured-data and modal-task grounding gates pass**.  The
+deployment gate does not: this experiment proves neither a fault-classification
+or damping-estimation improvement nor a latency, hardware or runtime advantage.
+Replays are
 `verification/verify_vbl_va001_witness.py`,
 `research/route_c_vibration_calibration.py`, and
 `results/route_c/vbl_va001_calibration.json`.

@@ -12,8 +12,9 @@ correlator paper.
 - Status: research draft; the quantified proof, exact five-tap FIR certificate,
   rational approximate-calibration margin, negative graph pilot, and an exact
   rational certificate calibrated from held-out-controlled VBL-VA001 sensor
-  records are closed.  The full-text priority audit and task-level deployment
-  validation remain open under Gate G1.
+  records are closed.  The modal-task interpretation is backed by an exact FDD
+  invariance lemma and a held-out cospectral replay.  The remaining full-text
+  priority audit and independent adversarial review remain open under Gate G1.
 
 The current PDF hash is recorded after each accepted compilation in
 `programme/ARTIFACT_MANIFEST.md`.  Evaluations must quote the title and SHA-256
