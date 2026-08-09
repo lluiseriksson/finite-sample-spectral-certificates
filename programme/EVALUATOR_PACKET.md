@@ -10,16 +10,16 @@ request to reward repository size.
 - Research branch: `research/endogenous-visibility`
 - Draft pull request: <https://github.com/lluiseriksson/finite-sample-spectral-certificates/pull/2>
 - Source commit inspected when this packet was prepared:
-  `7d31b2f0ceaf336dbe6e7f2b2511dddd01062530`
+  `31bee2e8bc7d5b920b0b129940e63e30c4fae714`
 - PDF path: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title visible on page 1: *Exponential Tangential Advantages of
   Noncommuting Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
 - Page count: 13
 - SHA-256 of the repository PDF bytes:
-  `dda469dc4c1714aab8bc519f2356f2f6dd42d8423cf2ed89775b5c8fbfafd2dc`
+  `0fadc8a1d453f76897aa4375844d68ac1b8e058d9092342893fb52e307d57d12`
 - Embedded manuscript status: `Research draft, 9 August 2026`
-- CI status at the commit above: push run `31335423165` and pull-request run
-  `31335426123` both passed.
+- CI status at the commit above: push run `31336148887` and pull-request run
+  `31336150624` both passed.
 
 Before scoring, independently hash the downloaded PDF and copy the result into
 the response.  If the hash, title or page count differs, stop: the score belongs
