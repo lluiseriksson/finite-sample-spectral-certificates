@@ -9,9 +9,10 @@ correlator paper.
   and Linear-Phase MIMO FIR Filters*
 - Source: `paper_noncommuting/main.tex`
 - Compiled artifact: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Status: research draft; the quantified proof, exact five-tap FIR certificate
-  and negative graph pilot are closed, while the full-text priority audit and
-  a measured/standards-derived application remain open under Gate G1.
+- Status: research draft; the quantified proof, exact five-tap FIR certificate,
+  rational approximate-calibration margin and negative graph pilot are closed,
+  while the full-text priority audit and a measured/standards-derived
+  application remain open under Gate G1.
 
 The current PDF hash is recorded after each accepted compilation in
 `programme/ARTIFACT_MANIFEST.md`.  Evaluations must quote the title and SHA-256

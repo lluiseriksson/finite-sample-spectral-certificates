@@ -355,3 +355,21 @@ Its pass cosine values are `0,1/3,2/3,1`, its stop band is
 `[arccos(-1/3),pi]`, and its exact norm bound is `301/304`.  This closes a
 natural fixed-latency interpretation, not the priority or deployed-application
 gate.
+
+## 9. Rational approximate-calibration margin
+
+Normalize the four quadratic target directions.  A two-by-two Gram calculation
+shows that no unit vector can have overlap below `4/25` with two different
+targets.  Projecting an approximate tangential residual `delta` onto either
+common eigenvector of a commuting comparator therefore controls the scalar
+quadratic at three pass nodes by `(25/4)delta`.  Lagrange interpolation at zero
+has worst absolute weight sum `17`, giving the exact lower bound
+
+```text
+rho(Q) >= 1 - (425/4) delta.
+```
+
+Thus the `301/304` noncommuting certificate remains strictly separated for
+every `delta < 3/32300`.  The same statement transfers to the zero-phase
+five-tap FIR response.  This is an exact theorem, not a numerical condition
+estimate.

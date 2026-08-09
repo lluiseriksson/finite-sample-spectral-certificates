@@ -118,3 +118,22 @@ identity, while a scalar Chebyshev baseline reached stop norm `1/17` with only
 denoising is rejected as the motivating application.  FIR frequency-direction
 calibration is structurally better aligned, but a real calibration data set
 and the FIR-specific collision audit are now the remaining application gates.
+
+## Robustness to approximate calibration
+
+The exact two-channel witness admits a fully rational tolerance theorem.  For
+the four normalized targets, every pair has squared inner product at most
+`9/10`.  Since `sqrt(9/10) < 593/625`, any unit common eigenvector overlaps at
+least `4/25` with at least three targets.  The worst absolute Lagrange sum at
+`x=0` across the four three-node subsets is exactly `17`.  Therefore every
+commuting symmetric quadratic with directional residual at most `delta` obeys
+
+```text
+stop leakage >= 1 - (425/4) delta.
+```
+
+The noncommuting certified value `301/304` remains strictly better whenever
+`delta < 3/32300`, about `9.29e-5`.  The exact verifier replays the pairwise
+geometry, all four Lagrange sums, the slope and the threshold.  This closes the
+logical objection that the finite separation vanishes immediately when exact
+equalities are relaxed, although the certified tolerance is still small.

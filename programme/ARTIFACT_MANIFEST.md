@@ -33,10 +33,11 @@ paper.
 - Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
   and Linear-Phase MIMO FIR Filters*
 - Pages: 10
-- Local SHA-256: `98d83d7b30e1990813b891bb5b8582a805529f340866bd4ba1b8bfd99fa7ce77`
+- Local SHA-256: `68ca177676ec62f780f873bec26414e645db856cf4edf1cf1f94fbce2586c68f`
 - Status: **unfrozen research draft**.  It contains the quantified Week-3
   theorem proof, exact affine and full-spark quadratic witnesses, an exact
-  palindromic five-tap FIR realization, the block-Krylov proposition, a
+  palindromic five-tap FIR realization, a rational commuting lower bound under
+  approximate calibration, the block-Krylov proposition, a
   controlled Hermitian subspace benchmark, and a deliberately negative natural
   graph pilot.  Gate G1 remains open pending the full-text/FIR priority audit
   and a measured or standards-derived task that mandates the directional

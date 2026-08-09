@@ -45,7 +45,9 @@ one.  An affine cosine substitution turns the theorem into a fixed-latency
 separation for reciprocal linear-phase MIMO FIR filters: fully coupled taps can
 achieve exponential high-frequency rejection, while every feasible fixed
 orthogonal bank of scalar filters is a pure delay.  We also give an exact
-rational five-tap certificate with stopband norm at most $301/304$.  Numerical
+rational five-tap certificate with stopband norm at most $301/304$ and prove
+that its advantage survives commuting calibration errors
+$\delta<3/32300$.  Numerical
 programs test the mechanism and expose an ordinary graph-denoising setting in
 which scalar Chebyshev filtering is instead preferable.  Tangential matrix
 interpolation, MIMO filtering and convex FIR design are not claimed as new;
@@ -479,10 +481,51 @@ $M=4=d+N$.  Every scalar common-eigenbasis entry has three distinct roots of
 $q-1$ and is identically one.
 \end{proof}
 
+The gap is stable under imperfect calibration.  Write
+$\widehat v_j=v_j/\|v_j\|_2$.
+
+\begin{proposition}[Robust commuting obstruction]\label{prop:robustquadratic}
+Let $Q$ be a pairwise-commuting real-symmetric quadratic polynomial satisfying
+\[
+ \|Q(\lambda_j)\widehat v_j-\widehat v_j\|_2\le\delta,
+ \qquad j=1,\ldots,4.
+\]
+Then
+\[
+ \sup_{x\in[-1,0]}\|Q(x)\|_{\op}
+ \ge 1-\frac{425}{4}\delta.
+\]
+In particular, if $\delta<3/32300$, its leakage is strictly larger than the
+certified $301/304$ leakage of the noncommuting witness.
+\end{proposition}
+
+\begin{proof}
+For any two distinct normalized targets $a,b$ in the tuple,
+$|a^\top b|^2\le9/10<(593/625)^2$.  For every unit vector $u$,
+\[
+ |u^\top a|^2+|u^\top b|^2
+ =u^\top(aa^\top+bb^\top)u
+ \ge1-|a^\top b|>\frac{32}{625}.
+\]
+Thus at most one target has $|u^\top\widehat v_j|<4/25$.
+Simultaneously diagonalize $Q$ and fix a common unit eigenvector $u$, with
+scalar quadratic entry $q$.  Projecting the residual bound shows that at three
+distinct pass nodes
+\[
+ |q(\lambda_j)-1|\le\frac{25}{4}\delta.
+\]
+For each of the four possible three-node subsets of
+$\{1/2,1,3/2,2\}$, the sum of the absolute Lagrange weights at $x=0$ is,
+respectively, $7,5,5,$ or $17$.  Hence
+$|q(0)-1|\le(425/4)\delta$.  This holds for both common eigenvectors, so
+$\|Q(0)\|_{\op}\ge1-(425/4)\delta$.  Finally,
+$1-301/304=3/304$ gives the stated threshold.
+\end{proof}
+
 The exact-arithmetic replay
 \texttt{verification/verify\_quadratic\_filter\_witness.py} checks all
-constraints, target minors, commutators and Bernstein coefficients without a
-numerical solver.
+constraints, target minors, commutators, Bernstein coefficients, and the
+rational robust-calibration constants without a numerical solver.
 
 \subsection{An exact five-tap MIMO FIR certificate}
 
@@ -506,7 +549,11 @@ phase, at cosine values $0,1/3,2/3,1$ and has operator norm at most $301/304$
 on $\omega\in[\arccos(-1/3),\pi]$.  Every commuting symmetric palindromic
 five-tap response meeting the same four calibrations is the pure two-sample
 delay and has norm one.  Moreover $[B_0,B_1]\ne0$.  All statements, including
-the tap conversion, are checked by the same exact-arithmetic replay.
+the tap conversion, are checked by the same exact-arithmetic replay.  The same
+change of variables transfers Proposition~\ref{prop:robustquadratic}: if a
+commuting five-tap comparator obeys
+$\|e^{2i\omega_j}H(e^{i\omega_j})\widehat v_j-\widehat v_j\|_2\le\delta$,
+its high-frequency norm is at least $1-(425/4)\delta$.
 
 \subsection{An affine two-constraint precursor}
 

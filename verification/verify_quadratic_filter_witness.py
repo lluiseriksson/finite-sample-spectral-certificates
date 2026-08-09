@@ -184,6 +184,37 @@ def main() -> None:
     operator_norm_upper = F(1) - uniform_margin
     assert operator_norm_upper == F(301, 304) < 1
 
+    # Robust commuting lower bound.  For normalized target directions, every
+    # pair has squared inner product at most 9/10.  Since
+    # sqrt(9/10) < 593/625, any unit common eigenvector has overlap at least
+    # m0=4/25 with at least three of the four targets.  The largest absolute
+    # Lagrange sum at x=0 over a three-node subset is exactly 17.
+    target_norm_squares = [sum(value * value for value in target) for target in targets]
+    normalized_dot_squares = []
+    for left, right in combinations(range(4), 2):
+        dot = sum(targets[left][i] * targets[right][i] for i in range(2))
+        normalized_dot_squares.append(
+            dot * dot / (target_norm_squares[left] * target_norm_squares[right])
+        )
+    assert max(normalized_dot_squares) == F(9, 10)
+    assert F(9, 10) < F(593, 625) ** 2
+    overlap_floor = F(4, 25)
+    lagrange_sums = []
+    for subset in combinations(pass_points, 3):
+        weights = []
+        for node in subset:
+            others = [other for other in subset if other != node]
+            weights.append(
+                ((-others[0]) * (-others[1]))
+                / ((node - others[0]) * (node - others[1]))
+            )
+        lagrange_sums.append(sum(abs(weight) for weight in weights))
+    assert sorted(lagrange_sums) == [F(5), F(5), F(7), F(17)]
+    robust_slope = max(lagrange_sums) / overlap_floor
+    robust_tolerance = uniform_margin / robust_slope
+    assert robust_slope == F(425, 4)
+    assert robust_tolerance == F(3, 32300)
+
     # Exact five-tap reciprocal linear-phase FIR realization.  Under
     # x=(3y+1)/2 and y=cos(omega), P(x) becomes
     # G(omega)=B_2+2 B_1 cos(omega)+2 B_0 cos(2 omega).  The causal response
@@ -221,6 +252,8 @@ def main() -> None:
     print("PASS: Bernstein certificates give I±P(x) >= (3/304) I on [-1,0]")
     print("PASS: exact continuum operator-norm bound is 301/304 < 1")
     print("PASS: every commuting symmetric degree-2 feasible filter is I by the root count")
+    print("PASS: approximate commuting leakage is at least 1-(425/4) delta")
+    print("PASS: strict separation survives every delta < 3/32300")
     print("PASS: exact palindromic five-tap MIMO FIR realization preserves all pass directions")
 
 

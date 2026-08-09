@@ -38,7 +38,8 @@ The following conjunction has not been found in the checked sources:
 3. a full pairwise-commuting comparator, equivalently one fixed orthogonal bank
    of scalar filters;
 4. an explicit exponential upper/lower separation with `d=N^2`; and
-5. an exact rational five-tap certificate.
+5. an exact rational five-tap certificate whose finite gap survives commuting
+   calibration residuals `delta < 3/32300`.
 
 Each ingredient separately is close to classical work.  Priority, if it
 survives, belongs only to their theorem-level conjunction.  Gate G1 therefore
