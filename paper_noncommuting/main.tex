@@ -374,7 +374,9 @@ depend on solver output.
 Tangential matrix-polynomial interpolation is classical
 \cite{BallKang1990,Fuhrmann2010}.  Matrix-valued Nevanlinna--Pick theory handles
 supremum-norm analytic interpolation, including complexity constraints
-\cite{BlomqvistEtAl2003,BallBolotnikov2016}.  Most directly,
+\cite{BlomqvistEtAl2003,BallBolotnikov2016}.  Kuroiwa and Lindquist treat the
+bitangential problem with explicit McMillan-degree constraints
+\cite{KuroiwaLindquist2006}.  Most directly,
 Stefanovski and Georgijevi\'c prove that real stable rational matrices can meet
 bitangential constraints while having arbitrarily small spectral norm on a
 proper frequency region \cite{StefanovskiGeorgijevic2016}; their degree grows
@@ -386,10 +388,11 @@ formulations have a long numerical-linear-algebra history
 Krylov methods \cite{RinelliVandebril2026}.  Accordingly, none of these
 ingredients is claimed as new.
 
-The candidate novelty is narrower: a fixed ordinary degree, Hermitian
-coefficient, real-interval tangential minimax problem can exhibit an
-exponential separation between noncommuting coefficients and the entire
-pairwise-commuting subclass.  Before submission, the following gates remain:
+The candidate novelty is therefore narrower than norm-constrained or
+degree-constrained tangential interpolation alone.  Under a fixed ordinary
+degree, a Hermitian-coefficient tangential minimax problem on a real interval
+can exhibit an exponential separation between noncommuting coefficients and
+the full pairwise commuting subclass.  Before submission, these gates remain:
 \begin{enumerate}
 \item compare \cref{thm:main} line by line with full texts on norm-constrained
       tangential interpolation, rather than relying on titles or abstracts;
