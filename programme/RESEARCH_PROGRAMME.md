@@ -58,10 +58,10 @@ large finite-dimensional gap in the first symmetric-surjective case.
 An affine cosine substitution now gives an exact fixed-latency corollary for
 reciprocal linear-phase MIMO FIR filters, including a rational five-tap
 certificate.  Main danger: norm-constrained tangential interpolation or MIMO
-FIR approximation theory may already imply the separation, or the constructed
-directional calibrations may remain too artificial for a 7+ paper.  G1 stays
-open until the closest-theorem comparison and a real calibration instance are
-complete.
+FIR approximation theory may already imply the separation.  The public
+VBL-VA001 calibration now closes the measured-task pilot, but G1 stays open
+until the two closest inaccessible proof texts and an independent adversarial
+review have been completed.
 
 ## Weekly outputs and gates
 
@@ -91,17 +91,25 @@ complete.
 - A failed route is recorded with code/counterexample and is not repackaged as
   a positive headline.
 
-## Live status after the first Week-3 pilots
+## Live status after the fixed-three-channel milestone
 
-- Weeks 1--2 are complete: artifact identity, rubric, claim ledger and
-  three-route primary-literature collision map are public on the research
-  branch.
-- Week 3 is active.  Route A's naive claim and the broad forms of Route B were
-  killed by prior literature.  Route C survived the algebraic counterexample
-  search and is the current lead.
-- Gate G1 is **not yet passed**.  The quantified proof, exact rational witness,
-  controlled block-Krylov benchmark and reciprocal FIR corollary are closed.
-  A natural grid-graph denoising pilot failed against scalar Chebyshev and is
-  retained as a negative result.  Exit still requires full-text/FIR-specific
-  collision checks and a measured or standards-derived MIMO calibration that
-  genuinely mandates the directional pass geometry.
+- Weeks 1--3 are complete: artifact identity, rubric, claim ledger,
+  three-route collision map, proof pilots and counterexample search are public.
+  Route A's naive claim and the broad forms of Route B were killed by prior
+  literature; Route C is the selected route.
+- Weeks 4--5 are complete at proof level.  The headline theorem has explicit
+  constants and a full-spark perturbation, and its exponential separation is
+  uniform in degree already at fixed channel dimension `d=3` with `M=N+3`.
+- Weeks 6--8 are complete as a research-draft milestone.  The repository
+  contains exact rational witnesses, a reciprocal five-tap FIR realization,
+  block-Krylov and public VBL-VA001 modal replays, modern baselines, the
+  deliberately negative graph pilot, a 13-page manuscript, claim links and
+  green CI.  Standard-library exact/arithmetic verifiers serve as the viable
+  certificate for the decisive estimates; no Lean formalization is claimed.
+- Week 9 is active.  Gate G1 is **not yet passed**: the Fuhrmann (2010) and
+  Stefanovski--Georgijevic (2016) proof texts still require line-by-line access,
+  and the exact PDF has not received an independent adversarial score.  The PR
+  therefore remains a draft and no final novelty or 7+ claim is made.
+- Week 10 is conditional repair and release.  It begins only after the two
+  Week-9 attacks return concrete feedback; a collision or proof defect triggers
+  revision or abandonment rather than relabelling the current draft as 7+.
