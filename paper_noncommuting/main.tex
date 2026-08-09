@@ -791,7 +791,15 @@ bitangential constraints while having arbitrarily small spectral norm on a
 proper frequency region \cite{StefanovskiGeorgijevic2016}; their degree grows
 and they do not compare commuting and noncommuting Hermitian polynomial
 coefficients.  Thus small regional norm under matrix tangential constraints is
-not itself our contribution.  Minimax polynomial filtering and SDP
+not itself our contribution.  Tangential interpolation is also a standard
+bridge between MIMO model reduction and Krylov projection
+\cite{GallivanEtAl2004}; modern block rational approximation includes
+matrix-valued weights, noisy-data comparisons, and tangential interpolation
+mechanisms \cite{GoseaGuettel2021}.  Recent iterative MIMO schemes even select
+low-rank tangential data using maximum-error criteria \cite{JonasBamieh2026}.
+Those works use rational transfer-function approximation and do not provide a
+fixed-degree Hermitian-polynomial separation from the simultaneously
+diagonalizable subclass.  Minimax polynomial filtering and SDP
 formulations have a long numerical-linear-algebra history
 \cite{TohTrefethen1998}, and matrix-polynomial spaces arise naturally in block
 Krylov methods \cite{RinelliVandebril2026}.  General MIMO graph filters already
