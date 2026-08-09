@@ -38,7 +38,7 @@ the same polynomial, while simultaneously diagonalizable matrix coefficients
 amount to independent scalar filters after a fixed channel rotation.  We study
 the larger class of Hermitian matrix-polynomial filters under tangential pass
 constraints.  Our main result gives an
-asymptotic separation: at degree $N$ and channel dimension $d=N$, there are
+asymptotic separation: already at the fixed channel dimension $d=3$, there are
 distinct pass points and full-spark channel signatures for which a symmetric
 noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
 pairwise-commuting symmetric filter is identically the identity and has leakage
@@ -93,8 +93,8 @@ with exponentially small leakage.
 \section{Main separation theorem}
 
 \begin{theorem}[Exponential tangential separation]\label{thm:main}
-There are absolute constants $C,c>0$ such that for every
-$N\ge5$, with $d=N$ and $M=2N$, one can choose distinct rational pass
+There are absolute constants $C,c>0$ and $N_0\in\mathbb N$ such that for every
+$N\ge N_0$, with $d=3$ and $M=N+3$, one can choose distinct rational pass
 points $\lambda_1,\ldots,\lambda_M\in[1,7/2]$ and full-spark unit vectors
 $v_1,\ldots,v_M\in\R^d$ with the following properties.
 \begin{enumerate}
@@ -107,7 +107,7 @@ matrices satisfying \eqref{eq:tangential} and
 coefficient matrices and satisfies the same tangential constraints, then
 $Q_N(x)=I_d$ for every $x$.  In particular, $\rho(Q_N)=1$.
 \end{enumerate}
-For every $N\ge5$, the coefficient matrices of $P_N$ cannot
+For every $N\ge N_0$, the coefficient matrices of $P_N$ cannot
 commute pairwise.
 \end{theorem}
 
@@ -136,61 +136,82 @@ $M-d+1\ge N+1$ distinct values of $\lambda_j$ are roots of $q_r-1$.
 Consequently $q_r=1$.  This holds for every $r$, so $Q=I_d$.
 \end{proof}
 
-\subsection{A diagonal base filter}
+\subsection{A three-channel diagonal base filter}
 
-Let $d=N$ and assign two nodes to every coordinate group.  One concrete
-choice, with $1\le r\le N$, is
-\begin{equation}\label{eq:pairednodes}
- a_r=1+\frac{r}{10N}, \qquad b_r=2+\frac{r}{10N}.
+Put $M=N+3$ and $S=\lceil M/3\rceil$.  Partition $M$ nodes into three
+groups of sizes $s_g\in\{S-1,S\}$, $g=0,1,2$, and define
+\begin{equation}\label{eq:threechannelnodes}
+ \lambda_{g,r}=1+\frac{5(3r+g)}{6S},
+ \qquad 0\le r<s_g.
 \end{equation}
-These $2N$ nodes are distinct, lie in $[1,7/2]$, and have mutual separation
-at least $(10N)^{-1}$.
+The nodes are distinct rationals in $[1,7/2]$, their global separation is at
+least $5/(6S)$, and consecutive nodes within one group are separated by
+$h=5/(2S)$.
 
-Write $T_m$ for the Chebyshev polynomial of the first kind and set
-$\phi(x)=2x+1$, which maps $I_-$ onto $[-1,1]$.  For a coordinate group with
-nodes $a\ne b$, define
-\begin{align}
- q_{a,b}(x)
- &=\frac{x-b}{a-b}\frac{T_{N-1}(\phi(x))}{T_{N-1}(\phi(a))}
- +\frac{x-a}{b-a}\frac{T_{N-1}(\phi(x))}{T_{N-1}(\phi(b))}.
- \label{eq:twopoint}
-\end{align}
-These polynomials equal one at both assigned nodes.  Put them on the diagonal
-of $P_0(x)$ according to the coordinate partition.
+Write $T_m$ for the Chebyshev polynomial of the first kind, set
+$\phi(x)=2x+1$, and let $L_{g,r}$ be the Lagrange cardinal polynomial for
+the nodes in group $g$.  With $m_g=N-s_g+1$, define
+\begin{equation}\label{eq:multinodechebyshev}
+ q_g(x)=\sum_{r=0}^{s_g-1}L_{g,r}(x)
+       \frac{T_{m_g}(\phi(x))}{T_{m_g}(\phi(\lambda_{g,r}))},
+ \qquad P_0(x)=\diag(q_0(x),q_1(x),q_2(x)).
+\end{equation}
+Each $q_g$ has degree at most $N$ and equals one at every node in its group.
 
 \begin{lemma}\label{lem:base}
 Let
 \[
- \eta_0=\operatorname{arcosh}(3),\qquad
- \eta_1=\operatorname{arcosh}(8),\qquad \Delta\eta=\eta_1-\eta_0.
+ \eta_0=\operatorname{arcosh}(3),\quad
+ \eta_1=\operatorname{arcosh}(8),\quad
+ \Delta\eta=\eta_1-\eta_0,
+ \quad K=\frac{36e}{5},
 \]
-Then
+and set
 \[
- \sup_{x\in I_-}\|P_0(x)\|_{\op}
- \le \frac{52}{5}e^{\eta_0}e^{-\eta_0N}.
+ c=\frac{2\eta_0-\log K}{3}>0,\qquad
+ C_0=2\exp\!\left(\frac23(\log K+\eta_0)\right).
 \]
-Moreover, at every pass node $\lambda_j\in[1,7/2]$,
-$\|P_0(\lambda_j)\|_{\op}\le10e^{N\Delta\eta}$ uniformly in the
-group labels.
+For every $N\ge7$,
+\[
+ \sup_{x\in I_-}\|P_0(x)\|_{\op}\le C_0e^{-cN}.
+\]
+Moreover, at every pass node,
+\[
+ \|P_0(\lambda_j)\|_{\op}
+ \le B_N:=2(4e)^{S-1}e^{N\Delta\eta}.
+\]
 \end{lemma}
 
 \begin{proof}
-For $x\in I_-$, $|T_m(\phi(x))|\le1$.  For $\lambda\ge1$,
+For $x\in I_-$, $|x-\lambda_{g,r}|\le9/2$.  Equispacing within a group gives
 \[
- T_m(\phi(\lambda))
- =\cosh\!\left(m\,\operatorname{arcosh}(2\lambda+1)\right)
- \ge \tfrac12e^{m\eta_0},
- \quad \eta_0=\operatorname{arcosh}(3).
+ \sum_{r=0}^{s_g-1}|L_{g,r}(x)|
+ \le \frac{(18S/5)^{s_g-1}}{(s_g-1)!}.
 \]
-In \eqref{eq:pairednodes}, $b_r-a_r=1$.  On $I_-$, the sum of the absolute
-Lagrange factors in \eqref{eq:twopoint} is at most
-$31/10+21/10=26/5$.  The two-point bound is therefore
-$(52/5)e^{-(N-1)\eta_0}$.
+Here we used
+$\sum_r[r!(s_g-1-r)!]^{-1}=2^{s_g-1}/(s_g-1)!$.
+For $N\ge7$, $S\ge4$, $s_g\ge S-1$, and hence
+$S/(s_g-1)\le2$.  The bound $n!\ge(n/e)^n$ therefore gives
+\begin{equation}\label{eq:stoplagrange}
+ \sum_r|L_{g,r}(x)|\le K^{s_g-1}.
+\end{equation}
+Also, for $\lambda\ge1$,
+\[
+ T_m(\phi(\lambda))\ge\tfrac12e^{m\eta_0}.
+\]
+Combining this with \eqref{eq:stoplagrange} yields
+\[
+ |q_g(x)|\le2K^{s_g-1}e^{-(N-s_g+1)\eta_0}.
+\]
+Since $s_g-1\le S-1\le(N+2)/3$, the claimed $C_0e^{-cN}$ follows.
+The constant $c$ is positive because $e<3$ gives
+$K<108/5<e^{2\eta_0}=(3+\sqrt8)^2$.
 
-At a pass node, $2\lambda+1\le8$, so a Chebyshev ratio is at most
-$2e^{N\Delta\eta}$.  For the paired construction, the sum of the absolute
-Lagrange factors is at most five.  This gives the stated pass-node bound.  The
-operator norm of a diagonal polynomial is its largest entry magnitude.
+At another pass node the numerator distances in the Lagrange factors are at
+most $5/2$, so the same calculation gives
+$\sum_r|L_{g,r}(\lambda_j)|\le(4e)^{s_g-1}$.
+The Chebyshev ratio is at most $2e^{N\Delta\eta}$, proving the pass-node
+bound.  The operator norm of a diagonal polynomial is its largest entry.
 \end{proof}
 
 \subsection{An explicit full-spark perturbation}
@@ -198,7 +219,7 @@ operator norm of a diagonal polynomial is its largest entry magnitude.
 Index all pass nodes by $j=1,\ldots,M$, let $g(j)$ be the coordinate group of
 node $j$, and set $t_j=j/(M+1)$.  Define
 \begin{equation}\label{eq:momentperturb}
- w_j=(1,t_j,\ldots,t_j^{d-1})^\top,\quad
+ w_j=(1,t_j,t_j^2)^\top,\quad
  \varepsilon_N=e^{-N^3},\quad
  \widetilde v_j=e_{g(j)}+\varepsilon_Nw_j,\quad
  v_j=\frac{\widetilde v_j}{\|\widetilde v_j\|_2}.
@@ -209,9 +230,9 @@ The vectors in \eqref{eq:momentperturb} are full spark.
 \end{lemma}
 
 \begin{proof}
-Fix any $d$ indices.  The determinant with the corresponding unnormalized
+Fix any three indices.  The determinant with the corresponding unnormalized
 vectors as columns is a polynomial in $\varepsilon_N$ with rational
-coefficients.  Its coefficient at degree $d$ is the Vandermonde determinant
+coefficients.  Its coefficient at degree three is the Vandermonde determinant
 of the corresponding $w_j$, which is nonzero because their $t_j$ are distinct.
 Thus the determinant polynomial is not zero.  By the Lindemann--Weierstrass
 theorem, $e^{-N^3}$ is transcendental, so it cannot be a root of a nonzero
@@ -220,11 +241,11 @@ whether the determinant vanishes.
 \end{proof}
 
 \begin{lemma}[Stable symmetric interpolation]\label{lem:stability}
-For every $N\ge5$, there is a real-symmetric coefficient
-polynomial $P_N$ satisfying $P_N(\lambda_j)\widetilde v_j=\widetilde v_j$ and
+For every $N\ge7$, there is a real-symmetric coefficient polynomial $P_N$
+satisfying $P_N(\lambda_j)\widetilde v_j=\widetilde v_j$ and
 \[
  \sup_{x\in I_-}\|P_N(x)-P_0(x)\|_{\op}
- \le 8019000\,N^{9/2}\exp(-N^3+N\Delta\eta).
+ \le e^{-cN}.
 \]
 \end{lemma}
 
@@ -238,33 +259,37 @@ with real symmetric coefficients, and define
 \]
 At $\varepsilon=0$, this map is onto.  Indeed, for an off-diagonal entry
 $p_{rs}=p_{sr}$, arbitrary output data prescribe values at the union of nodes
-assigned to coordinates $r$ and $s$.  That union contains at most four nodes.
-For $N\ge3$, ordinary Lagrange interpolation is onto on those nodes.  A
-diagonal entry sees at most two nodes.
+assigned to coordinates $r$ and $s$.  That union contains at most
+$2S\le N+1$ nodes for $N\ge7$.
+Ordinary degree-$N$ Lagrange interpolation is therefore onto on those nodes.
+A diagonal entry sees at most $S$ nodes.
 
 Equip the output space with the maximum Euclidean block norm and $\cS_N$ with
 \[
  \|P\|_X=\max\left\{\sup_{x\in I_-}\|P(x)\|_{\op},
                      \max_j\|P(\lambda_j)\|_{\op}\right\}.
 \]
-The entrywise construction gives a right inverse $R_N$.  For $N\ge5$, the node
-separation is at least $(10N)^{-1}$, while any two points in the stop/pass
-domain are at distance at most $9/2$.  A Lagrange basis polynomial on at most
-four nodes is bounded by $(45N)^3$.  Summing at most four basis polynomials and
-using $\|A\|_{\op}\le d\max_{r,s}|A_{rs}|$ gives
+The entrywise construction gives a right inverse $R_N$.  The node separation,
+the stop/pass diameter $9/2$, and $d=3$ give
 \begin{equation}\label{eq:rightinversebound}
- \|R_N\|_{Y\to X}\le4(45N)^3d=364500N^4.
+ \|R_N\|_{Y\to X}
+ \le6S\left(\frac{27S}{5}\right)^{2S-1}=:\mathcal R_N.
 \end{equation}
 
 Write $L_\varepsilon=L_0+\varepsilon K_N$.  Since
-$\|w_j\|_2\le\sqrt d=\sqrt N$, $\|K_N\|_{X\to Y}\le\sqrt N$.  Hence
+$\|w_j\|_2\le\sqrt3$, $\|K_N\|_{X\to Y}\le\sqrt3$.  Hence
 \[
  L_\varepsilon R_N=I+E_N,\qquad
- \|E_N\|\le364500\varepsilon N^{9/2}.
+ \|E_N\|\le\sqrt3\,\varepsilon\mathcal R_N.
 \]
-For $\varepsilon=\varepsilon_N$ and $N\ge5$, this bound is below $1/2$:
-its logarithmic derivative is $9/(2N)-3N^2<0$, while at $N=5$ it is
-below $364500\,5^5 2^{-125}<2^{-94}$.  Hence the inverse
+For $\varepsilon=\varepsilon_N$ and $N\ge7$, this is below $1/2$.  Indeed,
+\[
+ \overline{\mathcal R}_N
+ =6N\left(\frac{27N}{5}\right)^{2(N+5)/3}\ge\mathcal R_N.
+\]
+At $N=7$, $\sqrt3e^{-N^3}\overline{\mathcal R}_N<2^{-288}$, using
+$e>2$; differentiating its logarithm shows that the envelope decreases for
+$N\ge7$.  Hence the inverse
 $(I+E_N)^{-1}$ exists and has norm at most two.
 
 Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
@@ -274,44 +299,37 @@ Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
 \]
 By Lemma~\ref{lem:base},
 \[
- \|r_N\|_Y\le\varepsilon_N\sqrt N(1+10e^{N\Delta\eta})
- \le11\varepsilon_N\sqrt N e^{N\Delta\eta}.
+ \|r_N\|_Y\le\varepsilon_N\sqrt3(1+B_N).
 \]
 Set
 \[
  \Delta P_N=R_N(I+E_N)^{-1}r_N,
  \qquad P_N=P_0+\Delta P_N.
 \]
-Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$.  Using
-\eqref{eq:rightinversebound} and $\|(I+E_N)^{-1}\|\le2$ gives
+Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$ and
 \[
  \|\Delta P_N\|_X
- \le2(364500N^4)(11\varepsilon_N\sqrt N e^{N\Delta\eta})
- =8019000N^{9/2}e^{-N^3+N\Delta\eta}.
+ \le2\sqrt3\,\mathcal R_Ne^{-N^3}(1+B_N)\le e^{-cN}.
 \]
-Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
+For the final inequality, use $1+B_N\le4(4e)^{(N+2)/3}e^{N\Delta\eta}$
+and $\mathcal R_N\le\overline{\mathcal R}_N$.  After division by
+$e^{-cN}$, the resulting envelope is below $2^{-217}$ at $N=7$; its
+logarithmic derivative is
+\[
+ \frac1N+\frac23\log\frac{27N}{5}+\frac{2(N+5)}{3N}-3N^2
+ +\frac13\log(4e)+\Delta\eta+c<0
+\]
+for $N\ge7$.  Every coefficient remains real symmetric because $R_N$ maps
+into $\cS_N$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main}]
 The normalized and unnormalized interpolation constraints are equivalent.
 Combine Lemmas~\ref{lem:base}, \ref{lem:fullspark}, and \ref{lem:stability}.
-The ratio of the correction bound to the base bound is
-\[
- \frac{8019000}{52/5}N^{9/2}e^{-N^3+N\eta_1-\eta_0};
-\]
-its logarithmic derivative is $9/(2N)-3N^2+\eta_1<0$, since
-$\eta_1=\log(8+\sqrt{63})<\log16<3$.  At $N=5$, using $e>2$, the displayed
-ratio is below $2^{-78}$.  Thus the correction in
-Lemma~\ref{lem:stability} is at most
-$(52/5)e^{\eta_0}e^{-\eta_0N}$.  The first conclusion holds
-with
-\[
- C=\frac{104}{5}e^{\eta_0},\qquad c=\eta_0.
-\]
-The second conclusion is Lemma~\ref{lem:commuting}.  Finally,
-$e^{\eta_0}=3+\sqrt8>5$ gives
-$Ce^{-cN}\le(104/5)e^{-4\eta_0}<1$ for $N\ge5$, so the constructed
-coefficients cannot commute pairwise.
+The first conclusion holds with $C=C_0+1$ and the $c>0$ of
+Lemma~\ref{lem:base}.  The second conclusion is Lemma~\ref{lem:commuting}.
+Choose $N_0\ge7$ so that $Ce^{-cN_0}<1$.  Then the constructed coefficients
+cannot commute pairwise for $N\ge N_0$.
 \end{proof}
 
 \section{Block-Krylov meaning}
@@ -390,9 +408,9 @@ therefore has $2N+1$ real symmetric palindromic taps and common group delay
 $N$.
 
 \begin{corollary}[Fixed-latency MIMO FIR separation]\label{cor:fir}
-For every $N\ge5$ there are $M=2N$ distinct frequencies
+For every $N\ge N_0$ there are $M=N+3$ distinct frequencies
 $\omega_j\in[0,\arccos(-1/9)]$ and full-spark directions
-$v_j\in\R^{N}$ for which a causal response of the form
+$v_j\in\R^{3}$ for which a causal response of the form
 \eqref{eq:firresponse} satisfies
 \[
  H_N(e^{i\omega_j})v_j=e^{-iN\omega_j}v_j,
@@ -870,7 +888,7 @@ linear phase, operator-norm minimax design, and SDP are not claimed as new.
 The candidate novelty is therefore narrower than norm-constrained or
 degree-constrained tangential interpolation or FIR design alone.  Under a fixed
 ordinary degree---equivalently fixed reciprocal FIR latency---a
-Hermitian-coefficient tangential minimax problem can exhibit an exponential
+three-channel Hermitian-coefficient tangential minimax problem can exhibit an exponential
 separation between fully coupled coefficients and the full fixed-basis scalar
 subclass.  Before submission, these gates remain:
 \begin{enumerate}
@@ -887,7 +905,7 @@ subclass.  Before submission, these gates remain:
 The source and research ledger are in the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/tree/research/endogenous-visibility}{project repository}.
 The repository links the
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/verify_linear_dimension_scaling.py}{linear-dimension theorem arithmetic replay},
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/verify_constant_channel_scaling.py}{three-channel theorem arithmetic replay},
 the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/verify_quadratic_filter_witness.py}{exact rational replay},
 the

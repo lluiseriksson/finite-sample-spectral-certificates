@@ -16,7 +16,7 @@ request to reward repository size.
   Noncommuting Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
 - Page count: 13
 - SHA-256 of the repository PDF bytes:
-  `1a810f7833f30dc3aed7c96a35246a1648f36ada2a3e091b49ce58ca9cc10328`
+  `dda469dc4c1714aab8bc519f2356f2f6dd42d8423cf2ed89775b5c8fbfafd2dc`
 - Embedded manuscript status: `Research draft, 9 August 2026`
 - CI status at the commit above: push run `31334680253` and pull-request run
   `31334682200` both passed.
@@ -28,10 +28,10 @@ regenerated rather than silently reused.
 
 ## Claims actually submitted for assessment
 
-1. **Theorem 2.1:** for every `N>=5`, at ordinary degree `N`, dimension `d=N`
-   and `M=2N`, there are full-spark tangential pass constraints for which a
-   real-symmetric noncommuting
-   matrix polynomial attains stopband leakage `C exp(-cN)`, whereas every
+1. **Theorem 2.1:** for every sufficiently large degree `N`, already at fixed
+   dimension `d=3` and `M=N+3`, there are full-spark tangential pass
+   constraints for which a real-symmetric noncommuting matrix polynomial
+   attains stopband leakage `C exp(-cN)`, whereas every
    feasible pairwise-commuting real-symmetric polynomial is identically the
    identity and has leakage one.
 2. **Corollary 4.1:** the same construction gives a fixed-latency reciprocal
@@ -108,7 +108,7 @@ or exact replay of auxiliary facts.  Report:
 2. Recompute the norm of the symmetric interpolation right inverse used in
    Theorem 2.1 and verify that the full-spark perturbation does not erase the
    exponential stopband estimate.  Run
-   `verification/verify_linear_dimension_scaling.py` as an arithmetic check,
+   `verification/verify_constant_channel_scaling.py` as an arithmetic check,
    but inspect the proof rather than treating this script as a certificate.
 3. Look for circularity: the noncommuting coefficients used to prove the upper
    bound must satisfy the same constraints as the commuting lower-bound class.

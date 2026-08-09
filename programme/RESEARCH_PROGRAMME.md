@@ -49,7 +49,7 @@ stopping alone is not novel.
 Replace scalar Chebyshev filters with matrix-valued polynomials for
 multichannel spectral measures and block Krylov spaces.  The Week-3 pilot has
 found an exact `2 by 2` witness and an asymptotic theorem candidate: at degree
-`N` and channel dimension `d=N`, real-symmetric noncommuting coefficients can
+`N` and fixed channel dimension `d=3`, real-symmetric noncommuting coefficients can
 obey full-spark tangential pass constraints with stopband leakage
 `C exp(-cN)`, while every pairwise-commuting real-symmetric family satisfying
 the same constraints is identically the identity.  Reproducible SDPs show a

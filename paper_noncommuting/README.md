@@ -9,8 +9,8 @@ correlator paper.
   and Linear-Phase MIMO FIR Filters*
 - Source: `paper_noncommuting/main.tex`
 - Compiled artifact: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Status: research draft; the quantified proof now gives `d=N`, `M=2N` for
-  every `N>=5`; the exact five-tap FIR certificate,
+- Status: research draft; the quantified proof now gives an exponential
+  separation at fixed dimension `d=3` with `M=N+3`; the exact five-tap FIR certificate,
   rational approximate-calibration margin, negative graph pilot, and an exact
   rational certificate calibrated from held-out-controlled VBL-VA001 sensor
   records are closed.  The modal-task interpretation is backed by an exact FDD

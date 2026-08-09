@@ -149,7 +149,7 @@ non-affine finite witness.
 
 ## 5. Scaling theorem candidate
 
-For every integer `N>=5`, set `d=N` and `M=2N=d+N`.  There exist `M`
+For every sufficiently large integer `N`, set `d=3` and `M=N+3=d+N`.  There exist `M`
 distinct pass points `lambda_j>0` and full-spark unit vectors `v_j in R^d` for
 which the following two statements hold:
 
@@ -163,8 +163,8 @@ sup_{x in [-1,0]} ||P(x)||_op <= C exp(-cN).
 ```
 
 Here `C,c>0` are independent of `N`.  Consequently the noncommuting Hermitian
-class has an exponential advantage already with `N=d` over its commuting
-subclass.
+class has an exponential advantage at a fixed three-channel dimension over
+its commuting subclass.
 
 This is now supported by a complete existence-proof skeleton below.  It remains
 a **candidate theorem**, rather than a priority claim, until the proof is fully
@@ -188,47 +188,58 @@ This holds for every `r`; hence `P(x)=I` and its stopband norm is exactly one.
 
 ### 5.2 Exponentially small diagonal base point
 
-Start with coordinate targets and assign two pass points to each of the `N`
-coordinate directions.  For the two pass points
-`lambda_1 != lambda_2`, use the explicit
-degree-`N` Lagrange--Chebyshev interpolant
+Put `S=ceil((N+3)/3)` and split the `M=N+3` nodes among three coordinate
+directions with group sizes `s_g in {S-1,S}`.  Use the rational interlaced grids
 
 ```text
-q(x) = ((x-lambda_2)/(lambda_1-lambda_2))
-       T_(N-1)(2x+1)/T_(N-1)(2lambda_1+1)
-     + ((x-lambda_1)/(lambda_2-lambda_1))
-       T_(N-1)(2x+1)/T_(N-1)(2lambda_2+1).
+lambda_(g,r) = 1 + 5(3r+g)/(6S),
+g=0,1,2,  0<=r<s_g.
 ```
 
-Choose paired nodes in two fixed, disjoint compact subintervals of
-`(0,infinity)`.  All `M=2N` nodes can be distinct.  On the stopband,
-`|T_k(2x+1)|<=1`; off it,
-`T_k(2lambda+1)=cosh(k arcosh(2lambda+1))`.  The Lagrange factors are uniformly
-bounded because paired nodes have a fixed separation.  Therefore every scalar
-entry is bounded by `C exp(-cN)`.  Placing them on the diagonal gives a real
-symmetric base polynomial `P_0` with that stopband leakage.
+For the Lagrange cardinals `L_(g,r)` on one group and
+`m_g=N-s_g+1`, set
+
+```text
+q_g(x) = sum_r L_(g,r)(x)
+         T_(m_g)(2x+1)/T_(m_g)(2 lambda_(g,r)+1).
+```
+
+This has degree `N` and equals one on all nodes assigned to channel `g`.
+Equispacing and the factorial denominators give
+
+```text
+sum_r |L_(g,r)(x)| <= (36e/5)^(s_g-1),  x in [-1,0].
+```
+
+Combining this with Chebyshev decay yields
+
+```text
+max_g sup[-1,0] |q_g| <= C0 exp(-cN),
+c = (2 arcosh(3)-log(36e/5))/3 > 0.
+```
+
+The fixed diagonal polynomial `P_0=diag(q_0,q_1,q_2)` is the required base.
 
 ### 5.3 Symmetric interpolation survives a full-spark perturbation
 
 Let `L_v` map the `N+1` real symmetric coefficient matrices to the stacked
 vectors `(P(lambda_j)v_j)_j`.  At the coordinate target tuple, an off-diagonal
 entry polynomial `p_rs=p_sr` is evaluated at the union of the nodes assigned to
-coordinates `r` and `s`.  Each coordinate has one or two assigned nodes, so
-this union has at most four nodes.  For `N>=3`, the corresponding Vandermonde
-evaluation map is onto.  Diagonal entries see at most two nodes.  Entry by
-entry, `L_v` is therefore surjective.
+coordinates `r` and `s`.  This union has at most
+`2S<=N+1` nodes for `N>=7`, so degree-`N` evaluation is onto.  Diagonal entries
+see at most `S` nodes.  Entry by entry, `L_v` is therefore surjective.
 
 Surjectivity is open in finite dimension and supplies a continuous local right
 inverse.  The perturbation can be made explicit.  Choose distinct rational
 numbers `t_j in (0,1)`, put
 
 ```text
-w_j = (1,t_j,...,t_j^(d-1))^T,
+w_j = (1,t_j,t_j^2)^T,
 v_j(epsilon) = normalize(e_(g(j)) + epsilon w_j),
 epsilon = exp(-N^3),
 ```
 
-where `g(j)` is the coordinate group at the base point.  For any `d`-element
+where `g(j)` is the coordinate group at the base point.  For any three-element
 subset, the unnormalized target determinant is a polynomial in `epsilon` with
 rational coefficients.  Its leading coefficient is the nonzero Vandermonde
 determinant of the corresponding `w_j`.  Since `exp(-N^3)` is transcendental,
@@ -236,36 +247,33 @@ none of these finitely many nonzero rational polynomials vanishes.  The
 normalized target tuple is therefore full spark.
 
 Choose the rational pass nodes as in the manuscript.  Their minimum separation
-is at least `(10N)^(-1)`.  With the maximum stop/pass operator norm on
-polynomials and maximum Euclidean block norm on the data, entrywise Lagrange
-interpolation on at most four nodes gives the explicit right-inverse bound
+is at least `5/(6S)`.  With the maximum stop/pass operator norm on polynomials
+and maximum Euclidean block norm on the data, entrywise Lagrange interpolation
+gives
 
 ```text
-||R_N|| <= 364500 N^4.
+||R_N|| <= 6S (27S/5)^(2S-1) = exp(O(N log N)).
 ```
 
-The perturbation operator has norm at most `sqrt(N)`, while the base
-interpolant is at most `10 exp(N DeltaEta)` at every pass node.  Hence the
-interpolation residual caused by the target perturbation is at most
+The perturbation operator has norm at most `sqrt(3)`.  The base interpolant at
+the pass nodes is at most
 
 ```text
-11 sqrt(N) exp(-N^3 + N DeltaEta).
+2 (4e)^(S-1) exp(N DeltaEta).
 ```
 
-A Neumann-series correction through the base right inverse is valid for every
-`N>=5`: the product is already below `2^(-94)` at `N=5` and decreases
-thereafter.  Its stop/pass norm is at most
+A Neumann-series correction through the right inverse is valid because
 
 ```text
-8019000 N^(9/2) exp(-N^3 + N DeltaEta).
+exp(-N^3) ||R_N|| = exp(-N^3+O(N log N)).
 ```
 
-The correction/base ratio is below `2^(-78)` at `N=5` and also decreases, so
-this is bounded by the explicit base leakage
-`(52/5) exp(Eta0) exp(-Eta0 N)`.  The corrected coefficients remain real
-symmetric and the theorem holds with
-`C=(104/5) exp(Eta0)` and `c=Eta0`.  Once this is below one, the commuting
-obstruction forces the corrected coefficient family to be noncommuting.
+The manuscript gives explicit envelopes: the Neumann product is below
+`2^(-288)` at `N=7`, and the correction divided by `exp(-cN)` is below
+`2^(-217)` there; both envelopes decrease.  The corrected coefficients remain
+real symmetric, and their correction is at most `exp(-cN)`.  Once
+`(C0+1)exp(-cN)<1`, the commuting obstruction forces the family to be
+noncommuting.
 
 The perturbation is explicit but extremely small.  The remaining gates are:
 
@@ -276,9 +284,10 @@ The perturbation is explicit but extremely small.  The remaining gates are:
    test adaptive/nonstationary scalar baselines without overstating physical
    consequences.
 
-The earlier algebraic obstacles are now removed: the two-node interpolant is
-explicit, the construction lies in the real-symmetric/Hermitian coefficient
-class, and the full-spark perturbation is deterministic.
+The earlier algebraic obstacles are now removed: the multi-node interpolant is
+explicit and rationally located, the construction lies in the
+real-symmetric/Hermitian coefficient class, and the full-spark perturbation is
+deterministic.
 
 ### 5.4 Block-Krylov interpretation
 

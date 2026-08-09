@@ -6,7 +6,7 @@ rows have been checked from full text or an author preprint.
 
 ## Candidate theorem delta
 
-At ordinary polynomial degree `N` and channel dimension `d=N`, fixed
+At ordinary polynomial degree `N` and fixed channel dimension `d=3`,
 full-spark tangential calibrations can force every pairwise-commuting real
 symmetric coefficient polynomial to equal the identity, while an explicitly
 constructed noncommuting symmetric polynomial has real-stopband operator norm
@@ -43,7 +43,7 @@ The following conjunction has not been found in the checked sources:
    calibrations;
 3. a full pairwise-commuting comparator, equivalently one fixed orthogonal bank
    of scalar filters;
-4. an explicit exponential upper/lower separation with only `d=N` channels;
+4. an explicit exponential upper/lower separation with only three channels;
    and
 5. an exact rational five-tap certificate whose finite gap survives commuting
    calibration residuals `delta < 3/32300`.

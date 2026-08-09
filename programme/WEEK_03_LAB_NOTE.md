@@ -17,13 +17,13 @@ least one.  A separate asymptotic construction now supports the candidate gap
 ```text
 noncommuting symmetric leakage <= C exp(-cN),
 commuting symmetric leakage       = 1,
-channel dimension                 = N.
+channel dimension                 = 3.
 ```
 
-The sharpened construction assigns two nodes to each of `N` channels.  It uses
-explicit Lagrange--Chebyshev diagonal filters, a
-symmetric tangential-interpolation right inverse on at most four nodes per
-matrix entry, and an explicit moment-curve perturbation with
+The sharpened construction distributes `N+3` rational nodes among three
+channels.  It uses explicit multi-node Lagrange--Chebyshev diagonal filters, a
+symmetric tangential-interpolation right inverse on at most `2 ceil((N+3)/3)`
+nodes per matrix entry, and an explicit moment-curve perturbation with
 `epsilon=exp(-N^3)` to enforce full spark.
 
 ## Numerical stress test
