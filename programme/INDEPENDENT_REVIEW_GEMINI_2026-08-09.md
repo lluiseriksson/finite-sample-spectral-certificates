@@ -84,3 +84,42 @@ reviewer's script-name transcription contained one non-existent filename and
 is not used as evidence of execution. Local exact verifiers and CI remain
 separate evidence. Any PDF edit after this report requires a new artifact hash
 and a fresh reviewer confirmation.
+
+## Revised-artifact confirmation
+
+After the requested Section 2.3 clarification was incorporated, a fresh
+Gemini Advanced reasoning conversation received the revised 13-page PDF, not
+the previous attachment.  The submitted identity was:
+
+- scientific source commit:
+  `9550a371be35fc35a452264b6c08a3caa71e4a11`;
+- PDF SHA-256 verified locally before upload:
+  `ccf27299e9cee8f397f32aee53c4848bc0cd8b3a1978b4729664270e80fed2b0`;
+- title observed by the reviewer: *Exponential Tangential Advantages of
+  Noncommuting Matrix-Polynomial and Linear-Phase MIMO FIR Filters*; and
+- page count observed by the reviewer: 13.
+
+The reviewer again stated that it could not independently compute SHA-256 from
+the raw attachment bytes.  It did independently locate on page 4, immediately
+after equation (7), the new sentence
+`log R_N = O(N log N)`, equivalently `R_N = exp(O(N log N))`, and judged it
+mathematically precise.  Its revised-artifact scores and findings were:
+
+- Scientific contribution score: **7 / 10**
+- Manuscript quality score: **7 / 10**
+- Proof defect or counterexample: **none identified**
+- Recommendation: **proceed to formal external peer review or submission**,
+  pending the clause-by-clause full-text priority audit
+
+The reviewer did not run repository scripts.  It named the strongest remaining
+collision uncertainty as priority of the fixed-degree/fixed-latency tangential
+minimax separation relative to established MIMO FIR H-infinity and rational
+tangential-interpolation bounds, especially Stefanovski--Georgijevic (2016),
+Kootsookos (1991), and Ljungars--Fu (1998).  Restricted full texts therefore
+remain an explicitly disclosed priority uncertainty.  The reviewer did not
+raise the scores because the revision corrected exposition without adding a
+new theorem or experiment.
+
+This fresh confirmation supersedes the old artifact-specific score for release
+purposes.  It remains an independent model review, not named-human peer review,
+and it does not independently authenticate attachment bytes or CI execution.

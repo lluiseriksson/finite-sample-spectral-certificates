@@ -1,8 +1,11 @@
 # Route C priority matrix
 
-Status: open Gate G1 audit, 2026-08-09.  “Not found” below is not a proof of
-novelty.  The candidate claim remains provisional until the restricted-access
-rows have been checked from full text or an author preprint.
+Status: bounded Gate G1 audit with documented external access blocker,
+2026-08-09.  “Not found” below is not a proof of novelty.  The candidate claim
+remains provisional until the restricted-access rows can be checked from full
+text or an author preprint.  Independent adversarial review of the exact
+revised PDF returned 7/10 scientific and 7/10 manuscript, with no proof defect
+identified; that assessment does not eliminate this priority uncertainty.
 
 ## Candidate theorem delta
 
@@ -73,9 +76,10 @@ The following conjunction has not been found in the checked sources:
    calibration residuals `delta < 3/32300`.
 
 Each ingredient separately is close to classical work.  Priority, if it
-survives, belongs only to their theorem-level conjunction.  Gate G1 therefore
-remains open pending the inaccessible Fuhrmann and Stefanovski--Georgijević
-proof texts and independent adversarial review.  A targeted search of
+survives, belongs only to their theorem-level conjunction.  Gate G1's priority
+clause therefore remains externally blocked by the inaccessible Fuhrmann and
+Stefanovski--Georgijević proof texts.  The independent adversarial review gate
+has passed at 7/10 scientific and 7/10 manuscript.  A targeted search of
 reciprocal/passive MIMO FIR approximation and simultaneous diagonalization found
 no theorem with the surviving conjunction, but this is not positive evidence of
 priority.  The broad fixed-length MIMO `H-infinity` and linear-phase

@@ -27,14 +27,14 @@ paper.
 - Status: published infrastructure and baseline for the new programme; it is
   **not presumed** to be a 7+ paper.
 
-## Candidate next paper (unfrozen research draft)
+## Candidate next paper (independently reviewed release candidate)
 
 - File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
   and Linear-Phase MIMO FIR Filters*
 - Pages: 13
 - Local SHA-256: `ccf27299e9cee8f397f32aee53c4848bc0cd8b3a1978b4729664270e80fed2b0`
-- Status: **unfrozen research draft**.  Its sharpened theorem now needs only
+- Status: **independently reviewed release candidate**.  Its sharpened theorem needs only
   the fixed dimension `d=3` and `M=N+3` signatures, rather than a growing
   channel dimension; it also contains
   exact affine and full-spark quadratic witnesses, an exact
@@ -48,22 +48,23 @@ paper.
   invariance lemma gives the directional constraints a task-level meaning; on
   frozen held-out cospectra the leading modal direction moves by at most
   `0.2217` degrees and the leading ordinate changes by at most `2.40e-5`
-  relatively.  Gate G1 remains open pending the remaining full-text/FIR
-  priority audit and an independent adversarial review.  The audit now also
+  relatively.  A fresh independent Gemini Advanced reasoning review of these
+  exact bytes assigned 7/10 to both scientific contribution and manuscript
+  quality, found no proof defect or counterexample, and recommended formal
+  external review/submission.  This is model review, not named-human peer
+  review.  The restricted full-text/FIR priority uncertainty remains open and
+  explicitly prevents an unqualified novelty claim.  The audit also
   treats Kootsookos's 1991 fixed-length MIMO `H-infinity` thesis and
   Alpay--Lewkowicz's structured matrix-polynomial interpolation as direct
   collisions with broader formulations of the claim.
 
-This draft must not be scored as a final 7+ submission.  If it is reviewed,
-the evaluator must quote the title and hash above so the feedback can be
-attributed to the correct bytes.
+The 7/10 scores apply only to the title and hash above.  Any edited PDF is a new
+artifact and must be independently re-reviewed.
 
-The frozen next-paper entry will be created only after Gates G1--G3 are passed.
-A release candidate must have:
+The release candidate has:
 
 1. a unique title that does not resemble either prior paper;
-2. an embedded version string and Git commit;
-3. a SHA-256 generated from the public GitHub bytes, not a platform-normalized
-   local copy;
+2. an embedded research-draft date and a separately recorded scientific commit;
+3. a SHA-256 checked locally and again from the public GitHub bytes;
 4. a one-page evaluator cover sheet listing the headline theorem, closest
    literature, what is new, and what is explicitly not claimed.

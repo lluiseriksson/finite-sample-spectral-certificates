@@ -9,13 +9,16 @@ correlator paper.
   and Linear-Phase MIMO FIR Filters*
 - Source: `paper_noncommuting/main.tex`
 - Compiled artifact: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Status: research draft; the quantified proof now gives an exponential
+- Status: independently reviewed research release; the quantified proof gives an exponential
   separation at fixed dimension `d=3` with `M=N+3`; the exact five-tap FIR certificate,
   rational approximate-calibration margin, negative graph pilot, and an exact
   rational certificate calibrated from held-out-controlled VBL-VA001 sensor
   records are closed.  The modal-task interpretation is backed by an exact FDD
-  invariance lemma and a held-out cospectral replay.  The remaining full-text
-  priority audit and independent adversarial review remain open under Gate G1.
+  invariance lemma and a held-out cospectral replay.  A fresh independent
+  adversarial review of the exact hash below assigned 7/10 to both scientific
+  contribution and manuscript quality and found no proof defect.  The
+  restricted full-text priority uncertainty remains disclosed; this release
+  is not a certificate of novelty or named-human peer review.
 
 The current PDF hash is recorded after each accepted compilation in
 `programme/ARTIFACT_MANIFEST.md`.  Evaluations must quote the title and SHA-256

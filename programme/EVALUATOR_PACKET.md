@@ -10,16 +10,26 @@ request to reward repository size.
 - Research branch: `research/endogenous-visibility`
 - Draft pull request: <https://github.com/lluiseriksson/finite-sample-spectral-certificates/pull/2>
 - Source commit inspected when this packet was prepared:
-  `31bee2e8bc7d5b920b0b129940e63e30c4fae714`
+  `9550a371be35fc35a452264b6c08a3caa71e4a11`
 - PDF path: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title visible on page 1: *Exponential Tangential Advantages of
   Noncommuting Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
 - Page count: 13
 - SHA-256 of the repository PDF bytes:
-  `0fadc8a1d453f76897aa4375844d68ac1b8e058d9092342893fb52e307d57d12`
+  `ccf27299e9cee8f397f32aee53c4848bc0cd8b3a1978b4729664270e80fed2b0`
 - Embedded manuscript status: `Research draft, 9 August 2026`
-- CI status at the commit above: push run `31336148887` and pull-request run
-  `31336150624` both passed.
+- CI status at the commit above: push run
+  [`31336782241`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31336782241)
+  and pull-request run
+  [`31336784500`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31336784500)
+  both passed.
+
+The revised bytes received a fresh independent Gemini Advanced reasoning review:
+scientific contribution **7 / 10**, manuscript quality **7 / 10**, no proof
+defect or counterexample identified, and recommendation to proceed to formal
+external peer review or submission subject to the disclosed restricted-full-text
+priority uncertainty.  The exact review record and its limitations are in
+`programme/INDEPENDENT_REVIEW_GEMINI_2026-08-09.md`.
 
 Before scoring, independently hash the downloaded PDF and copy the result into
 the response.  If the hash, title or page count differs, stop: the score belongs

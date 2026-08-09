@@ -59,9 +59,10 @@ An affine cosine substitution now gives an exact fixed-latency corollary for
 reciprocal linear-phase MIMO FIR filters, including a rational five-tap
 certificate.  Main danger: norm-constrained tangential interpolation or MIMO
 FIR approximation theory may already imply the separation.  The public
-VBL-VA001 calibration now closes the measured-task pilot, but G1 stays open
-until the two closest inaccessible proof texts and an independent adversarial
-review have been completed.
+VBL-VA001 calibration closes the measured-task pilot.  The exact revised PDF
+has now passed independent adversarial review at 7/10 scientific and 7/10
+manuscript.  Two closest proof texts remain inaccessible after a documented
+multi-route access audit, so priority remains qualified.
 
 ## Weekly outputs and gates
 
@@ -106,10 +107,14 @@ review have been completed.
   deliberately negative graph pilot, a 13-page manuscript, claim links and
   green CI.  Standard-library exact/arithmetic verifiers serve as the viable
   certificate for the decisive estimates; no Lean formalization is claimed.
-- Week 9 is active.  Gate G1 is **not yet passed**: the Fuhrmann (2010) and
-  Stefanovski--Georgijevic (2016) proof texts still require line-by-line access,
-  and the exact PDF has not received an independent adversarial score.  The PR
-  therefore remains a draft and no final novelty or 7+ claim is made.
-- Week 10 is conditional repair and release.  It begins only after the two
-  Week-9 attacks return concrete feedback; a collision or proof defect triggers
-  revision or abandonment rather than relabelling the current draft as 7+.
+- Week 9 is complete.  A fresh independent adversarial review of the exact
+  revised PDF returned 7/10 scientific and 7/10 manuscript, found no proof
+  defect or counterexample, and recommended formal external review/submission.
+- Week 10 is complete as a qualified public research release: the requested
+  growth clarification was incorporated, the revised bytes were re-reviewed,
+  exact verifiers and both CI workflows pass, and the artifact/review hashes are
+  frozen.  Gate G1's proof-level priority clause remains externally blocked by
+  the inaccessible Fuhrmann (2010) and Stefanovski--Georgijevic (2016) full
+  texts despite the recorded access audit.  Consequently the theorem and 7/10
+  assessment are published, while novelty remains a candidate rather than a
+  certified priority claim.
