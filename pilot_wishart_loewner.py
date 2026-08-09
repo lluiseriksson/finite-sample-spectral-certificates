@@ -74,6 +74,8 @@ def dual_certificate(
     theta: float,
     alpha: float,
     sample_count: int,
+    return_matrices: bool = False,
+    band_eta: float | None = None,
 ) -> dict[str, object]:
     """Solve the normalized semidefinite alternative and report its residual.
 
@@ -81,7 +83,11 @@ def dual_certificate(
     Y1-Y2+L_D^*(Y3)=0.  A negative value of
     -<Y1,A>+<Y2,B> is an explicit incompatibility certificate.
     """
-    _, lower, upper = wishart_band(sample_gram, alpha, sample_count)
+    eta, lower, upper = wishart_band(sample_gram, alpha, sample_count)
+    if band_eta is not None:
+        if not eta <= band_eta < 1.0:
+            raise ValueError("band_eta must widen the analytic band and remain below one")
+        lower, upper = (1.0 + band_eta) ** -2, (1.0 - band_eta) ** -2
     dimension = sample_gram.shape[0]
     scales = np.sqrt(np.maximum(np.diag(sample_gram), np.finfo(float).tiny))
     inverse = np.diag(1.0 / scales)
@@ -208,7 +214,7 @@ def dual_certificate(
     stationarity_nuclear = float(np.linalg.norm(safe_residual, ord="nuc"))
     stationarity_bound = stationarity_nuclear * float(np.linalg.eigvalsh(upper * empirical)[-1])
     certificate_upper = safe_value + stationarity_bound
-    return {
+    result: dict[str, object] = {
         "dual_status": problem.status,
         "dual_value": value,
         "dual_stationarity_fro": float(np.linalg.norm(residual)),
@@ -241,6 +247,15 @@ def dual_certificate(
             )
         ),
     }
+    if return_matrices:
+        result["matrix_payload"] = {
+            "scales": scales.tolist(),
+            "empirical_scaled_gram": empirical.tolist(),
+            "lower_multiplier": yl_safe.tolist(),
+            "upper_multiplier": yu_safe.tolist(),
+            "localizer_multiplier": yz_safe.tolist(),
+        }
+    return result
 
 
 def exact_localizer_min(exact_moments: np.ndarray, degree: int, channels: int, theta: float) -> float:

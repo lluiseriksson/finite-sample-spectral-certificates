@@ -16,6 +16,7 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - run: python -m compileall -q .
       - run: python verification/check_localizer_adjoint.py --trials 1000
+      - run: python verification/verify_rational_witness.py
       - run: python pilot_primal_dual_equivalence.py
       - name: Safe Wishart dual smoke
         run: >-
@@ -23,4 +24,3 @@ jobs:
           --length 6 --degree 2 --sample-counts 500
           --gap-factors 1.0 1.35 --ensembles 3
           --output results/ci/wishart_safe_smoke.json
-

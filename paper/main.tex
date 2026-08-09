@@ -5,6 +5,7 @@
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm,mathtools,bm}
 \usepackage{booktabs}
+\usepackage{float}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -23,19 +24,20 @@
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
 
-\title{Finite-Sample Exclusion of Spectral Gaps\\
+\title{Finite-Sample Spectral-Edge Exclusion\\
 from Gaussian Correlator Sketches}
 \author{Lluís Eriksson\\
 \small Independent researcher\\
 \small \url{https://github.com/lluiseriksson/finite-sample-spectral-certificates}}
-\date{Working draft, August 2026}
+\date{August 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 Spectral gaps are often inferred from noisy Euclidean correlators by fitting a
-small number of exponentials or solving a generalized eigenvalue problem.  Such
+small number of exponentials or solving a generalized eigenvalue
+problem~\cite{Blossier2009}.  Such
 point estimates do not by themselves control the error incurred when the
 spectral filter is selected from the same data.  We give a finite-sample test
 that instead asks whether an entire simultaneous confidence set is compatible
@@ -47,12 +49,17 @@ problem.  We derive its semidefinite alternative: every rejection is accompanied
 by a covariance-aware matrix witness, a negative separation margin, and
 checkable primal-independent residuals.  The test has type-I error at most
 $\alpha$ at fixed truncation order and requires neither known covariance nor a
-Gaussian approximation to the quadratic moment features.  Simulations in the
+Gaussian approximation to the quadratic moment features.  A second theorem
+gives an explicit witness-dependent sample size for power at least
+$1-\alpha$, and one rejection is replayed with exact rational arithmetic.
+Simulations in the
 interacting axial next-nearest-neighbour Ising chain compare the certificate to
 covariance-known ellipsoids, plug-in eigenvectors, fixed Chebyshev filters, and
-Ritz estimates.  We also document a negative result: Hotelling calibration can
-severely undercover the non-Gaussian quadratic features at moderate sample
-size.  The method certifies exclusion of overly large \emph{visible} gaps; it
+Ritz estimates.  A 16,800-SDP production grid resolves sample-size and moment-
+degree transitions.  We also document two negative results: Hotelling
+calibration undercovers the non-Gaussian quadratic features, and the Gaussian
+Loewner band undercovers variance-matched Student-$t_5$ primitives.  The method
+certifies exclusion of overly large \emph{visible} gaps; it
 does not turn non-rejection into a lower bound on a Hamiltonian mass gap.
 \end{abstract}
 
@@ -237,6 +244,72 @@ confidence set preserves this argument.  This is the central statistical
 advantage over selecting a polynomial direction from $S$ and attaching an
 unadjusted pointwise error bar.
 
+The same event also gives a nonasymptotic power condition.  It makes explicit
+how statistical dimension, spectral violation, and sketch count trade off.
+
+\begin{theorem}[Finite-sample detection condition]
+\label{thm:power}
+Fix an alternative covariance $K\succeq0$ and let
+$C_X=(\mathcal L_{N,\theta}\circ P)^*(X)$ for some $X\succeq0$ with
+$\tr X=1$.
+Suppose
+\begin{equation}
+ \gamma_X=-\ip{C_X}{K}>0,
+ \qquad
+ w_X=\tr\left|K^{1/2}C_XK^{1/2}\right|.
+ \label{eq:populationmargin}
+\end{equation}
+If
+\begin{equation}
+ \delta_+(\eta)w_X<\gamma_X,
+ \qquad
+ \delta_+(\eta)=\left(\frac{1+\eta}{1-\eta}\right)^2-1,
+ \label{eq:powercondition}
+\end{equation}
+then the test rejects with probability at least $1-\alpha$.  In particular,
+writing $r_X=\gamma_X/w_X$ (with the conclusion immediate if $w_X=0$), the
+explicit sufficient sample size is
+\begin{equation}
+ n>
+ \left(\sqrt d+\sqrt{2\log(2/\alpha)}\right)^2
+ \frac{\big(\sqrt{1+r_X}+1\big)^4}{r_X^2}.
+ \label{eq:samplesufficient}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+On the event used in Theorem~\ref{thm:wishart}, every
+$Q\in\mathcal C_\alpha(S)$ obeys
+\[
+ r_-K\preceq Q\preceq r_+K,
+ \qquad
+ r_\pm=\left(\frac{1\pm\eta}{1\mp\eta}\right)^2.
+\]
+Thus, for $E=Q-K$,
+$-(1-r_-)K\preceq E\preceq(r_+-1)K$.  Compressing to
+$\operatorname{ran}K$ and applying congruence by $K^{\dagger/2}$ shows
+\begin{align}
+ \ip{C_X}{E}
+ &\le (r_+-1)\tr[(K^{1/2}C_XK^{1/2})_+]\\
+ &\quad +(1-r_-)\tr[(K^{1/2}C_XK^{1/2})_-]
+ \le\delta_+(\eta)w_X.
+\end{align}
+Condition~\eqref{eq:powercondition} therefore gives
+$\ip{X}{\mathcal L_{N,\theta}(P(Q))}=\ip{C_X}{Q}<0$ for every $Q$ in the
+confidence set.  No such $Q$ can have a PSD localizer, so rejection occurs on
+an event of probability at least $1-\alpha$.  Finally,
+$\delta_+(\eta)<r_X$ is equivalent to
+$\eta<r_X/(\sqrt{1+r_X}+1)^2$; substituting~\eqref{eq:bandconstants} gives
+\eqref{eq:samplesufficient}.
+\end{proof}
+
+The bound is deliberately witness-specific and conservative.  It is useful
+because it is a genuine power guarantee, not because it predicts the sharp
+transition of an optimized SDP.  Optimizing $X$ for empirical power remains
+fully protected by Corollary~\ref{cor:level}; using $X$ in
+Theorem~\ref{thm:power} as a population design witness is only an analysis
+device.
+
 For numerical auditability, let $D$ be any fixed positive diagonal scaling
 computed from $S$, put $Q=D\widetilde QD$, and denote the scaled interval by
 $A\preceq\widetilde Q\preceq B$.  Let $\mathcal L_D$ be the resulting affine
@@ -272,8 +345,11 @@ silently replace this reduction by a numerical ridge.
 The implementation minimizes the dual margin under trace normalization.  A
 reported rejection stores the margin, the Frobenius residual of
 \eqref{eq:stationarity}, normalization error, and the smallest eigenvalue of
-each numerical multiplier.  Interval or rational outward rounding remains the
-last step from an auditable floating-point witness to a machine-checkable one.
+each numerical multiplier.  The production grid uses a conservative
+a-posteriori residual allowance.  In addition, one deliberately wider
+confidence interval is rejected by an exact-rational witness whose PSD and
+strict-negativity checks use no numerical linear-algebra library; see
+Section~\ref{sec:rational}.
 
 \section{Why covariance awareness changes the witness}
 
@@ -309,7 +385,7 @@ We use the periodic axial next-nearest-neighbour Ising chain
  \label{eq:annni}
 \end{equation}
 with $J_1=1$, $J_2=0.37$, $h_x=2.2$, and $\tau=0.2$.  This frustrated,
-nonintegrable finite chain is not being used to claim a new phase boundary; it
+nonintegrable finite chain~\cite{Kriel2014} is not being used to claim a new phase boundary; it
 is a controlled interacting test bed where exact sparse diagonalization and
 Krylov propagation provide ground truth.  Ground-state-subtracted central-site
 $X$ and $Z$ probes form a two-channel correlator.  The global spin-flip parity
@@ -342,8 +418,65 @@ inflated gap, the covariance-aware robust test reached essentially full power
 near $n=1000$ across $L\le14$, while the plug-in eigenvector was usually still
 silent until $n=5000$.  At the true edge the robust methods made no rejection
 in the medium grid.  These observations motivated the covariance-unknown
-production campaign; final rates and binomial intervals will replace this
-paragraph after the full artifact is frozen.
+production campaign.
+
+\subsection{Production power and moment-degree transition}
+
+The main unknown-covariance campaign comprises 7,200 independently generated
+SDPs.  It made zero rejections in 2,400 null ensembles and 2,400 rejections in
+2,400 ensembles at 35\% inflation.  For the harder 15\% alternative, the
+finite-size transition is resolved in Table~\ref{tab:mainpower}.  Each entry is
+the number of rejections among 100 ensembles; Wilson intervals are plotted in
+Figure~\ref{fig:powerdegree}.  Across all 7,200 solves, the largest conservative
+stationarity allowance was $3.76\times10^{-13}$ and the smallest reported
+eigenvalue of a shifted multiplier was $1.40\times10^{-14}$.
+
+\begin{table}[H]
+\centering
+\caption{Safe rejections out of 100 for a 15\% inflated visible-gap claim at
+moment degree $N=2$.}
+\label{tab:mainpower}
+\begin{tabular}{c@{\qquad}rrrr}
+\toprule
+$L$ & $n=500$ & $n=1000$ & $n=2000$ & $n=5000$\\
+\midrule
+6  &100&100&100&100\\
+8  &100&100&100&100\\
+10 & 98&100&100&100\\
+12 & 51&100&100&100\\
+14 &  0& 86&100&100\\
+16 &  0&  7& 97&100\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{paper/figures/power_and_degree.pdf}
+\caption{Finite-sample power.  (a) The $N=2$ production campaign with 95\%
+Wilson intervals.  (b--d) Independent degree ablation at 15\% inflation.
+Increasing $N$ raises the primitive dimension from 8 to 16 and widens the
+Loewner band, yet the stronger polynomial localizer dominates: at $L=16$ and
+$n=500$, power rises from 0 for $N=1,2$ to 0.90 for $N=3$.}
+\label{fig:powerdegree}
+\end{figure}
+
+The independent 7,200-SDP degree ablation made zero null rejections in 3,600
+ensembles.  Degree one is powerless at $L=12,16$ throughout the tested range;
+degree three reaches unit power in every $L=8,12$ cell and at $n\ge1000$ for
+$L=16$.  This is not the tautology that adding moments can only help: the
+Wishart dimension penalty grows with $N$.  The observed dominance therefore
+quantifies a favorable approximation--concentration tradeoff for this model.
+
+\subsection{Conservatism of the analytic band}
+
+In 10,000 standard-Gaussian calibration replicates at $d=12$, the analytic
+$\eta$ values were $0.276,0.195,0.138$ for $n=500,1000,2000$, whereas the
+empirical 95th percentiles of the required singular-value deviation were
+$0.173,0.122,0.0862$.  The analytic width was consistently about 1.60 times
+the empirical quantile and covered all 10,000 replicates in each cell.  Thus
+the strong production power is not obtained by tuning the band to its Monte
+Carlo distribution.
 
 \subsection{Negative calibration result}
 
@@ -355,6 +488,28 @@ rate for an inflated gap was therefore invalid as a 95\% certificate.  Coverage
 approached nominal only slowly with $n$.  This failed route is retained in the
 artifact as a warning against importing an exact Gaussian-mean theorem into a
 quadratic-feature problem.
+
+\subsection{Primitive-law misspecification}
+
+The Wishart--Loewner theorem is exact for Gaussian primitive sketches, not for
+all zero-mean isotropic laws.  We tested this boundary in 2,400 further SDPs,
+using Gaussian, variance-matched Student-$t_5$, and Rademacher primitive
+coordinates before applying the same population square root.  The Gaussian
+band covered in all 800 in-model ensembles.  Rademacher sketches also happened
+to cover in all 800 tested ensembles, but this is empirical conservatism, not a
+theorem.  Student-$t_5$ coverage was only 0.780 at $n=500$ and 0.738 at
+$n=1000$ after pooling the two independently generated gap-factor cells; its
+heavy radial tails do not become licensed merely by covariance matching.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{paper/figures/misspecification_coverage.pdf}
+\caption{Coverage stress test for the simultaneous Loewner band, with Wilson
+intervals.  Each bar pools 400 ensembles.  Only the Gaussian bars are covered
+by Theorem~\ref{thm:wishart}; the other two laws are deliberate negative
+controls.}
+\label{fig:misspecification}
+\end{figure}
 
 \section{Numerical verification protocol}
 
@@ -401,15 +556,55 @@ therefore tests a conservative upper bound on the dual contradiction margin,
 not the raw solver objective.
 
 This gap between scientific margin and numerical residual is encouraging but
-does not itself constitute interval arithmetic.  The release protocol is:
+does not by itself constitute exact arithmetic.  The release uses three
+increasing levels of assurance:
 \begin{enumerate}
  \item solve in floating point after diagonal congruence scaling;
  \item independently rebuild the adjoint and residual from exported matrices;
- \item project only for diagnostics, never to manufacture a better objective;
- \item outward-round selected repaired witnesses and verify the resulting inequalities
- with interval or rational arithmetic;
- \item rerun a subset with a second conic solver.
+ \item repair PSD and stationarity defects while adding their worst-case effect
+ to the contradiction margin;
+ \item replay one wider-band representative with exact rational arithmetic.
 \end{enumerate}
+
+\subsection{Exact-rational representative witness}
+\label{sec:rational}
+
+For $L=8$, $N=2$, $n=500$, and the rational proposed edge
+$\theta=3/5$, we replace the analytic deviation by the larger rational value
+$\bar\eta=3/10$.  This widening is itself certified by elementary rational
+bounds: $\exp(15/4)>40$ via a positive Taylor partial sum,
+$\sqrt{12}<7/2$, $\sqrt{2\log40}<11/4$, and
+$25/4<3\sqrt5=(3/10)\sqrt{500}$.  Hence infeasibility for
+\begin{equation}
+ \frac{100}{169}S\preceq K\preceq\frac{100}{49}S
+ \label{eq:rationalband}
+\end{equation}
+implies infeasibility for the narrower 95\% analytic band.
+
+The stored Gaussian coordinates are hexadecimal IEEE-754 values.  The replay
+interprets each as its exact dyadic rational, rebuilds $S$ by rational dot
+products, and reads rounded dual multipliers with a common denominator
+$10^{14}$.  A diagonal shift of $10^{-11}$ makes all three multipliers strictly
+positive definite.  Exact fraction LDL decompositions give a minimum pivot
+$2.85\times10^{-11}$.  Instead of a floating nuclear norm, the replay uses the
+coarser exact inequality
+\begin{equation}
+ |\ip{R}{Q}|\le d\max_{ij}|R_{ij}|\,\tr B,
+ \qquad 0\preceq Q\preceq B.
+ \label{eq:rationalresidual}
+\end{equation}
+After this allowance, the exact rational certificate upper bound is
+$-6.47697914332\times10^{-4}$.  The JSON artifact has SHA-256 (line break is
+typographical)
+\begin{center}\small
+\texttt{aa9e6af05079ca823b392d2ee4889928}\\[-2pt]
+\texttt{2b87d32839021bd84b6085bd5f8d842d}
+\end{center}
+and is independently replayed by
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/main/verification/verify_rational_witness.py}{\texttt{verify\_rational\_witness.py}}.
+This exact statement is conditional on the stored finite-precision sample; the
+Gaussian idealization supplies the statistical coverage statement, not the
+rational replay itself.
 
 \section{Limitations and interpretation}
 
@@ -452,10 +647,12 @@ optimistic.
 
 \paragraph{Reproducibility.}
 Code, theorem audit notes, raw pilot outputs, the Colab production notebook, and
-the evolving manuscript are available at
+the frozen production artifacts are available at
 \url{https://github.com/lluiseriksson/finite-sample-spectral-certificates}.
-The research branch and draft pull request remain open until the production
-artifact and interval replay are frozen.
+The three production JSON files have SHA-256 digests recorded in
+\texttt{results/production/summary.json}; the continuous-integration workflow
+rechecks the localizer adjoint, primal--dual smoke, safe Wishart smoke, and
+exact-rational replay.
 
 \paragraph{Acknowledgements.}
 OpenAI Codex assisted with code generation, numerical orchestration, literature

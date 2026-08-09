@@ -2,9 +2,10 @@
 
 [![verify](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml/badge.svg?branch=agent%2Fwishart-loewner-certificates)](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml)
 
-Research code for rigorous upper-support and gap tests from noisy block moments.
-The central method combines truncated Hausdorff localizers with confidence sets
-that remain valid after the separating witness is optimized on the same data.
+Research artifact for finite-sample upper-support and visible-gap tests from
+noisy block moments.  The central method combines a Wishart--Loewner confidence
+band with truncated Hausdorff localizers.  The confidence set remains valid
+after the separating matrix witness is optimized on the same data.
 
 The current frontier experiment studies Gaussian sketches of Euclidean
 correlators in the interacting axial next-nearest-neighbour Ising (ANNNI)
@@ -14,9 +15,11 @@ chain.  Two finite-sample routes are implemented:
 - an unknown-covariance Wishart Loewner band followed by one semidefinite
   compatibility problem.
 
-This repository is an active research artifact.  Claims in `THEOREM_DRAFT.md`
-are explicitly marked as under audit until the manuscript and independent
-numerical certificates are complete.
+The main theorem gives unknown-covariance type-I control at finite sample size;
+the companion power theorem gives an explicit witness-dependent sample bound.
+Every numerical rejection uses a repaired dual witness and a conservative
+stationarity-residual allowance.  One representative rejection is additionally
+encoded and checked in exact rational arithmetic.
 
 ## Reproduce locally
 
@@ -25,6 +28,7 @@ python -m venv .venv
 .venv/Scripts/pip install -r requirements.txt
 .venv/Scripts/python pilot_primal_dual_equivalence.py
 .venv/Scripts/python pilot_wishart_loewner.py --length 8 --ensembles 10
+python verification/verify_rational_witness.py
 ```
 
 Linux/Colab users should replace `.venv/Scripts/python` with
@@ -37,6 +41,12 @@ quadratic sketch features are Wishart-like, not Gaussian, and its nominal 95%
 coverage under-covered at small sample sizes.  It must not be reported as an
 exact certificate for this model.
 
+The theorem is also deliberately not extended to arbitrary primitive laws.
+The production misspecification grid shows severe undercoverage for a
+variance-matched Student-$t_5$ primitive, while Rademacher sketches happen to
+be conservative in the tested cells.  Neither observation changes the stated
+Gaussian scope.
+
 ## Layout
 
 - `THEOREM_DRAFT.md`: theorem statements and open audit points.
@@ -44,3 +54,14 @@ exact certificate for this model.
 - `pilot_wishart_loewner.py`: covariance-unknown finite-sample test.
 - `production_annni_campaign.py`: covariance-known reference campaign.
 - `colab/annni_wishart_campaign.ipynb`: scalable Colab entry point.
+- `results/production/`: frozen Colab campaigns and their raw summaries.
+- `results/verification/rational_witness.json`: exact-rational rejection witness.
+- `verification/verify_rational_witness.py`: independent standard-library replay.
+- `paper/main.tex`: full manuscript source; `output/pdf/main.pdf` is the built paper.
+
+## What is and is not certified
+
+A rejection proves that an asserted upper edge is incompatible with the
+simultaneous confidence set, hence the asserted *visible* gap is too large.
+Non-rejection is not a positive lower-gap certificate.  The finite ANNNI chain
+is a controlled interacting benchmark, not a thermodynamic mass-gap proof.

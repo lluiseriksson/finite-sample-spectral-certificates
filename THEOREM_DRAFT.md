@@ -179,9 +179,9 @@ It is a single semidefinite feasibility problem.  Unlike Hotelling, it does
 not assume that the quadratic feature vector is Gaussian; unlike Theorem F's
 Chebyshev ellipsoid, it does not require oracle knowledge of its covariance.
 
-Audit points: cite/prove the Gaussian singular-value inequality with constants;
-derive and numerically check the conic dual; distinguish centered and known-zero
-mean sketches; study whether the Loewner band is too conservative in practice.
+Audit status: the manuscript cites the Gaussian singular-value inequality,
+proves the band and compact-separation alternative, distinguishes known-zero
+from estimated mean, and calibrates conservatism in 10,000 Gaussian replicates.
 
 ### Semidefinite alternative
 
@@ -238,9 +238,41 @@ the detection boundary are rank one; the empirical advantage there must be
 described as covariance-aware versus the plug-in eigenvector, not falsely as
 mixed versus pure.
 
-## Model-specific work still missing
+## Theorem I: witness-dependent finite-sample power
 
-These results solve the statistical/adaptive layer but are not yet a 7+ physics
-paper.  The remaining required producer is an interacting-model campaign that
-shows what new gap statement becomes possible, how power scales with volume
-and operator support, and where covariance estimation or visibility breaks.
+For `C_X=(L_theta o P)^*(X)`, `X>=0`, `tr X=1`, define
+
+    gamma_X = -<C_X,K> > 0,
+    w_X = tr |K^(1/2) C_X K^(1/2)|,
+    delta_+(eta) = ((1+eta)/(1-eta))^2 - 1.
+
+On the same probability-`1-alpha` event as Theorem G, every matrix in the
+confidence interval lies between
+
+    ((1-eta)/(1+eta))^2 K  and  ((1+eta)/(1-eta))^2 K.
+
+Congruence on `ran K` then bounds the worst witness perturbation by
+`delta_+(eta) w_X`.  Therefore `delta_+(eta) w_X < gamma_X` implies rejection
+with probability at least `1-alpha`.  If `r_X=gamma_X/w_X`, a sufficient sample
+size is
+
+    n > (sqrt(d)+sqrt(2 log(2/alpha)))^2
+        (sqrt(1+r_X)+1)^4 / r_X^2.
+
+This is conservative and population-witness-specific, but it is a genuine
+finite-sample power statement rather than an asymptotic consistency claim.
+
+## Frozen model campaign and exact replay
+
+The production artifact now contains 16,800 SDPs: 7,200 volume/sample/gap
+cells at degree two, 7,200 degree-ablation solves, and 2,400 primitive-law
+stress solves.  The main and ablation grids make zero null rejections in
+2,400 and 3,600 ensembles, respectively.  Degree three overcomes the wider
+Wishart band and sharply improves power at large volume.
+
+One `L=8,N=2,n=500,theta=3/5` rejection is replayed over exact fractions for a
+wider rational band with `eta_bar=3/10`.  Exact LDL pivots prove positive
+definiteness and a rational entrywise residual allowance leaves certificate
+upper bound `-6.47697914332e-4`.  This closes the representative exact-witness
+audit; extending exact replay to every Monte Carlo rejection is unnecessary
+for the empirical power study and is not claimed.

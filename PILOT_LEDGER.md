@@ -208,3 +208,24 @@ paper drafting, the programme still requires:
 - ANNNI correlator ensembles with realistic estimated covariance;
 - covariance misspecification and non-Gaussian/autocorrelated stress tests;
 - interval or rational replay of selected negative certificates.
+
+## Frozen production outcome (supersedes provisional checklist)
+
+The selected contribution is now the unknown-covariance Wishart--Loewner
+certificate with a finite-sample power theorem and exact-rational
+representative replay.  The frozen campaigns contain 16,800 SDPs and 32.4
+million primitive sketch vectors:
+
+- main degree-two grid: 0/2,400 null rejections, 2,400/2,400 rejections at 35%
+  gap inflation, and a resolved 15% sample-size transition through `L=16`;
+- degree ablation: 0/3,600 null rejections; degree three strongly dominates at
+  large volume despite its wider confidence band;
+- primitive-law stress: Gaussian coverage 800/800, Student-t5 coverage
+  607/800, and Rademacher coverage 800/800.  Only the Gaussian row is licensed
+  by the theorem;
+- exact replay: all five rational matrices pass positive LDL pivots and the
+  conservative contradiction upper bound is `-6.47697914332e-4`.
+
+The Hotelling route remains a documented negative result.  The Yang--Mills
+route remains deferred: no claim in this paper converts finite ANNNI evidence
+into a thermodynamic or gauge-theory mass-gap theorem.
