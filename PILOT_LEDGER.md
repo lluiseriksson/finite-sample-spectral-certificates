@@ -177,6 +177,15 @@ infeasibility certificates, and solver cross-checks.  Null solves are also
 ill-conditioned and often report `optimal_inaccurate`; no scientific claim may
 rest on that status without a residual audit.
 
+The explicit semidefinite alternative was then implemented.  In a 10-ensemble
+dual smoke at L=8 and n=500, its null values lay between `1.8e-10` and
+`6.5e-10`, while the 35%-exaggerated-gap values lay between `-8.2e-4` and
+`-4.1e-4`.  Maximum stationarity residual was `2.3e-9`.  A separate primal--
+dual replay exposed two false `optimal_inaccurate` primal classifications among
+five alternatives; the dual certificates remained negative by more than
+`4e-4`.  Production therefore uses the dual margin and records residuals rather
+than interpreting primal solver status as scientific evidence.
+
 ## C. Gauge Monte Carlo route
 
 The current `ym-lattice-numerics` engine is a correct reference/smoke code for
