@@ -1,5 +1,7 @@
 # Finite-Sample Spectral Certificates
 
+[![verify](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml/badge.svg?branch=agent%2Fwishart-loewner-certificates)](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/workflows/verify.yml)
+
 Research code for rigorous upper-support and gap tests from noisy block moments.
 The central method combines truncated Hausdorff localizers with confidence sets
 that remain valid after the separating witness is optimized on the same data.
@@ -42,4 +44,3 @@ exact certificate for this model.
 - `pilot_wishart_loewner.py`: covariance-unknown finite-sample test.
 - `production_annni_campaign.py`: covariance-known reference campaign.
 - `colab/annni_wishart_campaign.ipynb`: scalable Colab entry point.
-
