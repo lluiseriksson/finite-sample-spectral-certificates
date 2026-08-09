@@ -41,15 +41,15 @@ priority.  On 2026-08-09 the following independent routes were checked:
 
 - For Fuhrmann (2010), OpenAlex and Semantic Scholar both label the article
   bronze/open-archive but expose only the same ScienceDirect PDF URL.
-  Elsevier's metadata endpoint confirms \`openaccessArticle=true\`, while its
-  full-view text-mining endpoint returns \`401 AUTHENTICATION_ERROR\`; the direct
+  Elsevier's metadata endpoint confirms `openaccessArticle=true`, while its
+  full-view text-mining endpoint returns `401 AUTHENTICATION_ERROR`; the direct
   PDF returns a robot challenge/HTTP 403 both locally and from a fresh Google
   Compute Engine egress.  The Ben-Gurion institutional record contains
   metadata but no deposited file, and ResearchGate explicitly reports no full
   text.  No CAPTCHA or authentication control was bypassed.
 - For Stefanovski--Georgijević (2016), the publisher HTML exposes the abstract,
   Problem 1 setup and the introduction's statement that Theorem 1 solves it
-  for every positive \`gamma\`.  OpenAlex and Semantic Scholar both report the
+  for every positive `gamma`.  OpenAlex and Semantic Scholar both report the
   work closed with no repository PDF.  Elsevier's full-view endpoint again
   requires authentication, and the publisher PDF is robot-challenged.
 
