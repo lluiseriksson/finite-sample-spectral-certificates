@@ -102,6 +102,17 @@ def subtract(left: Matrix, right: Matrix) -> Matrix:
     return [[left[i][j] - right[i][j] for j in range(2)] for i in range(2)]
 
 
+def matrix_add(*matrices: Matrix) -> Matrix:
+    return [
+        [sum((matrix[i][j] for matrix in matrices), F()) for j in range(2)]
+        for i in range(2)
+    ]
+
+
+def matrix_scale(value: F, matrix: Matrix) -> Matrix:
+    return [[value * matrix[i][j] for j in range(2)] for i in range(2)]
+
+
 def main() -> None:
     coefficients: list[Matrix] = [
         [[F(2, 5), F(-3, 16)], [F(-3, 16), F(29, 32)]],
@@ -173,11 +184,44 @@ def main() -> None:
     operator_norm_upper = F(1) - uniform_margin
     assert operator_norm_upper == F(301, 304) < 1
 
+    # Exact five-tap reciprocal linear-phase FIR realization.  Under
+    # x=(3y+1)/2 and y=cos(omega), P(x) becomes
+    # G(omega)=B_2+2 B_1 cos(omega)+2 B_0 cos(2 omega).  The causal response
+    # with taps (B_0,B_1,B_2,B_1,B_0) is e^{-2 i omega}G(omega).
+    c0, c1, c2 = coefficients
+    d0 = matrix_add(c0, matrix_scale(F(1, 2), c1), matrix_scale(F(1, 4), c2))
+    d1 = matrix_add(matrix_scale(F(3, 2), c1), matrix_scale(F(3, 2), c2))
+    d2 = matrix_scale(F(9, 4), c2)
+    tap_0 = matrix_scale(F(1, 4), d2)
+    tap_1 = matrix_scale(F(1, 2), d1)
+    tap_2 = matrix_add(d0, matrix_scale(F(1, 2), d2))
+    taps = [tap_0, tap_1, tap_2, tap_1, tap_0]
+    assert taps == [
+        [[F(-27, 128), F()], [F(), F(-27, 1280)]],
+        [[F(27, 64), F(9, 80)], [F(9, 80), F(27, 640)]],
+        [[F(113, 320), F(-9, 80)], [F(-9, 80), F(577, 640)]],
+        [[F(27, 64), F(9, 80)], [F(9, 80), F(27, 640)]],
+        [[F(-27, 128), F()], [F(), F(-27, 1280)]],
+    ]
+    for point, target in zip(pass_points, targets, strict=True):
+        cosine = (2 * point - 1) / 3
+        cosine_two = 2 * cosine * cosine - 1
+        zero_phase = matrix_add(
+            tap_2,
+            matrix_scale(2 * cosine, tap_1),
+            matrix_scale(2 * cosine_two, tap_0),
+        )
+        assert zero_phase == evaluate_matrix(coefficients, point)
+        assert matvec(zero_phase, target) == target
+    tap_commutator = subtract(multiply(tap_0, tap_1), multiply(tap_1, tap_0))
+    assert tap_commutator != [[F(), F()], [F(), F()]]
+
     print("PASS: 4 exact tangential constraints and all 2x2 target minors are nonzero")
     print("PASS: all three exact coefficient commutators are nonzero")
     print("PASS: Bernstein certificates give I±P(x) >= (3/304) I on [-1,0]")
     print("PASS: exact continuum operator-norm bound is 301/304 < 1")
     print("PASS: every commuting symmetric degree-2 feasible filter is I by the root count")
+    print("PASS: exact palindromic five-tap MIMO FIR realization preserves all pass directions")
 
 
 if __name__ == "__main__":

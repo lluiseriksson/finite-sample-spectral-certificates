@@ -95,3 +95,26 @@ this search is not evidence of priority.
 The quantified stability proof and the former rational non-affine-witness
 blocker are closed.  Until the remaining two close, Route C is the lead but
 Gate G1 remains open.
+
+## FIR reformulation and failed natural graph pilot
+
+The change of variables `x=(9 cos(omega)+5)/4` converts the asymptotic
+polynomial into a reciprocal, real-symmetric, palindromic `2N+1`-tap MIMO FIR
+response with common delay `N`.  The pass interval maps to low/mid frequencies
+and `[-1,0]` maps to the high-frequency band
+`[arccos(-5/9),pi]`.  Because both the affine power-basis change and the cosine
+basis change are invertible, pairwise commutation is preserved in both
+directions.  The commuting obstruction therefore becomes a lower bound for
+every fixed orthogonal bank of scalar linear-phase filters at the same latency.
+
+For the exact quadratic witness, `x=(3 cos(omega)+1)/2` produces the rational
+palindromic taps now checked in
+`verification/verify_quadratic_filter_witness.py`; the high-frequency bound is
+still `301/304` versus one for the commuting class.
+
+The 414-node grid-graph pilot failed honestly.  Symmetric taps collapsed to
+identity, while a scalar Chebyshev baseline reached stop norm `1/17` with only
+`0.00524` rescaled pass error at two iterations.  Consequently ordinary graph
+denoising is rejected as the motivating application.  FIR frequency-direction
+calibration is structurally better aligned, but a real calibration data set
+and the FIR-specific collision audit are now the remaining application gates.

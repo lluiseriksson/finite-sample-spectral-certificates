@@ -30,15 +30,17 @@ paper.
 ## Candidate next paper (unfrozen research draft)
 
 - File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Title: *Noncommuting Hermitian Matrix-Polynomial Filters Can Have an
-  Exponential Tangential Advantage*
-- Pages: 8
-- Local SHA-256: `853cd673a4d44a0528e61f7b6d37d5710fde4e9ac5dfe9536d9c5aa3d6d82e75`
+- Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
+  and Linear-Phase MIMO FIR Filters*
+- Pages: 10
+- Local SHA-256: `98d83d7b30e1990813b891bb5b8582a805529f340866bd4ba1b8bfd99fa7ce77`
 - Status: **unfrozen research draft**.  It contains the quantified Week-3
-  theorem proof, exact affine and full-spark quadratic witnesses, the
-  block-Krylov proposition, and a controlled Hermitian subspace benchmark.
-  Gate G1 remains open pending the full-text priority audit and evidence of a
-  naturally arising task that mandates the preserved pass-row geometry.
+  theorem proof, exact affine and full-spark quadratic witnesses, an exact
+  palindromic five-tap FIR realization, the block-Krylov proposition, a
+  controlled Hermitian subspace benchmark, and a deliberately negative natural
+  graph pilot.  Gate G1 remains open pending the full-text/FIR priority audit
+  and a measured or standards-derived task that mandates the directional
+  frequency calibrations.
 
 This draft must not be scored as a final 7+ submission.  If it is reviewed,
 the evaluator must quote the title and hash above so the feedback can be

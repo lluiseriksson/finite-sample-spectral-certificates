@@ -331,3 +331,27 @@ separation is not identical to those results, but terminology-based searches
 are insufficient.  Gate G1 requires comparison with the exact tangential
 interpolation data after mapping the interval complement conformally to the
 disk.
+
+## 8. Exact reciprocal linear-phase FIR corollary
+
+Set `x=(9 cos(omega)+5)/4`.  A real-symmetric degree-`N` polynomial becomes a
+real-symmetric cosine polynomial and hence the zero-phase response of a causal
+palindromic `2N+1`-tap MIMO FIR filter with common group delay `N`.  The theorem
+maps `[-1,0]` to the high-frequency band
+`[arccos(-5/9),pi]` and maps all pass points into cosine values `[-1/9,1]`.
+The change of polynomial/cosine bases is invertible, so commuting taps are
+equivalent to commuting original coefficients.  They are therefore forced to
+the pure delay, whereas the coupled response has norm `C exp(-cN)`.
+
+The rational quadratic witness uses `x=(3 cos(omega)+1)/2` and exactly the taps
+
+```text
+B0=B4=[[-27/128, 0], [0, -27/1280]]
+B1=B3=[[27/64, 9/80], [9/80, 27/640]]
+B2=[[113/320, -9/80], [-9/80, 577/640]].
+```
+
+Its pass cosine values are `0,1/3,2/3,1`, its stop band is
+`[arccos(-1/3),pi]`, and its exact norm bound is `301/304`.  This closes a
+natural fixed-latency interpretation, not the priority or deployed-application
+gate.

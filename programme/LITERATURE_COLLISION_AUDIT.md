@@ -91,8 +91,12 @@ hierarchy or the Mortimer finite-shot constraints fails Gate G1.
 | K.-C. Toh and L. N. Trefethen, [*The Chebyshev polynomials of a matrix*](https://doi.org/10.1137/S0895479896303739) (1998) | Monic scalar polynomials minimizing `||p(A)||_2`, computed by SDP, with Krylov motivation | Minimax polynomial filtering and SDP formulations are classical.  This work does not use matrix coefficients or tangential pass constraints. |
 | M. Rinelli and R. Vandebril, [*Block Krylov subspaces and orthogonal matrix polynomials: a structural correspondence with applications to unitary matrices*](https://arxiv.org/abs/2605.16954) (2026) | Isometric correspondence between block Krylov spaces and matrix-polynomial spaces; spectral matrix measures and short recurrences | Supplies the natural application language and prevents claiming the block-Krylov/matrix-polynomial correspondence.  Its stated theorems concern orthogonality and recurrences, not a commuting-vs-noncommuting stopband minimax gap. |
 | M. Hartz, [*On von Neumann's inequality on the polydisc*](https://doi.org/10.1007/s00208-024-03040-2) (2025), Sec. 2 | Sharp and near-sharp norm inequalities for one-variable polynomials with operator coefficients, including distinct commuting and noncommuting regimes | Confirms that separations caused by operator coefficients are established phenomena.  Our exact interpolation-constrained separation must not be advertised as the first benefit of noncommuting coefficients. |
+| F. Gama, A. G. Marques, A. Ribeiro and G. Leus, [*MIMO Graph Filters for Convolutional Neural Networks*](https://arxiv.org/abs/1803.02247) (2018), Eqs. (5)--(7) | Standard MIMO graph-filter architecture `Y=sum S^k X H_k^T`, with general and parsimonious matrix taps | Matrix-coefficient graph/FIR filtering is established.  The paper does not state a fixed-basis scalar lower bound or exponential tangential separation. |
+| S.-P. Wu, S. Boyd and L. Vandenberghe, [*FIR Filter Design via Spectral Factorization and Convex Optimization*](https://web.stanford.edu/~boyd/papers/fir_spectral_fact.html) (1998) | Scalar FIR design with frequency-domain magnitude constraints and convex optimization | Convex/minimax FIR stopband design is classical.  Only the fixed-latency, directional MIMO-vs-fixed-basis separation can remain candidate novelty. |
 
-The search has not yet found a primary source proving or disproving the precise
+The detailed clause comparison is maintained in
+[`ROUTE_C_PRIORITY_MATRIX.md`](ROUTE_C_PRIORITY_MATRIX.md).  The search has not
+yet found a primary source proving or disproving the precise
 fixed-degree, real-interval, tangential interpolation separation in
 `ROUTE_C_THEOREM_PILOT.md`.  Stefanovski--Georgijević comes especially close at
 the problem level, but its headline theorem permits stable rational matrices of
@@ -108,9 +112,13 @@ has norm at least one.  A candidate asymptotic theorem now gives leakage
 `C exp(-cN)` for noncommuting symmetric coefficients versus exactly one for the
 commuting class at dimension `d=N^2`.  The proof now includes an explicit
 full-spark perturbation, fixed norms, a quantified right inverse and correction,
-and a block-Krylov interpretation.  The remaining G1 bar is a line-by-line
-norm-constrained interpolation collision check and an application benchmark;
-the two-dimensional example alone is not a paper-scale contribution.
+and a block-Krylov interpretation.  A natural grid-graph denoising pilot was
+negative: a scalar Chebyshev filter dominated when a small pass distortion was
+allowed.  The polynomial theorem now also has an exact reciprocal linear-phase
+MIMO FIR corollary and rational five-tap certificate.  The remaining G1 bar is
+a line-by-line collision check, especially in FIR approximation, and a measured
+or standards-derived directional calibration; the two-dimensional example
+alone is not a paper-scale contribution.
 
 ## Provisional Gate-G1 ranking
 

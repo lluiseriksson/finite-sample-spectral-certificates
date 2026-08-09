@@ -229,3 +229,30 @@ million primitive sketch vectors:
 The Hotelling route remains a documented negative result.  The Yang--Mills
 route remains deferred: no claim in this paper converts finite ANNNI evidence
 into a thermodynamic or gauge-theory mass-gap theorem.
+
+## Route C natural-application gate: negative graph result
+
+`research/route_c_graph_filter_pilot.py` tested a standard degree-two MIMO
+graph filter on two smooth signals over an 18-by-23 grid graph.  The four
+largest distinct graph frequencies supplied full-spark two-channel pass rows
+(minimum absolute two-by-two minor `0.02718`); 207 nonpositive eigenvalues
+formed the stopband.
+
+The symmetric-tap SDP returned validation leakage `0.99999992` and commutators
+of order `1e-14`, numerically collapsing to the identity.  A general
+nonsymmetric MIMO filter reached leakage `0.60291`.  The scalar Chebyshev
+baseline reached `1/17 = 0.05882`; after two iterations it had best globally
+rescaled pass error `0.00524` and desired-subspace sine `0.0292`, while the
+symmetric MIMO result remained at `0.997`.
+
+Decision: **ordinary graph denoising fails the application gate**.  Exact
+directional preservation is task-designed rather than scientifically compelled
+here.  The numbers remain public in
+`results/route_c/graph_filter_pilot.json` and the pilot runs in CI.  They must
+not be reframed as positive evidence.
+
+The surviving application interpretation is reciprocal linear-phase MIMO FIR
+filtering.  The theorem's affine cosine transform fixes order, latency,
+reciprocity and directional frequency calibrations exactly, and the quadratic
+certificate becomes a rational five-tap filter.  A real measured or
+standards-derived calibration instance is still required.

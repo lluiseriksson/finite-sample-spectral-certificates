@@ -23,8 +23,8 @@
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\Span}{\operatorname{span}}
 
-\title{Noncommuting Hermitian Matrix-Polynomial Filters\\
-       Can Have an Exponential Tangential Advantage}
+\title{Exponential Tangential Advantages of Noncommuting\\
+       Matrix-Polynomial and Linear-Phase MIMO FIR Filters}
 \author{Lluis Eriksson}
 \date{Research draft, 9 August 2026}
 
@@ -36,19 +36,20 @@ Scalar Chebyshev filtering treats every vector in a block Krylov iterate with
 the same polynomial, while simultaneously diagonalizable matrix coefficients
 amount to independent scalar filters after a fixed channel rotation.  We study
 the larger class of Hermitian matrix-polynomial filters under tangential pass
-constraints.  An exact full-spark quadratic certificate already separates
-noncommuting from commuting symmetric coefficients on a full stopband.  Our
-main result gives an
+constraints.  Our main result gives an
 asymptotic separation: at degree $N$ and channel dimension $d=N^2$, there are
 distinct pass points and full-spark channel signatures for which a symmetric
 noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
 pairwise-commuting symmetric filter is identically the identity and has leakage
-one.  We give an explicit full-spark perturbation and a block-Krylov error
-interpretation.  Numerical semidefinite programs support the finite-dimensional
-mechanism, and a controlled Hermitian block iteration tests the resulting
-subspace error, but neither is used in the proof.  This draft makes no claim that
-tangential matrix interpolation or matrix-valued Krylov theory is new; priority
-of the specific minimax separation remains under audit.
+one.  An affine cosine substitution turns the theorem into a fixed-latency
+separation for reciprocal linear-phase MIMO FIR filters: fully coupled taps can
+achieve exponential high-frequency rejection, while every feasible fixed
+orthogonal bank of scalar filters is a pure delay.  We also give an exact
+rational five-tap certificate with stopband norm at most $301/304$.  Numerical
+programs test the mechanism and expose an ordinary graph-denoising setting in
+which scalar Chebyshev filtering is instead preferable.  Tangential matrix
+interpolation, MIMO filtering and convex FIR design are not claimed as new;
+priority of the precise fixed-order separation remains under audit.
 \end{abstract}
 
 \section{Problem and contribution}
@@ -347,12 +348,70 @@ coefficients are the diagonal entries of the $\Lambda_k$.
 \end{proof}
 
 Because every coefficient in \cref{thm:main} is symmetric, its column
-constraints transpose to the row constraints in \cref{prop:krylov}.  The
+constraints transpose to the row constraints in Proposition~\ref{prop:krylov}.  The
 theorem therefore gives block spectral instances with exponentially small stop
 contraction that no fixed-basis collection of scalar pass-preserving filters
 can reproduce.  This is an approximation-theoretic separation; an end-to-end
 runtime advantage also depends on filter construction, recurrence stability,
 orthogonalization, and the cost model.
+
+\section{Reciprocal linear-phase MIMO FIR meaning}
+
+The polynomial separation is equivalently a fixed-order statement for a
+standard multichannel FIR class.  Let
+\[
+ x(y)=\frac{9y+5}{4},\qquad G_N(\omega)=P_N(x(\cos\omega)).
+\]
+Because $G_N$ is a real symmetric matrix cosine polynomial of degree $N$, it
+has a unique expansion
+\[
+ G_N(\omega)=A_N+2\sum_{r=1}^{N}A_{N-r}\cos(r\omega),
+ \qquad A_r=A_r^\top.
+\]
+The causal response
+\begin{equation}\label{eq:firresponse}
+ H_N(e^{i\omega})=\sum_{r=0}^{2N}A_re^{-ir\omega}
+                  =e^{-iN\omega}G_N(\omega),
+ \qquad A_r=A_{2N-r},
+\end{equation}
+therefore has $2N+1$ real symmetric palindromic taps and common group delay
+$N$.
+
+\begin{corollary}[Fixed-latency MIMO FIR separation]\label{cor:fir}
+For every sufficiently large $N$ there are $M=N^2+N$ distinct frequencies
+$\omega_j\in[0,\arccos(-1/9)]$ and full-spark directions
+$v_j\in\R^{N^2}$ for which a causal response of the form
+\eqref{eq:firresponse} satisfies
+\[
+ H_N(e^{i\omega_j})v_j=e^{-iN\omega_j}v_j,
+ \qquad
+ \sup_{\omega\in[\arccos(-5/9),\pi]}
+       \|H_N(e^{i\omega})\|_{\op}\le Ce^{-cN}.
+\]
+Every response with the same real-symmetric palindromic tap structure whose
+taps commute pairwise and which satisfies the same calibrations is the pure
+delay $e^{-iN\omega}I$.  Its high-frequency norm is one.
+\end{corollary}
+
+\begin{proof}
+Take the data of \cref{thm:main} and choose
+$\cos\omega_j=(4\lambda_j-5)/9$.  The pass interval $[1,7/2]$ maps into
+$[-1/9,1]$, while the stop interval $[-1,0]$ maps onto $[-1,-5/9]$.
+Equation~\eqref{eq:firresponse} gives the calibration and transfers the norm
+bound unchanged.  The affine substitution is invertible on coefficient
+spaces, as is the change between powers of $\cos\omega$ and the cosine basis.
+Thus the transformed coefficient matrices commute pairwise exactly when the
+original polynomial coefficients do.  Palindromy makes the FIR taps an
+invertible relabelling and rescaling of the cosine coefficients.  Applying
+Lemma~\ref{lem:commuting} therefore forces the zero-phase response to be $I$.
+\end{proof}
+
+A fixed orthogonal channel rotation diagonalizes commuting symmetric taps, so
+the comparator in Corollary~\ref{cor:fir} is precisely a bank of independent scalar
+linear-phase filters in one frequency-independent channel basis.  The result
+does not compare implementation cost, quantization robustness, or unconstrained
+MIMO filters, and the calibrated directions are constructed rather than taken
+from a deployed system.
 
 \section{Exact finite witnesses}
 
@@ -424,6 +483,30 @@ The exact-arithmetic replay
 \texttt{verification/verify\_quadratic\_filter\_witness.py} checks all
 constraints, target minors, commutators and Bernstein coefficients without a
 numerical solver.
+
+\subsection{An exact five-tap MIMO FIR certificate}
+
+The quadratic witness has an exact causal FIR realization.  Substitute
+$x=(3\cos\omega+1)/2$ and define the palindromic taps
+\[
+ B_0=B_4=\begin{pmatrix}-27/128&0\\0&-27/1280\end{pmatrix},\quad
+ B_1=B_3=\begin{pmatrix}27/64&9/80\\9/80&27/640\end{pmatrix},
+\]
+\[
+ B_2=\begin{pmatrix}113/320&-9/80\\-9/80&577/640\end{pmatrix}.
+\]
+Their response obeys the exact identity
+\[
+ \sum_{r=0}^{4}B_re^{-ir\omega}
+ =e^{-2i\omega}\bigl(B_2+2B_1\cos\omega+2B_0\cos2\omega\bigr)
+ =e^{-2i\omega}P\!\left(\frac{3\cos\omega+1}{2}\right).
+\]
+Consequently it preserves the four directions, up to their common delay
+phase, at cosine values $0,1/3,2/3,1$ and has operator norm at most $301/304$
+on $\omega\in[\arccos(-1/3),\pi]$.  Every commuting symmetric palindromic
+five-tap response meeting the same four calibrations is the pure two-sample
+delay and has norm one.  Moreover $[B_0,B_1]\ne0$.  All statements, including
+the tap conversion, are checked by the same exact-arithmetic replay.
 
 \subsection{An affine two-constraint precursor}
 
@@ -513,6 +596,21 @@ all four exact tangential constraints is the identity and remains at stop/pass
 ratio $5$ and $\sin\theta=0.9892$.  This controlled construction demonstrates
 the theorem's error mechanism, not a runtime advantage on a natural problem.
 
+\subsection{A failed graph-denoising application gate}
+
+We also tested the standard MIMO graph-filter form
+$Y=\sum_{k=0}^{2}S^kXC_k$ on two smooth fields over an $18$ by $23$ grid
+graph, using four low-frequency full-spark row signatures.  The symmetric MIMO
+SDP collapsed to the identity (validated stop norm $0.99999992$), while the
+one-point-normalized scalar Chebyshev filter had stop norm $1/17$.  After two
+iterations its best globally rescaled pass error was only $0.00524$ and its
+desired-subspace sine was $0.0292$, compared with $0.997$ for the symmetric
+MIMO solution.  A nonsymmetric MIMO fit eventually preserved the exact
+geometry, but was inferior at short iteration counts.  Thus ordinary graph
+denoising does not justify the exact tangential specification, and no such
+application claim is made.  We retain this negative result to prevent selecting
+an example merely because it matches the theorem's notation.
+
 \section{Relation to established work and open gates}
 
 Tangential matrix-polynomial interpolation is classical
@@ -529,20 +627,25 @@ coefficients.  Thus small regional norm under matrix tangential constraints is
 not itself our contribution.  Minimax polynomial filtering and SDP
 formulations have a long numerical-linear-algebra history
 \cite{TohTrefethen1998}, and matrix-polynomial spaces arise naturally in block
-Krylov methods \cite{RinelliVandebril2026}.  Accordingly, none of these
-ingredients is claimed as new.
+Krylov methods \cite{RinelliVandebril2026}.  General MIMO graph filters already
+use matrix taps in precisely the form $\sum_k S^kXC_k$
+\cite{GamaEtAl2018}, while scalar FIR minimax design by convex optimization is
+classical \cite{WuBoydVandenberghe1998}.  Accordingly, none of these ingredients
+is claimed as new.
 
 The candidate novelty is therefore narrower than norm-constrained or
-degree-constrained tangential interpolation alone.  Under a fixed ordinary
-degree, a Hermitian-coefficient tangential minimax problem on a real interval
-can exhibit an exponential separation between noncommuting coefficients and
-the full pairwise commuting subclass.  Before submission, these gates remain:
+degree-constrained tangential interpolation or FIR design alone.  Under a fixed
+ordinary degree---equivalently fixed reciprocal FIR latency---a
+Hermitian-coefficient tangential minimax problem can exhibit an exponential
+separation between fully coupled coefficients and the full fixed-basis scalar
+subclass.  Before submission, these gates remain:
 \begin{enumerate}
-\item compare \cref{thm:main} line by line with full texts on norm-constrained
-      tangential interpolation, rather than relying on titles or abstracts;
-\item test a naturally arising multichannel eigenproblem in which pass-row
-      geometry is scientifically mandated, including adaptive and
-      nonstationary scalar baselines beyond the controlled construction above.
+\item complete full-text checks of the closest polynomial, rational regional,
+      and linear-phase MIMO FIR results; the current clause-by-clause audit is
+      not a proof of priority;
+\item test a measured or standards-derived multichannel FIR instance in which
+      directional calibrations and fixed delay are mandated, including
+      approximate-calibration and unconstrained MIMO baselines.
 \end{enumerate}
 
 \paragraph{Reproducibility.}
@@ -554,6 +657,10 @@ the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/research/route_c_block_krylov_benchmark.py}{block-iteration benchmark},
 its
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/results/route_c/block_krylov_benchmark.json}{machine-readable output},
+the deliberately negative
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/results/route_c/graph_filter_pilot.json}{graph-filter pilot},
+the
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ROUTE_C_PRIORITY_MATRIX.md}{clause-by-clause priority matrix},
 and the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ARTIFACT_MANIFEST.md}{artifact manifest with the PDF hash}.
 

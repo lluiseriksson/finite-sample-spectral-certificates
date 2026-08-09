@@ -55,10 +55,13 @@ obey full-spark tangential pass constraints with stopband leakage
 the same constraints is identically the identity.  Reproducible SDPs show a
 large finite-dimensional gap in the first symmetric-surjective case.
 
-Main danger: norm-constrained tangential interpolation or matrix approximation
-theory may already imply the separation, or the block-Krylov interpretation may
-remain too methodological for a 7+ paper.  G1 therefore stays open until the
-quantified proof and closest-theorem comparison are complete.
+An affine cosine substitution now gives an exact fixed-latency corollary for
+reciprocal linear-phase MIMO FIR filters, including a rational five-tap
+certificate.  Main danger: norm-constrained tangential interpolation or MIMO
+FIR approximation theory may already imply the separation, or the constructed
+directional calibrations may remain too artificial for a 7+ paper.  G1 stays
+open until the closest-theorem comparison and a real calibration instance are
+complete.
 
 ## Weekly outputs and gates
 
@@ -96,8 +99,9 @@ quantified proof and closest-theorem comparison are complete.
 - Week 3 is active.  Route A's naive claim and the broad forms of Route B were
   killed by prior literature.  Route C survived the algebraic counterexample
   search and is the current lead.
-- Gate G1 is **not yet passed**.  The typeset quantified proof and a controlled
-  block-Krylov subspace-error benchmark are now closed.  Exit still requires a
-  direct comparison with the closest norm-constrained tangential interpolation
-  results and evidence that a natural multichannel problem genuinely requires
-  the preserved pass-row geometry.
+- Gate G1 is **not yet passed**.  The quantified proof, exact rational witness,
+  controlled block-Krylov benchmark and reciprocal FIR corollary are closed.
+  A natural grid-graph denoising pilot failed against scalar Chebyshev and is
+  retained as a negative result.  Exit still requires full-text/FIR-specific
+  collision checks and a measured or standards-derived MIMO calibration that
+  genuinely mandates the directional pass geometry.
