@@ -204,6 +204,18 @@ and is compact; standard conic duality excludes weak infeasibility.  Singular
 sample Grams require an explicit reduction to their range before making that
 claim.
 
+For approximate multipliers with stationarity residual `R`, feasibility would
+imply `0 <= beta + tr(R Q)`.  Since the scaled interval obeys `0<=Q<=B`,
+
+    |tr(R Q)| <= ||R||_* ||B||_op.
+
+Thus `beta + ||R||_* ||B||_op < 0` is an a-posteriori incompatibility
+certificate even before exact rational reconstruction.  The production code
+first projects multipliers PSD, repairs `R=R_+-R_-` by adding `R_-` to the
+lower-band multiplier and `R_+` to the upper-band multiplier, adds an explicit
+roundoff-scale identity shift, and finally applies this nuclear/operator-norm
+bound.
+
 ## Theorem H: uncertainty can change the optimal witness
 
 For a population localizer `M` and mean covariance `C/n`, define

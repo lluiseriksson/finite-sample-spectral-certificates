@@ -386,6 +386,20 @@ objectives were positive, whereas all 15\% and 35\% inflated-gap objectives
 were negative.  The production threshold is $-10^{-9}$ on the \emph{repaired}
 objective, leaving an additional buffer above double-precision roundoff.
 
+For an additional a-posteriori check, let $\widehat R$ be the final residual and
+recall that every scaled primal matrix obeys $0\preceq\widetilde Q\preceq B$.
+Then
+\begin{equation}
+  |\ip{\widehat R}{\widetilde Q}|
+  \le \|\widehat R\|_*\,\|B\|_{\rm op}.
+  \label{eq:residualbound}
+\end{equation}
+We add this worst-case quantity to the repaired dual objective before making a
+decision.  The code also shifts each multiplier by an explicit roundoff-scale
+identity so that its reported minimum eigenvalue is positive.  The final rule
+therefore tests a conservative upper bound on the dual contradiction margin,
+not the raw solver objective.
+
 This gap between scientific margin and numerical residual is encouraging but
 does not itself constitute interval arithmetic.  The release protocol is:
 \begin{enumerate}

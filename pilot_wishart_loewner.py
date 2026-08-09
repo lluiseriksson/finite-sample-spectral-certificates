@@ -175,6 +175,39 @@ def dual_certificate(
         -np.trace(yl_repaired @ (lower * empirical))
         + np.trace(yu_repaired @ (upper * empirical))
     )
+
+    # Add an explicit roundoff-scale identity shift, then account for the tiny
+    # remaining stationarity defect without assuming exact cancellation.  For
+    # every feasible 0<=Q<=B,
+    # |<R,Q>| <= ||R||_* ||B||_op.  Hence beta+that bound < 0 is itself a
+    # conservative floating-point a-posteriori certificate.
+    repaired_minimum = float(
+        min(
+            np.linalg.eigvalsh(yl_repaired)[0],
+            np.linalg.eigvalsh(yu_repaired)[0],
+            np.linalg.eigvalsh(yz_repaired)[0],
+        )
+    )
+    maximum_norm = max(
+        1.0,
+        np.linalg.norm(yl_repaired, 2),
+        np.linalg.norm(yu_repaired, 2),
+        np.linalg.norm(yz_repaired, 2),
+    )
+    safety_shift = max(0.0, -repaired_minimum) + 64.0 * np.finfo(float).eps * maximum_norm
+    yl_safe = yl_repaired + safety_shift * np.eye(dimension)
+    yu_safe = yu_repaired + safety_shift * np.eye(dimension)
+    yz_safe = yz_repaired + safety_shift * np.eye(localizer_size)
+    safe_scale = float(np.trace(yl_safe) + np.trace(yu_safe) + np.trace(yz_safe))
+    yl_safe, yu_safe, yz_safe = yl_safe / safe_scale, yu_safe / safe_scale, yz_safe / safe_scale
+    safe_residual = yl_safe - yu_safe + numerical_adjoint(yz_safe)
+    safe_value = float(
+        -np.trace(yl_safe @ (lower * empirical))
+        + np.trace(yu_safe @ (upper * empirical))
+    )
+    stationarity_nuclear = float(np.linalg.norm(safe_residual, ord="nuc"))
+    stationarity_bound = stationarity_nuclear * float(np.linalg.eigvalsh(upper * empirical)[-1])
+    certificate_upper = safe_value + stationarity_bound
     return {
         "dual_status": problem.status,
         "dual_value": value,
@@ -193,6 +226,18 @@ def dual_certificate(
                 np.linalg.eigvalsh(yl_repaired)[0],
                 np.linalg.eigvalsh(yu_repaired)[0],
                 np.linalg.eigvalsh(yz_repaired)[0],
+            )
+        ),
+        "safe_identity_shift": safety_shift,
+        "safe_dual_value": safe_value,
+        "safe_stationarity_nuclear": stationarity_nuclear,
+        "safe_stationarity_bound": stationarity_bound,
+        "safe_certificate_upper": certificate_upper,
+        "safe_min_psd_eigenvalue": float(
+            min(
+                np.linalg.eigvalsh(yl_safe)[0],
+                np.linalg.eigvalsh(yu_safe)[0],
+                np.linalg.eigvalsh(yz_safe)[0],
             )
         ),
     }
@@ -228,7 +273,7 @@ def run(args: argparse.Namespace) -> dict[str, object]:
                 certificate = dual_certificate(
                     sample_gram, args.degree, channels, theta, args.alpha, sample_count
                 )
-                detected = certificate["repaired_dual_value"] < -1e-9
+                detected = certificate["safe_certificate_upper"] < -1e-9
                 detections += detected
                 status = str(certificate["dual_status"])
                 statuses[status] = statuses.get(status, 0) + 1
@@ -252,6 +297,10 @@ def run(args: argparse.Namespace) -> dict[str, object]:
                         min(item["repaired_dual_value"] for item in certificates),
                         max(item["repaired_dual_value"] for item in certificates),
                     ],
+                    "safe_certificate_upper_range": [
+                        min(item["safe_certificate_upper"] for item in certificates),
+                        max(item["safe_certificate_upper"] for item in certificates),
+                    ],
                     "maximum_stationarity_fro": max(
                         item["dual_stationarity_fro"] for item in certificates
                     ),
@@ -270,11 +319,17 @@ def run(args: argparse.Namespace) -> dict[str, object]:
                     "minimum_repaired_psd_eigenvalue": min(
                         item["repaired_min_psd_eigenvalue"] for item in certificates
                     ),
+                    "maximum_safe_stationarity_bound": max(
+                        item["safe_stationarity_bound"] for item in certificates
+                    ),
+                    "minimum_safe_psd_eigenvalue": min(
+                        item["safe_min_psd_eigenvalue"] for item in certificates
+                    ),
                     "first_certificate": certificates[0],
                 }
             )
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "setup": vars(args) | {"output": str(args.output)},
         "model": metadata,
         "joint_dimension": int(joint.shape[0]),
