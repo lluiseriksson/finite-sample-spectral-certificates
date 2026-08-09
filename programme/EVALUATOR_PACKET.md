@@ -9,8 +9,8 @@ request to reward repository size.
 - Repository: <https://github.com/lluiseriksson/finite-sample-spectral-certificates>
 - Research branch: `research/endogenous-visibility`
 - Draft pull request: <https://github.com/lluiseriksson/finite-sample-spectral-certificates/pull/2>
-- Source commit inspected when this packet was prepared: to be filled after the
-  scientific commit containing the PDF bytes below.
+- Scientific source commit containing the PDF bytes below:
+  `46ed63d12d1639b949625f67b1dfbc175ad4580f`.
 - PDF path: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title visible on page 1: *Exponential Calibration Laws for Noncommuting
   Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
@@ -18,12 +18,23 @@ request to reward repository size.
 - SHA-256 of the repository PDF bytes:
   `d62ed80dba4a4c9cd42016aa23931277154a6bdfc070686ff19b91e8f3e7e323`
 - Embedded manuscript date: `10 August 2026`
-- CI and independent-review status: pending for these exact bytes.  Scores for
-  the earlier 13-page artifact do not transfer.
+- CI status at that commit: push run
+  [`31341446824`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31341446824)
+  and pull-request run
+  [`31341448734`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31341448734)
+  both passed.
+- Independent model review: a fresh blind Gemini 3.1 Pro audit of the attached
+  exact PDF reported the visible title and 15 pages, marked all eight requested
+  proof targets `PASS`, scored scientific contribution **9.0 / 10** and
+  manuscript quality **8.5 / 10**, and recommended human peer review.  The
+  model did not hash the bytes or run scripts.  The full method, reservations,
+  and an earlier hallucination/retraction trace are recorded in
+  `programme/INDEPENDENT_REVIEW_GEMINI_PRO_2026-08-10.md`.
 
 Before scoring, independently hash the downloaded PDF and copy the result into
 the response.  If the hash, title or page count differs, stop: the score belongs
-to another artifact.  If a later commit changes the PDF, this packet must be
+to another artifact.  The release hash was checked both locally and from the
+public commit URL.  If a later commit changes the PDF, this packet must be
 regenerated rather than silently reused.
 
 ## Claims actually submitted for assessment

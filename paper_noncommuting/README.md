@@ -17,10 +17,12 @@ correlator paper.
   preserves strict separation for `delta < 7/1920`.  The negative graph pilot and an exact
   rational certificate calibrated from held-out-controlled VBL-VA001 sensor
   records are closed.  The modal-task interpretation is backed by an exact FDD
-  invariance lemma and a held-out cospectral replay.  The previous independent
-  review applies only to the superseded PDF hash; this strengthened artifact
-  requires a fresh review.  Restricted full-text priority uncertainty remains
-  disclosed.
+  invariance lemma and a held-out cospectral replay.  A fresh blind Gemini 3.1
+  Pro audit of the exact 15-page PDF marked all eight requested proof targets
+  `PASS`, scored the scientific contribution `9.0/10` and manuscript quality
+  `8.5/10`, and recommended human peer review.  This is model review, not human
+  peer review or a novelty certificate.  Restricted full-text priority
+  uncertainty remains disclosed.
 
 The current PDF hash is recorded after each accepted compilation in
 `programme/ARTIFACT_MANIFEST.md`.  Evaluations must quote the title and SHA-256
