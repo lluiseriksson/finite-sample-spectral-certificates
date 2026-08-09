@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "title": "VBL-VA001: Lab-scale vibration analysis dataset",
+    "doi": "10.5281/zenodo.7006575",
+    "record_url": "https://zenodo.org/records/7006575",
+    "api_url": "https://zenodo.org/api/records/7006575",
+    "license": "CC-BY-4.0",
+    "archive": {
+      "name": "VBL-VA001.zip",
+      "size_bytes": 3795269043,
+      "md5": "dab0c94b205c88551b9ac54a2754d432",
+      "content_url": "https://zenodo.org/api/records/7006575/files/VBL-VA001.zip/content"
+    }
+  },
+  "selection": {
+    "condition": "normal",
+    "training_prefix": "normal_000",
+    "held_out_prefix": "normal_001",
+    "rule": "Use all six archive members with each prefix; detect the five highest-trace spectral peaks between 20 and 1000 Hz on training records only.",
+    "files": [
+      {"split": "train", "member": "VBL-VA001/normal/normal_000-2_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4153857, "crc32": "37027a31", "sha256": "7f1f318ab54f5caf4df24857c97f6d6600f727d13facbcf45d473cdeea3846c8"},
+      {"split": "train", "member": "VBL-VA001/normal/normal_000-3_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4150908, "crc32": "b0acf009", "sha256": "63a4e6ca826ac6cd8500723dd4f320df67906797c99d61e29339fcd08d554faa"},
+      {"split": "train", "member": "VBL-VA001/normal/normal_000-4_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4152094, "crc32": "2a21abd5", "sha256": "baf0a2aa37d6f7d7af71284ea9a4810e84fdc2327e505aa0eb9bbafd33b5dcb0"},
+      {"split": "train", "member": "VBL-VA001/normal/normal_000-5_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4154221, "crc32": "810e1525", "sha256": "9966fcaec74c36bb727ce88715c2170a8fa285a51616ea203969f268dbbc2e9d"},
+      {"split": "train", "member": "VBL-VA001/normal/normal_000-6_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4143609, "crc32": "dd0c40ad", "sha256": "155ef8832837ee85aae50a0168ee79fd94e8bb80c53059e703bdf05310cdc326"},
+      {"split": "train", "member": "VBL-VA001/normal/normal_000_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4144403, "crc32": "19152c12", "sha256": "d09b7fd4f4bb1aa00f693e73a0f1b8f1b7f97a1bcc284d4d4f55ee56e8cc29b1"},
+      {"split": "held_out", "member": "VBL-VA001/normal/normal_001-2_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4158583, "crc32": "67efd204", "sha256": "902de8545166ae25def1e6f64afac7b1f158fe7499b18142bca0bb6eafaf3969"},
+      {"split": "held_out", "member": "VBL-VA001/normal/normal_001-3_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4153087, "crc32": "1129fc4e", "sha256": "9bef2c8c1303b64744c8e9c9e825639cc54207558f5b9c3cfd6020ff53411970"},
+      {"split": "held_out", "member": "VBL-VA001/normal/normal_001-4_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4158289, "crc32": "26ed6886", "sha256": "eb3f1f1e13f1e60978d474fed19f1038bfe9a749ea1079a2647c7ec434db73ec"},
+      {"split": "held_out", "member": "VBL-VA001/normal/normal_001-5_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4158694, "crc32": "f5e14272", "sha256": "6bb3ccb90e90491dfebc84fda8aedeadadb308afee004ea417e90a2a31fb6613"},
+      {"split": "held_out", "member": "VBL-VA001/normal/normal_001-6_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4143750, "crc32": "f55474ed", "sha256": "98da8c13e23351a4932ac97026cf26069b40410e3514233313a5a24af994ab7e"},
+      {"split": "held_out", "member": "VBL-VA001/normal/normal_001_Ch08_100g_PE_Acceleration.csv", "size_bytes": 4146928, "crc32": "43e98241", "sha256": "dcaa49ba0ecf49f7ded1dcc64054a1565b1de0acea2329b6e90a54dcb483dfa8"}
+    ]
+  },
+  "spectral_pipeline": {
+    "input_rate_hz": 20000,
+    "decimation_factor": 8,
+    "design_rate_hz": 2500,
+    "resampling": "scipy.signal.resample_poly(data, up=1, down=8, axis=0), SciPy 1.18.0 defaults",
+    "window": "numpy.hanning(1024)",
+    "nfft": 1024,
+    "hop": 512,
+    "peak_search_hz": [20, 1000],
+    "peak_distance_bins": 8,
+    "log_trace_prominence": 0.25,
+    "stopband_hz": [1100, 1250],
+    "cospectral_definition": "Mean over records and overlapping windows of Re(X(f)^* X(f)); signatures are leading unit eigenvectors with deterministic sign."
+  },
+  "calibration": {
+    "fft_bins": [41, 82, 305, 346, 387],
+    "frequencies_hz": [100.09765625, 200.1953125, 744.62890625, 844.7265625, 944.82421875],
+    "measured_nodes": [0.9685220942744173, 0.8760700941954066, -0.29615088824362384, -0.5245896826784687, -0.7200025079613813],
+    "rational_nodes": ["0.968522", "0.876070", "-0.296151", "-0.524590", "-0.720003"],
+    "training_directions": [
+      [-0.05453137034407268, 0.9961290472753634, -0.06894382367315377],
+      [0.9806440800830064, 0.16712486380036184, 0.10201209780150794],
+      [0.15230261292931924, 0.9868438572838305, -0.054250487887879506],
+      [0.8690009984399769, -0.3503345329201506, 0.34943236792538707],
+      [0.6066514580738865, 0.7162279552995664, -0.34495148131908365]
+    ],
+    "rational_training_directions": [
+      ["-0.054531", "0.996129", "-0.068944"],
+      ["0.980644", "0.167125", "0.102012"],
+      ["0.152303", "0.986844", "-0.054250"],
+      ["0.869001", "-0.350335", "0.349432"],
+      ["0.606651", "0.716228", "-0.344951"]
+    ],
+    "held_out_directions": [
+      [-0.05239316075969276, 0.9961539249166794, -0.07023043911797233],
+      [0.9810086225735505, 0.16490475040192737, 0.10212005547992849],
+      [0.1560474496299845, 0.9861102540653147, -0.056883743646296586],
+      [0.8665484167044482, -0.3558667561011021, 0.3499324126300584],
+      [0.6123421338490408, 0.7107243067633059, -0.346277447849296]
+    ]
+  }
+}

@@ -254,5 +254,43 @@ not be reframed as positive evidence.
 The surviving application interpretation is reciprocal linear-phase MIMO FIR
 filtering.  The theorem's affine cosine transform fixes order, latency,
 reciprocity and directional frequency calibrations exactly, and the quadratic
-certificate becomes a rational five-tap filter.  A real measured or
-standards-derived calibration instance is still required.
+certificate becomes a rational five-tap filter.  The next gate is the measured
+calibration reported below.
+
+## Route C measured-calibration gate: positive VBL-VA001 result
+
+The public CC-BY-4.0 VBL-VA001 archive (Zenodo DOI
+`10.5281/zenodo.7006575`) supplies triaxial pump-vibration recordings at 20 kHz.
+The acquisition manifest fixes twelve normal-condition CSV members, their
+CRC-32 values and SHA-256 hashes.  Six `normal_000` records form the training
+split and six `normal_001` records are held out.  After polyphase decimation to
+2.5 kHz, the five largest-trace training cospectral peaks between 20 and 1000
+Hz give five three-channel signatures.  No held-out record enters peak
+selection or fitting.
+
+The six-decimal rationalization is full spark in exact arithmetic (minimum
+normalized 3-by-3 minor `0.009489456049`).  The exact verifier constructs a
+noncommuting symmetric quadratic meeting all five rational calibrations and
+proves continuum leakage below `24/25` on `[-1,-0.929]`.  It checks
+`(191/200)^2 I-P(x_i)^2` by rational Sylvester tests on 101 grid points and
+closes the cells with the exact derivative bound, producing the sharper global
+upper bound `0.957037877842`.  Lemma 2.2 forces every exactly calibrated
+commuting symmetric quadratic to be the identity, so its leakage is exactly
+one.
+
+The rational witness has measured-training residual `3.50e-7` from rounding
+and maximum held-out residual `0.0038491`; train-to-held-out direction angles
+are at most `0.4599` degrees.  A general nonsymmetric exact-fit SDP reaches
+leakage `0.14514`, but its held-out residual is `0.10447` and maximum
+coefficient Frobenius norm `36.06`, versus `2.623` for the symmetric witness.
+A scalar quadratic allowed 1% calibration error reaches `0.97520`; the best of
+64 seeded fixed orthogonal bases reaches `0.96966`.  The latter is explicitly a
+stress test, not a global certificate over bases.
+
+Decision: **the measured-data grounding gate passes**.  The deployment gate
+does not: this experiment does not prove that exact directional preservation
+is mandated by a pump diagnostic, nor a classification, latency, hardware or
+runtime advantage.  Replays are
+`verification/verify_vbl_va001_witness.py`,
+`research/route_c_vibration_calibration.py`, and
+`results/route_c/vbl_va001_calibration.json`.

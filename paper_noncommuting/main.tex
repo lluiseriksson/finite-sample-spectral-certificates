@@ -2,6 +2,7 @@
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs}
+\usepackage{float}
 \usepackage[hidelinks]{hyperref}
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype}
@@ -47,9 +48,12 @@ achieve exponential high-frequency rejection, while every feasible fixed
 orthogonal bank of scalar filters is a pure delay.  We also give an exact
 rational five-tap certificate with stopband norm at most $301/304$ and prove
 that its advantage survives commuting calibration errors
-$\delta<3/32300$.  Numerical
-programs test the mechanism and expose an ordinary graph-denoising setting in
-which scalar Chebyshev filtering is instead preferable.  Tangential matrix
+$\delta<3/32300$.  A second exact-arithmetic certificate is calibrated from a
+public triaxial pump-vibration data set: it gives leakage below $0.96$ versus
+one for the exactly calibrated commuting class, while its maximum directional
+error on six held-out records is $0.00385$.  Numerical programs test the
+mechanism and expose an ordinary graph-denoising setting in which scalar
+Chebyshev filtering is instead preferable.  Tangential matrix
 interpolation, MIMO filtering and convex FIR design are not claimed as new;
 priority of the precise fixed-order separation remains under audit.
 \end{abstract}
@@ -643,6 +647,122 @@ all four exact tangential constraints is the identity and remains at stop/pass
 ratio $5$ and $\sin\theta=0.9892$.  This controlled construction demonstrates
 the theorem's error mechanism, not a runtime advantage on a natural problem.
 
+\subsection{A measured triaxial calibration and exact continuum certificate}
+
+We next use VBL-VA001, an open lab-scale pump-vibration data set with triaxial
+acceleration records sampled at $20$ kHz \cite{AtmajaEtAl2024,VBLVA001}.
+This is a calibration experiment, not a fault classifier.  We selected twelve
+normal-condition records by the archive prefixes \texttt{normal\_000} and
+\texttt{normal\_001}, using all six records under the first prefix for fitting
+and retaining all six under the second prefix.  The file names, CRC-32 and
+SHA-256 digests were frozen before optimization.
+
+Each record was polyphase-decimated by eight, then divided into length-$1024$
+Hann windows with $50\%$ overlap.  We averaged the real $3$ by $3$ cospectral
+matrix and, using the training split only, selected the five largest-trace
+peaks between $20$ and $1000$ Hz subject to an eight-bin separation.  Their
+leading cospectral eigenvectors are the channel signatures.  The frequency
+node is $x=\cos(2\pi f/2500)$.  Table~\ref{tab:vblcalibration} reports the
+six-decimal rationalization used by the exact certificate; every displayed
+component and node differs from its measured value by less than
+$5\times10^{-7}$.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$f$ (Hz) & $x$ & $v_x$ & $v_y$ & $v_z$\\
+\midrule
+$100.0977$ & $ 0.968522$ & $-0.054531$ & $ 0.996129$ & $-0.068944$\\
+$200.1953$ & $ 0.876070$ & $ 0.980644$ & $ 0.167125$ & $ 0.102012$\\
+$744.6289$ & $-0.296151$ & $ 0.152303$ & $ 0.986844$ & $-0.054250$\\
+$844.7266$ & $-0.524590$ & $ 0.869001$ & $-0.350335$ & $ 0.349432$\\
+$944.8242$ & $-0.720003$ & $ 0.606651$ & $ 0.716228$ & $-0.344951$\\
+\bottomrule
+\end{tabular}
+\caption{Training frequencies and rationalized triaxial signatures from
+VBL-VA001.}
+\label{tab:vblcalibration}
+\end{table}
+
+\begin{proposition}[Data-grounded rational certificate]
+\label{prop:vblcertificate}
+For the five rational nodes and signatures in
+Table~\ref{tab:vblcalibration}, there is a real-symmetric quadratic polynomial
+$P$ satisfying $P(x_j)v_j=v_j$ exactly and
+\[
+ [C_k,C_\ell]\ne0\quad\text{for some }k,\ell,
+ \qquad
+ \sup_{-1\le x\le-929/1000}\|P(x)\|_{\op}<\frac{24}{25}.
+\]
+Every pairwise-commuting real-symmetric quadratic satisfying the same five
+calibrations is identically $I_3$ and has leakage one.
+\end{proposition}
+
+\begin{proof}
+All ten $3$ by $3$ target determinants are nonzero in exact rational
+arithmetic; the smallest normalized absolute determinant is
+$0.009489456048\ldots$.  Lemma~\ref{lem:commuting}, with $d=3$, $N=2$ and
+$M=5$, therefore proves the commuting conclusion.
+
+For the upper bound, fix the $(1,1)$, $(1,2)$ and $(2,2)$ entries of $C_2$ to
+$-0.316171$, $-0.537470$ and $-0.909040$, respectively, and solve the remaining
+$15$ rational linear equations for the other symmetric entries.  The exact
+replay verifies the calibrations and a nonzero commutator.  On the $101$-point
+rational grid of $[-1,-929/1000]$, Sylvester's criterion gives
+\[
+  (191/200)^2I_3-P(x_i)^2\succ0.
+\]
+The same replay proves
+$\sup_{|x|\le1}\|P'(x)\|_{\op}\le5.740500963$.  The grid spacing is
+$71/100000$, hence every point is within half a grid spacing of some $x_i$ and
+\[
+ \|P(x)\|_{\op}
+ <\frac{191}{200}
+   +5.740500963\frac{71}{200000}
+ <0.957038<\frac{24}{25}.
+\]
+Every comparison in this paragraph is performed on integers and rational
+fractions; the printed decimals only abbreviate upward-valid bounds.
+\end{proof}
+
+The held-out signatures lie between $0.129^\circ$ and $0.460^\circ$ from their
+training counterparts.  Without refitting, the rational witness has maximum
+held-out residual $0.0038491$ and dense-grid leakage $0.94870$.  The numerical
+comparators in Table~\ref{tab:vblresults} use the unrounded measured nodes and
+signatures.  A general nonsymmetric MIMO polynomial attains much lower training
+leakage, but its held-out residual is $0.1045$ and its largest coefficient
+Frobenius norm is $36.06$, compared with $2.623$ for the rational symmetric
+witness.  This single split suggests a reciprocity--robustness tradeoff; it
+does not establish a statistical generalization theorem.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Filter & Stop leakage & Fit tolerance & Held-out residual\\
+\midrule
+Rational symmetric witness & $<0.96000$ & exact & $0.003849$\\
+Symmetric SDP optimum & $0.94867$ & exact & $0.003849$\\
+General nonsymmetric SDP & $0.14514$ & exact & $0.10447$\\
+Scalar quadratic optimum & $0.97520$ & $0.01$ & $0.01000$\\
+Best of 64 fixed bases & $0.96966$ & $0.01$ & $0.01011$\\
+Exact commuting class & $1$ & exact & $0$\\
+\bottomrule
+\end{tabular}
+\caption{Measured-calibration controls.  The 64-basis row is a seeded stress
+test, not a global optimization certificate over orthogonal bases.}
+\label{tab:vblresults}
+\end{table}
+
+Thus the measured instance closes the purely constructed-data objection: its
+calibration and validation use disjoint sensor records, and the exact $0.96$-versus-$1$
+gap is not solver-dependent.  It does not show that a deployed pump must impose
+these exact directional constraints, nor that the filter improves diagnosis,
+latency or hardware performance.
+
 \subsection{A failed graph-denoising application gate}
 
 We also tested the standard MIMO graph-filter form
@@ -690,9 +810,11 @@ subclass.  Before submission, these gates remain:
 \item complete full-text checks of the closest polynomial, rational regional,
       and linear-phase MIMO FIR results; the current clause-by-clause audit is
       not a proof of priority;
-\item test a measured or standards-derived multichannel FIR instance in which
-      directional calibrations and fixed delay are mandated, including
-      approximate-calibration and unconstrained MIMO baselines.
+\item strengthen the measured calibration into a task-level validation in
+      which directional preservation and fixed delay are mandated rather than
+      inferred from a normal-condition spectral summary.  The present split,
+      approximate-calibration controls and unconstrained MIMO baseline close
+      the data-grounding gate but not a deployment claim.
 \end{enumerate}
 
 \paragraph{Reproducibility.}
@@ -706,6 +828,14 @@ its
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/results/route_c/block_krylov_benchmark.json}{machine-readable output},
 the deliberately negative
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/results/route_c/graph_filter_pilot.json}{graph-filter pilot},
+the
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/data/route_c/vbl_va001_calibration.json}{VBL-VA001 provenance manifest},
+its
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/verify_vbl_va001_witness.py}{exact continuum replay},
+the
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/research/route_c_vibration_calibration.py}{offline baseline replay},
+and its
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/results/route_c/vbl_va001_calibration.json}{machine-readable output},
 the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ROUTE_C_PRIORITY_MATRIX.md}{clause-by-clause priority matrix},
 and the

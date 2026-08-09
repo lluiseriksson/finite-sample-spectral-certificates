@@ -57,6 +57,16 @@ therefore not scientifically mandated by ordinary graph denoising.
 
 The FIR corollary is structurally natural because frequency-dependent channel
 calibrations, reciprocity, linear phase, fixed delay and filter order are
-native specifications.  It is still an existence theorem with constructed
-calibrations; a measured or standards-derived MIMO design instance remains a
-submission gate.
+native specifications.  The measured-data gate is now passed by a frozen
+VBL-VA001 triaxial calibration.  Five leading cospectral directions extracted
+from six training records give an exact rational `<24/25` versus `1` continuum
+certificate; six held-out records give maximum directional residual
+`0.0038491`.  An unconstrained nonsymmetric MIMO baseline reaches much lower
+training leakage but degrades to `0.10447` held-out residual, while scalar and
+64-basis approximate-commuting controls are explicitly reported.
+
+This closes the constructed-data objection, not the deployment gate.  The
+normal-condition spectral summary does not establish that a particular pump
+diagnostic mandates exact direction preservation, reciprocity or the selected
+fixed delay.  No classification, hardware, latency or runtime claim is
+licensed by this application.

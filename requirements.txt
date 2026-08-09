@@ -4,3 +4,4 @@ matplotlib==3.11.1
 numpy==2.5.1
 scipy==1.18.0
 scs==3.2.11
+remotezip==0.12.3

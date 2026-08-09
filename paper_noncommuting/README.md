@@ -10,9 +10,10 @@ correlator paper.
 - Source: `paper_noncommuting/main.tex`
 - Compiled artifact: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Status: research draft; the quantified proof, exact five-tap FIR certificate,
-  rational approximate-calibration margin and negative graph pilot are closed,
-  while the full-text priority audit and a measured/standards-derived
-  application remain open under Gate G1.
+  rational approximate-calibration margin, negative graph pilot, and an exact
+  rational certificate calibrated from held-out-controlled VBL-VA001 sensor
+  records are closed.  The full-text priority audit and task-level deployment
+  validation remain open under Gate G1.
 
 The current PDF hash is recorded after each accepted compilation in
 `programme/ARTIFACT_MANIFEST.md`.  Evaluations must quote the title and SHA-256
@@ -32,3 +33,15 @@ pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build main.te
 
 Copy `build/main.pdf` to `noncommuting_filters_draft.pdf` only after the log has
 no unresolved references and all rendered pages have been visually inspected.
+
+The measured calibration replays offline from the frozen summary:
+
+```powershell
+python verification/verify_vbl_va001_witness.py
+python research/route_c_vibration_calibration.py
+```
+
+To reproduce the summary from the public archive, run
+`research/acquire_vbl_va001_subset.py` followed by
+`research/extract_vbl_va001_calibration.py`.  Range requests retrieve only the
+twelve selected CSV records, whose hashes are fixed in the manifest.
