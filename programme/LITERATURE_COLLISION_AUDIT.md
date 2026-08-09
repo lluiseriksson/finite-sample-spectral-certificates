@@ -82,33 +82,33 @@ hierarchy or the Mortimer finite-shot constraints fails Gate G1.
 | Work/family | Established conclusion | Collision risk |
 |---|---|---|
 | Matrix orthogonal-polynomial theory; e.g. S. Delvaux and H. Dette, [*Zeros and ratio asymptotics for matrix orthogonal polynomials*](https://arxiv.org/abs/1108.5155) | Matrix recurrences, matrix Chebyshev measures, zero and ratio asymptotics | `Matrix Chebyshev polynomial' is established terminology and cannot itself be a novelty claim. |
-| Block Lanczos and block Krylov literature | Matrix-valued recurrences and multiple starting vectors are standard | A multichannel implementation or faster convergence example is insufficient. |
-| Classical constrained minimax approximation | Alternation and extremal scalar filters are classical | A commuting matrix coefficient solution that diagonalizes into scalar problems is insufficient. |
+| P. A. Fuhrmann, [*On tangential matrix interpolation*](https://doi.org/10.1016/j.laa.2010.07.018) (2010) | Algebraic polynomial and rational matrix interpolation with tangential Lagrange/Hermite/Newton data | **Direct collision:** existence and parametrization of matrix polynomials satisfying `P(lambda_j)v_j=w_j` are classical.  Novelty can only concern the fixed-degree stopband minimax separation and its spectral-certificate role. |
+| J. A. Ball and V. Bolotnikov, [*The bitangential matrix Nevanlinna--Pick interpolation problem revisited*](https://arxiv.org/abs/1611.07097) (2016) | Schur-class matrix interpolants, Pick-matrix criteria and linear-fractional parametrization for bitangential data | A minimum-supremum-norm tangential interpolant without a fixed polynomial-degree restriction belongs to established Nevanlinna--Pick theory. |
+| M. Hartz, [*On von Neumann's inequality on the polydisc*](https://doi.org/10.1007/s00208-024-03040-2) (2025), Sec. 2 | Sharp and near-sharp norm inequalities for one-variable polynomials with operator coefficients, including distinct commuting and noncommuting regimes | Confirms that separations caused by operator coefficients are established phenomena.  Our exact interpolation-constrained separation must not be advertised as the first benefit of noncommuting coefficients. |
 
 The search has not yet found a primary source proving or disproving the precise
-noncommutative minimax advantage proposed here.  This absence is not evidence of
-novelty; Route C remains high risk until a sharper search by problem statement,
-not terminology, is complete.
+fixed-degree, real-interval, tangential interpolation separation in
+`ROUTE_C_THEOREM_PILOT.md`.  The surrounding ingredients are emphatically
+classical, so this absence is not evidence of novelty.
 
 ### Required pilot before a novelty claim
 
-Construct the smallest PSD matrix-valued spectral measure for which an SDP over
-matrix-polynomial coefficients has a unique optimizer with noncommuting
-coefficients.  Prove a lower bound for every commuting/scalar filter and an
-upper construction with a dimension-dependent strict gap.  Then search the
-operator approximation, robust control and block-Krylov literatures using the
-exact extremal formulation.  If the optimizer always jointly diagonalizes in
-the tested classes, Route C stops.
+The first part is now met in dimension two: an exact rational affine filter has
+stopband norm below `0.882`, whereas every commuting symmetric affine filter
+has norm at least one.  The next bar is a dimension/degree-dependent strict gap,
+followed by a theorem-level comparison with tangential interpolation, robust
+control and block-Krylov literature.  The two-dimensional example alone is not
+a paper-scale contribution.
 
 ## Provisional Gate-G1 ranking
 
 1. **Route B, reformulated as joint uncertainty--state polynomial
-   completeness:** strongest surviving theorem architecture, but it needs a
-   real compactness/robust-infeasibility proof and must beat Mortimer's scope.
-2. **Route A, explicit bare-probe residue in nonintegrable ANNNI:** strongest
+   completeness:** strongest thermodynamic architecture, but it needs a real
+   compactness/robust-infeasibility proof and must beat Mortimer's scope.
+2. **Route C:** now has an exact noncommuting separation lemma and reproducible
+   SDP pilot, but not yet the scaling theorem or physical payoff needed for G1.
+3. **Route A, explicit bare-probe residue in nonintegrable ANNNI:** strongest
    physical payoff, but Yarotsky already supplies the qualitative mechanism
    and circularity is a major risk.
-3. **Route C:** least collided by the current search, but its physical payoff
-   and existing approximation-theory coverage are both uncertain.
 
 No route has passed Gate G1 yet.
