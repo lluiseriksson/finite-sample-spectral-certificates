@@ -462,6 +462,123 @@ OpenAI Codex assisted with code generation, numerical orchestration, literature
 triage, and adversarial consistency checks.  The author retains responsibility
 for all claims and the final manuscript.
 
+\appendix
+\section{Strong alternative from compact interval separation}
+\label{app:duality}
+
+We spell out the separation argument behind Proposition~\ref{prop:dual}, since
+generic semidefinite systems can exhibit weak infeasibility.  Let
+\[
+ \mathcal D=\{Q:A\preceq Q\preceq B\},\qquad
+ \mathcal M=\{\mathcal L_D(Q):Q\in\mathcal D\}.
+\]
+When $A\prec B$, $\mathcal D$ is compact, convex, and has a relative-interior
+point; hence $\mathcal M$ is compact and convex.  If
+$\mathcal M\cap\PSD=\varnothing$, strong separation from the closed PSD cone
+provides a nonzero matrix $Y_L\succeq0$ such that
+\begin{equation}
+ \sup_{Q\in\mathcal D}\ip{Y_L}{\mathcal L_D(Q)}<0.
+ \label{eq:separation}
+\end{equation}
+The separator must be PSD: otherwise its linear functional is unbounded below
+or above along a PSD ray, with the orientation chosen in
+\eqref{eq:separation}.
+
+The support problem on the left of \eqref{eq:separation} is an SDP with a
+strictly feasible interval point $(A+B)/2$.  Its Lagrange dual therefore
+attains the same optimum.  Introducing $Y_A,Y_B\succeq0$ for
+$Q-A\succeq0$ and $B-Q\succeq0$ makes the coefficient of $Q$ vanish exactly
+when
+\[
+ Y_A-Y_B+\mathcal L_D^*(Y_L)=0,
+\]
+and leaves the constant
+$-\ip{Y_A}{A}+\ip{Y_B}{B}$.  Strict negativity follows from
+\eqref{eq:separation}.  This proves the nontrivial direction of the alternative
+without invoking a blanket ``SDP Farkas lemma'' in a regime where it might be
+false.  Conversely, pairing any feasible $Q$ with such multipliers gives an
+immediate contradiction, as in the main text.
+
+If $S$ is singular, then $A$ and $B$ have the same kernel and no ambient strict
+midpoint exists.  Because $A\preceq Q\preceq B$ forces
+$\ker S\subseteq\ker Q$, one may compress every matrix to
+$\operatorname{ran}S$ and repeat the argument there.  The current production
+ensembles have $n>d$ and a full-rank population Gram; the explicit range
+reduction is nevertheless preferable to adding an undocumented ridge.
+
+\section{Exact robust separation for ellipsoidal moment errors}
+\label{app:ellipsoid}
+
+The covariance-known comparator used in the pilot follows a more general
+finite-dimensional identity.  Let $y\in\mathbb R^p$ parameterize an affine
+localizer
+\[
+ L(y)=L_0+\sum_{k=1}^p y_kL_k
+\]
+and let
+\[
+ \mathcal E=\{\widehat y+Rz:\|z\|_2\le q\}
+\]
+be any compact ellipsoid.  For a trace-one $X\succeq0$ define
+$\ell(X)_k=\tr(L_kX)$ and
+\begin{equation}
+ U_{\mathcal E}(X)=\tr[L(\widehat y)X]
+       +q\|R^{\mathsf T}\ell(X)\|_2.
+ \label{eq:ellipsoidupper}
+\end{equation}
+
+\begin{theorem}[Exact ellipsoidal incompatibility]
+\label{thm:ellipsoid}
+The intersection $\mathcal E\cap\{y:L(y)\succeq0\}$ is empty if and only if
+\begin{equation}
+ \min_{X\succeq0,\ \tr X=1}U_{\mathcal E}(X)<0.
+ \label{eq:ellipsoidtest}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The image $L(\mathcal E)$ is compact and convex.  If it is disjoint from the
+closed PSD cone, strong separation supplies a PSD separator $X$; normalization
+to trace one only fixes its nonzero scale.  The support function of the
+ellipsoid in that direction is exactly \eqref{eq:ellipsoidupper}.  Conversely,
+if \eqref{eq:ellipsoidtest} is negative, then
+$\tr[L(y)X]<0$ for every $y\in\mathcal E$, which is impossible when both
+$L(y)$ and $X$ are PSD.
+\end{proof}
+
+For a singleton ellipsoid, \eqref{eq:ellipsoidtest} reduces to
+$\lambda_{\min}(L(y))$ and admits a rank-one eigenvector witness.  Under
+uncertainty, however, the optimizer minimizes a sum of signal and sensitivity.
+It may be higher rank, and even when it is rank one it need not be the observed
+minimum eigenvector.  The same coverage-event argument as in
+Corollary~\ref{cor:level} shows that optimizing $X$ on the data does not inflate
+type-I error when $\mathcal E$ is a simultaneous confidence set.
+
+\section{Quadratic-feature covariance and the Hotelling control}
+\label{app:isserlis}
+
+For completeness, Isserlis' identity gives the exact covariance of one
+quadratic sketch replicate.  With joint covariance entries
+$K_{ka,\ell c}=\mathbb E[z_{k,a}z_{\ell,c}]$,
+\begin{align}
+ &\operatorname{Cov}(z_{k,a}z_{k,b},z_{\ell,c}z_{\ell,d})\\
+ &\qquad=K_{ka,\ell c}K_{kb,\ell d}
+          +K_{ka,\ell d}K_{kb,\ell c}.
+ \label{eq:isserlis}
+\end{align}
+For the mean of $n$ independent sketches this matrix is divided by $n$.
+If it were known, multivariate Chebyshev would give a distribution-free
+ellipsoid with squared radius $r/\alpha$ on its rank-$r$ range.  That oracle
+route is exact but conservative and requires the unknown $K$ through
+\eqref{eq:isserlis}; it is used only as a controlled comparator.
+
+By contrast, the standard one-sample Hotelling pivot is exact when the
+\emph{feature vectors themselves} are multivariate Gaussian.  Products of
+Gaussian coordinates violate that hypothesis.  The 83.4\% coverage observed
+at nominal 95\% and $n=120$ is therefore not a paradox; it is a direct stress
+test of a misapplied calibration.  The Wishart--Loewner route avoids this error
+by constructing its pivot before the quadratic map.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}
