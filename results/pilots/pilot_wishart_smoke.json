@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "setup": {
+    "length": 8,
+    "degree": 2,
+    "sample_counts": [
+      500,
+      1000
+    ],
+    "gap_factors": [
+      1.0,
+      1.35
+    ],
+    "ensembles": 10,
+    "alpha": 0.05,
+    "seed": 20260813,
+    "tau": 0.2,
+    "j1": 1.0,
+    "j2": 0.37,
+    "hx": 2.2,
+    "output": "pilot_wishart_smoke.json"
+  },
+  "model": {
+    "length": 8,
+    "dimension": 256,
+    "parameters": {
+      "j1": 1.0,
+      "j2": 0.37,
+      "hx": 2.2,
+      "tau": 0.2
+    },
+    "energies": [
+      -18.707605849168374,
+      -16.850125449833868,
+      -15.719715028007121
+    ],
+    "true_gap": 1.8574803993345057,
+    "parities": [
+      0.9999999999999984,
+      -0.9999999999999993,
+      -1.0000000000000022
+    ]
+  },
+  "joint_dimension": 12,
+  "true_edge": 0.6897017095463287,
+  "rows": [
+    {
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "eta": 0.27639162622995767,
+      "loewner_lower": 0.6138073821641514,
+      "loewner_upper": 1.9098217370344486,
+      "exact_localizer_min": 3.712028798391888e-06,
+      "detection_rate": 0.0,
+      "statuses": {
+        "optimal_inaccurate": 9,
+        "optimal": 1
+      }
+    },
+    {
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "eta": 0.27639162622995767,
+      "loewner_lower": 0.6138073821641514,
+      "loewner_upper": 1.9098217370344486,
+      "exact_localizer_min": -0.01012152476080706,
+      "detection_rate": 0.8,
+      "statuses": {
+        "infeasible": 8,
+        "optimal_inaccurate": 2
+      }
+    },
+    {
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "eta": 0.19543839317038073,
+      "loewner_lower": 0.6997543398287758,
+      "loewner_upper": 1.5448324770690216,
+      "exact_localizer_min": 3.712028798391888e-06,
+      "detection_rate": 0.0,
+      "statuses": {
+        "optimal_inaccurate": 6,
+        "optimal": 4
+      }
+    },
+    {
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "eta": 0.19543839317038073,
+      "loewner_lower": 0.6997543398287758,
+      "loewner_upper": 1.5448324770690216,
+      "exact_localizer_min": -0.01012152476080706,
+      "detection_rate": 1.0,
+      "statuses": {
+        "infeasible": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,2130 @@
+{
+  "schema_version": 1,
+  "setup": {
+    "lengths": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "degrees": [
+      2
+    ],
+    "sample_counts": [
+      500,
+      1000,
+      2000,
+      5000
+    ],
+    "gap_factors": [
+      1.0,
+      1.15,
+      1.35
+    ],
+    "ensembles": 50,
+    "coverage": 0.95,
+    "seed": 20260812,
+    "tau": 0.2,
+    "j1": 1.0,
+    "j2": 0.37,
+    "hx": 2.2,
+    "output": "production_annni_medium.json"
+  },
+  "method_boundary": {
+    "psd_rank_one_chebyshev": "distribution-free covariance-known certificates",
+    "ritz": "point estimator; not a confidence certificate",
+    "fixed_chebyshev_target": "oracle true edge, deliberately favorable baseline"
+  },
+  "rows": [
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.06
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6590754560857595,
+        "exact_localizer_min": 1.5577236354438425e-06,
+        "ritz_edge": 0.6582314826359167,
+        "fixed_chebyshev_upper": 0.0007998272014503641,
+        "observed_min_eigenvalue": 1.3473086808612408e-06,
+        "adaptive_rank_one_upper": 1.3942727778456325e-05,
+        "optimized_psd_upper": 4.096076768315945e-06,
+        "optimized_psd_measured": 1.7252426315760514e-06,
+        "optimized_psd_margin": 2.370834136739894e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.15,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6191208211719749,
+        "exact_localizer_min": -0.0037374349499094428,
+        "ritz_edge": 0.6582314826359167,
+        "fixed_chebyshev_upper": 0.00048723815720718984,
+        "observed_min_eigenvalue": -0.0038082235460424585,
+        "adaptive_rank_one_upper": 0.005590946131130866,
+        "optimized_psd_upper": 2.8057932956945097e-06,
+        "optimized_psd_measured": -1.0240817034125706e-06,
+        "optimized_psd_margin": 3.82987499910708e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.5695901068105744,
+        "exact_localizer_min": -0.01271485264848619,
+        "ritz_edge": 0.6582314826359167,
+        "fixed_chebyshev_upper": 0.00023610867101529358,
+        "observed_min_eigenvalue": -0.012816821389192207,
+        "adaptive_rank_one_upper": 0.01586958625127293,
+        "optimized_psd_upper": 2.4026340121471324e-06,
+        "optimized_psd_measured": -1.246944570043604e-06,
+        "optimized_psd_margin": 3.6495785821907363e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.02
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6590754560857595,
+        "exact_localizer_min": 1.5577236354438425e-06,
+        "ritz_edge": 0.6583164525422328,
+        "fixed_chebyshev_upper": 0.0006695670281386888,
+        "observed_min_eigenvalue": 8.785409343880235e-07,
+        "adaptive_rank_one_upper": 1.0549225110866129e-05,
+        "optimized_psd_upper": 3.101067291373244e-06,
+        "optimized_psd_measured": 1.3396075209213444e-06,
+        "optimized_psd_margin": 1.7614597704518994e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.15,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.98,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6191208211719749,
+        "exact_localizer_min": -0.0037374349499094428,
+        "ritz_edge": 0.6583164525422328,
+        "fixed_chebyshev_upper": 0.0003978913169579377,
+        "observed_min_eigenvalue": -0.004021986322600128,
+        "adaptive_rank_one_upper": 0.0027874375304915103,
+        "optimized_psd_upper": -2.9872610424870876e-05,
+        "optimized_psd_measured": -0.0003869683300429139,
+        "optimized_psd_margin": 0.00035709571961804303,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.5695901068105744,
+        "exact_localizer_min": -0.01271485264848619,
+        "ritz_edge": 0.6583164525422328,
+        "fixed_chebyshev_upper": 0.00012103409618416145,
+        "observed_min_eigenvalue": -0.013208979245768497,
+        "adaptive_rank_one_upper": 0.007552648867749307,
+        "optimized_psd_upper": -0.0009647974344703164,
+        "optimized_psd_measured": -0.00856271906134224,
+        "optimized_psd_margin": 0.007597921626871924,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.0,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6590754560857595,
+        "exact_localizer_min": 1.5577236354438425e-06,
+        "ritz_edge": 0.6579816128412946,
+        "fixed_chebyshev_upper": 0.0005608164139923463,
+        "observed_min_eigenvalue": 1.6368642794648894e-06,
+        "adaptive_rank_one_upper": 4.997443571347523e-06,
+        "optimized_psd_upper": 3.0322045918347363e-06,
+        "optimized_psd_measured": 1.7938791152667546e-06,
+        "optimized_psd_margin": 1.2383254765679817e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.15,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6191208211719749,
+        "exact_localizer_min": -0.0037374349499094428,
+        "ritz_edge": 0.6579816128412946,
+        "fixed_chebyshev_upper": 0.00031945812770543,
+        "observed_min_eigenvalue": -0.0039548086251644625,
+        "adaptive_rank_one_upper": 0.0008515730560756671,
+        "optimized_psd_upper": -0.0005173306348961238,
+        "optimized_psd_measured": -0.002848817184563947,
+        "optimized_psd_margin": 0.002331486549667823,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.35,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.5695901068105744,
+        "exact_localizer_min": -0.01271485264848619,
+        "ritz_edge": 0.6579816128412946,
+        "fixed_chebyshev_upper": 2.6565652822683648e-05,
+        "observed_min_eigenvalue": -0.013467440339599918,
+        "adaptive_rank_one_upper": 0.001815631238145491,
+        "optimized_psd_upper": -0.003510545553061503,
+        "optimized_psd_measured": -0.010307093208229832,
+        "optimized_psd_margin": 0.006796547655168329,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.0,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6590754560857595,
+        "exact_localizer_min": 1.5577236354438425e-06,
+        "ritz_edge": 0.6578372904936314,
+        "fixed_chebyshev_upper": 0.0004696415902426753,
+        "observed_min_eigenvalue": 1.574654480378314e-06,
+        "adaptive_rank_one_upper": 2.5996254444258204e-06,
+        "optimized_psd_upper": 2.4918733361167902e-06,
+        "optimized_psd_measured": 1.618860381772891e-06,
+        "optimized_psd_margin": 8.730129543438995e-07,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.15,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6191208211719749,
+        "exact_localizer_min": -0.0037374349499094428,
+        "ritz_edge": 0.6578372904936314,
+        "fixed_chebyshev_upper": 0.00026091332475015584,
+        "observed_min_eigenvalue": -0.00397648621112338,
+        "adaptive_rank_one_upper": -0.0007985428321512908,
+        "optimized_psd_upper": -0.0014683560093614934,
+        "optimized_psd_measured": -0.0034872888884879697,
+        "optimized_psd_margin": 0.0020189328791264762,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 6,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.35,
+      "true_gap": 2.084586250727476,
+      "true_edge": 0.6590754560857595,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 1.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.5695901068105744,
+        "exact_localizer_min": -0.01271485264848619,
+        "ritz_edge": 0.6578372904936314,
+        "fixed_chebyshev_upper": -3.5363001519848734e-05,
+        "observed_min_eigenvalue": -0.013258053814532838,
+        "adaptive_rank_one_upper": -0.0035139398580886407,
+        "optimized_psd_upper": -0.006065205022168136,
+        "optimized_psd_measured": -0.011516741383406515,
+        "optimized_psd_margin": 0.005451536361238379,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.06
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6897017095463404,
+        "exact_localizer_min": 3.712028798416242e-06,
+        "ritz_edge": 0.6874483229186759,
+        "fixed_chebyshev_upper": 0.0010493792054554396,
+        "observed_min_eigenvalue": 3.879780008996718e-06,
+        "adaptive_rank_one_upper": 8.790688609665405e-06,
+        "optimized_psd_upper": 8.181933918678227e-06,
+        "optimized_psd_measured": 3.95811476143853e-06,
+        "optimized_psd_margin": 4.223819157239696e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.15,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6523197051933558,
+        "exact_localizer_min": -0.0028787144610798146,
+        "ritz_edge": 0.6874483229186759,
+        "fixed_chebyshev_upper": 0.0007094906076764724,
+        "observed_min_eigenvalue": -0.0029134701308071885,
+        "adaptive_rank_one_upper": 0.006433807713397907,
+        "optimized_psd_upper": 6.2235074478104015e-06,
+        "optimized_psd_measured": 6.60120303856609e-07,
+        "optimized_psd_margin": 5.5633871439537926e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6056096103660323,
+        "exact_localizer_min": -0.010121524760805073,
+        "ritz_edge": 0.6874483229186759,
+        "fixed_chebyshev_upper": 0.00038362049663398984,
+        "observed_min_eigenvalue": -0.009582565517508461,
+        "adaptive_rank_one_upper": 0.011193647707568803,
+        "optimized_psd_upper": 5.315339938352316e-06,
+        "optimized_psd_measured": -2.1666347269559916e-08,
+        "optimized_psd_margin": 5.337006285621876e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.02
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6897017095463404,
+        "exact_localizer_min": 3.712028798416242e-06,
+        "ritz_edge": 0.6872833755690364,
+        "fixed_chebyshev_upper": 0.0008433027700248942,
+        "observed_min_eigenvalue": 3.4337898162407746e-06,
+        "adaptive_rank_one_upper": 7.144997249922245e-06,
+        "optimized_psd_upper": 6.60973268579156e-06,
+        "optimized_psd_measured": 3.564520532222847e-06,
+        "optimized_psd_margin": 3.0452121535687136e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.15,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.94,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6523197051933558,
+        "exact_localizer_min": -0.0028787144610798146,
+        "ritz_edge": 0.6872833755690364,
+        "fixed_chebyshev_upper": 0.0005570924985707186,
+        "observed_min_eigenvalue": -0.0026455303605028564,
+        "adaptive_rank_one_upper": 0.0036044601089087907,
+        "optimized_psd_upper": 5.486290723761493e-07,
+        "optimized_psd_measured": -0.00010154862442184872,
+        "optimized_psd_margin": 0.00010209725349422487,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6056096103660323,
+        "exact_localizer_min": -0.010121524760805073,
+        "ritz_edge": 0.6872833755690364,
+        "fixed_chebyshev_upper": 0.0002452406185470361,
+        "observed_min_eigenvalue": -0.009358091015393687,
+        "adaptive_rank_one_upper": 0.005399216631239611,
+        "optimized_psd_upper": -4.735413232385358e-05,
+        "optimized_psd_measured": -0.0012790471516242125,
+        "optimized_psd_margin": 0.001231693019300359,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.0,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6897017095463404,
+        "exact_localizer_min": 3.712028798416242e-06,
+        "ritz_edge": 0.6871581026091523,
+        "fixed_chebyshev_upper": 0.0007661825077099441,
+        "observed_min_eigenvalue": 3.6928675534127953e-06,
+        "adaptive_rank_one_upper": 6.902719935883294e-06,
+        "optimized_psd_upper": 6.0192265458556e-06,
+        "optimized_psd_measured": 3.823107587876945e-06,
+        "optimized_psd_margin": 2.196118957978655e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.15,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6523197051933558,
+        "exact_localizer_min": -0.0028787144610798146,
+        "ritz_edge": 0.6871581026091523,
+        "fixed_chebyshev_upper": 0.0004980369351253865,
+        "observed_min_eigenvalue": -0.002775898655422148,
+        "adaptive_rank_one_upper": 0.0015922178404757016,
+        "optimized_psd_upper": -8.691624754663139e-05,
+        "optimized_psd_measured": -0.0005100282183152943,
+        "optimized_psd_margin": 0.0004231119707686629,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.35,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.02,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6056096103660323,
+        "exact_localizer_min": -0.010121524760805073,
+        "ritz_edge": 0.6871581026091523,
+        "fixed_chebyshev_upper": 0.00016689712451445137,
+        "observed_min_eigenvalue": -0.009738189178782303,
+        "adaptive_rank_one_upper": 0.00027935728708303187,
+        "optimized_psd_upper": -0.002239814167847868,
+        "optimized_psd_measured": -0.00802148651671825,
+        "optimized_psd_margin": 0.005781672348870381,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.0,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.6897017095463404,
+        "exact_localizer_min": 3.712028798416242e-06,
+        "ritz_edge": 0.6878643619287866,
+        "fixed_chebyshev_upper": 0.000646498978247001,
+        "observed_min_eigenvalue": 3.705913219394213e-06,
+        "adaptive_rank_one_upper": 5.243136917801431e-06,
+        "optimized_psd_upper": 5.157625080667423e-06,
+        "optimized_psd_measured": 3.741811956725369e-06,
+        "optimized_psd_margin": 1.415813123942054e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.15,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.56,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6523197051933558,
+        "exact_localizer_min": -0.0028787144610798146,
+        "ritz_edge": 0.6878643619287866,
+        "fixed_chebyshev_upper": 0.00040647116350926504,
+        "observed_min_eigenvalue": -0.0028900521970695496,
+        "adaptive_rank_one_upper": -0.0001556342129597067,
+        "optimized_psd_upper": -0.0006795604254446214,
+        "optimized_psd_measured": -0.0023243687186290255,
+        "optimized_psd_margin": 0.001644808293184404,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 8,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.35,
+      "true_gap": 1.8574803993344204,
+      "true_edge": 0.6897017095463404,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6056096103660323,
+        "exact_localizer_min": -0.010121524760805073,
+        "ritz_edge": 0.6878643619287866,
+        "fixed_chebyshev_upper": 7.386140540012974e-05,
+        "observed_min_eigenvalue": -0.010065867416335153,
+        "adaptive_rank_one_upper": -0.0036203889697704146,
+        "optimized_psd_upper": -0.004820938598665176,
+        "optimized_psd_measured": -0.009171162756650494,
+        "optimized_psd_margin": 0.004350224157985318,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7086851766266521,
+        "exact_localizer_min": 5.325928670938198e-06,
+        "ritz_edge": 0.7038288936538414,
+        "fixed_chebyshev_upper": 0.0011926880231195214,
+        "observed_min_eigenvalue": 5.055942941175287e-06,
+        "adaptive_rank_one_upper": 1.227934078814131e-05,
+        "optimized_psd_upper": 1.0958043339941281e-05,
+        "optimized_psd_measured": 5.238892511563448e-06,
+        "optimized_psd_margin": 5.719150828377833e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.15,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6730097425623807,
+        "exact_localizer_min": -0.0019357235958609256,
+        "ritz_edge": 0.7038288936538414,
+        "fixed_chebyshev_upper": 0.0008397298478835213,
+        "observed_min_eigenvalue": -0.0013906284722308843,
+        "adaptive_rank_one_upper": 0.0063886654013544375,
+        "optimized_psd_upper": 8.500381865369647e-06,
+        "optimized_psd_measured": 1.4582137722111639e-06,
+        "optimized_psd_margin": 7.042168093158483e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6282203796533107,
+        "exact_localizer_min": -0.008188579394570912,
+        "ritz_edge": 0.7038288936538414,
+        "fixed_chebyshev_upper": 0.00047358902941772705,
+        "observed_min_eigenvalue": -0.007116016699677032,
+        "adaptive_rank_one_upper": 0.009394525508803181,
+        "optimized_psd_upper": 7.135800961957559e-06,
+        "optimized_psd_measured": 1.185308857794913e-07,
+        "optimized_psd_margin": 7.0172700761780675e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7086851766266521,
+        "exact_localizer_min": 5.325928670938198e-06,
+        "ritz_edge": 0.7057976509432528,
+        "fixed_chebyshev_upper": 0.0009767278972112675,
+        "observed_min_eigenvalue": 5.304174423719853e-06,
+        "adaptive_rank_one_upper": 1.1701851771755869e-05,
+        "optimized_psd_upper": 9.537117862779305e-06,
+        "optimized_psd_measured": 5.473812724619217e-06,
+        "optimized_psd_margin": 4.063305138160089e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.15,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.42,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6730097425623807,
+        "exact_localizer_min": -0.0019357235958609256,
+        "ritz_edge": 0.7057976509432528,
+        "fixed_chebyshev_upper": 0.0006755546472594885,
+        "observed_min_eigenvalue": -0.0024924790395376294,
+        "adaptive_rank_one_upper": 0.004196876475343095,
+        "optimized_psd_upper": -5.271502525283021e-06,
+        "optimized_psd_measured": -0.0001218304928506068,
+        "optimized_psd_margin": 0.00011655899032532379,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6282203796533107,
+        "exact_localizer_min": -0.008188579394570912,
+        "ritz_edge": 0.7057976509432528,
+        "fixed_chebyshev_upper": 0.0003172647315536629,
+        "observed_min_eigenvalue": -0.00930587579207184,
+        "adaptive_rank_one_upper": 0.004457801339600012,
+        "optimized_psd_upper": -0.00022528544048551176,
+        "optimized_psd_measured": -0.003537451502120688,
+        "optimized_psd_margin": 0.003312166061635176,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.0,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7086851766266521,
+        "exact_localizer_min": 5.325928670938198e-06,
+        "ritz_edge": 0.7059404494426605,
+        "fixed_chebyshev_upper": 0.0008733739116098917,
+        "observed_min_eigenvalue": 5.207320252269037e-06,
+        "adaptive_rank_one_upper": 9.46068438870335e-06,
+        "optimized_psd_upper": 8.230484909140266e-06,
+        "optimized_psd_measured": 5.325441261286692e-06,
+        "optimized_psd_margin": 2.905043647853573e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.15,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6730097425623807,
+        "exact_localizer_min": -0.0019357235958609256,
+        "ritz_edge": 0.7059404494426605,
+        "fixed_chebyshev_upper": 0.000598635279310233,
+        "observed_min_eigenvalue": -0.002103600595787023,
+        "adaptive_rank_one_upper": 0.002200596672760334,
+        "optimized_psd_upper": -5.2014029169043585e-05,
+        "optimized_psd_measured": -0.0002534008997287408,
+        "optimized_psd_margin": 0.00020138687055969723,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.35,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6282203796533107,
+        "exact_localizer_min": -0.008188579394570912,
+        "ritz_edge": 0.7059404494426605,
+        "fixed_chebyshev_upper": 0.00025176577201704387,
+        "observed_min_eigenvalue": -0.008299078799175519,
+        "adaptive_rank_one_upper": 0.0003426460888467323,
+        "optimized_psd_upper": -0.0016555998898421078,
+        "optimized_psd_measured": -0.006836292244746464,
+        "optimized_psd_margin": 0.0051806923549043565,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.0,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7086851766266521,
+        "exact_localizer_min": 5.325928670938198e-06,
+        "ritz_edge": 0.70473985391553,
+        "fixed_chebyshev_upper": 0.0007291825347276659,
+        "observed_min_eigenvalue": 5.357056059999692e-06,
+        "adaptive_rank_one_upper": 7.3415512631710465e-06,
+        "optimized_psd_upper": 7.254697089397666e-06,
+        "optimized_psd_measured": 5.389378955136872e-06,
+        "optimized_psd_margin": 1.8653181342607941e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.15,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6730097425623807,
+        "exact_localizer_min": -0.0019357235958609256,
+        "ritz_edge": 0.70473985391553,
+        "fixed_chebyshev_upper": 0.000494183758825517,
+        "observed_min_eigenvalue": -0.0016746562301886464,
+        "adaptive_rank_one_upper": 0.0008957827686407087,
+        "optimized_psd_upper": -0.00013349811219820192,
+        "optimized_psd_measured": -0.0004880518561862466,
+        "optimized_psd_margin": 0.0003545537439880447,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 10,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.35,
+      "true_gap": 1.7217194483636753,
+      "true_edge": 0.7086851766266521,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6282203796533107,
+        "exact_localizer_min": -0.008188579394570912,
+        "ritz_edge": 0.70473985391553,
+        "fixed_chebyshev_upper": 0.0001764240458723201,
+        "observed_min_eigenvalue": -0.007556091943402218,
+        "adaptive_rank_one_upper": -0.0022918674081263204,
+        "optimized_psd_upper": -0.0031506029918231637,
+        "optimized_psd_measured": -0.006892510775811822,
+        "optimized_psd_margin": 0.0037419077839886583,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7212885345461786,
+        "exact_localizer_min": 6.298568063563094e-06,
+        "ritz_edge": 0.7126802763871445,
+        "fixed_chebyshev_upper": 0.0013080817775968834,
+        "observed_min_eigenvalue": 6.146177372403942e-06,
+        "adaptive_rank_one_upper": 1.34005274943011e-05,
+        "optimized_psd_upper": 1.2896150232678514e-05,
+        "optimized_psd_measured": 6.2401912887433355e-06,
+        "optimized_psd_margin": 6.655958943935178e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.15,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6867922457612294,
+        "exact_localizer_min": -0.0011043237449732545,
+        "ritz_edge": 0.7126802763871445,
+        "fixed_chebyshev_upper": 0.0009524787418342741,
+        "observed_min_eigenvalue": -0.0006025981727568667,
+        "adaptive_rank_one_upper": 0.005500926513377276,
+        "optimized_psd_upper": 1.0269226638896187e-05,
+        "optimized_psd_measured": 2.6059033415966916e-06,
+        "optimized_psd_margin": 7.663323297299496e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.643349827525713,
+        "exact_localizer_min": -0.00668922420837683,
+        "ritz_edge": 0.7126802763871445,
+        "fixed_chebyshev_upper": 0.0005613031078656485,
+        "observed_min_eigenvalue": -0.006250454985592359,
+        "adaptive_rank_one_upper": 0.009030713493236118,
+        "optimized_psd_upper": 8.297672122083762e-06,
+        "optimized_psd_measured": 1.6163894358582555e-08,
+        "optimized_psd_margin": 8.28150822772518e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7212885345461786,
+        "exact_localizer_min": 6.298568063563094e-06,
+        "ritz_edge": 0.7159454968894664,
+        "fixed_chebyshev_upper": 0.0010681541363095947,
+        "observed_min_eigenvalue": 6.00774887879299e-06,
+        "adaptive_rank_one_upper": 1.0967064540755753e-05,
+        "optimized_psd_upper": 1.0797137916969754e-05,
+        "optimized_psd_measured": 6.067031152100141e-06,
+        "optimized_psd_margin": 4.730106764869612e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.15,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.06,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6867922457612294,
+        "exact_localizer_min": -0.0011043237449732545,
+        "ritz_edge": 0.7159454968894664,
+        "fixed_chebyshev_upper": 0.0007696822627881446,
+        "observed_min_eigenvalue": -0.0012904563852163525,
+        "adaptive_rank_one_upper": 0.004592045194833416,
+        "optimized_psd_upper": 6.948495913585784e-06,
+        "optimized_psd_measured": -4.438851009711445e-06,
+        "optimized_psd_margin": 1.1387346923297228e-05,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.643349827525713,
+        "exact_localizer_min": -0.00668922420837683,
+        "ritz_edge": 0.7159454968894664,
+        "fixed_chebyshev_upper": 0.00041617486704820044,
+        "observed_min_eigenvalue": -0.006746233631447477,
+        "adaptive_rank_one_upper": 0.0044303593586696235,
+        "optimized_psd_upper": -2.120147183529451e-05,
+        "optimized_psd_measured": -0.00042572358726169937,
+        "optimized_psd_margin": 0.00040452211542640486,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.0,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7212885345461786,
+        "exact_localizer_min": 6.298568063563094e-06,
+        "ritz_edge": 0.716082265089267,
+        "fixed_chebyshev_upper": 0.0009437526806738504,
+        "observed_min_eigenvalue": 6.089227370349452e-06,
+        "adaptive_rank_one_upper": 1.0154328303067154e-05,
+        "optimized_psd_upper": 9.616680488783368e-06,
+        "optimized_psd_measured": 6.228794130575201e-06,
+        "optimized_psd_margin": 3.3878863582081686e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.15,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6867922457612294,
+        "exact_localizer_min": -0.0011043237449732545,
+        "ritz_edge": 0.716082265089267,
+        "fixed_chebyshev_upper": 0.0006676399578179761,
+        "observed_min_eigenvalue": -0.0013663677598533435,
+        "adaptive_rank_one_upper": 0.0025817097515057584,
+        "optimized_psd_upper": -3.132853228806235e-05,
+        "optimized_psd_measured": -0.0001496566503277712,
+        "optimized_psd_margin": 0.00011832811803970885,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.35,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.643349827525713,
+        "exact_localizer_min": -0.00668922420837683,
+        "ritz_edge": 0.716082265089267,
+        "fixed_chebyshev_upper": 0.000313167738072579,
+        "observed_min_eigenvalue": -0.007316622331862293,
+        "adaptive_rank_one_upper": 0.00043694773483315096,
+        "optimized_psd_upper": -0.0013195504192085308,
+        "optimized_psd_measured": -0.005905902377839187,
+        "optimized_psd_margin": 0.004586351958630656,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.0,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7212885345461786,
+        "exact_localizer_min": 6.298568063563094e-06,
+        "ritz_edge": 0.716144248488046,
+        "fixed_chebyshev_upper": 0.0007839997468781899,
+        "observed_min_eigenvalue": 6.378438298434876e-06,
+        "adaptive_rank_one_upper": 8.644688054840206e-06,
+        "optimized_psd_upper": 8.56984466265287e-06,
+        "optimized_psd_measured": 6.40852788511487e-06,
+        "optimized_psd_margin": 2.1613167775379995e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.15,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6867922457612294,
+        "exact_localizer_min": -0.0011043237449732545,
+        "ritz_edge": 0.716144248488046,
+        "fixed_chebyshev_upper": 0.0005480071040502765,
+        "observed_min_eigenvalue": -0.0012189144134525714,
+        "adaptive_rank_one_upper": 0.00119996736027298,
+        "optimized_psd_upper": -8.965996728684352e-05,
+        "optimized_psd_measured": -0.0002815374961734102,
+        "optimized_psd_margin": 0.00019187752888656667,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 12,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.35,
+      "true_gap": 1.6335801756999082,
+      "true_edge": 0.7212885345461786,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.643349827525713,
+        "exact_localizer_min": -0.00668922420837683,
+        "ritz_edge": 0.716144248488046,
+        "fixed_chebyshev_upper": 0.0002254508368335423,
+        "observed_min_eigenvalue": -0.006973962020739631,
+        "adaptive_rank_one_upper": -0.0021466816944663873,
+        "optimized_psd_upper": -0.002923316831790123,
+        "optimized_psd_measured": -0.006372016882760999,
+        "optimized_psd_margin": 0.0034487000509708762,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7300925298081685,
+        "exact_localizer_min": 6.848176146073692e-06,
+        "ritz_edge": 0.722270800741158,
+        "fixed_chebyshev_upper": 0.0013780759157738126,
+        "observed_min_eigenvalue": 6.609865987042211e-06,
+        "adaptive_rank_one_upper": 1.6228485883587116e-05,
+        "optimized_psd_upper": 1.4121321675936633e-05,
+        "optimized_psd_measured": 6.86133455521653e-06,
+        "optimized_psd_margin": 7.259987120720102e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.15,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6964414171292966,
+        "exact_localizer_min": -0.0005019829948800799,
+        "ritz_edge": 0.722270800741158,
+        "fixed_chebyshev_upper": 0.0010225194116416883,
+        "observed_min_eigenvalue": -0.0005800670750300042,
+        "adaptive_rank_one_upper": 0.005669400915761786,
+        "optimized_psd_upper": 1.1345643590438452e-05,
+        "optimized_psd_measured": 3.1211828384951946e-06,
+        "optimized_psd_margin": 8.224460751943258e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6539735317926758,
+        "exact_localizer_min": -0.005539608978360876,
+        "ritz_edge": 0.722270800741158,
+        "fixed_chebyshev_upper": 0.0006227583503794413,
+        "observed_min_eigenvalue": -0.005473122753072595,
+        "adaptive_rank_one_upper": 0.008486547061219298,
+        "optimized_psd_upper": 9.171693632129782e-06,
+        "optimized_psd_measured": 2.367034324360072e-07,
+        "optimized_psd_margin": 8.934990199693775e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7300925298081685,
+        "exact_localizer_min": 6.848176146073692e-06,
+        "ritz_edge": 0.7197453582625121,
+        "fixed_chebyshev_upper": 0.0012434709034774673,
+        "observed_min_eigenvalue": 7.306258413300624e-06,
+        "adaptive_rank_one_upper": 1.2680059775163417e-05,
+        "optimized_psd_upper": 1.2496030686804525e-05,
+        "optimized_psd_measured": 7.361122424680346e-06,
+        "optimized_psd_margin": 5.134908262124178e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.15,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6964414171292966,
+        "exact_localizer_min": -0.0005019829948800799,
+        "ritz_edge": 0.7197453582625121,
+        "fixed_chebyshev_upper": 0.0009182775398042543,
+        "observed_min_eigenvalue": -0.0003078219509102328,
+        "adaptive_rank_one_upper": 0.0019499083671310233,
+        "optimized_psd_upper": 9.081948670828695e-06,
+        "optimized_psd_measured": 6.782214908121881e-07,
+        "optimized_psd_margin": 8.403727180016507e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.98,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6539735317926758,
+        "exact_localizer_min": -0.005539608978360876,
+        "ritz_edge": 0.7197453582625121,
+        "fixed_chebyshev_upper": 0.0005286298516287232,
+        "observed_min_eigenvalue": -0.005298623172089608,
+        "adaptive_rank_one_upper": 0.003780204411107058,
+        "optimized_psd_upper": -2.2165296212762315e-05,
+        "optimized_psd_measured": -0.00033781820588978453,
+        "optimized_psd_margin": 0.0003156529096770222,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.0,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7300925298081685,
+        "exact_localizer_min": 6.848176146073692e-06,
+        "ritz_edge": 0.7216409371812516,
+        "fixed_chebyshev_upper": 0.0009929944559281202,
+        "observed_min_eigenvalue": 7.167209011904893e-06,
+        "adaptive_rank_one_upper": 1.105416556980464e-05,
+        "optimized_psd_upper": 1.088493314783406e-05,
+        "optimized_psd_measured": 7.228001626210969e-06,
+        "optimized_psd_margin": 3.656931521623091e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.15,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.96,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6964414171292966,
+        "exact_localizer_min": -0.0005019829948800799,
+        "ritz_edge": 0.7216409371812516,
+        "fixed_chebyshev_upper": 0.0007208373793207855,
+        "observed_min_eigenvalue": -0.0003679465185662695,
+        "adaptive_rank_one_upper": 0.0015311891157744994,
+        "optimized_psd_upper": -7.911109191831249e-06,
+        "optimized_psd_measured": -7.23773277698009e-05,
+        "optimized_psd_margin": 6.446621857796965e-05,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.35,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6539735317926758,
+        "exact_localizer_min": -0.005539608978360876,
+        "ritz_edge": 0.7216409371812516,
+        "fixed_chebyshev_upper": 0.00037707610952251324,
+        "observed_min_eigenvalue": -0.005344920212280121,
+        "adaptive_rank_one_upper": 0.0011499429804789707,
+        "optimized_psd_upper": -0.00043101307174165694,
+        "optimized_psd_measured": -0.0030047612043751695,
+        "optimized_psd_margin": 0.0025737481326335125,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.0,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7300925298081685,
+        "exact_localizer_min": 6.848176146073692e-06,
+        "ritz_edge": 0.7218459542521158,
+        "fixed_chebyshev_upper": 0.0008436109121796076,
+        "observed_min_eigenvalue": 6.768140025509825e-06,
+        "adaptive_rank_one_upper": 9.322213148358293e-06,
+        "optimized_psd_upper": 9.17478678003901e-06,
+        "optimized_psd_measured": 6.822482311072359e-06,
+        "optimized_psd_margin": 2.3523044689666514e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.15,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.6964414171292966,
+        "exact_localizer_min": -0.0005019829948800799,
+        "ritz_edge": 0.7218459542521158,
+        "fixed_chebyshev_upper": 0.0006097280550646097,
+        "observed_min_eigenvalue": -0.00046049895693941366,
+        "adaptive_rank_one_upper": 0.0010750412564005227,
+        "optimized_psd_upper": -3.989235840383023e-05,
+        "optimized_psd_measured": -0.00012024814311422348,
+        "optimized_psd_margin": 8.035578471039325e-05,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 14,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.35,
+      "true_gap": 1.5729199985516438,
+      "true_edge": 0.7300925298081685,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6539735317926758,
+        "exact_localizer_min": -0.005539608978360876,
+        "ritz_edge": 0.7218459542521158,
+        "fixed_chebyshev_upper": 0.0002971472865921347,
+        "observed_min_eigenvalue": -0.005370235102308253,
+        "adaptive_rank_one_upper": -0.001204036212245475,
+        "optimized_psd_upper": -0.0018387631528017801,
+        "optimized_psd_measured": -0.004828904545464261,
+        "optimized_psd_margin": 0.0029901413926624806,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7364879300516423,
+        "exact_localizer_min": 7.159277665834407e-06,
+        "ritz_edge": 0.7229551510395806,
+        "fixed_chebyshev_upper": 0.001453114443632678,
+        "observed_min_eigenvalue": 7.702555871786287e-06,
+        "adaptive_rank_one_upper": 1.6434936610026877e-05,
+        "optimized_psd_upper": 1.5494717618833122e-05,
+        "optimized_psd_measured": 7.88775389912991e-06,
+        "optimized_psd_margin": 7.606963719703211e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.15,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.7034617350311738,
+        "exact_localizer_min": -0.0002091841537148059,
+        "ritz_edge": 0.7229551510395806,
+        "fixed_chebyshev_upper": 0.0010870113073836072,
+        "observed_min_eigenvalue": -0.00018919440230365624,
+        "adaptive_rank_one_upper": 0.0015280584364976983,
+        "optimized_psd_upper": 1.2925376410528205e-05,
+        "optimized_psd_measured": 4.831022940631133e-06,
+        "optimized_psd_margin": 8.094353469897072e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6617190013085644,
+        "exact_localizer_min": -0.004658551425476446,
+        "ritz_edge": 0.7229551510395806,
+        "fixed_chebyshev_upper": 0.0006660872596179012,
+        "observed_min_eigenvalue": -0.004670599690698717,
+        "adaptive_rank_one_upper": 0.007654942599579692,
+        "optimized_psd_upper": 9.978180187317026e-06,
+        "optimized_psd_measured": 8.913785912280107e-08,
+        "optimized_psd_margin": 9.889042328194225e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.0,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7364879300516423,
+        "exact_localizer_min": 7.159277665834407e-06,
+        "ritz_edge": 0.7254331592165937,
+        "fixed_chebyshev_upper": 0.0012349534884921447,
+        "observed_min_eigenvalue": 7.277848538907876e-06,
+        "adaptive_rank_one_upper": 1.2985583033879177e-05,
+        "optimized_psd_upper": 1.2702796739425572e-05,
+        "optimized_psd_measured": 7.335826660111254e-06,
+        "optimized_psd_margin": 5.366970079314318e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.15,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.7034617350311738,
+        "exact_localizer_min": -0.0002091841537148059,
+        "ritz_edge": 0.7254331592165937,
+        "fixed_chebyshev_upper": 0.0009255469485474877,
+        "observed_min_eigenvalue": -0.00017249604193463744,
+        "adaptive_rank_one_upper": 0.001047245671000061,
+        "optimized_psd_upper": 9.732369373381241e-06,
+        "optimized_psd_measured": 2.46932165372088e-06,
+        "optimized_psd_margin": 7.26304771966036e-06,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 1000,
+      "gap_factor": 1.35,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.8,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6617190013085644,
+        "exact_localizer_min": -0.004658551425476446,
+        "ritz_edge": 0.7254331592165937,
+        "fixed_chebyshev_upper": 0.0005564540997370143,
+        "observed_min_eigenvalue": -0.0042632835875906095,
+        "adaptive_rank_one_upper": 0.0041398595526943895,
+        "optimized_psd_upper": -1.7997944004879106e-06,
+        "optimized_psd_measured": -0.00018258119613906844,
+        "optimized_psd_margin": 0.00018078140173858053,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.0,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7364879300516423,
+        "exact_localizer_min": 7.159277665834407e-06,
+        "ritz_edge": 0.723415121962956,
+        "fixed_chebyshev_upper": 0.0010458359981089136,
+        "observed_min_eigenvalue": 7.227384214815551e-06,
+        "adaptive_rank_one_upper": 1.1250388818576676e-05,
+        "optimized_psd_upper": 1.110803383384769e-05,
+        "optimized_psd_measured": 7.2827442381325136e-06,
+        "optimized_psd_margin": 3.825289595715175e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.15,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.12,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.7034617350311738,
+        "exact_localizer_min": -0.0002091841537148059,
+        "ritz_edge": 0.723415121962956,
+        "fixed_chebyshev_upper": 0.0007819272475833177,
+        "observed_min_eigenvalue": -0.00012319497503456454,
+        "adaptive_rank_one_upper": 0.00043619507639919926,
+        "optimized_psd_upper": 7.433910610473842e-06,
+        "optimized_psd_measured": -4.331788187079226e-06,
+        "optimized_psd_margin": 1.1765698797553068e-05,
+        "optimized_psd_rank_1e-7": 2
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 2000,
+      "gap_factor": 1.35,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6617190013085644,
+        "exact_localizer_min": -0.004658551425476446,
+        "ritz_edge": 0.723415121962956,
+        "fixed_chebyshev_upper": 0.0004529114906628186,
+        "observed_min_eigenvalue": -0.004094687677926531,
+        "adaptive_rank_one_upper": 0.0018105768932342664,
+        "optimized_psd_upper": -0.00011506784674374419,
+        "optimized_psd_measured": -0.0008421024283883899,
+        "optimized_psd_margin": 0.0007270345816446457,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.0,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 0.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 0.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.0,
+        "theta": 0.7364879300516423,
+        "exact_localizer_min": 7.159277665834407e-06,
+        "ritz_edge": 0.7253123274169522,
+        "fixed_chebyshev_upper": 0.0008543661395460927,
+        "observed_min_eigenvalue": 7.205691512897877e-06,
+        "adaptive_rank_one_upper": 9.674866588523687e-06,
+        "optimized_psd_upper": 9.646362060750855e-06,
+        "optimized_psd_measured": 7.219253297288213e-06,
+        "optimized_psd_margin": 2.4271087634626415e-06,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.15,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 0.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.15,
+        "theta": 0.7034617350311738,
+        "exact_localizer_min": -0.0002091841537148059,
+        "ritz_edge": 0.7253123274169522,
+        "fixed_chebyshev_upper": 0.000628940297793896,
+        "observed_min_eigenvalue": -0.00024241354794584367,
+        "adaptive_rank_one_upper": 0.0005845734578621642,
+        "optimized_psd_upper": -2.5770547690002243e-05,
+        "optimized_psd_measured": -8.317218426016494e-05,
+        "optimized_psd_margin": 5.74016365701627e-05,
+        "optimized_psd_rank_1e-7": 1
+      }
+    },
+    {
+      "length": 16,
+      "degree": 2,
+      "sample_count": 5000,
+      "gap_factor": 1.35,
+      "true_gap": 1.5293121573338624,
+      "true_edge": 0.7364879300516423,
+      "moment_dimension": 18,
+      "ensembles": 50,
+      "detection_rates": {
+        "psd": 1.0,
+        "rank_one": 1.0,
+        "fixed_chebyshev": 0.0,
+        "ritz": 1.0
+      },
+      "first_ensemble": {
+        "gap_factor": 1.35,
+        "theta": 0.6617190013085644,
+        "exact_localizer_min": -0.004658551425476446,
+        "ritz_edge": 0.7253123274169522,
+        "fixed_chebyshev_upper": 0.0003250556816264627,
+        "observed_min_eigenvalue": -0.004973552960545097,
+        "adaptive_rank_one_upper": -0.0009366161445207525,
+        "optimized_psd_upper": -0.001594072900877713,
+        "optimized_psd_measured": -0.004395509446027968,
+        "optimized_psd_margin": 0.002801436545150255,
+        "optimized_psd_rank_1e-7": 1
+      }
+    }
+  ]
+}

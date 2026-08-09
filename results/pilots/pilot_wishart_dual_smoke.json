@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "setup": {
+    "length": 8,
+    "degree": 2,
+    "sample_counts": [
+      500
+    ],
+    "gap_factors": [
+      1.0,
+      1.35
+    ],
+    "ensembles": 10,
+    "alpha": 0.05,
+    "seed": 20260813,
+    "tau": 0.2,
+    "j1": 1.0,
+    "j2": 0.37,
+    "hx": 2.2,
+    "output": "results\\pilots\\pilot_wishart_dual_smoke.json"
+  },
+  "model": {
+    "length": 8,
+    "dimension": 256,
+    "parameters": {
+      "j1": 1.0,
+      "j2": 0.37,
+      "hx": 2.2,
+      "tau": 0.2
+    },
+    "energies": [
+      -18.70760584916844,
+      -16.850125449833957,
+      -15.719715028007123
+    ],
+    "true_gap": 1.8574803993344844,
+    "parities": [
+      1.0000000000000029,
+      -1.0000000000000022,
+      -1.0000000000000007
+    ]
+  },
+  "joint_dimension": 12,
+  "true_edge": 0.6897017095463316,
+  "rows": [
+    {
+      "sample_count": 500,
+      "gap_factor": 1.0,
+      "eta": 0.27639162622995767,
+      "loewner_lower": 0.6138073821641514,
+      "loewner_upper": 1.9098217370344486,
+      "exact_localizer_min": 3.7120287984171094e-06,
+      "detection_rate": 0.0,
+      "dual_detection_threshold": -1e-07,
+      "dual_statuses": {
+        "optimal_inaccurate": 4,
+        "optimal": 6
+      },
+      "dual_value_range": [
+        1.8192215263277236e-10,
+        6.4685527622775e-10
+      ],
+      "maximum_stationarity_fro": 6.820593807822844e-10,
+      "maximum_normalization_error": 2.309126223565272e-10,
+      "minimum_reported_psd_eigenvalue": -1.0367266688592938e-09,
+      "first_certificate": {
+        "dual_status": "optimal_inaccurate",
+        "dual_value": 4.943190068424481e-10,
+        "dual_stationarity_fro": 3.559837922402763e-10,
+        "dual_normalization_error": 2.309126223565272e-10,
+        "dual_min_psd_eigenvalue": -1.0469910979411743e-10
+      }
+    },
+    {
+      "sample_count": 500,
+      "gap_factor": 1.35,
+      "eta": 0.27639162622995767,
+      "loewner_lower": 0.6138073821641514,
+      "loewner_upper": 1.9098217370344486,
+      "exact_localizer_min": -0.010121524760804199,
+      "detection_rate": 1.0,
+      "dual_detection_threshold": -1e-07,
+      "dual_statuses": {
+        "optimal": 8,
+        "optimal_inaccurate": 2
+      },
+      "dual_value_range": [
+        -0.0008160963967104324,
+        -0.0004077780891052901
+      ],
+      "maximum_stationarity_fro": 2.2135286010980863e-09,
+      "maximum_normalization_error": 2.798909548573647e-09,
+      "minimum_reported_psd_eigenvalue": -3.995980314118748e-09,
+      "first_certificate": {
+        "dual_status": "optimal",
+        "dual_value": -0.0005054248983069505,
+        "dual_stationarity_fro": 5.363688985639439e-10,
+        "dual_normalization_error": 1.9598411782340008e-10,
+        "dual_min_psd_eigenvalue": -6.439535522578161e-10
+      }
+    }
+  ]
+}

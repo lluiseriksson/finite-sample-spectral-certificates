@@ -1,0 +1,781 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.45cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\definecolor{linkblue}{RGB}{25,75,140}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Smat}{\mathbb{S}}
+\newcommand{\PSD}{\Smat_+}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
+
+\title{Finite-Sample Spectral-Edge Exclusion\\
+from Gaussian Correlator Sketches}
+\author{Lluís Eriksson\\
+\small Independent researcher\\
+\small \url{https://github.com/lluiseriksson/finite-sample-spectral-certificates}}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Spectral gaps are often inferred from noisy Euclidean correlators by fitting a
+small number of exponentials or solving a generalized eigenvalue
+problem~\cite{Blossier2009}.  Such
+point estimates do not by themselves control the error incurred when the
+spectral filter is selected from the same data.  We give a finite-sample test
+that instead asks whether an entire simultaneous confidence set is compatible
+with a proposed upper edge of the visible transfer spectrum.  For Gaussian
+sketches of a block correlator, an extreme-singular-value inequality yields a
+Loewner confidence band for the unknown joint Gram matrix.  Intersecting this
+band with a truncated Hausdorff localizer is one semidefinite feasibility
+problem.  We derive its semidefinite alternative: every rejection is accompanied
+by a covariance-aware matrix witness, a negative separation margin, and
+checkable primal-independent residuals.  The test has type-I error at most
+$\alpha$ at fixed truncation order and requires neither known covariance nor a
+Gaussian approximation to the quadratic moment features.  A second theorem
+gives an explicit witness-dependent sample size for power at least
+$1-\alpha$, and one rejection is replayed with exact rational arithmetic.
+Simulations in the
+interacting axial next-nearest-neighbour Ising chain compare the certificate to
+covariance-known ellipsoids, plug-in eigenvectors, fixed Chebyshev filters, and
+Ritz estimates.  A 16,800-SDP production grid resolves sample-size and moment-
+degree transitions.  We also document two negative results: Hotelling
+calibration undercovers the non-Gaussian quadratic features, and the Gaussian
+Loewner band undercovers variance-matched Student-$t_5$ primitives.  The method
+certifies exclusion of overly large \emph{visible} gaps; it
+does not turn non-rejection into a lower bound on a Hamiltonian mass gap.
+\end{abstract}
+
+\section{Introduction}
+
+Let $H$ be a Hamiltonian with ground energy $E_0$, choose a Euclidean step
+$\tau>0$, and write $T=\exp[-\tau(H-E_0)]$.  Matrix-valued correlator moments
+have the form
+\begin{equation}
+  B_k=\Psi^*T^k\Psi,\qquad k=0,1,\ldots,
+  \label{eq:moments}
+\end{equation}
+where the columns of $\Psi$ are ground-state-subtracted probe states.  The
+largest point in the support visible to these probes is
+$\rho_{\rm vis}=e^{-\tau\Delta_{\rm vis}}$.  If a probe misses the first
+excitation then $\Delta_{\rm vis}$ may exceed the Hamiltonian gap; this
+visibility qualification is unavoidable.
+
+Recent work has developed semidefinite bootstraps for exact Euclidean
+correlators~\cite{Cho2025}, convergent lower-gap certificates for qubit
+Hamiltonians~\cite{Rao2025}, and convergent certified upper bounds on the bulk
+gap~\cite{Xu2026}.  Our question is complementary:
+\begin{quote}
+\emph{Given finitely many correlated random observations of a block
+correlator, can one reject a proposed visible gap with simultaneous,
+finite-sample error control while choosing the separating filter adaptively?}
+\end{quote}
+The distinction matters.  A negative eigenvalue of a noisy localizer is a
+data-dependent observation, not yet a confidence statement.  Entrywise error
+bars ignore correlation; a filter trained on the same sample invalidates a
+pointwise interval; and a Gaussian approximation to quadratic observables may
+be inaccurate precisely in the moderate-$n$ regime where certification is most
+valuable.
+
+Our contribution is a statistical-conic layer that can be placed in front of a
+truncated moment localizer.  In the Gaussian-sketch model the primitive sketch
+vector is Gaussian, but the reported block moments are quadratic and
+Wishart-like.  We construct a confidence set for the primitive covariance
+itself, then test its compatibility with the spectral null.  The resulting test
+is nonasymptotic and covariance-free.  Its dual supplies an explicit rejection
+witness rather than asking the reader to trust an ``infeasible'' solver label.
+
+\paragraph{Scope.}
+At finite moment degree, localizer positivity is a necessary condition for a
+proposed upper spectral edge.  Its violation rigorously excludes that edge, but
+non-violation does not prove a gap.  Consequently our output is a certified
+upper bound on a visible gap (or a rejection of an overly large claimed gap),
+not a proof of a positive mass gap.  This boundary also distinguishes the
+present result from Hamiltonian-algebra hierarchies that can certify lower
+bounds~\cite{Rao2025}.
+
+\section{Block moments and the upper-edge localizer}
+
+Assume for clarity that $H$ and the probes admit a real representation; the
+complex proper-Gaussian case has different fourth-moment constants and is not
+claimed here.  The spectral theorem gives a positive-semidefinite matrix-valued
+measure $\mu$ on $[0,1]$ such that
+\begin{equation}
+  B_k=\int_{[0,1]}x^k\,d\mu(x).
+\end{equation}
+For a proposed edge $\theta\in(0,1]$ and degree $N$, define
+\begin{equation}
+  \mathcal L_{N,\theta}(B)
+  =\big[\theta B_{i+j}-B_{i+j+1}\big]_{i,j=0}^{N}.
+  \label{eq:localizer}
+\end{equation}
+If $\operatorname{supp}\mu\subseteq[0,\theta]$, then for every vector
+polynomial $p(x)=\sum_{i=0}^N x^iv_i$,
+\begin{equation}
+  \sum_{i,j}v_i^*(\theta B_{i+j}-B_{i+j+1})v_j
+  =\int(\theta-x)\,p(x)^*d\mu(x)p(x)\ge0.
+\end{equation}
+Thus $\mathcal L_{N,\theta}(B)\succeq0$ is a necessary finite-window null.
+A violation says that the probes see spectral weight above $\theta$, hence
+\begin{equation}
+  \Delta_{\rm vis}< -\tau^{-1}\log\theta.
+\end{equation}
+
+This elementary localizer is not presented as novel; truncated moment and
+localization techniques have a long history~\cite{HeltonNie2011,deKlerk2018}.
+The new issue below is how to test it after observing a correlated random Gram
+matrix.
+
+\section{Gaussian sketches and a covariance confidence band}
+
+Put $u_{k,a}=T^{k/2}\psi_a$ for time index $k=0,\ldots,2N+1$ and channel
+$a=1,\ldots,c$.  Draw independent standard real Gaussian vectors $g_r$ and
+observe
+\begin{equation}
+  z_{r,k,a}=\ip{g_r}{u_{k,a}}.
+  \label{eq:sketch}
+\end{equation}
+After stacking $(k,a)$ into one index, $z_r\sim\mathcal N(0,K)$ with
+\begin{equation}
+  K_{(k,a),(\ell,b)}
+   =\ip{u_{k,a}}{u_{\ell,b}}
+   = B_{(k+\ell)/2}[a,b].
+  \label{eq:jointgram}
+\end{equation}
+In particular, the $k$th diagonal time block of $K$ is $B_k$.  Although
+$z_{r,k}z_{r,k}^{\mathsf T}$ is an unbiased rank-one estimator of $B_k$, these
+quadratic features are not jointly Gaussian.
+
+Let
+\begin{equation}
+  S=\frac1n\sum_{r=1}^n z_rz_r^{\mathsf T},\qquad
+  d=(2N+2)c.
+\end{equation}
+The following confidence set acts on all times and channels simultaneously.
+
+\begin{theorem}[Wishart--Loewner confidence band]
+\label{thm:wishart}
+Let $z_1,\ldots,z_n$ be independent $\mathcal N(0,K)$ vectors in
+$\mathbb R^d$, where $K\succeq0$ is unknown and the zero mean is known.  For
+$0<\alpha<1$, set
+\begin{equation}
+ \eta=\frac{\sqrt d+\sqrt{2\log(2/\alpha)}}{\sqrt n}<1,
+ \quad a=(1+\eta)^{-2},\quad b=(1-\eta)^{-2}.
+ \label{eq:bandconstants}
+\end{equation}
+Then
+\begin{equation}
+  \mathbb P\{aS\preceq K\preceq bS\}\ge1-\alpha.
+  \label{eq:loewnerband}
+\end{equation}
+The statement remains valid for singular $K$.
+\end{theorem}
+
+\begin{proof}
+Write the $n\times d$ data matrix as $Z=GK^{1/2}$, with $G$ standard
+Gaussian.  The Gaussian extreme-singular-value inequality gives, with failure
+probability at most $2e^{-t^2/2}$,
+\[
+ \sqrt n-\sqrt d-t\le s_{\min}(G)\le s_{\max}(G)
+ \le\sqrt n+\sqrt d+t.
+\]
+With $t=\sqrt{2\log(2/\alpha)}$, division by $\sqrt n$, squaring, and
+congruence by $K^{1/2}$ yield
+$(1-\eta)^2K\preceq S\preceq(1+\eta)^2K$.  Rearrangement gives
+\eqref{eq:loewnerband}.  Congruence does not require invertibility of $K$, so
+the same argument covers the singular case.  We use the ambient $d$ rather
+than an unknown effective rank.  See~\cite{RudelsonVershynin2010,Vershynin2010}
+for the nonasymptotic singular-value bounds.
+\end{proof}
+
+\begin{remark}[Known mean is substantive]
+If a sample mean is first estimated and subtracted, the degrees of freedom and
+constants change.  The present theorem applies to the centered-by-construction
+sketches in \eqref{eq:sketch}; it must not be copied unchanged to an unknown-mean
+observation model.
+\end{remark}
+
+\section{Exact compatibility test and semidefinite alternative}
+
+Let $P(K)=(K_{kk})_{k=0}^{2N+1}$ extract the diagonal time blocks.  Define the
+random confidence set
+\begin{equation}
+  \mathcal C_\alpha(S)=\{Q\in\Smat^d:aS\preceq Q\preceq bS\}.
+\end{equation}
+We reject the proposed edge $\theta$ precisely when
+\begin{equation}
+ \text{there is no }Q\in\mathcal C_\alpha(S)
+ \text{ with }\mathcal L_{N,\theta}(P(Q))\succeq0.
+ \label{eq:primaltest}
+\end{equation}
+This is one SDP feasibility problem.
+
+\begin{corollary}[Finite-sample validity]
+\label{cor:level}
+Under the null $\mathcal L_{N,\theta}(P(K))\succeq0$, the probability that
+\eqref{eq:primaltest} rejects is at most $\alpha$.
+\end{corollary}
+
+\begin{proof}
+On the event in \cref{thm:wishart}, the true $K$ is feasible in
+\eqref{eq:primaltest}; rejection is therefore impossible.  The rejection event
+is contained in the confidence-set failure event.
+\end{proof}
+
+No sample splitting is needed: arbitrary adaptive optimization inside the
+confidence set preserves this argument.  This is the central statistical
+advantage over selecting a polynomial direction from $S$ and attaching an
+unadjusted pointwise error bar.
+
+The same event also gives a nonasymptotic power condition.  It makes explicit
+how statistical dimension, spectral violation, and sketch count trade off.
+
+\begin{theorem}[Finite-sample detection condition]
+\label{thm:power}
+Fix an alternative covariance $K\succeq0$ and let
+$C_X=(\mathcal L_{N,\theta}\circ P)^*(X)$ for some $X\succeq0$ with
+$\tr X=1$.
+Suppose
+\begin{equation}
+ \gamma_X=-\ip{C_X}{K}>0,
+ \qquad
+ w_X=\tr\left|K^{1/2}C_XK^{1/2}\right|.
+ \label{eq:populationmargin}
+\end{equation}
+If
+\begin{equation}
+ \delta_+(\eta)w_X<\gamma_X,
+ \qquad
+ \delta_+(\eta)=\left(\frac{1+\eta}{1-\eta}\right)^2-1,
+ \label{eq:powercondition}
+\end{equation}
+then the test rejects with probability at least $1-\alpha$.  In particular,
+writing $r_X=\gamma_X/w_X$ (with the conclusion immediate if $w_X=0$), the
+explicit sufficient sample size is
+\begin{equation}
+ n>
+ \left(\sqrt d+\sqrt{2\log(2/\alpha)}\right)^2
+ \frac{\big(\sqrt{1+r_X}+1\big)^4}{r_X^2}.
+ \label{eq:samplesufficient}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+On the event used in Theorem~\ref{thm:wishart}, every
+$Q\in\mathcal C_\alpha(S)$ obeys
+\[
+ r_-K\preceq Q\preceq r_+K,
+ \qquad
+ r_\pm=\left(\frac{1\pm\eta}{1\mp\eta}\right)^2.
+\]
+Thus, for $E=Q-K$,
+$-(1-r_-)K\preceq E\preceq(r_+-1)K$.  Compressing to
+$\operatorname{ran}K$ and applying congruence by $K^{\dagger/2}$ shows
+\begin{align}
+ \ip{C_X}{E}
+ &\le (r_+-1)\tr[(K^{1/2}C_XK^{1/2})_+]\\
+ &\quad +(1-r_-)\tr[(K^{1/2}C_XK^{1/2})_-]
+ \le\delta_+(\eta)w_X.
+\end{align}
+Condition~\eqref{eq:powercondition} therefore gives
+$\ip{X}{\mathcal L_{N,\theta}(P(Q))}=\ip{C_X}{Q}<0$ for every $Q$ in the
+confidence set.  No such $Q$ can have a PSD localizer, so rejection occurs on
+an event of probability at least $1-\alpha$.  Finally,
+$\delta_+(\eta)<r_X$ is equivalent to
+$\eta<r_X/(\sqrt{1+r_X}+1)^2$; substituting~\eqref{eq:bandconstants} gives
+\eqref{eq:samplesufficient}.
+\end{proof}
+
+The bound is deliberately witness-specific and conservative.  It is useful
+because it is a genuine power guarantee, not because it predicts the sharp
+transition of an optimized SDP.  Optimizing $X$ for empirical power remains
+fully protected by Corollary~\ref{cor:level}; using $X$ in
+Theorem~\ref{thm:power} as a population design witness is only an analysis
+device.
+
+For numerical auditability, let $D$ be any fixed positive diagonal scaling
+computed from $S$, put $Q=D\widetilde QD$, and denote the scaled interval by
+$A\preceq\widetilde Q\preceq B$.  Let $\mathcal L_D$ be the resulting affine
+linear map.
+
+\begin{proposition}[Semidefinite alternative]
+\label{prop:dual}
+Assume $S\succ0$.  The feasibility problem \eqref{eq:primaltest} is infeasible
+if and only if there exist $Y_A,Y_B,Y_L\succeq0$ such that
+\begin{align}
+ Y_A-Y_B+\mathcal L_D^*(Y_L)&=0,\label{eq:stationarity}\\
+ -\ip{Y_A}{A}+\ip{Y_B}{B}&<0.\label{eq:dualmargin}
+\end{align}
+The multipliers may be normalized by
+$\tr Y_A+\tr Y_B+\tr Y_L=1$.
+\end{proposition}
+
+\begin{proof}
+Pair the three primal inequalities
+$\widetilde Q-A\succeq0$, $B-\widetilde Q\succeq0$, and
+$\mathcal L_D(\widetilde Q)\succeq0$ with the three PSD multipliers.
+Equation~\eqref{eq:stationarity} cancels every term containing
+$\widetilde Q$; primal feasibility would then force the constant in
+\eqref{eq:dualmargin} to be nonnegative, proving one direction.  Conversely,
+the interval is compact and has the strict midpoint $(A+B)/2$ when $S\succ0$.
+Strong conic separation therefore supplies the stated multipliers whenever its
+intersection with the inverse image of the PSD localizer cone is empty.
+Homogeneity permits trace normalization.  If $S$ is singular, the same claim
+requires first restricting all matrices to $\operatorname{ran}S$; we do not
+silently replace this reduction by a numerical ridge.
+\end{proof}
+
+The implementation minimizes the dual margin under trace normalization.  A
+reported rejection stores the margin, the Frobenius residual of
+\eqref{eq:stationarity}, normalization error, and the smallest eigenvalue of
+each numerical multiplier.  The production grid uses a conservative
+a-posteriori residual allowance.  In addition, one deliberately wider
+confidence interval is rejected by an exact-rational witness whose PSD and
+strict-negativity checks use no numerical linear-algebra library; see
+Section~\ref{sec:rational}.
+
+\section{Why covariance awareness changes the witness}
+
+The noiseless localizer test uses a minimum eigenvector.  Under simultaneous
+uncertainty, that direction need not be optimal.  For comparison, if a moment
+vector $y$ has known mean covariance $C/n$ and an ellipsoidal radius $q$, a
+trace-one PSD witness $X$ has population signal-to-noise ratio
+\begin{equation}
+ \kappa(X)=\frac{[-\tr(\mathcal L(y)X)]_+}
+ {\sqrt{\ell(X)^{\mathsf T}C\ell(X)}},
+ \qquad \ell(X)_k=\tr(L_kX).
+ \label{eq:snr}
+\end{equation}
+The robust upper bound becomes negative exactly when
+$\sqrt n\,\kappa(X)>q$.  Optimizing $X$ therefore trades localizer negativity
+against covariance sensitivity, rather than simply minimizing the observed
+eigenvalue.
+
+Mixed witnesses can be strictly better in principle.  For the synthetic family
+$M=-\varepsilon I_r$ with isotropic Frobenius uncertainty, every rank-one
+projector has uncertainty norm one, whereas $X=I_r/r$ has norm $r^{-1/2}$.
+The sample threshold differs by a factor $r$.  In our ANNNI pilots, however,
+many optimized ellipsoidal witnesses above threshold are numerically rank one.
+The observed advantage there is primarily \emph{covariance-aware direction
+selection} relative to the plug-in minimum eigenvector, not evidence that a
+high-rank mixture is always required.
+
+\section{Interacting ANNNI experiment}
+
+We use the periodic axial next-nearest-neighbour Ising chain
+\begin{equation}
+ H=-J_1\sum_i Z_iZ_{i+1}-J_2\sum_i Z_iZ_{i+2}-h_x\sum_iX_i
+ \label{eq:annni}
+\end{equation}
+with $J_1=1$, $J_2=0.37$, $h_x=2.2$, and $\tau=0.2$.  This frustrated,
+nonintegrable finite chain~\cite{Kriel2014} is not being used to claim a new phase boundary; it
+is a controlled interacting test bed where exact sparse diagonalization and
+Krylov propagation provide ground truth.  Ground-state-subtracted central-site
+$X$ and $Z$ probes form a two-channel correlator.  The global spin-flip parity
+separates their visible sectors.
+
+At degree $N=2$, the primitive joint sketch dimension is $d=12$, the flattened
+quadratic moment dimension is 18, and the localizer has size $6\times6$.
+Lengths $L=6,8,10,12,14,16$ are tested at the exact visible edge and at gaps
+inflated by 15\% and 35\%.  For each cell we generate independent sketch
+ensembles at $n=500,1000,2000,5000$.  The production seed, full raw summaries,
+and SHA-256 hashes are stored in the repository.
+
+\subsection{Baselines and controls}
+
+We compare four logically different objects.
+\begin{enumerate}
+ \item The Wishart--Loewner dual certificate of Proposition~\ref{prop:dual}, with unknown
+ covariance and finite-sample level control.
+ \item A covariance-known multivariate-Chebyshev ellipsoid, useful as a
+ controlled oracle reference but not a deployable unknown-covariance method.
+ \item A plug-in minimum-eigenvector and a fixed Chebyshev polynomial filter.
+ These expose the value of covariance-aware direction selection.
+ \item A generalized Ritz/GEVP edge estimate.  It is a point estimator, not a
+ confidence certificate, and is reported separately rather than granted the
+ same logical status.
+\end{enumerate}
+
+The known-covariance pilot showed a sharp sample transition: for the 35\%
+inflated gap, the covariance-aware robust test reached essentially full power
+near $n=1000$ across $L\le14$, while the plug-in eigenvector was usually still
+silent until $n=5000$.  At the true edge the robust methods made no rejection
+in the medium grid.  These observations motivated the covariance-unknown
+production campaign.
+
+\subsection{Production power and moment-degree transition}
+
+The main unknown-covariance campaign comprises 7,200 independently generated
+SDPs.  It made zero rejections in 2,400 null ensembles and 2,400 rejections in
+2,400 ensembles at 35\% inflation.  For the harder 15\% alternative, the
+finite-size transition is resolved in Table~\ref{tab:mainpower}.  Each entry is
+the number of rejections among 100 ensembles; Wilson intervals are plotted in
+Figure~\ref{fig:powerdegree}.  Across all 7,200 solves, the largest conservative
+stationarity allowance was $3.76\times10^{-13}$ and the smallest reported
+eigenvalue of a shifted multiplier was $1.40\times10^{-14}$.
+
+\begin{table}[H]
+\centering
+\caption{Safe rejections out of 100 for a 15\% inflated visible-gap claim at
+moment degree $N=2$.}
+\label{tab:mainpower}
+\begin{tabular}{c@{\qquad}rrrr}
+\toprule
+$L$ & $n=500$ & $n=1000$ & $n=2000$ & $n=5000$\\
+\midrule
+6  &100&100&100&100\\
+8  &100&100&100&100\\
+10 & 98&100&100&100\\
+12 & 51&100&100&100\\
+14 &  0& 86&100&100\\
+16 &  0&  7& 97&100\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{paper/figures/power_and_degree.pdf}
+\caption{Finite-sample power.  (a) The $N=2$ production campaign with 95\%
+Wilson intervals.  (b--d) Independent degree ablation at 15\% inflation.
+Increasing $N$ raises the primitive dimension from 8 to 16 and widens the
+Loewner band, yet the stronger polynomial localizer dominates: at $L=16$ and
+$n=500$, power rises from 0 for $N=1,2$ to 0.90 for $N=3$.}
+\label{fig:powerdegree}
+\end{figure}
+
+The independent 7,200-SDP degree ablation made zero null rejections in 3,600
+ensembles.  Degree one is powerless at $L=12,16$ throughout the tested range;
+degree three reaches unit power in every $L=8,12$ cell and at $n\ge1000$ for
+$L=16$.  This is not the tautology that adding moments can only help: the
+Wishart dimension penalty grows with $N$.  The observed dominance therefore
+quantifies a favorable approximation--concentration tradeoff for this model.
+
+\subsection{Conservatism of the analytic band}
+
+In 10,000 standard-Gaussian calibration replicates at $d=12$, the analytic
+$\eta$ values were $0.276,0.195,0.138$ for $n=500,1000,2000$, whereas the
+empirical 95th percentiles of the required singular-value deviation were
+$0.173,0.122,0.0862$.  The analytic width was consistently about 1.60 times
+the empirical quantile and covered all 10,000 replicates in each cell.  Thus
+the strong production power is not obtained by tuning the band to its Monte
+Carlo distribution.
+
+\subsection{Negative calibration result}
+
+The quadratic sketch features obey Isserlis' covariance formula but are
+Wishart-like rather than multivariate Gaussian.  At $L=12$, $N=2$, and only
+$n=120$ sketches, a nominal 95\% Hotelling ellipsoid covered the exact moment
+vector in 83.4\% of 500 simulated ensembles.  Its apparent 97.4\% detection
+rate for an inflated gap was therefore invalid as a 95\% certificate.  Coverage
+approached nominal only slowly with $n$.  This failed route is retained in the
+artifact as a warning against importing an exact Gaussian-mean theorem into a
+quadratic-feature problem.
+
+\subsection{Primitive-law misspecification}
+
+The Wishart--Loewner theorem is exact for Gaussian primitive sketches, not for
+all zero-mean isotropic laws.  We tested this boundary in 2,400 further SDPs,
+using Gaussian, variance-matched Student-$t_5$, and Rademacher primitive
+coordinates before applying the same population square root.  The Gaussian
+band covered in all 800 in-model ensembles.  Rademacher sketches also happened
+to cover in all 800 tested ensembles, but this is empirical conservatism, not a
+theorem.  Student-$t_5$ coverage was only 0.780 at $n=500$ and 0.738 at
+$n=1000$ after pooling the two independently generated gap-factor cells; its
+heavy radial tails do not become licensed merely by covariance matching.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{paper/figures/misspecification_coverage.pdf}
+\caption{Coverage stress test for the simultaneous Loewner band, with Wilson
+intervals.  Each bar pools 400 ensembles.  Only the Gaussian bars are covered
+by Theorem~\ref{thm:wishart}; the other two laws are deliberate negative
+controls.}
+\label{fig:misspecification}
+\end{figure}
+
+\section{Numerical verification protocol}
+
+Ill-conditioned Euclidean moment matrices make raw primal status unreliable.
+In a first primal--dual Wishart replay, two of five inflated-gap samples were
+labeled \texttt{optimal\_inaccurate} by a primal solver even though their dual
+margins were below $-4\times10^{-4}$.  In a separate ten-ensemble $L=8$ smoke
+at $n=500$, null dual objectives lay between $1.8\times10^{-10}$ and
+$6.5\times10^{-10}$, while 35\%-inflated-gap objectives lay between
+$-8.2\times10^{-4}$ and $-4.1\times10^{-4}$.  The maximum stationarity residual
+was $2.3\times10^{-9}$.  The first production pass conservatively thresholded
+the raw dual margin at $-10^{-7}$ and stored all residual diagnostics.  The
+final pass uses the feasibility repair described next.
+
+\paragraph{Feasibility repair.}
+Let floating-point multipliers first be projected onto the PSD cone, and let
+$R=Y_A-Y_B+\mathcal L_D^*(Y_L)=R_+-R_-$ be their remaining stationarity
+residual.  The replacements
+\begin{equation}
+  \widehat Y_A=Y_A+R_-,\qquad
+  \widehat Y_B=Y_B+R_+
+  \label{eq:repair}
+\end{equation}
+remain PSD and satisfy stationarity exactly, up to the arithmetic used for the
+eigendecomposition.  Trace renormalization preserves this equality.  In a
+20-ensemble repaired smoke, the maximum stationarity residual fell below
+$8\times10^{-17}$ and normalization error below $4\times10^{-16}$; null
+objectives were positive, whereas all 15\% and 35\% inflated-gap objectives
+were negative.  The production threshold is $-10^{-9}$ on the \emph{repaired}
+objective, leaving an additional buffer above double-precision roundoff.
+
+For an additional a-posteriori check, let $\widehat R$ be the final residual and
+recall that every scaled primal matrix obeys $0\preceq\widetilde Q\preceq B$.
+Then
+\begin{equation}
+  |\ip{\widehat R}{\widetilde Q}|
+  \le \|\widehat R\|_*\,\|B\|_{\rm op}.
+  \label{eq:residualbound}
+\end{equation}
+We add this worst-case quantity to the repaired dual objective before making a
+decision.  The code also shifts each multiplier by an explicit roundoff-scale
+identity so that its reported minimum eigenvalue is positive.  The final rule
+therefore tests a conservative upper bound on the dual contradiction margin,
+not the raw solver objective.
+
+This gap between scientific margin and numerical residual is encouraging but
+does not by itself constitute exact arithmetic.  The release uses three
+increasing levels of assurance:
+\begin{enumerate}
+ \item solve in floating point after diagonal congruence scaling;
+ \item independently rebuild the adjoint and residual from exported matrices;
+ \item repair PSD and stationarity defects while adding their worst-case effect
+ to the contradiction margin;
+ \item replay one wider-band representative with exact rational arithmetic.
+\end{enumerate}
+
+\subsection{Exact-rational representative witness}
+\label{sec:rational}
+
+For $L=8$, $N=2$, $n=500$, and the rational proposed edge
+$\theta=3/5$, we replace the analytic deviation by the larger rational value
+$\bar\eta=3/10$.  This widening is itself certified by elementary rational
+bounds: $\exp(15/4)>40$ via a positive Taylor partial sum,
+$\sqrt{12}<7/2$, $\sqrt{2\log40}<11/4$, and
+$25/4<3\sqrt5=(3/10)\sqrt{500}$.  Hence infeasibility for
+\begin{equation}
+ \frac{100}{169}S\preceq K\preceq\frac{100}{49}S
+ \label{eq:rationalband}
+\end{equation}
+implies infeasibility for the narrower 95\% analytic band.
+
+The stored Gaussian coordinates are hexadecimal IEEE-754 values.  The replay
+interprets each as its exact dyadic rational, rebuilds $S$ by rational dot
+products, and reads rounded dual multipliers with a common denominator
+$10^{14}$.  A diagonal shift of $10^{-11}$ makes all three multipliers strictly
+positive definite.  Exact fraction LDL decompositions give a minimum pivot
+$2.85\times10^{-11}$.  Instead of a floating nuclear norm, the replay uses the
+coarser exact inequality
+\begin{equation}
+ |\ip{R}{Q}|\le d\max_{ij}|R_{ij}|\,\tr B,
+ \qquad 0\preceq Q\preceq B.
+ \label{eq:rationalresidual}
+\end{equation}
+After this allowance, the exact rational certificate upper bound is
+$-6.47697914332\times10^{-4}$.  The JSON artifact has SHA-256 (line break is
+typographical)
+\begin{center}\small
+\texttt{aa9e6af05079ca823b392d2ee4889928}\\[-2pt]
+\texttt{2b87d32839021bd84b6085bd5f8d842d}
+\end{center}
+and is independently replayed by
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/main/verification/verify_rational_witness.py}{\texttt{verify\_rational\_witness.py}}.
+This exact statement is conditional on the stored finite-precision sample; the
+Gaussian idealization supplies the statistical coverage statement, not the
+rational replay itself.
+
+\section{Limitations and interpretation}
+
+\paragraph{Visible versus Hamiltonian gap.}
+The probes may have zero overlap with the first excitation.  Multiple symmetry
+channels reduce but do not remove this risk.  Every result is consequently
+labeled $\Delta_{\rm vis}$ unless a separate overlap theorem is available.
+
+\paragraph{Upper versus lower bounds.}
+Rejecting support in $[0,\theta]$ proves that a claimed gap is too large.  A
+finite localizer's non-rejection is not a proof that the true support lies below
+$\theta$.  Our method therefore complements, rather than replaces, lower-gap
+Hamiltonian certificates~\cite{Rao2025}.
+
+\paragraph{Acquisition model.}
+The exact confidence band uses independent, known-zero-mean Gaussian sketch
+coordinates.  Classical stochastic estimators or randomized numerical linear
+algebra can realize this model directly; a laboratory implementation must state
+how those coordinates are obtained and account for state-preparation and
+measurement noise.  Markov-chain autocorrelation, non-Gaussian primitive
+sketches, and unknown centering require different concentration results.
+
+\paragraph{Finite volume.}
+The ANNNI study validates statistical behavior at finite $L$.  It neither
+establishes a thermodynamic gap nor competes with the convergent bulk hierarchy
+of Xu et al.~\cite{Xu2026}.  A future combination of noisy-data confidence sets
+with thermodynamic operator-algebra hierarchies is an open direction.
+
+\section{Conclusion}
+
+The main result is a finite-sample bridge from random correlator sketches to an
+auditable spectral-edge exclusion.  A single Loewner band absorbs all
+time-channel correlations and all adaptive witness selection; a semidefinite
+alternative turns rejection into a replayable matrix inequality.  The approach
+is intentionally one-sided.  It can falsify an overly large visible gap with
+controlled type-I error, but it does not infer a mass gap from silence.  The
+interacting-chain campaign is designed to quantify when that rigorous statement
+is statistically useful and when conventional point estimates are merely more
+optimistic.
+
+\paragraph{Reproducibility.}
+Code, theorem audit notes, raw pilot outputs, the Colab production notebook, and
+the frozen production artifacts are available at
+\url{https://github.com/lluiseriksson/finite-sample-spectral-certificates}.
+The three production JSON files have SHA-256 digests recorded in
+\texttt{results/production/summary.json}; the continuous-integration workflow
+rechecks the localizer adjoint, primal--dual smoke, safe Wishart smoke, and
+exact-rational replay.
+
+\paragraph{Acknowledgements.}
+OpenAI Codex assisted with code generation, numerical orchestration, literature
+triage, and adversarial consistency checks.  The author retains responsibility
+for all claims and the final manuscript.
+
+\appendix
+\section{Strong alternative from compact interval separation}
+\label{app:duality}
+
+We spell out the separation argument behind Proposition~\ref{prop:dual}, since
+generic semidefinite systems can exhibit weak infeasibility.  Let
+\[
+ \mathcal D=\{Q:A\preceq Q\preceq B\},\qquad
+ \mathcal M=\{\mathcal L_D(Q):Q\in\mathcal D\}.
+\]
+When $A\prec B$, $\mathcal D$ is compact, convex, and has a relative-interior
+point; hence $\mathcal M$ is compact and convex.  If
+$\mathcal M\cap\PSD=\varnothing$, strong separation from the closed PSD cone
+provides a nonzero matrix $Y_L\succeq0$ such that
+\begin{equation}
+ \sup_{Q\in\mathcal D}\ip{Y_L}{\mathcal L_D(Q)}<0.
+ \label{eq:separation}
+\end{equation}
+The separator must be PSD: otherwise its linear functional is unbounded below
+or above along a PSD ray, with the orientation chosen in
+\eqref{eq:separation}.
+
+The support problem on the left of \eqref{eq:separation} is an SDP with a
+strictly feasible interval point $(A+B)/2$.  Its Lagrange dual therefore
+attains the same optimum.  Introducing $Y_A,Y_B\succeq0$ for
+$Q-A\succeq0$ and $B-Q\succeq0$ makes the coefficient of $Q$ vanish exactly
+when
+\[
+ Y_A-Y_B+\mathcal L_D^*(Y_L)=0,
+\]
+and leaves the constant
+$-\ip{Y_A}{A}+\ip{Y_B}{B}$.  Strict negativity follows from
+\eqref{eq:separation}.  This proves the nontrivial direction of the alternative
+without invoking a blanket ``SDP Farkas lemma'' in a regime where it might be
+false.  Conversely, pairing any feasible $Q$ with such multipliers gives an
+immediate contradiction, as in the main text.
+
+If $S$ is singular, then $A$ and $B$ have the same kernel and no ambient strict
+midpoint exists.  Because $A\preceq Q\preceq B$ forces
+$\ker S\subseteq\ker Q$, one may compress every matrix to
+$\operatorname{ran}S$ and repeat the argument there.  The current production
+ensembles have $n>d$ and a full-rank population Gram; the explicit range
+reduction is nevertheless preferable to adding an undocumented ridge.
+
+\section{Exact robust separation for ellipsoidal moment errors}
+\label{app:ellipsoid}
+
+The covariance-known comparator used in the pilot follows a more general
+finite-dimensional identity.  Let $y\in\mathbb R^p$ parameterize an affine
+localizer
+\[
+ L(y)=L_0+\sum_{k=1}^p y_kL_k
+\]
+and let
+\[
+ \mathcal E=\{\widehat y+Rz:\|z\|_2\le q\}
+\]
+be any compact ellipsoid.  For a trace-one $X\succeq0$ define
+$\ell(X)_k=\tr(L_kX)$ and
+\begin{equation}
+ U_{\mathcal E}(X)=\tr[L(\widehat y)X]
+       +q\|R^{\mathsf T}\ell(X)\|_2.
+ \label{eq:ellipsoidupper}
+\end{equation}
+
+\begin{theorem}[Exact ellipsoidal incompatibility]
+\label{thm:ellipsoid}
+The intersection $\mathcal E\cap\{y:L(y)\succeq0\}$ is empty if and only if
+\begin{equation}
+ \min_{X\succeq0,\ \tr X=1}U_{\mathcal E}(X)<0.
+ \label{eq:ellipsoidtest}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The image $L(\mathcal E)$ is compact and convex.  If it is disjoint from the
+closed PSD cone, strong separation supplies a PSD separator $X$; normalization
+to trace one only fixes its nonzero scale.  The support function of the
+ellipsoid in that direction is exactly \eqref{eq:ellipsoidupper}.  Conversely,
+if \eqref{eq:ellipsoidtest} is negative, then
+$\tr[L(y)X]<0$ for every $y\in\mathcal E$, which is impossible when both
+$L(y)$ and $X$ are PSD.
+\end{proof}
+
+For a singleton ellipsoid, \eqref{eq:ellipsoidtest} reduces to
+$\lambda_{\min}(L(y))$ and admits a rank-one eigenvector witness.  Under
+uncertainty, however, the optimizer minimizes a sum of signal and sensitivity.
+It may be higher rank, and even when it is rank one it need not be the observed
+minimum eigenvector.  The same coverage-event argument as in
+Corollary~\ref{cor:level} shows that optimizing $X$ on the data does not inflate
+type-I error when $\mathcal E$ is a simultaneous confidence set.
+
+\section{Quadratic-feature covariance and the Hotelling control}
+\label{app:isserlis}
+
+For completeness, Isserlis' identity gives the exact covariance of one
+quadratic sketch replicate.  With joint covariance entries
+$K_{ka,\ell c}=\mathbb E[z_{k,a}z_{\ell,c}]$,
+\begin{align}
+ &\operatorname{Cov}(z_{k,a}z_{k,b},z_{\ell,c}z_{\ell,d})\\
+ &\qquad=K_{ka,\ell c}K_{kb,\ell d}
+          +K_{ka,\ell d}K_{kb,\ell c}.
+ \label{eq:isserlis}
+\end{align}
+For the mean of $n$ independent sketches this matrix is divided by $n$.
+If it were known, multivariate Chebyshev would give a distribution-free
+ellipsoid with squared radius $r/\alpha$ on its rank-$r$ range.  That oracle
+route is exact but conservative and requires the unknown $K$ through
+\eqref{eq:isserlis}; it is used only as a controlled comparator.
+
+By contrast, the standard one-sample Hotelling pivot is exact when the
+\emph{feature vectors themselves} are multivariate Gaussian.  Products of
+Gaussian coordinates violate that hypothesis.  The 83.4\% coverage observed
+at nominal 95\% and $n=120$ is therefore not a paradox; it is a direct stress
+test of a misapplied calibration.  The Wishart--Loewner route avoids this error
+by constructing its pivot before the quadratic map.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}

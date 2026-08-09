@@ -1,0 +1,4011 @@
+{
+  "schema_version": 1,
+  "setup": {
+    "lengths": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "degree": 2,
+    "sample_counts": [
+      500,
+      1000,
+      2000,
+      5000
+    ],
+    "gap_factors": [
+      1.0,
+      1.15,
+      1.35
+    ],
+    "ensembles": 100,
+    "alpha": 0.05,
+    "seed": 20260814,
+    "tau": 0.2,
+    "j1": 1.0,
+    "j2": 0.37,
+    "hx": 2.2,
+    "output": "results/wishart_campaign_colab_repaired.json"
+  },
+  "campaigns": [
+    {
+      "schema_version": 4,
+      "setup": {
+        "length": 6,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260820,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab_repaired.json"
+      },
+      "model": {
+        "length": 6,
+        "dimension": 64,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -13.971087973293582,
+          -11.886501722566114,
+          -10.404711075059422
+        ],
+        "true_gap": 2.084586250727467,
+        "parities": [
+          1.0000000000000002,
+          -0.9999999999999998,
+          -1.0000000000000007
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.6590754560857606,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 1.5577236354076844e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 94,
+            "optimal_inaccurate": 6
+          },
+          "dual_value_range": [
+            -2.6522280379823564e-10,
+            4.54230612254518e-10
+          ],
+          "repaired_dual_value_range": [
+            3.551694272075287e-10,
+            1.5377806551964207e-08
+          ],
+          "safe_certificate_upper_range": [
+            3.5565584471768645e-10,
+            1.5378313646712422e-08
+          ],
+          "maximum_stationarity_fro": 2.493021517458236e-09,
+          "maximum_normalization_error": 4.961475230658152e-09,
+          "minimum_reported_psd_eigenvalue": -1.0909205199370334e-09,
+          "maximum_repaired_stationarity_fro": 5.1937357033331084e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -3.703041507835894e-21,
+          "maximum_safe_stationarity_bound": 3.2070767386797867e-13,
+          "minimum_safe_psd_eigenvalue": 1.421085443307096e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 2.1536108381760585e-10,
+            "dual_stationarity_fro": 1.2618250241301206e-11,
+            "dual_normalization_error": 6.681766251404042e-12,
+            "dual_min_psd_eigenvalue": -5.969203624275602e-11,
+            "repaired_dual_value": 1.1090548292724502e-09,
+            "repaired_stationarity_fro": 5.1937357033331084e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 5.0630343847767146e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.1092759163629325e-09,
+            "safe_stationarity_nuclear": 2.518968650987259e-14,
+            "safe_stationarity_bound": 2.7644317293920557e-13,
+            "safe_certificate_upper": 1.1095523595358718e-09,
+            "safe_min_psd_eigenvalue": 6.483979629102858e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.003737434949909207,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 75,
+            "optimal_inaccurate": 25
+          },
+          "dual_value_range": [
+            -0.0001239574200649577,
+            -6.597559508128093e-06
+          ],
+          "repaired_dual_value_range": [
+            -0.0001239521871696861,
+            -6.595674389137281e-06
+          ],
+          "safe_certificate_upper_range": [
+            -0.0001239521866956142,
+            -6.595673914878438e-06
+          ],
+          "maximum_stationarity_fro": 1.2694137367052912e-09,
+          "maximum_normalization_error": 2.4773060269822622e-09,
+          "minimum_reported_psd_eigenvalue": -1.0069789387417824e-08,
+          "maximum_repaired_stationarity_fro": 7.112267553689556e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -2.113132625608974e-17,
+          "maximum_safe_stationarity_bound": 3.0347845492366744e-13,
+          "minimum_safe_psd_eigenvalue": 1.4163920338667561e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -2.649993935335479e-05,
+            "dual_stationarity_fro": 2.028832553323432e-10,
+            "dual_normalization_error": 2.080891015054931e-11,
+            "dual_min_psd_eigenvalue": -3.695131878929312e-10,
+            "repaired_dual_value": -2.6498670375868765e-05,
+            "repaired_stationarity_fro": 4.615090981715136e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -1.7179307602159743e-20,
+            "safe_identity_shift": 1.4210871894509605e-14,
+            "safe_dual_value": -2.6498670154949996e-05,
+            "safe_stationarity_nuclear": 2.4958217245171946e-14,
+            "safe_stationarity_bound": 2.733023518907817e-13,
+            "safe_certificate_upper": -2.6498669881647643e-05,
+            "safe_min_psd_eigenvalue": 1.4210861695119636e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.012714852648485746,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 92,
+            "optimal_inaccurate": 8
+          },
+          "dual_value_range": [
+            -0.0016515503157147216,
+            -0.0007515214120519349
+          ],
+          "repaired_dual_value_range": [
+            -0.0016515471902148766,
+            -0.0007515187483455857
+          ],
+          "safe_certificate_upper_range": [
+            -0.0016515471897493076,
+            -0.0007515187478508035
+          ],
+          "maximum_stationarity_fro": 1.0279642702189336e-09,
+          "maximum_normalization_error": 1.242396630019016e-09,
+          "minimum_reported_psd_eigenvalue": -1.0831936954755874e-09,
+          "maximum_repaired_stationarity_fro": 3.731800285662075e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -3.836394436831009e-17,
+          "maximum_safe_stationarity_bound": 3.0773764368605497e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210698968915478e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0011726131491504206,
+            "dual_stationarity_fro": 3.395870104415223e-10,
+            "dual_normalization_error": 1.594806509075397e-10,
+            "dual_min_psd_eigenvalue": -4.561255968623135e-10,
+            "repaired_dual_value": -0.001172608352663397,
+            "repaired_stationarity_fro": 2.7307273877852343e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.8224805380219365e-17,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0011726083524419076,
+            "safe_stationarity_nuclear": 2.1722822589577807e-14,
+            "safe_stationarity_bound": 2.383465148747047e-13,
+            "safe_certificate_upper": -0.0011726083522035611,
+            "safe_min_psd_eigenvalue": 1.42300233720554e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 1.5577236354076844e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 96,
+            "optimal_inaccurate": 4
+          },
+          "dual_value_range": [
+            -2.651272934901335e-10,
+            4.1615177642837073e-10
+          ],
+          "repaired_dual_value_range": [
+            2.178288819009862e-10,
+            7.945319690972595e-09
+          ],
+          "safe_certificate_upper_range": [
+            2.1818260242547935e-10,
+            7.94569162418023e-09
+          ],
+          "maximum_stationarity_fro": 3.553023381577087e-09,
+          "maximum_normalization_error": 8.711023458118916e-09,
+          "minimum_reported_psd_eigenvalue": -2.4148543727853942e-09,
+          "maximum_repaired_stationarity_fro": 4.8156604445551563e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -3.2127172262566544e-22,
+          "maximum_safe_stationarity_bound": 2.5046613597408536e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210854463442342e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 1.162281534226202e-10,
+            "dual_stationarity_fro": 1.3201140216533372e-11,
+            "dual_normalization_error": 2.397504417217533e-11,
+            "dual_min_psd_eigenvalue": -8.206166612883554e-11,
+            "repaired_dual_value": 8.358304327184812e-10,
+            "repaired_stationarity_fro": 2.955338063359515e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 5.552933288157127e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 8.359745639118868e-10,
+            "safe_stationarity_nuclear": 2.5489208434387344e-14,
+            "safe_stationarity_bound": 2.277220432196156e-13,
+            "safe_certificate_upper": 8.362022859551065e-10,
+            "safe_min_psd_eigenvalue": 6.973715723588234e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.003737434949909207,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 84,
+            "optimal_inaccurate": 16
+          },
+          "dual_value_range": [
+            -0.0001949907984569732,
+            -7.684730279424248e-05
+          ],
+          "repaired_dual_value_range": [
+            -0.00019498775324751708,
+            -7.684384631700871e-05
+          ],
+          "safe_certificate_upper_range": [
+            -0.00019498775290519274,
+            -7.684384592696653e-05
+          ],
+          "maximum_stationarity_fro": 2.1579550834091656e-09,
+          "maximum_normalization_error": 1.942045635416889e-09,
+          "minimum_reported_psd_eigenvalue": -8.569413418022983e-09,
+          "maximum_repaired_stationarity_fro": 5.139810727813142e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -5.5227146289325316e-17,
+          "maximum_safe_stationarity_bound": 2.469759641316114e-13,
+          "minimum_safe_psd_eigenvalue": 1.4160708270571126e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -9.259949416718857e-05,
+            "dual_stationarity_fro": 1.2704578454760524e-10,
+            "dual_normalization_error": 7.572431570679328e-11,
+            "dual_min_psd_eigenvalue": -1.4687289564521094e-10,
+            "repaired_dual_value": -9.25980903167126e-05,
+            "repaired_stationarity_fro": 2.848548562346756e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -1.4782758908576837e-20,
+            "safe_identity_shift": 1.4210869497960913e-14,
+            "safe_dual_value": -9.259809017251198e-05,
+            "safe_stationarity_nuclear": 2.4524657854795588e-14,
+            "safe_stationarity_bound": 2.1804927085313288e-13,
+            "safe_certificate_upper": -9.259808995446271e-05,
+            "safe_min_psd_eigenvalue": 1.4210836878205861e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.012714852648485746,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 96,
+            "optimal_inaccurate": 4
+          },
+          "dual_value_range": [
+            -0.0027344359393513384,
+            -0.0016276195843894416
+          ],
+          "repaired_dual_value_range": [
+            -0.0027344216985823264,
+            -0.0016276151600311088
+          ],
+          "safe_certificate_upper_range": [
+            -0.0027344216982373546,
+            -0.0016276151596916239
+          ],
+          "maximum_stationarity_fro": 1.1462793629288207e-09,
+          "maximum_normalization_error": 1.0784988457857025e-09,
+          "minimum_reported_psd_eigenvalue": -1.8020814867474523e-09,
+          "maximum_repaired_stationarity_fro": 3.304228274905498e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.324605124044113e-18,
+          "maximum_safe_stationarity_bound": 2.2857011226244515e-13,
+          "minimum_safe_psd_eigenvalue": 1.4164800695920272e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.002233512746063749,
+            "dual_stationarity_fro": 8.159233245851042e-10,
+            "dual_normalization_error": 3.610816090571234e-10,
+            "dual_min_psd_eigenvalue": -6.909477572591987e-10,
+            "repaired_dual_value": -0.002233508034894317,
+            "repaired_stationarity_fro": 9.419193409634967e-18,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.0138233765350313e-15,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0022335080347492178,
+            "safe_stationarity_nuclear": 2.2913367338347895e-14,
+            "safe_stationarity_bound": 2.0600198100496846e-13,
+            "safe_certificate_upper": -0.002233508034543216,
+            "safe_min_psd_eigenvalue": 1.6226750077392003e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 1.5577236354076844e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 81,
+            "optimal_inaccurate": 19
+          },
+          "dual_value_range": [
+            3.6868575644901085e-11,
+            1.029825187634891e-09
+          ],
+          "repaired_dual_value_range": [
+            2.1066204852832327e-10,
+            6.448283643825058e-09
+          ],
+          "safe_certificate_upper_range": [
+            2.1095136734930503e-10,
+            6.4485740299518e-09
+          ],
+          "maximum_stationarity_fro": 2.227117334326434e-09,
+          "maximum_normalization_error": 3.096295220217371e-09,
+          "minimum_reported_psd_eigenvalue": -1.3263273107558914e-09,
+          "maximum_repaired_stationarity_fro": 5.125706510416307e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.3168982059785475e-20,
+          "maximum_safe_stationarity_bound": 2.0538525743293185e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210853468792233e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 2.2764886768669498e-10,
+            "dual_stationarity_fro": 5.741958357711648e-11,
+            "dual_normalization_error": 6.369260674432553e-11,
+            "dual_min_psd_eigenvalue": -1.7464913270169982e-10,
+            "repaired_dual_value": 1.3030750430105224e-09,
+            "repaired_stationarity_fro": 4.591470922045455e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.876126795837133e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.3031730543602989e-09,
+            "safe_stationarity_nuclear": 2.4326617483374285e-14,
+            "safe_stationarity_bound": 1.882438706662856e-13,
+            "safe_certificate_upper": 1.3033612982309652e-09,
+            "safe_min_psd_eigenvalue": 4.298075812674726e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.003737434949909207,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 92,
+            "optimal_inaccurate": 8
+          },
+          "dual_value_range": [
+            -0.0003661864223647908,
+            -0.00019170260385890578
+          ],
+          "repaired_dual_value_range": [
+            -0.000366184285469728,
+            -0.00019169909631221692
+          ],
+          "safe_certificate_upper_range": [
+            -0.000366184285194023,
+            -0.0001916990960277412
+          ],
+          "maximum_stationarity_fro": 7.989190501669443e-10,
+          "maximum_normalization_error": 1.069081934090832e-09,
+          "minimum_reported_psd_eigenvalue": -2.1317510101054572e-09,
+          "maximum_repaired_stationarity_fro": 4.4670881570642e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -5.666191444603868e-17,
+          "maximum_safe_stationarity_bound": 1.9857718316070014e-13,
+          "minimum_safe_psd_eigenvalue": 1.4178784138133803e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00024461884485822184,
+            "dual_stationarity_fro": 4.937145933356385e-10,
+            "dual_normalization_error": 1.3230461171076513e-10,
+            "dual_min_psd_eigenvalue": -6.466245579829992e-10,
+            "repaired_dual_value": -0.0002446159087306299,
+            "repaired_stationarity_fro": 2.7130565062705126e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.4346272163626235e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0002446159086325547,
+            "safe_stationarity_nuclear": 2.4145851031267937e-14,
+            "safe_stationarity_bound": 1.8723153511593293e-13,
+            "safe_certificate_upper": -0.0002446159084453232,
+            "safe_min_psd_eigenvalue": 2.8530470648495215e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.012714852648485746,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 98,
+            "optimal_inaccurate": 2
+          },
+          "dual_value_range": [
+            -0.003911554353485804,
+            -0.002664931186643571
+          ],
+          "repaired_dual_value_range": [
+            -0.003911551980053319,
+            -0.002664929624506422
+          ],
+          "safe_certificate_upper_range": [
+            -0.003911551979782702,
+            -0.0026649296242304663
+          ],
+          "maximum_stationarity_fro": 9.917203904287474e-10,
+          "maximum_normalization_error": 1.1628014107145646e-09,
+          "minimum_reported_psd_eigenvalue": -1.5822008699532125e-09,
+          "maximum_repaired_stationarity_fro": 2.925445179822183e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.6811308488530216e-16,
+          "maximum_safe_stationarity_bound": 1.8826444123786895e-13,
+          "minimum_safe_psd_eigenvalue": 1.4118222241891168e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.003383264950639637,
+            "dual_stationarity_fro": 7.7070703822064e-12,
+            "dual_normalization_error": 2.071409710424632e-11,
+            "dual_min_psd_eigenvalue": -3.1995811218635815e-11,
+            "repaired_dual_value": -0.0033832647383614523,
+            "repaired_stationarity_fro": 1.581533028415458e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 9.282945724187204e-16,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.003383264738262037,
+            "safe_stationarity_nuclear": 2.2578418958313318e-14,
+            "safe_stationarity_bound": 1.760120174043604e-13,
+            "safe_certificate_upper": -0.003383264738086025,
+            "safe_min_psd_eigenvalue": 1.5139045202961495e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 1.5577236354076844e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 59,
+            "optimal_inaccurate": 41
+          },
+          "dual_value_range": [
+            8.500664784511516e-11,
+            1.7665079525566065e-09
+          ],
+          "repaired_dual_value_range": [
+            1.1048144963421521e-10,
+            1.1445287152153392e-08
+          ],
+          "safe_certificate_upper_range": [
+            1.1071415521878892e-10,
+            1.1445519999844076e-08
+          ],
+          "maximum_stationarity_fro": 9.875742116942008e-09,
+          "maximum_normalization_error": 4.525234076346862e-09,
+          "minimum_reported_psd_eigenvalue": -4.404835754303409e-09,
+          "maximum_repaired_stationarity_fro": 4.595911542403968e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -1.9009487458184905e-20,
+          "maximum_safe_stationarity_bound": 1.8216802267014944e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210848208578372e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 1.8015531847442766e-10,
+            "dual_stationarity_fro": 3.9499198201331394e-11,
+            "dual_normalization_error": 4.145828125245998e-11,
+            "dual_min_psd_eigenvalue": -4.861680783692953e-11,
+            "repaired_dual_value": 2.939978537371385e-10,
+            "repaired_stationarity_fro": 2.3976771108059267e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 2.6567752470064014e-23,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 2.940584088569351e-10,
+            "safe_stationarity_nuclear": 2.4216488174428876e-14,
+            "safe_stationarity_bound": 1.6675262195370345e-13,
+            "safe_certificate_upper": 2.942251614788888e-10,
+            "safe_min_psd_eigenvalue": 1.421085486628346e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.003737434949909207,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 98,
+            "optimal_inaccurate": 2
+          },
+          "dual_value_range": [
+            -0.0005920200910632459,
+            -0.00042193633279526306
+          ],
+          "repaired_dual_value_range": [
+            -0.0005920195790633225,
+            -0.0004219359226716544
+          ],
+          "safe_certificate_upper_range": [
+            -0.0005920195788395073,
+            -0.00042193592244000634
+          ],
+          "maximum_stationarity_fro": 7.192933362803752e-10,
+          "maximum_normalization_error": 7.14713621619012e-10,
+          "minimum_reported_psd_eigenvalue": -7.281836193229847e-10,
+          "maximum_repaired_stationarity_fro": 3.547233277208538e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.300136722802041e-17,
+          "maximum_safe_stationarity_bound": 1.726997414107815e-13,
+          "minimum_safe_psd_eigenvalue": 1.4191383054480239e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0004875210902329872,
+            "dual_stationarity_fro": 2.5965180322987444e-10,
+            "dual_normalization_error": 8.047784660902835e-11,
+            "dual_min_psd_eigenvalue": -5.136654575963609e-10,
+            "repaired_dual_value": -0.0004875198575946312,
+            "repaired_stationarity_fro": 2.2044590935177768e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 5.697082511165063e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0004875198575338864,
+            "safe_stationarity_nuclear": 2.4394185836848398e-14,
+            "safe_stationarity_bound": 1.6781551573974738e-13,
+            "safe_certificate_upper": -0.0004875198573660709,
+            "safe_min_psd_eigenvalue": 5.839194207399827e-13
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.012714852648485746,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 100
+          },
+          "dual_value_range": [
+            -0.005373045294992716,
+            -0.004096846530632251
+          ],
+          "repaired_dual_value_range": [
+            -0.005373044366697314,
+            -0.004096846393750875
+          ],
+          "safe_certificate_upper_range": [
+            -0.005373044366479263,
+            -0.004096846393527141
+          ],
+          "maximum_stationarity_fro": 8.792397735799608e-10,
+          "maximum_normalization_error": 9.509242282490504e-10,
+          "minimum_reported_psd_eigenvalue": -7.994883217493199e-10,
+          "maximum_repaired_stationarity_fro": 2.9276023983036506e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.0343544055432569e-16,
+          "maximum_safe_stationarity_bound": 1.6420252445437721e-13,
+          "minimum_safe_psd_eigenvalue": 1.4169360059524626e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.004669247048970341,
+            "dual_stationarity_fro": 2.1540642440045093e-11,
+            "dual_normalization_error": 5.618661091943977e-11,
+            "dual_min_psd_eigenvalue": -2.417416934523772e-10,
+            "repaired_dual_value": -0.0046692460035331115,
+            "repaired_stationarity_fro": 1.984121625221064e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 5.217058250213922e-12,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0046692460034705695,
+            "safe_stationarity_nuclear": 2.288185484718505e-14,
+            "safe_stationarity_bound": 1.5778282906447947e-13,
+            "safe_certificate_upper": -0.004669246003312787,
+            "safe_min_psd_eigenvalue": 5.2312697665312e-12
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 4,
+      "setup": {
+        "length": 8,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260822,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab_repaired.json"
+      },
+      "model": {
+        "length": 8,
+        "dimension": 256,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -18.707605849168342,
+          -16.85012544983396,
+          -15.719715028007132
+        ],
+        "true_gap": 1.8574803993343814,
+        "parities": [
+          0.9999999999999996,
+          -1.0000000000000004,
+          -1.0
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.6897017095463458,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 3.712028798422666e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 73,
+            "optimal_inaccurate": 27
+          },
+          "dual_value_range": [
+            9.58931276339804e-12,
+            7.235892081109246e-10
+          ],
+          "repaired_dual_value_range": [
+            6.802171667544596e-10,
+            1.0103464044105339e-07
+          ],
+          "safe_certificate_upper_range": [
+            6.807438921451418e-10,
+            1.0103514041358403e-07
+          ],
+          "maximum_stationarity_fro": 3.025469818930535e-08,
+          "maximum_normalization_error": 6.274170283315783e-08,
+          "minimum_reported_psd_eigenvalue": -7.067593613578795e-09,
+          "maximum_repaired_stationarity_fro": 5.25931033462338e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -4.145421413855853e-21,
+          "maximum_safe_stationarity_bound": 3.3587655849223164e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210853106275215e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 4.403414557102327e-10,
+            "dual_stationarity_fro": 1.3414954188788337e-11,
+            "dual_normalization_error": 5.1556758862147944e-11,
+            "dual_min_psd_eigenvalue": -3.9151283390849476e-11,
+            "repaired_dual_value": 1.0054367203996172e-09,
+            "repaired_stationarity_fro": 2.974039453921755e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 1.9418505438065623e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.005657808972497e-09,
+            "safe_stationarity_nuclear": 2.801897565914638e-14,
+            "safe_stationarity_bound": 3.1490674540896995e-13,
+            "safe_certificate_upper": 1.005972715717906e-09,
+            "safe_min_psd_eigenvalue": 3.364468498526862e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0028787144610792257,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 90,
+            "optimal_inaccurate": 10
+          },
+          "dual_value_range": [
+            -5.449923212762567e-06,
+            -1.5500532999233505e-07
+          ],
+          "repaired_dual_value_range": [
+            -5.447105885707324e-06,
+            -1.5215046782634416e-07
+          ],
+          "safe_certificate_upper_range": [
+            -5.447105411539173e-06,
+            -1.5214995839463016e-07
+          ],
+          "maximum_stationarity_fro": 5.110039026126665e-09,
+          "maximum_normalization_error": 1.3277845822834422e-08,
+          "minimum_reported_psd_eigenvalue": -1.238480383620974e-08,
+          "maximum_repaired_stationarity_fro": 9.740188596596852e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -8.475366782331148e-18,
+          "maximum_safe_stationarity_bound": 3.2155653056657207e-13,
+          "minimum_safe_psd_eigenvalue": 1.42108446953759e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -3.986070031733436e-07,
+            "dual_stationarity_fro": 1.0270117559202172e-10,
+            "dual_normalization_error": 8.346878743736852e-11,
+            "dual_min_psd_eigenvalue": -1.3588533947819992e-10,
+            "repaired_dual_value": -3.970950919555125e-07,
+            "repaired_stationarity_fro": 4.5415747898617105e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.2770658766820695e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -3.970948709485975e-07,
+            "safe_stationarity_nuclear": 2.5945703842841704e-14,
+            "safe_stationarity_bound": 2.8405495147183195e-13,
+            "safe_certificate_upper": -3.9709458689364605e-07,
+            "safe_min_psd_eigenvalue": 3.698349695741091e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.010121524760804114,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 83,
+            "optimal_inaccurate": 17
+          },
+          "dual_value_range": [
+            -0.0008998975481733229,
+            -0.00036821289744470766
+          ],
+          "repaired_dual_value_range": [
+            -0.0008998928785563329,
+            -0.0003682098736559596
+          ],
+          "safe_certificate_upper_range": [
+            -0.0008998928780658114,
+            -0.0003682098731758048
+          ],
+          "maximum_stationarity_fro": 2.3197650538932552e-09,
+          "maximum_normalization_error": 2.9531328493703768e-09,
+          "minimum_reported_psd_eigenvalue": -6.874209791792604e-09,
+          "maximum_repaired_stationarity_fro": 3.82517107512658e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.273425948914044e-17,
+          "maximum_safe_stationarity_bound": 3.115151828027976e-13,
+          "minimum_safe_psd_eigenvalue": 1.4188249989741656e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0006686286239312583,
+            "dual_stationarity_fro": 2.6046620741961473e-10,
+            "dual_normalization_error": 3.652615987448371e-10,
+            "dual_min_psd_eigenvalue": -2.62860592332717e-10,
+            "repaired_dual_value": -0.0006686260795352311,
+            "repaired_stationarity_fro": 2.766409588236158e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 7.735867588012376e-18,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.000668626079313929,
+            "safe_stationarity_nuclear": 2.4200137166743386e-14,
+            "safe_stationarity_bound": 2.6588539460825235e-13,
+            "safe_certificate_upper": -0.0006686260790480436,
+            "safe_min_psd_eigenvalue": 1.4195101274111381e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 3.712028798422666e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 89,
+            "optimal_inaccurate": 11
+          },
+          "dual_value_range": [
+            7.08139145005089e-11,
+            6.143080239696497e-10
+          ],
+          "repaired_dual_value_range": [
+            3.361751114918003e-10,
+            1.8751641822051467e-08
+          ],
+          "safe_certificate_upper_range": [
+            3.365694853290096e-10,
+            1.8752012501395332e-08
+          ],
+          "maximum_stationarity_fro": 1.1526251941522349e-08,
+          "maximum_normalization_error": 1.3178809599168062e-08,
+          "minimum_reported_psd_eigenvalue": -1.7142637460422028e-09,
+          "maximum_repaired_stationarity_fro": 4.87387703191169e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -8.0456187575225055e-22,
+          "maximum_safe_stationarity_bound": 2.6128316261213556e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210850920947528e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 2.1871328929658705e-10,
+            "dual_stationarity_fro": 1.237429784245097e-10,
+            "dual_normalization_error": 5.210267772781663e-10,
+            "dual_min_psd_eigenvalue": -1.9204998497816942e-10,
+            "repaired_dual_value": 1.8137473265252464e-09,
+            "repaired_stationarity_fro": 4.2578268553805976e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.3207797518737414e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.813891389915147e-09,
+            "safe_stationarity_nuclear": 2.3747853368874854e-14,
+            "safe_stationarity_bound": 2.1017402282020948e-13,
+            "safe_certificate_upper": 1.8141015639379673e-09,
+            "safe_min_psd_eigenvalue": 2.7422104079755136e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0028787144610792257,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 68,
+            "optimal_inaccurate": 32
+          },
+          "dual_value_range": [
+            -4.656572970999353e-05,
+            -6.537673740604141e-06
+          ],
+          "repaired_dual_value_range": [
+            -4.6565304937312094e-05,
+            -6.532440764551442e-06
+          ],
+          "safe_certificate_upper_range": [
+            -4.6565304580958706e-05,
+            -6.532440390518448e-06
+          ],
+          "maximum_stationarity_fro": 3.110776164797562e-09,
+          "maximum_normalization_error": 6.69420419097122e-09,
+          "minimum_reported_psd_eigenvalue": -7.36694178328389e-09,
+          "maximum_repaired_stationarity_fro": 9.705356733289461e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -2.4043657708910874e-17,
+          "maximum_safe_stationarity_bound": 2.4827322242540545e-13,
+          "minimum_safe_psd_eigenvalue": 1.4185790731578075e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -4.656572970999353e-05,
+            "dual_stationarity_fro": 1.2710126286849797e-10,
+            "dual_normalization_error": 4.6548986887273713e-11,
+            "dual_min_psd_eigenvalue": -1.0103061957312848e-10,
+            "repaired_dual_value": -4.6565304937312094e-05,
+            "repaired_stationarity_fro": 4.0830694678140024e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.289235213471885e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -4.6565304793205146e-05,
+            "safe_stationarity_nuclear": 2.4124299831656264e-14,
+            "safe_stationarity_bound": 2.1224643830529268e-13,
+            "safe_certificate_upper": -4.6565304580958706e-05,
+            "safe_min_psd_eigenvalue": 1.4315396554744797e-13
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.010121524760804114,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 94,
+            "optimal_inaccurate": 6
+          },
+          "dual_value_range": [
+            -0.0016075778172643523,
+            -0.0009242120492866344
+          ],
+          "repaired_dual_value_range": [
+            -0.0016075770664304625,
+            -0.0009241974346092287
+          ],
+          "safe_certificate_upper_range": [
+            -0.0016075770660799987,
+            -0.0009241974342387624
+          ],
+          "maximum_stationarity_fro": 1.4676962228595271e-09,
+          "maximum_normalization_error": 1.5025789501521558e-09,
+          "minimum_reported_psd_eigenvalue": -2.2690361972149216e-09,
+          "maximum_repaired_stationarity_fro": 4.0359149295454283e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -2.924549515494036e-17,
+          "maximum_safe_stationarity_bound": 2.363016131311444e-13,
+          "minimum_safe_psd_eigenvalue": 1.416124623634937e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.001082871353933904,
+            "dual_stationarity_fro": 1.5657599128696858e-10,
+            "dual_normalization_error": 2.2426083212678805e-10,
+            "dual_min_psd_eigenvalue": -4.733066262851861e-10,
+            "repaired_dual_value": -0.0010828692216687166,
+            "repaired_stationarity_fro": 1.5364823015886617e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -3.266776011741981e-20,
+            "safe_identity_shift": 1.421088738296212e-14,
+            "safe_dual_value": -0.0010828692215241568,
+            "safe_stationarity_nuclear": 2.3179166468559132e-14,
+            "safe_stationarity_bound": 2.0629710136913351e-13,
+            "safe_certificate_upper": -0.0010828692213178598,
+            "safe_min_psd_eigenvalue": 1.4210948836731156e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 3.712028798422666e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 42,
+            "optimal": 58
+          },
+          "dual_value_range": [
+            1.3617410280363896e-10,
+            1.1925824637607777e-09
+          ],
+          "repaired_dual_value_range": [
+            2.706777957657049e-10,
+            1.520845036523185e-08
+          ],
+          "safe_certificate_upper_range": [
+            2.7097242890795865e-10,
+            1.520875185173638e-08
+          ],
+          "maximum_stationarity_fro": 9.024394454626978e-09,
+          "maximum_normalization_error": 3.741196019646509e-09,
+          "minimum_reported_psd_eigenvalue": -6.23297520858126e-09,
+          "maximum_repaired_stationarity_fro": 5.686328865833528e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -3.3662971994700152e-21,
+          "maximum_safe_stationarity_bound": 2.1866908685403711e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210848325885113e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 4.2518366388108526e-10,
+            "dual_stationarity_fro": 3.2251286979073873e-11,
+            "dual_normalization_error": 1.253440684578777e-10,
+            "dual_min_psd_eigenvalue": -5.328583959620732e-10,
+            "repaired_dual_value": 4.00935794778899e-09,
+            "repaired_stationarity_fro": 5.686328865833528e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 2.5774525780910553e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 4.009455965695251e-09,
+            "safe_stationarity_nuclear": 2.551354389880065e-14,
+            "safe_stationarity_bound": 1.9684450409623653e-13,
+            "safe_certificate_upper": 4.009652810199347e-09,
+            "safe_min_psd_eigenvalue": 3.998749606889608e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0028787144610792257,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 76,
+            "optimal_inaccurate": 24
+          },
+          "dual_value_range": [
+            -0.0001431539393071694,
+            -4.159574442303771e-05
+          ],
+          "repaired_dual_value_range": [
+            -0.00014315281570481068,
+            -4.1595010314549735e-05
+          ],
+          "safe_certificate_upper_range": [
+            -0.0001431528154175768,
+            -4.159501002532636e-05
+          ],
+          "maximum_stationarity_fro": 6.812701133800744e-09,
+          "maximum_normalization_error": 4.49949588698928e-09,
+          "minimum_reported_psd_eigenvalue": -8.685665745257872e-09,
+          "maximum_repaired_stationarity_fro": 4.995681375342268e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.82645777349631e-17,
+          "maximum_safe_stationarity_bound": 2.1308534685419618e-13,
+          "minimum_safe_psd_eigenvalue": 1.4185866800827742e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -8.19046022887222e-05,
+            "dual_stationarity_fro": 1.0231241954594288e-10,
+            "dual_normalization_error": 8.03008770589031e-11,
+            "dual_min_psd_eigenvalue": -9.114533281032399e-11,
+            "repaired_dual_value": -8.190389049817729e-05,
+            "repaired_stationarity_fro": 2.695880641403539e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -2.3439435122284825e-17,
+            "safe_identity_shift": 1.423429415032429e-14,
+            "safe_dual_value": -8.190389040006133e-05,
+            "safe_stationarity_nuclear": 2.522903947155732e-14,
+            "safe_stationarity_bound": 1.9534644966409537e-13,
+            "safe_certificate_upper": -8.190389020471488e-05,
+            "safe_min_psd_eigenvalue": 1.4214721965344146e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.010121524760804114,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 96,
+            "optimal_inaccurate": 4
+          },
+          "dual_value_range": [
+            -0.002436020758229877,
+            -0.0015523604051885867
+          ],
+          "repaired_dual_value_range": [
+            -0.0024360187811262677,
+            -0.0015523600416249544
+          ],
+          "safe_certificate_upper_range": [
+            -0.002436018780850049,
+            -0.0015523600413366247
+          ],
+          "maximum_stationarity_fro": 2.0285413925173847e-09,
+          "maximum_normalization_error": 1.235954449896326e-09,
+          "minimum_reported_psd_eigenvalue": -1.1721944594666237e-09,
+          "maximum_repaired_stationarity_fro": 3.9916392468110704e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -5.1196365198963854e-17,
+          "maximum_safe_stationarity_bound": 2.0002949218322646e-13,
+          "minimum_safe_psd_eigenvalue": 1.4135529354466798e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0018497978732881365,
+            "dual_stationarity_fro": 1.7798595501474188e-10,
+            "dual_normalization_error": 2.4878210602707895e-10,
+            "dual_min_psd_eigenvalue": -8.724055242100674e-10,
+            "repaired_dual_value": -0.0018497962449221077,
+            "repaired_stationarity_fro": 1.3724565705077134e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": -5.281173256915046e-20,
+            "safe_identity_shift": 1.4210907526934574e-14,
+            "safe_dual_value": -0.0018497962448233932,
+            "safe_stationarity_nuclear": 2.4561821400858112e-14,
+            "safe_stationarity_bound": 1.88889758911802e-13,
+            "safe_certificate_upper": -0.0018497962446345035,
+            "safe_min_psd_eigenvalue": 1.4149042545480651e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 3.712028798422666e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 59,
+            "optimal_inaccurate": 41
+          },
+          "dual_value_range": [
+            1.4806226318790253e-10,
+            1.5766154770441859e-09
+          ],
+          "repaired_dual_value_range": [
+            1.828343536801183e-10,
+            1.3333985879173378e-08
+          ],
+          "safe_certificate_upper_range": [
+            1.8307066487440238e-10,
+            1.3334217728677103e-08
+          ],
+          "maximum_stationarity_fro": 1.3293128020672345e-08,
+          "maximum_normalization_error": 1.3160530443201424e-08,
+          "minimum_reported_psd_eigenvalue": -6.4033943502586175e-09,
+          "maximum_repaired_stationarity_fro": 4.9768702649361554e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -8.652192695888117e-21,
+          "maximum_safe_stationarity_bound": 1.8952447647460357e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210848969869086e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 2.615724657708067e-10,
+            "dual_stationarity_fro": 9.327462879834684e-11,
+            "dual_normalization_error": 2.497380080512812e-10,
+            "dual_min_psd_eigenvalue": -6.044248320892371e-11,
+            "repaired_dual_value": 4.531292245156405e-10,
+            "repaired_stationarity_fro": 2.57566036156527e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 5.6782213458195195e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 4.5318972461535986e-10,
+            "safe_stationarity_nuclear": 2.659364144921319e-14,
+            "safe_stationarity_bound": 1.8308418235402018e-13,
+            "safe_certificate_upper": 4.533728087977139e-10,
+            "safe_min_psd_eigenvalue": 7.098201483444058e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0028787144610792257,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 86,
+            "optimal_inaccurate": 14
+          },
+          "dual_value_range": [
+            -0.00030014254189180377,
+            -0.00018838361578367348
+          ],
+          "repaired_dual_value_range": [
+            -0.000300142077412531,
+            -0.00018838328854589928
+          ],
+          "safe_certificate_upper_range": [
+            -0.00030014207718222186,
+            -0.0001883832883068298
+          ],
+          "maximum_stationarity_fro": 6.379369844935857e-10,
+          "maximum_normalization_error": 7.420046799211377e-10,
+          "minimum_reported_psd_eigenvalue": -4.5436787271592985e-09,
+          "maximum_repaired_stationarity_fro": 4.762796308243595e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -3.5382077174614416e-17,
+          "maximum_safe_stationarity_bound": 1.8428709130514492e-13,
+          "minimum_safe_psd_eigenvalue": 1.4152587667548198e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00027842375650943135,
+            "dual_stationarity_fro": 3.6710923500935473e-10,
+            "dual_normalization_error": 6.283729092615431e-11,
+            "dual_min_psd_eigenvalue": -5.195046520100096e-10,
+            "repaired_dual_value": -0.00027842150038813636,
+            "repaired_stationarity_fro": 2.6840090815687653e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.1204165289141866e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0002784215003275043,
+            "safe_stationarity_nuclear": 2.4630545760931968e-14,
+            "safe_stationarity_bound": 1.6825373641802565e-13,
+            "safe_certificate_upper": -0.00027842150015925055,
+            "safe_min_psd_eigenvalue": 2.2625581995092748e-13
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.010121524760804114,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 100
+          },
+          "dual_value_range": [
+            -0.003378191580509903,
+            -0.002617514033266424
+          ],
+          "repaired_dual_value_range": [
+            -0.003378190511824643,
+            -0.0026175127642979433
+          ],
+          "safe_certificate_upper_range": [
+            -0.0033781905115923016,
+            -0.002617512764074101
+          ],
+          "maximum_stationarity_fro": 1.0957986860111025e-09,
+          "maximum_normalization_error": 6.412204101025054e-10,
+          "minimum_reported_psd_eigenvalue": -8.989232157145768e-10,
+          "maximum_repaired_stationarity_fro": 3.1150778965783483e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.4262707529467918e-16,
+          "maximum_safe_stationarity_bound": 1.7644959222089203e-13,
+          "minimum_safe_psd_eigenvalue": 1.4123369766147181e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.002958064497603616,
+            "dual_stationarity_fro": 5.665543130585294e-10,
+            "dual_normalization_error": 7.288081249612333e-11,
+            "dual_min_psd_eigenvalue": -5.434828078706671e-10,
+            "repaired_dual_value": -0.002958062283794553,
+            "repaired_stationarity_fro": 2.4824689735983082e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 3.756055789252034e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0029580622837327344,
+            "safe_stationarity_nuclear": 2.4131130112997445e-14,
+            "safe_stationarity_bound": 1.6485665484616644e-13,
+            "safe_certificate_upper": -0.0029580622835678775,
+            "safe_min_psd_eigenvalue": 3.8981644737589085e-13
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 4,
+      "setup": {
+        "length": 10,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260824,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab_repaired.json"
+      },
+      "model": {
+        "length": 10,
+        "dimension": 1024,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -23.44432243303767,
+          -21.72260298467422,
+          -20.83830098295122
+        ],
+        "true_gap": 1.721719448363448,
+        "parities": [
+          0.9999999999999989,
+          -1.000000000000001,
+          -1.000000000000004
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7086851766266843,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 5.325928670881325e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 35,
+            "optimal": 65
+          },
+          "dual_value_range": [
+            2.536060280349082e-10,
+            1.1945461674942068e-09
+          ],
+          "repaired_dual_value_range": [
+            6.884203922470157e-10,
+            2.642423922535588e-08
+          ],
+          "safe_certificate_upper_range": [
+            6.88953539480725e-10,
+            2.642473448615669e-08
+          ],
+          "maximum_stationarity_fro": 1.1717436315702826e-08,
+          "maximum_normalization_error": 1.9640539528076317e-08,
+          "minimum_reported_psd_eigenvalue": -2.72571737675912e-09,
+          "maximum_repaired_stationarity_fro": 5.242581949310041e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -7.113115236447785e-22,
+          "maximum_safe_stationarity_bound": 3.598288286385704e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210853301780096e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 9.731294413741876e-10,
+            "dual_stationarity_fro": 4.91390064930561e-10,
+            "dual_normalization_error": 1.252685732922032e-09,
+            "dual_min_psd_eigenvalue": -9.815696213867183e-11,
+            "repaired_dual_value": 3.8142804043426654e-09,
+            "repaired_stationarity_fro": 4.2883324356183343e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.0848789232870344e-22,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 3.814501366051126e-09,
+            "safe_stationarity_nuclear": 2.730342638865619e-14,
+            "safe_stationarity_bound": 2.9806505132720456e-13,
+            "safe_certificate_upper": 3.814799431102453e-09,
+            "safe_min_psd_eigenvalue": 1.4210854484789146e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.001935723595858936,
+          "detection_rate": 0.98,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 68,
+            "optimal_inaccurate": 32
+          },
+          "dual_value_range": [
+            -1.9303780027633984e-07,
+            -1.089469116056916e-08
+          ],
+          "repaired_dual_value_range": [
+            -1.9036005177494445e-07,
+            1.3527165399311456e-07
+          ],
+          "safe_certificate_upper_range": [
+            -1.9035954373501943e-07,
+            1.3527216731253744e-07
+          ],
+          "maximum_stationarity_fro": 3.9985905831611956e-08,
+          "maximum_normalization_error": 2.488605244099773e-08,
+          "minimum_reported_psd_eigenvalue": -2.6235953630820676e-08,
+          "maximum_repaired_stationarity_fro": 7.17720759487183e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -3.845340354659249e-19,
+          "maximum_safe_stationarity_bound": 3.351168675182348e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210280759019348e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -8.604387489614669e-08,
+            "dual_stationarity_fro": 1.8333889191661191e-10,
+            "dual_normalization_error": 1.73495218191988e-10,
+            "dual_min_psd_eigenvalue": -1.0705967635644745e-10,
+            "repaired_dual_value": -8.369521774391394e-08,
+            "repaired_stationarity_fro": 3.8731019326233825e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 7.802052451731588e-15,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -8.36949967473395e-08,
+            "safe_stationarity_nuclear": 2.529831119467041e-14,
+            "safe_stationarity_bound": 2.767895071519923e-13,
+            "safe_certificate_upper": -8.369471995783234e-08,
+            "safe_min_psd_eigenvalue": 2.202871471943978e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.008188579394567774,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 87,
+            "optimal_inaccurate": 13
+          },
+          "dual_value_range": [
+            -0.0004268502026430268,
+            -0.0001440655773869851
+          ],
+          "repaired_dual_value_range": [
+            -0.0004268457758077517,
+            -0.0001440650494480139
+          ],
+          "safe_certificate_upper_range": [
+            -0.00042684577531928075,
+            -0.00014406504892222345
+          ],
+          "maximum_stationarity_fro": 7.01673058592499e-10,
+          "maximum_normalization_error": 8.333156387152485e-10,
+          "minimum_reported_psd_eigenvalue": -6.279104477897743e-09,
+          "maximum_repaired_stationarity_fro": 4.795764261829113e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.392105896575019e-17,
+          "maximum_safe_stationarity_bound": 3.275317603169251e-13,
+          "minimum_safe_psd_eigenvalue": 1.4197532494631945e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0001660813988459079,
+            "dual_stationarity_fro": 2.9872471145009385e-10,
+            "dual_normalization_error": 1.5173950984603835e-10,
+            "dual_min_psd_eigenvalue": -3.9546518451565823e-10,
+            "repaired_dual_value": -0.00016607816976899926,
+            "repaired_stationarity_fro": 2.6904267866701726e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 5.975677093250281e-17,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.00016607816954786886,
+            "safe_stationarity_nuclear": 2.5232788904853258e-14,
+            "safe_stationarity_bound": 2.790567880665994e-13,
+            "safe_certificate_upper": -0.00016607816926881208,
+            "safe_min_psd_eigenvalue": 1.4264895236034393e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 5.325928670881325e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 68,
+            "optimal_inaccurate": 32
+          },
+          "dual_value_range": [
+            3.4736847130555097e-10,
+            8.829426424061654e-10
+          ],
+          "repaired_dual_value_range": [
+            5.794549852878691e-10,
+            2.6531165688292373e-08
+          ],
+          "safe_certificate_upper_range": [
+            5.798547796583212e-10,
+            2.6531545913679507e-08
+          ],
+          "maximum_stationarity_fro": 1.4950482536651428e-08,
+          "maximum_normalization_error": 3.930145231478832e-08,
+          "minimum_reported_psd_eigenvalue": -1.289424246009627e-08,
+          "maximum_repaired_stationarity_fro": 5.303761267959998e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -1.0021881218459807e-21,
+          "maximum_safe_stationarity_bound": 2.6530369963123795e-13,
+          "minimum_safe_psd_eigenvalue": 1.4208714586903743e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 6.596377796124308e-10,
+            "dual_stationarity_fro": 9.057345102730999e-11,
+            "dual_normalization_error": 2.2157820023238628e-10,
+            "dual_min_psd_eigenvalue": -3.1305425836398696e-11,
+            "repaired_dual_value": 1.033123559889135e-09,
+            "repaired_stationarity_fro": 3.94694973728896e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.5571083055226987e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.0332676097123173e-09,
+            "safe_stationarity_nuclear": 2.8032881838374107e-14,
+            "safe_stationarity_bound": 2.4647527671743524e-13,
+            "safe_certificate_upper": 1.0335140849890347e-09,
+            "safe_min_psd_eigenvalue": 1.6995370157485784e-13
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.001935723595858936,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 86,
+            "optimal_inaccurate": 14
+          },
+          "dual_value_range": [
+            -3.8355417839920115e-06,
+            -1.6683619138246452e-07
+          ],
+          "repaired_dual_value_range": [
+            -3.834405120842991e-06,
+            -1.6512927901829965e-07
+          ],
+          "safe_certificate_upper_range": [
+            -3.834404762801744e-06,
+            -1.6512889909481287e-07
+          ],
+          "maximum_stationarity_fro": 8.450718887659546e-09,
+          "maximum_normalization_error": 2.6308190737012183e-08,
+          "minimum_reported_psd_eigenvalue": -1.1109730542080284e-08,
+          "maximum_repaired_stationarity_fro": 7.768646494514108e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -3.9520148564344665e-18,
+          "maximum_safe_stationarity_bound": 2.524149021086503e-13,
+          "minimum_safe_psd_eigenvalue": 1.4207850467341268e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.4840153942495158e-06,
+            "dual_stationarity_fro": 3.134197941781123e-11,
+            "dual_normalization_error": 9.259260025373806e-12,
+            "dual_min_psd_eigenvalue": -3.894069169492939e-10,
+            "repaired_dual_value": -1.4801740021567512e-06,
+            "repaired_stationarity_fro": 6.7233051690256595e-18,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 6.327384126196937e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -1.4801738581199505e-06,
+            "safe_stationarity_nuclear": 2.6102492719127835e-14,
+            "safe_stationarity_bound": 2.291310733172338e-13,
+            "safe_certificate_upper": -1.4801736289888772e-06,
+            "safe_min_psd_eigenvalue": 7.748415263110941e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.008188579394567774,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 93,
+            "optimal_inaccurate": 7
+          },
+          "dual_value_range": [
+            -0.0010277457589123132,
+            -0.0004985191866100098
+          ],
+          "repaired_dual_value_range": [
+            -0.001027744466531394,
+            -0.0004985155448427939
+          ],
+          "safe_certificate_upper_range": [
+            -0.001027744466158878,
+            -0.0004985155444594973
+          ],
+          "maximum_stationarity_fro": 7.804253435059053e-10,
+          "maximum_normalization_error": 1.036214225536014e-09,
+          "minimum_reported_psd_eigenvalue": -1.5989616663166136e-09,
+          "maximum_repaired_stationarity_fro": 4.0285829038910677e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -2.1972945497731988e-17,
+          "maximum_safe_stationarity_bound": 2.499213068446448e-13,
+          "minimum_safe_psd_eigenvalue": 1.4190529082513718e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0008274012159138755,
+            "dual_stationarity_fro": 1.1370389403273675e-10,
+            "dual_normalization_error": 1.7715517941496728e-10,
+            "dual_min_psd_eigenvalue": -1.5492867894599795e-10,
+            "repaired_dual_value": -0.0008274002430866106,
+            "repaired_stationarity_fro": 2.6759709998610316e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 3.2669969285299947e-19,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0008274002429421654,
+            "safe_stationarity_nuclear": 2.4618085061860574e-14,
+            "safe_stationarity_bound": 2.1567649514612693e-13,
+            "safe_certificate_upper": -0.0008274002427264888,
+            "safe_min_psd_eigenvalue": 1.4210012559046226e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 5.325928670881325e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 43,
+            "optimal": 57
+          },
+          "dual_value_range": [
+            -5.1062298953030816e-11,
+            2.082322755605675e-09
+          ],
+          "repaired_dual_value_range": [
+            3.7543316862193e-10,
+            2.9183654502020196e-08
+          ],
+          "safe_certificate_upper_range": [
+            3.7572680449063633e-10,
+            2.918395369869815e-08
+          ],
+          "maximum_stationarity_fro": 1.8013169024507017e-08,
+          "maximum_normalization_error": 1.4768130274234181e-08,
+          "minimum_reported_psd_eigenvalue": -5.143120259679307e-09,
+          "maximum_repaired_stationarity_fro": 4.677291495348454e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -6.080208328623044e-21,
+          "maximum_safe_stationarity_bound": 2.2112282670825467e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210852312517635e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 7.052882162276768e-10,
+            "dual_stationarity_fro": 1.0197994696629224e-10,
+            "dual_normalization_error": 7.796430168127699e-11,
+            "dual_min_psd_eigenvalue": -3.7572351449227754e-10,
+            "repaired_dual_value": 3.156866063659658e-09,
+            "repaired_stationarity_fro": 4.622080606630158e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 1.1238954780036479e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 3.1569640404426285e-09,
+            "safe_stationarity_nuclear": 2.7204614951406543e-14,
+            "safe_stationarity_bound": 2.0861322195806417e-13,
+            "safe_certificate_upper": 3.1571726536645865e-09,
+            "safe_min_psd_eigenvalue": 2.5452752822580668e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.001935723595858936,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 69,
+            "optimal_inaccurate": 31
+          },
+          "dual_value_range": [
+            -4.026922334140603e-05,
+            -3.3362145164901255e-06
+          ],
+          "repaired_dual_value_range": [
+            -4.026607702679354e-05,
+            -3.335845901694754e-06
+          ],
+          "safe_certificate_upper_range": [
+            -4.026607673155231e-05,
+            -3.3358455937447105e-06
+          ],
+          "maximum_stationarity_fro": 1.0338821459938067e-09,
+          "maximum_normalization_error": 1.121784887203603e-09,
+          "minimum_reported_psd_eigenvalue": -2.1814796298124045e-09,
+          "maximum_repaired_stationarity_fro": 7.919270050248229e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -3.9887162283057444e-17,
+          "maximum_safe_stationarity_bound": 2.1895868769128037e-13,
+          "minimum_safe_psd_eigenvalue": 1.4203309952323327e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -9.3891809546001e-06,
+            "dual_stationarity_fro": 5.700274300999893e-10,
+            "dual_normalization_error": 5.383327117414183e-10,
+            "dual_min_psd_eigenvalue": -2.3861421640158845e-10,
+            "repaired_dual_value": -9.387239365271551e-06,
+            "repaired_stationarity_fro": 2.537207519814412e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.960742522701628e-12,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -9.387239267256639e-06,
+            "safe_stationarity_nuclear": 2.604367733014903e-14,
+            "safe_stationarity_bound": 2.0117329699530422e-13,
+            "safe_certificate_upper": -9.387239066083343e-06,
+            "safe_min_psd_eigenvalue": 2.9749740774425417e-12
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.008188579394567774,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 98,
+            "optimal_inaccurate": 2
+          },
+          "dual_value_range": [
+            -0.0015944205151514276,
+            -0.0009228072084550478
+          ],
+          "repaired_dual_value_range": [
+            -0.001594419609854788,
+            -0.0009228055040706139
+          ],
+          "safe_certificate_upper_range": [
+            -0.0015944196095598422,
+            -0.0009228055037792645
+          ],
+          "maximum_stationarity_fro": 9.776147781324628e-10,
+          "maximum_normalization_error": 1.1402243593749972e-09,
+          "minimum_reported_psd_eigenvalue": -5.796137611502927e-09,
+          "maximum_repaired_stationarity_fro": 3.9400752084062786e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -3.7268405547279837e-17,
+          "maximum_safe_stationarity_bound": 2.0644817663382368e-13,
+          "minimum_safe_psd_eigenvalue": 1.4140031666406915e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0011752155888496221,
+            "dual_stationarity_fro": 7.877445212589842e-11,
+            "dual_normalization_error": 4.587097368613513e-11,
+            "dual_min_psd_eigenvalue": -1.9988345471655025e-10,
+            "repaired_dual_value": -0.0011752143333303693,
+            "repaired_stationarity_fro": 2.385448743251908e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.5741878300858632e-12,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0011752143332318873,
+            "safe_stationarity_nuclear": 2.513344372584025e-14,
+            "safe_stationarity_bound": 1.9548638276551213e-13,
+            "safe_certificate_upper": -0.001175214333036401,
+            "safe_min_psd_eigenvalue": 1.588389875869697e-12
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 5.325928670881325e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 88,
+            "optimal_inaccurate": 12
+          },
+          "dual_value_range": [
+            2.2405269934186646e-10,
+            2.6470971021640765e-09
+          ],
+          "repaired_dual_value_range": [
+            2.3582173891754154e-10,
+            1.0926023058056464e-08
+          ],
+          "safe_certificate_upper_range": [
+            2.3606177059065626e-10,
+            1.0926267402582111e-08
+          ],
+          "maximum_stationarity_fro": 1.8224482832778425e-08,
+          "maximum_normalization_error": 6.198327728856867e-08,
+          "minimum_reported_psd_eigenvalue": -3.275369205498308e-09,
+          "maximum_repaired_stationarity_fro": 5.0944499914788285e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -8.649843764078622e-21,
+          "maximum_safe_stationarity_bound": 1.9084146716250307e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210852289074385e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 3.2084269964011143e-10,
+            "dual_stationarity_fro": 1.6754446636666771e-10,
+            "dual_normalization_error": 2.3788970793248154e-10,
+            "dual_min_psd_eigenvalue": -3.1606568842014996e-11,
+            "repaired_dual_value": 4.0952572939529017e-10,
+            "repaired_stationarity_fro": 4.028951901873186e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.165143814228297e-23,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 4.0958630946323126e-10,
+            "safe_stationarity_nuclear": 2.6571667340120838e-14,
+            "safe_stationarity_bound": 1.8187892870601862e-13,
+            "safe_certificate_upper": 4.097681883919373e-10,
+            "safe_min_psd_eigenvalue": 1.4210854773866535e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.001935723595858936,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 79,
+            "optimal_inaccurate": 21
+          },
+          "dual_value_range": [
+            -0.00012520615676316852,
+            -4.5541975291845185e-05
+          ],
+          "repaired_dual_value_range": [
+            -0.00012520523931708067,
+            -4.554064089557549e-05
+          ],
+          "safe_certificate_upper_range": [
+            -0.00012520523908564235,
+            -4.554064065289358e-05
+          ],
+          "maximum_stationarity_fro": 5.144102191470301e-10,
+          "maximum_normalization_error": 1.0577324571769964e-09,
+          "minimum_reported_psd_eigenvalue": -1.9297960305920504e-09,
+          "maximum_repaired_stationarity_fro": 5.2125141497269315e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -3.2162141316538e-17,
+          "maximum_safe_stationarity_bound": 1.8350357420365612e-13,
+          "minimum_safe_psd_eigenvalue": 1.4176377721636812e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -6.212651471848834e-05,
+            "dual_stationarity_fro": 1.0620203899824485e-10,
+            "dual_normalization_error": 6.425149301492183e-11,
+            "dual_min_psd_eigenvalue": -1.701268268565566e-10,
+            "repaired_dual_value": -6.212610930250197e-05,
+            "repaired_stationarity_fro": 3.2260398895868124e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 4.442936325650805e-15,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -6.212610924188726e-05,
+            "safe_stationarity_nuclear": 2.515977417678675e-14,
+            "safe_stationarity_bound": 1.7227662977629645e-13,
+            "safe_certificate_upper": -6.212610906961062e-05,
+            "safe_min_psd_eigenvalue": 1.8674604984717983e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.008188579394567774,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 97,
+            "optimal_inaccurate": 3
+          },
+          "dual_value_range": [
+            -0.002166108478969182,
+            -0.0017208125611729314
+          ],
+          "repaired_dual_value_range": [
+            -0.0021661072770899122,
+            -0.0017208121772581964
+          ],
+          "safe_certificate_upper_range": [
+            -0.002166107276855586,
+            -0.0017208121770192456
+          ],
+          "maximum_stationarity_fro": 1.1173770544758367e-09,
+          "maximum_normalization_error": 8.473467483227637e-10,
+          "minimum_reported_psd_eigenvalue": -7.75809519075889e-10,
+          "maximum_repaired_stationarity_fro": 4.055601689949331e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -9.771067788971171e-17,
+          "maximum_safe_stationarity_bound": 1.8093372056581575e-13,
+          "minimum_safe_psd_eigenvalue": 1.419049195873393e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0018751430550918435,
+            "dual_stationarity_fro": 1.7878595478827457e-11,
+            "dual_normalization_error": 2.6167290556600165e-11,
+            "dual_min_psd_eigenvalue": -2.451923741588929e-10,
+            "repaired_dual_value": -0.0018751419206186077,
+            "repaired_stationarity_fro": 1.159502989640131e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.809318571532749e-11,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0018751419205572592,
+            "safe_stationarity_nuclear": 2.5508385394408463e-14,
+            "safe_stationarity_bound": 1.7588491858739945e-13,
+            "safe_certificate_upper": -0.0018751419203813743,
+            "safe_min_psd_eigenvalue": 1.810739329930382e-11
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 4,
+      "setup": {
+        "length": 12,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260826,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab_repaired.json"
+      },
+      "model": {
+        "length": 12,
+        "dimension": 4096,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -28.181077421635834,
+          -26.547497245935922,
+          -25.838315000606
+        ],
+        "true_gap": 1.6335801756999118,
+        "parities": [
+          1.0000000000000018,
+          -1.0000000000000036,
+          -0.9999999999999998
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.721288534546178,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 6.298568063448995e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 50,
+            "optimal": 50
+          },
+          "dual_value_range": [
+            4.618341992338764e-10,
+            1.7620057539487473e-09
+          ],
+          "repaired_dual_value_range": [
+            5.339406784879995e-10,
+            8.391379891857172e-08
+          ],
+          "safe_certificate_upper_range": [
+            5.344637315539024e-10,
+            8.391430147772429e-08
+          ],
+          "maximum_stationarity_fro": 3.96138253294534e-08,
+          "maximum_normalization_error": 8.55425303925017e-08,
+          "minimum_reported_psd_eigenvalue": -2.2713380120938023e-08,
+          "maximum_repaired_stationarity_fro": 5.731247842101199e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -5.844919193265546e-22,
+          "maximum_safe_stationarity_bound": 3.5592898240868505e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210853623493549e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 5.563197934148825e-10,
+            "dual_stationarity_fro": 7.371336156662079e-11,
+            "dual_normalization_error": 1.9835333375795017e-10,
+            "dual_min_psd_eigenvalue": -6.79159358015413e-10,
+            "repaired_dual_value": 1.056451354847085e-08,
+            "repaired_stationarity_fro": 3.346485860052469e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 3.125467834130504e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.0564734604983337e-08,
+            "safe_stationarity_nuclear": 2.633540567444251e-14,
+            "safe_stationarity_bound": 3.015902584042321e-13,
+            "safe_certificate_upper": 1.0565036195241742e-08,
+            "safe_min_psd_eigenvalue": 4.546564530100093e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0011043237449719929,
+          "detection_rate": 0.51,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 66,
+            "optimal_inaccurate": 34
+          },
+          "dual_value_range": [
+            -2.177003374496757e-08,
+            -3.7904788003244235e-10
+          ],
+          "repaired_dual_value_range": [
+            -1.7407624415490577e-08,
+            5.3860557366941015e-08
+          ],
+          "safe_certificate_upper_range": [
+            -1.7407131439020277e-08,
+            5.386108496247761e-08
+          ],
+          "maximum_stationarity_fro": 6.683172665648956e-09,
+          "maximum_normalization_error": 7.921498679230865e-09,
+          "minimum_reported_psd_eigenvalue": -2.301619292212819e-08,
+          "maximum_repaired_stationarity_fro": 6.444227597905251e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -1.259296044480354e-19,
+          "maximum_safe_stationarity_bound": 3.3510732079340076e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210649512278285e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -4.4821319360546265e-09,
+            "dual_stationarity_fro": 2.081890195350674e-10,
+            "dual_normalization_error": 5.147979820208093e-10,
+            "dual_min_psd_eigenvalue": -4.727678502983049e-10,
+            "repaired_dual_value": 2.5633826258914156e-09,
+            "repaired_stationarity_fro": 3.470295067602041e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.3514730548189305e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 2.563603674653257e-09,
+            "safe_stationarity_nuclear": 2.8206781873413358e-14,
+            "safe_stationarity_bound": 3.122370922169976e-13,
+            "safe_certificate_upper": 2.563915911745474e-09,
+            "safe_min_psd_eigenvalue": 2.4934363703069325e-13
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.006689224208374671,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 70,
+            "optimal_inaccurate": 30
+          },
+          "dual_value_range": [
+            -0.00022100999796967856,
+            -3.8137110846169636e-05
+          ],
+          "repaired_dual_value_range": [
+            -0.00022098255033725384,
+            -3.812507761208643e-05
+          ],
+          "safe_certificate_upper_range": [
+            -0.00022098254986581902,
+            -3.8125077103928777e-05
+          ],
+          "maximum_stationarity_fro": 2.9952981479962497e-09,
+          "maximum_normalization_error": 2.7768927157723056e-09,
+          "minimum_reported_psd_eigenvalue": -3.827561550691161e-08,
+          "maximum_repaired_stationarity_fro": 5.994958922949359e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -3.3450202034662064e-17,
+          "maximum_safe_stationarity_bound": 3.1639231294316974e-13,
+          "minimum_safe_psd_eigenvalue": 1.4182064396955508e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0001471466038277412,
+            "dual_stationarity_fro": 3.8475376620352893e-10,
+            "dual_normalization_error": 7.065827922758672e-10,
+            "dual_min_psd_eigenvalue": -4.722247015891445e-10,
+            "repaired_dual_value": -0.00014714315693370623,
+            "repaired_stationarity_fro": 3.6750477426141763e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.2441938246467831e-15,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.00014714315671263568,
+            "safe_stationarity_nuclear": 2.5549849867719008e-14,
+            "safe_stationarity_bound": 2.782974126771997e-13,
+            "safe_certificate_upper": -0.00014714315643433827,
+            "safe_min_psd_eigenvalue": 1.5467859790138156e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 6.298568063448995e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 49,
+            "optimal_inaccurate": 51
+          },
+          "dual_value_range": [
+            2.792666899330823e-10,
+            1.366942042090344e-09
+          ],
+          "repaired_dual_value_range": [
+            6.759790164031525e-10,
+            3.5893483993548194e-08
+          ],
+          "safe_certificate_upper_range": [
+            6.763587569465833e-10,
+            3.5893857942335894e-08
+          ],
+          "maximum_stationarity_fro": 2.0357954112584716e-08,
+          "maximum_normalization_error": 2.6040034351026975e-08,
+          "minimum_reported_psd_eigenvalue": -2.653577690062213e-09,
+          "maximum_repaired_stationarity_fro": 5.3982955629646115e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -3.898289309453171e-22,
+          "maximum_safe_stationarity_bound": 2.6907194486907934e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210854526500966e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 1.0873891605488384e-09,
+            "dual_stationarity_fro": 1.2942779421507422e-10,
+            "dual_normalization_error": 1.3060130754638521e-10,
+            "dual_min_psd_eigenvalue": -2.6486145329550483e-10,
+            "repaired_dual_value": 2.6296155493873604e-09,
+            "repaired_stationarity_fro": 2.9411447655494824e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 8.453656328089943e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 2.62975971717159e-09,
+            "safe_stationarity_nuclear": 2.8324174671649165e-14,
+            "safe_stationarity_bound": 2.49103258484876e-13,
+            "safe_certificate_upper": 2.630008820430075e-09,
+            "safe_min_psd_eigenvalue": 8.595631214620368e-13
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0011043237449719929,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 15,
+            "optimal": 85
+          },
+          "dual_value_range": [
+            -2.88467194508972e-07,
+            -3.615451430297493e-08
+          ],
+          "repaired_dual_value_range": [
+            -2.85244558792774e-07,
+            -1.2913441211368035e-08
+          ],
+          "safe_certificate_upper_range": [
+            -2.8524418372366753e-07,
+            -1.291304867311694e-08
+          ],
+          "maximum_stationarity_fro": 2.287858978476319e-09,
+          "maximum_normalization_error": 1.2985634789686173e-09,
+          "minimum_reported_psd_eigenvalue": -7.933039231089234e-09,
+          "maximum_repaired_stationarity_fro": 6.791332907620309e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -6.25124597126575e-19,
+          "maximum_safe_stationarity_bound": 2.6672317131949835e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210634216787701e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -6.386218801537533e-08,
+            "dual_stationarity_fro": 5.0130590412708807e-11,
+            "dual_normalization_error": 9.618683627365954e-11,
+            "dual_min_psd_eigenvalue": -2.7275120535497593e-10,
+            "repaired_dual_value": -6.251777616227112e-08,
+            "repaired_stationarity_fro": 4.449074434502166e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -4.84103975079714e-20,
+            "safe_identity_shift": 1.4210903125599513e-14,
+            "safe_dual_value": -6.25176321031765e-08,
+            "safe_stationarity_nuclear": 2.6870716358660928e-14,
+            "safe_stationarity_bound": 2.4337058628250236e-13,
+            "safe_certificate_upper": -6.251738873259021e-08,
+            "safe_min_psd_eigenvalue": 1.4210915178353363e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.006689224208374671,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 86,
+            "optimal_inaccurate": 14
+          },
+          "dual_value_range": [
+            -0.0005150638205151971,
+            -0.00024934942092934027
+          ],
+          "repaired_dual_value_range": [
+            -0.0005150615265171084,
+            -0.00024934059418882035
+          ],
+          "safe_certificate_upper_range": [
+            -0.000515061526162187,
+            -0.0002493405938040406
+          ],
+          "maximum_stationarity_fro": 1.0416278052688563e-09,
+          "maximum_normalization_error": 1.271678651271202e-09,
+          "minimum_reported_psd_eigenvalue": -2.6871667349504308e-09,
+          "maximum_repaired_stationarity_fro": 4.109316876630769e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -4.4588969585920453e-17,
+          "maximum_safe_stationarity_bound": 2.5055446739405386e-13,
+          "minimum_safe_psd_eigenvalue": 1.413736934467777e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00034441113790839237,
+            "dual_stationarity_fro": 1.2339992297148217e-11,
+            "dual_normalization_error": 1.6074697128942717e-11,
+            "dual_min_psd_eigenvalue": -4.177234178685948e-11,
+            "repaired_dual_value": -0.00034441093173037066,
+            "repaired_stationarity_fro": 3.1630940502771524e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 6.483196963193458e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.00034441093158615703,
+            "safe_stationarity_nuclear": 2.7106653559546576e-14,
+            "safe_stationarity_bound": 2.5055446739405386e-13,
+            "safe_certificate_upper": -0.00034441093133560257,
+            "safe_min_psd_eigenvalue": 7.904354873514049e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 6.298568063448995e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 68,
+            "optimal": 32
+          },
+          "dual_value_range": [
+            4.3983209438108077e-10,
+            2.095384399962112e-09
+          ],
+          "repaired_dual_value_range": [
+            5.772910959522389e-10,
+            2.3671073938976707e-08
+          ],
+          "safe_certificate_upper_range": [
+            5.776067217350173e-10,
+            2.3671386789895312e-08
+          ],
+          "maximum_stationarity_fro": 3.483775195237551e-08,
+          "maximum_normalization_error": 8.219232250361586e-08,
+          "minimum_reported_psd_eigenvalue": -1.7246188831759386e-08,
+          "maximum_repaired_stationarity_fro": 5.217821518586762e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -9.265470208944037e-21,
+          "maximum_safe_stationarity_bound": 2.2547501702902718e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210848059844287e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 8.620202431634039e-10,
+            "dual_stationarity_fro": 6.467584499183513e-10,
+            "dual_normalization_error": 5.371866285130977e-10,
+            "dual_min_psd_eigenvalue": -1.4965957395769894e-10,
+            "repaired_dual_value": 2.275347486175789e-09,
+            "repaired_stationarity_fro": 2.6380523783685126e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -3.7776404175970993e-22,
+            "safe_identity_shift": 1.4210855092966047e-14,
+            "safe_dual_value": 2.27544546517923e-09,
+            "safe_stationarity_nuclear": 2.6396805276795206e-14,
+            "safe_stationarity_bound": 2.0340077895726725e-13,
+            "safe_certificate_upper": 2.2756488659581873e-09,
+            "safe_min_psd_eigenvalue": 1.4210855227807417e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0011043237449719929,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 90,
+            "optimal_inaccurate": 10
+          },
+          "dual_value_range": [
+            -2.1122333616023633e-06,
+            -1.8615123100119329e-07
+          ],
+          "repaired_dual_value_range": [
+            -2.1118046540371475e-06,
+            -1.8590316854765322e-07
+          ],
+          "safe_certificate_upper_range": [
+            -2.111804357431513e-06,
+            -1.8590287161599135e-07
+          ],
+          "maximum_stationarity_fro": 4.6142222551924255e-10,
+          "maximum_normalization_error": 8.824054820166793e-10,
+          "minimum_reported_psd_eigenvalue": -2.626748027924443e-09,
+          "maximum_repaired_stationarity_fro": 8.802791644050921e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.794889472619054e-18,
+          "maximum_safe_stationarity_bound": 2.1814547845434377e-13,
+          "minimum_safe_psd_eigenvalue": 1.4171765464481294e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -6.510456839929428e-07,
+            "dual_stationarity_fro": 1.1384949567219515e-10,
+            "dual_normalization_error": 1.6921719581119987e-10,
+            "dual_min_psd_eigenvalue": -4.801400648627442e-10,
+            "repaired_dual_value": -6.483264543245761e-07,
+            "repaired_stationarity_fro": 1.6505296141667496e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 4.257116277523602e-16,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -6.483263563698913e-07,
+            "safe_stationarity_nuclear": 2.5838301577662596e-14,
+            "safe_stationarity_bound": 1.9780681821186002e-13,
+            "safe_certificate_upper": -6.483261585630731e-07,
+            "safe_min_psd_eigenvalue": 1.464834197215884e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.006689224208374671,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 93,
+            "optimal_inaccurate": 7
+          },
+          "dual_value_range": [
+            -0.0009437327021399183,
+            -0.000504691959157302
+          ],
+          "repaired_dual_value_range": [
+            -0.0009437321734543907,
+            -0.000504691694029006
+          ],
+          "safe_certificate_upper_range": [
+            -0.0009437321731707566,
+            -0.000504691693733123
+          ],
+          "maximum_stationarity_fro": 8.550785009894635e-10,
+          "maximum_normalization_error": 7.543037305879352e-10,
+          "minimum_reported_psd_eigenvalue": -1.9703727506255063e-09,
+          "maximum_repaired_stationarity_fro": 3.530529142892091e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -9.368711083094787e-17,
+          "maximum_safe_stationarity_bound": 2.088367789333877e-13,
+          "minimum_safe_psd_eigenvalue": 1.4184509672553096e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0007398893339558149,
+            "dual_stationarity_fro": 1.497647632411746e-10,
+            "dual_normalization_error": 1.1569367686092846e-10,
+            "dual_min_psd_eigenvalue": -4.958964842509176e-10,
+            "repaired_dual_value": -0.0007398882094197031,
+            "repaired_stationarity_fro": 2.1578306416486657e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -1.2847104448012555e-17,
+            "safe_identity_shift": 1.4223701819650015e-14,
+            "safe_dual_value": -0.0007398882093212975,
+            "safe_stationarity_nuclear": 2.6249265453998174e-14,
+            "safe_stationarity_bound": 2.0253228756280666e-13,
+            "safe_certificate_upper": -0.0007398882091187651,
+            "safe_min_psd_eigenvalue": 1.426147434703185e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 6.298568063448995e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 23,
+            "optimal": 77
+          },
+          "dual_value_range": [
+            4.1742782576261007e-10,
+            8.201083884282907e-10
+          ],
+          "repaired_dual_value_range": [
+            3.2125777432359363e-10,
+            8.646189774818155e-09
+          ],
+          "safe_certificate_upper_range": [
+            3.21500976476874e-10,
+            8.646437793778664e-09
+          ],
+          "maximum_stationarity_fro": 6.5030126866833784e-09,
+          "maximum_normalization_error": 1.4910648493682288e-08,
+          "minimum_reported_psd_eigenvalue": -7.87536804916728e-09,
+          "maximum_repaired_stationarity_fro": 5.611977665381863e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -3.2417089084655817e-21,
+          "maximum_safe_stationarity_bound": 1.9479652754020441e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210852398370543e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 7.256097790580574e-10,
+            "dual_stationarity_fro": 3.4362426614700683e-09,
+            "dual_normalization_error": 1.209632483067935e-08,
+            "dual_min_psd_eigenvalue": -1.0238614021147127e-12,
+            "repaired_dual_value": 8.646189774818155e-09,
+            "repaired_stationarity_fro": 2.6682430475108333e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.2085984461715153e-10,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 8.646250281328193e-09,
+            "safe_stationarity_nuclear": 2.73901886199701e-14,
+            "safe_stationarity_bound": 1.8751245047164275e-13,
+            "safe_certificate_upper": 8.646437793778664e-09,
+            "safe_min_psd_eigenvalue": 2.2087404440863965e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0011043237449719929,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 74,
+            "optimal_inaccurate": 26
+          },
+          "dual_value_range": [
+            -2.3942836413518628e-05,
+            -3.0506765582314146e-06
+          ],
+          "repaired_dual_value_range": [
+            -2.3942011498499956e-05,
+            -3.050237673303882e-06
+          ],
+          "safe_certificate_upper_range": [
+            -2.3942011265349668e-05,
+            -3.050237430559603e-06
+          ],
+          "maximum_stationarity_fro": 8.114212304346882e-10,
+          "maximum_normalization_error": 1.0028777808201994e-09,
+          "minimum_reported_psd_eigenvalue": -5.372004902088569e-09,
+          "maximum_repaired_stationarity_fro": 8.881713886714243e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.869654817929527e-17,
+          "maximum_safe_stationarity_bound": 1.9246788853298807e-13,
+          "minimum_safe_psd_eigenvalue": 1.418994307631705e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -9.780149430155781e-06,
+            "dual_stationarity_fro": 1.269001186807624e-10,
+            "dual_normalization_error": 8.841349874444404e-11,
+            "dual_min_psd_eigenvalue": -5.883574338017328e-10,
+            "repaired_dual_value": -9.778887881073568e-06,
+            "repaired_stationarity_fro": 3.6688233742721626e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": -4.99804372802338e-18,
+            "safe_identity_shift": 1.4215852758930027e-14,
+            "safe_dual_value": -9.778887820537357e-06,
+            "safe_stationarity_nuclear": 2.6382992232810036e-14,
+            "safe_stationarity_bound": 1.7963806628532706e-13,
+            "safe_certificate_upper": -9.77888764089929e-06,
+            "safe_min_psd_eigenvalue": 1.421046674414308e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.006689224208374671,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 90,
+            "optimal_inaccurate": 10
+          },
+          "dual_value_range": [
+            -0.0014985736125787599,
+            -0.0011063139231081032
+          ],
+          "repaired_dual_value_range": [
+            -0.0014985730130429448,
+            -0.0011063135594145557
+          ],
+          "safe_certificate_upper_range": [
+            -0.0014985730128128404,
+            -0.0011063135591717573
+          ],
+          "maximum_stationarity_fro": 7.81438946288211e-10,
+          "maximum_normalization_error": 1.2796775861190213e-09,
+          "minimum_reported_psd_eigenvalue": -3.3614287753250945e-09,
+          "maximum_repaired_stationarity_fro": 4.328654044737072e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -8.881394712928527e-17,
+          "maximum_safe_stationarity_bound": 1.8175175476841172e-13,
+          "minimum_safe_psd_eigenvalue": 1.409806900590439e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0013220501297202276,
+            "dual_stationarity_fro": 5.996677464934665e-11,
+            "dual_normalization_error": 4.616085291786476e-12,
+            "dual_min_psd_eigenvalue": -1.0262379534924451e-10,
+            "repaired_dual_value": -0.0013220497322842806,
+            "repaired_stationarity_fro": 2.2236865122409e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 3.3502301106206154e-12,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0013220497322231767,
+            "safe_stationarity_nuclear": 2.5572422980913587e-14,
+            "safe_stationarity_bound": 1.7533178994540834e-13,
+            "safe_certificate_upper": -0.001322049732047845,
+            "safe_min_psd_eigenvalue": 3.3644468890962135e-12
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 4,
+      "setup": {
+        "length": 14,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260828,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab_repaired.json"
+      },
+      "model": {
+        "length": 14,
+        "dimension": 16384,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -32.917840717329476,
+          -31.344920718777992,
+          -30.763993213194656
+        ],
+        "true_gap": 1.572919998551484,
+        "parities": [
+          0.9999999999999994,
+          -1.0000000000000009,
+          -0.9999999999999993
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7300925298081918,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 6.848176146078029e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 50,
+            "optimal_inaccurate": 50
+          },
+          "dual_value_range": [
+            6.095741484248356e-10,
+            2.4887168753456534e-09
+          ],
+          "repaired_dual_value_range": [
+            9.791845694372618e-10,
+            4.8050730791602805e-08
+          ],
+          "safe_certificate_upper_range": [
+            9.797129947065146e-10,
+            4.805123953151106e-08
+          ],
+          "maximum_stationarity_fro": 1.857959134249283e-08,
+          "maximum_normalization_error": 3.75238975447445e-08,
+          "minimum_reported_psd_eigenvalue": -1.507084038901473e-08,
+          "maximum_repaired_stationarity_fro": 6.95015437322086e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -1.0521163472489046e-20,
+          "maximum_safe_stationarity_bound": 3.424441487695651e-13,
+          "minimum_safe_psd_eigenvalue": 1.4193253669134549e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 1.5266142296248488e-09,
+            "dual_stationarity_fro": 3.5572906535223955e-11,
+            "dual_normalization_error": 7.462774842537101e-11,
+            "dual_min_psd_eigenvalue": -3.90135737294689e-11,
+            "repaired_dual_value": 1.7568571778624047e-09,
+            "repaired_stationarity_fro": 2.6656411847131948e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.0659199839887055e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 1.757078150456251e-09,
+            "safe_stationarity_nuclear": 2.4307291226378156e-14,
+            "safe_stationarity_bound": 2.8408060286324114e-13,
+            "safe_certificate_upper": 1.7573622310591142e-09,
+            "safe_min_psd_eigenvalue": 2.4869440687378682e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0005019829948794158,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 18,
+            "optimal": 82
+          },
+          "dual_value_range": [
+            -5.64049529084193e-09,
+            1.917573791975267e-09
+          ],
+          "repaired_dual_value_range": [
+            -1.8633522789558764e-10,
+            4.67715873398936e-08
+          ],
+          "safe_certificate_upper_range": [
+            -1.858461310585034e-10,
+            4.6772089349861495e-08
+          ],
+          "maximum_stationarity_fro": 1.395567251019797e-08,
+          "maximum_normalization_error": 1.1542009126230823e-08,
+          "minimum_reported_psd_eigenvalue": -3.423172047722345e-09,
+          "maximum_repaired_stationarity_fro": 6.815424139301817e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -1.5109131049328626e-21,
+          "maximum_safe_stationarity_bound": 3.23358959112179e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210836482174629e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 5.469457983006244e-10,
+            "dual_stationarity_fro": 7.194036811550449e-10,
+            "dual_normalization_error": 8.731600997791134e-10,
+            "dual_min_psd_eigenvalue": -1.7178655205149857e-10,
+            "repaired_dual_value": 1.6830557444220164e-09,
+            "repaired_stationarity_fro": 2.2455684407020893e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -4.528043181998817e-22,
+            "safe_identity_shift": 1.421085516800632e-14,
+            "safe_dual_value": 1.683276748454536e-09,
+            "safe_stationarity_nuclear": 2.6909962964265415e-14,
+            "safe_stationarity_bound": 3.194997706179121e-13,
+            "safe_certificate_upper": 1.683596248225154e-09,
+            "safe_min_psd_eigenvalue": 1.42108551338806e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0055396089783596135,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 33,
+            "optimal": 67
+          },
+          "dual_value_range": [
+            -8.944038099556722e-05,
+            -4.224363151571144e-06
+          ],
+          "repaired_dual_value_range": [
+            -8.943856380409006e-05,
+            -4.220763778896232e-06
+          ],
+          "safe_certificate_upper_range": [
+            -8.943856334166224e-05,
+            -4.220763256467852e-06
+          ],
+          "maximum_stationarity_fro": 2.4659781129474044e-09,
+          "maximum_normalization_error": 1.756336187597185e-09,
+          "minimum_reported_psd_eigenvalue": -1.1346297776054415e-08,
+          "maximum_repaired_stationarity_fro": 8.317223817218337e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -1.375764285013169e-17,
+          "maximum_safe_stationarity_bound": 3.188333210364916e-13,
+          "minimum_safe_psd_eigenvalue": 1.4197001072336575e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -7.154710943833072e-05,
+            "dual_stationarity_fro": 7.625205807857185e-10,
+            "dual_normalization_error": 1.7388757100889052e-11,
+            "dual_min_psd_eigenvalue": -9.565144197116187e-10,
+            "repaired_dual_value": -7.153527704023728e-05,
+            "repaired_stationarity_fro": 4.944582369894587e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -7.808324049908705e-18,
+            "safe_identity_shift": 1.4218663039251913e-14,
+            "safe_dual_value": -7.15352768190583e-05,
+            "safe_stationarity_nuclear": 2.6839961761929184e-14,
+            "safe_stationarity_bound": 2.923937571329093e-13,
+            "safe_certificate_upper": -7.153527652666455e-05,
+            "safe_min_psd_eigenvalue": 1.4197001072336575e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 6.848176146078029e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 59,
+            "optimal_inaccurate": 41
+          },
+          "dual_value_range": [
+            3.748670659972163e-10,
+            1.7964367416003525e-09
+          ],
+          "repaired_dual_value_range": [
+            6.588104654216537e-10,
+            1.1138999844359477e-07
+          ],
+          "safe_certificate_upper_range": [
+            6.592002466497028e-10,
+            1.1139039329480528e-07
+          ],
+          "maximum_stationarity_fro": 9.13773672804533e-08,
+          "maximum_normalization_error": 9.350881935432653e-08,
+          "minimum_reported_psd_eigenvalue": -1.0030329958849666e-08,
+          "maximum_repaired_stationarity_fro": 6.366367477761602e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.3114816444070522e-21,
+          "maximum_safe_stationarity_bound": 2.6954797238532776e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210853685566991e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 1.2640387741562073e-09,
+            "dual_stationarity_fro": 2.571888097041126e-10,
+            "dual_normalization_error": 5.314817475010614e-10,
+            "dual_min_psd_eigenvalue": -5.19768612925754e-10,
+            "repaired_dual_value": 3.1092957999118324e-09,
+            "repaired_stationarity_fro": 3.892336329116483e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 5.337009684728616e-12,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 3.109439859068507e-09,
+            "safe_stationarity_nuclear": 2.698966931224588e-14,
+            "safe_stationarity_bound": 2.464501264278312e-13,
+            "safe_certificate_upper": 3.109686309194935e-09,
+            "safe_min_psd_eigenvalue": 5.351201742182239e-12
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0005019829948794158,
+          "detection_rate": 0.86,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 54,
+            "optimal_inaccurate": 46
+          },
+          "dual_value_range": [
+            -3.5270709253613366e-08,
+            -2.667797005691174e-09
+          ],
+          "repaired_dual_value_range": [
+            -3.412384523726771e-08,
+            4.156636394483964e-08
+          ],
+          "safe_certificate_upper_range": [
+            -3.412346646806535e-08,
+            4.156674873659833e-08
+          ],
+          "maximum_stationarity_fro": 3.975469173827098e-09,
+          "maximum_normalization_error": 5.717224471624149e-09,
+          "minimum_reported_psd_eigenvalue": -1.654514664231252e-08,
+          "maximum_repaired_stationarity_fro": 6.278734484351571e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -2.0316981677641505e-19,
+          "maximum_safe_stationarity_bound": 2.5690025815227387e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210672768737473e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.0079979227252612e-08,
+            "dual_stationarity_fro": 5.632111646134755e-11,
+            "dual_normalization_error": 9.426048830363243e-11,
+            "dual_min_psd_eigenvalue": -8.27566099991161e-11,
+            "repaired_dual_value": -9.747018109204755e-09,
+            "repaired_stationarity_fro": 3.9735787709818376e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 3.158643034122482e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -9.746873889380548e-09,
+            "safe_stationarity_nuclear": 2.7606402903564947e-14,
+            "safe_stationarity_bound": 2.425818653005123e-13,
+            "safe_certificate_upper": -9.746631307515248e-09,
+            "safe_min_psd_eigenvalue": 3.300802479156869e-13
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0055396089783596135,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 72,
+            "optimal_inaccurate": 28
+          },
+          "dual_value_range": [
+            -0.00032188947902930375,
+            -0.00011550327329722977
+          ],
+          "repaired_dual_value_range": [
+            -0.00032188907973405324,
+            -0.00011550241346224531
+          ],
+          "safe_certificate_upper_range": [
+            -0.00032188907935308135,
+            -0.00011550241309192757
+          ],
+          "maximum_stationarity_fro": 1.4072463582761984e-09,
+          "maximum_normalization_error": 1.0105289938167061e-09,
+          "minimum_reported_psd_eigenvalue": -1.6066975406170473e-08,
+          "maximum_repaired_stationarity_fro": 4.728871848229609e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -3.7035079022930335e-17,
+          "maximum_safe_stationarity_bound": 2.4998633509059416e-13,
+          "minimum_safe_psd_eigenvalue": 1.4169087207117565e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00015456552509368268,
+            "dual_stationarity_fro": 1.0149270999196504e-10,
+            "dual_normalization_error": 2.4817259358655974e-11,
+            "dual_min_psd_eigenvalue": -2.0285085339959343e-10,
+            "repaired_dual_value": -0.00015456480882636032,
+            "repaired_stationarity_fro": 2.5576274545368592e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": -2.1572461132865807e-18,
+            "safe_identity_shift": 1.421301196131529e-14,
+            "safe_dual_value": -0.0001545648086821675,
+            "safe_stationarity_nuclear": 2.731182959917567e-14,
+            "safe_stationarity_bound": 2.438959460504471e-13,
+            "safe_certificate_upper": -0.00015456480843827156,
+            "safe_min_psd_eigenvalue": 1.4203575972973185e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 6.848176146078029e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 66,
+            "optimal": 34
+          },
+          "dual_value_range": [
+            3.5530302397218997e-10,
+            1.4644528031210297e-09
+          ],
+          "repaired_dual_value_range": [
+            4.354358085802653e-10,
+            1.8198746904826635e-08
+          ],
+          "safe_certificate_upper_range": [
+            4.35749416905644e-10,
+            1.819906898373281e-08
+          ],
+          "maximum_stationarity_fro": 4.602709818570094e-09,
+          "maximum_normalization_error": 1.472370492194841e-08,
+          "minimum_reported_psd_eigenvalue": -5.7234106116880715e-09,
+          "maximum_repaired_stationarity_fro": 6.025308434580105e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -5.565074180111373e-21,
+          "maximum_safe_stationarity_bound": 2.3084835214250015e-13,
+          "minimum_safe_psd_eigenvalue": 1.4198925366697104e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 9.494312989993672e-10,
+            "dual_stationarity_fro": 1.3545841695479057e-10,
+            "dual_normalization_error": 5.630562682767959e-11,
+            "dual_min_psd_eigenvalue": -3.8324197228043055e-10,
+            "repaired_dual_value": 3.162299296631532e-09,
+            "repaired_stationarity_fro": 3.302612997698965e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -3.0008426528855597e-22,
+            "safe_identity_shift": 1.421085501528627e-14,
+            "safe_dual_value": 3.1623972540546116e-09,
+            "safe_stationarity_nuclear": 2.6028466113788653e-14,
+            "safe_stationarity_bound": 1.981446748773214e-13,
+            "safe_certificate_upper": 3.162595398729489e-09,
+            "safe_min_psd_eigenvalue": 1.4210855067659894e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0005019829948794158,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 85,
+            "optimal_inaccurate": 15
+          },
+          "dual_value_range": [
+            -1.9426602896924455e-07,
+            -4.182359195807546e-08
+          ],
+          "repaired_dual_value_range": [
+            -1.9361772655660935e-07,
+            -4.132272925889361e-08
+          ],
+          "safe_certificate_upper_range": [
+            -1.9361743961055957e-07,
+            -4.132241180950955e-08
+          ],
+          "maximum_stationarity_fro": 9.81745515113905e-09,
+          "maximum_normalization_error": 5.101221445258375e-09,
+          "minimum_reported_psd_eigenvalue": -2.834900116180082e-08,
+          "maximum_repaired_stationarity_fro": 6.436245957184714e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -5.460747459726425e-19,
+          "maximum_safe_stationarity_bound": 2.2428710050990587e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210464762690783e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -8.552282426911768e-08,
+            "dual_stationarity_fro": 3.129609820521498e-11,
+            "dual_normalization_error": 5.135969427527698e-11,
+            "dual_min_psd_eigenvalue": -9.138852567477318e-11,
+            "repaired_dual_value": -8.491865172235459e-08,
+            "repaired_stationarity_fro": 1.721414460709099e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 5.8194896987658e-14,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -8.491855375118999e-08,
+            "safe_stationarity_nuclear": 2.552681619202549e-14,
+            "safe_stationarity_bound": 1.958804685763121e-13,
+            "safe_certificate_upper": -8.491835787072142e-08,
+            "safe_min_psd_eigenvalue": 7.238655068978531e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0055396089783596135,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 86,
+            "optimal_inaccurate": 14
+          },
+          "dual_value_range": [
+            -0.0005951614674649872,
+            -0.0003351440390465671
+          ],
+          "repaired_dual_value_range": [
+            -0.0005951590410049022,
+            -0.00033514260795885
+          ],
+          "safe_certificate_upper_range": [
+            -0.0005951590407249586,
+            -0.00033514260766700333
+          ],
+          "maximum_stationarity_fro": 7.105955005357656e-10,
+          "maximum_normalization_error": 9.474703244194416e-10,
+          "minimum_reported_psd_eigenvalue": -1.0206572497662816e-09,
+          "maximum_repaired_stationarity_fro": 4.258042763283031e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.743150347618152e-17,
+          "maximum_safe_stationarity_bound": 2.0963493497319982e-13,
+          "minimum_safe_psd_eigenvalue": 1.4150016872868709e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0004098451443640145,
+            "dual_stationarity_fro": 1.6261601442267039e-10,
+            "dual_normalization_error": 1.257791648612283e-10,
+            "dual_min_psd_eigenvalue": -3.628678852129241e-10,
+            "repaired_dual_value": -0.0004098439617238412,
+            "repaired_stationarity_fro": 3.45862729260313e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 3.5121765621736595e-16,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0004098439616257044,
+            "safe_stationarity_nuclear": 2.516507235015585e-14,
+            "safe_stationarity_bound": 1.9372965755799058e-13,
+            "safe_certificate_upper": -0.0004098439614319748,
+            "safe_min_psd_eigenvalue": 1.4561097817992615e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 6.848176146078029e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 68,
+            "optimal_inaccurate": 32
+          },
+          "dual_value_range": [
+            4.907717405661905e-10,
+            9.733413869813595e-10
+          ],
+          "repaired_dual_value_range": [
+            4.216013011326442e-10,
+            1.3048131052864316e-08
+          ],
+          "safe_certificate_upper_range": [
+            4.2184690504879286e-10,
+            1.3048383495922767e-08
+          ],
+          "maximum_stationarity_fro": 8.932306603556045e-09,
+          "maximum_normalization_error": 1.3188435343813865e-08,
+          "minimum_reported_psd_eigenvalue": -6.985132971670646e-09,
+          "maximum_repaired_stationarity_fro": 5.774341336217802e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -3.518631281225097e-21,
+          "maximum_safe_stationarity_bound": 1.9743436244838168e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210852481078474e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 6.616603878209108e-10,
+            "dual_stationarity_fro": 8.472793978272503e-11,
+            "dual_normalization_error": 1.5516909979140792e-10,
+            "dual_min_psd_eigenvalue": -1.994454996296589e-10,
+            "repaired_dual_value": 1.598990852736394e-09,
+            "repaired_stationarity_fro": 2.4971009671181622e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": -5.895556813279393e-22,
+            "safe_identity_shift": 1.4210855304757684e-14,
+            "safe_dual_value": 1.5990513735054908e-09,
+            "safe_stationarity_nuclear": 2.699291089800857e-14,
+            "safe_stationarity_bound": 1.849477581146931e-13,
+            "safe_certificate_upper": 1.5992363212636055e-09,
+            "safe_min_psd_eigenvalue": 1.421085623113108e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0005019829948794158,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 94,
+            "optimal_inaccurate": 6
+          },
+          "dual_value_range": [
+            -2.11088897369299e-06,
+            -3.305895559390531e-07
+          ],
+          "repaired_dual_value_range": [
+            -2.1104024279220866e-06,
+            -3.30012635542669e-07
+          ],
+          "safe_certificate_upper_range": [
+            -2.1104021864749655e-06,
+            -3.300123906512547e-07
+          ],
+          "maximum_stationarity_fro": 4.448242057634811e-10,
+          "maximum_normalization_error": 7.157797687895595e-10,
+          "minimum_reported_psd_eigenvalue": -3.462874983925481e-09,
+          "maximum_repaired_stationarity_fro": 7.031806390051682e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -9.941695004803945e-18,
+          "maximum_safe_stationarity_bound": 1.911740096170449e-13,
+          "minimum_safe_psd_eigenvalue": 1.4189226800355242e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -7.575053941046516e-07,
+            "dual_stationarity_fro": 2.4522590632821487e-10,
+            "dual_normalization_error": 4.625083649401063e-10,
+            "dual_min_psd_eigenvalue": -4.95413626111141e-10,
+            "repaired_dual_value": -7.551289793012676e-07,
+            "repaired_stationarity_fro": 5.672226503886138e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": 3.0173994664722347e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -7.551289186670984e-07,
+            "safe_stationarity_nuclear": 2.657065615255338e-14,
+            "safe_stationarity_bound": 1.8343577632631985e-13,
+            "safe_certificate_upper": -7.551287352313221e-07,
+            "safe_min_psd_eigenvalue": 3.1594984558883623e-13
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0055396089783596135,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 95,
+            "optimal_inaccurate": 5
+          },
+          "dual_value_range": [
+            -0.0010314265957083058,
+            -0.0006804583049998467
+          ],
+          "repaired_dual_value_range": [
+            -0.0010314261398995245,
+            -0.0006804566041123308
+          ],
+          "safe_certificate_upper_range": [
+            -0.001031426139666679,
+            -0.0006804566038765765
+          ],
+          "maximum_stationarity_fro": 9.939952166683376e-10,
+          "maximum_normalization_error": 8.7672435977737e-10,
+          "minimum_reported_psd_eigenvalue": -2.4520134281341852e-09,
+          "maximum_repaired_stationarity_fro": 4.07050857397506e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -7.228112694214877e-17,
+          "maximum_safe_stationarity_bound": 1.8329014351752597e-13,
+          "minimum_safe_psd_eigenvalue": 1.414355009476932e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0008796814689204582,
+            "dual_stationarity_fro": 1.5141777588612508e-10,
+            "dual_normalization_error": 1.1481304795779579e-10,
+            "dual_min_psd_eigenvalue": -1.7536508002577806e-10,
+            "repaired_dual_value": -0.0008796805546562141,
+            "repaired_stationarity_fro": 1.4167155568501685e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 2.6770003127247614e-19,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0008796805545953218,
+            "safe_stationarity_nuclear": 2.582557237730265e-14,
+            "safe_stationarity_bound": 1.759076150584095e-13,
+            "safe_certificate_upper": -0.0008796805544194142,
+            "safe_min_psd_eigenvalue": 1.4210840643524044e-14
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 4,
+      "setup": {
+        "length": 16,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260830,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab_repaired.json"
+      },
+      "model": {
+        "length": 16,
+        "dimension": 65536,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -37.6546059435035,
+          -36.125293786169834,
+          -35.640933981439574
+        ],
+        "true_gap": 1.5293121573336634,
+        "parities": [
+          0.999999999999998,
+          -0.9999999999999993,
+          -1.0000000000000004
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7364879300516716,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 7.159277665774559e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 56,
+            "optimal": 44
+          },
+          "dual_value_range": [
+            4.956481727903688e-10,
+            2.6764007170708346e-09
+          ],
+          "repaired_dual_value_range": [
+            5.989911615861606e-10,
+            3.7868556408747025e-07
+          ],
+          "safe_certificate_upper_range": [
+            5.9952342438249e-10,
+            3.786860747219529e-07
+          ],
+          "maximum_stationarity_fro": 1.409703079303699e-07,
+          "maximum_normalization_error": 2.1937475169764298e-08,
+          "minimum_reported_psd_eigenvalue": -3.484212183492432e-08,
+          "maximum_repaired_stationarity_fro": 6.534117305639178e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -5.492467878717602e-22,
+          "maximum_safe_stationarity_bound": 3.7506550080579586e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210849215013025e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 5.43834497265589e-10,
+            "dual_stationarity_fro": 1.9760446788204044e-10,
+            "dual_normalization_error": 1.8463230944121278e-10,
+            "dual_min_psd_eigenvalue": -8.434922055088198e-11,
+            "repaired_dual_value": 8.855009395002567e-10,
+            "repaired_stationarity_fro": 3.89830952310603e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 8.893902141098333e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 8.857219351707149e-10,
+            "safe_stationarity_nuclear": 2.8118125221270313e-14,
+            "safe_stationarity_bound": 3.1582577929261053e-13,
+            "safe_certificate_upper": 8.860377609500075e-10,
+            "safe_min_psd_eigenvalue": 9.036012718573324e-13
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.00020918415371441572,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 77,
+            "optimal_inaccurate": 23
+          },
+          "dual_value_range": [
+            7.959074753620197e-11,
+            2.0581830551906205e-09
+          ],
+          "repaired_dual_value_range": [
+            5.157750131163566e-10,
+            2.447127556972606e-08
+          ],
+          "safe_certificate_upper_range": [
+            5.162992653064292e-10,
+            2.4471768257732824e-08
+          ],
+          "maximum_stationarity_fro": 1.7204571004411367e-08,
+          "maximum_normalization_error": 2.3970194273914558e-08,
+          "minimum_reported_psd_eigenvalue": -4.157012434912322e-09,
+          "maximum_repaired_stationarity_fro": 5.655939847122347e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -9.454878865113085e-23,
+          "maximum_safe_stationarity_bound": 3.5387686749838835e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210854393134887e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 4.5904926074803845e-10,
+            "dual_stationarity_fro": 5.685734715623014e-11,
+            "dual_normalization_error": 1.4215628674207892e-11,
+            "dual_min_psd_eigenvalue": -2.7664455362619076e-11,
+            "repaired_dual_value": 6.514102163403429e-10,
+            "repaired_stationarity_fro": 2.4059247378281012e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -7.334541975621985e-23,
+            "safe_identity_shift": 1.4210854788547422e-14,
+            "safe_dual_value": 6.516313560549412e-10,
+            "safe_stationarity_nuclear": 2.914320442954417e-14,
+            "safe_stationarity_bound": 3.219291360747087e-13,
+            "safe_certificate_upper": 6.519532851910159e-10,
+            "safe_min_psd_eigenvalue": 1.4210854738404072e-14
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.004658551425475315,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 71,
+            "optimal_inaccurate": 29
+          },
+          "dual_value_range": [
+            -3.9016161939816815e-05,
+            -1.026492517741109e-06
+          ],
+          "repaired_dual_value_range": [
+            -3.9015442832399105e-05,
+            -1.0248474498294091e-06
+          ],
+          "safe_certificate_upper_range": [
+            -3.901544232881681e-05,
+            -1.0248469177044694e-06
+          ],
+          "maximum_stationarity_fro": 1.941481041912932e-09,
+          "maximum_normalization_error": 2.6301089084412865e-09,
+          "minimum_reported_psd_eigenvalue": -5.6507737613050645e-09,
+          "maximum_repaired_stationarity_fro": 9.717374127188796e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -2.721213858398615e-17,
+          "maximum_safe_stationarity_bound": 3.3521476279119965e-13,
+          "minimum_safe_psd_eigenvalue": 1.418885777911469e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.7779426966672623e-06,
+            "dual_stationarity_fro": 1.671437070523065e-10,
+            "dual_normalization_error": 1.642812552660189e-10,
+            "dual_min_psd_eigenvalue": -1.9665254842135124e-10,
+            "repaired_dual_value": -1.7752871217423727e-06,
+            "repaired_stationarity_fro": 5.1815013534967975e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.0693413029173842e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -1.7752869007876078e-06,
+            "safe_stationarity_nuclear": 2.6810484896782087e-14,
+            "safe_stationarity_bound": 2.924260666725251e-13,
+            "safe_certificate_upper": -1.775286608361541e-06,
+            "safe_min_psd_eigenvalue": 2.2115129962006898e-13
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 7.159277665774559e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 50,
+            "optimal": 50
+          },
+          "dual_value_range": [
+            2.8270704108554737e-10,
+            2.1743355144784164e-09
+          ],
+          "repaired_dual_value_range": [
+            3.495895822670721e-10,
+            1.861269569008982e-07
+          ],
+          "safe_certificate_upper_range": [
+            3.499560053432766e-10,
+            1.861273436054967e-07
+          ],
+          "maximum_stationarity_fro": 8.435842530728952e-08,
+          "maximum_normalization_error": 4.4574622215520776e-08,
+          "minimum_reported_psd_eigenvalue": -7.022017513387761e-09,
+          "maximum_repaired_stationarity_fro": 5.738935991089255e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -7.664472798629978e-22,
+          "maximum_safe_stationarity_bound": 2.771517145594866e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210854019156762e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.7489851840147941e-09,
+            "dual_stationarity_fro": 3.8865924296374094e-10,
+            "dual_normalization_error": 8.566128917308902e-10,
+            "dual_min_psd_eigenvalue": -7.669552546725312e-11,
+            "repaired_dual_value": 2.3587914389517542e-09,
+            "repaired_stationarity_fro": 2.2787163268221758e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -4.505586665754704e-23,
+            "safe_identity_shift": 1.421085476025787e-14,
+            "safe_dual_value": 2.3589355802495086e-09,
+            "safe_stationarity_nuclear": 2.7808780156497236e-14,
+            "safe_stationarity_bound": 2.478771159170132e-13,
+            "safe_certificate_upper": 2.3591834573654254e-09,
+            "safe_min_psd_eigenvalue": 1.4210854618951412e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.00020918415371441572,
+          "detection_rate": 0.07,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 41,
+            "optimal_inaccurate": 59
+          },
+          "dual_value_range": [
+            -1.1520483903217164e-08,
+            1.618982312718976e-09
+          ],
+          "repaired_dual_value_range": [
+            -4.278947355752224e-09,
+            5.0376516297701925e-08
+          ],
+          "safe_certificate_upper_range": [
+            -4.278566378410581e-09,
+            5.037689917396395e-08
+          ],
+          "maximum_stationarity_fro": 6.9249988451987025e-09,
+          "maximum_normalization_error": 7.669340718052808e-09,
+          "minimum_reported_psd_eigenvalue": -3.7145381724748334e-08,
+          "maximum_repaired_stationarity_fro": 6.305437240974239e-17,
+          "maximum_repaired_normalization_error": 3.3306690738754696e-16,
+          "minimum_repaired_psd_eigenvalue": -9.789512317972399e-20,
+          "maximum_safe_stationarity_bound": 2.5877174682495155e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210780000996333e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -3.3300086494354535e-10,
+            "dual_stationarity_fro": 2.7718932283331515e-10,
+            "dual_normalization_error": 6.135335572921008e-10,
+            "dual_min_psd_eigenvalue": -3.15221356265518e-10,
+            "repaired_dual_value": 3.448440226903398e-09,
+            "repaired_stationarity_fro": 4.2286007123010914e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 8.434363729634734e-16,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 3.44858430258462e-09,
+            "safe_stationarity_nuclear": 2.735573168335046e-14,
+            "safe_stationarity_bound": 2.459264042580526e-13,
+            "safe_certificate_upper": 3.448830228988878e-09,
+            "safe_min_psd_eigenvalue": 1.507474052546663e-14
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.004658551425475315,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 88,
+            "optimal_inaccurate": 12
+          },
+          "dual_value_range": [
+            -0.00019086925969382783,
+            -4.137680612638101e-05
+          ],
+          "repaired_dual_value_range": [
+            -0.00019086738165109696,
+            -4.137434774740623e-05
+          ],
+          "safe_certificate_upper_range": [
+            -0.00019086738128247302,
+            -4.137434737750434e-05
+          ],
+          "maximum_stationarity_fro": 2.9158470978072392e-09,
+          "maximum_normalization_error": 2.449208835741956e-09,
+          "minimum_reported_psd_eigenvalue": -4.481611733586169e-09,
+          "maximum_repaired_stationarity_fro": 5.790789181207674e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -2.740363743349418e-17,
+          "maximum_safe_stationarity_bound": 2.593391881387599e-13,
+          "minimum_safe_psd_eigenvalue": 1.4189442397555145e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00010952414490840966,
+            "dual_stationarity_fro": 2.8992504126552304e-10,
+            "dual_normalization_error": 1.5166601308180816e-10,
+            "dual_min_psd_eigenvalue": -2.740236003139686e-10,
+            "repaired_dual_value": -0.00010952204993106181,
+            "repaired_stationarity_fro": 2.8796811651072743e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 3.2037304765253157e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.00010952204978694705,
+            "safe_stationarity_nuclear": 2.4178934180103237e-14,
+            "safe_stationarity_bound": 2.1192070944299976e-13,
+            "safe_certificate_upper": -0.00010952204957502635,
+            "safe_min_psd_eigenvalue": 3.3458151758204904e-13
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 7.159277665774559e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 41,
+            "optimal_inaccurate": 59
+          },
+          "dual_value_range": [
+            5.610330355645425e-10,
+            1.654457443913225e-09
+          ],
+          "repaired_dual_value_range": [
+            4.98889543620274e-10,
+            8.950344145547277e-08
+          ],
+          "safe_certificate_upper_range": [
+            4.991954388646076e-10,
+            8.950374973234606e-08
+          ],
+          "maximum_stationarity_fro": 7.681385573357278e-08,
+          "maximum_normalization_error": 2.4037834167600636e-08,
+          "minimum_reported_psd_eigenvalue": -4.112153740072244e-08,
+          "maximum_repaired_stationarity_fro": 6.64912972752092e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -1.0057715508291666e-20,
+          "maximum_safe_stationarity_bound": 2.3040499981526863e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210850971264858e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 8.32228796078195e-10,
+            "dual_stationarity_fro": 4.407913428696506e-11,
+            "dual_normalization_error": 6.89499568551355e-11,
+            "dual_min_psd_eigenvalue": -3.3300372294916003e-10,
+            "repaired_dual_value": 2.9791076923007875e-09,
+            "repaired_stationarity_fro": 4.4341405127654596e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 5.863343113364959e-16,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": 2.97920566712915e-09,
+            "safe_stationarity_nuclear": 2.669404380283813e-14,
+            "safe_stationarity_bound": 2.0824758733727725e-13,
+            "safe_certificate_upper": 2.9794139147164875e-09,
+            "safe_min_psd_eigenvalue": 1.4799719701152637e-14
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.00020918415371441572,
+          "detection_rate": 0.97,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal_inaccurate": 49,
+            "optimal": 51
+          },
+          "dual_value_range": [
+            -5.211905705194926e-08,
+            -6.591719994608318e-09
+          ],
+          "repaired_dual_value_range": [
+            -5.123696814685676e-08,
+            1.8766095640103723e-08
+          ],
+          "safe_certificate_upper_range": [
+            -5.123666551090124e-08,
+            1.8766395031070953e-08
+          ],
+          "maximum_stationarity_fro": 2.2921401115330874e-08,
+          "maximum_normalization_error": 2.0159444780176727e-08,
+          "minimum_reported_psd_eigenvalue": -1.4340308490805681e-08,
+          "maximum_repaired_stationarity_fro": 7.018407759680153e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -2.1365351318326707e-19,
+          "maximum_safe_stationarity_bound": 2.2131108153860923e-13,
+          "minimum_safe_psd_eigenvalue": 1.421049401476297e-14,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -2.905261445519436e-08,
+            "dual_stationarity_fro": 1.4551619197265337e-09,
+            "dual_normalization_error": 5.2964188590465255e-09,
+            "dual_min_psd_eigenvalue": -1.9741728082258782e-09,
+            "repaired_dual_value": -2.4313999207987655e-08,
+            "repaired_stationarity_fro": 5.646075489716166e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 2.0663707896191744e-12,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -2.431390121620966e-08,
+            "safe_stationarity_nuclear": 2.6965006821148506e-14,
+            "safe_stationarity_bound": 2.0793803210805968e-13,
+            "safe_certificate_upper": -2.431369327817755e-08,
+            "safe_min_psd_eigenvalue": 2.0805813934700844e-12
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.004658551425475315,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 84,
+            "optimal_inaccurate": 16
+          },
+          "dual_value_range": [
+            -0.00038998614947924337,
+            -0.00017584416964236318
+          ],
+          "repaired_dual_value_range": [
+            -0.000389985836492069,
+            -0.00017584159004504097
+          ],
+          "safe_certificate_upper_range": [
+            -0.0003899858362020132,
+            -0.00017584158974533358
+          ],
+          "maximum_stationarity_fro": 2.334695124072108e-09,
+          "maximum_normalization_error": 1.0575138542634477e-09,
+          "minimum_reported_psd_eigenvalue": -3.361278802502993e-09,
+          "maximum_repaired_stationarity_fro": 4.031606158138771e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -4.942993879604805e-17,
+          "maximum_safe_stationarity_bound": 2.1263495513668298e-13,
+          "minimum_safe_psd_eigenvalue": 1.4196492794549365e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00021024747046038874,
+            "dual_stationarity_fro": 2.0692430868524735e-10,
+            "dual_normalization_error": 2.772617690993684e-10,
+            "dual_min_psd_eigenvalue": -2.412066737465439e-10,
+            "repaired_dual_value": -0.00021024687043863944,
+            "repaired_stationarity_fro": 2.2903309720253054e-17,
+            "repaired_normalization_error": 0.0,
+            "repaired_min_psd_eigenvalue": 1.4384168307698881e-13,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0002102468703405738,
+            "safe_stationarity_nuclear": 2.6921675584997536e-14,
+            "safe_stationarity_bound": 2.0592488671658859e-13,
+            "safe_certificate_upper": -0.0002102468701346489,
+            "safe_min_psd_eigenvalue": 1.5806543020588475e-13
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 7.159277665774559e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 60,
+            "optimal_inaccurate": 40
+          },
+          "dual_value_range": [
+            5.508190471128142e-10,
+            1.1276489717818443e-09
+          ],
+          "repaired_dual_value_range": [
+            5.681656773521426e-10,
+            1.7504574027044822e-08
+          ],
+          "safe_certificate_upper_range": [
+            5.684172823720643e-10,
+            1.750482823194785e-08
+          ],
+          "maximum_stationarity_fro": 9.389027965519217e-09,
+          "maximum_normalization_error": 2.166860457730735e-08,
+          "minimum_reported_psd_eigenvalue": -7.732252573183384e-09,
+          "maximum_repaired_stationarity_fro": 5.746575821050805e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -2.2659423141798634e-21,
+          "maximum_safe_stationarity_bound": 1.9648975214297878e-13,
+          "minimum_safe_psd_eigenvalue": 1.4210852464777313e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 9.36644617373499e-10,
+            "dual_stationarity_fro": 1.4307923667406189e-11,
+            "dual_normalization_error": 2.751932015598868e-11,
+            "dual_min_psd_eigenvalue": -1.8344198914426469e-10,
+            "repaired_dual_value": 1.6228477374110962e-09,
+            "repaired_stationarity_fro": 3.003715885729181e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -1.2492289528271737e-21,
+            "safe_identity_shift": 1.4210855964430957e-14,
+            "safe_dual_value": 1.622908302162114e-09,
+            "safe_stationarity_nuclear": 2.707619062134143e-14,
+            "safe_stationarity_bound": 1.849369571983597e-13,
+            "safe_certificate_upper": 1.6230932391193124e-09,
+            "safe_min_psd_eigenvalue": 1.4210855114997588e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.00020918415371441572,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 99,
+            "optimal_inaccurate": 1
+          },
+          "dual_value_range": [
+            -2.676070798912427e-07,
+            -6.855941997812817e-08
+          ],
+          "repaired_dual_value_range": [
+            -2.669227888435889e-07,
+            -6.844384504979767e-08
+          ],
+          "safe_certificate_upper_range": [
+            -2.6692254840987664e-07,
+            -6.844359744376426e-08
+          ],
+          "maximum_stationarity_fro": 8.821986848483626e-11,
+          "maximum_normalization_error": 2.1227841706661366e-10,
+          "minimum_reported_psd_eigenvalue": -6.574450595146338e-10,
+          "maximum_repaired_stationarity_fro": 6.349647625082238e-17,
+          "maximum_repaired_normalization_error": 4.440892098500626e-16,
+          "minimum_repaired_psd_eigenvalue": -9.808137346228916e-19,
+          "maximum_safe_stationarity_bound": 1.9125237362706946e-13,
+          "minimum_safe_psd_eigenvalue": 1.4209668988963067e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -2.1003485282079727e-07,
+            "dual_stationarity_fro": 5.516950955641643e-12,
+            "dual_normalization_error": 1.268984917146554e-11,
+            "dual_min_psd_eigenvalue": -1.4009624697736288e-10,
+            "repaired_dual_value": -2.0953954526503073e-07,
+            "repaired_stationarity_fro": 4.3322246825025517e-17,
+            "repaired_normalization_error": 1.1102230246251565e-16,
+            "repaired_min_psd_eigenvalue": -3.732708927051387e-19,
+            "safe_identity_shift": 1.4211227986094708e-14,
+            "safe_dual_value": -2.0953948468780932e-07,
+            "safe_stationarity_nuclear": 2.6156911411578244e-14,
+            "safe_stationarity_bound": 1.7915819066293255e-13,
+            "safe_certificate_upper": -2.0953930552961866e-07,
+            "safe_min_psd_eigenvalue": 1.4211074263354435e-14
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.004658551425475315,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-09,
+          "dual_statuses": {
+            "optimal": 95,
+            "optimal_inaccurate": 5
+          },
+          "dual_value_range": [
+            -0.0007332968828884668,
+            -0.0004927130552223966
+          ],
+          "repaired_dual_value_range": [
+            -0.0007332957182262859,
+            -0.0004927118773020434
+          ],
+          "safe_certificate_upper_range": [
+            -0.0007332957179926028,
+            -0.0004927118770640721
+          ],
+          "maximum_stationarity_fro": 7.579534042528282e-10,
+          "maximum_normalization_error": 9.462197692045038e-10,
+          "minimum_reported_psd_eigenvalue": -1.5073659042479832e-09,
+          "maximum_repaired_stationarity_fro": 3.556994385199424e-17,
+          "maximum_repaired_normalization_error": 2.220446049250313e-16,
+          "minimum_repaired_psd_eigenvalue": -7.241402752904735e-17,
+          "maximum_safe_stationarity_bound": 1.838740948142723e-13,
+          "minimum_safe_psd_eigenvalue": 1.410987947404792e-14,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0006255886984700386,
+            "dual_stationarity_fro": 9.905577023517186e-11,
+            "dual_normalization_error": 1.768263313550733e-11,
+            "dual_min_psd_eigenvalue": -5.565789841920192e-10,
+            "repaired_dual_value": -0.0006255880943424243,
+            "repaired_stationarity_fro": 3.125890024464186e-17,
+            "repaired_normalization_error": 2.220446049250313e-16,
+            "repaired_min_psd_eigenvalue": 2.7660808315819082e-17,
+            "safe_identity_shift": 1.4210854715202004e-14,
+            "safe_dual_value": -0.0006255880942816257,
+            "safe_stationarity_nuclear": 2.5607577335985848e-14,
+            "safe_stationarity_bound": 1.7430155106093674e-13,
+            "safe_certificate_upper": -0.0006255880941073242,
+            "safe_min_psd_eigenvalue": 1.4245805357251388e-14
+          }
+        }
+      ]
+    }
+  ]
+}

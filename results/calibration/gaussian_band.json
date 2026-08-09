@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "setup": {
+    "dimension": 12,
+    "sample_counts": [
+      500,
+      1000,
+      2000
+    ],
+    "ensembles": 10000,
+    "batch": 250,
+    "alpha": 0.05,
+    "seed": 20260819,
+    "output": "results\\calibration\\gaussian_band.json"
+  },
+  "rows": [
+    {
+      "sample_count": 500,
+      "analytic_eta": 0.27639162622995767,
+      "analytic_empirical_coverage": 1.0,
+      "score_quantiles": {
+        "0.90": 0.16558055312449205,
+        "0.95": 0.17292259812892877,
+        "0.99": 0.18591716392257085,
+        "0.999": 0.20264051805669092
+      },
+      "analytic_to_empirical_95_width_ratio": 1.5983545772535974
+    },
+    {
+      "sample_count": 1000,
+      "analytic_eta": 0.19543839317038073,
+      "analytic_empirical_coverage": 1.0,
+      "score_quantiles": {
+        "0.90": 0.11705124032977321,
+        "0.95": 0.12189196049600302,
+        "0.99": 0.1308360405236957,
+        "0.999": 0.14311328928529712
+      },
+      "analytic_to_empirical_95_width_ratio": 1.6033739417686155
+    },
+    {
+      "sample_count": 2000,
+      "analytic_eta": 0.13819581311497883,
+      "analytic_empirical_coverage": 1.0,
+      "score_quantiles": {
+        "0.90": 0.08275604905944332,
+        "0.95": 0.08615530479947987,
+        "0.99": 0.09330909900333999,
+        "0.999": 0.10115613133998595
+      },
+      "analytic_to_empirical_95_width_ratio": 1.604031387697129
+    }
+  ]
+}
