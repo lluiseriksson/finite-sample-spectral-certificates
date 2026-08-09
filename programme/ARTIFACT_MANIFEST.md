@@ -33,7 +33,7 @@ paper.
 - Title: *Noncommuting Hermitian Matrix-Polynomial Filters Can Have an
   Exponential Tangential Advantage*
 - Pages: 8
-- Local SHA-256: `0aa8c2e418d84e8eb0fb33f13406bc0fece9ae326929ef38d5781b0fa5b542cf`
+- Local SHA-256: `853cd673a4d44a0528e61f7b6d37d5710fde4e9ac5dfe9536d9c5aa3d6d82e75`
 - Status: **unfrozen research draft**.  It contains the quantified Week-3
   theorem proof, exact affine and full-spark quadratic witnesses, the
   block-Krylov proposition, and a controlled Hermitian subspace benchmark.
