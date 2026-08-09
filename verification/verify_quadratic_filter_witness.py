@@ -1,0 +1,184 @@
+"""Exact replay of the quadratic noncommuting-filter witness.
+
+All arithmetic is rational.  Positivity on the full stopband [-1, 0] is
+certified by positive Bernstein coefficients after the change x = t - 1.
+No SDP solver or floating-point sampling enters the certificate.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction as F
+from itertools import combinations
+from math import comb
+
+
+Polynomial = list[F]  # ascending power coefficients
+Matrix = list[list[F]]
+
+
+def poly_add(left: Polynomial, right: Polynomial) -> Polynomial:
+    size = max(len(left), len(right))
+    return [
+        (left[i] if i < len(left) else F())
+        + (right[i] if i < len(right) else F())
+        for i in range(size)
+    ]
+
+
+def poly_scale(value: F, polynomial: Polynomial) -> Polynomial:
+    return [value * coefficient for coefficient in polynomial]
+
+
+def poly_multiply(left: Polynomial, right: Polynomial) -> Polynomial:
+    result = [F() for _ in range(len(left) + len(right) - 1)]
+    for i, left_value in enumerate(left):
+        for j, right_value in enumerate(right):
+            result[i + j] += left_value * right_value
+    return result
+
+
+def shift_to_unit_interval(polynomial: Polynomial) -> Polynomial:
+    """Return coefficients of q(t)=p(t-1) from coefficients of p(x)."""
+    degree = len(polynomial) - 1
+    shifted = [F() for _ in range(degree + 1)]
+    for power, coefficient in enumerate(polynomial):
+        for unit_power in range(power + 1):
+            shifted[unit_power] += (
+                coefficient
+                * comb(power, unit_power)
+                * ((-1) ** (power - unit_power))
+            )
+    return shifted
+
+
+def power_to_bernstein(polynomial: Polynomial) -> list[F]:
+    """Convert a power-basis polynomial on [0,1] to Bernstein coefficients."""
+    degree = len(polynomial) - 1
+    return [
+        sum(
+            (
+                polynomial[power]
+                * F(comb(index, power), comb(degree, power))
+                for power in range(index + 1)
+            ),
+            F(),
+        )
+        for index in range(degree + 1)
+    ]
+
+
+def evaluate_matrix(coefficients: list[Matrix], point: F) -> Matrix:
+    return [
+        [
+            sum(
+                (point**power * coefficients[power][row][column]
+                 for power in range(len(coefficients))),
+                F(),
+            )
+            for column in range(2)
+        ]
+        for row in range(2)
+    ]
+
+
+def matvec(matrix: Matrix, vector: list[F]) -> list[F]:
+    return [
+        sum((matrix[row][column] * vector[column] for column in range(2)), F())
+        for row in range(2)
+    ]
+
+
+def multiply(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [
+            sum((left[i][k] * right[k][j] for k in range(2)), F())
+            for j in range(2)
+        ]
+        for i in range(2)
+    ]
+
+
+def subtract(left: Matrix, right: Matrix) -> Matrix:
+    return [[left[i][j] - right[i][j] for j in range(2)] for i in range(2)]
+
+
+def main() -> None:
+    coefficients: list[Matrix] = [
+        [[F(2, 5), F(-3, 16)], [F(-3, 16), F(29, 32)]],
+        [[F(15, 16), F(3, 20)], [F(3, 20), F(3, 32)]],
+        [[F(-3, 8), F()], [F(), F(-3, 80)]],
+    ]
+    pass_points = [F(1, 2), F(1), F(3, 2), F(2)]
+    targets = [[F(1), F(-2)], [F(1), F(-1)], [F(1), F(1)], [F(1), F(2)]]
+
+    # Exact tangential constraints and full spark in dimension two.
+    for point, target in zip(pass_points, targets, strict=True):
+        assert matvec(evaluate_matrix(coefficients, point), target) == target
+    assert len(set(pass_points)) == len(pass_points)
+    target_minors = [
+        left[0] * right[1] - left[1] * right[0]
+        for left, right in combinations(targets, 2)
+    ]
+    assert all(minor != 0 for minor in target_minors)
+    degree, dimension, number_targets = 2, 2, 4
+    assert number_targets - dimension + 1 == degree + 1
+
+    # The coefficient tuple is genuinely noncommuting.
+    commutators = [
+        subtract(multiply(coefficients[i], coefficients[j]),
+                 multiply(coefficients[j], coefficients[i]))
+        for i, j in combinations(range(3), 2)
+    ]
+    expected_upper_right = [F(1053, 12800), F(-81, 1280), F(81, 1600)]
+    assert [commutator[0][1] for commutator in commutators] == expected_upper_right
+    assert all(commutator != [[F(), F()], [F(), F()]] for commutator in commutators)
+
+    p00 = [coefficient[0][0] for coefficient in coefficients]
+    p01 = [coefficient[0][1] for coefficient in coefficients]
+    p11 = [coefficient[1][1] for coefficient in coefficients]
+    one = [F(1), F(), F()]
+
+    bernstein_data: dict[str, dict[str, list[F]]] = {}
+    spectral_margins: list[F] = []
+    for label, sign in (("I-P", F(-1)), ("I+P", F(1))):
+        diagonal_00 = poly_add(one, poly_scale(sign, p00))
+        off_diagonal = poly_scale(sign, p01)
+        diagonal_11 = poly_add(one, poly_scale(sign, p11))
+        determinant = poly_add(
+            poly_multiply(diagonal_00, diagonal_11),
+            poly_scale(F(-1), poly_multiply(off_diagonal, off_diagonal)),
+        )
+        trace = poly_add(diagonal_00, diagonal_11)
+        entries = {
+            "leading_minor": power_to_bernstein(shift_to_unit_interval(diagonal_00)),
+            "determinant": power_to_bernstein(shift_to_unit_interval(determinant)),
+            "trace": power_to_bernstein(shift_to_unit_interval(trace)),
+        }
+        bernstein_data[label] = entries
+        assert all(value > 0 for value in entries["leading_minor"])
+        assert all(value > 0 for value in entries["determinant"])
+        determinant_lower = min(entries["determinant"])
+        trace_upper = max(entries["trace"])
+        spectral_margins.append(determinant_lower / trace_upper)
+
+    assert bernstein_data["I-P"]["determinant"] == [
+        F(81, 256), F(1701, 10240), F(219, 2560), F(441, 10240), F(27, 1280)
+    ]
+    assert bernstein_data["I+P"]["determinant"] == [
+        F(53, 1280), F(8389, 10240), F(783, 512), F(21913, 10240), F(3371, 1280)
+    ]
+    uniform_margin = min(spectral_margins)
+    assert spectral_margins == [F(3, 304), F(53, 4232)]
+    assert uniform_margin == F(3, 304)
+    operator_norm_upper = F(1) - uniform_margin
+    assert operator_norm_upper == F(301, 304) < 1
+
+    print("PASS: 4 exact tangential constraints and all 2x2 target minors are nonzero")
+    print("PASS: all three exact coefficient commutators are nonzero")
+    print("PASS: Bernstein certificates give I±P(x) >= (3/304) I on [-1,0]")
+    print("PASS: exact continuum operator-norm bound is 301/304 < 1")
+    print("PASS: every commuting symmetric degree-2 feasible filter is I by the root count")
+
+
+if __name__ == "__main__":
+    main()

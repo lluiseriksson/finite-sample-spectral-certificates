@@ -43,6 +43,21 @@ overshoot stayed below `4.9e-5`.  The commuting value one is an analytic lower
 bound conditional on exact full spark; the reported SVD margins are not exact
 certificates.
 
+## Exact non-affine certificate
+
+A degree-2, dimension-2 witness with four rational pass constraints is now
+certified on the full stopband.  Its targets have slopes `-2,-1,1,2`, hence are
+full spark.  Positive rational Bernstein coefficients for the principal minors
+of `I+P` and `I-P` prove
+
+```text
+sup_{[-1,0]} ||P(x)||_op <= 301/304 < 1,
+commuting symmetric optimum = 1.
+```
+
+The replay script uses only Python's exact `Fraction` arithmetic and is included
+in CI as `verification/verify_quadratic_filter_witness.py`.
+
 ## Collision outcome so far
 
 Tangential polynomial interpolation, matrix-valued Nevanlinna--Pick theory,
@@ -58,8 +73,9 @@ this search is not evidence of priority.
    bounds;
 2. inspect the full statements of the closest norm-constrained tangential
    interpolation papers, not only abstracts;
-3. prove the block-Krylov pass/stop error proposition and benchmark against
-   independent scalar Chebyshev filtering; and
-4. rationally or interval-certify at least one non-affine finite witness.
+3. benchmark the proved block-Krylov pass/stop proposition against independent
+   scalar Chebyshev filtering on realistic eigenproblems.
 
-Until all four close, Route C is the lead but Gate G1 remains open.
+The former fourth blocker, a rational or interval-certified non-affine finite
+witness, is closed.  Until the remaining three close, Route C is the lead but
+Gate G1 remains open.

@@ -90,7 +90,64 @@ commutator norm        0.098647696.
 The rational construction is deliberately slightly suboptimal so that every
 claim can be replayed without trusting a solver.
 
-## 4. Scaling theorem candidate
+## 4. Exact full-spark quadratic separation
+
+A solver-independent non-affine witness now matches the mechanism of the
+asymptotic theorem.  Take degree `N=2`, dimension `d=2`, four pass points and
+targets
+
+```text
+lambda = (1/2, 1, 3/2, 2),
+v      = ((1,-2), (1,-1), (1,1), (1,2)).
+```
+
+Every pair of targets is linearly independent, so the tuple is full spark.  Set
+`P(x)=C_0+x C_1+x^2 C_2`, where
+
+```text
+C_0 = [[ 2/5,  -3/16],    C_1 = [[15/16, 3/20],
+       [-3/16, 29/32]]           [ 3/20, 3/32]],
+
+C_2 = [[-3/8,     0],
+       [   0, -3/80]].
+```
+
+Direct rational substitution verifies all four tangential constraints.  The
+coefficients are noncommuting; for example,
+
+```text
+[C_0,C_1] = [[0, 1053/12800],[-1053/12800,0]].
+```
+
+For a pairwise-commuting symmetric quadratic filter, every common eigenvector
+overlaps at least `M-d+1=3=N+1` targets.  Its scalar entry is therefore one at
+three distinct nodes and hence identically one.  The only commuting feasible
+filter is `I`.
+
+The noncommuting leakage is controlled on the full interval, not a grid.
+After `x=t-1`, the leading principal minor and determinant of each of
+`I-P(x)` and `I+P(x)` have strictly positive rational Bernstein coefficients on
+`t in [0,1]`.  Exact determinant coefficients are
+
+```text
+det(I-P): 81/256, 1701/10240, 219/2560, 441/10240, 27/1280,
+det(I+P): 53/1280, 8389/10240, 783/512, 21913/10240, 3371/1280.
+```
+
+Combining their determinant lower bounds with Bernstein upper bounds on the
+traces gives
+
+```text
+I-P(x) >= (3/304) I,
+I+P(x) >= (3/304) I,
+sup ||P(x)||_op <= 301/304 < 1.
+```
+
+`verification/verify_quadratic_filter_witness.py` replays the complete
+rational calculation.  This closes the earlier requirement for a certified
+non-affine finite witness.
+
+## 5. Scaling theorem candidate
 
 For every sufficiently large `N`, set `d=N^2` and `M=d+N`.  There exist `M`
 distinct pass points `lambda_j>0` and full-spark unit vectors `v_j in R^d` for
@@ -112,7 +169,7 @@ This is now supported by a complete existence-proof skeleton below.  It remains
 a **candidate theorem**, rather than a priority claim, until the proof is fully
 written and the collision audit is complete.
 
-### 4.1 Exact commuting obstruction
+### 5.1 Exact commuting obstruction
 
 Let the targets be full spark, meaning that every `d` of them span `R^d`.  Any
 nonzero vector can be orthogonal to at most `d-1` targets.  If the symmetric
@@ -128,7 +185,7 @@ Since `M=d+N`, at least `N+1` of these overlaps are nonzero.  The pass points
 are distinct, so `p_r-1` has at least `N+1` roots and is zero identically.
 This holds for every `r`; hence `P(x)=I` and its stopband norm is exactly one.
 
-### 4.2 Exponentially small diagonal base point
+### 5.2 Exponentially small diagonal base point
 
 Start with coordinate targets.  Assign two pass points to each of the first
 `N` coordinate directions and one pass point to every remaining direction.
@@ -157,7 +214,7 @@ bounded because paired nodes have a fixed separation.  Therefore every scalar
 entry is bounded by `C exp(-cN)`.  Placing them on the diagonal gives a real
 symmetric base polynomial `P_0` with that stopband leakage.
 
-### 4.3 Symmetric interpolation survives a full-spark perturbation
+### 5.3 Symmetric interpolation survives a full-spark perturbation
 
 Let `L_v` map the `N+1` real symmetric coefficient matrices to the stacked
 vectors `(P(lambda_j)v_j)_j`.  At the coordinate target tuple, an off-diagonal
@@ -216,7 +273,7 @@ The earlier algebraic obstacles are now removed: the two-node interpolant is
 explicit, the construction lies in the real-symmetric/Hermitian coefficient
 class, and the full-spark perturbation is deterministic.
 
-### 4.4 Block-Krylov interpretation
+### 5.4 Block-Krylov interpretation
 
 For a Hermitian matrix `H` and starting block `B`, a block Krylov output has the
 form
@@ -236,7 +293,7 @@ fixed-basis scalar filtering.  Turning this interpretation into an algorithmic
 gain requires convergence and cost experiments; the algebraic separation alone
 does not establish a faster eigensolver.
 
-## 5. Scaling numerical stress test
+## 6. Scaling numerical stress test
 
 `research/route_c_scaling_pilot.py` perturbs the coordinate tuple, checks every
 `d`-target minor numerically, and solves the real-symmetric coefficient SDP.
@@ -254,7 +311,7 @@ persists but shrinks to approximately `0.99635`, `0.97016`, and `0.94834` over
 the same perturbations.  This is exploratory evidence only: neither a
 floating-point minor test nor a discretized stopband is a proof.
 
-## 6. Literature collision warning
+## 7. Literature collision warning
 
 Bitangential matrix Nevanlinna--Pick interpolation supplies general matrix
 Schur-class interpolation criteria, and matrix-valued polynomial interpolation

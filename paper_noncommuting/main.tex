@@ -32,8 +32,9 @@ Scalar Chebyshev filtering treats every vector in a block Krylov iterate with
 the same polynomial, while simultaneously diagonalizable matrix coefficients
 amount to independent scalar filters after a fixed channel rotation.  We study
 the larger class of Hermitian matrix-polynomial filters under tangential pass
-constraints.  An exact two-channel affine example already separates
-noncommuting from commuting symmetric coefficients.  Our main result gives an
+constraints.  An exact full-spark quadratic certificate already separates
+noncommuting from commuting symmetric coefficients on a full stopband.  Our
+main result gives an
 asymptotic separation: at degree $N$ and channel dimension $d=N^2$, there are
 distinct pass points and full-spark channel signatures for which a symmetric
 noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
@@ -321,7 +322,78 @@ can reproduce.  This is an approximation-theoretic separation; an end-to-end
 runtime advantage also depends on filter construction, recurrence stability,
 orthogonalization, and the cost model.
 
-\section{Smallest exact witness}
+\section{Exact finite witnesses}
+
+\subsection{A full-spark quadratic certificate}
+
+The asymptotic mechanism already occurs with rational data at degree two.  Take
+\[
+ (\lambda_1,\lambda_2,\lambda_3,\lambda_4)
+ =\left(\tfrac12,1,\tfrac32,2\right),
+ \qquad
+ (v_1,v_2,v_3,v_4)
+ =\left(
+ \binom{1}{-2},\binom{1}{-1},\binom{1}{1},\binom{1}{2}
+ \right).
+\]
+Every pair of targets is linearly independent, hence the tuple is full spark in
+$\R^2$.  Set $P(x)=C_0+xC_1+x^2C_2$, with
+\[
+ C_0=\begin{pmatrix}2/5&-3/16\\-3/16&29/32\end{pmatrix},\quad
+ C_1=\begin{pmatrix}15/16&3/20\\3/20&3/32\end{pmatrix},\quad
+ C_2=\begin{pmatrix}-3/8&0\\0&-3/80\end{pmatrix}.
+\]
+Direct substitution verifies $P(\lambda_j)v_j=v_j$ for all four targets, and
+\[
+ [C_0,C_1]
+ =\begin{pmatrix}0&1053/12800\\-1053/12800&0\end{pmatrix}\ne0.
+\]
+
+\begin{proposition}[Exact quadratic gap]\label{prop:quadratic}
+The polynomial above obeys
+\[
+ \sup_{x\in[-1,0]}\|P(x)\|_{\op}\le\frac{301}{304}<1.
+\]
+Every pairwise-commuting real-symmetric quadratic polynomial satisfying the
+same four tangential constraints is identically $I_2$ and has leakage one.
+\end{proposition}
+
+\begin{proof}
+For the upper bound, put $x=t-1$ and express the leading principal minor and
+determinant of $I_2\pm P(t-1)$ in the Bernstein basis on $t\in[0,1]$.  The
+leading-minor coefficients are
+\[
+ \left(\tfrac{153}{80},\tfrac{171}{160},\tfrac35\right),\qquad
+ \left(\tfrac7{80},\tfrac{149}{160},\tfrac75\right),
+\]
+and the determinant coefficients are, respectively,
+\begin{align*}
+ &\left(\tfrac{81}{256},\tfrac{1701}{10240},\tfrac{219}{2560},
+          \tfrac{441}{10240},\tfrac{27}{1280}\right),\\
+ &\left(\tfrac{53}{1280},\tfrac{8389}{10240},\tfrac{783}{512},
+          \tfrac{21913}{10240},\tfrac{3371}{1280}\right).
+\end{align*}
+They are all positive, so both matrices are positive definite throughout the
+stopband.  Their trace Bernstein coefficients give the upper bounds
+$171/80$ and $529/160$.  For a positive $2$ by $2$ matrix $S$,
+$\lambda_{\min}(S)\ge\det(S)/\operatorname{tr}(S)$.  Consequently
+\[
+ I_2-P(x)\succeq\frac3{304}I_2,\qquad
+ I_2+P(x)\succeq\frac{53}{4232}I_2\succeq\frac3{304}I_2,
+\]
+which proves the norm bound.
+
+For the commuting class, apply \cref{lem:commuting} with
+$M=4=d+N$.  Every scalar common-eigenbasis entry has three distinct roots of
+$q-1$ and is identically one.
+\end{proof}
+
+The exact-arithmetic replay
+\texttt{verification/verify\_quadratic\_filter\_witness.py} checks all
+constraints, target minors, commutators and Bernstein coefficients without a
+numerical solver.
+
+\subsection{An affine two-constraint precursor}
 
 For degree one and $d=2$, take pass data
 \[
@@ -366,8 +438,8 @@ $0.030$ & $0.3977121$ & $0.3977588$ & $0.708604$\\
 \end{center}
 The optimization uses 81 stopband points and validation uses 4001 independent
 points.  Clarabel labels these solves \texttt{optimal\_inaccurate}; they are
-diagnostics, not proof.  The exact affine witness and \cref{thm:main} do not
-depend on solver output.
+diagnostics, not proof.  The exact witnesses and \cref{thm:main} do not depend
+on solver output.
 
 \section{Relation to established work and open gates}
 
@@ -398,8 +470,6 @@ the full pairwise commuting subclass.  Before submission, these gates remain:
       tangential interpolation, rather than relying on titles or abstracts;
 \item replace the $N^{O(1)}$ notation in \cref{lem:stability} by explicit
       constants or a precisely stated norm-equivalence lemma;
-\item certify a non-affine finite witness rationally or by interval arithmetic;
-      and
 \item benchmark the block filter on realistic Hermitian eigenproblems against
       scalar Chebyshev-filtered subspace iteration.
 \end{enumerate}

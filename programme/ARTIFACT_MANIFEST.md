@@ -32,8 +32,8 @@ paper.
 - File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title: *Noncommuting Hermitian Matrix-Polynomial Filters Can Have an
   Exponential Tangential Advantage*
-- Pages: 6
-- Local SHA-256: `c9befe64e2b963a67cba853d2f1b897e7762def1bfc74df11d8cf32306a1a507`
+- Pages: 7
+- Local SHA-256: `ee063811b94459d9908b769bbc700f223077effab2a4c10d8ee57026047bd363`
 - Status: **unfrozen research draft**.  It contains the Week-3 theorem proof,
   exact affine witness and block-Krylov proposition, but Gate G1 remains open
   pending the full-text priority audit and explicit stability constants.

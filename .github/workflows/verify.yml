@@ -17,6 +17,7 @@ jobs:
       - run: python -m compileall -q .
       - run: python verification/check_localizer_adjoint.py --trials 1000
       - run: python verification/verify_rational_witness.py
+      - run: python verification/verify_quadratic_filter_witness.py
       - run: python pilot_primal_dual_equivalence.py
       - name: Safe Wishart dual smoke
         run: >-
