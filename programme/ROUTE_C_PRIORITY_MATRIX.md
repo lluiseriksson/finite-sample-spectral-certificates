@@ -34,6 +34,30 @@ a fixed orthogonal bank of scalar linear-phase FIR filters.
 | Gosea--G\"uttel (2021), Secs. 3--4 | Matrix-valued rational approximation and block-AAA | Rational support count / barycentric representation | Discrete-set approximation accuracy, including noisy-data comparisons | Matrix weights and tangential interpolation noted; no symmetric-polynomial or commuting lower bound | Kills novelty of matrix-weighted rational approximation and noisy block interpolation | CC-BY SIAM full text, abstract and relevant tangential-interpolation section inspected |
 | Jonas--Bamieh (2026), v2, Thms. 3.1 and 4.1--4.2, Sec. V-A | Iterative frequency-domain MIMO tangential interpolation | Low-rank interpolation data and reduced-system state dimension | Uses spectral-norm maximum error to choose the next frequency; proves monotonicity only for a weighted `H2` objective and leaves monotone `H-infinity` bounds as future work | General rational reduced models; no Hermitian coefficients or simultaneously diagonalizable lower bound | Closest modern algorithmic link to maximum-error tangential MIMO approximation; theorem-level audit finds no collision | Full arXiv v2 text, theorem statements, algorithms and conclusion inspected |
 
+## Restricted-access audit log
+
+The remaining uncertainty is access-specific, not positive evidence of
+priority.  On 2026-08-09 the following independent routes were checked:
+
+- For Fuhrmann (2010), OpenAlex and Semantic Scholar both label the article
+  bronze/open-archive but expose only the same ScienceDirect PDF URL.
+  Elsevier's metadata endpoint confirms \`openaccessArticle=true\`, while its
+  full-view text-mining endpoint returns \`401 AUTHENTICATION_ERROR\`; the direct
+  PDF returns a robot challenge/HTTP 403 both locally and from a fresh Google
+  Compute Engine egress.  The Ben-Gurion institutional record contains
+  metadata but no deposited file, and ResearchGate explicitly reports no full
+  text.  No CAPTCHA or authentication control was bypassed.
+- For Stefanovski--Georgijević (2016), the publisher HTML exposes the abstract,
+  Problem 1 setup and the introduction's statement that Theorem 1 solves it
+  for every positive \`gamma\`.  OpenAlex and Semantic Scholar both report the
+  work closed with no repository PDF.  Elsevier's full-view endpoint again
+  requires authentication, and the publisher PDF is robot-challenged.
+
+Thus the audit can already rule out broad claims of first tangential polynomial
+interpolation or first arbitrarily small regional norm.  It cannot yet certify
+that neither proof contains an implicit fixed-ordinary-degree,
+Hermitian-coefficient or commuting-comparator specialization.
+
 ## What survives the audit so far
 
 The following conjunction has not been found in the checked sources:
