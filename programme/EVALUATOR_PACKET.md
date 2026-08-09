@@ -59,9 +59,9 @@ The evaluator should compare theorem statements, not keywords.
    novelty claim for MIMO linear phase, operator-norm minimax design or SDP.
    Test whether its formulation nevertheless implies the fixed-order
    commuting-versus-fully-coupled separation.
-2. J. Stefanovski and D. Georgijevic, *Real stable all-pass and minimum-phase
-   solutions to the bitangential interpolation problem with a low norm on a
-   frequency region* (2016), Problem 1 and Theorem 1: real stable rational
+2. J. Stefanovski and D. Georgijevic, *Interpolation with constraint on
+   frequency region and systems & control application* (2016), Problem 1 and
+   Theorem 1: real stable rational
    bitangential interpolation with arbitrarily small regional norm.  This
    kills novelty of small regional norm under tangential constraints.  Test
    whether its growing-order rational construction implies the fixed ordinary
