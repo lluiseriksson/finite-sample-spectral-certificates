@@ -17,3 +17,10 @@ paper_noncommuting/rendered/
 paper_noncommuting/rendered_*/
 paper_noncommuting/final_render/
 paper_noncommuting/paper_noncommuting/
+paper_noncommuting/main.aux
+paper_noncommuting/main.bbl
+paper_noncommuting/main.blg
+paper_noncommuting/main.log
+paper_noncommuting/main.out
+paper_noncommuting/main.pdf
+pilot_primal_dual_equivalence.json

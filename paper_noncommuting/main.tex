@@ -38,7 +38,7 @@ the same polynomial, while simultaneously diagonalizable matrix coefficients
 amount to independent scalar filters after a fixed channel rotation.  We study
 the larger class of Hermitian matrix-polynomial filters under tangential pass
 constraints.  Our main result gives an
-asymptotic separation: at degree $N$ and channel dimension $d=N^2$, there are
+asymptotic separation: at degree $N$ and channel dimension $d=N$, there are
 distinct pass points and full-spark channel signatures for which a symmetric
 noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
 pairwise-commuting symmetric filter is identically the identity and has leakage
@@ -93,8 +93,8 @@ with exponentially small leakage.
 \section{Main separation theorem}
 
 \begin{theorem}[Exponential tangential separation]\label{thm:main}
-There are absolute constants $C,c>0$ and $N_0\in\mathbb{N}$ such that for every
-$N\ge N_0$, with $d=N^2$ and $M=d+N$, one can choose distinct rational pass
+There are absolute constants $C,c>0$ such that for every
+$N\ge5$, with $d=N$ and $M=2N$, one can choose distinct rational pass
 points $\lambda_1,\ldots,\lambda_M\in[1,7/2]$ and full-spark unit vectors
 $v_1,\ldots,v_M\in\R^d$ with the following properties.
 \begin{enumerate}
@@ -107,7 +107,7 @@ matrices satisfying \eqref{eq:tangential} and
 coefficient matrices and satisfies the same tangential constraints, then
 $Q_N(x)=I_d$ for every $x$.  In particular, $\rho(Q_N)=1$.
 \end{enumerate}
-For all sufficiently large $N$, the coefficient matrices of $P_N$ cannot
+For every $N\ge5$, the coefficient matrices of $P_N$ cannot
 commute pairwise.
 \end{theorem}
 
@@ -138,31 +138,25 @@ Consequently $q_r=1$.  This holds for every $r$, so $Q=I_d$.
 
 \subsection{A diagonal base filter}
 
-Let $d=N^2$.  Partition $M=d+N$ nodes into $d$ coordinate groups: the first
-$N$ groups contain two nodes each and the remaining groups contain one.  One
-concrete choice, with $1\le r\le N$ and $N<r\le d$, is
-\begin{align}
- a_r&=1+\frac{r}{10N}, & b_r&=2+\frac{r}{10N},\label{eq:pairednodes}\\
- c_r&=3+\frac{r-N}{2d}.\label{eq:singlenodes}
-\end{align}
-These nodes are distinct, lie in $[1,7/2]$, and have mutual separation at
-least $(2N^2)^{-1}$.
+Let $d=N$ and assign two nodes to every coordinate group.  One concrete
+choice, with $1\le r\le N$, is
+\begin{equation}\label{eq:pairednodes}
+ a_r=1+\frac{r}{10N}, \qquad b_r=2+\frac{r}{10N}.
+\end{equation}
+These $2N$ nodes are distinct, lie in $[1,7/2]$, and have mutual separation
+at least $(10N)^{-1}$.
 
 Write $T_m$ for the Chebyshev polynomial of the first kind and set
-$\phi(x)=2x+1$, which maps $I_-$ onto $[-1,1]$.  For a one-node group with
-node $\lambda$, define
-\begin{equation}\label{eq:onepoint}
- q_\lambda(x)=\frac{T_N(\phi(x))}{T_N(\phi(\lambda))}.
-\end{equation}
-For a two-node group with nodes $a\ne b$, define
+$\phi(x)=2x+1$, which maps $I_-$ onto $[-1,1]$.  For a coordinate group with
+nodes $a\ne b$, define
 \begin{align}
  q_{a,b}(x)
  &=\frac{x-b}{a-b}\frac{T_{N-1}(\phi(x))}{T_{N-1}(\phi(a))}
  +\frac{x-a}{b-a}\frac{T_{N-1}(\phi(x))}{T_{N-1}(\phi(b))}.
  \label{eq:twopoint}
 \end{align}
-These polynomials equal one at their assigned node or nodes.  Put them on the
-diagonal of $P_0(x)$ according to the coordinate partition.
+These polynomials equal one at both assigned nodes.  Put them on the diagonal
+of $P_0(x)$ according to the coordinate partition.
 
 \begin{lemma}\label{lem:base}
 Let
@@ -188,8 +182,7 @@ For $x\in I_-$, $|T_m(\phi(x))|\le1$.  For $\lambda\ge1$,
  \ge \tfrac12e^{m\eta_0},
  \quad \eta_0=\operatorname{arcosh}(3).
 \]
-The one-point stopband bound is $2e^{-N\eta_0}$.  In
-\eqref{eq:pairednodes}, $b_r-a_r=1$.  On $I_-$, the sum of the absolute
+In \eqref{eq:pairednodes}, $b_r-a_r=1$.  On $I_-$, the sum of the absolute
 Lagrange factors in \eqref{eq:twopoint} is at most
 $31/10+21/10=26/5$.  The two-point bound is therefore
 $(52/5)e^{-(N-1)\eta_0}$.
@@ -227,11 +220,11 @@ whether the determinant vanishes.
 \end{proof}
 
 \begin{lemma}[Stable symmetric interpolation]\label{lem:stability}
-For all sufficiently large $N$, there is a real-symmetric coefficient
+For every $N\ge5$, there is a real-symmetric coefficient
 polynomial $P_N$ satisfying $P_N(\lambda_j)\widetilde v_j=\widetilde v_j$ and
 \[
  \sup_{x\in I_-}\|P_N(x)-P_0(x)\|_{\op}
- \le 64152\,N^9\exp(-N^3+N\Delta\eta).
+ \le 8019000\,N^{9/2}\exp(-N^3+N\Delta\eta).
 \]
 \end{lemma}
 
@@ -255,21 +248,23 @@ Equip the output space with the maximum Euclidean block norm and $\cS_N$ with
                      \max_j\|P(\lambda_j)\|_{\op}\right\}.
 \]
 The entrywise construction gives a right inverse $R_N$.  For $N\ge5$, the node
-separation is at least $(2N^2)^{-1}$, while any two points in the stop/pass
+separation is at least $(10N)^{-1}$, while any two points in the stop/pass
 domain are at distance at most $9/2$.  A Lagrange basis polynomial on at most
-four nodes is bounded by $(9N^2)^3$.  Summing at most four basis polynomials and
+four nodes is bounded by $(45N)^3$.  Summing at most four basis polynomials and
 using $\|A\|_{\op}\le d\max_{r,s}|A_{rs}|$ gives
 \begin{equation}\label{eq:rightinversebound}
- \|R_N\|_{Y\to X}\le4(9N^2)^3d=2916N^8.
+ \|R_N\|_{Y\to X}\le4(45N)^3d=364500N^4.
 \end{equation}
 
 Write $L_\varepsilon=L_0+\varepsilon K_N$.  Since
-$\|w_j\|_2\le\sqrt d=N$, $\|K_N\|_{X\to Y}\le N$.  Hence
+$\|w_j\|_2\le\sqrt d=\sqrt N$, $\|K_N\|_{X\to Y}\le\sqrt N$.  Hence
 \[
  L_\varepsilon R_N=I+E_N,\qquad
- \|E_N\|\le2916\varepsilon N^9.
+ \|E_N\|\le364500\varepsilon N^{9/2}.
 \]
-For $\varepsilon=\varepsilon_N$ and large $N$, the inverse
+For $\varepsilon=\varepsilon_N$ and $N\ge5$, this bound is below $1/2$:
+its logarithmic derivative is $9/(2N)-3N^2<0$, while at $N=5$ it is
+below $364500\,5^5 2^{-125}<2^{-94}$.  Hence the inverse
 $(I+E_N)^{-1}$ exists and has norm at most two.
 
 Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
@@ -279,8 +274,8 @@ Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
 \]
 By Lemma~\ref{lem:base},
 \[
- \|r_N\|_Y\le\varepsilon_NN(1+10e^{N\Delta\eta})
- \le11\varepsilon_NNe^{N\Delta\eta}.
+ \|r_N\|_Y\le\varepsilon_N\sqrt N(1+10e^{N\Delta\eta})
+ \le11\varepsilon_N\sqrt N e^{N\Delta\eta}.
 \]
 Set
 \[
@@ -291,8 +286,8 @@ Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$.  Using
 \eqref{eq:rightinversebound} and $\|(I+E_N)^{-1}\|\le2$ gives
 \[
  \|\Delta P_N\|_X
- \le2(2916N^8)(11\varepsilon_NNe^{N\Delta\eta})
- =64152N^9e^{-N^3+N\Delta\eta}.
+ \le2(364500N^4)(11\varepsilon_N\sqrt N e^{N\Delta\eta})
+ =8019000N^{9/2}e^{-N^3+N\Delta\eta}.
 \]
 Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
 \end{proof}
@@ -300,15 +295,23 @@ Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
 \begin{proof}[Proof of \cref{thm:main}]
 The normalized and unnormalized interpolation constraints are equivalent.
 Combine Lemmas~\ref{lem:base}, \ref{lem:fullspark}, and \ref{lem:stability}.
-Choose $N_0\ge5$ so that $2916e^{-N^3}N^9\le1/2$ and the correction in
+The ratio of the correction bound to the base bound is
+\[
+ \frac{8019000}{52/5}N^{9/2}e^{-N^3+N\eta_1-\eta_0};
+\]
+its logarithmic derivative is $9/(2N)-3N^2+\eta_1<0$, since
+$\eta_1=\log(8+\sqrt{63})<\log16<3$.  At $N=5$, using $e>2$, the displayed
+ratio is below $2^{-78}$.  Thus the correction in
 Lemma~\ref{lem:stability} is at most
-$(52/5)e^{\eta_0}e^{-\eta_0N}$ for $N\ge N_0$.  The first conclusion holds
+$(52/5)e^{\eta_0}e^{-\eta_0N}$.  The first conclusion holds
 with
 \[
  C=\frac{104}{5}e^{\eta_0},\qquad c=\eta_0.
 \]
-The second conclusion is Lemma~\ref{lem:commuting}.  For large $N$, the first
-leakage is below one, so the constructed coefficients cannot commute pairwise.
+The second conclusion is Lemma~\ref{lem:commuting}.  Finally,
+$e^{\eta_0}=3+\sqrt8>5$ gives
+$Ce^{-cN}\le(104/5)e^{-4\eta_0}<1$ for $N\ge5$, so the constructed
+coefficients cannot commute pairwise.
 \end{proof}
 
 \section{Block-Krylov meaning}
@@ -387,9 +390,9 @@ therefore has $2N+1$ real symmetric palindromic taps and common group delay
 $N$.
 
 \begin{corollary}[Fixed-latency MIMO FIR separation]\label{cor:fir}
-For every sufficiently large $N$ there are $M=N^2+N$ distinct frequencies
+For every $N\ge5$ there are $M=2N$ distinct frequencies
 $\omega_j\in[0,\arccos(-1/9)]$ and full-spark directions
-$v_j\in\R^{N^2}$ for which a causal response of the form
+$v_j\in\R^{N}$ for which a causal response of the form
 \eqref{eq:firresponse} satisfies
 \[
  H_N(e^{i\omega_j})v_j=e^{-iN\omega_j}v_j,
@@ -884,6 +887,8 @@ subclass.  Before submission, these gates remain:
 The source and research ledger are in the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/tree/research/endogenous-visibility}{project repository}.
 The repository links the
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/verify_linear_dimension_scaling.py}{linear-dimension theorem arithmetic replay},
+the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/verify_quadratic_filter_witness.py}{exact rational replay},
 the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/research/route_c_block_krylov_benchmark.py}{block-iteration benchmark},
@@ -904,7 +909,7 @@ the
 and the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ARTIFACT_MANIFEST.md}{artifact manifest with the PDF hash}.
 
-\small
+\footnotesize
 \bibliographystyle{plain}
 \bibliography{references}
 \end{document}

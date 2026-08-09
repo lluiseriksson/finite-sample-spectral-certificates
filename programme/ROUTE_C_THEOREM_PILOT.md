@@ -149,7 +149,7 @@ non-affine finite witness.
 
 ## 5. Scaling theorem candidate
 
-For every sufficiently large `N`, set `d=N^2` and `M=d+N`.  There exist `M`
+For every integer `N>=5`, set `d=N` and `M=2N=d+N`.  There exist `M`
 distinct pass points `lambda_j>0` and full-spark unit vectors `v_j in R^d` for
 which the following two statements hold:
 
@@ -163,7 +163,8 @@ sup_{x in [-1,0]} ||P(x)||_op <= C exp(-cN).
 ```
 
 Here `C,c>0` are independent of `N`.  Consequently the noncommuting Hermitian
-class has an exponential advantage in `N=sqrt(d)` over its commuting subclass.
+class has an exponential advantage already with `N=d` over its commuting
+subclass.
 
 This is now supported by a complete existence-proof skeleton below.  It remains
 a **candidate theorem**, rather than a priority claim, until the proof is fully
@@ -187,15 +188,9 @@ This holds for every `r`; hence `P(x)=I` and its stopband norm is exactly one.
 
 ### 5.2 Exponentially small diagonal base point
 
-Start with coordinate targets.  Assign two pass points to each of the first
-`N` coordinate directions and one pass point to every remaining direction.
-For a direction with one pass point `lambda`, use
-
-```text
-q_lambda(x) = T_N(2x+1) / T_N(2lambda+1).
-```
-
-For a direction with two pass points `lambda_1 != lambda_2`, use the explicit
+Start with coordinate targets and assign two pass points to each of the `N`
+coordinate directions.  For the two pass points
+`lambda_1 != lambda_2`, use the explicit
 degree-`N` Lagrange--Chebyshev interpolant
 
 ```text
@@ -206,8 +201,7 @@ q(x) = ((x-lambda_2)/(lambda_1-lambda_2))
 ```
 
 Choose paired nodes in two fixed, disjoint compact subintervals of
-`(0,infinity)` and put all single nodes in another compact subinterval bounded
-away from zero.  All `M` nodes can be distinct.  On the stopband,
+`(0,infinity)`.  All `M=2N` nodes can be distinct.  On the stopband,
 `|T_k(2x+1)|<=1`; off it,
 `T_k(2lambda+1)=cosh(k arcosh(2lambda+1))`.  The Lagrange factors are uniformly
 bounded because paired nodes have a fixed separation.  Therefore every scalar
@@ -242,30 +236,32 @@ none of these finitely many nonzero rational polynomials vanishes.  The
 normalized target tuple is therefore full spark.
 
 Choose the rational pass nodes as in the manuscript.  Their minimum separation
-is at least `(2N^2)^(-1)`.  With the maximum stop/pass operator norm on
+is at least `(10N)^(-1)`.  With the maximum stop/pass operator norm on
 polynomials and maximum Euclidean block norm on the data, entrywise Lagrange
 interpolation on at most four nodes gives the explicit right-inverse bound
 
 ```text
-||R_N|| <= 2916 N^8.
+||R_N|| <= 364500 N^4.
 ```
 
-The perturbation operator has norm at most `N`, while the base interpolant is
-at most `10 exp(N DeltaEta)` at every pass node.  Hence the interpolation
-residual caused by the target perturbation is at most
+The perturbation operator has norm at most `sqrt(N)`, while the base
+interpolant is at most `10 exp(N DeltaEta)` at every pass node.  Hence the
+interpolation residual caused by the target perturbation is at most
 
 ```text
-11 N exp(-N^3 + N DeltaEta).
+11 sqrt(N) exp(-N^3 + N DeltaEta).
 ```
 
-A Neumann-series correction through the base right inverse is valid once
-`2916 exp(-N^3) N^9 <= 1/2`, and its stop/pass norm is at most
+A Neumann-series correction through the base right inverse is valid for every
+`N>=5`: the product is already below `2^(-94)` at `N=5` and decreases
+thereafter.  Its stop/pass norm is at most
 
 ```text
-64152 N^9 exp(-N^3 + N DeltaEta).
+8019000 N^(9/2) exp(-N^3 + N DeltaEta).
 ```
 
-This is negligible beside the explicit base leakage
+The correction/base ratio is below `2^(-78)` at `N=5` and also decreases, so
+this is bounded by the explicit base leakage
 `(52/5) exp(Eta0) exp(-Eta0 N)`.  The corrected coefficients remain real
 symmetric and the theorem holds with
 `C=(104/5) exp(Eta0)` and `c=Eta0`.  Once this is below one, the commuting

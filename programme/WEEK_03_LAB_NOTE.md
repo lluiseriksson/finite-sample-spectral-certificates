@@ -17,10 +17,11 @@ least one.  A separate asymptotic construction now supports the candidate gap
 ```text
 noncommuting symmetric leakage <= C exp(-cN),
 commuting symmetric leakage       = 1,
-channel dimension                 = N^2.
+channel dimension                 = N.
 ```
 
-The construction uses explicit Lagrange--Chebyshev diagonal filters, a
+The sharpened construction assigns two nodes to each of `N` channels.  It uses
+explicit Lagrange--Chebyshev diagonal filters, a
 symmetric tangential-interpolation right inverse on at most four nodes per
 matrix entry, and an explicit moment-curve perturbation with
 `epsilon=exp(-N^3)` to enforce full spark.

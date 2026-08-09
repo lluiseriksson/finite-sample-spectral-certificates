@@ -18,6 +18,7 @@ jobs:
       - run: python verification/check_localizer_adjoint.py --trials 1000
       - run: python verification/verify_rational_witness.py
       - run: python verification/verify_quadratic_filter_witness.py
+      - run: python verification/verify_linear_dimension_scaling.py
       - run: python verification/verify_vbl_va001_witness.py
       - run: python research/route_c_block_krylov_benchmark.py
       - run: python research/route_c_graph_filter_pilot.py
