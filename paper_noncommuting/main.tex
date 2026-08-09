@@ -269,10 +269,34 @@ Equip the output space with the maximum Euclidean block norm and $\cS_N$ with
  \|P\|_X=\max\left\{\sup_{x\in I_-}\|P(x)\|_{\op},
                      \max_j\|P(\lambda_j)\|_{\op}\right\}.
 \]
-The entrywise construction gives a right inverse $R_N$.  The node separation,
-the stop/pass diameter $9/2$, and $d=3$ give
+This also gives an explicit linear right inverse.  To record its norm, let
+$y=(y_j)_{j=1}^M$ satisfy $\max_j\|y_j\|_2\le1$.  For $r\ne g$, define the
+entry $(R_Ny)_{rg}=(R_Ny)_{gr}$ by scalar Lagrange interpolation on the union
+of groups $r$ and $g$: its value is $(y_j)_r$ at a node in group $g$ and
+$(y_j)_g$ at a node in group $r$.  A diagonal entry uses only its own group.
+These prescriptions are consistent because the groups are disjoint, and the
+resulting symmetric polynomial obeys $L_0R_Ny=y$.
+
+For any such scalar problem, write its $t\le2S$ nodes in increasing order.
+Their separation $\delta=5/(6S)$ implies that the denominator of the $i$th
+cardinal polynomial is at least
+\[
+ \delta^{t-1}i!(t-1-i)!.
+\]
+On $I_-$ and at every pass node, all numerator distances are at most $9/2$.
+Consequently the sum of the absolute cardinal functions is bounded by
+\[
+ \left(\frac{27S}{5}\right)^{t-1}
+ \sum_{i=0}^{t-1}\frac1{i!(t-1-i)!}
+ =\left(\frac{27S}{5}\right)^{t-1}
+   \frac{2^{t-1}}{(t-1)!}
+ \le2\left(\frac{27S}{5}\right)^{2S-1}.
+\]
+The operator norm of a $3$ by $3$ matrix is at most three times its largest
+entry.  Hence, with the norm $\|\cdot\|_X$ above,
 \begin{equation}\label{eq:rightinversebound}
  \|R_N\|_{Y\to X}
+ \le6\left(\frac{27S}{5}\right)^{2S-1}
  \le6S\left(\frac{27S}{5}\right)^{2S-1}=:\mathcal R_N.
 \end{equation}
 

@@ -33,7 +33,7 @@ paper.
 - Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
   and Linear-Phase MIMO FIR Filters*
 - Pages: 13
-- Local SHA-256: `dda469dc4c1714aab8bc519f2356f2f6dd42d8423cf2ed89775b5c8fbfafd2dc`
+- Local SHA-256: `0fadc8a1d453f76897aa4375844d68ac1b8e058d9092342893fb52e307d57d12`
 - Status: **unfrozen research draft**.  Its sharpened theorem now needs only
   the fixed dimension `d=3` and `M=N+3` signatures, rather than a growing
   channel dimension; it also contains
