@@ -1,0 +1,400 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalise]{cleveref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Span}{\operatorname{span}}
+
+\title{Noncommuting Hermitian Matrix-Polynomial Filters\\
+       Can Have an Exponential Tangential Advantage}
+\author{Lluis Eriksson}
+\date{Research draft, 9 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Scalar Chebyshev filtering treats every vector in a block Krylov iterate with
+the same polynomial, while simultaneously diagonalizable matrix coefficients
+amount to independent scalar filters after a fixed channel rotation.  We study
+the larger class of Hermitian matrix-polynomial filters under tangential pass
+constraints.  An exact two-channel affine example already separates
+noncommuting from commuting symmetric coefficients.  Our main result gives an
+asymptotic separation: at degree $N$ and channel dimension $d=N^2$, there are
+distinct pass points and full-spark channel signatures for which a symmetric
+noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
+pairwise-commuting symmetric filter is identically the identity and has leakage
+one.  We give an explicit full-spark perturbation and a block-Krylov error
+interpretation.  Numerical semidefinite programs support the finite-dimensional
+mechanism, but are not used in the proof.  This draft makes no claim that
+tangential matrix interpolation or matrix-valued Krylov theory is new; priority
+of the specific minimax separation remains under audit.
+\end{abstract}
+
+\section{Problem and contribution}
+
+Let
+\[
+  P(x)=\sum_{k=0}^{N} C_k x^k, \qquad C_k\in\R^{d\times d},
+\]
+and let $I_-=[-1,0]$ be a stopband.  Given distinct pass points
+$\lambda_j>0$ and nonzero channel signatures $v_j\in\R^d$, impose
+\begin{equation}\label{eq:tangential}
+  P(\lambda_j)v_j=v_j,\qquad 1\le j\le M.
+\end{equation}
+The leakage is
+\begin{equation}\label{eq:leakage}
+  \rho(P)=\sup_{x\in I_-}\|P(x)\|_{\op}.
+\end{equation}
+The coefficients will always be real symmetric.  They need not commute.
+
+The comparator is the pairwise-commuting subclass.  Such coefficients admit a
+common orthogonal eigenbasis, so a fixed channel rotation turns $P$ into a
+diagonal collection of scalar filters.  The question is whether allowing the
+channel mixing to depend on the polynomial degree can reduce \eqref{eq:leakage}
+under the same pass constraints.
+
+Our answer is exponentially affirmative in an existence sense.  The input
+signatures are full spark: every $d$ of them span $\R^d$.  This property makes
+the commuting obstruction exact, while an arbitrarily small, explicitly chosen
+perturbation of a coordinate construction retains a noncommuting interpolant
+with exponentially small leakage.
+
+\section{Main separation theorem}
+
+\begin{theorem}[Exponential tangential separation]\label{thm:main}
+There are absolute constants $C,c>0$ and $N_0\in\mathbb{N}$ such that for every
+$N\ge N_0$, with $d=N^2$ and $M=d+N$, one can choose distinct rational pass
+points $\lambda_1,\ldots,\lambda_M\in[1,7/2]$ and full-spark unit vectors
+$v_1,\ldots,v_M\in\R^d$ with the following properties.
+\begin{enumerate}
+\item There is a degree-$N$ polynomial $P_N$ with real symmetric coefficient
+matrices satisfying \eqref{eq:tangential} and
+\[
+  \rho(P_N)\le C e^{-cN}.
+\]
+\item If a degree-$N$ polynomial $Q_N$ has pairwise-commuting real symmetric
+coefficient matrices and satisfies the same tangential constraints, then
+$Q_N(x)=I_d$ for every $x$.  In particular, $\rho(Q_N)=1$.
+\end{enumerate}
+For all sufficiently large $N$, the coefficient matrices of $P_N$ cannot
+commute pairwise.
+\end{theorem}
+
+We split the proof into an obstruction, a small-leakage base construction, and
+a stable full-spark perturbation.
+
+\subsection{The commuting obstruction}
+
+\begin{lemma}\label{lem:commuting}
+Let $M\ge d+N$, let the $\lambda_j$ be distinct, and let the $v_j\in\R^d$ be
+full spark.  If $Q(x)=\sum_{k=0}^{N}D_kx^k$ has pairwise-commuting real
+symmetric coefficients and $Q(\lambda_j)v_j=v_j$ for every $j$, then $Q=I_d$.
+\end{lemma}
+
+\begin{proof}
+The matrices $D_k$ have a common orthonormal eigenbasis $u_1,\ldots,u_d$.
+Write $q_r(x)$ for the scalar degree-$N$ polynomial induced by $Q(x)$ on
+$u_r$.  Taking the $u_r$ component of the $j$th interpolation constraint gives
+\[
+  (q_r(\lambda_j)-1)\langle u_r,v_j\rangle=0.
+\]
+A nonzero vector can be orthogonal to at most $d-1$ of the full-spark targets:
+otherwise $d$ targets would lie in the $(d-1)$-dimensional hyperplane
+$u_r^\perp$ and could not span $\R^d$.  Thus at least
+$M-d+1\ge N+1$ distinct values of $\lambda_j$ are roots of $q_r-1$.
+Consequently $q_r=1$.  This holds for every $r$, so $Q=I_d$.
+\end{proof}
+
+\subsection{A diagonal base filter}
+
+Let $d=N^2$.  Partition $M=d+N$ nodes into $d$ coordinate groups: the first
+$N$ groups contain two nodes each and the remaining groups contain one.  One
+concrete choice, with $1\le r\le N$ and $N<r\le d$, is
+\begin{align}
+ a_r&=1+\frac{r}{10N}, & b_r&=2+\frac{r}{10N},\label{eq:pairednodes}\\
+ c_r&=3+\frac{r-N}{2d}.\label{eq:singlenodes}
+\end{align}
+These nodes are distinct, lie in $[1,7/2]$, and have mutual separation at
+least $(2N^2)^{-1}$.
+
+Write $T_m$ for the Chebyshev polynomial of the first kind and set
+$\phi(x)=2x+1$, which maps $I_-$ onto $[-1,1]$.  For a one-node group with
+node $\lambda$, define
+\begin{equation}\label{eq:onepoint}
+ q_\lambda(x)=\frac{T_N(\phi(x))}{T_N(\phi(\lambda))}.
+\end{equation}
+For a two-node group with nodes $a\ne b$, define
+\begin{align}
+ q_{a,b}(x)
+ &=\frac{x-b}{a-b}\frac{T_{N-1}(\phi(x))}{T_{N-1}(\phi(a))}
+ +\frac{x-a}{b-a}\frac{T_{N-1}(\phi(x))}{T_{N-1}(\phi(b))}.
+ \label{eq:twopoint}
+\end{align}
+These polynomials equal one at their assigned node or nodes.  Put them on the
+diagonal of $P_0(x)$ according to the coordinate partition.
+
+\begin{lemma}\label{lem:base}
+There are absolute $C_0,c_0>0$ such that
+\[
+ \sup_{x\in I_-}\|P_0(x)\|_{\op}\le C_0e^{-c_0N}.
+\]
+Moreover, at every pass node $\lambda_j\in[1,7/2]$,
+$\|P_0(\lambda_j)\|_{\op}\le e^{O(N)}$ uniformly in the group labels.
+\end{lemma}
+
+\begin{proof}
+For $x\in I_-$, $|T_m(\phi(x))|\le1$.  For $\lambda\ge1$,
+\[
+ T_m(\phi(\lambda))
+ =\cosh\!\left(m\,\operatorname{arcosh}(2\lambda+1)\right)
+ \ge \tfrac12e^{m\eta_0},
+ \quad \eta_0=\operatorname{arcosh}(3).
+\]
+The one-point bound follows immediately.  In \eqref{eq:pairednodes},
+$b_r-a_r=1$, while the two Lagrange factors in \eqref{eq:twopoint} are
+uniformly bounded on $I_-$.  This gives the two-point bound with exponent
+$(N-1)\eta_0$.  The operator norm of the diagonal polynomial is the largest
+entry magnitude.
+
+At a pass node, all arguments of the Chebyshev polynomials stay in a fixed
+compact interval outside or including $[-1,1]$.  Ratios of their hyperbolic
+cosine representations are bounded by $e^{O(N)}$; the remaining Lagrange
+factors are uniformly bounded for the paired nodes.  This proves the final
+claim.
+\end{proof}
+
+\subsection{An explicit full-spark perturbation}
+
+Index all pass nodes by $j=1,\ldots,M$, and let $g(j)$ be the coordinate group
+of node $j$.  Choose distinct rational $t_j\in(0,1)$ and define
+\begin{equation}\label{eq:momentperturb}
+ w_j=(1,t_j,\ldots,t_j^{d-1})^\top,\quad
+ \varepsilon_N=e^{-N^3},\quad
+ \widetilde v_j=e_{g(j)}+\varepsilon_Nw_j,\quad
+ v_j=\frac{\widetilde v_j}{\|\widetilde v_j\|_2}.
+\end{equation}
+
+\begin{lemma}\label{lem:fullspark}
+The vectors in \eqref{eq:momentperturb} are full spark.
+\end{lemma}
+
+\begin{proof}
+Fix any $d$ indices.  The determinant with the corresponding unnormalized
+vectors as columns is a polynomial in $\varepsilon_N$ with rational
+coefficients.  Its coefficient at degree $d$ is the Vandermonde determinant
+of the corresponding $w_j$, which is nonzero because their $t_j$ are distinct.
+Thus the determinant polynomial is not zero.  By the Lindemann--Weierstrass
+theorem, $e^{-N^3}$ is transcendental, so it cannot be a root of a nonzero
+polynomial with rational coefficients.  Column normalization does not change
+whether the determinant vanishes.
+\end{proof}
+
+\begin{lemma}[Stable symmetric interpolation]\label{lem:stability}
+For all sufficiently large $N$, there is a real-symmetric coefficient
+polynomial $P_N$ satisfying $P_N(\lambda_j)\widetilde v_j=\widetilde v_j$ and
+\[
+ \sup_{x\in I_-}\|P_N(x)-P_0(x)\|_{\op}
+ \le \exp(-N^3+O(N+\log N)).
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\cS_N$ be the finite-dimensional space of degree-at-most-$N$ polynomials
+with real symmetric coefficients, and define
+\[
+ L_\varepsilon:\cS_N\longrightarrow(\R^d)^M,
+ \qquad L_\varepsilon(P)
+ =\bigl(P(\lambda_j)(e_{g(j)}+\varepsilon w_j)\bigr)_{j=1}^M.
+\]
+At $\varepsilon=0$, this map is onto.  Indeed, for an off-diagonal entry
+$p_{rs}=p_{sr}$, arbitrary output data prescribe values at the union of nodes
+assigned to coordinates $r$ and $s$.  That union contains at most four nodes.
+For $N\ge3$, ordinary Lagrange interpolation is onto on those nodes.  A
+diagonal entry sees at most two nodes.
+
+This argument also constructs a right inverse $R_N$ entry by entry.  The node
+separation is at least $(2N^2)^{-1}$ and all nodes and stopband points remain in
+a fixed compact interval.  Lagrange polynomials on at most four nodes therefore
+give
+\begin{equation}\label{eq:rightinversebound}
+ \|R_N\|_{\text{output}\to\text{stop}}+ 
+ \|R_N\|_{\text{output}\to\text{pass}}\le N^{O(1)},
+\end{equation}
+where the output norm is the maximum Euclidean block norm and the other norms
+are maximum operator norms.  The factors $\|w_j\|_2\le\sqrt d=N$ can be
+absorbed into the polynomial bound.  Hence
+\[
+ L_\varepsilon R_N=I+E_N,qquad \|E_N\|\le\varepsilon N^{O(1)}.
+\]
+For $\varepsilon=\varepsilon_N$ and large $N$, the inverse
+$(I+E_N)^{-1}$ exists and has norm at most two.
+
+Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
+\[
+ r_N=(\widetilde v_j)_j-L_{\varepsilon_N}(P_0)
+ =\varepsilon_N\bigl((I-P_0(\lambda_j))w_j\bigr)_j.
+\]
+By \cref{lem:base}, $\|r_N\|\le\varepsilon_Ne^{O(N)}$.  Set
+\[
+ \Delta P_N=R_N(I+E_N)^{-1}r_N,
+ \qquad P_N=P_0+\Delta P_N.
+\]
+Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$, and
+\eqref{eq:rightinversebound} gives the claimed stopband bound.  Every
+coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:main}]
+The normalized and unnormalized interpolation constraints are equivalent.
+Combine \cref{lem:base,lem:fullspark,lem:stability}; the correction is
+negligible compared with $e^{-c_0N}$.  This proves the first conclusion after
+adjusting absolute constants.  The second is \cref{lem:commuting}.  For large
+$N$, the first leakage is below one, so the constructed coefficients cannot
+commute pairwise.
+\end{proof}
+
+\section{Block-Krylov meaning}
+
+The theorem has a direct interpretation for block polynomial filtering.  Let
+$H=\sum_j\lambda_jq_jq_j^\top$ be real symmetric and let $B\in\R^{n\times d}$
+be a starting block.  For $P(x)=\sum_{k=0}^NC_kx^k$, define the right-coefficient
+block filter
+\begin{equation}\label{eq:blockfilter}
+ \mathfrak F_P(H,B)=\sum_{k=0}^N H^kBC_k.
+\end{equation}
+Its $j$th spectral row is
+\begin{equation}\label{eq:spectralrow}
+ q_j^\top\mathfrak F_P(H,B)=(q_j^\top B)P(\lambda_j).
+\end{equation}
+
+\begin{proposition}[Pass preservation and stop contraction]
+\label{prop:krylov}
+Let $\mathcal T$ and $\mathcal S$ index target and stop eigenpairs.  Assume the
+rows $b_j^\top=q_j^\top B$ obey
+\[
+ b_j^\top P(\lambda_j)=b_j^\top \quad(j\in\mathcal T),
+ \qquad \lambda_j\in I_- \quad(j\in\mathcal S).
+\]
+Then the target spectral component is preserved exactly, and
+\[
+ \|Q_\mathcal S^\top\mathfrak F_P(H,B)\|_F
+ \le \rho(P)\|Q_\mathcal S^\top B\|_F,
+\]
+where $Q_\mathcal S$ has columns $q_j$, $j\in\mathcal S$.
+If the $C_k$ are pairwise-commuting symmetric matrices, one fixed orthogonal
+channel rotation reduces \eqref{eq:blockfilter} to $d$ independent scalar
+polynomial filters.
+\end{proposition}
+
+\begin{proof}
+The pass statement follows from \eqref{eq:spectralrow}.  For the stop part,
+\[
+ \|Q_\mathcal S^\top\mathfrak F_P(H,B)\|_F^2
+ =\sum_{j\in\mathcal S}\|b_j^\top P(\lambda_j)\|_2^2
+ \le\rho(P)^2\sum_{j\in\mathcal S}\|b_j\|_2^2.
+\]
+For the final claim, simultaneously diagonalize all $C_k=U\Lambda_kU^\top$.
+Then the columns of $BU$ are acted on by the scalar polynomials whose
+coefficients are the diagonal entries of the $\Lambda_k$.
+\end{proof}
+
+Because every coefficient in \cref{thm:main} is symmetric, its column
+constraints transpose to the row constraints in \cref{prop:krylov}.  The
+theorem therefore gives block spectral instances with exponentially small stop
+contraction that no fixed-basis collection of scalar pass-preserving filters
+can reproduce.  This is an approximation-theoretic separation; an end-to-end
+runtime advantage also depends on filter construction, recurrence stability,
+orthogonalization, and the cost model.
+
+\section{Smallest exact witness}
+
+For degree one and $d=2$, take pass data
+\[
+ \lambda_1=\tfrac12,\quad v_1=(1,0)^\top,
+ \qquad \lambda_2=1,\quad v_2=(1,1)^\top,
+\]
+and $P(x)=A+xB$ with
+\[
+ A=\begin{pmatrix}4/5&1/5\\1/5&3/10\end{pmatrix},\qquad
+ B=\begin{pmatrix}2/5&-2/5\\-2/5&9/10\end{pmatrix}.
+\]
+The constraints hold exactly and
+\[
+ [A,B]=\begin{pmatrix}0&-1/10\\1/10&0\end{pmatrix}.
+\]
+Convexity of $x\mapsto\|A+xB\|_{\op}$ puts its maximum over $I_-$ at an
+endpoint.  Direct diagonalization gives
+\[
+ \rho(P)=\max\{\|A\|_{\op},\|A-B\|_{\op}\}
+ =\frac{1+\sqrt{61}}{10}<0.882.
+\]
+If $A$ and $B$ commute, their common eigenbasis contains a direction with
+nonzero overlap with both nonorthogonal, nonparallel targets.  Its scalar
+affine entry equals one at two points and hence everywhere.  The commuting
+leakage is at least one.
+
+\section{Numerical stress test}
+
+The repository script \texttt{research/route\_c\_scaling\_pilot.py} solves a
+grid SDP with symmetric coefficient variables.  For degree $3$, dimension $9$,
+$12$ perturbed targets and seed 7, the results are:
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+Perturbation & SDP objective & Validation maximum & Commutator norm\\
+\midrule
+$0.001$ & $0.2983490$ & $0.2983682$ & $0.466925$\\
+$0.010$ & $0.3199793$ & $0.3200281$ & $0.391179$\\
+$0.030$ & $0.3977121$ & $0.3977588$ & $0.708604$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The optimization uses 81 stopband points and validation uses 4001 independent
+points.  Clarabel labels these solves \texttt{optimal\_inaccurate}; they are
+diagnostics, not proof.  The exact affine witness and \cref{thm:main} do not
+depend on solver output.
+
+\section{Relation to established work and open gates}
+
+Tangential matrix-polynomial interpolation is classical
+\cite{BallKang1990,Fuhrmann2010}.  Matrix-valued Nevanlinna--Pick theory handles
+supremum-norm analytic interpolation, including complexity constraints
+\cite{BlomqvistEtAl2003,BallBolotnikov2016}.  Minimax polynomial filtering and
+SDP formulations have a long numerical-linear-algebra history
+\cite{TohTrefethen1998}, and matrix-polynomial spaces arise naturally in block
+Krylov methods \cite{RinelliVandebril2026}.  Accordingly, none of these
+ingredients is claimed as new.
+
+The candidate novelty is narrower: a fixed ordinary degree, Hermitian
+coefficient, real-interval tangential minimax problem can exhibit an
+exponential separation between noncommuting coefficients and the entire
+pairwise-commuting subclass.  Before submission, the following gates remain:
+\begin{enumerate}
+\item compare \cref{thm:main} line by line with full texts on norm-constrained
+      tangential interpolation, rather than relying on titles or abstracts;
+\item replace the $N^{O(1)}$ notation in \cref{lem:stability} by explicit
+      constants or a precisely stated norm-equivalence lemma;
+\item certify a non-affine finite witness rationally or by interval arithmetic;
+      and
+\item benchmark the block filter on realistic Hermitian eigenproblems against
+      scalar Chebyshev-filtered subspace iteration.
+\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

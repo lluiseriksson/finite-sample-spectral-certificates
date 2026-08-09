@@ -11,3 +11,6 @@ output/pdf/*.fdb_latexmk
 output/pdf/*.fls
 output/pdf/*.log
 output/pdf/*.out
+paper_noncommuting/build/
+paper_noncommuting/rendered/
+paper_noncommuting/paper_noncommuting/

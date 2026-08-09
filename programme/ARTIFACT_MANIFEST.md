@@ -27,10 +27,23 @@ paper.
 - Status: published infrastructure and baseline for the new programme; it is
   **not presumed** to be a 7+ paper.
 
-## Next paper
+## Candidate next paper (unfrozen research draft)
 
-The next paper does not yet have a frozen artifact.  Its manifest entry will be
-created only after Gates G1--G3 are passed.  A candidate PDF must have:
+- File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
+- Title: *Noncommuting Hermitian Matrix-Polynomial Filters Can Have an
+  Exponential Tangential Advantage*
+- Pages: 6
+- Local SHA-256: `92862f004981736431de77de44174bab13f6051ca608042fa465ace1168386c6`
+- Status: **unfrozen research draft**.  It contains the Week-3 theorem proof,
+  exact affine witness and block-Krylov proposition, but Gate G1 remains open
+  pending the full-text priority audit and explicit stability constants.
+
+This draft must not be scored as a final 7+ submission.  If it is reviewed,
+the evaluator must quote the title and hash above so the feedback can be
+attributed to the correct bytes.
+
+The frozen next-paper entry will be created only after Gates G1--G3 are passed.
+A release candidate must have:
 
 1. a unique title that does not resemble either prior paper;
 2. an embedded version string and Git commit;
@@ -38,4 +51,3 @@ created only after Gates G1--G3 are passed.  A candidate PDF must have:
    local copy;
 4. a one-page evaluator cover sheet listing the headline theorem, closest
    literature, what is new, and what is explicitly not claimed.
-
