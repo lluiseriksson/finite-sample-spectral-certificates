@@ -155,6 +155,18 @@ matrix implies, simultaneously with probability at least `1-alpha`,
 This remains valid when `K` is singular by restricting the Gaussian matrix to
 the range of a factor of `K`; using the ambient `d` in `eta` is conservative.
 
+More explicitly, write the `n x d` sketch matrix as `Z=G K^(1/2)` with `G`
+standard Gaussian.  On the event
+
+    sqrt(n)-sqrt(d)-t <= s_min(G) <= s_max(G)
+                         <= sqrt(n)+sqrt(d)+t,
+
+whose failure probability is at most `2 exp(-t^2/2)`, congruence by `K^(1/2)`
+gives `(1-eta)^2 K <= S <= (1+eta)^2 K`.  Taking
+`t=sqrt(2 log(2/alpha))` and rearranging yields the displayed band.  The final
+paper must cite the exact theorem used and check whether its lower-tail formula
+uses `sqrt(d)` or `sqrt(d-1)`; the more conservative valid version will be used.
+
 Let `P(K)` extract the diagonal time blocks `K[(k,:), (k,:)]`, which are the
 block moments `B_k`, and let `L_theta(P(K))` be the proposed upper-support
 localizer.  The test
@@ -170,6 +182,27 @@ Chebyshev ellipsoid, it does not require oracle knowledge of its covariance.
 Audit points: cite/prove the Gaussian singular-value inequality with constants;
 derive and numerically check the conic dual; distinguish centered and known-zero
 mean sketches; study whether the Loewner band is too conservative in practice.
+
+### Semidefinite alternative
+
+After a fixed diagonal congruence scaling, write the confidence interval as
+`A <= Q <= B` and the localizer as `L_D(Q)>=0`.  A dual certificate consists of
+`Y_A,Y_B,Y_L>=0` satisfying
+
+    Y_A - Y_B + L_D^*(Y_L) = 0
+
+and
+
+    -<Y_A,A> + <Y_B,B> < 0.
+
+Indeed, pairing the three primal inequalities with these multipliers makes all
+terms containing `Q` cancel, while the remaining constant would have to be
+nonnegative under primal feasibility.  The implementation fixes the homogeneous
+scale by `tr(Y_A)+tr(Y_B)+tr(Y_L)=1` and minimizes the constant.  When the
+empirical Gram matrix is positive definite, the interval has a strict midpoint
+and is compact; standard conic duality excludes weak infeasibility.  Singular
+sample Grams require an explicit reduction to their range before making that
+claim.
 
 ## Theorem H: uncertainty can change the optimal witness
 

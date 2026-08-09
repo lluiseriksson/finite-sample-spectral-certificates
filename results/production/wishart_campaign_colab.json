@@ -1,0 +1,2356 @@
+{
+  "schema_version": 1,
+  "setup": {
+    "lengths": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "degree": 2,
+    "sample_counts": [
+      500,
+      1000,
+      2000,
+      5000
+    ],
+    "gap_factors": [
+      1.0,
+      1.15,
+      1.35
+    ],
+    "ensembles": 100,
+    "alpha": 0.05,
+    "seed": 20260814,
+    "tau": 0.2,
+    "j1": 1.0,
+    "j2": 0.37,
+    "hx": 2.2,
+    "output": "results/wishart_campaign_colab.json"
+  },
+  "campaigns": [
+    {
+      "schema_version": 2,
+      "setup": {
+        "length": 6,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260820,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab.json"
+      },
+      "model": {
+        "length": 6,
+        "dimension": 64,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -13.971087973293592,
+          -11.886501722566125,
+          -10.404711075059414
+        ],
+        "true_gap": 2.084586250727467,
+        "parities": [
+          1.0000000000000013,
+          -1.000000000000001,
+          -1.0000000000000013
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.6590754560857606,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 1.5577236354355484e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 96,
+            "optimal_inaccurate": 4
+          },
+          "dual_value_range": [
+            -2.588778340265046e-10,
+            4.689314720299849e-10
+          ],
+          "maximum_stationarity_fro": 8.761885838094373e-10,
+          "maximum_normalization_error": 9.565704894853866e-10,
+          "minimum_reported_psd_eigenvalue": -1.0082838722083566e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.0737541777906882e-10,
+            "dual_stationarity_fro": 1.9994723469841864e-11,
+            "dual_normalization_error": 3.97148980368911e-12,
+            "dual_min_psd_eigenvalue": -1.8591798858655968e-10
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.003737434949908979,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 70,
+            "optimal_inaccurate": 30
+          },
+          "dual_value_range": [
+            -8.989353375507721e-05,
+            -6.808265458509849e-06
+          ],
+          "maximum_stationarity_fro": 2.1596703636014213e-09,
+          "maximum_normalization_error": 2.095194018281177e-09,
+          "minimum_reported_psd_eigenvalue": -3.7964719804434915e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -3.308773235799088e-05,
+            "dual_stationarity_fro": 2.7668780188386352e-11,
+            "dual_normalization_error": 4.812816811750054e-12,
+            "dual_min_psd_eigenvalue": -3.381663324990608e-10
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.012714852648485262,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 97,
+            "optimal_inaccurate": 3
+          },
+          "dual_value_range": [
+            -0.00165122201279283,
+            -0.0007612542981306064
+          ],
+          "maximum_stationarity_fro": 2.040346668570362e-09,
+          "maximum_normalization_error": 5.004602954272741e-09,
+          "minimum_reported_psd_eigenvalue": -2.5320661394807693e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0011556438355006735,
+            "dual_stationarity_fro": 5.310570524890791e-10,
+            "dual_normalization_error": 4.2121572896292037e-10,
+            "dual_min_psd_eigenvalue": -7.936399125879831e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 1.5577236354355484e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 89,
+            "optimal_inaccurate": 11
+          },
+          "dual_value_range": [
+            -5.942508402798105e-10,
+            6.638795233808074e-10
+          ],
+          "maximum_stationarity_fro": 1.65217035331162e-09,
+          "maximum_normalization_error": 1.8920967015390033e-09,
+          "minimum_reported_psd_eigenvalue": -1.3731937567936462e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 9.173886322510796e-11,
+            "dual_stationarity_fro": 1.7869437668167066e-11,
+            "dual_normalization_error": 3.3586466940960236e-12,
+            "dual_min_psd_eigenvalue": -2.4654100327819744e-11
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.003737434949908979,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 23,
+            "optimal": 77
+          },
+          "dual_value_range": [
+            -0.00020495779428024354,
+            -6.755083682125464e-05
+          ],
+          "maximum_stationarity_fro": 1.8547193142106823e-09,
+          "maximum_normalization_error": 2.6777602357697106e-09,
+          "minimum_reported_psd_eigenvalue": -4.602235586245752e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -9.270268549153426e-05,
+            "dual_stationarity_fro": 3.6196885491556736e-10,
+            "dual_normalization_error": 1.9126078498743482e-10,
+            "dual_min_psd_eigenvalue": -5.196604200894879e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.012714852648485262,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 93,
+            "optimal_inaccurate": 7
+          },
+          "dual_value_range": [
+            -0.0028221887674557845,
+            -0.001660302778259709
+          ],
+          "maximum_stationarity_fro": 1.2067628004559e-09,
+          "maximum_normalization_error": 1.3244847441029606e-09,
+          "minimum_reported_psd_eigenvalue": -1.2974104859548476e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0022061761839619644,
+            "dual_stationarity_fro": 5.764896706047567e-10,
+            "dual_normalization_error": 1.3244847441029606e-09,
+            "dual_min_psd_eigenvalue": -6.289706270789326e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 1.5577236354355484e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 81,
+            "optimal_inaccurate": 19
+          },
+          "dual_value_range": [
+            -8.316503635069336e-10,
+            8.67136634349824e-10
+          ],
+          "maximum_stationarity_fro": 1.5779595860380985e-08,
+          "maximum_normalization_error": 2.1161030705485473e-09,
+          "minimum_reported_psd_eigenvalue": -6.126946357214697e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 2.9336449351647905e-10,
+            "dual_stationarity_fro": 2.0181669336836484e-11,
+            "dual_normalization_error": 1.014521799902468e-12,
+            "dual_min_psd_eigenvalue": -1.9829993418820582e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.003737434949908979,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 85,
+            "optimal_inaccurate": 15
+          },
+          "dual_value_range": [
+            -0.0003616279951513101,
+            -0.00019955165079413566
+          ],
+          "maximum_stationarity_fro": 8.424578538869466e-10,
+          "maximum_normalization_error": 9.093228392487163e-10,
+          "minimum_reported_psd_eigenvalue": -5.26108365406332e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0002514608530181737,
+            "dual_stationarity_fro": 1.0263311323494978e-10,
+            "dual_normalization_error": 2.9257984923702907e-10,
+            "dual_min_psd_eigenvalue": -4.817186009653651e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.012714852648485262,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 98,
+            "optimal_inaccurate": 2
+          },
+          "dual_value_range": [
+            -0.0038785118258086015,
+            -0.0026038301206086373
+          ],
+          "maximum_stationarity_fro": 7.354430375418007e-10,
+          "maximum_normalization_error": 1.302662311353231e-09,
+          "minimum_reported_psd_eigenvalue": -1.87227415323435e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0033789702747822684,
+            "dual_stationarity_fro": 1.3758019975028586e-11,
+            "dual_normalization_error": 1.914068903374755e-11,
+            "dual_min_psd_eigenvalue": -3.4288389891619966e-11
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 1.5577236354355484e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 55,
+            "optimal_inaccurate": 45
+          },
+          "dual_value_range": [
+            2.0577924575635362e-11,
+            1.699095396851686e-09
+          ],
+          "maximum_stationarity_fro": 1.0477292637284207e-08,
+          "maximum_normalization_error": 5.155655613542365e-08,
+          "minimum_reported_psd_eigenvalue": -5.139738952985332e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 5.30439620043281e-10,
+            "dual_stationarity_fro": 2.7746321986829004e-11,
+            "dual_normalization_error": 5.52479173521192e-11,
+            "dual_min_psd_eigenvalue": -1.9783164602965808e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.003737434949908979,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 88,
+            "optimal_inaccurate": 12
+          },
+          "dual_value_range": [
+            -0.000591937108855807,
+            -0.00041144218360623236
+          ],
+          "maximum_stationarity_fro": 8.452483696216485e-10,
+          "maximum_normalization_error": 9.42087297062244e-10,
+          "minimum_reported_psd_eigenvalue": -4.149256656045597e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00047285382211777367,
+            "dual_stationarity_fro": 1.2616179233546075e-10,
+            "dual_normalization_error": 2.7789548440182443e-10,
+            "dual_min_psd_eigenvalue": -1.3103240564745202e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.012714852648485262,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 99,
+            "optimal_inaccurate": 1
+          },
+          "dual_value_range": [
+            -0.005215038896902644,
+            -0.004143174636223592
+          ],
+          "maximum_stationarity_fro": 1.0459646382796715e-09,
+          "maximum_normalization_error": 1.255523240928369e-09,
+          "minimum_reported_psd_eigenvalue": -8.086882951814023e-10,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.004569790787321754,
+            "dual_stationarity_fro": 2.0869673908415526e-10,
+            "dual_normalization_error": 2.3209389965472838e-10,
+            "dual_min_psd_eigenvalue": -1.7620567228289682e-10
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 2,
+      "setup": {
+        "length": 8,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260822,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab.json"
+      },
+      "model": {
+        "length": 8,
+        "dimension": 256,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -18.70760584916834,
+          -16.850125449833957,
+          -15.719715028007155
+        ],
+        "true_gap": 1.8574803993343814,
+        "parities": [
+          0.9999999999999991,
+          -1.0000000000000009,
+          -1.0000000000000013
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.6897017095463458,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 3.7120287984426965e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 76,
+            "optimal_inaccurate": 24
+          },
+          "dual_value_range": [
+            1.5977538517695715e-10,
+            7.518650955053792e-10
+          ],
+          "maximum_stationarity_fro": 6.4743256944168065e-09,
+          "maximum_normalization_error": 1.3839039469942804e-08,
+          "minimum_reported_psd_eigenvalue": -2.990379965101718e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 4.4720665543669205e-10,
+            "dual_stationarity_fro": 2.041322048498963e-11,
+            "dual_normalization_error": 1.5769163752565873e-11,
+            "dual_min_psd_eigenvalue": -6.040134563603548e-11
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0028787144610792855,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 20,
+            "optimal": 80
+          },
+          "dual_value_range": [
+            -8.653056275799084e-06,
+            -1.1495949594921126e-07
+          ],
+          "maximum_stationarity_fro": 6.9455202273887275e-09,
+          "maximum_normalization_error": 6.252082629387701e-09,
+          "minimum_reported_psd_eigenvalue": -9.062883899954423e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -1.3017943477519026e-06,
+            "dual_stationarity_fro": 6.746807410133154e-10,
+            "dual_normalization_error": 1.0912105663507532e-09,
+            "dual_min_psd_eigenvalue": -9.062883899954423e-09
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.010121524760804197,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 89,
+            "optimal_inaccurate": 11
+          },
+          "dual_value_range": [
+            -0.0009954283903579973,
+            -0.00035561574151460676
+          ],
+          "maximum_stationarity_fro": 3.2544950378206786e-09,
+          "maximum_normalization_error": 4.700107192334713e-09,
+          "minimum_reported_psd_eigenvalue": -3.6416051556727144e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0007187541323239992,
+            "dual_stationarity_fro": 9.367711290917757e-10,
+            "dual_normalization_error": 3.8267167212779896e-11,
+            "dual_min_psd_eigenvalue": -5.245666227631813e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 3.7120287984426965e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 80,
+            "optimal_inaccurate": 20
+          },
+          "dual_value_range": [
+            3.342253545770746e-11,
+            3.3371924533335756e-09
+          ],
+          "maximum_stationarity_fro": 3.99700425954426e-09,
+          "maximum_normalization_error": 6.897780679970822e-09,
+          "minimum_reported_psd_eigenvalue": -1.879445657492768e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 4.044898867244895e-10,
+            "dual_stationarity_fro": 1.6372975869014834e-10,
+            "dual_normalization_error": 1.4206502640945473e-10,
+            "dual_min_psd_eigenvalue": -1.1088661206104944e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0028787144610792855,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 72,
+            "optimal_inaccurate": 28
+          },
+          "dual_value_range": [
+            -4.97807378340054e-05,
+            -4.4163632194856636e-06
+          ],
+          "maximum_stationarity_fro": 1.4135153453195386e-09,
+          "maximum_normalization_error": 7.548814906499501e-10,
+          "minimum_reported_psd_eigenvalue": -7.27431765969206e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.4268457635405705e-05,
+            "dual_stationarity_fro": 2.175263808975473e-10,
+            "dual_normalization_error": 1.9066859202609976e-10,
+            "dual_min_psd_eigenvalue": -2.8174171074979763e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.010121524760804197,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 97,
+            "optimal_inaccurate": 3
+          },
+          "dual_value_range": [
+            -0.0014545009078728074,
+            -0.0008625659651234525
+          ],
+          "maximum_stationarity_fro": 4.680769620715804e-09,
+          "maximum_normalization_error": 4.190158664485466e-09,
+          "minimum_reported_psd_eigenvalue": -4.18311220725491e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0012273124819034333,
+            "dual_stationarity_fro": 7.127972028409207e-10,
+            "dual_normalization_error": 3.883579013930216e-10,
+            "dual_min_psd_eigenvalue": -8.29439914267965e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 3.7120287984426965e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 60,
+            "optimal_inaccurate": 40
+          },
+          "dual_value_range": [
+            -3.6891979825067094e-10,
+            8.806947685006265e-10
+          ],
+          "maximum_stationarity_fro": 2.0059286977151918e-08,
+          "maximum_normalization_error": 3.355921074366108e-08,
+          "minimum_reported_psd_eigenvalue": -1.5040792002687217e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 2.6357083669873186e-10,
+            "dual_stationarity_fro": 2.058755429216566e-11,
+            "dual_normalization_error": 7.1807004786705875e-12,
+            "dual_min_psd_eigenvalue": -4.280953053279744e-11
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0028787144610792855,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 75,
+            "optimal_inaccurate": 25
+          },
+          "dual_value_range": [
+            -0.00014225697742869126,
+            -4.3734064573709795e-05
+          ],
+          "maximum_stationarity_fro": 1.0864011796320953e-09,
+          "maximum_normalization_error": 7.588408790226708e-10,
+          "minimum_reported_psd_eigenvalue": -4.176022049366128e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -6.915250627742824e-05,
+            "dual_stationarity_fro": 2.4354236547513353e-11,
+            "dual_normalization_error": 2.1865731447689996e-11,
+            "dual_min_psd_eigenvalue": -7.393164265489227e-11
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.010121524760804197,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 97,
+            "optimal_inaccurate": 3
+          },
+          "dual_value_range": [
+            -0.0025817383314995015,
+            -0.001573204151142581
+          ],
+          "maximum_stationarity_fro": 1.0491011239441488e-09,
+          "maximum_normalization_error": 1.037379626644963e-09,
+          "minimum_reported_psd_eigenvalue": -1.3966495021739349e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0019373336393574067,
+            "dual_stationarity_fro": 3.2649572510667946e-10,
+            "dual_normalization_error": 4.742826131831634e-10,
+            "dual_min_psd_eigenvalue": -2.2145263127025208e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 3.7120287984426965e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 53,
+            "optimal": 47
+          },
+          "dual_value_range": [
+            1.4340010481619643e-10,
+            1.1672896545528785e-09
+          ],
+          "maximum_stationarity_fro": 2.3288375957593203e-08,
+          "maximum_normalization_error": 9.715822368860927e-09,
+          "minimum_reported_psd_eigenvalue": -3.819112695590606e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 2.465056255263603e-10,
+            "dual_stationarity_fro": 2.660902884760824e-10,
+            "dual_normalization_error": 3.5819358590316597e-10,
+            "dual_min_psd_eigenvalue": -6.209005980154545e-11
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0028787144610792855,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 85,
+            "optimal_inaccurate": 15
+          },
+          "dual_value_range": [
+            -0.0002995943128119138,
+            -0.00017603886841361695
+          ],
+          "maximum_stationarity_fro": 7.189991612487213e-10,
+          "maximum_normalization_error": 5.568829841706702e-10,
+          "minimum_reported_psd_eigenvalue": -2.248089357569174e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0002669868165948528,
+            "dual_stationarity_fro": 3.4121848105214435e-11,
+            "dual_normalization_error": 2.4055424319158192e-11,
+            "dual_min_psd_eigenvalue": -1.1319509081985708e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.010121524760804197,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 100
+          },
+          "dual_value_range": [
+            -0.003316938850158647,
+            -0.0025341703237543867
+          ],
+          "maximum_stationarity_fro": 1.00826459705988e-09,
+          "maximum_normalization_error": 1.0715979215092375e-09,
+          "minimum_reported_psd_eigenvalue": -8.108686874825945e-10,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0031275280042047902,
+            "dual_stationarity_fro": 3.6980942349872595e-11,
+            "dual_normalization_error": 3.8659075940472576e-11,
+            "dual_min_psd_eigenvalue": -7.093725573397801e-11
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 2,
+      "setup": {
+        "length": 10,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260824,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab.json"
+      },
+      "model": {
+        "length": 10,
+        "dimension": 1024,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -23.44432243303774,
+          -21.72260298467414,
+          -20.838300982951132
+        ],
+        "true_gap": 1.7217194483636007,
+        "parities": [
+          0.9999999999999996,
+          -1.0000000000000004,
+          -0.9999999999999998
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7086851766266626,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 5.325928670948146e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 41,
+            "optimal": 59
+          },
+          "dual_value_range": [
+            2.1989692701602308e-10,
+            1.1799130861398527e-09
+          ],
+          "maximum_stationarity_fro": 5.90911665965151e-08,
+          "maximum_normalization_error": 1.0403535355418825e-07,
+          "minimum_reported_psd_eigenvalue": -3.692561872883846e-08,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.0492554452138283e-09,
+            "dual_stationarity_fro": 7.400057491080046e-10,
+            "dual_normalization_error": 1.0242962034112679e-10,
+            "dual_min_psd_eigenvalue": -1.486670964728598e-10
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0019357235958605474,
+          "detection_rate": 0.19,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 70,
+            "optimal_inaccurate": 30
+          },
+          "dual_value_range": [
+            -3.2614652307515007e-07,
+            -1.756473088595264e-08
+          ],
+          "maximum_stationarity_fro": 7.961320263226047e-09,
+          "maximum_normalization_error": 2.4316120894596338e-08,
+          "minimum_reported_psd_eigenvalue": -6.243838043880763e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -4.774140151349353e-08,
+            "dual_stationarity_fro": 3.5164159868965707e-10,
+            "dual_normalization_error": 2.599057635777058e-10,
+            "dual_min_psd_eigenvalue": -3.656193985360803e-10
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.00818857939457026,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 81,
+            "optimal_inaccurate": 19
+          },
+          "dual_value_range": [
+            -0.0004493615189453898,
+            -0.00013551776025430562
+          ],
+          "maximum_stationarity_fro": 8.93333114027621e-10,
+          "maximum_normalization_error": 9.502008069262047e-10,
+          "minimum_reported_psd_eigenvalue": -5.062137470785367e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00035141867738937554,
+            "dual_stationarity_fro": 2.8644460866563793e-11,
+            "dual_normalization_error": 1.9097612380392093e-11,
+            "dual_min_psd_eigenvalue": -3.118242830381039e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 5.325928670948146e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 55,
+            "optimal_inaccurate": 45
+          },
+          "dual_value_range": [
+            2.5724822674050254e-10,
+            7.564824270866402e-10
+          ],
+          "maximum_stationarity_fro": 1.709397157318874e-08,
+          "maximum_normalization_error": 4.755980043125163e-08,
+          "minimum_reported_psd_eigenvalue": -4.658067606043998e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 5.835827748356237e-10,
+            "dual_stationarity_fro": 2.1126232829143763e-11,
+            "dual_normalization_error": 1.8454127115319352e-11,
+            "dual_min_psd_eigenvalue": -2.4703178031691605e-11
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0019357235958605474,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 89,
+            "optimal_inaccurate": 11
+          },
+          "dual_value_range": [
+            -4.598708330703525e-06,
+            -2.2340512916211165e-07
+          ],
+          "maximum_stationarity_fro": 1.2279217570487728e-08,
+          "maximum_normalization_error": 2.986839298113608e-08,
+          "minimum_reported_psd_eigenvalue": -1.3941002950910042e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -3.6246708815209955e-07,
+            "dual_stationarity_fro": 1.0521753053525515e-10,
+            "dual_normalization_error": 7.556255621210539e-11,
+            "dual_min_psd_eigenvalue": -4.6522080873186617e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.00818857939457026,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 8,
+            "optimal": 92
+          },
+          "dual_value_range": [
+            -0.001048853737678426,
+            -0.00042487002246860243
+          ],
+          "maximum_stationarity_fro": 1.0247264485994587e-09,
+          "maximum_normalization_error": 8.578395771507985e-10,
+          "minimum_reported_psd_eigenvalue": -4.091504476539378e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -0.0006551273465378663,
+            "dual_stationarity_fro": 2.539097252119901e-10,
+            "dual_normalization_error": 4.682463305982765e-10,
+            "dual_min_psd_eigenvalue": -4.000561896014118e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 5.325928670948146e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 57,
+            "optimal_inaccurate": 43
+          },
+          "dual_value_range": [
+            -1.3122652649330732e-09,
+            1.452357958865837e-09
+          ],
+          "maximum_stationarity_fro": 9.317482398503159e-09,
+          "maximum_normalization_error": 4.332841641030427e-09,
+          "minimum_reported_psd_eigenvalue": -7.999090842790942e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 5.575135386165823e-10,
+            "dual_stationarity_fro": 1.506397805161831e-10,
+            "dual_normalization_error": 3.844613516434947e-11,
+            "dual_min_psd_eigenvalue": -2.930102709453781e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0019357235958605474,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 68,
+            "optimal_inaccurate": 32
+          },
+          "dual_value_range": [
+            -2.2277721352937253e-05,
+            -4.14767324177041e-06
+          ],
+          "maximum_stationarity_fro": 9.421507211886573e-10,
+          "maximum_normalization_error": 1.1536227528807785e-09,
+          "minimum_reported_psd_eigenvalue": -2.9396578151714374e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.5226957339078365e-05,
+            "dual_stationarity_fro": 2.7059399280997564e-10,
+            "dual_normalization_error": 1.7310841649020858e-10,
+            "dual_min_psd_eigenvalue": -3.856863156627841e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.00818857939457026,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 94,
+            "optimal_inaccurate": 6
+          },
+          "dual_value_range": [
+            -0.0015275280491167786,
+            -0.0008771577325003815
+          ],
+          "maximum_stationarity_fro": 7.520498269189234e-10,
+          "maximum_normalization_error": 1.3144085819760676e-09,
+          "minimum_reported_psd_eigenvalue": -3.039963208887324e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0015275280491167786,
+            "dual_stationarity_fro": 2.2493345518453527e-11,
+            "dual_normalization_error": 6.9824146464725345e-12,
+            "dual_min_psd_eigenvalue": -1.7304193500672122e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 5.325928670948146e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 88,
+            "optimal_inaccurate": 12
+          },
+          "dual_value_range": [
+            1.8877609317501118e-10,
+            7.246139331963156e-10
+          ],
+          "maximum_stationarity_fro": 8.094159774039518e-09,
+          "maximum_normalization_error": 3.445406182578381e-09,
+          "minimum_reported_psd_eigenvalue": -8.58415398154123e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 4.200438072863467e-10,
+            "dual_stationarity_fro": 2.3348567033030015e-11,
+            "dual_normalization_error": 2.8446356381550686e-11,
+            "dual_min_psd_eigenvalue": -1.9684113625572834e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0019357235958605474,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 77,
+            "optimal_inaccurate": 23
+          },
+          "dual_value_range": [
+            -0.00013330072972202438,
+            -4.957685922809055e-05
+          ],
+          "maximum_stationarity_fro": 1.338560644668859e-09,
+          "maximum_normalization_error": 2.681461053199996e-09,
+          "minimum_reported_psd_eigenvalue": -4.578210067874158e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -8.645471014443774e-05,
+            "dual_stationarity_fro": 4.4785117313026857e-10,
+            "dual_normalization_error": 5.263991464943274e-10,
+            "dual_min_psd_eigenvalue": -5.070745552402886e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.00818857939457026,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 99,
+            "optimal_inaccurate": 1
+          },
+          "dual_value_range": [
+            -0.002295458397468539,
+            -0.001628036769007888
+          ],
+          "maximum_stationarity_fro": 7.971462279206419e-10,
+          "maximum_normalization_error": 1.5957983823255972e-09,
+          "minimum_reported_psd_eigenvalue": -8.953738912642519e-10,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0017939733707026534,
+            "dual_stationarity_fro": 8.558062207279683e-11,
+            "dual_normalization_error": 1.2799628024140475e-10,
+            "dual_min_psd_eigenvalue": -1.4456095856613287e-10
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 2,
+      "setup": {
+        "length": 12,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260826,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab.json"
+      },
+      "model": {
+        "length": 12,
+        "dimension": 4096,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -28.181077421635734,
+          -26.54749724593588,
+          -25.838315000606144
+        ],
+        "true_gap": 1.633580175699855,
+        "parities": [
+          1.0,
+          -1.0000000000000013,
+          -1.0000000000000036
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7212885345461862,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 6.298568063520553e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 57,
+            "optimal": 43
+          },
+          "dual_value_range": [
+            3.142592613303886e-10,
+            2.083198566977752e-09
+          ],
+          "maximum_stationarity_fro": 4.43935403232121e-08,
+          "maximum_normalization_error": 1.0890658197482139e-07,
+          "minimum_reported_psd_eigenvalue": -2.4080968240549127e-08,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.5645742546534537e-09,
+            "dual_stationarity_fro": 8.25034395998667e-10,
+            "dual_normalization_error": 5.461607832657478e-10,
+            "dual_min_psd_eigenvalue": -1.0253390169622628e-09
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.001104323744972524,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 75,
+            "optimal_inaccurate": 25
+          },
+          "dual_value_range": [
+            -2.3796814746670738e-08,
+            -7.674962654820382e-11
+          ],
+          "maximum_stationarity_fro": 8.173775632641441e-09,
+          "maximum_normalization_error": 8.1140308916261e-09,
+          "minimum_reported_psd_eigenvalue": -9.430451510655425e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -3.269473442211493e-09,
+            "dual_stationarity_fro": 2.210423471620244e-10,
+            "dual_normalization_error": 4.773847983585711e-10,
+            "dual_min_psd_eigenvalue": -4.0552151605159103e-10
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.006689224208375612,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 85,
+            "optimal_inaccurate": 15
+          },
+          "dual_value_range": [
+            -0.00026925389491202177,
+            -2.945019631229789e-05
+          ],
+          "maximum_stationarity_fro": 8.951631149931287e-10,
+          "maximum_normalization_error": 9.287093316601158e-10,
+          "minimum_reported_psd_eigenvalue": -6.062432752914725e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -5.2380348479252273e-05,
+            "dual_stationarity_fro": 9.512187158980243e-11,
+            "dual_normalization_error": 4.252842522589617e-11,
+            "dual_min_psd_eigenvalue": -9.513545759346244e-11
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 6.298568063520553e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 62,
+            "optimal_inaccurate": 38
+          },
+          "dual_value_range": [
+            4.3025853473350837e-10,
+            1.285433642968076e-09
+          ],
+          "maximum_stationarity_fro": 2.51925189819744e-08,
+          "maximum_normalization_error": 4.36776318446519e-08,
+          "minimum_reported_psd_eigenvalue": -3.70879063778385e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 9.784443887528251e-10,
+            "dual_stationarity_fro": 8.878881147582276e-11,
+            "dual_normalization_error": 1.1777823161196466e-10,
+            "dual_min_psd_eigenvalue": -2.320394151702527e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.001104323744972524,
+          "detection_rate": 0.23,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 83,
+            "optimal_inaccurate": 17
+          },
+          "dual_value_range": [
+            -2.63456881960481e-07,
+            -2.9647382814638844e-08
+          ],
+          "maximum_stationarity_fro": 1.4080236333607384e-08,
+          "maximum_normalization_error": 2.7932816060172172e-08,
+          "minimum_reported_psd_eigenvalue": -2.6698403149587668e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -7.819144428462111e-08,
+            "dual_stationarity_fro": 1.011784297787254e-10,
+            "dual_normalization_error": 5.433431482515516e-12,
+            "dual_min_psd_eigenvalue": -2.816782868564477e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.006689224208375612,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 93,
+            "optimal_inaccurate": 7
+          },
+          "dual_value_range": [
+            -0.0005383600376618145,
+            -0.0002735315363560243
+          ],
+          "maximum_stationarity_fro": 7.703824711638344e-10,
+          "maximum_normalization_error": 1.3408967269867844e-09,
+          "minimum_reported_psd_eigenvalue": -3.1034847770012146e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0003902295215006523,
+            "dual_stationarity_fro": 1.3569854658911455e-10,
+            "dual_normalization_error": 4.588329716170847e-11,
+            "dual_min_psd_eigenvalue": -3.6964147102328943e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 6.298568063520553e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 62,
+            "optimal": 38
+          },
+          "dual_value_range": [
+            3.2582387047687923e-10,
+            1.7232945171836295e-09
+          ],
+          "maximum_stationarity_fro": 2.410942325542747e-08,
+          "maximum_normalization_error": 3.59596719068378e-08,
+          "minimum_reported_psd_eigenvalue": -1.4580821666840072e-08,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.0806150738642256e-09,
+            "dual_stationarity_fro": 2.3087804285323362e-10,
+            "dual_normalization_error": 1.1463874294292964e-10,
+            "dual_min_psd_eigenvalue": -8.928966592838715e-11
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.001104323744972524,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 92,
+            "optimal_inaccurate": 8
+          },
+          "dual_value_range": [
+            -1.8376037833198666e-06,
+            -2.000561834908073e-07
+          ],
+          "maximum_stationarity_fro": 9.885774774011109e-10,
+          "maximum_normalization_error": 1.914203795472247e-09,
+          "minimum_reported_psd_eigenvalue": -5.5136329488713735e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.1131994504105748e-06,
+            "dual_stationarity_fro": 1.2287303740332786e-10,
+            "dual_normalization_error": 1.8256096634416963e-10,
+            "dual_min_psd_eigenvalue": -2.9209996016703205e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.006689224208375612,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 96,
+            "optimal_inaccurate": 4
+          },
+          "dual_value_range": [
+            -0.0009311838512418256,
+            -0.0005373799918320203
+          ],
+          "maximum_stationarity_fro": 1.265348174727394e-09,
+          "maximum_normalization_error": 1.1854992543192111e-09,
+          "minimum_reported_psd_eigenvalue": -1.1270299616178795e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0006337295982218379,
+            "dual_stationarity_fro": 1.7111247617401344e-10,
+            "dual_normalization_error": 1.7688273068472427e-10,
+            "dual_min_psd_eigenvalue": -1.404708292292695e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 6.298568063520553e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 42,
+            "optimal": 58
+          },
+          "dual_value_range": [
+            4.03697320405509e-10,
+            8.585909510007255e-10
+          ],
+          "maximum_stationarity_fro": 1.1682945352215657e-08,
+          "maximum_normalization_error": 3.097068934643232e-08,
+          "minimum_reported_psd_eigenvalue": -4.850521531558367e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 4.869800969093603e-10,
+            "dual_stationarity_fro": 2.994448208058745e-09,
+            "dual_normalization_error": 3.0857403299222597e-09,
+            "dual_min_psd_eigenvalue": -1.0950881564342492e-09
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.001104323744972524,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 28,
+            "optimal": 72
+          },
+          "dual_value_range": [
+            -2.553712213303064e-05,
+            -3.947913568875302e-06
+          ],
+          "maximum_stationarity_fro": 6.504016771048554e-10,
+          "maximum_normalization_error": 1.5514791673609807e-09,
+          "minimum_reported_psd_eigenvalue": -5.217299826671764e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -1.126295723463287e-05,
+            "dual_stationarity_fro": 3.1231308423163707e-10,
+            "dual_normalization_error": 5.101350453173836e-10,
+            "dual_min_psd_eigenvalue": -2.511288179702568e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.006689224208375612,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 94,
+            "optimal_inaccurate": 6
+          },
+          "dual_value_range": [
+            -0.0014715573311322259,
+            -0.0011133968706165658
+          ],
+          "maximum_stationarity_fro": 8.946638367473118e-10,
+          "maximum_normalization_error": 1.0057030763732655e-09,
+          "minimum_reported_psd_eigenvalue": -1.1688981242698938e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0011901718522333536,
+            "dual_stationarity_fro": 1.5038844055590716e-10,
+            "dual_normalization_error": 1.6218626441855122e-10,
+            "dual_min_psd_eigenvalue": -3.481738308351575e-10
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 2,
+      "setup": {
+        "length": 14,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260828,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab.json"
+      },
+      "model": {
+        "length": 14,
+        "dimension": 16384,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -32.91784071732961,
+          -31.34492071877805,
+          -30.763993213194738
+        ],
+        "true_gap": 1.572919998551562,
+        "parities": [
+          1.000000000000001,
+          -1.0000000000000022,
+          -1.0000000000000038
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7300925298081805,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 6.848176145976548e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 52,
+            "optimal_inaccurate": 48
+          },
+          "dual_value_range": [
+            3.7677828666796393e-10,
+            2.514492867917608e-09
+          ],
+          "maximum_stationarity_fro": 4.566786163460945e-08,
+          "maximum_normalization_error": 9.339789164286572e-09,
+          "minimum_reported_psd_eigenvalue": -1.4747923792301433e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 1.0384822992551262e-09,
+            "dual_stationarity_fro": 4.391966141964924e-11,
+            "dual_normalization_error": 1.6059398255663382e-10,
+            "dual_min_psd_eigenvalue": -1.2521083060127524e-10
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.0005019829948788895,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 69,
+            "optimal_inaccurate": 31
+          },
+          "dual_value_range": [
+            -1.4074107504916117e-09,
+            1.5104737456094738e-09
+          ],
+          "maximum_stationarity_fro": 7.839017747225811e-09,
+          "maximum_normalization_error": 8.309191334987531e-09,
+          "minimum_reported_psd_eigenvalue": -2.2682194623298723e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 8.137974701748349e-10,
+            "dual_stationarity_fro": 8.887066267854342e-11,
+            "dual_normalization_error": 1.363316126656855e-10,
+            "dual_min_psd_eigenvalue": -4.905545916902348e-11
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.005539608978358488,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 41,
+            "optimal": 59
+          },
+          "dual_value_range": [
+            -8.160079641903427e-05,
+            -4.737865530294238e-06
+          ],
+          "maximum_stationarity_fro": 3.373014977752466e-09,
+          "maximum_normalization_error": 3.2477764921878816e-09,
+          "minimum_reported_psd_eigenvalue": -7.437142530202303e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -4.737865530294238e-06,
+            "dual_stationarity_fro": 2.5122956360929023e-10,
+            "dual_normalization_error": 6.842948430119122e-11,
+            "dual_min_psd_eigenvalue": -7.133914859124445e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 6.848176145976548e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 47,
+            "optimal": 53
+          },
+          "dual_value_range": [
+            4.1818806986635994e-10,
+            1.714246056422377e-09
+          ],
+          "maximum_stationarity_fro": 1.4647935689727864e-08,
+          "maximum_normalization_error": 1.5108319595391606e-08,
+          "minimum_reported_psd_eigenvalue": -6.995352552692522e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.4566183314530665e-09,
+            "dual_stationarity_fro": 9.963575016735607e-11,
+            "dual_normalization_error": 1.217286271781859e-10,
+            "dual_min_psd_eigenvalue": -3.471257768389514e-11
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.0005019829948788895,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 50,
+            "optimal_inaccurate": 50
+          },
+          "dual_value_range": [
+            -3.743191275013279e-08,
+            -1.1482243802960848e-09
+          ],
+          "maximum_stationarity_fro": 2.65163640278359e-08,
+          "maximum_normalization_error": 2.4878084481372298e-08,
+          "minimum_reported_psd_eigenvalue": -1.3552569279199062e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.5668104874492947e-08,
+            "dual_stationarity_fro": 1.406673380576664e-10,
+            "dual_normalization_error": 1.0274014972111445e-10,
+            "dual_min_psd_eigenvalue": -1.7182165496198165e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.005539608978358488,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 78,
+            "optimal_inaccurate": 22
+          },
+          "dual_value_range": [
+            -0.0002868102724692158,
+            -9.373360476393113e-05
+          ],
+          "maximum_stationarity_fro": 9.50662494046771e-10,
+          "maximum_normalization_error": 8.773302084819079e-10,
+          "minimum_reported_psd_eigenvalue": -4.119420450789501e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0001257608887346674,
+            "dual_stationarity_fro": 3.857194977278617e-11,
+            "dual_normalization_error": 1.954769679457513e-11,
+            "dual_min_psd_eigenvalue": -2.4387656837887237e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 6.848176145976548e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 62,
+            "optimal": 38
+          },
+          "dual_value_range": [
+            3.014702871914522e-10,
+            1.5746331824282434e-09
+          ],
+          "maximum_stationarity_fro": 4.203832389401154e-08,
+          "maximum_normalization_error": 1.5594059377121994e-08,
+          "minimum_reported_psd_eigenvalue": -5.1554869322189175e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.146549397630004e-09,
+            "dual_stationarity_fro": 1.8880327392223654e-09,
+            "dual_normalization_error": 2.9216906671791776e-09,
+            "dual_min_psd_eigenvalue": -2.5916025603095817e-09
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.0005019829948788895,
+          "detection_rate": 0.35,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 80,
+            "optimal_inaccurate": 20
+          },
+          "dual_value_range": [
+            -2.2606100553841072e-07,
+            -3.641647903522338e-08
+          ],
+          "maximum_stationarity_fro": 2.2163165499546592e-08,
+          "maximum_normalization_error": 6.014009712451696e-08,
+          "minimum_reported_psd_eigenvalue": -7.873342743105295e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.431533269461257e-07,
+            "dual_stationarity_fro": 6.907396793606322e-11,
+            "dual_normalization_error": 2.0619861373916137e-10,
+            "dual_min_psd_eigenvalue": -2.7832710147413384e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.005539608978358488,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 11,
+            "optimal": 89
+          },
+          "dual_value_range": [
+            -0.0006317635696897351,
+            -0.0003347305357893852
+          ],
+          "maximum_stationarity_fro": 1.5344200816177385e-09,
+          "maximum_normalization_error": 9.664029576583744e-10,
+          "minimum_reported_psd_eigenvalue": -4.447824085429067e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -0.0004480650318189443,
+            "dual_stationarity_fro": 1.5344200816177385e-09,
+            "dual_normalization_error": 4.362143979363964e-10,
+            "dual_min_psd_eigenvalue": -1.370908480580217e-09
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 6.848176145976548e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 49,
+            "optimal": 51
+          },
+          "dual_value_range": [
+            3.5357461203643524e-10,
+            1.0162319318059946e-09
+          ],
+          "maximum_stationarity_fro": 1.2612305703470665e-08,
+          "maximum_normalization_error": 3.45649071586962e-08,
+          "minimum_reported_psd_eigenvalue": -7.397763898812576e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 7.165932722118766e-10,
+            "dual_stationarity_fro": 2.5672547223698015e-09,
+            "dual_normalization_error": 6.214751158140075e-09,
+            "dual_min_psd_eigenvalue": -1.9292367317525227e-09
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.0005019829948788895,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 92,
+            "optimal_inaccurate": 8
+          },
+          "dual_value_range": [
+            -1.5229939176375409e-06,
+            -3.775435436252563e-07
+          ],
+          "maximum_stationarity_fro": 3.445842424048526e-10,
+          "maximum_normalization_error": 9.011926760393862e-10,
+          "minimum_reported_psd_eigenvalue": -3.6394207711671685e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -6.606872880707314e-07,
+            "dual_stationarity_fro": 7.595515886367091e-11,
+            "dual_normalization_error": 6.213574099689367e-11,
+            "dual_min_psd_eigenvalue": -3.0135377046221694e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.005539608978358488,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 97,
+            "optimal_inaccurate": 3
+          },
+          "dual_value_range": [
+            -0.0011076415915386526,
+            -0.0007090108604522211
+          ],
+          "maximum_stationarity_fro": 7.095147813310931e-10,
+          "maximum_normalization_error": 9.354130803274074e-10,
+          "minimum_reported_psd_eigenvalue": -1.2842064093191776e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0008319584672462493,
+            "dual_stationarity_fro": 3.524963615478633e-10,
+            "dual_normalization_error": 2.1274293438011682e-10,
+            "dual_min_psd_eigenvalue": -5.242262035819771e-10
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": 2,
+      "setup": {
+        "length": 16,
+        "degree": 2,
+        "sample_counts": [
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "gap_factors": [
+          1.0,
+          1.15,
+          1.35
+        ],
+        "ensembles": 100,
+        "alpha": 0.05,
+        "seed": 20260830,
+        "tau": 0.2,
+        "j1": 1.0,
+        "j2": 0.37,
+        "hx": 2.2,
+        "output": "results/wishart_campaign_colab.json"
+      },
+      "model": {
+        "length": 16,
+        "dimension": 65536,
+        "parameters": {
+          "j1": 1.0,
+          "j2": 0.37,
+          "hx": 2.2,
+          "tau": 0.2
+        },
+        "energies": [
+          -37.65460594350352,
+          -36.12529378616983,
+          -35.64093398143957
+        ],
+        "true_gap": 1.5293121573336919,
+        "parities": [
+          0.9999999999999987,
+          -0.9999999999999967,
+          -0.9999999999999994
+        ]
+      },
+      "joint_dimension": 12,
+      "true_edge": 0.7364879300516673,
+      "rows": [
+        {
+          "sample_count": 500,
+          "gap_factor": 1.0,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": 7.1592776657359615e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 49,
+            "optimal": 51
+          },
+          "dual_value_range": [
+            2.6912823912958545e-10,
+            2.570741605379606e-09
+          ],
+          "maximum_stationarity_fro": 6.69352401183585e-08,
+          "maximum_normalization_error": 1.5427742561247015e-07,
+          "minimum_reported_psd_eigenvalue": -2.259786900671643e-08,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.4801287784601494e-09,
+            "dual_stationarity_fro": 1.6580264643659756e-08,
+            "dual_normalization_error": 1.5427742561247015e-07,
+            "dual_min_psd_eigenvalue": -1.3815808363582994e-08
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.15,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.00020918415371436335,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 20,
+            "optimal": 80
+          },
+          "dual_value_range": [
+            1.0433457189859962e-10,
+            2.1416430003052815e-09
+          ],
+          "maximum_stationarity_fro": 3.908211255259419e-08,
+          "maximum_normalization_error": 7.905046817135997e-08,
+          "minimum_reported_psd_eigenvalue": -1.0626513768245207e-08,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 5.923286507076987e-10,
+            "dual_stationarity_fro": 1.993694758175539e-10,
+            "dual_normalization_error": 3.528165537503014e-10,
+            "dual_min_psd_eigenvalue": -5.731320658263143e-11
+          }
+        },
+        {
+          "sample_count": 500,
+          "gap_factor": 1.35,
+          "eta": 0.27639162622995767,
+          "loewner_lower": 0.6138073821641514,
+          "loewner_upper": 1.9098217370344486,
+          "exact_localizer_min": -0.004658551425475539,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 67,
+            "optimal_inaccurate": 33
+          },
+          "dual_value_range": [
+            -6.488855693033771e-05,
+            -6.691805882701575e-07
+          ],
+          "maximum_stationarity_fro": 1.440499832271957e-09,
+          "maximum_normalization_error": 2.127850118327501e-09,
+          "minimum_reported_psd_eigenvalue": -7.319527286796054e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.590480766416793e-05,
+            "dual_stationarity_fro": 1.9455210625527694e-10,
+            "dual_normalization_error": 2.3790236447496227e-10,
+            "dual_min_psd_eigenvalue": -3.173365626146558e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.0,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": 7.1592776657359615e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 52,
+            "optimal": 48
+          },
+          "dual_value_range": [
+            3.8944581303015023e-10,
+            2.0354615365096623e-09
+          ],
+          "maximum_stationarity_fro": 2.956810850505123e-08,
+          "maximum_normalization_error": 4.183519908274036e-08,
+          "minimum_reported_psd_eigenvalue": -8.969818451327244e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 9.960355721210579e-10,
+            "dual_stationarity_fro": 1.3980929570201872e-10,
+            "dual_normalization_error": 3.214757349212505e-10,
+            "dual_min_psd_eigenvalue": -4.892072045321775e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.15,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.00020918415371436335,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 48,
+            "optimal_inaccurate": 52
+          },
+          "dual_value_range": [
+            -4.944503312465285e-09,
+            1.6159793500336483e-09
+          ],
+          "maximum_stationarity_fro": 7.1885253883609095e-09,
+          "maximum_normalization_error": 2.314021219085305e-08,
+          "minimum_reported_psd_eigenvalue": -1.0467508415267513e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.6254917242567365e-09,
+            "dual_stationarity_fro": 3.3565020036286127e-10,
+            "dual_normalization_error": 3.97990085332367e-10,
+            "dual_min_psd_eigenvalue": -6.581114014572996e-10
+          }
+        },
+        {
+          "sample_count": 1000,
+          "gap_factor": 1.35,
+          "eta": 0.19543839317038073,
+          "loewner_lower": 0.6997543398287758,
+          "loewner_upper": 1.5448324770690216,
+          "exact_localizer_min": -0.004658551425475539,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 19,
+            "optimal": 81
+          },
+          "dual_value_range": [
+            -0.00020776332082947813,
+            -3.8035404153118155e-05
+          ],
+          "maximum_stationarity_fro": 1.1311067298834558e-09,
+          "maximum_normalization_error": 1.1629577301164318e-09,
+          "minimum_reported_psd_eigenvalue": -7.492475169211515e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": -9.418460388290091e-05,
+            "dual_stationarity_fro": 4.830737343504169e-10,
+            "dual_normalization_error": 3.6307179485106644e-10,
+            "dual_min_psd_eigenvalue": -7.492475169211515e-09
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.0,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": 7.1592776657359615e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal_inaccurate": 67,
+            "optimal": 33
+          },
+          "dual_value_range": [
+            3.2350177187416524e-10,
+            2.585420580526135e-09
+          ],
+          "maximum_stationarity_fro": 9.198450080090804e-09,
+          "maximum_normalization_error": 6.260105089861412e-08,
+          "minimum_reported_psd_eigenvalue": -4.210792595369581e-09,
+          "first_certificate": {
+            "dual_status": "optimal_inaccurate",
+            "dual_value": 1.1115758665847015e-09,
+            "dual_stationarity_fro": 1.4964124553197063e-10,
+            "dual_normalization_error": 1.7656232031981745e-10,
+            "dual_min_psd_eigenvalue": -1.134105234676329e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.15,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.00020918415371436335,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 42,
+            "optimal_inaccurate": 58
+          },
+          "dual_value_range": [
+            -4.832519851284982e-08,
+            -8.021351321895197e-09
+          ],
+          "maximum_stationarity_fro": 8.395595675665448e-08,
+          "maximum_normalization_error": 1.820372728111863e-07,
+          "minimum_reported_psd_eigenvalue": -5.526366469403447e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -2.4064034813142405e-08,
+            "dual_stationarity_fro": 1.3720898032698911e-10,
+            "dual_normalization_error": 1.2880463362563432e-10,
+            "dual_min_psd_eigenvalue": -6.463940412164058e-10
+          }
+        },
+        {
+          "sample_count": 2000,
+          "gap_factor": 1.35,
+          "eta": 0.13819581311497883,
+          "loewner_lower": 0.7719088720339764,
+          "loewner_upper": 1.3464269647912648,
+          "exact_localizer_min": -0.004658551425475539,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 88,
+            "optimal_inaccurate": 12
+          },
+          "dual_value_range": [
+            -0.0004177628167686392,
+            -0.00016814514600764323
+          ],
+          "maximum_stationarity_fro": 6.243763614687688e-10,
+          "maximum_normalization_error": 8.460592226811059e-10,
+          "minimum_reported_psd_eigenvalue": -1.2740608266801166e-08,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.00027401160486726847,
+            "dual_stationarity_fro": 4.328849359898045e-10,
+            "dual_normalization_error": 2.740363491682274e-11,
+            "dual_min_psd_eigenvalue": -4.3291384866313587e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.0,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": 7.1592776657359615e-06,
+          "detection_rate": 0.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 52,
+            "optimal_inaccurate": 48
+          },
+          "dual_value_range": [
+            4.0888512487724714e-10,
+            4.0776276601138875e-09
+          ],
+          "maximum_stationarity_fro": 3.589269843797557e-08,
+          "maximum_normalization_error": 1.2674381544286462e-08,
+          "minimum_reported_psd_eigenvalue": -7.230310705401154e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": 8.84960869544818e-10,
+            "dual_stationarity_fro": 7.545100390111825e-11,
+            "dual_normalization_error": 6.690470399917103e-11,
+            "dual_min_psd_eigenvalue": -1.502391586981273e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.15,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.00020918415371436335,
+          "detection_rate": 0.84,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 97,
+            "optimal_inaccurate": 3
+          },
+          "dual_value_range": [
+            -2.4388766653652533e-07,
+            -5.815623336473798e-08
+          ],
+          "maximum_stationarity_fro": 1.0900417953151758e-09,
+          "maximum_normalization_error": 1.2786055547664432e-09,
+          "minimum_reported_psd_eigenvalue": -2.755609831287364e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -1.6153799387113286e-07,
+            "dual_stationarity_fro": 1.725082275940687e-11,
+            "dual_normalization_error": 3.114353219757504e-11,
+            "dual_min_psd_eigenvalue": -4.2021154272443647e-10
+          }
+        },
+        {
+          "sample_count": 5000,
+          "gap_factor": 1.35,
+          "eta": 0.08740270650846038,
+          "loewner_lower": 0.8457055501749783,
+          "loewner_upper": 1.200719730491056,
+          "exact_localizer_min": -0.004658551425475539,
+          "detection_rate": 1.0,
+          "dual_detection_threshold": -1e-07,
+          "dual_statuses": {
+            "optimal": 92,
+            "optimal_inaccurate": 8
+          },
+          "dual_value_range": [
+            -0.0007516361371658394,
+            -0.0005011335429224682
+          ],
+          "maximum_stationarity_fro": 8.792594473225869e-10,
+          "maximum_normalization_error": 8.527867301211245e-10,
+          "minimum_reported_psd_eigenvalue": -1.888819702611815e-09,
+          "first_certificate": {
+            "dual_status": "optimal",
+            "dual_value": -0.0005911419315054421,
+            "dual_stationarity_fro": 1.2309426753508226e-11,
+            "dual_normalization_error": 1.1024958723737655e-11,
+            "dual_min_psd_eigenvalue": -2.6990991605163616e-10
+          }
+        }
+      ]
+    }
+  ]
+}

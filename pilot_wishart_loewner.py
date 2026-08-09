@@ -128,23 +128,53 @@ def dual_certificate(
     yu = (y_upper.value + y_upper.value.T) / 2
     yz = (y_local.value + y_local.value.T) / 2
 
-    # Rebuild the numerical adjoint independently for the residual audit.
-    adjoint_value = np.zeros((dimension, dimension))
-    for k in range(2 * degree + 2):
-        block_value = np.zeros((channels, channels))
-        for i in range(degree + 1):
-            for j in range(degree + 1):
-                coefficient = theta * (i + j == k) - (i + j + 1 == k)
-                if coefficient:
-                    block_value += coefficient * yz[
-                        i * channels : (i + 1) * channels,
-                        j * channels : (j + 1) * channels,
-                    ]
-        indices = slice(k * channels, (k + 1) * channels)
-        block_scales = np.diag(scales[indices])
-        adjoint_value[indices, indices] = block_scales @ block_value @ block_scales
+    def numerical_adjoint(multiplier: np.ndarray) -> np.ndarray:
+        answer = np.zeros((dimension, dimension))
+        for k in range(2 * degree + 2):
+            block_value = np.zeros((channels, channels))
+            for i in range(degree + 1):
+                for j in range(degree + 1):
+                    coefficient = theta * (i + j == k) - (i + j + 1 == k)
+                    if coefficient:
+                        block_value += coefficient * multiplier[
+                            i * channels : (i + 1) * channels,
+                            j * channels : (j + 1) * channels,
+                        ]
+            indices = slice(k * channels, (k + 1) * channels)
+            block_scales = np.diag(scales[indices])
+            answer[indices, indices] = block_scales @ block_value @ block_scales
+        return answer
+
+    adjoint_value = numerical_adjoint(yz)
     residual = yl - yu + adjoint_value
     value = float(-np.trace(yl @ (lower * empirical)) + np.trace(yu @ (upper * empirical)))
+
+    # Construct a feasible dual witness rather than merely measuring residuals.
+    # First project each multiplier onto the PSD cone.  If the resulting
+    # stationarity residual is R=R_+-R_-, adding R_- to Y_lower and R_+ to
+    # Y_upper cancels R exactly while preserving positive semidefiniteness.
+    def positive_part(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        eigenvalues, eigenvectors = np.linalg.eigh((matrix + matrix.T) / 2)
+        positive = (eigenvectors * np.maximum(eigenvalues, 0.0)) @ eigenvectors.T
+        negative = (eigenvectors * np.maximum(-eigenvalues, 0.0)) @ eigenvectors.T
+        return positive, negative
+
+    yl_psd, _ = positive_part(yl)
+    yu_psd, _ = positive_part(yu)
+    yz_psd, _ = positive_part(yz)
+    repair_residual = yl_psd - yu_psd + numerical_adjoint(yz_psd)
+    residual_positive, residual_negative = positive_part(repair_residual)
+    yl_repaired = yl_psd + residual_negative
+    yu_repaired = yu_psd + residual_positive
+    repaired_scale = float(np.trace(yl_repaired) + np.trace(yu_repaired) + np.trace(yz_psd))
+    yl_repaired /= repaired_scale
+    yu_repaired /= repaired_scale
+    yz_repaired = yz_psd / repaired_scale
+    repaired_residual = yl_repaired - yu_repaired + numerical_adjoint(yz_repaired)
+    repaired_value = float(
+        -np.trace(yl_repaired @ (lower * empirical))
+        + np.trace(yu_repaired @ (upper * empirical))
+    )
     return {
         "dual_status": problem.status,
         "dual_value": value,
@@ -152,6 +182,18 @@ def dual_certificate(
         "dual_normalization_error": float(abs(np.trace(yl) + np.trace(yu) + np.trace(yz) - 1.0)),
         "dual_min_psd_eigenvalue": float(
             min(np.linalg.eigvalsh(yl)[0], np.linalg.eigvalsh(yu)[0], np.linalg.eigvalsh(yz)[0])
+        ),
+        "repaired_dual_value": repaired_value,
+        "repaired_stationarity_fro": float(np.linalg.norm(repaired_residual)),
+        "repaired_normalization_error": float(
+            abs(np.trace(yl_repaired) + np.trace(yu_repaired) + np.trace(yz_repaired) - 1.0)
+        ),
+        "repaired_min_psd_eigenvalue": float(
+            min(
+                np.linalg.eigvalsh(yl_repaired)[0],
+                np.linalg.eigvalsh(yu_repaired)[0],
+                np.linalg.eigvalsh(yz_repaired)[0],
+            )
         ),
     }
 
@@ -186,7 +228,7 @@ def run(args: argparse.Namespace) -> dict[str, object]:
                 certificate = dual_certificate(
                     sample_gram, args.degree, channels, theta, args.alpha, sample_count
                 )
-                detected = certificate["dual_value"] < -1e-7
+                detected = certificate["repaired_dual_value"] < -1e-9
                 detections += detected
                 status = str(certificate["dual_status"])
                 statuses[status] = statuses.get(status, 0) + 1
@@ -200,11 +242,15 @@ def run(args: argparse.Namespace) -> dict[str, object]:
                     "loewner_upper": upper,
                     "exact_localizer_min": exact_localizer_min(exact_moments, args.degree, channels, theta),
                     "detection_rate": detections / args.ensembles,
-                    "dual_detection_threshold": -1e-7,
+                    "dual_detection_threshold": -1e-9,
                     "dual_statuses": statuses,
                     "dual_value_range": [
                         min(item["dual_value"] for item in certificates),
                         max(item["dual_value"] for item in certificates),
+                    ],
+                    "repaired_dual_value_range": [
+                        min(item["repaired_dual_value"] for item in certificates),
+                        max(item["repaired_dual_value"] for item in certificates),
                     ],
                     "maximum_stationarity_fro": max(
                         item["dual_stationarity_fro"] for item in certificates
@@ -215,11 +261,20 @@ def run(args: argparse.Namespace) -> dict[str, object]:
                     "minimum_reported_psd_eigenvalue": min(
                         item["dual_min_psd_eigenvalue"] for item in certificates
                     ),
+                    "maximum_repaired_stationarity_fro": max(
+                        item["repaired_stationarity_fro"] for item in certificates
+                    ),
+                    "maximum_repaired_normalization_error": max(
+                        item["repaired_normalization_error"] for item in certificates
+                    ),
+                    "minimum_repaired_psd_eigenvalue": min(
+                        item["repaired_min_psd_eigenvalue"] for item in certificates
+                    ),
                     "first_certificate": certificates[0],
                 }
             )
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "setup": vars(args) | {"output": str(args.output)},
         "model": metadata,
         "joint_dimension": int(joint.shape[0]),
