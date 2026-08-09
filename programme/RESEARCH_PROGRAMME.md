@@ -118,3 +118,18 @@ multi-route access audit, so priority remains qualified.
   texts despite the recorded access audit.  Consequently the theorem and 7/10
   assessment are published, while novelty remains a candidate rather than a
   certified priority claim.
+
+## Post-release robustness cycle, 10 August 2026
+
+The later 5.47/10 evaluation correctly rejected the superexponential
+`exp(-N^3)` signature perturbation as scientifically fragile.  The proof has
+now been rebuilt around an exponential calibration law.  Retaining the
+factorial in the Lagrange estimate improves the interpolation inverse from
+`exp(O(N log N))` to `exp(O(N))`, allowing rational signatures with
+`epsilon_N=2^(-13N)` and an explicit `exp(-O(N))` robust radius.  An independent
+scalar binomial-tail construction proves that any fixed positive calibration
+floor destroys asymptotic separation; exponential accuracy is therefore the
+correct scale class.  A new exact quadratic/FIR witness also improves leakage
+from `301/304` to `25/32` and certified tolerance from `3/32300` to `7/1920`.
+The strengthened PDF must receive a fresh artifact-specific review before this
+cycle is closed.

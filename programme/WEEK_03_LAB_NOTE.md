@@ -1,5 +1,10 @@
 # Week 3 lab note: noncommuting tangential filters
 
+> Historical note (10 August 2026): the `301/304`, `3/32300`, and
+> `exp(-N^3)` bounds below were superseded by the `25/32`, `7/1920`, rational
+> `2^(-13N)`, and two-sided exponential calibration results recorded in
+> `ROBUSTNESS_SCALE_THEOREM.md`.  The lab note remains an audit trail.
+
 Date: 2026-08-09
 
 ## Result found

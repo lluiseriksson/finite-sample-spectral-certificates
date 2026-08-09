@@ -71,9 +71,11 @@ The following conjunction has not been found in the checked sources:
 3. a full pairwise-commuting comparator, equivalently one fixed orthogonal bank
    of scalar filters;
 4. an explicit exponential upper/lower separation with only three channels;
-   and
-5. an exact rational five-tap certificate whose finite gap survives commuting
-   calibration residuals `delta < 3/32300`.
+5. a two-sided exponential calibration law: rational signatures and a robust
+   commuting lower bound at `exp(-O(N))`, together with a universal scalar
+   `exp(-2N/81)` barrier ruling out constant tolerance; and
+6. an exact rational five-tap certificate with leakage `25/32` whose finite
+   gap survives commuting calibration residuals `delta < 7/1920`.
 
 Each ingredient separately is close to classical work.  Priority, if it
 survives, belongs only to their theorem-level conjunction.  Gate G1's priority

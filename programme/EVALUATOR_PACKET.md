@@ -1,4 +1,4 @@
-# Adversarial evaluator packet: Route C research draft
+# Adversarial evaluator packet: exponential calibration-law manuscript
 
 This cover sheet identifies the exact artifact to inspect and asks for a blind,
 claim-level assessment.  It is not a certificate of novelty and it is not a
@@ -9,27 +9,17 @@ request to reward repository size.
 - Repository: <https://github.com/lluiseriksson/finite-sample-spectral-certificates>
 - Research branch: `research/endogenous-visibility`
 - Draft pull request: <https://github.com/lluiseriksson/finite-sample-spectral-certificates/pull/2>
-- Source commit inspected when this packet was prepared:
-  `9550a371be35fc35a452264b6c08a3caa71e4a11`
+- Source commit inspected when this packet was prepared: to be filled after the
+  scientific commit containing the PDF bytes below.
 - PDF path: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Title visible on page 1: *Exponential Tangential Advantages of
-  Noncommuting Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
-- Page count: 13
+- Title visible on page 1: *Exponential Calibration Laws for Noncommuting
+  Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
+- Page count: 15
 - SHA-256 of the repository PDF bytes:
-  `ccf27299e9cee8f397f32aee53c4848bc0cd8b3a1978b4729664270e80fed2b0`
-- Embedded manuscript status: `Research draft, 9 August 2026`
-- CI status at the commit above: push run
-  [`31336782241`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31336782241)
-  and pull-request run
-  [`31336784500`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31336784500)
-  both passed.
-
-The revised bytes received a fresh independent Gemini Advanced reasoning review:
-scientific contribution **7 / 10**, manuscript quality **7 / 10**, no proof
-defect or counterexample identified, and recommendation to proceed to formal
-external peer review or submission subject to the disclosed restricted-full-text
-priority uncertainty.  The exact review record and its limitations are in
-`programme/INDEPENDENT_REVIEW_GEMINI_2026-08-09.md`.
+  `d62ed80dba4a4c9cd42016aa23931277154a6bdfc070686ff19b91e8f3e7e323`
+- Embedded manuscript date: `10 August 2026`
+- CI and independent-review status: pending for these exact bytes.  Scores for
+  the earlier 13-page artifact do not transfer.
 
 Before scoring, independently hash the downloaded PDF and copy the result into
 the response.  If the hash, title or page count differs, stop: the score belongs
@@ -43,21 +33,31 @@ regenerated rather than silently reused.
    constraints for which a real-symmetric noncommuting matrix polynomial
    attains stopband leakage `C exp(-cN)`, whereas every
    feasible pairwise-commuting real-symmetric polynomial is identically the
-   identity and has leakage one.
+   identity and has leakage one.  Quantitatively, the signatures have
+   `gamma_N >= 2^(-39N)/(48(N+4)^6)` and every approximately calibrated
+   commuting competitor has leakage at least
+   `1-sqrt(3)(24e/5)^N delta/gamma_N`.
 2. **Corollary 4.1:** the same construction gives a fixed-latency reciprocal
    linear-phase MIMO FIR separation between fully coupled taps and every fixed
-   orthogonal bank of scalar linear-phase FIR filters.
-3. **Propositions 5.1--5.2:** an exactly replayable rational five-tap witness
-   has continuum leakage at most `301/304`, and the commuting obstruction
-   persists under calibration residual `delta < 3/32300`.
-4. **Lemma 6.1 and Proposition 6.2:** tangential calibration has an exact FDD
+   orthogonal bank of scalar linear-phase FIR filters, including the robust
+   calibration law.
+3. **Proposition 2.7:** for arbitrary pass nodes and directions in the same
+   separated bands, a scalar polynomial has both pass residual and stop leakage
+   at most `exp(-2N/81)`.  Consequently no universal separation can survive a
+   constant calibration tolerance; the exponential tolerance scale is
+   necessary as a scale class.
+4. **Propositions 5.1--5.2:** an exactly replayable rational five-tap witness
+   has continuum leakage at most `25/32`, and the commuting obstruction
+   persists under calibration residual `delta < 7/1920`.
+5. **Lemma 6.1 and Proposition 6.2:** tangential calibration has an exact FDD
    modal-component interpretation, and a public VBL-VA001 triaxial split gives
    a separate exact rational `<24/25` versus `1` continuum certificate plus a
    held-out modal replay.
 
-Only item 1, together with its fixed-latency interpretation in item 2, is the
-candidate priority claim.  Items 3--4 test exactness, robustness and physical
-meaning; they are not substitutes for the asymptotic theorem.
+The candidate priority claim is the conjunction of items 1--3: a fixed-channel,
+fixed-order commuting/noncommuting gap with a two-sided exponential calibration
+law.  Items 4--5 test exactness, robustness and physical meaning; they are not
+substitutes for the asymptotic theorem.
 
 ## Three closest collision tests
 
@@ -116,8 +116,9 @@ or exact replay of auxiliary facts.  Report:
 1. Check Lemma 2.2's counting argument in a common eigenbasis, including the
    `M=d+N` threshold and the exact role of full spark.
 2. Recompute the norm of the symmetric interpolation right inverse used in
-   Theorem 2.1 and verify that the full-spark perturbation does not erase the
-   exponential stopband estimate.  Run
+   Theorem 2.1, retaining the factorial in the Lagrange bound, and verify that
+   the rational full-spark perturbation does not erase the exponential
+   stopband estimate.  Run
    `verification/verify_constant_channel_scaling.py` as an arithmetic check,
    but inspect the proof rather than treating this script as a certificate.
 3. Look for circularity: the noncommuting coefficients used to prove the upper

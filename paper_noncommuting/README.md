@@ -5,20 +5,22 @@ correlator paper.
 
 ## Artifact identity
 
-- Title: *Exponential Tangential Advantages of Noncommuting Matrix-Polynomial
+- Title: *Exponential Calibration Laws for Noncommuting Matrix-Polynomial
   and Linear-Phase MIMO FIR Filters*
 - Source: `paper_noncommuting/main.tex`
 - Compiled artifact: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Status: independently reviewed research release; the quantified proof gives an exponential
-  separation at fixed dimension `d=3` with `M=N+3`; the exact five-tap FIR certificate,
-  rational approximate-calibration margin, negative graph pilot, and an exact
+- Status: revised research candidate; the quantified proof gives an exponential
+  separation at fixed dimension `d=3` with `M=N+3`, replaces the old
+  `exp(-N^3)` perturbation by rational `2^(-13N)` signatures, and proves a
+  universal scalar barrier showing that constant calibration tolerance is
+  impossible.  The new exact five-tap FIR certificate has leakage `25/32` and
+  preserves strict separation for `delta < 7/1920`.  The negative graph pilot and an exact
   rational certificate calibrated from held-out-controlled VBL-VA001 sensor
   records are closed.  The modal-task interpretation is backed by an exact FDD
-  invariance lemma and a held-out cospectral replay.  A fresh independent
-  adversarial review of the exact hash below assigned 7/10 to both scientific
-  contribution and manuscript quality and found no proof defect.  The
-  restricted full-text priority uncertainty remains disclosed; this release
-  is not a certificate of novelty or named-human peer review.
+  invariance lemma and a held-out cospectral replay.  The previous independent
+  review applies only to the superseded PDF hash; this strengthened artifact
+  requires a fresh review.  Restricted full-text priority uncertainty remains
+  disclosed.
 
 The current PDF hash is recorded after each accepted compilation in
 `programme/ARTIFACT_MANIFEST.md`.  Evaluations must quote the title and SHA-256

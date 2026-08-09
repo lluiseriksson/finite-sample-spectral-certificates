@@ -24,10 +24,10 @@
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\Span}{\operatorname{span}}
 
-\title{Exponential Tangential Advantages of Noncommuting\\
+\title{Exponential Calibration Laws for Noncommuting\\
        Matrix-Polynomial and Linear-Phase MIMO FIR Filters}
 \author{Lluis Eriksson}
-\date{Research draft, 9 August 2026}
+\date{10 August 2026}
 
 \begin{document}
 \maketitle
@@ -37,28 +37,32 @@ Scalar Chebyshev filtering treats every vector in a block Krylov iterate with
 the same polynomial, while simultaneously diagonalizable matrix coefficients
 amount to independent scalar filters after a fixed channel rotation.  We study
 the larger class of Hermitian matrix-polynomial filters under tangential pass
-constraints.  Our main result gives an
-asymptotic separation: already at the fixed channel dimension $d=3$, there are
-distinct pass points and full-spark channel signatures for which a symmetric
-noncommuting filter has stopband leakage $O(e^{-cN})$, whereas every feasible
-pairwise-commuting symmetric filter is identically the identity and has leakage
-one.  An affine cosine substitution turns the theorem into a fixed-latency
-separation for reciprocal linear-phase MIMO FIR filters: fully coupled taps can
-achieve exponential high-frequency rejection, while every feasible fixed
-orthogonal bank of scalar filters is a pure delay.  We also give an exact
-rational five-tap certificate with stopband norm at most $301/304$ and prove
+constraints.  Already at fixed channel dimension $d=3$, we construct
+rationally generated signatures with quantitative full-spark margin for which
+a symmetric noncommuting filter has stopband leakage $O(e^{-cN})$, whereas
+every exactly feasible pairwise-commuting symmetric filter is the identity.
+The signature margin and the admissible commuting calibration error are both
+$e^{-O(N)}$, not $e^{-N^3}$.  This exponential scale is unavoidable: for
+arbitrary pass nodes and signatures in the same separated bands, an explicit
+scalar binomial-tail polynomial has both pass error and stopband leakage at
+most $e^{-2N/81}$.  Thus constant-error separation is impossible, while the
+noncommuting construction achieves the correct exponential scale class.  An
+affine cosine substitution gives the same robust law for fixed-latency
+reciprocal linear-phase MIMO FIR filters.  We also give an exact
+rational five-tap certificate with stopband norm at most $25/32$ and prove
 that its advantage survives commuting calibration errors
-$\delta<3/32300$.  A second exact-arithmetic certificate is calibrated from a
+$\delta<7/1920$.  A second exact-arithmetic certificate is calibrated from a
 public triaxial pump-vibration data set: it gives leakage below $0.96$ versus
 one for the exactly calibrated commuting class, while its maximum directional
 error on six held-out records is $0.00385$.  In a frequency-domain-decomposition
 test on the frozen held-out cospectra, filtering rotates the leading modal
 direction by at most $0.222^\circ$ and changes its leading spectral ordinate by
-at most $2.4\times10^{-5}$ relatively.  Numerical programs test the
-mechanism and expose an ordinary graph-denoising setting in which scalar
-Chebyshev filtering is instead preferable.  Tangential matrix
-interpolation, MIMO filtering and convex FIR design are not claimed as new;
-priority of the precise fixed-order separation remains under audit.
+at most $2.4\times10^{-5}$ relatively.  Numerical programs test the mechanism
+and expose an ordinary graph-denoising setting in which scalar Chebyshev
+filtering is instead preferable.  Tangential matrix interpolation, MIMO
+filtering, scalar two-band approximation and convex FIR design are not claimed
+as new; the contribution is the fixed-order commuting/noncommuting separation
+together with its two-sided calibration scale.
 \end{abstract}
 
 \section{Problem and contribution}
@@ -81,22 +85,33 @@ The coefficients will always be real symmetric.  They need not commute.
 The comparator is the pairwise-commuting subclass.  Such coefficients admit a
 common orthogonal eigenbasis, so a fixed channel rotation turns $P$ into a
 diagonal collection of scalar filters.  The question is whether allowing the
-channel mixing to depend on the polynomial degree can reduce \eqref{eq:leakage}
-under the same pass constraints.
+channel mixing to depend on polynomial degree can reduce \eqref{eq:leakage}
+under the same pass constraints, and at what calibration-error scale that
+comparison remains meaningful.  For unit signatures define
+\[
+ \gamma(v_1,\ldots,v_M)
+ =\min_{|J|=3}\sigma_{\min}\bigl([v_j]_{j\in J}\bigr).
+\]
 
-Our answer is exponentially affirmative in an existence sense.  The input
-signatures are full spark: every $d$ of them span $\R^d$.  This property makes
-the commuting obstruction exact, while an arbitrarily small, explicitly chosen
-perturbation of a coordinate construction retains a noncommuting interpolant
-with exponentially small leakage.
+Our answer is an exponential calibration law.  The input signatures are full
+spark and have an explicit $e^{-O(N)}$ lower margin.  This makes the commuting
+obstruction quantitative under $e^{-O(N)}$ residuals, while a separate scalar
+construction proves that no asymptotic advantage can survive calibration
+errors bounded below independently of $N$.
 
 \section{Main separation theorem}
 
-\begin{theorem}[Exponential tangential separation]\label{thm:main}
+\begin{theorem}[Robust exponential tangential separation]\label{thm:main}
 There are absolute constants $C,c>0$ and $N_0\in\mathbb N$ such that for every
 $N\ge N_0$, with $d=3$ and $M=N+3$, one can choose distinct rational pass
 points $\lambda_1,\ldots,\lambda_M\in[1,7/2]$ and full-spark unit vectors
-$v_1,\ldots,v_M\in\R^d$ with the following properties.
+$v_1,\ldots,v_M\in\R^d$ satisfying
+\begin{equation}\label{eq:gammafloor}
+ \gamma(v_1,\ldots,v_M)
+ \ge \underline\gamma_N
+ :=\frac{2^{-39N}}{48(N+4)^6},
+\end{equation}
+with the following properties.
 \begin{enumerate}
 \item There is a degree-$N$ polynomial $P_N$ with real symmetric coefficient
 matrices satisfying \eqref{eq:tangential} and
@@ -106,13 +121,24 @@ matrices satisfying \eqref{eq:tangential} and
 \item If a degree-$N$ polynomial $Q_N$ has pairwise-commuting real symmetric
 coefficient matrices and satisfies the same tangential constraints, then
 $Q_N(x)=I_d$ for every $x$.  In particular, $\rho(Q_N)=1$.
+\item More generally, if such a commuting $Q_N$ obeys
+\[
+ \max_j\|(Q_N(\lambda_j)-I)v_j\|_2\le\delta,
+\]
+then, with $L_N=(24e/5)^N$,
+\begin{equation}\label{eq:robustmain}
+ \rho(Q_N)\ge1-\frac{\sqrt3L_N}{\underline\gamma_N}\,\delta.
+\end{equation}
+Consequently $\rho(Q_N)\ge3/4$ whenever
+$\delta\le\underline\gamma_N/(4\sqrt3L_N)$.
 \end{enumerate}
 For every $N\ge N_0$, the coefficient matrices of $P_N$ cannot
 commute pairwise.
 \end{theorem}
 
-We split the proof into an obstruction, a small-leakage base construction, and
-a stable full-spark perturbation.
+The admissible error in the third item is $e^{-O(N)}$.  We split the proof into
+an obstruction, a small-leakage base construction, a quantitatively full-spark
+rational perturbation, and a matching scale obstruction.
 
 \subsection{The commuting obstruction}
 
@@ -220,24 +246,51 @@ Index all pass nodes by $j=1,\ldots,M$, let $g(j)$ be the coordinate group of
 node $j$, and set $t_j=j/(M+1)$.  Define
 \begin{equation}\label{eq:momentperturb}
  w_j=(1,t_j,t_j^2)^\top,\quad
- \varepsilon_N=e^{-N^3},\quad
+ \varepsilon_N=2^{-13N},\quad
  \widetilde v_j=e_{g(j)}+\varepsilon_Nw_j,\quad
  v_j=\frac{\widetilde v_j}{\|\widetilde v_j\|_2}.
 \end{equation}
 
-\begin{lemma}\label{lem:fullspark}
-The vectors in \eqref{eq:momentperturb} are full spark.
+\begin{lemma}[Quantitative rational full spark]\label{lem:fullspark}
+The vectors in \eqref{eq:momentperturb} are full spark and satisfy
+\eqref{eq:gammafloor} for every $N\ge7$.
 \end{lemma}
 
 \begin{proof}
-Fix any three indices.  The determinant with the corresponding unnormalized
-vectors as columns is a polynomial in $\varepsilon_N$ with rational
-coefficients.  Its coefficient at degree three is the Vandermonde determinant
-of the corresponding $w_j$, which is nonzero because their $t_j$ are distinct.
-Thus the determinant polynomial is not zero.  By the Lindemann--Weierstrass
-theorem, $e^{-N^3}$ is transcendental, so it cannot be a root of a nonzero
-polynomial with rational coefficients.  Column normalization does not change
-whether the determinant vanishes.
+Fix any three indices and write
+\[
+ D(z)=\det(e_{g(j_1)}+zw_{j_1},e_{g(j_2)}+zw_{j_2},
+                 e_{g(j_3)}+zw_{j_3})=\sum_{r=0}^3d_rz^r.
+\]
+The cubic coefficient is the nonzero Vandermonde determinant of the three
+$w_j$.  Every $d_r$ is rational with denominator dividing $(M+1)^6$;
+therefore every nonzero coefficient has magnitude at least $(M+1)^{-6}$.
+Expanding the determinant into its six signed products also gives
+$|d_r|\le18$.
+
+Let $r_0$ be the first nonzero coefficient.  For $N\ge7$,
+$\varepsilon_N\le[108(M+1)^6]^{-1}$, and hence
+\[
+ \sum_{r>r_0}|d_r|\varepsilon_N^{r-r_0}
+ \le18(\varepsilon_N+\varepsilon_N^2+\varepsilon_N^3)
+ \le\frac1{2(M+1)^6}.
+\]
+It follows that
+\[
+ |D(\varepsilon_N)|
+ \ge\frac{\varepsilon_N^{r_0}}{2(M+1)^6}
+ \ge\frac{\varepsilon_N^3}{2(M+1)^6}.
+\]
+Each unnormalized column has norm below two, so normalization loses at most a
+factor eight in the determinant.  For a matrix with three unit columns the
+product of its two largest singular values is at most three.  Its smallest
+singular value is consequently at least
+\[
+ \frac{\varepsilon_N^3}{48(M+1)^6}
+ =\frac{2^{-39N}}{48(N+4)^6}.
+\]
+The elementary inequality on $\varepsilon_N$ holds at $N=7$ and its left-to-
+right ratio decreases thereafter.
 \end{proof}
 
 \begin{lemma}[Stable symmetric interpolation]\label{lem:stability}
@@ -284,24 +337,26 @@ cardinal polynomial is at least
  \delta^{t-1}i!(t-1-i)!.
 \]
 On $I_-$ and at every pass node, all numerator distances are at most $9/2$.
-Consequently the sum of the absolute cardinal functions is bounded by
+Put $n=t-1$.  Since every scalar problem contains at least $S-1$ nodes,
+$S/n\le2$ for $S\ge4$.  Consequently the sum of the absolute cardinal
+functions is bounded by
 \[
  \left(\frac{27S}{5}\right)^{t-1}
  \sum_{i=0}^{t-1}\frac1{i!(t-1-i)!}
  =\left(\frac{27S}{5}\right)^{t-1}
    \frac{2^{t-1}}{(t-1)!}
- \le2\left(\frac{27S}{5}\right)^{2S-1}.
+ \le\left(\frac{108e}{5}\right)^n.
 \]
 The operator norm of a $3$ by $3$ matrix is at most three times its largest
 entry.  Hence, with the norm $\|\cdot\|_X$ above,
 \begin{equation}\label{eq:rightinversebound}
  \|R_N\|_{Y\to X}
- \le6\left(\frac{27S}{5}\right)^{2S-1}
- \le6S\left(\frac{27S}{5}\right)^{2S-1}=:\mathcal R_N.
+ \le6\left(\frac{108e}{5}\right)^{2S-1}
+ =:\mathcal R_N.
 \end{equation}
 Since $S=\lceil(N+3)/3\rceil$, this explicit envelope satisfies
-$\log\mathcal R_N=O(N\log N)$, or equivalently
-$\mathcal R_N=\exp(O(N\log N))$.
+$\mathcal R_N=\exp(O(N))$.  Retaining the factorial is the step that improves
+the old superexponential perturbation scale.
 
 Write $L_\varepsilon=L_0+\varepsilon K_N$.  Since
 $\|w_j\|_2\le\sqrt3$, $\|K_N\|_{X\to Y}\le\sqrt3$.  Hence
@@ -310,14 +365,14 @@ $\|w_j\|_2\le\sqrt3$, $\|K_N\|_{X\to Y}\le\sqrt3$.  Hence
  \|E_N\|\le\sqrt3\,\varepsilon\mathcal R_N.
 \]
 For $\varepsilon=\varepsilon_N$ and $N\ge7$, this is below $1/2$.  Indeed,
-\[
- \overline{\mathcal R}_N
- =6N\left(\frac{27N}{5}\right)^{2(N+5)/3}\ge\mathcal R_N.
-\]
-At $N=7$, $\sqrt3e^{-N^3}\overline{\mathcal R}_N<2^{-288}$, using
-$e>2$; differentiating its logarithm shows that the envelope decreases for
-$N\ge7$.  Hence the inverse
-$(I+E_N)^{-1}$ exists and has norm at most two.
+using $e<11/4$, $e^{\Delta\eta}<4$, $S\le(N+5)/3$, and
+$108e/5<64$ gives
+\begin{equation}\label{eq:powerenvelopes}
+ \mathcal R_N\le2^{4N+17},\qquad
+ B_N\le2^{(10N+11)/3}.
+\end{equation}
+Thus $\|E_N\|\le2^{18-9N}<1/2$, so $(I+E_N)^{-1}$ exists and has norm at
+most two.
 
 Since $L_0(P_0)=(e_{g(j)})_j$, the residual at the perturbed targets is
 \[
@@ -336,18 +391,43 @@ Set
 Then $L_{\varepsilon_N}(P_N)=(\widetilde v_j)_j$ and
 \[
  \|\Delta P_N\|_X
- \le2\sqrt3\,\mathcal R_Ne^{-N^3}(1+B_N)\le e^{-cN}.
+ \le2\sqrt3\,\mathcal R_N\varepsilon_N(1+B_N)\le e^{-cN}.
 \]
-For the final inequality, use $1+B_N\le4(4e)^{(N+2)/3}e^{N\Delta\eta}$
-and $\mathcal R_N\le\overline{\mathcal R}_N$.  After division by
-$e^{-cN}$, the resulting envelope is below $2^{-217}$ at $N=7$; its
-logarithmic derivative is
+Indeed, $1+B_N\le2B_N$, so \eqref{eq:powerenvelopes} bounds the correction
+by $2^{(71-17N)/3}$.  Since $c<\log2$, the ratio of this envelope to
+$e^{-cN}$ is at most $2^{(71-14N)/3}\le2^{-9}$ for $N\ge7$.
+Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
+\end{proof}
+
+\begin{lemma}[Quantitative commuting obstruction]\label{lem:robustcommuting}
+For the nodes and signatures above, let $Q$ be a degree-$N$ polynomial with
+pairwise-commuting real-symmetric coefficients and suppose
 \[
- \frac1N+\frac23\log\frac{27N}{5}+\frac{2(N+5)}{3N}-3N^2
- +\frac13\log(4e)+\Delta\eta+c<0
+ \max_j\|(Q(\lambda_j)-I)v_j\|_2\le\delta.
 \]
-for $N\ge7$.  Every coefficient remains real symmetric because $R_N$ maps
-into $\cS_N$.
+Then \eqref{eq:robustmain} holds.
+\end{lemma}
+
+\begin{proof}
+Simultaneously diagonalize the coefficients and fix a common unit eigenvector
+$u$, with scalar polynomial $q$.  If three signatures all had
+$|u^\top v_j|<\underline\gamma_N/\sqrt3$, then the Euclidean norm of the
+three overlaps would be below $\underline\gamma_N$, contradicting
+\eqref{eq:gammafloor}.  Thus at most two signatures have such a small overlap,
+and at $N+1$ distinct nodes
+\[
+ |q(\lambda_j)-1|\le\frac{\sqrt3\delta}{\underline\gamma_N}.
+\]
+For any selected $N+1$ nodes, ordered increasingly, their separation is at
+least $5/(6S)$.  The sum of the absolute degree-$N$ Lagrange cardinal values
+at zero is at most
+\[
+ \left(\frac{42S}{5}\right)^N\frac1{N!}
+ \le\left(\frac{24e}{5}\right)^N=L_N,
+\]
+where $S/N\le4/7$ for $N\ge7$.  Hence
+$|q(0)-1|\le\sqrt3L_N\delta/\underline\gamma_N$.  Applying this to the common
+eigenbasis gives \eqref{eq:robustmain} because $0\in I_-$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main}]
@@ -355,9 +435,54 @@ The normalized and unnormalized interpolation constraints are equivalent.
 Combine Lemmas~\ref{lem:base}, \ref{lem:fullspark}, and \ref{lem:stability}.
 The first conclusion holds with $C=C_0+1$ and the $c>0$ of
 Lemma~\ref{lem:base}.  The second conclusion is Lemma~\ref{lem:commuting}.
-Choose $N_0\ge7$ so that $Ce^{-cN_0}<1$.  Then the constructed coefficients
-cannot commute pairwise for $N\ge N_0$.
+The third is Lemma~\ref{lem:robustcommuting}.  Choose $N_0\ge7$ so that
+$Ce^{-cN_0}<3/4$.  Then the constructed coefficients cannot commute pairwise
+for $N\ge N_0$, and the robust comparison is strict at the displayed
+calibration radius.
 \end{proof}
+
+\subsection{Why the exponential calibration scale is unavoidable}
+
+The preceding radius is small, but its exponential order cannot be replaced by
+a constant.  The obstruction is already scalar and is independent of the
+signature geometry.
+
+\begin{proposition}[Universal scalar noise barrier]\label{prop:scalarbarrier}
+For every $N\ge1$, arbitrary pass nodes $\lambda_j\in[1,7/2]$, and arbitrary
+unit signatures $v_j$, there is a scalar degree-$N$ polynomial $s_N$ such that
+\[
+ \sup_{x\in[-1,0]}|s_N(x)|\le e^{-2N/81},\qquad
+ \max_j|s_N(\lambda_j)-1|\le e^{-2N/81}.
+\]
+Consequently the commuting symmetric polynomial $s_NI$ has both leakage and
+maximum tangential calibration residual at most $e^{-2N/81}$.
+\end{proposition}
+
+\begin{proof}
+Put $r(x)=2(x+1)/9$ and $k_N=\lceil N/3\rceil$.  Define the binomial-tail
+polynomial
+\[
+ s_N(x)=\sum_{k=k_N}^N\binom{N}{k}r(x)^k(1-r(x))^{N-k}.
+\]
+On the stopband $0\le r\le2/9$, while on the pass interval
+$4/9\le r\le1$.  Hoeffding's inequality for a binomial random variable
+\cite{Hoeffding1963} gives
+\[
+ \Pr\{X/N\ge1/3\}\le e^{-2N/81}\quad(r\le2/9)
+\]
+and
+\[
+ \Pr\{X/N<1/3\}\le e^{-2N/81}\quad(r\ge4/9).
+\]
+The ceiling in $k_N$ only strengthens both deviations.  These are precisely
+the two claimed bounds.
+\end{proof}
+
+Thus exact feasibility yields a class separation, exponentially accurate
+feasibility retains it for the constructed signatures, and exponentially
+accurate scalar filters eventually erase it for every signature family.  The
+sufficient and impossible tolerances do not have matching constants, but both
+have $-\log\delta=\Theta(N)$; an $N$-independent calibration floor is ruled out.
 
 \section{Block-Krylov meaning}
 
@@ -448,6 +573,11 @@ $v_j\in\R^{3}$ for which a causal response of the form
 Every response with the same real-symmetric palindromic tap structure whose
 taps commute pairwise and which satisfies the same calibrations is the pure
 delay $e^{-iN\omega}I$.  Its high-frequency norm is one.
+If its phase-corrected calibration residual is at most $\delta$, its
+high-frequency norm is at least the right-hand side of
+\eqref{eq:robustmain}.  Conversely, for arbitrary calibration directions and
+frequencies in the same pass range, there is a scalar palindromic response with
+both phase-corrected pass error and high-frequency norm at most $e^{-2N/81}$.
 \end{corollary}
 
 \begin{proof}
@@ -461,6 +591,8 @@ Thus the transformed coefficient matrices commute pairwise exactly when the
 original polynomial coefficients do.  Palindromy makes the FIR taps an
 invertible relabelling and rescaling of the cosine coefficients.  Applying
 Lemma~\ref{lem:commuting} therefore forces the zero-phase response to be $I$.
+Lemma~\ref{lem:robustcommuting} transfers the residual bound, and
+Proposition~\ref{prop:scalarbarrier} transfers the universal scalar response.
 \end{proof}
 
 A fixed orthogonal channel rotation diagonalizes commuting symmetric taps, so
@@ -477,30 +609,30 @@ from a deployed system.
 The asymptotic mechanism already occurs with rational data at degree two.  Take
 \[
  (\lambda_1,\lambda_2,\lambda_3,\lambda_4)
- =\left(\tfrac12,1,\tfrac32,2\right),
+ =\left(\tfrac12,1,\tfrac32,\tfrac72\right),
  \qquad
  (v_1,v_2,v_3,v_4)
  =\left(
- \binom{1}{-2},\binom{1}{-1},\binom{1}{1},\binom{1}{2}
+ \binom{1}{2},\binom{0}{1},\binom{-1}{2},\binom{-1}{1}
  \right).
 \]
 Every pair of targets is linearly independent, hence the tuple is full spark in
 $\R^2$.  Set $P(x)=C_0+xC_1+x^2C_2$, with
 \[
- C_0=\begin{pmatrix}2/5&-3/16\\-3/16&29/32\end{pmatrix},\quad
- C_1=\begin{pmatrix}15/16&3/20\\3/20&3/32\end{pmatrix},\quad
- C_2=\begin{pmatrix}-3/8&0\\0&-3/80\end{pmatrix}.
+ C_0=\begin{pmatrix}61/96&7/48\\7/48&61/96\end{pmatrix},\quad
+ C_1=\begin{pmatrix}7/24&7/48\\7/48&77/96\end{pmatrix},\quad
+ C_2=\begin{pmatrix}-7/24&-7/24\\-7/24&-7/16\end{pmatrix}.
 \]
 Direct substitution verifies $P(\lambda_j)v_j=v_j$ for all four targets, and
 \[
  [C_0,C_1]
- =\begin{pmatrix}0&1053/12800\\-1053/12800&0\end{pmatrix}\ne0.
+ =\begin{pmatrix}0&343/4608\\-343/4608&0\end{pmatrix}\ne0.
 \]
 
 \begin{proposition}[Exact quadratic gap]\label{prop:quadratic}
 The polynomial above obeys
 \[
- \sup_{x\in[-1,0]}\|P(x)\|_{\op}\le\frac{301}{304}<1.
+ \sup_{x\in[-1,0]}\|P(x)\|_{\op}\le\frac{25}{32}<1.
 \]
 Every pairwise-commuting real-symmetric quadratic polynomial satisfying the
 same four tangential constraints is identically $I_2$ and has leakage one.
@@ -508,28 +640,24 @@ same four tangential constraints is identically $I_2$ and has leakage one.
 
 \begin{proof}
 For the upper bound, put $x=t-1$ and express the leading principal minor and
-determinant of $I_2\pm P(t-1)$ in the Bernstein basis on $t\in[0,1]$.  The
-leading-minor coefficients are
+determinant of $(25/32)I_2\pm P(t-1)$ in the Bernstein basis on $t\in[0,1]$.
+The leading-minor coefficients are
 \[
- \left(\tfrac{153}{80},\tfrac{171}{160},\tfrac35\right),\qquad
- \left(\tfrac7{80},\tfrac{149}{160},\tfrac75\right),
+ \left(\tfrac{35}{48},\tfrac7{24},\tfrac7{48}\right),\qquad
+ \left(\tfrac56,\tfrac{61}{48},\tfrac{17}{12}\right),
 \]
 and the determinant coefficients are, respectively,
 \begin{align*}
- &\left(\tfrac{81}{256},\tfrac{1701}{10240},\tfrac{219}{2560},
-          \tfrac{441}{10240},\tfrac{27}{1280}\right),\\
- &\left(\tfrac{53}{1280},\tfrac{8389}{10240},\tfrac{783}{512},
-          \tfrac{21913}{10240},\tfrac{3371}{1280}\right).
+ &\left(\tfrac{1421}{1536},\tfrac{2597}{6144},\tfrac{4655}{27648},
+          \tfrac{931}{18432},0\right),\\
+ &\left(\tfrac1{16},\tfrac{1711}{3072},\tfrac{3835}{3456},
+          \tfrac{3707}{2304},\tfrac{1525}{768}\right).
 \end{align*}
-They are all positive, so both matrices are positive definite throughout the
-stopband.  Their trace Bernstein coefficients give the upper bounds
-$171/80$ and $529/160$.  For a positive $2$ by $2$ matrix $S$,
-$\lambda_{\min}(S)\ge\det(S)/\operatorname{tr}(S)$.  Consequently
-\[
- I_2-P(x)\succeq\frac3{304}I_2,\qquad
- I_2+P(x)\succeq\frac{53}{4232}I_2\succeq\frac3{304}I_2,
-\]
-which proves the norm bound.
+All are nonnegative and both leading minors are positive.  Sylvester's
+criterion therefore gives $(25/32)I_2\pm P(x)\succeq0$ throughout the
+stopband, proving the norm bound.  The zero final coefficient in the first
+determinant shows that the bound is attained at an endpoint rather than being
+a grid artifact.
 
 For the commuting class, apply Lemma~\ref{lem:commuting} with
 $M=4=d+N$.  Every scalar common-eigenbasis entry has three distinct roots of
@@ -548,33 +676,33 @@ Let $Q$ be a pairwise-commuting real-symmetric quadratic polynomial satisfying
 Then
 \[
  \sup_{x\in[-1,0]}\|Q(x)\|_{\op}
- \ge 1-\frac{425}{4}\delta.
+ \ge 1-60\delta.
 \]
-In particular, if $\delta<3/32300$, its leakage is strictly larger than the
-certified $301/304$ leakage of the noncommuting witness.
+In particular, if $\delta<7/1920$, its leakage is strictly larger than the
+certified $25/32$ leakage of the noncommuting witness.
 \end{proposition}
 
 \begin{proof}
 For any two distinct normalized targets $a,b$ in the tuple,
-$|a^\top b|^2\le9/10<(593/625)^2$.  For every unit vector $u$,
+$|a^\top b|^2\le9/10$.  Hence their two-column smallest singular value obeys
 \[
- |u^\top a|^2+|u^\top b|^2
- =u^\top(aa^\top+bb^\top)u
- \ge1-|a^\top b|>\frac{32}{625}.
+ \sigma_{\min}^2=1-|a^\top b|
+ \ge\frac{1-|a^\top b|^2}{2}\ge\frac1{20}>\frac1{25}.
 \]
-Thus at most one target has $|u^\top\widehat v_j|<4/25$.
+For every unit vector $u$, at least one member of any pair therefore has
+$|u^\top\widehat v_j|\ge1/(5\sqrt2)$.  Thus at most one target has smaller
+overlap.
 Simultaneously diagonalize $Q$ and fix a common unit eigenvector $u$, with
 scalar quadratic entry $q$.  Projecting the residual bound shows that at three
 distinct pass nodes
 \[
- |q(\lambda_j)-1|\le\frac{25}{4}\delta.
+ |q(\lambda_j)-1|\le5\sqrt2\,\delta.
 \]
 For each of the four possible three-node subsets of
-$\{1/2,1,3/2,2\}$, the sum of the absolute Lagrange weights at $x=0$ is,
-respectively, $7,5,5,$ or $17$.  Hence
-$|q(0)-1|\le(425/4)\delta$.  This holds for both common eigenvectors, so
-$\|Q(0)\|_{\op}\ge1-(425/4)\delta$.  Finally,
-$1-301/304=3/304$ gives the stated threshold.
+$\{1/2,1,3/2,7/2\}$, the sum of the absolute Lagrange weights at $x=0$ is
+at most eight.  Hence $|q(0)-1|\le40\sqrt2\delta<60\delta$.  This holds for
+both common eigenvectors, so $\|Q(0)\|_{\op}\ge1-60\delta$.  Finally,
+$1-25/32=7/32$ gives the stated threshold.
 \end{proof}
 
 The exact-arithmetic replay
@@ -585,30 +713,30 @@ rational robust-calibration constants without a numerical solver.
 \subsection{An exact five-tap MIMO FIR certificate}
 
 The quadratic witness has an exact causal FIR realization.  Substitute
-$x=(3\cos\omega+1)/2$ and define the palindromic taps
+$x=(9\cos\omega+5)/4$ and define the palindromic taps
 \[
- B_0=B_4=\begin{pmatrix}-27/128&0\\0&-27/1280\end{pmatrix},\quad
- B_1=B_3=\begin{pmatrix}27/64&9/80\\9/80&27/640\end{pmatrix},
+ B_0=B_4=\begin{pmatrix}-189/512&-189/512\\-189/512&-567/1024\end{pmatrix},
 \]
 \[
- B_2=\begin{pmatrix}113/320&-9/80\\-9/80&577/640\end{pmatrix}.
+ B_1=B_3=\begin{pmatrix}-63/128&-21/32\\-21/32&-21/64\end{pmatrix},\quad
+ B_2=\begin{pmatrix}-149/768&-665/768\\-665/768&-235/1536\end{pmatrix}.
 \]
 Their response obeys the exact identity
 \[
  \sum_{r=0}^{4}B_re^{-ir\omega}
  =e^{-2i\omega}\bigl(B_2+2B_1\cos\omega+2B_0\cos2\omega\bigr)
- =e^{-2i\omega}P\!\left(\frac{3\cos\omega+1}{2}\right).
+ =e^{-2i\omega}P\!\left(\frac{9\cos\omega+5}{4}\right).
 \]
 Consequently it preserves the four directions, up to their common delay
-phase, at cosine values $0,1/3,2/3,1$ and has operator norm at most $301/304$
-on $\omega\in[\arccos(-1/3),\pi]$.  Every commuting symmetric palindromic
+phase, at cosine values $-1/3,-1/9,1/9,1$ and has operator norm at most $25/32$
+on $\omega\in[\arccos(-5/9),\pi]$.  Every commuting symmetric palindromic
 five-tap response meeting the same four calibrations is the pure two-sample
 delay and has norm one.  Moreover $[B_0,B_1]\ne0$.  All statements, including
 the tap conversion, are checked by the same exact-arithmetic replay.  The same
 change of variables transfers Proposition~\ref{prop:robustquadratic}: if a
 commuting five-tap comparator obeys
 $\|e^{2i\omega_j}H(e^{i\omega_j})\widehat v_j-\widehat v_j\|_2\le\delta$,
-its high-frequency norm is at least $1-(425/4)\delta$.
+its high-frequency norm is at least $1-60\delta$.
 
 \subsection{An affine two-constraint precursor}
 
@@ -681,22 +809,26 @@ it does not merely report scalar amplitude growth.
 \toprule
 Iterations & Matrix stop/pass & Matrix $\sin\theta$ & Scalar pass error & Scalar $\sin\theta$\\
 \midrule
-$0$   & $5.0000$ & $0.9892$ & $0.0000$ & $0.9892$\\
-$1$   & $3.5776$ & $0.9719$ & $0.5616$ & $0.5568$\\
-$5$   & $2.4352$ & $0.9458$ & $0.7832$ & $0.9727$\\
-$20$  & $1.0318$ & $0.7755$ & $0.8018$ & $0.9871$\\
-$100$ & $0.0443$ & $0.0525$ & $0.8018$ & $0.9982$\\
+$0$  & $5.0000$ & $0.9918$ & $0.0000$ & $0.9918$\\
+$1$  & $2.2207$ & $0.9638$ & $0.7518$ & $0.7847$\\
+$5$  & $0.3752$ & $0.5622$ & $0.9195$ & $0.9802$\\
+$10$ & $0.0760$ & $0.1385$ & $0.9199$ & $0.9819$\\
+$20$ & $0.00434$ & $0.00810$ & $0.9199$ & $0.9820$\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The matrix pass error stays below $6\times10^{-16}$.  The scalar filter has
-stopband maximum $1/7$ and initially suppresses contamination much faster, but
-its pass multipliers are $(1,17/7,31/7,7)$; iteration consequently rotates the
-clean block away from the prescribed one.  The fair commuting comparator under
-all four exact tangential constraints is the identity and remains at stop/pass
-ratio $5$ and $\sin\theta=0.9892$.  This controlled construction demonstrates
-the theorem's error mechanism, not a runtime advantage on a natural problem.
+The matrix pass error is below $1.2\times10^{-10}$ through ten iterations and
+is $7.8\times10^{-4}$ at iteration 20 because floating-point errors are
+amplified outside the preserved directions; exact arithmetic preserves them.
+The scalar filter has stopband maximum $1/7$ and initially suppresses
+contamination much faster, but its pass multipliers are
+$(1,17/7,31/7,127/7)$; iteration consequently rotates the clean block away
+from the prescribed one.  The fair commuting comparator under all four exact
+tangential constraints is the identity and remains at stop/pass ratio $5$ and
+$\sin\theta=0.9918$.  This controlled construction demonstrates both the
+separation and its recurrence-conditioning limitation, not a runtime advantage
+on a natural problem.
 
 \subsection{A measured triaxial calibration and exact continuum certificate}
 
@@ -867,7 +999,7 @@ denoising does not justify the exact tangential specification, and no such
 application claim is made.  We retain this negative result to prevent selecting
 an example merely because it matches the theorem's notation.
 
-\section{Relation to established work and open gates}
+\section{Relation to established work and scope of the claim}
 
 Tangential matrix-polynomial interpolation is classical
 \cite{BallKang1990,Fuhrmann2010}.  Structured matrix-polynomial interpolation
@@ -913,20 +1045,25 @@ comparator.  Accordingly, fixed-length MIMO $H_\infty$ approximation, MIMO
 linear phase, operator-norm minimax design, and SDP are not claimed as new.
 
 The candidate novelty is therefore narrower than norm-constrained or
-degree-constrained tangential interpolation or FIR design alone.  Under a fixed
-ordinary degree---equivalently fixed reciprocal FIR latency---a
-three-channel Hermitian-coefficient tangential minimax problem can exhibit an exponential
+degree-constrained tangential interpolation or FIR design alone.  Under fixed
+ordinary degree---equivalently fixed reciprocal FIR latency---a three-channel
+Hermitian-coefficient tangential minimax problem exhibits an exponential
 separation between fully coupled coefficients and the full fixed-basis scalar
-subclass.  Before submission, these gates remain:
-\begin{enumerate}
-\item complete full-text checks of the closest polynomial, rational regional,
-      and linear-phase MIMO FIR results; the current clause-by-clause audit is
-      not a proof of priority;
-\item obtain an external adversarial review of the proof and of the claim that
-      the surviving conjunction is new.  The FDD invariance lemma and held-out
-      cospectral replay close the task-meaning gate at the preprocessing level,
-      but do not constitute a deployment or diagnostic study.
-\end{enumerate}
+subclass.  The new quantitative result also identifies the calibration scale:
+an exponentially small residual is sufficient for the constructed separation,
+whereas a universal scalar construction proves that an exponentially small
+residual can erase every such separation.  We have not found this two-sided
+law in the sources above.
+
+The complete texts of two close restricted papers---Fuhrmann (2010) and
+Stefanovski--Georgijevi\'c (2016)---could not be obtained.  Publisher portals,
+repository copies, metadata APIs, and independent network routes were checked.
+Their accessible statements already rule out broader novelty claims, but
+absence of a theorem from inaccessible text is not evidence of priority.  The
+claim is therefore limited to the displayed theorem and to the literature
+actually inspected.
+The FDD lemma and held-out replay support a preprocessing interpretation; they
+do not constitute a deployment or diagnostic study.
 
 \paragraph{Reproducibility.}
 The source and research ledger are in the

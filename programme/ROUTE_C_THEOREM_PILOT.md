@@ -1,5 +1,10 @@
 # Route C theorem pilot: tangential matrix filters
 
+> Historical note (10 August 2026): the constants and superexponential
+> perturbation in this pilot were superseded by `ROBUSTNESS_SCALE_THEOREM.md`
+> and the 15-page calibration-law manuscript.  This file is retained as a
+> research trace, not as the current theorem statement.
+
 Status: a strict noncommutative separation has been found.  It is a pilot, not
 yet a priority claim; tangential Nevanlinna--Pick and matrix interpolation are
 serious collision risks.

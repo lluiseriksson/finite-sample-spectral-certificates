@@ -1,7 +1,7 @@
 """Exact replay of the quadratic noncommuting-filter witness.
 
 All arithmetic is rational.  Positivity on the full stopband [-1, 0] is
-certified by positive Bernstein coefficients after the change x = t - 1.
+certified by nonnegative Bernstein coefficients after the change x = t - 1.
 No SDP solver or floating-point sampling enters the certificate.
 """
 
@@ -115,12 +115,12 @@ def matrix_scale(value: F, matrix: Matrix) -> Matrix:
 
 def main() -> None:
     coefficients: list[Matrix] = [
-        [[F(2, 5), F(-3, 16)], [F(-3, 16), F(29, 32)]],
-        [[F(15, 16), F(3, 20)], [F(3, 20), F(3, 32)]],
-        [[F(-3, 8), F()], [F(), F(-3, 80)]],
+        [[F(61, 96), F(7, 48)], [F(7, 48), F(61, 96)]],
+        [[F(7, 24), F(7, 48)], [F(7, 48), F(77, 96)]],
+        [[F(-7, 24), F(-7, 24)], [F(-7, 24), F(-7, 16)]],
     ]
-    pass_points = [F(1, 2), F(1), F(3, 2), F(2)]
-    targets = [[F(1), F(-2)], [F(1), F(-1)], [F(1), F(1)], [F(1), F(2)]]
+    pass_points = [F(1, 2), F(1), F(3, 2), F(7, 2)]
+    targets = [[F(1), F(2)], [F(0), F(1)], [F(-1), F(2)], [F(-1), F(1)]]
 
     # Exact tangential constraints and full spark in dimension two.
     for point, target in zip(pass_points, targets, strict=True):
@@ -140,21 +140,21 @@ def main() -> None:
                  multiply(coefficients[j], coefficients[i]))
         for i, j in combinations(range(3), 2)
     ]
-    expected_upper_right = [F(1053, 12800), F(-81, 1280), F(81, 1600)]
+    expected_upper_right = [F(343, 4608), F(-49, 2304), F(49, 384)]
     assert [commutator[0][1] for commutator in commutators] == expected_upper_right
     assert all(commutator != [[F(), F()], [F(), F()]] for commutator in commutators)
 
     p00 = [coefficient[0][0] for coefficient in coefficients]
     p01 = [coefficient[0][1] for coefficient in coefficients]
     p11 = [coefficient[1][1] for coefficient in coefficients]
-    one = [F(1), F(), F()]
+    operator_norm_upper = F(25, 32)
+    bound = [operator_norm_upper, F(), F()]
 
     bernstein_data: dict[str, dict[str, list[F]]] = {}
-    spectral_margins: list[F] = []
-    for label, sign in (("I-P", F(-1)), ("I+P", F(1))):
-        diagonal_00 = poly_add(one, poly_scale(sign, p00))
+    for label, sign in (("aI-P", F(-1)), ("aI+P", F(1))):
+        diagonal_00 = poly_add(bound, poly_scale(sign, p00))
         off_diagonal = poly_scale(sign, p01)
-        diagonal_11 = poly_add(one, poly_scale(sign, p11))
+        diagonal_11 = poly_add(bound, poly_scale(sign, p11))
         determinant = poly_add(
             poly_multiply(diagonal_00, diagonal_11),
             poly_scale(F(-1), poly_multiply(off_diagonal, off_diagonal)),
@@ -167,28 +167,22 @@ def main() -> None:
         }
         bernstein_data[label] = entries
         assert all(value > 0 for value in entries["leading_minor"])
-        assert all(value > 0 for value in entries["determinant"])
-        determinant_lower = min(entries["determinant"])
-        trace_upper = max(entries["trace"])
-        spectral_margins.append(determinant_lower / trace_upper)
+        assert all(value >= 0 for value in entries["determinant"])
 
-    assert bernstein_data["I-P"]["determinant"] == [
-        F(81, 256), F(1701, 10240), F(219, 2560), F(441, 10240), F(27, 1280)
+    assert bernstein_data["aI-P"]["determinant"] == [
+        F(1421, 1536), F(2597, 6144), F(4655, 27648), F(931, 18432), F(0)
     ]
-    assert bernstein_data["I+P"]["determinant"] == [
-        F(53, 1280), F(8389, 10240), F(783, 512), F(21913, 10240), F(3371, 1280)
+    assert bernstein_data["aI+P"]["determinant"] == [
+        F(1, 16), F(1711, 3072), F(3835, 3456), F(3707, 2304), F(1525, 768)
     ]
-    uniform_margin = min(spectral_margins)
-    assert spectral_margins == [F(3, 304), F(53, 4232)]
-    assert uniform_margin == F(3, 304)
-    operator_norm_upper = F(1) - uniform_margin
-    assert operator_norm_upper == F(301, 304) < 1
+    assert operator_norm_upper == F(25, 32) < 1
 
     # Robust commuting lower bound.  For normalized target directions, every
-    # pair has squared inner product at most 9/10.  Since
-    # sqrt(9/10) < 593/625, any unit common eigenvector has overlap at least
-    # m0=4/25 with at least three of the four targets.  The largest absolute
-    # Lagrange sum at x=0 over a three-node subset is exactly 17.
+    # pair has squared inner product at most 9/10.  Hence every pair has
+    # smallest singular value at least 1/5, and any unit common eigenvector has
+    # overlap at least 1/(5 sqrt(2)) with at least three targets.  We use
+    # sqrt(2)<3/2 to obtain the rational slope 60.  The largest absolute
+    # Lagrange sum at x=0 over a three-node subset is exactly 8.
     target_norm_squares = [sum(value * value for value in target) for target in targets]
     normalized_dot_squares = []
     for left, right in combinations(range(4), 2):
@@ -197,8 +191,9 @@ def main() -> None:
             dot * dot / (target_norm_squares[left] * target_norm_squares[right])
         )
     assert max(normalized_dot_squares) == F(9, 10)
-    assert F(9, 10) < F(593, 625) ** 2
-    overlap_floor = F(4, 25)
+    # 1-|dot| >= (1-|dot|^2)/2 >= 1/20 > 1/25.
+    assert (1 - max(normalized_dot_squares)) / 2 == F(1, 20) > F(1, 25)
+    full_spark_floor = F(1, 5)
     lagrange_sums = []
     for subset in combinations(pass_points, 3):
         weights = []
@@ -209,33 +204,33 @@ def main() -> None:
                 / ((node - others[0]) * (node - others[1]))
             )
         lagrange_sums.append(sum(abs(weight) for weight in weights))
-    assert sorted(lagrange_sums) == [F(5), F(5), F(7), F(17)]
-    robust_slope = max(lagrange_sums) / overlap_floor
-    robust_tolerance = uniform_margin / robust_slope
-    assert robust_slope == F(425, 4)
-    assert robust_tolerance == F(3, 32300)
+    assert sorted(lagrange_sums) == [F(11, 4), F(19, 5), F(7), F(8)]
+    assert full_spark_floor == F(1, 5)
+    robust_slope = F(60)
+    robust_tolerance = (F(1) - operator_norm_upper) / robust_slope
+    assert robust_tolerance == F(7, 1920)
 
     # Exact five-tap reciprocal linear-phase FIR realization.  Under
-    # x=(3y+1)/2 and y=cos(omega), P(x) becomes
+    # x=(9y+5)/4 and y=cos(omega), P(x) becomes
     # G(omega)=B_2+2 B_1 cos(omega)+2 B_0 cos(2 omega).  The causal response
     # with taps (B_0,B_1,B_2,B_1,B_0) is e^{-2 i omega}G(omega).
     c0, c1, c2 = coefficients
-    d0 = matrix_add(c0, matrix_scale(F(1, 2), c1), matrix_scale(F(1, 4), c2))
-    d1 = matrix_add(matrix_scale(F(3, 2), c1), matrix_scale(F(3, 2), c2))
-    d2 = matrix_scale(F(9, 4), c2)
+    d0 = matrix_add(c0, matrix_scale(F(5, 4), c1), matrix_scale(F(25, 16), c2))
+    d1 = matrix_add(matrix_scale(F(9, 4), c1), matrix_scale(F(45, 8), c2))
+    d2 = matrix_scale(F(81, 16), c2)
     tap_0 = matrix_scale(F(1, 4), d2)
     tap_1 = matrix_scale(F(1, 2), d1)
     tap_2 = matrix_add(d0, matrix_scale(F(1, 2), d2))
     taps = [tap_0, tap_1, tap_2, tap_1, tap_0]
     assert taps == [
-        [[F(-27, 128), F()], [F(), F(-27, 1280)]],
-        [[F(27, 64), F(9, 80)], [F(9, 80), F(27, 640)]],
-        [[F(113, 320), F(-9, 80)], [F(-9, 80), F(577, 640)]],
-        [[F(27, 64), F(9, 80)], [F(9, 80), F(27, 640)]],
-        [[F(-27, 128), F()], [F(), F(-27, 1280)]],
+        [[F(-189, 512), F(-189, 512)], [F(-189, 512), F(-567, 1024)]],
+        [[F(-63, 128), F(-21, 32)], [F(-21, 32), F(-21, 64)]],
+        [[F(-149, 768), F(-665, 768)], [F(-665, 768), F(-235, 1536)]],
+        [[F(-63, 128), F(-21, 32)], [F(-21, 32), F(-21, 64)]],
+        [[F(-189, 512), F(-189, 512)], [F(-189, 512), F(-567, 1024)]],
     ]
     for point, target in zip(pass_points, targets, strict=True):
-        cosine = (2 * point - 1) / 3
+        cosine = (4 * point - 5) / 9
         cosine_two = 2 * cosine * cosine - 1
         zero_phase = matrix_add(
             tap_2,
@@ -249,11 +244,11 @@ def main() -> None:
 
     print("PASS: 4 exact tangential constraints and all 2x2 target minors are nonzero")
     print("PASS: all three exact coefficient commutators are nonzero")
-    print("PASS: Bernstein certificates give I±P(x) >= (3/304) I on [-1,0]")
-    print("PASS: exact continuum operator-norm bound is 301/304 < 1")
+    print("PASS: Bernstein certificates give (25/32)I±P(x) >= 0 on [-1,0]")
+    print("PASS: exact continuum operator-norm bound is 25/32 < 1")
     print("PASS: every commuting symmetric degree-2 feasible filter is I by the root count")
-    print("PASS: approximate commuting leakage is at least 1-(425/4) delta")
-    print("PASS: strict separation survives every delta < 3/32300")
+    print("PASS: approximate commuting leakage is at least 1-60 delta")
+    print("PASS: strict separation survives every delta < 7/1920")
     print("PASS: exact palindromic five-tap MIMO FIR realization preserves all pass directions")
 
 

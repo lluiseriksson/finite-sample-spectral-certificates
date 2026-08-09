@@ -20,12 +20,12 @@ from pathlib import Path
 import numpy as np
 
 
-PASS_EIGENVALUES = np.array([0.5, 1.0, 1.5, 2.0])
-PASS_ROWS = np.array([[1.0, -2.0], [1.0, -1.0], [1.0, 1.0], [1.0, 2.0]])
+PASS_EIGENVALUES = np.array([0.5, 1.0, 1.5, 3.5])
+PASS_ROWS = np.array([[1.0, 2.0], [0.0, 1.0], [-1.0, 2.0], [-1.0, 1.0]])
 
-C0 = np.array([[2 / 5, -3 / 16], [-3 / 16, 29 / 32]])
-C1 = np.array([[15 / 16, 3 / 20], [3 / 20, 3 / 32]])
-C2 = np.array([[-3 / 8, 0.0], [0.0, -3 / 80]])
+C0 = np.array([[61 / 96, 7 / 48], [7 / 48, 61 / 96]])
+C1 = np.array([[7 / 24, 7 / 48], [7 / 48, 77 / 96]])
+C2 = np.array([[-7 / 24, -7 / 24], [-7 / 24, -7 / 16]])
 
 
 def matrix_polynomial(x: float) -> np.ndarray:
@@ -143,7 +143,7 @@ def run(n: int, seed: int, iterations: list[int]) -> dict[str, object]:
         "block_width": 2,
         "degree_per_iteration": 2,
         "initial_stop_to_pass_ratio": 5.0,
-        "exact_certificate_bound": 301 / 304,
+        "exact_certificate_bound": 25 / 32,
         "target_matrix_residual": float(target_matrix_residual),
         "empirical_matrix_stop_norm_10001_grid": float(empirical_matrix_stop_norm),
         "empirical_scalar_stop_max_10001_grid": empirical_scalar_stop_max,
@@ -167,7 +167,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dimension", type=int, default=256)
     parser.add_argument("--seed", type=int, default=20260809)
-    parser.add_argument("--iterations", type=int, nargs="+", default=[0, 1, 5, 20, 100])
+    parser.add_argument("--iterations", type=int, nargs="+", default=[0, 1, 5, 10, 20])
     parser.add_argument(
         "--output",
         type=Path,
