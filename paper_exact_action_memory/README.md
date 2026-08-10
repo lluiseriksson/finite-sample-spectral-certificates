@@ -6,6 +6,12 @@ McMillan degree under a prescribed subspace transfer, gives an explicit
 Blaschke--Potapov compiler, derives robust degree certificates, and exhibits a
 strict three-node cyclic memory cost invisible to pairwise tests.
 
+The manuscript also gives a theorem-level comparison with the preceding
+modal-delay paper.  That work classifies the continuous delay spectrum and
+proves minimum degree; this paper instead classifies every jointly feasible
+total-action/degree pair, including the complementary-return face and the
+discontinuous coincident-endpoint case.
+
 From the repository root, regenerate and independently verify the artifact:
 
 ```powershell

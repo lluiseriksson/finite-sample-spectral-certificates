@@ -117,11 +117,14 @@ projector formulation \cite[Sec.~IV.4]{Huang2026}.  Rank-one
 Blaschke--Potapov factorization and boundary all-pass interpolation are
 likewise classical \cite[Thm.~3.1]{AlpayJorgensenLewkowicz2016}
 \cite[Thms.~4.7, 5.1 and 8.2]{BolotnikovDym2006}
-\cite[Thm.~1 and Sec.~4.4]{BharathEtAl2023}.  To our knowledge, these
-ingredients have not previously been combined into an exact joint
-attainable region for arc-integrated trace delay and McMillan degree under a
-prescribed subspace transfer.  That conjunction, including both converses
-and all boundary cases, is the contribution here.
+\cite[Thm.~1 and Sec.~4.4]{BharathEtAl2023}.  General rational interpolation
+with stability and minimum-degree constraints is also classical
+\cite{BallKim1994}.  Within the sources compared in \cref{tab:precedent}, we
+did not find an exact joint attainable region for arc-integrated trace delay
+and McMillan degree under a prescribed subspace transfer.  That conjunction,
+including both converses and all boundary cases, is the contribution here;
+this is a scoped literature statement, not a claim that the surrounding
+interpolation theories are new.
 
 \begin{figure}[t]
  \centering
@@ -163,6 +166,9 @@ Potapov; Alpay et al.\ \cite{Potapov1955,AlpayJorgensenLewkowicz2016}
 Bolotnikov--Dym \cite{BolotnikovDym2006}
 & Matrix tangential boundary interpolation
 & Arc-integrated action and forward/return geometry \\
+Ball--Kim \cite{BallKim1994}
+& Stability and McMillan degree for rational interpolants
+& Inner subspace endpoints and a prescribed arc-action region \\
 Bharath et al.\ \cite{BharathEtAl2023}
 & All-pass design with nodewise group-delay optimization
 & Closed action--degree diamond and its two boundary compilers \\
@@ -172,6 +178,35 @@ Bharath et al.\ \cite{BharathEtAl2023}
 the listed ingredient; we are not aware of one containing the present joint
 attainable-region theorem.}
 \label{tab:precedent}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.23\linewidth}
+>{\raggedright\arraybackslash}p{0.33\linewidth}
+>{\raggedright\arraybackslash}p{0.34\linewidth}@{}}
+\toprule
+Question & Preceding paper \cite{ErikssonDelayRegions2026} & Present paper \\
+\midrule
+Continuous two-node data
+& Exact modal region $2\beta\prec_w q$ for absolutely continuous positive-generator paths
+& No new modal-profile claim; scalar trace action in the finite rational-inner class \\
+Rational two-node memory
+& Minimum degree $r$ and a construction on the lower face $A=2B$
+& Complete iff region in $(A,d)$, including the upper return face, all interior points and the discontinuous $B=0$ case \\
+Multi-node information
+& Pick--Wigner--Smith Gram/rank theorem for specified unitary values and local derivatives
+& Gauge-quotiented subspace corollary and an exact three-line cyclic obstruction; no new general Pick theorem \\
+Robust conclusion
+& Separate lower certificates for modal action and hidden-state rank
+& Joint feasibility/falsification for a proposed $(A,d)$ budget and a cycle-product null control \\
+\bottomrule
+\end{tabular}
+\caption{Theorem-level non-overlap with the immediately preceding paper.
+The earlier modal theorem is finer in spectral profile; the present theorem
+is stronger only in its exact coupling of total arc action to integer degree.}
+\label{tab:companion}
 \end{table}
 
 \section{Setup}
@@ -504,7 +539,8 @@ The certificate is deliberately one-sided.  It never substitutes point
 estimates for uncertainty sets, and therefore cannot overstate the required
 degree when the stated error bounds hold.  Standard perturbation bounds for
 projectors turn operator-norm error bars into lower principal-angle bounds;
-the preceding paper gives one such implementation.
+the preceding paper gives one such implementation
+\cite{ErikssonDelayRegions2026}.
 
 \section{Beyond two nodes: a cyclic memory invisible pairwise}
 
@@ -658,7 +694,7 @@ interpolation.
 
 Source, deterministic certificates, the independent verifier and the exact
 PDF are archived at
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.8-exact-action-memory-diamond}{the immutable GitHub release}.  The principal entry points are
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.9-action-memory-diamond-final}{the immutable GitHub release}.  The principal entry points are
 \path{research/exact_action_memory_certificate.py} and
 \path{verification/verify_exact_action_memory.py}.  The certificate
 contains deterministic seeds, tolerances and every reported diagnostic.
