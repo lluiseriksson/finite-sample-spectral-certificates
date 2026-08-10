@@ -23,5 +23,11 @@ paper_noncommuting/main.blg
 paper_noncommuting/main.log
 paper_noncommuting/main.out
 paper_noncommuting/main.pdf
+paper_quantum_reservoir/main.aux
+paper_quantum_reservoir/main.bbl
+paper_quantum_reservoir/main.blg
+paper_quantum_reservoir/main.log
+paper_quantum_reservoir/main.out
+paper_quantum_reservoir/main.pdf
 formal/.lake/
 pilot_primal_dual_equivalence.json

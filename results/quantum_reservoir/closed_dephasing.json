@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "model": "six-input Markov Gaussian pure dephasing with three excess-noise inputs and three vacuum auxiliary inputs",
+  "alpha": 0.45,
+  "vacuum_identity": "G G* + L L* = I, so V_out = I/2 + G J G*",
+  "maximum_covariance_identity_residual": 1.4577235881928915e-14,
+  "normalization": "j_minus = j_plus = 1; kappa_0 is the independently calibrated vacuum rate",
+  "records": [
+    {
+      "order": 5,
+      "stopband_signal_norm": 0.12688304218311544,
+      "vacuum_baselines_over_j": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "certified_total_rate_advantages": [
+        62.11447720473897,
+        61.73721119272796,
+        58.54038619789776,
+        38.69834641452519
+      ]
+    },
+    {
+      "order": 7,
+      "stopband_signal_norm": 0.06245251499985568,
+      "vacuum_baselines_over_j": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "certified_total_rate_advantages": [
+        256.38944088737543,
+        250.00521022462198,
+        204.27251453736855,
+        72.66021536762713
+      ]
+    },
+    {
+      "order": 9,
+      "stopband_signal_norm": 0.029898699810755068,
+      "vacuum_baselines_over_j": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "certified_total_rate_advantages": [
+        1118.6530070729864,
+        1006.2054024547813,
+        528.5299935108646,
+        92.71216093393261
+      ]
+    },
+    {
+      "order": 11,
+      "stopband_signal_norm": 0.014017310725432995,
+      "vacuum_baselines_over_j": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "certified_total_rate_advantages": [
+        5089.447032270608,
+        3373.1892004314996,
+        836.617258070352,
+        99.05374253996753
+      ]
+    },
+    {
+      "order": 15,
+      "stopband_signal_norm": 0.002939835782200014,
+      "vacuum_baselines_over_j": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "certified_total_rate_advantages": [
+        115705.46093637068,
+        9205.410060986747,
+        992.4228520930502,
+        100.91278476922993
+      ]
+    },
+    {
+      "order": 19,
+      "stopband_signal_norm": 0.0005894926019990597,
+      "vacuum_baselines_over_j": [
+        0.0,
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "certified_total_rate_advantages": [
+        2877685.1897528726,
+        9966.366723368983,
+        1000.6522718067389,
+        100.99649035652975
+      ]
+    }
+  ]
+}
