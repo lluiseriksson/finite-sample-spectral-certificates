@@ -32,8 +32,15 @@ def compare(expected: object, observed: object, location: str = "root") -> None:
         if observed != expected:
             raise RuntimeError(f"replay mismatch at {location}: {observed!r} != {expected!r}")
     elif isinstance(expected, (int, float)):
+        # QUADPACK's error estimate is heuristic and may differ slightly across
+        # SciPy/libm builds even when the integral itself agrees to high precision.
+        absolute_tolerance = (
+            5.0e-10
+            if location.endswith("wigner_smith_quadrature_error_over_2pi")
+            else 2.0e-12
+        )
         if not isinstance(observed, (int, float)) or not math.isclose(
-            float(observed), float(expected), rel_tol=2.0e-9, abs_tol=2.0e-12
+            float(observed), float(expected), rel_tol=2.0e-9, abs_tol=absolute_tolerance
         ):
             raise RuntimeError(f"numeric replay mismatch at {location}: {observed!r} != {expected!r}")
     elif isinstance(expected, list):
