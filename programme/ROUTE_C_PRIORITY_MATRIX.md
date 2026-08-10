@@ -10,23 +10,26 @@ identified; that assessment does not eliminate this priority uncertainty.
 ## Candidate theorem delta
 
 At ordinary polynomial degree `N` and fixed channel dimension `d=3`,
-full-spark tangential calibrations can force every pairwise-commuting real
-symmetric coefficient polynomial to equal the identity, while an explicitly
-constructed noncommuting symmetric polynomial has real-stopband operator norm
-`O(exp(-cN))`.  After an affine cosine substitution, the same statement is a
-fixed-latency separation between reciprocal linear-phase MIMO FIR filters and
-a fixed orthogonal bank of scalar linear-phase FIR filters.
+full-spark tangential calibrations force every real-symmetric coefficient
+family with a common nontrivial invariant channel subspace to have leakage at
+least one, while an explicitly constructed irreducible symmetric polynomial
+has real-stopband operator norm `O(exp(-cN))`.  This reducible comparator is
+strictly larger than the pairwise-commuting class: it permits a fully
+noncommuting `2 x 2` block beside one invariant scalar channel.  A sampled
+off-block defect gives a robust lower bound for approximately reducible
+filters.  After an affine cosine substitution, the same statement is a
+fixed-latency separation for reciprocal linear-phase MIMO FIR filters.
 
 ## Clause-by-clause comparison
 
 | Source | Interpolant/domain | Complexity notion | Regional norm conclusion | Symmetry / comparator | Collision decision | Access actually checked |
 |---|---|---|---|---|---|---|
 | Ball--Kang (1990) | Matrix polynomials; tangential Lagrange--Sylvester data | Low McMillan degree | No regional minimax bound in the theorem-equivalent dissertation chapter | No Hermitian commuting lower bound | Kills novelty of low-degree tangential polynomial construction, not the stated separation | Kang's full 1990 dissertation, Ch. III, read; it states its main results also appear in Ball--Kang.  The journal pagination itself remains inaccessible |
-| Fuhrmann (2010) | Polynomial and rational matrix tangential interpolation | Algebraic degree/realization structure | No regional minimax theorem in the abstract/portal record | No commuting comparison located | Kills novelty of the interpolation formalism | Institutional record read; OpenAlex exposes a publisher PDF URL, but ScienceDirect returns a Cloudflare error and no repository manuscript was found |
+| Fuhrmann (2010) | Polynomial and rational matrix tangential interpolation | Algebraic degree/realization structure | No regional minimax theorem in the abstract/portal record | No invariant-subspace comparator located | Kills novelty of the interpolation formalism | Institutional record read; OpenAlex exposes a publisher PDF URL, but ScienceDirect returns a Cloudflare error and no repository manuscript was found |
 | Alpay--Lewkowicz (2014), Props. 3.1, 6.1--6.2 and Sec. 9(v) | Matrix-polynomial interpolation with Hermitian, positive-semidefinite and related symmetries | Minimal polynomial degree, sometimes reduced through structured vanishing corrections | Positivity/Hermiticity on the imaginary axis, not stopband norm minimization | Structured full matrix-value data; tangential structured interpolation is explicitly left as future work | Kills novelty of structured/Hermitian matrix-polynomial interpolation, but not the tangential commuting-class separation | Complete 20-page arXiv text inspected, including construction, minimal-degree propositions and future-work clause |
 | Blomqvist--Lindquist--Nagamune (2003) | Matrix Nevanlinna--Pick interpolation on the disk | Rational complexity constraint | Schur/positive-real norm control | No fixed ordinary degree or commuting lower bound located | Kills broad “norm + interpolation + complexity is new” language | Abstract and bibliographic record |
 | Kuroiwa--Lindquist (2006), Thms. 1 and 3, Sec. 3.4 | Bitangential positive-real analytic interpolation on the disk | McMillan degree at most `2(n_l+n_r)`; lower degree through restricted `Psi` | Feasibility via a Pick/positive sequence condition and a unique convex optimizer for positive `Psi` | No Hermitian real-interval polynomial or commuting comparison | Closest degree-constrained analytic interpolation result; does not imply the fixed-degree separation found here | Full conference PDF read |
-| Stefanovski--Georgijević (2016), Problem 1 and Thm. 1 | Real stable rational matrix with bitangential constraints | Rational order may grow | For every `gamma>0`, norm below `gamma` on a closed proper frequency region | No Hermitian coefficient restriction or commuting comparator | Fatal to claiming that arbitrarily small regional norm under tangential constraints is new; surviving delta is fixed order/latency plus the comparator lower bound | Primary publisher HTML sections read; publisher PDF blocked by CAPTCHA, so proof-level audit remains open |
+| Stefanovski--Georgijević (2016), Problem 1 and Thm. 1 | Real stable rational matrix with bitangential constraints | Rational order may grow | For every `gamma>0`, norm below `gamma` on a closed proper frequency region | No Hermitian coefficient restriction or reducibility comparator | Fatal to claiming that arbitrarily small regional norm under tangential constraints is new; surviving delta is fixed order/latency plus the comparator lower bound | Primary publisher HTML sections read; publisher PDF blocked by CAPTCHA, so proof-level audit remains open |
 | Toh--Trefethen (1998) | Scalar polynomial `p(A)` | Ordinary polynomial degree | Matrix-operator minimax/Chebyshev problem | Same scalar polynomial, not matrix taps | Kills novelty of SDP/minimax polynomial filtering | Full theorem metadata and established paper scope |
 | Gama--Marques--Ribeiro--Leus (2018), Eqs. (5)--(7) | MIMO graph filter `Y=sum S^k X H_k^T` | Number of graph taps | Learnt/parametric filtering, not the present interval minimax theorem | General MIMO taps and parsimonious variants; no commuting obstruction | Establishes the natural multichannel polynomial-filter class, not the separation | Full arXiv PDF read |
 | Wu--Boyd--Vandenberghe (1998) | Scalar FIR frequency response | FIR order | Convex/minimax spectral-mask design | Scalar filters; no tangential channel signatures | Kills novelty of convex FIR design and scalar stopband optimization | Author-hosted bibliographic page and standard chapter scope |
@@ -59,7 +62,7 @@ priority.  On 2026-08-09 the following independent routes were checked:
 Thus the audit can already rule out broad claims of first tangential polynomial
 interpolation or first arbitrarily small regional norm.  It cannot yet certify
 that neither proof contains an implicit fixed-ordinary-degree,
-Hermitian-coefficient or commuting-comparator specialization.
+  Hermitian-coefficient or invariant-subspace-comparator specialization.
 
 ## What survives the audit so far
 
@@ -68,14 +71,16 @@ The following conjunction has not been found in the checked sources:
 1. fixed **ordinary** degree, equivalently fixed FIR latency and tap count;
 2. real symmetric/Hermitian matrix coefficients and exact directional pass
    calibrations;
-3. a full pairwise-commuting comparator, equivalently one fixed orthogonal bank
-   of scalar filters;
-4. an explicit exponential upper/lower separation with only three channels;
+3. the full reducible real-symmetric comparator in three channels, including a
+   noncommuting `2 x 2` block and strictly containing fixed-basis scalar banks;
+4. an explicit exponential upper/lower irreducibility separation with only
+   three channels;
 5. a two-sided exponential calibration law: rational signatures and a robust
-   commuting lower bound at `exp(-O(N))`, together with a universal scalar
+   lower bound in calibration error plus sampled off-block coupling at
+   `exp(-O(N))`, together with a universal scalar
    `exp(-2N/81)` barrier ruling out constant tolerance; and
 6. an exact rational five-tap certificate with leakage `25/32` whose finite
-   gap survives commuting calibration residuals `delta < 7/1920`.
+   gap survives reducible calibration residuals `delta < 7/1920`.
 
 Each ingredient separately is close to classical work.  Priority, if it
 survives, belongs only to their theorem-level conjunction.  Gate G1's priority

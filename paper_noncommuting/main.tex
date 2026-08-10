@@ -24,8 +24,8 @@
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\Span}{\operatorname{span}}
 
-\title{Exponential Calibration Laws for Noncommuting\\
-       Matrix-Polynomial and Linear-Phase MIMO FIR Filters}
+\title{Irreducible Channel Mixing and Exponential Calibration Laws\\
+       for Matrix-Polynomial and Linear-Phase MIMO FIR Filters}
 \author{Lluis Eriksson}
 \date{10 August 2026}
 
@@ -39,21 +39,25 @@ amount to independent scalar filters after a fixed channel rotation.  We study
 the larger class of Hermitian matrix-polynomial filters under tangential pass
 constraints.  Already at fixed channel dimension $d=3$, we construct
 rationally generated signatures with quantitative full-spark margin for which
-a symmetric noncommuting filter has stopband leakage $O(e^{-cN})$, whereas
-every exactly feasible pairwise-commuting symmetric filter is the identity.
-The signature margin and the admissible commuting calibration error are both
-$e^{-O(N)}$, not $e^{-N^3}$.  This exponential scale is unavoidable: for
+an irreducible symmetric filter has stopband leakage $O(e^{-cN})$.  In contrast,
+every exactly calibrated symmetric coefficient family with any common
+nontrivial invariant channel subspace has leakage at least one; this comparator
+strictly contains the pairwise-commuting class and permits a fully
+noncommutative $2$ by $2$ block.  A quantitative theorem covers approximately
+reducible filters by charging their sampled off-block coupling together with
+calibration error.  The signature margin and the admissible combined error are
+both $e^{-O(N)}$, not $e^{-N^3}$.  This exponential scale is unavoidable: for
 arbitrary pass nodes and signatures in the same separated bands, an explicit
 scalar binomial-tail polynomial has both pass error and stopband leakage at
 most $e^{-2N/81}$.  Thus constant-error separation is impossible, while the
-noncommuting construction achieves the correct exponential scale class.  An
+irreducible construction achieves the correct exponential scale class.  An
 affine cosine substitution gives the same robust law for fixed-latency
 reciprocal linear-phase MIMO FIR filters.  We also give an exact
 rational five-tap certificate with stopband norm at most $25/32$ and prove
-that its advantage survives commuting calibration errors
+that its advantage survives reducible calibration errors
 $\delta<7/1920$.  A second exact-arithmetic certificate is calibrated from a
 public triaxial pump-vibration data set: it gives leakage below $0.96$ versus
-one for the exactly calibrated commuting class, while its maximum directional
+one for every exactly calibrated reducible symmetric class, while its maximum directional
 error on six held-out records is $0.00385$.  In a frequency-domain-decomposition
 test on the frozen held-out cospectra, filtering rotates the leading modal
 direction by at most $0.222^\circ$ and changes its leading spectral ordinate by
@@ -61,7 +65,7 @@ at most $2.4\times10^{-5}$ relatively.  Numerical programs test the mechanism
 and expose an ordinary graph-denoising setting in which scalar Chebyshev
 filtering is instead preferable.  Tangential matrix interpolation, MIMO
 filtering, scalar two-band approximation and convex FIR design are not claimed
-as new; the contribution is the fixed-order commuting/noncommuting separation
+as new; the contribution is the fixed-order reducible/irreducible separation
 together with its two-sided calibration scale.
 \end{abstract}
 
@@ -82,22 +86,36 @@ The leakage is
 \end{equation}
 The coefficients will always be real symmetric.  They need not commute.
 
-The comparator is the pairwise-commuting subclass.  Such coefficients admit a
-common orthogonal eigenbasis, so a fixed channel rotation turns $P$ into a
-diagonal collection of scalar filters.  The question is whether allowing the
-channel mixing to depend on polynomial degree can reduce \eqref{eq:leakage}
-under the same pass constraints, and at what calibration-error scale that
-comparison remains meaningful.  For unit signatures define
+The principal comparator is now the larger \emph{reducible} subclass: the
+coefficient matrices have a common nonzero proper invariant channel subspace.
+In three dimensions, symmetry makes this equivalent to having a common
+invariant line, possibly beside a fully coupled, noncommuting $2$ by $2$ block.
+Pairwise-commuting coefficients form a strict subfamily: they admit a complete
+common orthogonal eigenbasis and reduce to scalar filters after a fixed channel
+rotation.  The question is whether genuinely irreducible channel mixing can
+reduce \eqref{eq:leakage} under the same pass constraints, and at what combined
+calibration/reducibility-error scale that comparison remains meaningful.  For
+unit signatures define
 \[
  \gamma(v_1,\ldots,v_M)
  =\min_{|J|=3}\sigma_{\min}\bigl([v_j]_{j\in J}\bigr).
 \]
 
+For a unit direction $u$ and a real-symmetric polynomial $Q$, also define its
+sampled off-block coupling
+\begin{equation}\label{eq:betadef}
+ \beta_u(Q)=\max_j\|(I-uu^\top)Q(\lambda_j)u\|_2.
+\end{equation}
+It vanishes when the coefficients share the invariant line $\R u$; conversely,
+because there are more pass nodes than the degree, vanishing at all pass nodes
+forces that common invariant line.  Thus $\beta_u$ is a directly evaluable
+relaxation of reducibility, rather than a commutator surrogate.
+
 Our answer is an exponential calibration law.  The input signatures are full
-spark and have an explicit $e^{-O(N)}$ lower margin.  This makes the commuting
-obstruction quantitative under $e^{-O(N)}$ residuals, while a separate scalar
-construction proves that no asymptotic advantage can survive calibration
-errors bounded below independently of $N$.
+spark and have an explicit $e^{-O(N)}$ lower margin.  This makes the reducible
+obstruction quantitative under $e^{-O(N)}$ calibration and off-block errors,
+while a separate scalar construction proves that no asymptotic advantage can
+survive calibration errors bounded below independently of $N$.
 
 \section{Main separation theorem}
 
@@ -118,49 +136,78 @@ matrices satisfying \eqref{eq:tangential} and
 \[
   \rho(P_N)\le C e^{-cN}.
 \]
-\item If a degree-$N$ polynomial $Q_N$ has pairwise-commuting real symmetric
-coefficient matrices and satisfies the same tangential constraints, then
-$Q_N(x)=I_d$ for every $x$.  In particular, $\rho(Q_N)=1$.
-\item More generally, if such a commuting $Q_N$ obeys
+\item If a degree-$N$ polynomial $Q_N$ has real-symmetric coefficients with a
+common nonzero proper invariant subspace and satisfies the same tangential
+constraints, then $\rho(Q_N)\ge1$.  If its coefficients commute pairwise, then
+the stronger conclusion $Q_N(x)=I_d$ holds for every $x$.
+\item More generally, let $Q_N$ be any degree-$N$ real-symmetric polynomial
+obeying
 \[
  \max_j\|(Q_N(\lambda_j)-I)v_j\|_2\le\delta,
 \]
-then, with $L_N=(24e/5)^N$,
+Then, for every unit $u\in\R^3$, with $L_N=(24e/5)^N$,
 \begin{equation}\label{eq:robustmain}
- \rho(Q_N)\ge1-\frac{\sqrt3L_N}{\underline\gamma_N}\,\delta.
+ \rho(Q_N)\ge1-\frac{\sqrt3L_N}{\underline\gamma_N}
+       \bigl(\delta+\beta_u(Q_N)\bigr).
 \end{equation}
 Consequently $\rho(Q_N)\ge3/4$ whenever
-$\delta\le\underline\gamma_N/(4\sqrt3L_N)$.
+$\delta+\beta_u(Q_N)\le\underline\gamma_N/(4\sqrt3L_N)$ for some $u$.
 \end{enumerate}
-For every $N\ge N_0$, the coefficient matrices of $P_N$ cannot
-commute pairwise.
+For every $N\ge N_0$, the coefficient matrices of $P_N$ are irreducible over
+$\R$; in particular, they cannot commute pairwise.
 \end{theorem}
 
-The admissible error in the third item is $e^{-O(N)}$.  We split the proof into
-an obstruction, a small-leakage base construction, a quantitatively full-spark
-rational perturbation, and a matching scale obstruction.
+The admissible combined error in the third item is $e^{-O(N)}$.  We split the
+proof into an invariant-line obstruction, a small-leakage base construction, a
+quantitatively full-spark rational perturbation, and a matching scale
+obstruction.
 
-\subsection{The commuting obstruction}
+\subsection{The invariant-line obstruction}
 
-\begin{lemma}\label{lem:commuting}
+\begin{lemma}[Exact invariant-line obstruction]\label{lem:commuting}
 Let $M\ge d+N$, let the $\lambda_j$ be distinct, and let the $v_j\in\R^d$ be
-full spark.  If $Q(x)=\sum_{k=0}^{N}D_kx^k$ has pairwise-commuting real
-symmetric coefficients and $Q(\lambda_j)v_j=v_j$ for every $j$, then $Q=I_d$.
+full spark.  If $Q(x)=\sum_{k=0}^{N}D_kx^k$ has real-symmetric coefficients
+with a common unit eigenvector $u$ and $Q(\lambda_j)v_j=v_j$ for every $j$,
+then $u^\top Q(x)u=1$ for every $x$ and $\rho(Q)\ge1$ whenever $0$ belongs to
+the stopband.  If the coefficients commute pairwise, then $Q=I_d$.
 \end{lemma}
 
 \begin{proof}
-The matrices $D_k$ have a common orthonormal eigenbasis $u_1,\ldots,u_d$.
-Write $q_r(x)$ for the scalar degree-$N$ polynomial induced by $Q(x)$ on
-$u_r$.  Taking the $u_r$ component of the $j$th interpolation constraint gives
+Write $q(x)=u^\top Q(x)u$.  The common-eigenvector assumption and symmetry give
+$Q(x)u=q(x)u$.  Taking the $u$ component of the $j$th interpolation constraint gives
 \[
-  (q_r(\lambda_j)-1)\langle u_r,v_j\rangle=0.
+  (q(\lambda_j)-1)\langle u,v_j\rangle=0.
 \]
 A nonzero vector can be orthogonal to at most $d-1$ of the full-spark targets:
 otherwise $d$ targets would lie in the $(d-1)$-dimensional hyperplane
-$u_r^\perp$ and could not span $\R^d$.  Thus at least
-$M-d+1\ge N+1$ distinct values of $\lambda_j$ are roots of $q_r-1$.
-Consequently $q_r=1$.  This holds for every $r$, so $Q=I_d$.
+$u^\perp$ and could not span $\R^d$.  Thus at least
+$M-d+1\ge N+1$ distinct values of $\lambda_j$ are roots of $q-1$.
+Consequently $q=1$, and $\|Q(0)\|_{\op}\ge|u^\top Q(0)u|=1$.
+
+If the coefficients commute pairwise, simultaneous orthogonal diagonalization
+supplies a common eigenbasis.  Applying the preceding argument to every basis
+vector makes every diagonal scalar entry equal to one, hence $Q=I_d$.
 \end{proof}
+
+For completeness, $\beta_u(Q)=0$ at the $M>N$ distinct pass nodes is not merely
+a sampled coincidence.  For every $z\perp u$, the scalar polynomial
+$z^\top Q(x)u$ has degree at most $N$ and vanishes at all those nodes, hence is
+identically zero.  Therefore every coefficient preserves $\R u$.  The
+root-count implication used here and in Lemma~\ref{lem:commuting} is separately
+kernel-checked in Lean/mathlib, without user axioms or admitted goals, in
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/formal/SpectralCertificates/RootCount.lean}{the formal replay}.  The geometric full-spark count and the quantitative
+analytic estimates remain conventional proofs, not formalized claims.
+
+The enlargement over the old comparator is strict.  For example, coefficient
+matrices of the form
+\[
+ D_k=a_k\oplus B_k,\qquad
+ B_0=\begin{pmatrix}0&0\\0&1\end{pmatrix},\quad
+ B_1=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\]
+share the first coordinate line but need not commute because
+$[B_0,B_1]\ne0$.  Lemma~\ref{lem:commuting} still forces the scalar branch
+along that line to equal one, which alone gives the leakage lower bound.
 
 \subsection{A three-channel diagonal base filter}
 
@@ -399,24 +446,32 @@ $e^{-cN}$ is at most $2^{(71-14N)/3}\le2^{-9}$ for $N\ge7$.
 Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
 \end{proof}
 
-\begin{lemma}[Quantitative commuting obstruction]\label{lem:robustcommuting}
-For the nodes and signatures above, let $Q$ be a degree-$N$ polynomial with
-pairwise-commuting real-symmetric coefficients and suppose
+\begin{lemma}[Quantitative near-reducibility obstruction]\label{lem:robustcommuting}
+For the nodes and signatures above, let $Q$ be any degree-$N$ polynomial with
+real-symmetric coefficients and suppose
 \[
  \max_j\|(Q(\lambda_j)-I)v_j\|_2\le\delta.
 \]
-Then \eqref{eq:robustmain} holds.
+Then \eqref{eq:robustmain} holds for every unit $u\in\R^3$.
 \end{lemma}
 
 \begin{proof}
-Simultaneously diagonalize the coefficients and fix a common unit eigenvector
-$u$, with scalar polynomial $q$.  If three signatures all had
+Fix a unit vector $u$ and put $q(x)=u^\top Q(x)u$.  At each pass node set
+$r_j=(I-uu^\top)Q(\lambda_j)u$.  Symmetry and the orthogonal decomposition of
+$v_j$ give
+\[
+ u^\top(Q(\lambda_j)-I)v_j
+ =(q(\lambda_j)-1)u^\top v_j+r_j^\top(I-uu^\top)v_j.
+\]
+The left-hand side has magnitude at most $\delta$, while
+$\|r_j\|_2\le\beta_u(Q)$.  If three signatures all had
 $|u^\top v_j|<\underline\gamma_N/\sqrt3$, then the Euclidean norm of the
 three overlaps would be below $\underline\gamma_N$, contradicting
 \eqref{eq:gammafloor}.  Thus at most two signatures have such a small overlap,
 and at $N+1$ distinct nodes
 \[
- |q(\lambda_j)-1|\le\frac{\sqrt3\delta}{\underline\gamma_N}.
+ |q(\lambda_j)-1|
+ \le\frac{\sqrt3(\delta+\beta_u(Q))}{\underline\gamma_N}.
 \]
 For any selected $N+1$ nodes, ordered increasingly, their separation is at
 least $5/(6S)$.  The sum of the absolute degree-$N$ Lagrange cardinal values
@@ -426,19 +481,23 @@ at zero is at most
  \le\left(\frac{24e}{5}\right)^N=L_N,
 \]
 where $S/N\le4/7$ for $N\ge7$.  Hence
-$|q(0)-1|\le\sqrt3L_N\delta/\underline\gamma_N$.  Applying this to the common
-eigenbasis gives \eqref{eq:robustmain} because $0\in I_-$.
+$|q(0)-1|\le\sqrt3L_N(\delta+\beta_u(Q))/\underline\gamma_N$.
+Finally $\|Q(0)\|_{\op}\ge|u^\top Q(0)u|=|q(0)|$, and $0\in I_-$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main}]
 The normalized and unnormalized interpolation constraints are equivalent.
 Combine Lemmas~\ref{lem:base}, \ref{lem:fullspark}, and \ref{lem:stability}.
 The first conclusion holds with $C=C_0+1$ and the $c>0$ of
-Lemma~\ref{lem:base}.  The second conclusion is Lemma~\ref{lem:commuting}.
+Lemma~\ref{lem:base}.  For the second conclusion, a common nontrivial invariant
+subspace of symmetric $3$ by $3$ matrices yields a common invariant line: use
+the subspace itself if it is one-dimensional and its invariant orthogonal
+complement otherwise.  Lemma~\ref{lem:commuting} then gives leakage at least
+one, and gives the identity conclusion in the commuting subcase.
 The third is Lemma~\ref{lem:robustcommuting}.  Choose $N_0\ge7$ so that
 $Ce^{-cN_0}<3/4$.  Then the constructed coefficients cannot commute pairwise
-for $N\ge N_0$, and the robust comparison is strict at the displayed
-calibration radius.
+or have any common nontrivial invariant subspace for $N\ge N_0$, and the
+robust comparison is strict at the displayed combined-error radius.
 \end{proof}
 
 \subsection{Why the exponential calibration scale is unavoidable}
@@ -571,11 +630,18 @@ $v_j\in\R^{3}$ for which a causal response of the form
        \|H_N(e^{i\omega})\|_{\op}\le Ce^{-cN}.
 \]
 Every response with the same real-symmetric palindromic tap structure whose
-taps commute pairwise and which satisfies the same calibrations is the pure
-delay $e^{-iN\omega}I$.  Its high-frequency norm is one.
-If its phase-corrected calibration residual is at most $\delta$, its
-high-frequency norm is at least the right-hand side of
-\eqref{eq:robustmain}.  Conversely, for arbitrary calibration directions and
+taps have a common nontrivial invariant channel subspace and which satisfies
+the same calibrations has high-frequency norm at least one.  If the taps
+commute pairwise, it is the pure delay $e^{-iN\omega}I$.
+More generally, put $G(\omega)=e^{iN\omega}H(e^{i\omega})$ and
+\[
+ \beta_u^{\rm FIR}(H)=
+ \max_j\|(I-uu^\top)G(\omega_j)u\|_2.
+\]
+For any symmetric palindromic comparator with phase-corrected calibration
+residual at most $\delta$, its high-frequency norm is at least the right-hand
+side of \eqref{eq:robustmain} with $\beta_u(Q_N)$ replaced by
+$\beta_u^{\rm FIR}(H)$.  Conversely, for arbitrary calibration directions and
 frequencies in the same pass range, there is a scalar palindromic response with
 both phase-corrected pass error and high-frequency norm at most $e^{-2N/81}$.
 \end{corollary}
@@ -588,19 +654,22 @@ Equation~\eqref{eq:firresponse} gives the calibration and transfers the norm
 bound unchanged.  The affine substitution is invertible on coefficient
 spaces, as is the change between powers of $\cos\omega$ and the cosine basis.
 Thus the transformed coefficient matrices commute pairwise exactly when the
-original polynomial coefficients do.  Palindromy makes the FIR taps an
+original polynomial coefficients do, and the invertible coefficient changes
+preserve common invariant subspaces.  Palindromy makes the FIR taps an
 invertible relabelling and rescaling of the cosine coefficients.  Applying
-Lemma~\ref{lem:commuting} therefore forces the zero-phase response to be $I$.
-Lemma~\ref{lem:robustcommuting} transfers the residual bound, and
+Lemma~\ref{lem:commuting} therefore forces a unit-gain scalar branch for every
+reducible response and the full identity in the commuting subcase.
+Lemma~\ref{lem:robustcommuting} transfers both residual and off-block bounds, and
 Proposition~\ref{prop:scalarbarrier} transfers the universal scalar response.
 \end{proof}
 
-A fixed orthogonal channel rotation diagonalizes commuting symmetric taps, so
-the comparator in Corollary~\ref{cor:fir} is precisely a bank of independent scalar
-linear-phase filters in one frequency-independent channel basis.  The result
-does not compare implementation cost, quantization robustness, or unconstrained
-MIMO filters, and the calibrated directions are constructed rather than taken
-from a deployed system.
+The reducible comparator in Corollary~\ref{cor:fir} is strictly broader than a
+bank of scalar linear-phase filters in one fixed basis: it also allows an
+arbitrary coupled, noncommuting $2$ by $2$ symmetric block beside the protected
+scalar branch.  The result does not compare implementation cost, quantization
+robustness, rational/state-space filters, or nonsymmetric MIMO filters, and the
+asymptotic calibrated directions are constructed rather than taken from a
+deployed system.
 
 \section{Exact finite witnesses}
 
@@ -667,19 +736,20 @@ $q-1$ and is identically one.
 The gap is stable under imperfect calibration.  Write
 $\widehat v_j=v_j/\|v_j\|_2$.
 
-\begin{proposition}[Robust commuting obstruction]\label{prop:robustquadratic}
-Let $Q$ be a pairwise-commuting real-symmetric quadratic polynomial satisfying
+\begin{proposition}[Robust near-reducibility obstruction]\label{prop:robustquadratic}
+Let $Q$ be any real-symmetric quadratic polynomial satisfying
 \[
  \|Q(\lambda_j)\widehat v_j-\widehat v_j\|_2\le\delta,
  \qquad j=1,\ldots,4.
 \]
-Then
+For every unit $u\in\R^2$, define $\beta_u(Q)$ by \eqref{eq:betadef}.  Then
 \[
  \sup_{x\in[-1,0]}\|Q(x)\|_{\op}
- \ge 1-60\delta.
+ \ge 1-60\bigl(\delta+\beta_u(Q)\bigr).
 \]
-In particular, if $\delta<7/1920$, its leakage is strictly larger than the
-certified $25/32$ leakage of the noncommuting witness.
+In particular, a reducible comparator has $\beta_u(Q)=0$ for a common
+invariant direction and, if $\delta<7/1920$, its leakage is strictly larger
+than the certified $25/32$ leakage of the irreducible witness.
 \end{proposition}
 
 \begin{proof}
@@ -692,16 +762,17 @@ $|a^\top b|^2\le9/10$.  Hence their two-column smallest singular value obeys
 For every unit vector $u$, at least one member of any pair therefore has
 $|u^\top\widehat v_j|\ge1/(5\sqrt2)$.  Thus at most one target has smaller
 overlap.
-Simultaneously diagonalize $Q$ and fix a common unit eigenvector $u$, with
-scalar quadratic entry $q$.  Projecting the residual bound shows that at three
+Fix $u$ and put $q(x)=u^\top Q(x)u$.  The same symmetric off-block
+decomposition used in Lemma~\ref{lem:robustcommuting} shows that at three
 distinct pass nodes
 \[
- |q(\lambda_j)-1|\le5\sqrt2\,\delta.
+ |q(\lambda_j)-1|\le5\sqrt2\bigl(\delta+\beta_u(Q)\bigr).
 \]
 For each of the four possible three-node subsets of
 $\{1/2,1,3/2,7/2\}$, the sum of the absolute Lagrange weights at $x=0$ is
-at most eight.  Hence $|q(0)-1|\le40\sqrt2\delta<60\delta$.  This holds for
-both common eigenvectors, so $\|Q(0)\|_{\op}\ge1-60\delta$.  Finally,
+at most eight.  Hence
+$|q(0)-1|<60(\delta+\beta_u(Q))$, so
+$\|Q(0)\|_{\op}\ge1-60(\delta+\beta_u(Q))$.  Finally,
 $1-25/32=7/32$ gives the stated threshold.
 \end{proof}
 
@@ -729,14 +800,15 @@ Their response obeys the exact identity
 \]
 Consequently it preserves the four directions, up to their common delay
 phase, at cosine values $-1/3,-1/9,1/9,1$ and has operator norm at most $25/32$
-on $\omega\in[\arccos(-5/9),\pi]$.  Every commuting symmetric palindromic
+on $\omega\in[\arccos(-5/9),\pi]$.  Every reducible symmetric palindromic
 five-tap response meeting the same four calibrations is the pure two-sample
 delay and has norm one.  Moreover $[B_0,B_1]\ne0$.  All statements, including
 the tap conversion, are checked by the same exact-arithmetic replay.  The same
 change of variables transfers Proposition~\ref{prop:robustquadratic}: if a
-commuting five-tap comparator obeys
+five-tap comparator obeys
 $\|e^{2i\omega_j}H(e^{i\omega_j})\widehat v_j-\widehat v_j\|_2\le\delta$,
-its high-frequency norm is at least $1-60\delta$.
+its high-frequency norm is at least
+$1-60(\delta+\beta_u^{\rm FIR}(H))$ for every unit $u$.
 
 \subsection{An affine two-constraint precursor}
 
@@ -904,15 +976,19 @@ $P$ satisfying $P(x_j)v_j=v_j$ exactly and
  \qquad
  \sup_{-1\le x\le-929/1000}\|P(x)\|_{\op}<\frac{24}{25}.
 \]
-Every pairwise-commuting real-symmetric quadratic satisfying the same five
-calibrations is identically $I_3$ and has leakage one.
+Every real-symmetric quadratic whose coefficients have a common nontrivial
+invariant subspace and which satisfies the same five calibrations has leakage
+at least one.  In the pairwise-commuting subcase it is identically $I_3$.
 \end{proposition}
 
 \begin{proof}
 All ten $3$ by $3$ target determinants are nonzero in exact rational
 arithmetic; the smallest normalized absolute determinant is
 $0.009489456048\ldots$.  Lemma~\ref{lem:commuting}, with $d=3$, $N=2$ and
-$M=5$, therefore proves the commuting conclusion.
+$M=5$, therefore proves the common-invariant-line conclusion.  Any common
+nontrivial invariant subspace of real-symmetric $3$ by $3$ coefficients yields
+such a line by orthogonal complementation, proving the stated reducible-class
+bound and the stronger identity conclusion for commuting coefficients.
 
 For the upper bound, fix the $(1,1)$, $(1,2)$ and $(2,2)$ entries of $C_2$ to
 $-0.316171$, $-0.537470$ and $-0.909040$, respectively, and solve the remaining
@@ -968,7 +1044,7 @@ Symmetric SDP optimum & $0.94867$ & exact & $0.003849$\\
 General nonsymmetric SDP & $0.14514$ & exact & $0.10447$\\
 Scalar quadratic optimum & $0.97520$ & $0.01$ & $0.01000$\\
 Best of 64 fixed bases & $0.96966$ & $0.01$ & $0.01011$\\
-Exact commuting class & $1$ & exact & $0$\\
+Exact reducible symmetric class & $\ge1$ & exact & $0$\\
 \bottomrule
 \end{tabular}
 \caption{Measured-calibration controls.  The 64-basis row is a seeded stress
@@ -1027,7 +1103,7 @@ their proved monotonicity concerns a weighted $H_2$ error; monotone $H_\infty$
 bounds are stated as future work.  Gallivan et al.'s main result instead gives
 a generically unique minimal-McMillan-degree rational interpolant.  Neither
 result provides a fixed-degree Hermitian-polynomial minimax separation from the
-simultaneously diagonalizable subclass.  Minimax polynomial filtering and SDP
+larger class with a common invariant channel subspace.  Minimax polynomial filtering and SDP
 formulations have a long numerical-linear-algebra history
 \cite{TohTrefethen1998}, and matrix-polynomial spaces arise naturally in block
 Krylov methods \cite{RinelliVandebril2026}.  General MIMO graph filters already
@@ -1040,7 +1116,7 @@ linear-phase design algorithms \cite{Kootsookos1991}.  More closely, Ljungars
 and Fu optimize
 the operator-norm error of matrix-valued multi-channel linear-phase FIR filters
 on a frequency grid by SDP \cite{LjungarsFu1998}.  Their formulation has neither
-directional pass interpolation nor a commuting/simultaneously-diagonalizable
+directional pass interpolation nor an invariant-subspace/reducibility
 comparator.  Accordingly, fixed-length MIMO $H_\infty$ approximation, MIMO
 linear phase, operator-norm minimax design, and SDP are not claimed as new.
 
@@ -1048,12 +1124,16 @@ The candidate novelty is therefore narrower than norm-constrained or
 degree-constrained tangential interpolation or FIR design alone.  Under fixed
 ordinary degree---equivalently fixed reciprocal FIR latency---a three-channel
 Hermitian-coefficient tangential minimax problem exhibits an exponential
-separation between fully coupled coefficients and the full fixed-basis scalar
-subclass.  The new quantitative result also identifies the calibration scale:
-an exponentially small residual is sufficient for the constructed separation,
-whereas a universal scalar construction proves that an exponentially small
-residual can erase every such separation.  We have not found this two-sided
-law in the sources above.
+separation between irreducible coefficients and every reducible symmetric
+family.  The excluded family is strictly larger than fixed-basis scalar banks:
+it permits a frequency-dependent, noncommuting $2$ by $2$ block, provided one
+channel line remains invariant.  The quantitative result also identifies a
+joint calibration/reducibility scale: an exponentially small sum of tangential
+residual and sampled off-block coupling is sufficient for the constructed
+separation, whereas a universal scalar construction proves that an
+exponentially small calibration residual can erase every such separation.  We
+have not found this two-sided law or the reducible/irreducible separation in
+the sources above.
 
 The complete texts of two close restricted papers---Fuhrmann (2010) and
 Stefanovski--Georgijevi\'c (2016)---could not be obtained.  Publisher portals,
@@ -1088,6 +1168,8 @@ and its
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/results/route_c/vbl_va001_calibration.json}{machine-readable output},
 the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ROUTE_C_PRIORITY_MATRIX.md}{clause-by-clause priority matrix},
+the
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/formal/SpectralCertificates/RootCount.lean}{Lean root-count proof},
 and the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ARTIFACT_MANIFEST.md}{artifact manifest with the PDF hash}.
 

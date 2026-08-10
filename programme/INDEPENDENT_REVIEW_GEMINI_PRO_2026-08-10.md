@@ -1,4 +1,9 @@
-# Independent Gemini 3.1 Pro review — 10 August 2026
+# Superseded independent Gemini 3.1 Pro review — 10 August 2026
+
+> This review applies only to the preceding 15-page PDF with SHA-256
+> `d62ed80dba4a4c9cd42016aa23931277154a6bdfc070686ff19b91e8f3e7e323`.
+> It does not assess the 16-page irreducibility revision and must not be quoted
+> as a score or proof audit of the current paper.
 
 ## Artifact and method
 

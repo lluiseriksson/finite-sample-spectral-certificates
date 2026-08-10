@@ -27,46 +27,45 @@ paper.
 - Status: published infrastructure and baseline for the new programme; it is
   **not presumed** to be a 7+ paper.
 
-## Candidate next paper (independently reviewed robustness-law release)
+## Candidate next paper (irreducibility-law release)
 
 - File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Title: *Exponential Calibration Laws for Noncommuting Matrix-Polynomial and
-  Linear-Phase MIMO FIR Filters*
-- Pages: 15
-- Local SHA-256: `d62ed80dba4a4c9cd42016aa23931277154a6bdfc070686ff19b91e8f3e7e323`
-- Scientific commit: `46ed63d12d1639b949625f67b1dfbc175ad4580f`
-- Public-byte SHA-256 recheck: identical to the local hash above.
-- Status: **independently reviewed scientific revision**.
+- Title: *Irreducible Channel Mixing and Exponential Calibration Laws for
+  Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
+- Pages: 16
+- Local SHA-256: `1de63a470acc5ee8e02268b9b73779e474c25b45c05139a6108c239946f9a6ee`
+- Scientific commit: pending this release commit.
+- Public-byte SHA-256 recheck: pending push.
+- Status: **new scientific revision; independent review of these exact bytes is pending**.
   Its sharpened theorem needs only
   the fixed dimension `d=3` and `M=N+3` signatures, rather than a growing
   channel dimension; it also contains
   a quantitative rational full-spark margin, an exponential robust-calibration
-  lower bound for the commuting class, and a universal scalar construction
+  lower bound for all approximately reducible symmetric filters, and a
+  universal scalar construction
   proving that an exponential tolerance scale is necessary.  It also contains
   exact affine and full-spark quadratic witnesses, an exact
-  palindromic five-tap FIR realization, a rational commuting lower bound under
-  approximate calibration, the block-Krylov proposition, a
+  palindromic five-tap FIR realization, a rational near-reducibility lower
+  bound under approximate calibration, the block-Krylov proposition, a
   controlled Hermitian subspace benchmark, and a deliberately negative natural
   graph pilot.  It now also contains a public VBL-VA001 triaxial calibration:
   exact rational arithmetic proves continuum leakage below `24/25` versus one
-  for the exactly calibrated commuting class, and six held-out records give
+  for every exactly calibrated reducible symmetric class, and six held-out records give
   maximum directional residual `0.0038491`.  An exact FDD modal-component
   invariance lemma gives the directional constraints a task-level meaning; on
   frozen held-out cospectra the leading modal direction moves by at most
   `0.2217` degrees and the leading ordinate changes by at most `2.40e-5`
-  relatively.  A fresh blind Gemini 3.1 Pro audit of the exact attached PDF
-  reported the title and 15 pages, marked all eight targeted proof checks
-  `PASS`, scored the scientific contribution `9.0/10` and manuscript quality
-  `8.5/10`, and recommended human peer review.  It did not hash the bytes or run
-  scripts; local/public hashing and GitHub CI are separate evidence.  The
+  relatively.  Lean/mathlib kernel-checks the scalar polynomial root-count
+  core of the invariant-line obstruction, without user axioms or admitted
+  goals; the full main theorem remains a conventional proof.  The
   restricted full-text/FIR priority uncertainty remains open and
   explicitly prevents an unqualified novelty claim.  The audit also
   treats Kootsookos's 1991 fixed-length MIMO `H-infinity` thesis and
   Alpay--Lewkowicz's structured matrix-polynomial interpolation as direct
   collisions with broader formulations of the claim.
 
-The scores above apply only to the current title, page count and hash.  Any PDF
-edit creates a new artifact and invalidates the review gate.
+Any score applies only to its recorded title, page count and hash.  This PDF is
+new and invalidates every review gate attached to the preceding bytes.
 
 The release candidate has:
 

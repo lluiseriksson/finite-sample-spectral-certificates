@@ -190,7 +190,7 @@ def main():
     print(f"minimum normalized 3x3 target minor: {min(normalized_minors):.12f}")
     print(f"derivative operator-norm upper bound: {float(derivative_bound):.12f}")
     print(f"certified continuum upper bound: {float(continuum_bound):.12f} < 24/25")
-    print("commuting exact-calibration lower bound: 1 (full-spark obstruction)")
+    print("reducible symmetric exact-calibration lower bound: 1 (full-spark invariant-line obstruction)")
 
 
 if __name__ == "__main__":

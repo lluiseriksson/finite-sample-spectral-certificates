@@ -60,19 +60,24 @@ gamma_N >= 2^(-39N) / (48 (N+4)^6).
 This replaces the former transcendence-only argument with a quantitative
 rational certificate.
 
-### Robust commuting lower bound
+### Robust near-reducibility lower bound
 
-For any common eigenvector of a commuting coefficient family, quantitative
-full spark implies that at most two signatures have overlap below
-`gamma_N/sqrt(3)`.  The remaining `N+1` nodes determine its scalar degree-`N`
-entry.  The Lagrange sum at zero is at most `(24e/5)^N`, giving
+For any unit direction `u`, quantitative full spark implies that at most two
+signatures have overlap below `gamma_N/sqrt(3)`.  Write `beta_u` for the largest
+sampled coupling from `u` into its orthogonal complement.  The remaining
+`N+1` nodes control the scalar degree-`N` compression `u^T Q(x) u`.  The
+Lagrange sum at zero is at most `(24e/5)^N`, giving
 
 ```text
-rho(Q) >= 1 - sqrt(3) (24e/5)^N delta / gamma_N.
+rho(Q) >= 1 - sqrt(3) (24e/5)^N (delta + beta_u) / gamma_N.
 ```
 
-The lower bound is at least `3/4` for the explicit radius recorded in the
-manuscript.
+The lower bound is at least `3/4` for the explicit combined-error radius
+recorded in the manuscript.  If `beta_u=0` at all `M>N` pass nodes, polynomial
+root counting forces every coefficient to preserve the line spanned by `u`.
+In three symmetric channels, any nontrivial common invariant subspace yields
+such a line.  The exact comparator therefore strictly contains the commuting
+class, including arbitrary noncommuting `2 x 2` blocks.
 
 ### Universal scalar barrier
 
