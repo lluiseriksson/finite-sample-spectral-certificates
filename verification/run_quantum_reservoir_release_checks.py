@@ -5,9 +5,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,7 +32,35 @@ def sha256(path: Path) -> str:
 
 
 def run(*arguments: str) -> None:
-    subprocess.run([sys.executable, *arguments], cwd=ROOT, check=True)
+    subprocess.run(
+        [sys.executable, *arguments],
+        cwd=ROOT,
+        check=True,
+        stdout=subprocess.DEVNULL,
+    )
+
+
+def compare_replay(expected: object, observed: object, location: str = "root") -> None:
+    if isinstance(expected, bool) or isinstance(expected, str) or expected is None:
+        if observed != expected:
+            raise RuntimeError(f"replay mismatch at {location}: {observed!r} != {expected!r}")
+    elif isinstance(expected, (int, float)):
+        if not isinstance(observed, (int, float)) or not math.isclose(
+            float(observed), float(expected), rel_tol=1e-10, abs_tol=1e-12
+        ):
+            raise RuntimeError(f"numeric replay mismatch at {location}: {observed!r} != {expected!r}")
+    elif isinstance(expected, list):
+        if not isinstance(observed, list) or len(observed) != len(expected):
+            raise RuntimeError(f"list replay mismatch at {location}")
+        for index, (expected_item, observed_item) in enumerate(zip(expected, observed, strict=True)):
+            compare_replay(expected_item, observed_item, f"{location}[{index}]")
+    elif isinstance(expected, dict):
+        if not isinstance(observed, dict) or observed.keys() != expected.keys():
+            raise RuntimeError(f"mapping replay mismatch at {location}")
+        for key in expected:
+            compare_replay(expected[key], observed[key], f"{location}.{key}")
+    else:
+        raise TypeError(f"unsupported replay value at {location}: {type(expected)}")
 
 
 def check_hashes(expected: dict[str, str]) -> None:
@@ -49,8 +79,32 @@ def main() -> None:
     expected = manifest["artifacts"]
     check_hashes(expected)
     run("verification/verify_passive_quantum_filter.py")
-    run("research/quantum_reservoir_filter.py")
-    run("research/quantum_reservoir_robustness.py")
+    with tempfile.TemporaryDirectory(prefix="quantum-reservoir-replay-") as directory:
+        temporary = Path(directory)
+        scaling = temporary / "scaling.json"
+        tolerance = temporary / "tolerance.json"
+        run(
+            "research/quantum_reservoir_filter.py",
+            "--output", str(scaling),
+            "--figure", str(temporary / "scaling.pdf"),
+            "--architecture-figure", str(temporary / "architecture.pdf"),
+        )
+        run(
+            "research/quantum_reservoir_robustness.py",
+            "--output", str(tolerance),
+            "--figure", str(temporary / "tolerance.pdf"),
+        )
+        compare_replay(
+            json.loads((ROOT / "results/quantum_reservoir/passive_filter_scaling.json").read_text(encoding="utf-8")),
+            json.loads(scaling.read_text(encoding="utf-8")),
+            "scaling",
+        )
+        compare_replay(
+            json.loads((ROOT / "results/quantum_reservoir/passive_tolerance.json").read_text(encoding="utf-8")),
+            json.loads(tolerance.read_text(encoding="utf-8")),
+            "tolerance",
+        )
+        print("PASS cross-platform numerical replay tolerance")
     check_hashes(expected)
     pdf = ROOT / "paper_quantum_reservoir" / "architecture_dependent_decoherence.pdf"
     if not pdf.read_bytes().startswith(b"%PDF-"):
