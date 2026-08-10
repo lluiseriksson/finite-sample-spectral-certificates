@@ -18,7 +18,7 @@ MANIFEST = ROOT / "programme" / "QUANTUM_RESERVOIR_ARTIFACT.json"
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
-    if path.suffix in {".json", ".py"}:
+    if path.suffix in {".bib", ".json", ".md", ".py", ".tex", ".txt", ".yaml", ".yml"}:
         # Git checkouts and Python text writers use platform-native newlines.
         # Artifact identity for source/JSON is therefore defined after the
         # conventional LF normalization; PDFs remain byte-exact below.
