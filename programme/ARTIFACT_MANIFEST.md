@@ -34,8 +34,9 @@ paper.
   Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
 - Pages: 18
 - Local SHA-256: `ad711a211c3457ba0fef30c827b5fa543403023cc485ab16b34d0ead393c0a81`
-- Scientific commit: `TO_BE_FROZEN_AFTER_COMMIT`.
-- Public-byte SHA-256 recheck: pending the release push.
+- Scientific commit: `e62d06bf702d09b41a9c51937adf7508c94c65f8`.
+- Public-byte SHA-256 recheck: identical to the local hash above at scientific
+  commit `e62d06bf702d09b41a9c51937adf7508c94c65f8`.
 - Status: **ai.viXra release candidate; independent review of these exact bytes is pending**.
   Its sharpened theorem needs only
   the fixed dimension `d=3` and `M=N+3` signatures, rather than a growing

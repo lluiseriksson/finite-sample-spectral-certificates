@@ -11,7 +11,7 @@ marked `TO_BE_FROZEN` are replaced only after the final PDF has passed visual QA
 - Submission venue: ai.viXra.org
 - Category: Computational Science — Digital Signal Processing
 - Version: `v1.0-ai-vixra`
-- Git commit: `TO_BE_FROZEN`
+- Scientific PDF commit: `e62d06bf702d09b41a9c51937adf7508c94c65f8`
 - PDF: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Pages: 18
 - PDF SHA-256: `ad711a211c3457ba0fef30c827b5fa543403023cc485ab16b34d0ead393c0a81`
