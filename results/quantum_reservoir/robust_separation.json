@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "precision_decimal_digits": 60,
+  "alpha": "0.45",
+  "stop_denominator_sample_count": "8(S+1) midpoint samples",
+  "records": [
+    {
+      "order": 5,
+      "calibration_count": 12,
+      "numerator_degree": 9,
+      "full_spark_singular_margin_gamma": "0.00125736196326780004",
+      "pass_vandermonde_margin_chi": "4.67593882225197301e-16",
+      "stop_denominator_margin_nu": "0.0000394788849505284708",
+      "proved_robust_constant_upper": "7.46219529334074131e+23",
+      "proved_robust_constant_log10_upper": "23.8728666108",
+      "central_scalar_calibration_error": "0.0526752223425921387",
+      "central_scalar_stop_bound": "0.328634136928943747",
+      "necessary_robust_constant_lower": "12.7453826147061775",
+      "necessary_robust_constant_log10_lower": "1.10535287746"
+    },
+    {
+      "order": 7,
+      "calibration_count": 18,
+      "numerator_degree": 11,
+      "full_spark_singular_margin_gamma": "0.0000855849507112160599",
+      "pass_vandermonde_margin_chi": "6.52842419805056163e-21",
+      "stop_denominator_margin_nu": "6.43118348157431848e-7",
+      "proved_robust_constant_upper": "6.67904809517330410e+31",
+      "proved_robust_constant_log10_upper": "31.8247145708",
+      "central_scalar_calibration_error": "0.0214244241052062102",
+      "central_scalar_stop_bound": "0.178487311549076527",
+      "necessary_robust_constant_lower": "38.3446800911345388",
+      "necessary_robust_constant_log10_lower": "1.58370511881"
+    },
+    {
+      "order": 9,
+      "calibration_count": 24,
+      "numerator_degree": 13,
+      "full_spark_singular_margin_gamma": "7.87523727079582999e-6",
+      "pass_vandermonde_margin_chi": "2.12448998921969989e-28",
+      "stop_denominator_margin_nu": "1.05800054247939207e-8",
+      "proved_robust_constant_upper": "1.71724301622019194e+42",
+      "proved_robust_constant_log10_upper": "42.2348317588",
+      "central_scalar_calibration_error": "0.00871107714573600477",
+      "central_scalar_stop_bound": "0.0908121935830296624",
+      "necessary_robust_constant_lower": "104.371456159357942",
+      "necessary_robust_constant_log10_lower": "2.01858174266"
+    }
+  ],
+  "interpretation": {
+    "positive_result": "For a comparator with calibration defect delta and sampled left-reduction defect beta, stop norm is at least max(0,1-C_S(delta+beta)).",
+    "conditioning_warning": "The displayed upper constants are proof certificates, not claims of sharpness; the pass Vandermonde interpolation is severely ill-conditioned.",
+    "impossibility_result": "The scalar central branch proves that every valid C_S is at least the recorded necessary lower bound, hence no S-uniform robustness is possible for these calibrations."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "artifact": "robust-spectral-routing-speed-limit-paper",
+  "title": "Every Spectral Switch Costs Memory: Sharp Robust Wigner--Smith Speed Limits for Passive Quantum Networks",
+  "frozen_on": "2026-08-10",
+  "artifacts": {
+    ".github/workflows/verify.yml": "4a150e688f25136e07e3949bbecd90be0a726f50b6eeec680776623d1828af4d",
+    "README.md": "1f8c77206d73be8eb572c212eaada21f102d492ad7ceef3cabfffa2f0687662a",
+    "paper_routing_speed_limit/README.md": "1c7fb1e25f3acb12f099deaaf742bf47392b98de36758822b57b79d009b97c6b",
+    "paper_routing_speed_limit/main.tex": "29a2dab8368fd3cc05ee89032a24c06f778c075a08307f8aeee854272dd7e039",
+    "paper_routing_speed_limit/references.bib": "b53a24616a6fd6bc54f1fcbcec7f2d16dc700379265fc6746eee13e46857b1e3",
+    "paper_routing_speed_limit/figures/routing_law.pdf": "2afc9a1bb2086e9ded5016a80982fda27136f8f7db6644f43fc81f3b488f3307",
+    "paper_routing_speed_limit/every_spectral_switch_costs_memory.pdf": "795e03238f152b48241e49b3db924497dae16d9e13abda725e43ed3b60c1f4ff",
+    "research/routing_speed_limit_certificate.py": "21368b16459f15fe2782924b7d62aaa775e91c5015c3ed104613d5a2886cb9e4",
+    "results/routing_speed_limit/certificate.json": "9a3426ced40cd0fa9c1fb0affaf1da216b53ce28b5a43b5e7201b82032ab417d",
+    "verification/verify_routing_speed_limit.py": "c67812af0d778c5d4b99964d404dec2f2a87f71cf662e7e1ba84106d759f98b4",
+    "verification/run_routing_speed_limit_release_checks.py": "d1df2f00fa164db4c572ecb814e557657b131180a7976ad969f01a07149d4cf1"
+  },
+  "replay": [
+    "python research/routing_speed_limit_certificate.py",
+    "python verification/verify_routing_speed_limit.py",
+    "python verification/run_routing_speed_limit_release_checks.py"
+  ]
+}
