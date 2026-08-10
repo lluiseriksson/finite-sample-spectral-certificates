@@ -36,6 +36,13 @@ jobs:
           --figure results/ci/routing_law.pdf
       - run: python verification/verify_routing_speed_limit.py
       - run: python verification/run_routing_speed_limit_release_checks.py
+      - name: Replay Ky Fan speed-limit certificate without mutating frozen artifacts
+        run: >-
+          python research/ky_fan_speed_limit_certificate.py
+          --output results/ci/ky_fan_speed_limit_certificate.json
+          --figure results/ci/ky_fan_hierarchy.pdf
+      - run: python verification/verify_ky_fan_speed_limits.py
+      - run: python verification/run_ky_fan_speed_limit_release_checks.py
       - run: python verification/verify_vbl_va001_witness.py
       - run: python research/route_c_block_krylov_benchmark.py
       - run: python research/route_c_graph_filter_pilot.py

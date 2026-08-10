@@ -7,6 +7,25 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+## New: proper-delay spectra majorize subspace rotation
+
+The sixth paper, `paper_ky_fan_speed_limits/proper_delay_spectra_majorize_subspace_rotation.pdf`,
+upgrades scalar routing bounds to a complete Ky Fan hierarchy. For every
+prefix `r`, twice the first `r` canonical angles of a transported subspace are
+bounded by the integrated first `r` spectral spreads of its Hermitian
+generator. For positive Wigner--Smith flows, the corresponding leading proper
+delays supply an observable budget. The `r=1` member is the bandwidth/maximal-
+angle speed limit; `r=k` strengthens the earlier trace law; the intermediate
+members prevent one delayed mode from masquerading as collective rank-`k`
+transport.
+
+Every prefix is saturated simultaneously by an explicit positive coupled-mode
+family. An exact three-term slack identity separates common delay, inefficient
+spectral coupling and Grassmann detours. Heterogeneous leakage spectra and
+finite tomography error produce certified delay Lorenz curves and rational
+McMillan-degree obstructions. The artifact audits 8,192 random matrices, 1,536
+noncommuting paths, 2,048 noisy tomography cases and sharp equality families.
+
 ## New: every spectral switch costs memory
 
 The newest paper, `paper_routing_speed_limit/every_spectral_switch_costs_memory.pdf`,
@@ -107,6 +126,9 @@ Gaussian scope.
 - `paper_quantum_reservoir/`: passive six-port decoherence-filter manuscript.
 - `paper_calibration_memory/`: topological McMillan-degree/Wigner--Smith paper.
 - `paper_routing_speed_limit/`: sharp robust spectral-routing speed-limit paper.
+- `paper_ky_fan_speed_limits/`: mode-resolved Ky Fan speed-limit paper.
+- `research/ky_fan_speed_limit_certificate.py`: hierarchy and tomography audit.
+- `verification/verify_ky_fan_speed_limits.py`: independent Ky Fan verifier.
 - `research/routing_speed_limit_certificate.py`: equality and adversarial replay.
 - `verification/verify_routing_speed_limit.py`: independent routing-law verifier.
 - `research/calibration_memory_certificate.py`: degree, delay and perturbation replay.
