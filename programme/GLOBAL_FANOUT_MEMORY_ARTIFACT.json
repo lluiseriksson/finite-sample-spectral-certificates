@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "artifact": "global-fanout-memory-paper",
+  "title": "Orthogonal Spectral Fan-Out Costs k(L-1) States: A Global Memory Law Beyond Pairwise Routing",
+  "frozen_on": "2026-08-10",
+  "release_tag": "v2.0-global-fanout-memory",
+  "artifacts": {
+    ".github/workflows/verify-global-fanout.yml": "85e2d98f5eacdf9f04b42032bfb69e0e97df7c4813988ba8525a2b01aff88f42",
+    "paper_global_fanout_memory/.gitignore": "fd4091cbf8886af63f1246947fc4cb94e0e519826c43d803414c9f1b3208394e",
+    "paper_global_fanout_memory/README.md": "21fafc2b9285b3acaf684f30d304277b564451b5b7de92a72477d16bec647e54",
+    "paper_global_fanout_memory/figures/global_fanout_memory.pdf": "ed8d6096ea8a819e00bad30a0c96be955f94bcf59908b81e967a7c6738ea6e6b",
+    "paper_global_fanout_memory/global_fanout_memory.pdf": "ce2c9426ba0dc8228beb766b74c07b1805116bc8aa7144ba09b685200d749486",
+    "paper_global_fanout_memory/main.tex": "82963a800759d093aa80c87ddc180e1abfcd21b8de1131122ce5f264d63e41b6",
+    "paper_global_fanout_memory/references.bib": "a862942954af5a9d3cd59a07efe4173c5d0311311426f4c2d7cc81d501e02d94",
+    "programme/GLOBAL_FANOUT_MEMORY_RESEARCH_MEMO.md": "bae12467401c8a168f67bc2a921907a4f285264924e7f410f408264659ba99f5",
+    "research/global_fanout_memory_certificate.py": "7155490838183a32588587ccb024f2f269dd17c9a58433afb71ca08672375750",
+    "results/global_fanout_memory/certificate.json": "e11d934be8a871802fcf9b466db9da9de04dc26e64eade4124f4a6d619700791",
+    "verification/run_global_fanout_memory_release_checks.py": "2f9d7382179f90a0aa3f3e22ea8919bd7709b0c761175bbf93c532f89cf54b1e",
+    "verification/verify_global_fanout_memory.py": "c24797c58f06fac7bc2e0db1845e27e898e420e45b0c083064f42c4459ade98a"
+  },
+  "replay": [
+    "python verification/verify_global_fanout_memory.py",
+    "python verification/run_global_fanout_memory_release_checks.py"
+  ]
+}

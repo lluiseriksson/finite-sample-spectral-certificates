@@ -1,0 +1,24 @@
+name: verify-global-fanout
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  global-fanout-memory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m compileall -q research/global_fanout_memory_certificate.py verification/verify_global_fanout_memory.py verification/run_global_fanout_memory_release_checks.py
+      - name: Replay global fan-out certificate without mutating frozen artifacts
+        run: >-
+          python research/global_fanout_memory_certificate.py
+          --output results/ci/global_fanout_memory_certificate.json
+          --figure results/ci/global_fanout_memory.pdf
+      - run: python verification/verify_global_fanout_memory.py
+      - run: python verification/run_global_fanout_memory_release_checks.py
