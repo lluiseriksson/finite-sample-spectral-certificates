@@ -1,6 +1,8 @@
 clarabel==0.11.1
 cvxpy==1.9.2
 matplotlib==3.11.1
+mpmath==1.3.0
 numpy==2.5.1
 scipy==1.18.0
 scs==3.2.11
+remotezip==0.12.3
