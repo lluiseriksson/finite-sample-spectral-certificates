@@ -13,6 +13,8 @@
 }
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype}
+\usepackage{etoolbox}
+\AtBeginEnvironment{thebibliography}{\footnotesize\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -108,11 +110,17 @@ Boundary matrix interpolation, minimal rational interpolation, Pick matrices,
 lurking isometries and their rank--degree correspondence are classical
 \cite{AntoulasEtAl1990,BallKang1990,BolotnikovDym2006,BallKim1994,BallBolotnikov2018,
 GombaniMichaletzky2007}.  Subspace all-pass interpolation and nodewise
-group-delay design are also established \cite{BharathEtAl2023}.  Within the
-sources compared in \cref{tab:precedent}, we did not find the exact
-orthogonal fan-out specialization, its scalable pairwise/global gap, or the
-operator-norm robust inertia certificate.  Those are the contributions
-here; no new general Pick theorem is claimed.
+group-delay design are also established \cite{BharathEtAl2023}.  We compared
+the theorem statements and construction objectives of the closest sources.
+Bolotnikov--Dym supply the boundary Schur and Stein framework; Ball--Kim and
+Gombani--Michaletzky analyze stability and degree for general rational
+interpolation; Bharath et al. construct boundary subspace all-pass filters by
+choosing positive group-delay blocks.  None of these comparisons yielded the
+orthogonal free-diagonal rank formula, the exact pairwise/global ratio, or the
+operator-norm robust inertia certificate.  Our priority claim is restricted
+to those explicit specializations.  The rank--degree proposition below is a
+finite-dimensional corollary of classical realization theory, not a new
+general Pick theorem.
 
 \begin{table}[t]
 \centering
@@ -196,19 +204,65 @@ The minimum degree in \eqref{eq:subspace-data} is
 where the Hermitian diagonal blocks are unconstrained.
 \end{proposition}
 
-For completeness, a feasible rank-$r$ matrix factors as
-$P_{ij}=F_i^*F_j$ with $F_i\in\C^{r\times k}$.  The two families
-\[
+\begin{proof}
+We prove both rank--degree inequalities, including the boundary regularity
+step.  Fix gauges and let $P$ be feasible with rank $r$.  Factor
+$P_{ij}=F_i^*F_j$, where $F_i\in\C^{r\times k}$.  For $u,v\in\C^k$, the block
+identity \eqref{eq:pick-blocks}, together with $X^*X=W_i^*W_i=I_k$, shows that
+the two indexed families
+\begin{equation}\label{eq:lurking-pairs}
  \begin{pmatrix}\zeta_iF_iu\\Xu\end{pmatrix},
  \qquad
  \begin{pmatrix}F_iu\\W_iu\end{pmatrix}
+\end{equation}
+have identical Gram matrices, including on the diagonal.  Their linear
+correspondence is therefore a well-defined isometry between two subspaces of
+$\C^r\oplus\C^N$.  The subspaces have equal dimension, so this isometry
+extends to a unitary
+\[
+ \mathcal U=\begin{pmatrix}A&B\\ C_0&D\end{pmatrix}
+ \quad\text{on }\C^r\oplus\C^N.
 \]
-have identical Gram matrices.  Their correspondence extends to a unitary
-colligation on $\C^r\oplus\C^N$, whose transfer interpolates the frames.
-Any unit-circle state mode is reducing and decoupled and can be deleted.
-Conversely, the compressed de Branges--Rovnyak kernel of any degree-$n$
-interpolant supplies such a completion of rank at most $n$.  This is the
-classical lurking-isometry argument behind \cref{prop:pick-rank}.
+The relation defined by \eqref{eq:lurking-pairs} gives
+\[
+ (I-\zeta_iA)F_i=BX,
+ \qquad
+ W_i=\zeta_iC_0F_i+DX.
+\]
+
+We record why this produces a transfer regular at the interpolation nodes.
+Since $A$ is a contraction, its eigenspaces with unimodular eigenvalues form
+a reducing subspace $E$.  The unitary colligation identities imply
+$C_0E=0$ and $B^*E=0$, so $E$ is completely decoupled from the external
+channels.  Delete this summand and project each $F_i$ onto $E^\perp$.  On the
+remaining state space $A$ has spectral radius strictly below one, and hence
+$I-zA$ is invertible for every $z\in\overline\D$.  Consequently
+\begin{equation}\label{eq:lurking-transfer}
+ S(z)=D+zC_0(I-zA)^{-1}B
+\end{equation}
+is rational inner, regular on $\T$, and the preceding two identities give
+$S(\zeta_i)X=W_i$.  Its state dimension, and therefore its McMillan degree
+after controllable/observable reduction, is at most $r$.  Thus the minimum
+degree is no larger than the minimum in \eqref{eq:rank-min}.
+
+Conversely, let $S$ be any degree-$n$ rational-inner interpolant, regular at
+the nodes, and use a minimal unitary realization of dimension $n$ in the
+form \eqref{eq:lurking-transfer}.  Its kernel identity is
+\begin{equation}\label{eq:kernel-identity}
+ \frac{I-S(z)^*S(w)}{1-\overline zw}
+ =B^*(I-\overline zA^*)^{-1}(I-wA)^{-1}B.
+\end{equation}
+Taking nontangential limits at $(z,w)=(\zeta_i,\zeta_j)$ and compressing by
+$X$ gives a positive block matrix
+\[
+ P_{ij}=X^*B^*(I-\overline\zeta_iA^*)^{-1}
+              (I-\zeta_jA)^{-1}BX.
+\]
+It has rank at most $n$, and for $i\ne j$ equation
+\eqref{eq:kernel-identity} is exactly \eqref{eq:pick-blocks}.  Hence every
+degree-$n$ interpolant supplies an admissible completion of rank at most
+$n$.  Taking minima proves \eqref{eq:rank-min}.
+\end{proof}
 
 \section{The exact orthogonal fan-out law}
 
@@ -622,7 +676,7 @@ full multi-arc action region.  Neither is needed for the present fan-out law.
 
 The manuscript, deterministic certificate, independent verifier, figure and
 hash manifest are archived in the
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.0-global-fanout-memory}{immutable GitHub release}.  The main entry points are
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.1-global-fanout-memory-submission}{immutable GitHub release}.  The main entry points are
 \path{research/global_fanout_memory_certificate.py} and
 \path{verification/verify_global_fanout_memory.py}.  Seeds, tolerances and
 all reported diagnostics are frozen in the JSON certificate.
