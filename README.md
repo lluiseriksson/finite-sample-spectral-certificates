@@ -7,6 +7,78 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+## New: proper-delay spectra majorize subspace rotation
+
+The sixth paper, `paper_ky_fan_speed_limits/proper_delay_spectra_majorize_subspace_rotation.pdf`,
+upgrades scalar routing bounds to a complete Ky Fan hierarchy. For every
+prefix `r`, twice the first `r` canonical angles of a transported subspace are
+bounded by the integrated first `r` spectral spreads of its Hermitian
+generator. For positive Wigner--Smith flows, the corresponding leading proper
+delays supply an observable budget. The `r=1` member is the bandwidth/maximal-
+angle speed limit; `r=k` strengthens the earlier trace law; the intermediate
+members prevent one delayed mode from masquerading as collective rank-`k`
+transport.
+
+The definitive theorem solves the full variational problem: for every
+symmetric gauge `Phi`, the least spectral-spread action between two subspaces
+is exactly `2 Phi(beta)`. The same value holds for positive leading-delay
+action, and one constant coupled-mode path minimizes every gauge at once. Two
+angle spectra with identical maximum and trace but a 20% different `r=2` cost
+demonstrate that the intermediate hierarchy contains strictly new information.
+
+Every prefix is saturated simultaneously by an explicit positive coupled-mode
+family. An exact three-term slack identity separates common delay, inefficient
+spectral coupling and Grassmann detours. Heterogeneous leakage spectra and
+finite tomography error produce certified delay Lorenz curves and rational
+McMillan-degree obstructions. The artifact audits 8,192 random matrices, 1,536
+noncommuting paths, 2,048 noisy tomography cases and sharp equality families.
+
+## New: every spectral switch costs memory
+
+The newest paper, `paper_routing_speed_limit/every_spectral_switch_costs_memory.pdf`,
+replaces exact calibration counts by a sharp finite-error speed limit.  If a
+fixed rank-`k` input subspace is routed from one output sector to its orthogonal
+complement with amplitude leakages `epsilon_p, epsilon_s`, then the transition
+must spend at least `2k alpha` of Wigner--Smith trace action and `2 alpha` of
+largest-proper-delay action, where
+`alpha = [pi/2 - asin(epsilon_p) - asin(epsilon_s)]_+`.  Disjoint transitions
+add.  A rational inner network of McMillan degree `n` therefore obeys
+`n >= (k/pi) sum alpha_l`; in particular `M` alternating pass/stop pairs give
+`n >= 2Mk alpha/pi` and recover the exact law `n >= Mk` at zero error.
+
+Every constant is sharp in every rank.  The repository includes finite-error
+equality cases, exact cyclic saturators, 2,048 adversarial positive-matrix
+tests, 512 random Blaschke--Potapov path tests, an independent verifier and a
+hash-locked release gate.  A measurement-error corollary turns operator-norm
+tomography error directly into certified leakage tolerances.
+
+## New: topological calibration-memory law
+
+The newest paper, `paper_calibration_memory/lossless_calibration_memory.pdf`,
+proves an architecture-independent resource law for finite rational passive
+networks. If a signal block is lossless on subspaces of total dimension `K`
+across distinct boundary frequencies and is strictly contractive somewhere
+else, then the full network has McMillan degree at least `K`. The same degree
+is exactly its integrated Wigner--Smith trace delay. The coefficient is sharp;
+an analytic Rouché condition makes the count perturbation-stable; and a
+counterexample records why unstructured approximate samples alone cannot
+support the claim. Applied to the irreducible six-port reservoir family, the
+theorem proves universal near-optimality: `3S` calibrated directions require
+at least `3S` states and the construction uses `3S+6`.
+
+The active research branch also contains a separate new paper on
+irreducible reciprocal MIMO FIR filters.  Its headline theorem gives a
+fixed-degree exponential separation from every reducible three-channel
+symmetric filter family, including noncommuting `1+2` block architectures and
+therefore strictly more than fixed orthogonal banks of scalar filters.  A
+sampled off-block defect makes the obstruction quantitative for approximately
+reducible filters.  An exact five-tap witness and a second certificate grounded in the
+public VBL-VA001 triaxial vibration data are replayed in standard Python.  An
+FDD invariance lemma gives the directional calibrations a modal-preprocessing
+meaning, and the held-out cospectral replay measures less than `0.222` degrees
+of leading-direction drift.  Lean/mathlib kernel-checks the polynomial
+root-count core used by the invariant-line obstruction.
+
 The current frontier experiment studies Gaussian sketches of Euclidean
 correlators in the interacting axial next-nearest-neighbour Ising (ANNNI)
 chain.  Two finite-sample routes are implemented:
@@ -57,6 +129,20 @@ Gaussian scope.
 - `results/production/`: frozen Colab campaigns and their raw summaries.
 - `results/verification/rational_witness.json`: exact-rational rejection witness.
 - `verification/verify_rational_witness.py`: independent standard-library replay.
+- `paper_noncommuting/`: new matrix-polynomial/MIMO FIR manuscript and PDF.
+- `paper_quantum_reservoir/`: passive six-port decoherence-filter manuscript.
+- `paper_calibration_memory/`: topological McMillan-degree/Wigner--Smith paper.
+- `paper_routing_speed_limit/`: sharp robust spectral-routing speed-limit paper.
+- `paper_ky_fan_speed_limits/`: mode-resolved Ky Fan speed-limit paper.
+- `research/ky_fan_speed_limit_certificate.py`: hierarchy and tomography audit.
+- `verification/verify_ky_fan_speed_limits.py`: independent Ky Fan verifier.
+- `research/routing_speed_limit_certificate.py`: equality and adversarial replay.
+- `verification/verify_routing_speed_limit.py`: independent routing-law verifier.
+- `research/calibration_memory_certificate.py`: degree, delay and perturbation replay.
+- `verification/verify_calibration_memory.py`: fail-closed new-paper verifier.
+- `formal/`: Lean/mathlib proof of the scalar-branch root-count obstruction.
+- `verification/verify_vbl_va001_witness.py`: exact measured-calibration replay.
+- `data/route_c/vbl_va001_calibration.json`: public-data provenance and frozen split.
 - `paper/main.tex`: full manuscript source; `output/pdf/main.pdf` is the built paper.
 
 ## What is and is not certified
