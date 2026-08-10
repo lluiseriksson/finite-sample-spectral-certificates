@@ -9,7 +9,7 @@ correlator paper.
   Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
 - Source: `paper_noncommuting/main.tex`
 - Compiled artifact: `paper_noncommuting/noncommuting_filters_draft.pdf`
-- Status: revised research candidate; the quantified proof gives an exponential
+- Status: ai.viXra release candidate; the quantified proof gives an exponential
   separation at fixed dimension `d=3` with `M=N+3` from every reducible
   symmetric coefficient family, including genuinely noncommuting `1+2`
   block architectures.  A sampled off-block defect quantifies approximate
@@ -21,7 +21,7 @@ correlator paper.
   rational certificate calibrated from held-out-controlled VBL-VA001 sensor
   records are closed.  The modal-task interpretation is backed by an exact FDD
   invariance lemma and a held-out cospectral replay.  Reviews of the superseded
-  15-page PDF do not apply to this 16-page irreducibility revision; fresh
+  15- and 16-page PDFs do not apply to this 18-page irreducibility release; fresh
   independent review is pending.  Restricted full-text priority uncertainty
   remains disclosed.  Lean/mathlib kernel-checks the scalar
   polynomial root-count core of the invariant-line obstruction.
@@ -31,6 +31,16 @@ The current PDF hash is recorded after each accepted compilation in
 from that manifest; a score for any other PDF is not evidence about this draft.
 
 ## Reproduce
+
+The frozen release has one top-level gate:
+
+```powershell
+python verification/run_ai_vixra_release_checks.py
+```
+
+It checks the pinned Python environment, all paper-facing replays, the
+Lean/mathlib build and source boundary, and the exact PDF SHA-256.  See
+`programme/AI_VIXRA_RELEASE.md` for the immutable release record.
 
 From this directory on a TeX installation with `pdflatex` and `bibtex`:
 

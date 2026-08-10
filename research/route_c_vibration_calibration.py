@@ -3,6 +3,7 @@
 
 import json
 import sys
+import argparse
 from itertools import combinations
 from pathlib import Path
 
@@ -173,6 +174,9 @@ def fixed_basis_stress(nodes, directions, held_out, tolerance=0.01):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    args = parser.parse_args()
     manifest = json.loads(INPUT.read_text(encoding="utf-8"))
     calibration = manifest["calibration"]
     nodes = np.array(calibration["measured_nodes"])
@@ -247,8 +251,8 @@ def main():
         },
         "versions": {"cvxpy": cp.__version__, "numpy": np.__version__},
     }
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2))
 
 

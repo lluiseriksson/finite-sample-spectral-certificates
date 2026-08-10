@@ -10,21 +10,19 @@ request to reward repository size.
 - Research branch: `research/endogenous-visibility`
 - Draft pull request: <https://github.com/lluiseriksson/finite-sample-spectral-certificates/pull/2>
 - Scientific source commit containing the PDF bytes below:
-  `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
+  `TO_BE_FROZEN_AFTER_COMMIT`.
 - PDF path: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title visible on page 1: *Irreducible Channel Mixing and Exponential
   Calibration Laws for Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
-- Page count: 16
+- Page count: 18
 - SHA-256 of the repository PDF bytes:
-  `1de63a470acc5ee8e02268b9b73779e474c25b45c05139a6108c239946f9a6ee`
+  `ad711a211c3457ba0fef30c827b5fa543403023cc485ab16b34d0ead393c0a81`
 - Embedded manuscript date: `10 August 2026`
-- CI status for the release head containing that scientific commit: push run
-  [`31345709728`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31345709728)
-  and pull-request run
-  [`31345712043`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31345712043)
-  both passed their numerical replay and Lean/mathlib kernel-check jobs.
+- CI status for the release head containing that scientific commit: pending
+  the release push; both numerical replay and Lean/mathlib kernel-check jobs
+  must pass before submission.
 - Independent review: pending for these exact bytes.  Reviews of the preceding
-  15-page PDF are superseded and must not be reused.
+  15- and 16-page PDFs are superseded and must not be reused.
 
 Before scoring, independently hash the downloaded PDF and copy the result into
 the response.  If the hash, title or page count differs, stop: the score belongs

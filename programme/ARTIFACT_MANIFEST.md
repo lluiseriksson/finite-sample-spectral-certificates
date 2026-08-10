@@ -32,12 +32,11 @@ paper.
 - File in research branch: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title: *Irreducible Channel Mixing and Exponential Calibration Laws for
   Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
-- Pages: 16
-- Local SHA-256: `1de63a470acc5ee8e02268b9b73779e474c25b45c05139a6108c239946f9a6ee`
-- Scientific commit: `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
-- Public-byte SHA-256 recheck: identical to the local hash above at scientific
-  commit `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
-- Status: **new scientific revision; independent review of these exact bytes is pending**.
+- Pages: 18
+- Local SHA-256: `ad711a211c3457ba0fef30c827b5fa543403023cc485ab16b34d0ead393c0a81`
+- Scientific commit: `TO_BE_FROZEN_AFTER_COMMIT`.
+- Public-byte SHA-256 recheck: pending the release push.
+- Status: **ai.viXra release candidate; independent review of these exact bytes is pending**.
   Its sharpened theorem needs only
   the fixed dimension `d=3` and `M=N+3` signatures, rather than a growing
   channel dimension; it also contains
@@ -63,7 +62,9 @@ paper.
   explicitly prevents an unqualified novelty claim.  The audit also
   treats Kootsookos's 1991 fixed-length MIMO `H-infinity` thesis and
   Alpay--Lewkowicz's structured matrix-polynomial interpolation as direct
-  collisions with broader formulations of the claim.
+  collisions with broader formulations of the claim.  This release adds an
+  explicit comparator-hierarchy figure, a four-object interpolation audit,
+  an AI-assistance disclosure, and a one-command frozen verification gate.
 
 Any score applies only to its recorded title, page count and hash.  This PDF is
 new and invalidates every review gate attached to the preceding bytes.

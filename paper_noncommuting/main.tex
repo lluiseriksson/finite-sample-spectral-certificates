@@ -4,6 +4,11 @@
 \usepackage{booktabs}
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Irreducible Channel Mixing and Exponential Calibration Laws for Matrix-Polynomial and Linear-Phase MIMO FIR Filters},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={Matrix-polynomial minimax filtering, irreducible channel mixing, and reproducible exact certificates}
+}
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype}
 
@@ -116,6 +121,28 @@ spark and have an explicit $e^{-O(N)}$ lower margin.  This makes the reducible
 obstruction quantitative under $e^{-O(N)}$ calibration and off-block errors,
 while a separate scalar construction proves that no asymptotic advantage can
 survive calibration errors bounded below independently of $N$.
+
+\begin{figure}[H]
+\centering
+\fbox{\begin{minipage}{0.91\linewidth}
+\centering
+\[
+ \{\text{pairwise-commuting symmetric}\}
+ \ \subsetneq\
+ \{\text{reducible symmetric}\}
+ \ \subsetneq\
+ \{\text{all symmetric}\}.
+\]
+\small
+The commuting class is a fixed orthogonal bank of scalar filters.  The larger
+reducible class may contain a fully noncommuting $2$ by $2$ block but retains
+one common invariant channel line.  Theorem~\ref{thm:main} excludes this entire
+middle class; it does not claim optimality against other irreducible symmetric,
+nonsymmetric, rational, or state-space MIMO filters.
+\end{minipage}}
+\caption{Comparator hierarchy and the exact scope of the separation.}
+\label{fig:classes}
+\end{figure}
 
 \section{Main separation theorem}
 
@@ -444,6 +471,8 @@ Indeed, $1+B_N\le2B_N$, so \eqref{eq:powerenvelopes} bounds the correction
 by $2^{(71-17N)/3}$.  Since $c<\log2$, the ratio of this envelope to
 $e^{-cN}$ is at most $2^{(71-14N)/3}\le2^{-9}$ for $N\ge7$.
 Every coefficient remains real symmetric because $R_N$ maps into $\cS_N$.
+Appendix~\ref{app:stableaudit} restates this construction as a four-object
+audit chain and records every numerical envelope used above.
 \end{proof}
 
 \begin{lemma}[Quantitative near-reducibility obstruction]\label{lem:robustcommuting}
@@ -1090,7 +1119,7 @@ bitangential problem with explicit McMillan-degree constraints
 Stefanovski and Georgijevi\'c prove that real stable rational matrices can meet
 bitangential constraints while having arbitrarily small spectral norm on a
 proper frequency region \cite{StefanovskiGeorgijevic2016}; their degree grows
-and they do not compare commuting and noncommuting Hermitian polynomial
+and they do not compare reducible and irreducible Hermitian polynomial
 coefficients.  Thus small regional norm under matrix tangential constraints is
 not itself our contribution.  Tangential interpolation is also a standard
 bridge between MIMO model reduction and Krylov projection
@@ -1120,8 +1149,8 @@ directional pass interpolation nor an invariant-subspace/reducibility
 comparator.  Accordingly, fixed-length MIMO $H_\infty$ approximation, MIMO
 linear phase, operator-norm minimax design, and SDP are not claimed as new.
 
-The candidate novelty is therefore narrower than norm-constrained or
-degree-constrained tangential interpolation or FIR design alone.  Under fixed
+To our knowledge, the candidate contribution is therefore narrower than
+norm-constrained or degree-constrained tangential interpolation or FIR design alone.  Under fixed
 ordinary degree---equivalently fixed reciprocal FIR latency---a three-channel
 Hermitian-coefficient tangential minimax problem exhibits an exponential
 separation between irreducible coefficients and every reducible symmetric
@@ -1170,8 +1199,139 @@ the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ROUTE_C_PRIORITY_MATRIX.md}{clause-by-clause priority matrix},
 the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/formal/SpectralCertificates/RootCount.lean}{Lean root-count proof},
+the
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/verification/run_ai_vixra_release_checks.py}{single-command release replay},
 and the
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/endogenous-visibility/programme/ARTIFACT_MANIFEST.md}{artifact manifest with the PDF hash}.
+
+\paragraph{AI-assistance disclosure.}
+OpenAI Codex assisted with literature exploration, numerical and exact-arithmetic
+code, Lean formalization scaffolding, and drafting and editing the manuscript.
+The named author directed the research, selected the claims and scope, and
+accepts responsibility for the submitted content.  No AI system is listed as
+an author.
+
+\appendix
+\section{Expanded audit trail for stable symmetric interpolation}
+\label{app:stableaudit}
+
+This appendix expands the quantitative chain in Lemma~\ref{lem:stability} so
+that each norm conversion and exponential envelope can be checked separately.
+It introduces no additional claim.  Recall that $M=N+3$,
+$S=\lceil(N+3)/3\rceil$, $N\ge7$, and
+$\varepsilon_N=2^{-13N}$.  The domain norm and data norm are
+\[
+ \|P\|_X=\max\left\{\sup_{x\in I_-}\|P(x)\|_{\op},
+                         \max_j\|P(\lambda_j)\|_{\op}\right\},
+ \qquad
+ \|y\|_Y=\max_j\|y_j\|_2.
+\]
+The four quantities that enter the correction are collected in
+Table~\ref{tab:auditchain}.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{0.16\linewidth}p{0.40\linewidth}p{0.34\linewidth}@{}}
+\toprule
+Object & Definition & Explicit bound for $N\ge7$\\
+\midrule
+Right inverse & $L_0R_N=I$ on $(\R^3)^M$
+  & $\|R_N\|_{Y\to X}\le\mathcal R_N
+     \le2^{4N+17}$\\
+Perturbation & $E_N=\varepsilon_NK_NR_N$
+  & $\|E_N\|\le2^{18-9N}<1/2$\\
+Base residual &
+  $r_N=\varepsilon_N((I-P_0(\lambda_j))w_j)_j$
+  & $\|r_N\|_Y\le
+     \varepsilon_N\sqrt3(1+B_N)$,
+    $B_N\le2^{(10N+11)/3}$\\
+Correction &
+  $\Delta P_N=R_N(I+E_N)^{-1}r_N$
+  & $\|\Delta P_N\|_X\le
+     2^{(71-17N)/3}\le e^{-cN}$\\
+\bottomrule
+\end{tabular}
+\caption{The complete norm chain used to impose the perturbed calibrations.}
+\label{tab:auditchain}
+\end{table}
+
+\paragraph{1. Right-inverse geometry.}
+Every diagonal scalar interpolation problem uses one coordinate group and
+every off-diagonal problem uses the union of two groups.  Thus its node count
+$t$ satisfies $S-1\le t\le2S$ and its degree is at most $t-1\le N$.
+Writing $n=t-1$, the global node separation $5/(6S)$ and the numerator-distance
+bound $9/2$ give the exact cardinal sum
+\[
+ \sum_{i=0}^{t-1}|\ell_i(x)|
+ \le\left(\frac{27S}{5}\right)^n
+       \sum_{i=0}^{n}\frac1{i!(n-i)!}
+ =\left(\frac{27S}{5}\right)^n\frac{2^n}{n!}.
+\]
+Because $S/n\le2$ and $n!\ge(n/e)^n$, this is at most
+$(108e/5)^n$.  There are at most six independent symmetric entries, and
+$\|A\|_{\op}\le3\max_{r,s}|A_{rs}|$ for a $3$ by $3$ matrix.  The explicit
+entrywise construction in Lemma~\ref{lem:stability} therefore yields
+\[
+ \|R_N\|_{Y\to X}
+ \le6\left(\frac{108e}{5}\right)^{2S-1}=\mathcal R_N.
+\]
+Using $108e/5<64$ and $S\le(N+5)/3$ gives the deliberately loose but convenient
+power-of-two envelope $\mathcal R_N\le2^{4N+17}$.  Keeping the factorial in the
+preceding display is what prevents an $e^{O(N\log N)}$ loss.
+
+\paragraph{2. Invertibility after the full-spark perturbation.}
+The map difference is $L_\varepsilon-L_0=\varepsilon K_N$.  Since every
+$w_j=(1,t_j,t_j^2)^\top$ has norm at most $\sqrt3$,
+$\|K_N\|_{X\to Y}\le\sqrt3$.  Consequently
+\[
+ \|E_N\|=\|\varepsilon_NK_NR_N\|
+ \le\sqrt3\,2^{-13N}2^{4N+17}
+ \le2^{18-9N}<\frac12.
+\]
+The Neumann series is therefore legitimate and
+$\|(I+E_N)^{-1}\|\le2$.  Moreover,
+$L_{\varepsilon_N}R_N=I+E_N$, so the displayed correction satisfies the
+calibrations algebraically rather than approximately:
+\[
+ L_{\varepsilon_N}(P_0+\Delta P_N)
+ =L_{\varepsilon_N}P_0+(I+E_N)(I+E_N)^{-1}r_N
+ =(\widetilde v_j)_j.
+\]
+
+\paragraph{3. Residual and correction size.}
+Lemma~\ref{lem:base} gives
+$\max_j\|P_0(\lambda_j)\|_{\op}\le B_N$ and the elementary envelopes give
+$B_N\le2^{(10N+11)/3}$.  Hence
+\[
+ \|r_N\|_Y
+ \le2^{-13N}\sqrt3(1+B_N).
+\]
+Combining this with the preceding two paragraphs yields
+\begin{align*}
+ \|\Delta P_N\|_X
+ &\le2\sqrt3\,\mathcal R_N\,2^{-13N}(1+B_N)\\
+ &\le2^{(71-17N)/3}.
+\end{align*}
+Here the last line uses $2\sqrt3<4$ and $1+B_N\le2B_N$.
+The base-filter exponent
+\[
+ c=\frac{2\operatorname{arcosh}(3)-\log(36e/5)}{3}
+\]
+is positive and smaller than $\log2$.  Therefore
+\[
+ \frac{2^{(71-17N)/3}}{e^{-cN}}
+\le2^{(71-14N)/3}\le2^{-9}\qquad(N\ge7),
+\]
+which proves $\|\Delta P_N\|_X\le e^{-cN}$ with room to spare.
+
+\paragraph{4. Reproduction boundary.}
+The repository's constant-channel verification script replays the node
+arithmetic, determinant envelopes, Neumann bound, correction bound and scalar
+barrier without solving an optimization problem.  The Lean file checks only
+the scalar root-count implication used by the invariant-line obstruction.
+Neither artifact replaces the conventional proof above; together they isolate
+the arithmetic and algebraic failure surfaces that are easiest to audit.
 
 \footnotesize
 \bibliographystyle{plain}
