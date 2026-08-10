@@ -7,6 +7,19 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+The active research branch also contains a separate new paper on
+irreducible reciprocal MIMO FIR filters.  Its headline theorem gives a
+fixed-degree exponential separation from every reducible three-channel
+symmetric filter family, including noncommuting `1+2` block architectures and
+therefore strictly more than fixed orthogonal banks of scalar filters.  A
+sampled off-block defect makes the obstruction quantitative for approximately
+reducible filters.  An exact five-tap witness and a second certificate grounded in the
+public VBL-VA001 triaxial vibration data are replayed in standard Python.  An
+FDD invariance lemma gives the directional calibrations a modal-preprocessing
+meaning, and the held-out cospectral replay measures less than `0.222` degrees
+of leading-direction drift.  Lean/mathlib kernel-checks the polynomial
+root-count core used by the invariant-line obstruction.
+
 The current frontier experiment studies Gaussian sketches of Euclidean
 correlators in the interacting axial next-nearest-neighbour Ising (ANNNI)
 chain.  Two finite-sample routes are implemented:
@@ -57,6 +70,10 @@ Gaussian scope.
 - `results/production/`: frozen Colab campaigns and their raw summaries.
 - `results/verification/rational_witness.json`: exact-rational rejection witness.
 - `verification/verify_rational_witness.py`: independent standard-library replay.
+- `paper_noncommuting/`: new matrix-polynomial/MIMO FIR manuscript and PDF.
+- `formal/`: Lean/mathlib proof of the scalar-branch root-count obstruction.
+- `verification/verify_vbl_va001_witness.py`: exact measured-calibration replay.
+- `data/route_c/vbl_va001_calibration.json`: public-data provenance and frozen split.
 - `paper/main.tex`: full manuscript source; `output/pdf/main.pdf` is the built paper.
 
 ## What is and is not certified

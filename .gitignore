@@ -4,6 +4,7 @@ __pycache__/
 .ipynb_checkpoints/
 results/local/
 tmp/
+data/raw/
 output/pdf/*.aux
 output/pdf/*.bbl
 output/pdf/*.blg
@@ -11,3 +12,16 @@ output/pdf/*.fdb_latexmk
 output/pdf/*.fls
 output/pdf/*.log
 output/pdf/*.out
+paper_noncommuting/build/
+paper_noncommuting/rendered/
+paper_noncommuting/rendered_*/
+paper_noncommuting/final_render/
+paper_noncommuting/paper_noncommuting/
+paper_noncommuting/main.aux
+paper_noncommuting/main.bbl
+paper_noncommuting/main.blg
+paper_noncommuting/main.log
+paper_noncommuting/main.out
+paper_noncommuting/main.pdf
+formal/.lake/
+pilot_primal_dual_equivalence.json
