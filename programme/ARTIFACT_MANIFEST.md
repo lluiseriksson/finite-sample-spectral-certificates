@@ -35,7 +35,8 @@ paper.
 - Pages: 16
 - Local SHA-256: `1de63a470acc5ee8e02268b9b73779e474c25b45c05139a6108c239946f9a6ee`
 - Scientific commit: `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
-- Public-byte SHA-256 recheck: pending push.
+- Public-byte SHA-256 recheck: identical to the local hash above at scientific
+  commit `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
 - Status: **new scientific revision; independent review of these exact bytes is pending**.
   Its sharpened theorem needs only
   the fixed dimension `d=3` and `M=N+3` signatures, rather than a growing

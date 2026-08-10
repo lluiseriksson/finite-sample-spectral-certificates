@@ -18,8 +18,11 @@ request to reward repository size.
 - SHA-256 of the repository PDF bytes:
   `1de63a470acc5ee8e02268b9b73779e474c25b45c05139a6108c239946f9a6ee`
 - Embedded manuscript date: `10 August 2026`
-- CI status at that commit: pending.  The workflow now has separate numerical
-  replay and Lean/mathlib kernel-check jobs.
+- CI status for the release head containing that scientific commit: push run
+  [`31345709728`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31345709728)
+  and pull-request run
+  [`31345712043`](https://github.com/lluiseriksson/finite-sample-spectral-certificates/actions/runs/31345712043)
+  both passed their numerical replay and Lean/mathlib kernel-check jobs.
 - Independent review: pending for these exact bytes.  Reviews of the preceding
   15-page PDF are superseded and must not be reused.
 
