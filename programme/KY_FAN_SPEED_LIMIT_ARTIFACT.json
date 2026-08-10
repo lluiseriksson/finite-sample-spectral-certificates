@@ -4,9 +4,9 @@
   "title": "Proper-Delay Spectra Majorize Subspace Rotation: Exact Finsler Resource Laws for Passive Networks",
   "frozen_on": "2026-08-10",
   "artifacts": {
-    ".github/workflows/verify.yml": "f4a1a1dc89ba4dab815dde8215d00e55b21f4ed98a34451e66dcbd46cca17694",
+    ".github/workflows/verify.yml": "76979abf8e667ea081939a1ed5d56c130b5321cfe6235c369c54a73c743e0898",
     ".gitignore": "b7372b0a733eada948cf019519cf9d4253a969c9fa929b927789ee25f431d736",
-    "README.md": "f2ee2b26a39c85e1d3509a4da3b8fb06236512b0f969eabbc1fc235bcf27ca90",
+    "README.md": "1ba0c88e5bf95f2f98d34f0beca1536834c0cafdaebda207e2cbf48145e192fe",
     "paper_ky_fan_speed_limits/README.md": "bed2bb9665d3306d74e7c80a9cf9d1950631070b99b5e50704603b20ce05f8db",
     "paper_ky_fan_speed_limits/main.tex": "6057013cdd21d5ea16a68b0151d65452abf1c411220f6b3dba4acda3079d656d",
     "paper_ky_fan_speed_limits/references.bib": "17a2ee970a8c87c407d64a4a0debb6a31028ec8c0713aa0b0e09d60fdd947780",

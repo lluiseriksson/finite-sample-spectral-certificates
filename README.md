@@ -7,6 +7,24 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+## New: complete delay--memory regions
+
+The seventh paper, `paper_delay_memory_regions/complete_delay_memory_regions.pdf`,
+closes the inverse problem left by the Ky Fan speed limits. An integrated
+leading-delay profile `q` transports rank-`k` subspaces with canonical angles
+`beta` exactly when `2 beta` is weakly majorized by `q`. Every feasible point
+has an explicit compiler with at most `k+1` mutually commuting positive
+segments and constant ordered delay spectrum.
+
+Rational inner realizations carry an additional integer resource: the exact
+minimum McMillan degree for two-frequency subspace interpolation is the number
+of nonzero canonical angles. At multiple frequencies, a boundary Pick matrix
+completes the local Wigner--Smith data into a Gram matrix of excited internal
+states. Its spectrum yields robust hidden-state counts and unavoidable
+model-reduction tails. The artifact includes a strict degree-one/degree-two
+example with identical local delays, 2,240 deterministic randomized audits, an
+independent verifier and a hash-locked release gate.
+
 ## New: proper-delay spectra majorize subspace rotation
 
 The sixth paper, `paper_ky_fan_speed_limits/proper_delay_spectra_majorize_subspace_rotation.pdf`,
@@ -134,6 +152,9 @@ Gaussian scope.
 - `paper_calibration_memory/`: topological McMillan-degree/Wigner--Smith paper.
 - `paper_routing_speed_limit/`: sharp robust spectral-routing speed-limit paper.
 - `paper_ky_fan_speed_limits/`: mode-resolved Ky Fan speed-limit paper.
+- `paper_delay_memory_regions/`: complete delay-region and Pick-memory paper.
+- `research/delay_memory_region_certificate.py`: synthesis, Pick-rank and transfer audit.
+- `verification/verify_delay_memory_regions.py`: independent seventh-paper verifier.
 - `research/ky_fan_speed_limit_certificate.py`: hierarchy and tomography audit.
 - `verification/verify_ky_fan_speed_limits.py`: independent Ky Fan verifier.
 - `research/routing_speed_limit_certificate.py`: equality and adversarial replay.
