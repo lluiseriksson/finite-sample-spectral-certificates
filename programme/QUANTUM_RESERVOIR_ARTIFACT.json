@@ -4,11 +4,11 @@
   "release_date": "2026-08-10",
   "branch": "research/quantum-reservoir-boundary",
   "artifacts": {
-    "paper_quantum_reservoir/architecture_dependent_decoherence.pdf": "054c9ad1d07798dfa2f5f55bc1e0feb054e66e73ccfb1f47a4ac1e137c14e4d0",
+    "paper_quantum_reservoir/architecture_dependent_decoherence.pdf": "4113c20a42d19f8018f7b8874b22e0f96ae594347ae5fdc7255b86fdf5ea9bdd",
     "results/quantum_reservoir/passive_filter_scaling.json": "16e853f7b69c35c14a5e7094aafdc43ea19687211acae30b7963efdff9b7d4dd",
     "results/quantum_reservoir/passive_tolerance.json": "284cfe80310d75b4a422b982f8b6df808fcddd82ae7481c5a66b6452ea85c787",
-    "research/quantum_reservoir_filter.py": "be3446cbebf741ca3d08b41c182b5cc6061b900528e5935195439e9c673b88e4",
-    "research/quantum_reservoir_robustness.py": "aca10caa6e137328306c9d4ca2152e0c4d10f8736187ebcb2bb2924296a22576",
+    "research/quantum_reservoir_filter.py": "d221aa4b4c2e33ee77291991cfdb6e1799468a9352c850bf0e064b2968b67d6a",
+    "research/quantum_reservoir_robustness.py": "533cf88601cafb529efbf7d8f3ffc89c75a4f4773234bf34c84002ac7af73648",
     "verification/verify_passive_quantum_filter.py": "7438980ab5287ca863c37d62d2b3da787607d2f213115ed9f4adb27429cbfb26"
   },
   "pdf": {

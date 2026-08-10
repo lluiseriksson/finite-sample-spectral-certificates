@@ -122,7 +122,7 @@ def make_figure(result: dict[str, object], output: Path) -> None:
         axis.grid(True, alpha=0.22)
     figure.tight_layout()
     output.parent.mkdir(parents=True, exist_ok=True)
-    figure.savefig(output)
+    figure.savefig(output, metadata={"CreationDate": None, "ModDate": None})
     plt.close(figure)
 
 

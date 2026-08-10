@@ -181,7 +181,7 @@ def make_figure(records: list[dict[str, float | int | bool]], output: Path) -> N
     left.legend(handles_left + handles_right, labels_left + labels_right, loc="center left")
     figure.tight_layout()
     output.parent.mkdir(parents=True, exist_ok=True)
-    figure.savefig(output)
+    figure.savefig(output, metadata={"CreationDate": None, "ModDate": None})
     plt.close(figure)
 
 
@@ -208,7 +208,11 @@ def make_architecture_figure(output: Path) -> None:
     axis.text(5.0, 4.05, "explicit causal inner six-port completion", ha="center", va="center", weight="bold")
     figure.tight_layout()
     output.parent.mkdir(parents=True, exist_ok=True)
-    figure.savefig(output, bbox_inches="tight")
+    figure.savefig(
+        output,
+        bbox_inches="tight",
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     plt.close(figure)
 
 
