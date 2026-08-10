@@ -34,7 +34,7 @@ paper.
   Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
 - Pages: 16
 - Local SHA-256: `1de63a470acc5ee8e02268b9b73779e474c25b45c05139a6108c239946f9a6ee`
-- Scientific commit: pending this release commit.
+- Scientific commit: `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
 - Public-byte SHA-256 recheck: pending push.
 - Status: **new scientific revision; independent review of these exact bytes is pending**.
   Its sharpened theorem needs only

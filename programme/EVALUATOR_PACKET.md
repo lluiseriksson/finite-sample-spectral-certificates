@@ -9,8 +9,8 @@ request to reward repository size.
 - Repository: <https://github.com/lluiseriksson/finite-sample-spectral-certificates>
 - Research branch: `research/endogenous-visibility`
 - Draft pull request: <https://github.com/lluiseriksson/finite-sample-spectral-certificates/pull/2>
-- Scientific source commit containing the PDF bytes below: pending this release
-  commit; use the public raw-PDF URL after the push.
+- Scientific source commit containing the PDF bytes below:
+  `cb1c8f4b9267cf55e586fcb17db8ae3a3115d4a2`.
 - PDF path: `paper_noncommuting/noncommuting_filters_draft.pdf`
 - Title visible on page 1: *Irreducible Channel Mixing and Exponential
   Calibration Laws for Matrix-Polynomial and Linear-Phase MIMO FIR Filters*
