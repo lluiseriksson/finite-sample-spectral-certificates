@@ -58,14 +58,22 @@ On two stop arcs,
 In contrast, every transfer of the same bidegree that has a constant
 nontrivial reducing channel and obeys the same calibrations has stopband norm
 at least one.  The proof is a scalar root-count obstruction exposed by the
-full-spark signatures.  The lossless completion uses only three scalar
+full-spark signatures.  We strengthen this discontinuous-looking statement:
+for calibration defect $\delta$ and sampled reducing-line defect $\beta$, the
+comparator leakage is at least $[1-C_S(\delta+\beta)]_+$, where $C_S$ is an
+explicit finite-matrix constant.  A scalar Schur construction then proves
+that every valid $C_S$ must grow at least as $2\e^{9S/20}(1+o(1))$; uniform
+robustness is impossible for these calibrations.  The lossless completion uses only three scalar
 Blaschke all-pass elements, balanced interferometers and paraunitary delays,
 so physical passivity is verified directly rather than inferred from an
 unconstrained interpolation.  For a bath spectral density
 $j_-I\preceq J\preceq j_+I$, the filtered Kossakowski matrix therefore has
 norm at most $j_+\varepsilon_S^2$, whereas every reducing comparator retains a
-directional rate at least $j_-$.  This is a squared exponential separation at
-the dissipative-rate level.  It is not free: if a finite Blaschke product of
+directional rate at least $j_-$.  In a closed Markov pure-dephasing model the
+three auxiliary vacuum ports contribute exactly the architecture-independent
+baseline $\kappa_0I$; hence the observable total-rate advantage is at least
+$(\kappa_0+j_-)/(\kappa_0+j_+\varepsilon_S^2)$ and saturates at the vacuum
+floor.  The separation is not free: if a finite Blaschke product of
 degree $S$ yields signal leakage at most $\varepsilon<1$ on an arc of length
 $L$, its peak group delay is at least
 $LS/(16\arcsin\varepsilon)$.  Our family has exponentially large delay.  Thus
@@ -113,7 +121,10 @@ The contributions are:
   black-box synthesis theorem;
   \item a fixed-bidegree irreducible/reducible separation under exact
   full-spark tangential calibrations;
-  \item a squared separation for filtered Kossakowski matrices;
+  \item an approximate-calibration theorem with a computable conditioning
+  constant, and a matching exponential obstruction to uniform robustness;
+  \item a squared separation for filtered Kossakowski matrices and a closed
+  Ramsey model in which all vacuum ports are accounted for;
   \item a general delay-price theorem for the scalar all-pass mechanism;
   \item an exact no-go showing why the earlier real-symmetric quadratic
   certificate cannot be made globally passive by scalar rescaling; and
@@ -150,6 +161,7 @@ lossless pass response.
 For $S\geq1$, let $\cR_S$ be the set of $3\times3$ rational transfers
 $Q=A/d$, regular on $\T$, whose scalar common denominator satisfies
 $\deg d\leq S$ and whose numerator entries satisfy $\deg A_{ab}\leq S+4$.
+We take $d$ to have no zeros on $\T$, after removing common cancellations.
 The class allows cancellations; using upper bounds rather than exact degrees
 only strengthens the comparator.
 \end{definition}
@@ -170,6 +182,33 @@ This comparator is strictly larger than simultaneously diagonalizable or
 commuting channels: the complementary $2\times2$ block may be fully
 noncommutative and frequency dependent.  The comparison therefore isolates a
 constant channel split, not mere pairwise commutativity.
+
+\begin{proposition}[Static-split characterization]\label{prop:staticsplit}
+A transfer $Q$ has a constant reducing subspace if and only if there is one
+frequency-independent unitary $R$ for which
+\[
+ R^*Q(z)R=\begin{pmatrix}Q_1(z)&0\\0&Q_2(z)\end{pmatrix}
+\]
+at every regular point, with both blocks nonempty.  The property is invariant
+under constant unitary changes of channel coordinates.
+\end{proposition}
+
+\begin{proof}
+Choose orthonormal bases of the reducing subspace and its orthogonal
+complement and concatenate them into $R$.  Invariance of both subspaces kills
+the two off-diagonal blocks.  Conversely, the span of either coordinate block
+reduces the displayed transfer.  Conjugating by another constant unitary just
+transports that subspace.
+\end{proof}
+
+Thus the comparator is precisely a network that separates into parallel
+channel groups after a static reciprocal change of coordinates; it is stable
+under static relabeling and parallel composition.  A frequency-dependent
+diagonalizer is itself a dynamical filter with poles, delay and degree, so
+granting it for free would change the resource accounting.  Distinct constant
+rotations on input and output define a broader two-sided factorization and are
+not covered: the present question concerns a persistent physical channel
+direction shared by injection, propagation and readout.
 
 \section{Why the earlier zero-phase witness cannot simply be made passive}
 
@@ -439,13 +478,109 @@ proved for a larger comparison class that need not be passive; imposing
 passivity only turns its lower bound into equality.
 \end{remark}
 
-\begin{remark}[Exact rather than robust separation]
-The theorem uses exact calibrations and exact constant reducing subspaces.
-Small calibration errors can be treated by polynomial conditioning estimates,
-but the present full-spark margin decreases rapidly with $S$; we do not claim
-a uniform constant-error theorem.  This limitation is operationally relevant
-and is revisited in \cref{sec:limits}.
-\end{remark}
+\subsection{Approximate calibration and approximate reduction}
+
+The exact obstruction has a quantitative counterpart.  Put $N=S+4$ and
+$K=M-2=3S-5$, and define the full-spark singular margin
+\begin{equation}\label{eq:gamma}
+ \gamma_S=\min_{|J|=3}\sigma_{\min}[v_j]_{j\in J}>0.
+\end{equation}
+For an erasure set $E\subset\{1,\ldots,M\}$ of size two, let
+$V_E=(z_j^k)_{j\notin E,\,0\leq k\leq N}$ and set
+\begin{equation}\label{eq:chi}
+ \chi_S=\min_{|E|=2}\sigma_{\min}(V_E)>0.
+\end{equation}
+Every $V_E$ has full column rank because it contains at least $N+1$ distinct
+Vandermonde rows.  Finally take $R=8(S+1)$ fixed midpoint samples $\xi_\ell$
+split equally across the two stop arcs, form
+$W_S=(\xi_\ell^k)_{1\leq\ell\leq R,\,0\leq k\leq S}$, and put
+\begin{equation}\label{eq:nu}
+ \nu_S=\frac{\sigma_{\min}(W_S)}{\sqrt{R(S+1)}}>0.
+\end{equation}
+
+For $Q\in\cR_S$ and a unit vector $u$, define the calibration and sampled
+left-reduction defects
+\begin{equation}\label{eq:defects}
+ \Delta(Q)=\max_j\|Q(z_j)v_j-z_j^2v_j\|,
+ \quad
+ \beta_u(Q)=\max_j\|(I-uu^*)Q(z_j)^*u\|.
+\end{equation}
+The second quantity vanishes for the reducing line used in
+\cref{thm:separation}; allowing it to be small also covers approximate
+one-way decoupling at the measured nodes.
+
+\begin{theorem}[Quantitative approximate obstruction]\label{thm:robust}
+For every $Q\in\cR_S$ and every unit $u$,
+\begin{equation}\label{eq:robustlb}
+ \sup_{\theta\in\cI_{\rm s}}\|Q(\e^{\mathrm{i}\theta})\|_{\op}
+ \geq
+ \left[1-C_S\bigl(\Delta(Q)+\beta_u(Q)\bigr)\right]_+,
+ \qquad
+ C_S=\frac{\sqrt{3K(N+1)}}{\gamma_S\chi_S\nu_S},
+\end{equation}
+where $[x]_+=\max\{x,0\}$.  In particular, this is a finite-error theorem
+for every exactly reducing comparator by taking $\beta_u(Q)=0$.
+\end{theorem}
+
+\begin{proof}
+Let $q=u^*Qu$.  Order the overlaps $|\langle u,v_j\rangle|$ and erase the
+two smallest.  Applied to the triple of three smallest overlaps,
+\eqref{eq:gamma} implies that the third, and hence every retained overlap, is
+at least $\gamma_S/\sqrt3$.  Writing
+$Q^*u=\overline q\,u+w$ at a calibration node gives
+\[
+ |(q(z_j)-z_j^2)\langle u,v_j\rangle|
+ \leq\Delta(Q)+\beta_u(Q).
+\]
+Normalize the common denominator so that $\sup_\T|d|=1$, write $q=a/d$ and
+$h=a-z^2d$.  Then $\deg h\leq N$ and, on the $K$ retained nodes,
+\[
+ |h(z_j)|\leq\sqrt3\,[\Delta(Q)+\beta_u(Q)]/\gamma_S.
+\]
+The least-squares bound from \eqref{eq:chi} gives
+$\|c_h\|_2\leq\sqrt{3K}[\Delta(Q)+\beta_u(Q)]/(\gamma_S\chi_S)$, so
+$\sup_\T|h|\leq\sqrt{N+1}\|c_h\|_2$.
+
+It remains to prevent the denominator from hiding this estimate.  If $c_d$
+is its padded coefficient vector, then
+$1=\sup_\T|d|\leq\sqrt{S+1}\|c_d\|_2$.  Hence \eqref{eq:nu} guarantees a
+fixed stop sample $\xi_\ell$ with $|d(\xi_\ell)|\geq\nu_S$.  At that point,
+$|q-\xi_\ell^2|=|h/d|\leq C_S[\Delta(Q)+\beta_u(Q)]$, and therefore
+$\|Q(\xi_\ell)\|_{\op}\geq|u^*Q(\xi_\ell)u|
+\geq1-C_S[\Delta(Q)+\beta_u(Q)]$.
+Taking the positive part proves the claim.
+\end{proof}
+
+The price of a denominator-free statement is visible in $C_S$.  More
+importantly, the deterioration cannot be removed by a sharper proof.
+
+\begin{theorem}[No uniform robustness for these calibrations]\label{thm:robustbarrier}
+Let $C_S'$ be any constant for which
+$\sup_{\cI_{\rm s}}\|Q\|_{\op}\geq[1-C_S'\Delta(Q)]_+$ holds for all reducing
+Schur transfers in $\cR_S$.  Then
+\begin{equation}\label{eq:necessaryC}
+ C_S'\geq
+ \frac{[1-\varepsilon_S]_+}{\sin(\e^{-9S/20}/2)}
+ =2\e^{9S/20}(1+o(1)).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Take the scalar transfer
+$Q_{\rm c}(z)=z^2(1+B_S(z))I_3/2$.  It is Schur, reducing and belongs to
+$\cR_S$.  At a calibration from group $g$, one has
+$B_S(z_j)=\e^{-\mathrm{i}\phi_g}$, so its maximum calibration defect is
+exactly $\sin(\e^{-9S/20}/2)$.  The central branch is one of the three scalar
+arms in the construction, and \cref{lem:stop} gives
+$\sup_{\cI_{\rm s}}\|Q_{\rm c}\|\leq\varepsilon_S$.  Substitution in the
+assumed inequality yields \eqref{eq:necessaryC}; the asymptotic follows from
+$\varepsilon_S\to0$ and $\sin x\sim x$.
+\end{proof}
+
+Together, \cref{thm:robust,thm:robustbarrier} replace a qualitative fragility
+caveat by a precise statement: finite errors are controlled at every fixed
+$S$, but the present increasingly clustered calibration family cannot support
+an $S$-uniform tolerance theorem.
 
 \section{Transfer to bath spectra and decoherence rates}
 
@@ -507,6 +642,62 @@ $P_{\rm extra}\geq k_BT\dot C_{\rm loss}$, as carefully delimited in
 \cite{ErikssonCut2026}, transfers the rate comparison to the \emph{input of
 the lower bound}.  A smaller lower bound does not prove an achievable low-power
 maintenance protocol, and we do not use it that way.
+
+\subsection{A closed Ramsey model with the vacuum ports included}
+
+The signal-only congruence \eqref{eq:koss} does not by itself specify the
+fluctuations entering the auxiliary ports.  Here is a minimal model in which
+they are included rather than appended as an unknown correction.  Write the
+signal output row of the full six-port inner transfer as $[T\ L]$ and take the
+six-input symmetrized white-noise covariance to be
+\begin{equation}\label{eq:closedinput}
+ V_{\rm in}=\frac12 I_6+\begin{pmatrix}J&0\\0&0\end{pmatrix}.
+\end{equation}
+Thus every port contains vacuum, while the first three carry the additional
+stationary Gaussian bath spectrum $J$.  Couple a pointer contrast $c\in\C^3$
+linearly to the three output quadratures in the Markov pure-dephasing limit,
+and absorb the convention-dependent coupling prefactor into the rate units.
+
+\begin{proposition}[Vacuum-complete Ramsey rate]\label{prop:vacuumclosed}
+For every passive six-port completion,
+\begin{equation}\label{eq:closedcov}
+ V_{{\rm out},{\rm sig}}=\frac12 I_3+TJT^*,
+ \qquad
+ \kappa_T(c)=\kappa_0\|c\|^2+c^*TJT^*c,
+\end{equation}
+where $\kappa_0$ is the common vacuum Ramsey rate in the chosen normalization.
+Consequently the constructed network and every reducing calibrated comparator
+$Q\in\cR_S$ that admits such a passive completion obey
+\begin{equation}\label{eq:totalrates}
+ \sup_{\|c\|=1}\kappa_{G_S}(c)
+ \leq\kappa_0+j_+\varepsilon_S^2,
+ \qquad
+ \kappa_Q(u)\geq\kappa_0+j_-,
+\end{equation}
+and their certified total-rate advantage is at least
+\begin{equation}\label{eq:vacuumratio}
+ \frac{\kappa_0+j_-}{\kappa_0+j_+\varepsilon_S^2}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Unitarity of the signal output row gives $TT^*+LL^*=I_3$.  Applying
+$[T\ L]$ on both sides of \eqref{eq:closedinput} therefore yields
+\[
+ \tfrac12(TT^*+LL^*)+TJT^*=\tfrac12I_3+TJT^*.
+\]
+Markov Gaussian pure dephasing turns the quadratic covariance in direction
+$c$ into the Ramsey exponent, which gives \eqref{eq:closedcov}.  The two rate
+bounds are then \cref{cor:rates} plus the same $\kappa_0$ term.
+\end{proof}
+
+This model makes two experimentally distinct claims.  Switching off the
+excess bath preparation ($J=0$) measures $\kappa_0$ directly; switching it on
+measures the excess rate $\kappa-\kappa_0$.  The latter retains the squared
+exponential architecture gap, while the total lifetime benefit saturates at
+$1+j_-/\kappa_0$ as $S\to\infty$ when $j_-=j_+$.  Vacuum therefore limits the
+observable gain but does not invalidate or ambiguously renormalize it.  The
+claim remains deliberately within a linear, Gaussian and Markov setting.
 
 \section{The hidden resource: a delay-price theorem}
 
@@ -607,7 +798,9 @@ finite-precision behavior and scale.  The public replay performs:
  \item dense global contractivity and stopband sweeps;
  \item direct $6\times6$ unitarity tests on 1001 boundary frequencies;
  \item the rational root-count inequality; and
- \item the squared-rate and group-delay identities.
+ \item multiprecision evaluation of $\gamma_S,\chi_S,\nu_S$ and both sides of
+ the robustness window; and
+ \item the squared-rate, vacuum-covariance and group-delay identities.
 \end{enumerate}
 No optimizer is used to establish the theorem.
 
@@ -686,6 +879,57 @@ for a robust comparator separation.
  \label{fig:tolerance}
 \end{figure}
 
+\subsection{Multiprecision robustness certificate}
+
+Theorem~\ref{thm:robust} is analytic; its constants are finite because the
+three displayed matrices have full column rank.  Nevertheless their scale is
+scientifically relevant.  \Cref{tab:robust} evaluates them with 60 decimal
+digits and reports both the proved $C_S$ and the necessary lower bound from
+\cref{thm:robustbarrier}.  The enormous gap shows that our positive constant
+is not sharp.  The rapid growth on both sides shows, without relying on Monte
+Carlo perturbations, that fixed absolute tolerance is the wrong asymptotic
+regime for these clustered nodes.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4.0pt}
+\begin{tabular}{rrrrrr}
+\toprule
+$S$ & $\gamma_S$ & $\chi_S$ & $\nu_S$ & $\log_{10}C_S$ & necessary $\log_{10}C_S'$ \\
+\midrule
+5 & $1.257\,10^{-3}$ & $4.676\,10^{-16}$ & $3.948\,10^{-5}$ & $23.873$ & $1.105$ \\
+7 & $8.558\,10^{-5}$ & $6.528\,10^{-21}$ & $6.431\,10^{-7}$ & $31.825$ & $1.584$ \\
+9 & $7.875\,10^{-6}$ & $2.124\,10^{-28}$ & $1.058\,10^{-8}$ & $42.235$ & $2.019$ \\
+\bottomrule
+\end{tabular}
+\caption{Multiprecision conditioning audit for the quantitative obstruction.
+The upper constant is a rigorous formula evaluated numerically, not a claim of
+optimality.  The last column is a theorem-level lower bound on every possible
+constant in an inequality of the same form.}
+\label{tab:robust}
+\end{table}
+
+\subsection{Observable rate gap above a vacuum floor}
+
+The six-port covariance identity in \cref{prop:vacuumclosed} is audited on a
+257-point full-circle grid for every order in \cref{tab:audit}; the maximum
+operator-norm residual is $1.46\times10^{-14}$.
+\Cref{fig:closed} plots \eqref{eq:vacuumratio} for $j_-=j_+=1$ using the
+observed leakage.  With no baseline it reproduces the squared spectral gap;
+for every nonzero baseline it visibly approaches the predicted ceiling.  For
+example, at $S=9$ and $\kappa_0/j=10^{-3}$ the certified total-rate factor is
+$528.5$, while the zero-baseline excess-rate factor is $1118.7$.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.82\linewidth]{figures/closed_dephasing.pdf}
+ \caption{Certified total Ramsey-rate advantage after all vacuum inputs are
+ included.  The auxiliary ports produce a common, independently measurable
+ floor rather than an uncontrolled architecture-dependent correction.}
+ \label{fig:closed}
+\end{figure}
+
 \section{Relation to prior work and novelty boundary}
 
 Filter-function theory already supplies frequency-domain descriptions of
@@ -705,12 +949,14 @@ to trapped modes in delayed passive quantum networks
 interpretation of near-boundary poles as trapped memory are also prior art.
 
 The new mathematical claim is the conjunction proved in
-\cref{thm:separation,cor:rates,thm:delay,cor:delayfrontier}: under one explicit collection of
+\cref{thm:separation,thm:robust,thm:robustbarrier,cor:rates,prop:vacuumclosed,thm:delay,cor:delayfrontier}: under one explicit collection of
 full-spark delayed calibrations and one fixed rational bidegree, a passive
 irreducible signal block has exponentially small stop leakage while every
-constant-channel reducing transfer retains unit leakage; a uniformly
-nondegenerate bath squares this gap at the rate-matrix level; and strong scalar
-all-pass suppression forces a quantitative peak-delay cost.  The earlier
+constant-channel reducing transfer retains unit leakage; finite defects obey
+an explicit conditioning bound that is provably nonuniform; a uniformly
+nondegenerate bath squares the excess-noise gap and vacuum completion yields a
+closed observable-rate formula; and strong scalar all-pass suppression forces
+a quantitative peak-delay cost.  The earlier
 matrix-polynomial paper \cite{ErikssonMIMO2026} supplied the classical
 root-count architecture mechanism.  Here passivity, causal boundary phase,
 an explicit quantum-compatible loss completion, the Kossakowski transfer and
@@ -722,18 +968,22 @@ separations.
 
 \section{Limitations and falsification routes}\label{sec:limits}
 
-\begin{limitation}[Exact calibration]
-The separation can be fragile because the minimum full-spark minor decreases
-with order.  A fabrication-relevant theorem should replace exact roots by a
-quantified approximate root count and propagate phase, pole and calibration
-uncertainties through the comparator lower bound.
+\begin{limitation}[Conditioned rather than uniform robustness]
+\Cref{thm:robust} propagates finite calibration and sampled reduction errors,
+but its certified constants are extremely conservative.  Moreover,
+\cref{thm:robustbarrier} proves that every theorem of this form deteriorates
+at least exponentially for the present clustered calibration family.  A
+fabrication-oriented successor should redesign the nodes and signatures or
+optimize the finite interpolation constant; it cannot sharpen away the
+nonuniformity established here.
 \end{limitation}
 
 \begin{limitation}[Linear stationary bath interface]
-Equation \eqref{eq:koss} assumes a linear filter before a stationary Gaussian
-spectral density.  General non-Gaussian or nonlinear reservoirs need not
-transform by congruence, and strong-coupling or non-Markovian dynamics need
-not be summarized by a Davies rate matrix.
+Equations \eqref{eq:koss} and \eqref{eq:closedcov} assume a linear filter and
+a stationary Gaussian Markov bath.  General non-Gaussian or nonlinear
+reservoirs need not transform by congruence, and strong-coupling or
+non-Markovian dynamics need not be summarized by a Davies or Ramsey rate.
+The vacuum ports are closed exactly inside the stated model, not outside it.
 \end{limitation}
 
 \begin{limitation}[No many-body mass-gap theorem]
@@ -745,11 +995,12 @@ boundary and the memory resource behind it.
 \end{limitation}
 
 \begin{limitation}[Restricted comparator]
-The no-go covers constant reducing subspaces at the stated bidegree.  A
-reducible device with higher rational degree, frequency-dependent channel
-coordinates, feedback outside the modeled ports, active gain, or relaxed
-calibrations lies outside the theorem.  These are possible escape routes, not
-contradictions.
+The no-go covers the static reciprocal split of \cref{prop:staticsplit} at the
+stated bidegree.  A device with higher rational degree, a dynamical
+frequency-dependent change of channel coordinates, distinct input/output
+splits, feedback outside the modeled ports or active gain lies outside the
+theorem.  Those alternatives spend or change resources and remain possible
+escape routes, not contradictions.
 \end{limitation}
 
 The most direct experimental falsification is a passive three-channel device
@@ -765,17 +1016,22 @@ Irreducible channel mixing is not merely a coordinate choice when calibration
 directions vary with frequency.  An explicit passive six-port family exploits
 that fact to produce exponentially small signal leakage at a rational
 complexity where every constant-channel reducing comparator retains a unit
-branch.  The bath spectral density squares the separation in dissipative
-rates.  The same construction also exposes its own bill: exponentially long
-group delay, hence high-Q passive memory.  Operationally, the Heisenberg cut
-can be displaced by architecture, but the resource boundary reappears as
-dwell time and conditioning.  That simultaneous positive result and resource
-accounting is the central claim.
+branch.  The obstruction survives finite calibration and approximate
+reduction errors with an explicit constant, while a scalar competitor proves
+that uniform tolerance is impossible for the chosen nodes.  The bath spectral
+density squares the separation in excess dissipative rates; a closed Ramsey
+model turns every vacuum port into a measured common floor.  The same
+construction exposes its own bill: exponentially long group delay, hence
+high-Q passive memory.  Operationally, the Heisenberg cut can be displaced by
+architecture, but the resource boundary reappears as dwell time, vacuum noise
+and conditioning.  That simultaneous positive result, robustness barrier and
+resource accounting is the central claim.
 
 \section*{Code and data availability}
 
-Source, exact-arithmetic checks, dense numerical audits, the JSON ledger and
-the scripts that regenerate \cref{fig:architecture,fig:scaling,fig:tolerance}
+Source, exact-arithmetic checks, dense and multiprecision audits, the JSON
+ledgers and the scripts that regenerate
+\cref{fig:architecture,fig:scaling,fig:tolerance,fig:closed}
 are available in the public
 repository \cite{ErikssonRepository2026}:
 \begin{center}
@@ -785,6 +1041,8 @@ The principal commands are
 \begin{verbatim}
 python research/quantum_reservoir_filter.py
 python research/quantum_reservoir_robustness.py
+python research/quantum_reservoir_robust_bound.py
+python research/quantum_reservoir_closed_dephasing.py
 python verification/verify_passive_quantum_filter.py
 \end{verbatim}
 The release record pins the PDF and result-ledger hashes.  No private data,
@@ -817,10 +1075,12 @@ the signal contribution to its correlation matrix is $TJT^*$.  For a
 transition $m\leftrightarrow n$, let
 $c_a=\langle m|A_a|n\rangle$.  The associated quadratic dissipative
 coefficient is, up to the common convention-dependent prefactor,
-$c^*TJT^*c$.  This gives \eqref{eq:koss}.  Vacuum loss ports can add a baseline
-when the physical observable includes their fluctuations; the theorem
-concerns suppression of the specified incoming bath contribution, and any
-such baseline must be added separately.
+$c^*TJT^*c$.  This gives \eqref{eq:koss} for the excess-noise contribution.
+For the closed white-noise model, collect the vacuum covariance of all six
+inputs before adding $J$ on the signal ports.  The signal row identity
+$TT^*+LL^*=I$ then gives \eqref{eq:closedcov}; no loss-port term remains
+unspecified.  A colored or thermally populated auxiliary input would add its
+known term $LJ_{\rm aux}L^*$ and would no longer be architecture independent.
 
 For commuting pointer observables, the same calculation applies at zero Bohr
 frequency to contrasts between pointer states.  If the contrast vector is
@@ -841,6 +1101,8 @@ The JSON record stores, for each $S$:
  \item exact peak group delay; and
  \item maximum six-port unitarity residual.
 \end{itemize}
+Separate ledgers store the 60-digit singular margins and robustness constants,
+and the closed-vacuum covariance residual and total-rate frontiers.
 The analytic acceptance gates are deliberately looser than floating-point
 roundoff: calibration residual below $10^{-9}$, unitarity residual below
 $10^{-10}$, global norm below $1+2\times10^{-12}$, positive full-spark minors,

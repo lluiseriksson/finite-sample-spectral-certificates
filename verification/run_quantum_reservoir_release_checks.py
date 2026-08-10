@@ -83,6 +83,8 @@ def main() -> None:
         temporary = Path(directory)
         scaling = temporary / "scaling.json"
         tolerance = temporary / "tolerance.json"
+        robust = temporary / "robust.json"
+        closed = temporary / "closed.json"
         run(
             "research/quantum_reservoir_filter.py",
             "--output", str(scaling),
@@ -94,6 +96,16 @@ def main() -> None:
             "--output", str(tolerance),
             "--figure", str(temporary / "tolerance.pdf"),
         )
+        run(
+            "research/quantum_reservoir_robust_bound.py",
+            "--output", str(robust),
+        )
+        run(
+            "research/quantum_reservoir_closed_dephasing.py",
+            "--scaling", str(scaling),
+            "--output", str(closed),
+            "--figure", str(temporary / "closed.pdf"),
+        )
         compare_replay(
             json.loads((ROOT / "results/quantum_reservoir/passive_filter_scaling.json").read_text(encoding="utf-8")),
             json.loads(scaling.read_text(encoding="utf-8")),
@@ -103,6 +115,16 @@ def main() -> None:
             json.loads((ROOT / "results/quantum_reservoir/passive_tolerance.json").read_text(encoding="utf-8")),
             json.loads(tolerance.read_text(encoding="utf-8")),
             "tolerance",
+        )
+        compare_replay(
+            json.loads((ROOT / "results/quantum_reservoir/robust_separation.json").read_text(encoding="utf-8")),
+            json.loads(robust.read_text(encoding="utf-8")),
+            "robust",
+        )
+        compare_replay(
+            json.loads((ROOT / "results/quantum_reservoir/closed_dephasing.json").read_text(encoding="utf-8")),
+            json.loads(closed.read_text(encoding="utf-8")),
+            "closed",
         )
         print("PASS cross-platform numerical replay tolerance")
     check_hashes(expected)
