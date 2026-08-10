@@ -4,7 +4,7 @@
   "title": "Lossless Calibration Is Stored Memory: A Topological McMillan-Degree and Wigner--Smith Law for Passive Quantum Networks",
   "frozen_on": "2026-08-10",
   "artifacts": {
-    ".github/workflows/verify.yml": "36ae7f9c1c9faa7ce2840ff22ba4144922ed9bbb4c40ed1e9d6fe4fc766b25a5",
+    ".github/workflows/verify.yml": "c30ed5009f8becf7fde984f29cb377a11933f92a7282d71f442b85f7aa9b715a",
     "README.md": "69700dfd77f10127a0e863628f66e0819286ff2c331118f51cbea63650972033",
     "paper_calibration_memory/README.md": "da3e4d140307c4d3d79d784400bf0f428be9031124badf0b1c67fef869e8b7eb",
     "paper_calibration_memory/main.tex": "82a452bf8aad219624459b7710e7b54636b5bb29ebca89d9a7aba69dec5cfb26",

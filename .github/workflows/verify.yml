@@ -22,7 +22,11 @@ jobs:
       - run: python verification/verify_constant_channel_scaling.py
       - run: python verification/verify_passive_quantum_filter.py
       - run: python verification/run_quantum_reservoir_release_checks.py
-      - run: python research/calibration_memory_certificate.py
+      - name: Replay calibration-memory certificate without mutating frozen artifacts
+        run: >-
+          python research/calibration_memory_certificate.py
+          --output results/ci/calibration_memory_certificate.json
+          --figure results/ci/calibration_memory_law.pdf
       - run: python verification/verify_calibration_memory.py
       - run: python verification/run_calibration_memory_release_checks.py
       - run: python verification/verify_vbl_va001_witness.py
