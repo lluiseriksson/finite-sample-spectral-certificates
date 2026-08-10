@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "artifact": "exact-action-memory-diamond-paper",
+  "title": "The Action--Memory Diamond: Exact Resource Regions for Passive Matrix Networks",
+  "frozen_on": "2026-08-10",
+  "release_tag": "v1.8-exact-action-memory-diamond",
+  "artifacts": {
+    ".github/workflows/verify.yml": "faf08c5b3c89e029b643fc732bfc9326dab6e00f02b2db21a2292a99fee9010a",
+    ".gitignore": "7e0cb2394d9adf3e43eba66e3665d103eca95b9e882482dc4b54a5f6811c590e",
+    "README.md": "93faf60d66d8b1a94897092219eaed3d9bd0d68999b1ddaba514cae3e24fa534",
+    "paper_exact_action_memory/README.md": "b20740141f37ea0e5cbf4af4ccb038f91054bfac2d5a332eaf1f5e4411ac39fe",
+    "paper_exact_action_memory/main.tex": "e9075008fd53f338ecc7fcdf1ac404fea7aa0f5d61135444a9a6c3cd207b0fe0",
+    "paper_exact_action_memory/references.bib": "ca41db7286e2ba583c7a27cace69db7ccd5c3b1092d6663f60a233de1641e78d",
+    "paper_exact_action_memory/figures/action_memory_diamond.pdf": "30a9be6d9ffb7e5a3eefcdfdb203f67e084b6762afc1a575a765a957306ab560",
+    "paper_exact_action_memory/action_memory_diamond.pdf": "03f534fc8de852a331a193927cb4edd96cc2908b50f35ec491b58cb7d7126229",
+    "programme/EXACT_ACTION_MEMORY_RESEARCH_MEMO.md": "62ab1bff02422a460716b501e81f5a1e2942ed874b6fe34ef98821bc44d1aa8a",
+    "research/exact_action_memory_certificate.py": "bcd4e56359ba8a752026bea1a4496eaad18ef9901f1f7f19ab71afa90dfc4425",
+    "results/exact_action_memory/certificate.json": "b51b601ddf60a0f8d2834603a30163b9d6ae0706e3f240e8d98e9e7df4c1a84f",
+    "verification/verify_exact_action_memory.py": "84fb63b016c73f8d50e2591b976ddfe1d6285546a290ba954e5ac9b504e3d68d",
+    "verification/run_exact_action_memory_release_checks.py": "09bed082b379a54920e5f5dc74bfd94545b20161521b55b2479ac54f41eae1e0"
+  },
+  "replay": [
+    "python research/exact_action_memory_certificate.py",
+    "python verification/verify_exact_action_memory.py",
+    "python verification/run_exact_action_memory_release_checks.py"
+  ]
+}

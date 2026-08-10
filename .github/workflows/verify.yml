@@ -50,6 +50,13 @@ jobs:
           --figure results/ci/complete_delay_memory_region.pdf
       - run: python verification/verify_delay_memory_regions.py
       - run: python verification/run_delay_memory_region_release_checks.py
+      - name: Replay exact action-memory certificate without mutating frozen artifacts
+        run: >-
+          python research/exact_action_memory_certificate.py
+          --output results/ci/exact_action_memory_certificate.json
+          --figure results/ci/action_memory_diamond.pdf
+      - run: python verification/verify_exact_action_memory.py
+      - run: python verification/run_exact_action_memory_release_checks.py
       - run: python verification/verify_vbl_va001_witness.py
       - run: python research/route_c_block_krylov_benchmark.py
       - run: python research/route_c_graph_filter_pilot.py

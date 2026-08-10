@@ -50,5 +50,11 @@ paper_ky_fan_speed_limits/main.blg
 paper_ky_fan_speed_limits/main.log
 paper_ky_fan_speed_limits/main.out
 paper_ky_fan_speed_limits/main.pdf
+paper_exact_action_memory/main.aux
+paper_exact_action_memory/main.bbl
+paper_exact_action_memory/main.blg
+paper_exact_action_memory/main.log
+paper_exact_action_memory/main.out
+paper_exact_action_memory/main.pdf
 formal/.lake/
 pilot_primal_dual_equivalence.json

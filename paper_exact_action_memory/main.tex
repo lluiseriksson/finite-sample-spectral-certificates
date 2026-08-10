@@ -1,0 +1,823 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=0.86in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Action-Memory Diamond: Exact Resource Regions for Passive Matrix Networks},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={Exact attainable regions for arc action and McMillan degree}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{limitation}[theorem]{Limitation}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\D}{\mathbb D}
+\newcommand{\T}{\mathbb T}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\e}{\mathrm e}
+\newcommand{\mcdeg}{\deg_{\mathrm{McM}}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\title{The Action--Memory Diamond:\\
+Exact Resource Regions for Passive Matrix Networks}
+\author{Lluis Eriksson}
+\date{10 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A passive lossless network pays two different costs when it rotates a signal
+subspace over a frequency arc: a continuous Wigner--Smith action and an
+integer McMillan memory.  Known Grassmannian length bounds and rational-inner
+degree identities constrain these resources separately.  For the stated
+finite rational-inner class, we determine their joint attainable region
+exactly.  Let
+two rank-$k$ subspaces have principal angles $\beta_j$, put
+$B=\sum_j\beta_j$ and let $r$ be the number of nonzero angles.  For a square
+finite rational inner transfer matrix of degree at most $d$, define the arc
+action
+\[
+ A=\int_I\tr Q(\theta)\,\dd\theta,
+ \qquad Q=-\mathrm iS^*\partial_\theta S\succeq0.
+\]
+If $B>0$, the exact feasible set is
+\[
+ \boxed{\ d\ge r,\qquad 2B\le A\le2\pi d-2B\ }.
+\]
+Both faces are attained.  Equivalently,
+\[
+ d_{\min}(A)=\max\!\left\{r,
+ \left\lceil\frac{A+2B}{2\pi}\right\rceil\right\}.
+\]
+The upper face is a return cost: the complementary arc must rotate the
+subspace back, while the full-circle trace action is exactly $2\pi$ times
+the degree.  We prove sufficiency by an explicit compiler of normalized
+rank-one Blaschke--Potapov gates; it realizes every interior point and both
+faces, including rank-deficient and orthogonal cases.  When the endpoint
+subspaces coincide, the region changes discontinuously to
+$A\in[0,2\pi d)$, with the upper endpoint open.
+
+We derive fail-closed noisy degree certificates and give a multi-frequency
+warning using classical boundary Nevanlinna--Pick theory: three pairwise
+degree-one routing tasks can require degree two jointly.  For orthogonal-line
+data the obstruction is a frame-independent cycle phase, exhibited by an exact positive semidefinite
+Pick completion with spectrum $(2,1,0)$.  Deterministic code compiles random
+points of the diamond, constructs the degree-two colligation, and is replayed
+by an independent verifier.
+\end{abstract}
+
+\noindent\textbf{Keywords:} rational inner matrix; Wigner--Smith delay;
+McMillan degree; Blaschke--Potapov product; Grassmannian; passive network;
+boundary Nevanlinna--Pick interpolation; resource theory.
+
+\section{One routing event, two coupled resources}
+
+For a lossless causal finite-dimensional network, the boundary transfer
+matrix $S(\e^{\mathrm i\theta})$ is unitary and its proper-delay matrix
+\begin{equation}\label{eq:delay}
+ Q(\theta)=-\mathrm iS(\e^{\mathrm i\theta})^*
+ \frac{\dd}{\dd\theta}S(\e^{\mathrm i\theta})
+\end{equation}
+is positive semidefinite.  The integral of $\tr Q$ over an arc measures a
+continuous dwell-time or phase-action resource.  The McMillan degree counts
+the dimension of a minimal conservative realization and is integer valued
+\cite{McMillan1952,GoughZhang2015}.
+
+These resources cannot be chosen independently.  A subspace rotation costs
+action on the observed arc.  Less obviously, the same network must close its
+unitary loop on the complementary arc.  The trace action available to pay
+both journeys is quantized by the determinant winding.  This observation
+turns two one-sided lower bounds into the closed diamond in
+\cref{fig:diamond}.
+
+Grassmann metrics and optimal unitary/Grassmann paths are classical
+\cite[Thm.~1]{QiuZhangLi2005}
+\cite[Thms.~16 and 20]{AntezanaLarotondaVarela2014}; see also the recent
+projector formulation \cite[Sec.~IV.4]{Huang2026}.  Rank-one
+Blaschke--Potapov factorization and boundary all-pass interpolation are
+likewise classical \cite[Thm.~3.1]{AlpayJorgensenLewkowicz2016}
+\cite[Thms.~4.7, 5.1 and 8.2]{BolotnikovDym2006}
+\cite[Thm.~1 and Sec.~4.4]{BharathEtAl2023}.  To our knowledge, these
+ingredients have not previously been combined into an exact joint
+attainable region for arc-integrated trace delay and McMillan degree under a
+prescribed subspace transfer.  That conjunction, including both converses
+and all boundary cases, is the contribution here.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=0.88\linewidth]{figures/action_memory_diamond.pdf}
+ \caption{Left: the exact action--memory region for fixed endpoint geometry.
+ The lower face is the forward Grassmann cost and the upper face reserves the
+ same cost for the complementary return.  Right: a three-node
+ Grassmann--Pick completion has rank two although every pair has rank one;
+ its cycle product has phase $\pi/2$.}
+ \label{fig:diamond}
+\end{figure}
+
+\paragraph{What is and is not claimed.}
+The theorem concerns square finite rational inner matrices.  It does not
+cover loss, gain, singular inner factors, nonrational continuous-time
+propagation delays or a
+non-Markovian bath.  The quantity $A$ is trace delay, not thermodynamic work.
+The multi-node rank formula used later is a gauge-quotient corollary of
+classical tangential boundary interpolation, not a new Pick theorem.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}
+>{\raggedright\arraybackslash}p{0.31\linewidth}
+>{\raggedright\arraybackslash}p{0.37\linewidth}@{}}
+\toprule
+Precedent & Established ingredient & Not addressed there \\
+\midrule
+Qiu--Zhang--Li \cite{QiuZhangLi2005}
+& Symmetric-gauge Grassmann metrics
+& Positive delay, rational degree and complementary-arc budget \\
+Antezana--Larotonda--Varela \cite{AntezanaLarotondaVarela2014}
+& Optimal unitary and Grassmann paths
+& Inner analyticity, winding quantization and converse synthesis \\
+Potapov; Alpay et al.\ \cite{Potapov1955,AlpayJorgensenLewkowicz2016}
+& Rank-one factorization and degree
+& Exact action region under endpoint subspace data \\
+Bolotnikov--Dym \cite{BolotnikovDym2006}
+& Matrix tangential boundary interpolation
+& Arc-integrated action and forward/return geometry \\
+Bharath et al.\ \cite{BharathEtAl2023}
+& All-pass design with nodewise group-delay optimization
+& Closed action--degree diamond and its two boundary compilers \\
+\bottomrule
+\end{tabular}
+\caption{Closest precedents and scope distinction.  Each cited work supplies
+the listed ingredient; we are not aware of one containing the present joint
+attainable-region theorem.}
+\label{tab:precedent}
+\end{table}
+
+\section{Setup}
+
+Let $I=[\theta_0,\theta_1]$ be a proper positively oriented arc, let
+$d\in\mathbb N_0$, and suppose
+$0<\theta_1-\theta_0<2\pi$, and write
+$\zeta_j=\e^{\mathrm i\theta_j}$.  Let $S$ be an $N$-by-$N$ rational inner
+matrix regular on $\T$.  Its McMillan degree is denoted $n=\mcdeg S$.
+
+Fix $\mathcal X\in\Gr(k,N)$ and set
+\[
+ \mathcal Y_0=S(\zeta_0)\mathcal X,
+ \qquad
+ \mathcal Y_1=S(\zeta_1)\mathcal X.
+\]
+Let
+\[
+ \frac{\pi}{2}\ge\beta_1\ge\cdots\ge\beta_k\ge0
+\]
+be their canonical angles and define
+\begin{equation}\label{eq:Br}
+ B=\sum_{j=1}^k\beta_j,
+ \qquad
+ r=\#\{j:\beta_j>0\}.
+\end{equation}
+The arc action is
+\begin{equation}\label{eq:action}
+ A_I(S)=\int_{\theta_0}^{\theta_1}\tr Q(\theta)\,\dd\theta.
+\end{equation}
+
+For a finite rational inner matrix, $Q(\theta)\succeq0$ on $\T$ and
+\begin{equation}\label{eq:winding}
+ \int_0^{2\pi}\tr Q(\theta)\,\dd\theta
+ =2\pi\,\operatorname{wind}(\det S)
+ =2\pi\mcdeg S.
+\end{equation}
+The last equality follows directly from a rank-one
+Blaschke--Potapov factorization \cite{Potapov1955,
+AlpayJorgensenLewkowicz2016}.
+
+\section{The exact action--memory diamond}
+
+\begin{theorem}[Exact action--memory diamond]\label{thm:diamond}
+Let $I$ be a proper arc and let $\mathcal X,\mathcal Y\in\Gr(k,N)$ have
+principal-angle data $(B,r)$ from \eqref{eq:Br}.
+
+If $B>0$, there exists an $N$-by-$N$ finite rational inner matrix $S$,
+regular on $\T$, such that
+\[
+ S(\zeta_0)\mathcal X=\mathcal X,
+ \qquad S(\zeta_1)\mathcal X=\mathcal Y,
+ \qquad \mcdeg S\le d,
+ \qquad A_I(S)=A,
+\]
+if and only if
+\begin{equation}\label{eq:diamond}
+ \boxed{d\ge r,\qquad 2B\le A\le2\pi d-2B.}
+\end{equation}
+Constants on the left allow an arbitrary prescribed initial image in place
+of $\mathcal X$.
+
+If $B=0$, the exact region is
+\begin{equation}\label{eq:trivialregion}
+ A=0\quad\text{or}\quad d\ge1\text{ and }0<A<2\pi d.
+\end{equation}
+Thus for $d\ge1$ it is $[0,2\pi d)$; for $d=0$ it is the singleton
+$\{0\}$.
+\end{theorem}
+
+\begin{corollary}[Exact least memory at prescribed action]
+\label{cor:dmin}
+For $B>0$ and $A\ge2B$,
+\begin{equation}\label{eq:dmin}
+ d_{\min}(A)=
+ \max\left\{r,
+ \left\lceil\frac{A+2B}{2\pi}\right\rceil\right\}.
+\end{equation}
+For $B=0$, $d_{\min}(0)=0$ and
+\[
+ d_{\min}(A)=\left\lfloor\frac{A}{2\pi}\right\rfloor+1,
+ \qquad A>0.
+\]
+\end{corollary}
+
+Three features are worth isolating.  First, the two faces in
+\eqref{eq:diamond} are inclusive even when some angles are orthogonal.
+Second, an arbitrarily small but positive angle forces one unit of memory,
+whereas at $B=0$ the degree can drop to zero.  Third, the open upper endpoint
+in \eqref{eq:trivialregion} is real: every nonconstant finite inner function
+has strictly positive trace delay on every nonempty complementary arc.
+
+\section{Necessity: the return arc spends the missing action}
+
+We give a self-contained trace version of the geometric speed limit.
+
+\begin{lemma}[Positive-generator subspace speed]\label{lem:speed}
+Let $U(t)$ be a differentiable unitary path with
+$-\mathrm iU^*\dot U=H(t)\succeq0$, and let
+$\mathcal X(t)=U(t)\mathcal X(0)$.  If the endpoint principal angles are
+$\beta_j$, then
+\begin{equation}\label{eq:trace-speed}
+ 2\sum_j\beta_j\le\int\tr H(t)\,\dd t.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $P$ be the moving orthogonal projector and write $H$ in blocks relative
+to $P\oplus(I-P)$ as
+$\left(\begin{smallmatrix}H_{11}&K\\K^*&H_{22}\end{smallmatrix}\right)$.
+The projector velocity has trace norm
+$\lVert\dot P\rVert_1=2\lVert K\rVert_*$.  Positivity of the block matrix
+implies
+\[
+ 2\lVert K\rVert_*\le\tr H_{11}+\tr H_{22}=\tr H;
+\]
+for example, test positivity against the polar partial isometry of $K$.
+The trace-norm Grassmann length dominates twice the sum of endpoint principal
+angles \cite{QiuZhangLi2005,AntezanaLarotondaVarela2014}.  Integration gives
+\eqref{eq:trace-speed}.
+\end{proof}
+
+Applying \cref{lem:speed} on $I$ gives $A\ge2B$.  On the complementary arc,
+the same periodic transfer matrix returns $\mathcal Y$ to $\mathcal X$.
+Its action is $2\pi n-A$ by \eqref{eq:winding}, so
+\begin{equation}\label{eq:return}
+ 2\pi n-A\ge2B.
+\end{equation}
+Since $n\le d$, this yields the upper face in \eqref{eq:diamond}.
+
+It remains to see why $n\ge r$.  Factor $S$, up to a constant unitary, into
+$n$ rank-one Blaschke--Potapov factors $F_j$.  Put
+$P_j(z)=F_1(z)\cdots F_j(z)$ and
+$R_j=P_j(\zeta_1)P_j(\zeta_0)^*$.  Then
+\[
+ R_j=\left[P_{j-1}(\zeta_1)F_j(\zeta_1)F_j(\zeta_0)^*
+ P_{j-1}(\zeta_1)^*\right]R_{j-1}.
+\]
+The bracket is a unitary gate $I+(\lambda-1)vv^*$ after conjugating its
+rank-one projector.  Such a gate can
+lower the dimension of the intersection of two $k$-planes by at most one.
+After $n$ gates,
+\[
+ \dim(\mathcal X\cap\mathcal Y)\ge k-n.
+\]
+Because $r=k-\dim(\mathcal X\cap\mathcal Y)$, one has $n\ge r$.
+
+When $B=0$, \eqref{eq:winding} only gives $A\le2\pi n$.  Equality cannot
+hold for $n>0$: the complementary arc is nonempty and each scalar Poisson
+kernel in a Potapov factorization is strictly positive there.  Hence
+$A<2\pi n\le2\pi d$.  The constant case gives $A=0$.
+
+\section{Two exact one-gate lemmas}
+
+The converse rests on two elementary facts.  We state them explicitly to
+fix phases and endpoints.
+
+\begin{lemma}[Any proper-arc phase]\label{lem:phase}
+For a proper arc $I$ and every $\delta\in(0,2\pi)$, there is a scalar
+degree-one Blaschke factor $b$ such that
+\[
+ b(\zeta_0)=1,
+ \qquad b(\zeta_1)=\e^{\mathrm i\delta},
+ \qquad \int_I-\mathrm i\overline b\,\partial_\theta b\,\dd\theta=\delta.
+\]
+\end{lemma}
+
+\begin{proof}
+Rotate the arc to $[-\gamma,\gamma]$, where
+$\gamma=(\theta_1-\theta_0)/2\in(0,\pi)$.  For
+$b_\rho(z)=(z-\rho)/(1-\rho z)$, $-1<\rho<1$, its phase advance is
+\begin{equation}\label{eq:phaseformula}
+ \delta_\rho=4\arctan\left(
+ \frac{1+\rho}{1-\rho}\tan\frac{\gamma}{2}\right).
+\end{equation}
+It increases continuously from $0$ to $2\pi$.  More explicitly, the desired
+zero is
+\begin{equation}\label{eq:rhofromdelta}
+ \rho=
+ \frac{\tan(\delta/4)-\tan(\gamma/2)}
+      {\tan(\delta/4)+\tan(\gamma/2)}.
+\end{equation}
+Multiplication by a unimodular constant normalizes the value at the first
+endpoint.  The integral equals the unwrapped phase advance.
+\end{proof}
+
+\begin{lemma}[Exact rank-one line gate]\label{lem:gate}
+Let two lines have angle $\alpha\in(0,\pi/2]$.  A rank-one unitary
+\[
+ W=I+(\e^{\mathrm i\delta}-1)vv^*
+\]
+maps the first line to the second, after choosing $v$, if and only if
+\begin{equation}\label{eq:gateinterval}
+ 2\alpha\le\delta\le2\pi-2\alpha.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+In the plane of the two lines, write
+$v=\cos\eta\,x+\e^{\mathrm i\varphi}\sin\eta\,x_\perp$.  Then
+\begin{equation}\label{eq:gateoverlap}
+ |\langle x,Wx\rangle|^2
+ =1-\sin^2(\delta/2)\sin^2(2\eta).
+\end{equation}
+Thus $|\langle x,Wx\rangle|=\cos\alpha$ is possible exactly when
+$\sin\alpha\le|\sin(\delta/2)|$, which is \eqref{eq:gateinterval}.
+For a constructive choice, set
+\[
+ t=\cos^2\eta=
+ \frac{1-\sqrt{1-\sin^2\alpha/\sin^2(\delta/2)}}{2}
+\]
+and choose $\varphi$ to match the phase of the prescribed second line.
+This also covers both equalities in \eqref{eq:gateinterval}.
+\end{proof}
+
+\section{Sufficiency: compiling every point}
+
+Assume first that $B>0$.  Choose mutually orthogonal principal planes with
+vectors $x_j\in\mathcal X$ and $x_j^\perp\in\mathcal X^\perp$ such that the
+target principal line is
+\[
+ y_j=\cos\beta_j\,x_j+\sin\beta_j\,x_j^\perp.
+\]
+Only the $r$ positive angles need gates.
+
+Fix an integer $n$ with $r\le n\le d$ and
+\begin{equation}\label{eq:fixedn}
+ 2B\le A\le2\pi n-2B.
+\end{equation}
+Choose positive integers $q_j$ summing to $n$ and subdivide each principal
+geodesic into positive increments
+\[
+ \beta_j=\alpha_{j1}+\cdots+\alpha_{jq_j}.
+\]
+By \cref{lem:gate}, the phase assigned to step $(j,\ell)$ may be any value
+in
+\[
+ [2\alpha_{j\ell},\,2\pi-2\alpha_{j\ell}].
+\]
+The Minkowski sum of these $n$ intervals is exactly the interval in
+\eqref{eq:fixedn}.  Hence phases $\delta_{j\ell}$ can be chosen to sum to
+$A$.
+
+Use \cref{lem:phase} to produce normalized scalar factors
+$b_{j\ell}$ with these arc phases.  At each intermediate principal line,
+use \cref{lem:gate} to choose a rank-one projector $v_{j\ell}v_{j\ell}^*$,
+and define
+\[
+ B_{j\ell}(z)=I+(b_{j\ell}(z)-1)v_{j\ell}v_{j\ell}^*.
+\]
+Multiply the factors in the physical order of the intermediate lines.
+Every factor is the identity at $\zeta_0$, while at $\zeta_1$ the gates
+carry each $x_j$ along its principal plane to $y_j$.  The untouched
+intersection is fixed.  Thus the product maps $\mathcal X$ to $\mathcal Y$.
+
+The product is rational inner.  Its delay is a sum of unitary conjugates of
+the positive rank-one scalar delays, so it is positive.  Its determinant is
+the product of the $n$ scalar factors; consequently its degree is exactly
+$n$, its full action is $2\pi n$, and its arc action is
+$\sum_{j,\ell}\delta_{j\ell}=A$.  This proves sufficiency for a fixed $n$.
+The union over $r\le n\le d$ is the entire diamond
+\eqref{eq:diamond}: the intervals are nested apart from their already shared
+lower endpoint, which is attained at degree $r$.
+
+If $B=0$ and $A>0$, choose
+$n=\lfloor A/(2\pi)\rfloor+1\le d$.  Split $A$ into $n$ numbers in
+$(0,2\pi)$ and place all corresponding normalized scalar factors on a fixed
+line inside $\mathcal X$.  The endpoint unitary preserves $\mathcal X$ and
+the action is $A$.  The constant transfer handles $A=0$.  This completes the
+proof of \cref{thm:diamond} and \cref{cor:dmin}.
+
+\begin{remark}[An explicit compiler]
+The proof is algorithmic.  Equal subdivisions
+$\alpha_{j\ell}=\beta_j/q_j$ suffice.  Start every phase at its lower value
+$2\alpha_{j\ell}$ and distribute the surplus $A-2B$ across capacities
+$2\pi-4\alpha_{j\ell}$.  Equations \eqref{eq:rhofromdelta} and
+\eqref{eq:gateoverlap} then return the Blaschke zero and projector without
+optimization.
+\end{remark}
+
+\section{Sharp examples and discontinuities}
+
+\paragraph{A collapsed diamond.}
+For one orthogonal pair, $\beta=\pi/2$, $r=d=1$.  The lower and upper faces
+coincide, so $A=\pi$ is forced.  More generally, $r=d$ mutually orthogonal
+principal lines force $A=\pi r$.  Half the winding is spent on the forward
+arc and half on the return.
+
+\paragraph{Extra memory widens by $2\pi$.}
+For $\beta=(\pi/3,\pi/6,0)$, $B=\pi/2$ and $r=2$.  Degree two gives
+$A\in[\pi,3\pi]$; degree three gives $A\in[\pi,5\pi]$.  The extra state does
+not reduce the geometric minimum, but it adds one full turn to the available
+upper action.
+
+\paragraph{Topological jump at zero motion.}
+For every $\beta>0$, however small, $d_{\min}(2\beta)=1$.  At $\beta=0$ and
+$A=0$, it is zero.  Continuous action can vanish along a sequence while the
+integer memory remains fixed.  Conversely, when $B=0$ and $A$ approaches
+$2\pi d$, the required poles concentrate near the boundary but the endpoint
+subspace still does not move.
+
+\section{Fail-closed inference from noisy data}
+
+Suppose a projector experiment supplies certified lower bounds
+$\underline\beta_j\le\beta_j$, and an action measurement supplies
+$A\in[\underline A,\overline A]$.  Put
+\[
+ \underline B=\sum_j\underline\beta_j,
+ \qquad
+ \underline r=\#\{j:\underline\beta_j>0\}.
+\]
+
+\begin{corollary}[Robust memory certificate]\label{cor:robust}
+Every compatible rational inner model satisfies
+\begin{equation}\label{eq:robustdegree}
+ \mcdeg S\ge
+ \max\left\{\underline r,
+ \left\lceil\frac{\underline A+2\underline B}{2\pi}\right\rceil
+ \right\},
+\end{equation}
+whenever $\underline B>0$.  A claimed degree budget $d$ is falsified if
+\[
+ \overline A<2\underline B
+ \quad\text{or}\quad
+ \underline A>2\pi d-2\underline B.
+\]
+\end{corollary}
+
+The certificate is deliberately one-sided.  It never substitutes point
+estimates for uncertainty sets, and therefore cannot overstate the required
+degree when the stated error bounds hold.  Standard perturbation bounds for
+projectors turn operator-norm error bars into lower principal-angle bounds;
+the preceding paper gives one such implementation.
+
+\section{Beyond two nodes: a cyclic memory invisible pairwise}
+
+The diamond completely solves one arc with two endpoint subspaces.  It does
+not say that pairwise costs determine a multi-frequency interpolation.  The
+right classical object is a boundary Pick completion.
+
+Fix an input frame $X\in\C^{N\times k}$, boundary nodes $\zeta_i$, target
+frames $Y_i$, and gauges $V_i\in U(k)$.  Put $W_i=Y_iV_i$ and prescribe
+off-diagonal blocks
+\begin{equation}\label{eq:gp}
+ P_{ij}=\frac{I_k-W_i^*W_j}{1-\overline\zeta_i\zeta_j},
+ \qquad i\ne j,
+\end{equation}
+while leaving Hermitian diagonal blocks free.  Tangential boundary
+Nevanlinna--Pick theory implies that the least rational-inner degree equals
+the least rank of a positive semidefinite completion, minimized also over
+the gauges \cite[Thms.~4.7, 5.1 and 8.2]{BolotnikovDym2006}.  Equivalently,
+this follows from a lurking-isometry construction and the compressed
+de Branges--Rovnyak kernel.  We use this classical corollary only to expose a
+strict global effect.
+
+\begin{proposition}[Three-node cyclic memory]\label{prop:cycle}
+Let $N=3$, $k=1$, $\omega=\e^{2\pi\mathrm i/3}$, and take nodes
+$1,\omega,\omega^2$ with three mutually orthogonal target lines.  Every
+two-node subproblem has minimum degree one, but the joint problem has minimum
+degree two.
+\end{proposition}
+
+\begin{proof}
+All off-diagonal target overlaps vanish, independently of scalar frame
+phases.  With
+\[
+ a=\frac{1}{1-\omega}=\frac12+\frac{\mathrm i}{2\sqrt3},
+\]
+the diagonal choice $P_{00}=P_{11}=P_{22}=1$ gives
+\begin{equation}\label{eq:cycleP}
+ P=\begin{pmatrix}
+ 1&a&\overline a\\
+ \overline a&1&a\\
+ a&\overline a&1
+ \end{pmatrix},
+ \qquad \operatorname{spec}P=(2,1,0).
+\end{equation}
+Thus a degree-two interpolant exists.  If a positive semidefinite rank-one
+completion existed, $P_{ij}=\overline f_i f_j$ would force
+$P_{01}P_{12}P_{20}=|f_0f_1f_2|^2$ to be nonnegative real.  Instead,
+\begin{equation}\label{eq:cyclephase}
+ P_{01}P_{12}P_{20}=a^3=\frac{\mathrm i}{3\sqrt3}.
+\end{equation}
+Hence rank one is impossible.  For any pair, choosing both diagonal entries
+as $|P_{ij}|$ gives a positive semidefinite rank-one completion.
+\end{proof}
+
+For the present orthogonal-line data the cross blocks, and hence their cycle
+product, are independent of all frame gauges because every off-diagonal
+target overlap vanishes.  The phase is a holonomy-like cycle invariant and,
+in this example, records information not visible in pairwise canonical
+angles.  The underlying Pick theorem and its rank formulation are classical;
+here the example demonstrates the strict separation
+\[
+ d_{\min}^{(3\ \mathrm{nodes})}=2>
+ \max_{i\ne j}d_{\min}^{(i,j)}=1.
+\]
+
+\paragraph{A robust cycle witness.}
+For these orthogonal data, or for fixed phase-calibrated tangential frames,
+let three measured nonzero cross blocks be scalars $\widehat p_1,
+\widehat p_2,\widehat p_3$, each within $\varepsilon$ of its exact value,
+and let $M=\max_j|\widehat p_j|$.  Telescoping the product gives
+\[
+ \left|\prod_jp_j-\prod_j\widehat p_j\right|
+ \le3\varepsilon(M+\varepsilon)^2.
+\]
+Therefore
+\[
+ \left|\operatorname{Im}\prod_j\widehat p_j\right|
+ >3\varepsilon(M+\varepsilon)^2
+\]
+certifies rank at least two without selecting diagonal blocks or solving a
+rank minimization.
+
+\section{Reproducible adversarial audit}
+
+The proofs are analytic; computation tests the formulas at their most likely
+failure interfaces.  The producer and verifier are separate programs and the
+verifier imports no producer functions.  The numerical compiler never rounds
+a positive angle into the $B=0$ branch; inputs below $10^{-10}$ radians are
+reported as numerically indeterminate.  The frozen campaign includes:
+\begin{itemize}
+ \item $128$ randomized feasible diamonds with ranks one through four,
+ prescribed actions, analytic derivatives and adaptive quadrature, plus a
+ separate noncommuting two-gate order-reversal control;
+ \item exact lower and upper faces, orthogonal collapsed diamonds, zero
+ angles, a degree obstruction and the open $B=0$ endpoint;
+ \item $512$ independent scalar phase inversions and $2{,}048$ independent
+ rank-one gate identities;
+ \item the exact Pick spectrum $(2,1,0)$, cycle product
+ $\mathrm i/(3\sqrt3)$, a synthesized degree-two unitary colligation and
+ direct boundary interpolation checks;
+ \item $1{,}024$ noisy trials around the rank-two cycle and $1{,}024$
+ rank-one null controls for the fail-closed product bound.
+\end{itemize}
+
+For the flagship point
+\[
+ \beta=(0.92,0.47,0.18),\quad B=1.57,\quad A=15.25,
+\]
+the compiler uses degree three.  The observed maximum principal-angle error
+is below $3\times10^{-16}$, the arc-action error is below
+$2\times10^{-14}$, and the full-circle action differs from $6\pi$ by less
+than $2\times10^{-14}$.  Across the randomized campaign the frozen maximum
+arc-action error is below $10^{-10}$ and no positivity, endpoint or winding
+test fails.  These figures are diagnostics, not evidence replacing the
+proof.
+
+\section{Physical reading and falsifiers}
+
+The lower face $A=2B$ is a direct routing cost.  The upper face is equally
+physical: a finite passive network has a quantized total phase budget, and
+the unobserved frequencies must retain enough action to close the subspace
+loop.  Adding one internal state enlarges the allowed upper action by exactly
+$2\pi$.  The theorem therefore predicts a staircase in minimum realization
+order when arc dwell time is increased at fixed endpoint geometry.
+
+The result is falsifiable in several ways.  A finite rational inner network
+inside the stated class with $A<2B$, $A>2\pi d-2B$, or $d<r$ would refute
+necessity.  A feasible point for which the explicit gate compiler fails
+would refute sufficiency.  Lossy, active or nonrational devices are not
+counterexamples because they leave the model class.  Repeated boundary nodes
+would require confluent Pick data in the multi-node section and are not
+covered by \eqref{eq:gp}.
+
+\section{Conclusion}
+
+Continuous delay and discrete memory form one exact resource region.  For a
+nontrivial subspace transfer, the forward and return arcs each pay the same
+Grassmann trace cost $2B$, while the determinant winding supplies exactly
+$2\pi d$.  Nothing is lost between these necessary inequalities: normalized
+rank-one Blaschke--Potapov gates compile every point of the diamond.  The
+least memory at prescribed action follows in closed form.
+
+The three-node example marks the boundary of the two-point story.  Pairwise
+angles see support motion; a cyclic Pick phase can demand additional hidden
+state.  This suggests a next problem with genuine content: characterize
+which cycle holonomies raise the minimum positive-completion rank for
+matrix-valued subspace data, rather than merely restating general boundary
+interpolation.
+
+\section*{Data and code availability}
+
+Source, deterministic certificates, the independent verifier and the exact
+PDF are archived at
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.8-exact-action-memory-diamond}{the immutable GitHub release}.  The principal entry points are
+\path{research/exact_action_memory_certificate.py} and
+\path{verification/verify_exact_action_memory.py}.  The certificate
+contains deterministic seeds, tolerances and every reported diagnostic.
+
+\appendix
+
+\section{Proof details omitted from the main line}
+
+\subsection{The positive-block trace inequality}
+
+For completeness, let
+\[
+ H=\begin{pmatrix}A&K\\K^*&C\end{pmatrix}\succeq0
+\]
+on finite-dimensional spaces.  If $K=V|K|$ is its polar decomposition, the
+standard contraction factorization gives $K=A^{1/2}TC^{1/2}$ with
+$\lVert T\rVert\le1$.  Equivalently, apply
+$2\operatorname{Re}\tr(V^*K)\le\tr A+\tr C$ after completing the square.
+Since $\operatorname{Re}\tr(V^*K)=\tr|K|$, one obtains
+\begin{equation}\label{eq:block-detail}
+ 2\lVert K\rVert_*\le\tr A+\tr C.
+\end{equation}
+
+For the projector path $P(t)=U(t)P_0U(t)^*$ with
+$\dot U=\mathrm iUH$, direct differentiation gives
+\[
+ \dot P=\mathrm iU[H,P_0]U^*.
+\]
+Relative to $P_0\oplus(I-P_0)$, the commutator has off-diagonal blocks
+$-K$ and $K^*$, hence $\lVert\dot P\rVert_1=2\lVert K\rVert_*$.  The
+trace-norm length of a Grassmann path is at least
+$2\sum_j\beta_j$ \cite[Thm.~1]{QiuZhangLi2005}
+\cite[Thm.~20]{AntezanaLarotondaVarela2014}.  Combining this fact with
+\eqref{eq:block-detail} proves
+\cref{lem:speed} without a smoothness assumption beyond absolute
+continuity.
+
+\subsection{Why one Potapov factor changes at most one support direction}
+
+Let $R=I+(\lambda-1)vv^*$ and let $\mathcal M$ be a $k$-plane.  Every vector
+in $\mathcal M\cap v^\perp$ is fixed, so
+\[
+ \dim(\mathcal M\cap R\mathcal M)\ge k-1.
+\]
+For a chain $\mathcal M_j=R_j\mathcal M_{j-1}$, the codimension inside the
+initial plane can increase by at most one per step.  An induction based on
+\[
+ \dim(E\cap G)\ge\dim(E\cap F)+\dim(F\cap G)-\dim F
+\]
+gives $\dim(\mathcal M_0\cap\mathcal M_n)\ge k-n$.  Thus the number of
+positive canonical angles is at most the number of rank-one factors.  This
+also shows why a small angle does not mean a fraction of a state.
+
+\subsection{Endpoint regularity and strict positivity off the observed arc}
+
+A scalar Blaschke factor with zero $a\in\D$ has boundary phase derivative
+\[
+ p_a(\theta)=\frac{1-|a|^2}{|\e^{\mathrm i\theta}-a|^2}>0.
+\]
+For a rank-one Potapov factor its delay is $p_a(\theta)vv^*$, and the delay
+of a product is a sum of unitary conjugates of these terms.  Therefore a
+nonconstant finite product has $\tr Q(\theta)>0$ at every boundary point.
+All poles are outside $\overline\D$, so the constructed transfer is regular
+at both endpoints and on the entire circle.  This proves both the open face
+in \eqref{eq:trivialregion} and the absence of hidden endpoint singularities
+in the compiler.
+
+\section{A gauge-quotient boundary Pick corollary}
+
+We record the exact classical result used in \cref{prop:cycle} so that the
+degree conclusion can be audited without an appeal to engineering
+terminology.
+
+\begin{proposition}[Boundary Pick rank after quotienting frames]
+\label{prop:classical-pick}
+Let $\zeta_1,\ldots,\zeta_L\in\T$ be distinct, fix an isometric input frame
+$X\in\C^{N\times k}$, and let $Y_i$ be isometric frames for prescribed
+target $k$-planes.  For gauges $V_i\in U(k)$ put $W_i=Y_iV_i$ and form the
+off-diagonal blocks \eqref{eq:gp}.  Then the minimum McMillan degree of a
+square rational inner $S$, regular at the nodes and satisfying
+$S(\zeta_i)\ran X=\ran Y_i$, equals
+\begin{equation}\label{eq:pick-rank-min}
+ \min\left\{\rank P:
+ P\succeq0,\ P_{ij}\text{ obeys \eqref{eq:gp} for }i\ne j,
+ \ V_i\in U(k)\right\},
+\end{equation}
+where the Hermitian diagonal blocks are free.
+\end{proposition}
+
+This is a quotient formulation of matrix tangential boundary interpolation
+\cite{BolotnikovDym2006}; the short proof is included to expose exactly where
+the rank enters.  Feasible completions exist after adding sufficiently large
+positive diagonal blocks, and the minimum rank is attained because feasible
+ranks lie in $\{0,\ldots,Lk\}$.  Necessity follows from the compressed input
+de Branges--Rovnyak kernel
+\[
+ X^*\frac{I-S(z)^*S(w)}{1-\overline zw}X.
+\]
+At the sampled boundary nodes it is positive, has the off-diagonal blocks
+\eqref{eq:gp}, and has rank no larger than $\mcdeg S$.
+
+Conversely, factor a feasible rank-$s$ completion as
+$P_{ij}=F_i^*F_j$, $F_i\in\C^{s\times k}$.  The defining identity is
+equivalent, including on the diagonal, to equality of the Gram matrices of
+\begin{equation}\label{eq:lurking}
+ \begin{pmatrix}\zeta_iF_i u\\Xu\end{pmatrix}
+ \quad\text{and}\quad
+ \begin{pmatrix}F_i u\\W_i u\end{pmatrix}.
+\end{equation}
+Hence their correspondence extends to a unitary colligation
+$\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)$ on
+$\C^s\oplus\C^N$.  Its transfer
+\[
+ S(z)=D+zC(I-zA)^{-1}B
+\]
+interpolates the frames.  Any unit-circle eigenspace of the contraction $A$
+is reducing for the colligation and decoupled from $B$ and $C$; deleting it
+leaves the transfer unchanged and makes it regular at the nodes.  Thus its
+degree is at most $s$.  Applying necessity to a minimum-rank completion
+precludes a smaller degree and proves \eqref{eq:pick-rank-min}.
+
+\section{Compiler and verification contract}
+
+For a fixed feasible degree $n$, the implementation uses the following
+deterministic contract.
+\begin{enumerate}
+ \item Count positive principal angles and allocate $n-r$ extra subdivisions
+ to the principal planes.
+ \item Subdivide each $\beta_j$ into positive $\alpha_{j\ell}$.
+ \item Initialize $\delta_{j\ell}=2\alpha_{j\ell}$ and distribute the surplus
+ $A-2B$ without exceeding $2\pi-4\alpha_{j\ell}$ per gate.
+ \item Use \eqref{eq:rhofromdelta} for each scalar zero and
+ \eqref{eq:gateoverlap} for each rank-one projector.
+ \item Multiply in physical order and evaluate analytic derivatives, never
+ finite differences.  Integrate regular cases adaptively and use the exact
+ phase antiderivative when a Poisson peak is below numerical resolution.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Interface & Independent invariant & Frozen tolerance \\
+\midrule
+Scalar factor & phase formula vs. adaptive Poisson integral & $2\times10^{-9}$ \\
+Rank-one gate & endpoint line angle and unit-vector norm & $5\times10^{-8}$ \\
+Potapov product & boundary unitarity and $Q\succeq0$ & $2\times10^{-8}$ \\
+Arc compiler & prescribed action and principal angles & $2\times10^{-7}$ \\
+Full circle & $\int\tr Q=2\pi n$ & $5\times10^{-7}$ \\
+Pick synthesis & colligation unitarity and interpolation & $2\times10^{-7}$ \\
+\bottomrule
+\end{tabular}
+\caption{Numerical contract.  The independent verifier uses separate code
+and tighter algebraic checks for the scalar, gate and cycle identities.}
+\label{tab:verification}
+\end{table}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

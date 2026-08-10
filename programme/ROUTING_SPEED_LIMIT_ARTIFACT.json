@@ -4,8 +4,8 @@
   "title": "Every Spectral Switch Costs Memory: Sharp Robust Wigner--Smith Speed Limits for Passive Quantum Networks",
   "frozen_on": "2026-08-10",
   "artifacts": {
-    ".github/workflows/verify.yml": "76979abf8e667ea081939a1ed5d56c130b5321cfe6235c369c54a73c743e0898",
-    "README.md": "6a8d9003d542a824dc91ad2cf310139c6e63fcbfa6956871a8f3d4411636279f",
+    ".github/workflows/verify.yml": "faf08c5b3c89e029b643fc732bfc9326dab6e00f02b2db21a2292a99fee9010a",
+    "README.md": "93faf60d66d8b1a94897092219eaed3d9bd0d68999b1ddaba514cae3e24fa534",
     "paper_routing_speed_limit/README.md": "1c7fb1e25f3acb12f099deaaf742bf47392b98de36758822b57b79d009b97c6b",
     "paper_routing_speed_limit/main.tex": "29a2dab8368fd3cc05ee89032a24c06f778c075a08307f8aeee854272dd7e039",
     "paper_routing_speed_limit/references.bib": "b53a24616a6fd6bc54f1fcbcec7f2d16dc700379265fc6746eee13e46857b1e3",

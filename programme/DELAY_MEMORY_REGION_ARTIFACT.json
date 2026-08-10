@@ -5,9 +5,9 @@
   "frozen_on": "2026-08-10",
   "release_tag": "v1.7-complete-continuous-delay-regions",
   "artifacts": {
-    ".github/workflows/verify.yml": "76979abf8e667ea081939a1ed5d56c130b5321cfe6235c369c54a73c743e0898",
-    ".gitignore": "b7372b0a733eada948cf019519cf9d4253a969c9fa929b927789ee25f431d736",
-    "README.md": "6a8d9003d542a824dc91ad2cf310139c6e63fcbfa6956871a8f3d4411636279f",
+    ".github/workflows/verify.yml": "faf08c5b3c89e029b643fc732bfc9326dab6e00f02b2db21a2292a99fee9010a",
+    ".gitignore": "7e0cb2394d9adf3e43eba66e3665d103eca95b9e882482dc4b54a5f6811c590e",
+    "README.md": "93faf60d66d8b1a94897092219eaed3d9bd0d68999b1ddaba514cae3e24fa534",
     "paper_delay_memory_regions/README.md": "f4b28e7fa5e06938bcddb30fab508697baa3f787b79b881b9ca475114f9f26e3",
     "paper_delay_memory_regions/main.tex": "7c103a8fb2add19f776dd4603043bba6cb698d30e6bd1f5b01adf45e3ac07611",
     "paper_delay_memory_regions/references.bib": "947390825687c3fc546118a5b7a3a4bffb45ead153e24e43c1a4946a9bb09080",

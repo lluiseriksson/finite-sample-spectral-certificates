@@ -7,6 +7,27 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+## New: the exact action--memory diamond
+
+The eighth paper, `paper_exact_action_memory/action_memory_diamond.pdf`,
+determines the joint attainable region for arc-integrated Wigner--Smith trace
+action `A` and McMillan degree budget `d`. If the endpoint subspaces have
+principal-angle sum `B` and `r` nonzero angles, the complete nontrivial region
+is
+
+```text
+d >= r,    2B <= A <= 2 pi d - 2B.
+```
+
+Both faces and every interior point have explicit normalized rank-one
+Blaschke--Potapov compilers. The complementary arc supplies the upper face:
+it must reserve the same geometric action to return, while total trace action
+is exactly `2 pi` times the degree. The paper also gives the closed formula
+for minimum memory at prescribed action, fail-closed noisy certificates, and
+an exact three-node example where every pair needs degree one but the joint
+cyclic interpolation needs degree two. A separate producer and independent
+verifier replay all theorem interfaces and the synthesized colligation.
+
 ## New: complete continuous delay regions and quantized passive memory
 
 The seventh paper, `paper_delay_memory_regions/complete_delay_memory_regions.pdf`,
@@ -153,6 +174,9 @@ Gaussian scope.
 - `paper_routing_speed_limit/`: sharp robust spectral-routing speed-limit paper.
 - `paper_ky_fan_speed_limits/`: mode-resolved Ky Fan speed-limit paper.
 - `paper_delay_memory_regions/`: complete delay-region and Pick-memory paper.
+- `paper_exact_action_memory/`: exact action--memory diamond and cyclic-memory paper.
+- `research/exact_action_memory_certificate.py`: explicit compiler and adversarial audit.
+- `verification/verify_exact_action_memory.py`: independent eighth-paper verifier.
 - `research/delay_memory_region_certificate.py`: synthesis, Pick-rank and transfer audit.
 - `verification/verify_delay_memory_regions.py`: independent seventh-paper verifier.
 - `research/ky_fan_speed_limit_certificate.py`: hierarchy and tomography audit.
