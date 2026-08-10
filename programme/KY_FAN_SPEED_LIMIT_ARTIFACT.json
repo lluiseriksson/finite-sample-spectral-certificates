@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "artifact": "exact-finsler-proper-delay-speed-limit-paper",
+  "title": "Proper-Delay Spectra Majorize Subspace Rotation: Exact Finsler Resource Laws for Passive Networks",
+  "frozen_on": "2026-08-10",
+  "artifacts": {
+    ".github/workflows/verify.yml": "76979abf8e667ea081939a1ed5d56c130b5321cfe6235c369c54a73c743e0898",
+    ".gitignore": "b7372b0a733eada948cf019519cf9d4253a969c9fa929b927789ee25f431d736",
+    "README.md": "6a8d9003d542a824dc91ad2cf310139c6e63fcbfa6956871a8f3d4411636279f",
+    "paper_ky_fan_speed_limits/README.md": "bed2bb9665d3306d74e7c80a9cf9d1950631070b99b5e50704603b20ce05f8db",
+    "paper_ky_fan_speed_limits/main.tex": "6057013cdd21d5ea16a68b0151d65452abf1c411220f6b3dba4acda3079d656d",
+    "paper_ky_fan_speed_limits/references.bib": "17a2ee970a8c87c407d64a4a0debb6a31028ec8c0713aa0b0e09d60fdd947780",
+    "paper_ky_fan_speed_limits/figures/ky_fan_hierarchy.pdf": "c281197907801bf199f7e3cbf9daf87c4cc0246d760126d3a2e2763056fe8cf3",
+    "paper_ky_fan_speed_limits/proper_delay_spectra_majorize_subspace_rotation.pdf": "be4bb95e0e7b833a8d2201dab60846a43df1d06f02dd292644ff9fcc80de3d42",
+    "research/ky_fan_speed_limit_certificate.py": "066ec61eb6f3107a2718b36631b767663ea59636f0d83e2b019c0a45b52751bb",
+    "results/ky_fan_speed_limits/certificate.json": "362315e19c8d222bca9efc57c72fc09ef270c63ec764dba990a657409d3530ae",
+    "verification/verify_ky_fan_speed_limits.py": "5eae299885f2e1b3f424964792d8f8db125d64e73bfa085359ba2422a61d70ad",
+    "verification/run_ky_fan_speed_limit_release_checks.py": "542e385c7540c2afd04076eef5ec582182261f1bddf4c3bbc34b63336ec24983"
+  },
+  "replay": [
+    "python research/ky_fan_speed_limit_certificate.py",
+    "python verification/verify_ky_fan_speed_limits.py",
+    "python verification/run_ky_fan_speed_limit_release_checks.py"
+  ]
+}

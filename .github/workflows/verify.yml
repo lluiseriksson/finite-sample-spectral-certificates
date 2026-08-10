@@ -17,6 +17,43 @@ jobs:
       - run: python -m compileall -q .
       - run: python verification/check_localizer_adjoint.py --trials 1000
       - run: python verification/verify_rational_witness.py
+      - run: python verification/verify_quadratic_filter_witness.py
+      - run: python verification/verify_linear_dimension_scaling.py
+      - run: python verification/verify_constant_channel_scaling.py
+      - run: python verification/verify_passive_quantum_filter.py
+      - run: python verification/run_quantum_reservoir_release_checks.py
+      - name: Replay calibration-memory certificate without mutating frozen artifacts
+        run: >-
+          python research/calibration_memory_certificate.py
+          --output results/ci/calibration_memory_certificate.json
+          --figure results/ci/calibration_memory_law.pdf
+      - run: python verification/verify_calibration_memory.py
+      - run: python verification/run_calibration_memory_release_checks.py
+      - name: Replay robust spectral-routing certificate without mutating frozen artifacts
+        run: >-
+          python research/routing_speed_limit_certificate.py
+          --output results/ci/routing_speed_limit_certificate.json
+          --figure results/ci/routing_law.pdf
+      - run: python verification/verify_routing_speed_limit.py
+      - run: python verification/run_routing_speed_limit_release_checks.py
+      - name: Replay Ky Fan speed-limit certificate without mutating frozen artifacts
+        run: >-
+          python research/ky_fan_speed_limit_certificate.py
+          --output results/ci/ky_fan_speed_limit_certificate.json
+          --figure results/ci/ky_fan_hierarchy.pdf
+      - run: python verification/verify_ky_fan_speed_limits.py
+      - run: python verification/run_ky_fan_speed_limit_release_checks.py
+      - name: Replay complete delay-memory certificate without mutating frozen artifacts
+        run: >-
+          python research/delay_memory_region_certificate.py
+          --output results/ci/delay_memory_region_certificate.json
+          --figure results/ci/complete_delay_memory_region.pdf
+      - run: python verification/verify_delay_memory_regions.py
+      - run: python verification/run_delay_memory_region_release_checks.py
+      - run: python verification/verify_vbl_va001_witness.py
+      - run: python research/route_c_block_krylov_benchmark.py
+      - run: python research/route_c_graph_filter_pilot.py
+      - run: python research/route_c_vibration_calibration.py
       - run: python pilot_primal_dual_equivalence.py
       - name: Safe Wishart dual smoke
         run: >-
@@ -24,3 +61,19 @@ jobs:
           --length 6 --degree 2 --sample-counts 500
           --gap-factors 1.0 1.35 --ensembles 3
           --output results/ci/wishart_safe_smoke.json
+
+  kernel-checked-core:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formal
+    steps:
+      - uses: actions/checkout@v7
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal
+          build: true
+      - name: Reject unproved declarations
+        run: >-
+          ! grep -R -n -E '^\s*(axiom|sorry)\b|\bsorry\b'
+          --include='*.lean' --exclude-dir='.lake' .
