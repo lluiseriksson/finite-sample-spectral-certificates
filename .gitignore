@@ -29,5 +29,12 @@ paper_quantum_reservoir/main.blg
 paper_quantum_reservoir/main.log
 paper_quantum_reservoir/main.out
 paper_quantum_reservoir/main.pdf
+paper_calibration_memory/main.aux
+paper_calibration_memory/main.bbl
+paper_calibration_memory/main.blg
+paper_calibration_memory/main.log
+paper_calibration_memory/main.out
+paper_calibration_memory/main.pdf
+paper_calibration_memory/build-pass*.txt
 formal/.lake/
 pilot_primal_dual_equivalence.json

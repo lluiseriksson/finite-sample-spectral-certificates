@@ -7,6 +7,20 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+## New: topological calibration-memory law
+
+The newest paper, `paper_calibration_memory/lossless_calibration_memory.pdf`,
+proves an architecture-independent resource law for finite rational passive
+networks. If a signal block is lossless on subspaces of total dimension `K`
+across distinct boundary frequencies and is strictly contractive somewhere
+else, then the full network has McMillan degree at least `K`. The same degree
+is exactly its integrated Wigner--Smith trace delay. The coefficient is sharp;
+an analytic Rouché condition makes the count perturbation-stable; and a
+counterexample records why unstructured approximate samples alone cannot
+support the claim. Applied to the irreducible six-port reservoir family, the
+theorem proves universal near-optimality: `3S` calibrated directions require
+at least `3S` states and the construction uses `3S+6`.
+
 The active research branch also contains a separate new paper on
 irreducible reciprocal MIMO FIR filters.  Its headline theorem gives a
 fixed-degree exponential separation from every reducible three-channel
@@ -71,6 +85,10 @@ Gaussian scope.
 - `results/verification/rational_witness.json`: exact-rational rejection witness.
 - `verification/verify_rational_witness.py`: independent standard-library replay.
 - `paper_noncommuting/`: new matrix-polynomial/MIMO FIR manuscript and PDF.
+- `paper_quantum_reservoir/`: passive six-port decoherence-filter manuscript.
+- `paper_calibration_memory/`: topological McMillan-degree/Wigner--Smith paper.
+- `research/calibration_memory_certificate.py`: degree, delay and perturbation replay.
+- `verification/verify_calibration_memory.py`: fail-closed new-paper verifier.
 - `formal/`: Lean/mathlib proof of the scalar-branch root-count obstruction.
 - `verification/verify_vbl_va001_witness.py`: exact measured-calibration replay.
 - `data/route_c/vbl_va001_calibration.json`: public-data provenance and frozen split.
