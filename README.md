@@ -7,10 +7,10 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
-## New: complete delay--memory regions
+## New: complete continuous delay regions and quantized passive memory
 
 The seventh paper, `paper_delay_memory_regions/complete_delay_memory_regions.pdf`,
-closes the inverse problem left by the Ky Fan speed limits. An integrated
+closes the continuous inverse problem left by the Ky Fan speed limits. An integrated
 leading-delay profile `q` transports rank-`k` subspaces with canonical angles
 `beta` exactly when `2 beta` is weakly majorized by `q`. Every feasible point
 has an explicit compiler with at most `k+1` mutually commuting positive

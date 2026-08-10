@@ -6,7 +6,7 @@
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Complete Delay--Memory Regions for Passive Quantum Networks},
+  pdftitle={Complete Continuous Delay Regions, Quantized Passive Memory, and Pick Tomography},
   pdfauthor={Lluis Eriksson},
   pdfsubject={Majorization synthesis, rational quantization, and Pick memory tomography}
 }
@@ -37,8 +37,8 @@
 \newcommand{\opnorm}[1]{\lVert#1\rVert_{\mathrm{op}}}
 \newcommand{\pos}[1]{\left[#1\right]_{+}}
 
-\title{Complete Delay--Memory Regions for Passive Quantum Networks:\\
-Majorization Synthesis, Rational Quantization, and Pick Tomography}
+\title{Complete Continuous Delay Regions, Quantized Passive Memory,\\
+and Pick Tomography for Quantum Networks}
 \author{Lluis Eriksson}
 \date{10 August 2026}
 
@@ -47,7 +47,7 @@ Majorization Synthesis, Rational Quantization, and Pick Tomography}
 
 \begin{abstract}
 Lower bounds do not determine which resource profiles are physically
-attainable.  We close that inverse problem for passive subspace transport.
+attainable.  We close the continuous inverse problem for passive subspace transport.
 Let two rank-$k$ subspaces in $\C^N$, $N\geq2k$, have ordered canonical
 angles $\beta$, and let
 $q_j=\int\lambda_j(Q(t))\,\dd t$ be the integrated leading eigenvalues of a
@@ -132,10 +132,28 @@ Massey, Stojanoff and Z\'arate \cite{MasseyStojanoffZarate2021}; boundary
 Schur interpolation and de Branges--Rovnyak spaces are established theories
 \cite{deBrangesRovnyak1966,BolotnikovDym2006}; and minimal passive quantum
 realizations are classical system theory
-\cite{McMillan1952,GoughZhang2015}.  Our contribution is the exact attainable
+\cite{McMillan1952,GoughZhang2015}.  General minimum-degree rational matrix
+interpolation predates this work \cite{BallKim1994}, and a recent realization
+theory computes McMillan degree from positive choice sequences
+\cite{FrazhoRanVanSchagen2026}.  Our contribution is the exact attainable
 delay region and compiler, the sharp two-subspace degree quantization, their
 joint robust certificate, and the operational Pick--Wigner--Smith memory
 tomography built from finite scattering data.
+
+\paragraph{Priority audit and precise scope.}
+The Grassmann literature cited above determines canonical-angle metrics and
+shortest paths, but does not prescribe a positive unitary lift with a fixed
+integrated leading-eigenvalue profile.  The first result below adds exactly
+that constrained inverse synthesis.  Classical tangential interpolation is
+substantially more general than our two-node setting; the second result should
+therefore be read as an explicit exact specialization to subspace-valued
+boundary data, not as a new general interpolation theory.  In the sources
+located in a targeted audit through 10 August 2026, we did not find the formula
+``minimum degree = number of nonzero canonical angles'' stated for this
+quotient problem.  Finally, positivity and finite-rank factorization of the
+de Branges--Rovnyak kernel are classical; the contribution of the last part is
+its operational assembly from Wigner--Smith data, the strict local-delay
+blindness example, and the fail-closed noisy rank certificate.
 
 \section{Setup and the necessary Lorenz law}
 
@@ -717,7 +735,7 @@ while analytic rank controls how many hidden states must exist to realize it.
 
 The final manuscript, generator, independent verifier, frozen JSON
 certificate, figure and hash manifest are archived in the immutable
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.6-complete-delay-memory-regions}{GitHub release v1.6}
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.7-complete-continuous-delay-regions}{GitHub release v1.7}
 of the companion repository.
 Theorems are proved analytically in the text; numerical tests are adversarial
 audits and do not substitute for the proofs.

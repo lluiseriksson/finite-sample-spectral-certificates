@@ -1,4 +1,4 @@
-# Complete delay-memory regions
+# Complete continuous delay regions and quantized passive memory
 
 This directory contains the seventh paper in the passive-network sequence.
 It proves three linked results:
