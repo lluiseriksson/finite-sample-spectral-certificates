@@ -5,7 +5,7 @@
   "frozen_on": "2026-08-10",
   "artifacts": {
     ".github/workflows/verify.yml": "f4a1a1dc89ba4dab815dde8215d00e55b21f4ed98a34451e66dcbd46cca17694",
-    ".gitignore": "0b62bf492b62fb672191883eb5c8ab45d8eeb4a942246f2937feed4bce996163",
+    ".gitignore": "b7372b0a733eada948cf019519cf9d4253a969c9fa929b927789ee25f431d736",
     "README.md": "68b2e25cab0d5bf63b9b3a50836aec8e267b8cbffb735ff2d4a6f9de8d2a8bc8",
     "paper_ky_fan_speed_limits/README.md": "ff22ac50be5a4b5dbdc33cbc223e3b0e7610c10d6d4e7694a36c6a8b21d718b9",
     "paper_ky_fan_speed_limits/main.tex": "6235e09f5010bc673ae37658283219deaa53587fc18a2e2a9c127ed43207d666",
@@ -15,7 +15,7 @@
     "research/ky_fan_speed_limit_certificate.py": "f66dc5479c57b9180a6a4423e4c47543456b5f6e11c70c8bc3e5234fe189f71d",
     "results/ky_fan_speed_limits/certificate.json": "835aa9ba1cfc6e6a9ef3191de23f12e886f966edab4c8cc21b0187d13221d6b7",
     "verification/verify_ky_fan_speed_limits.py": "d840652c9655b286f3b1ebdfff7bd8a5853a9a4eef37d5e3a43b6142b6ab21df",
-    "verification/run_ky_fan_speed_limit_release_checks.py": "a5eaf59083fe8d2c2ab1f9619f2c33f7fbeb69c09b20870db132bb951b921b59"
+    "verification/run_ky_fan_speed_limit_release_checks.py": "542e385c7540c2afd04076eef5ec582182261f1bddf4c3bbc34b63336ec24983"
   },
   "replay": [
     "python research/ky_fan_speed_limit_certificate.py",

@@ -18,7 +18,9 @@ MANIFEST = ROOT / "programme" / "KY_FAN_SPEED_LIMIT_ARTIFACT.json"
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
-    if path.suffix in {".bib", ".json", ".md", ".py", ".tex", ".txt", ".yaml", ".yml"}:
+    if path.name == ".gitignore" or path.suffix in {
+        ".bib", ".json", ".md", ".py", ".tex", ".txt", ".yaml", ".yml"
+    }:
         digest.update(path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n"))
     else:
         with path.open("rb") as stream:
