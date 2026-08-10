@@ -37,5 +37,12 @@ paper_calibration_memory/main.log
 paper_calibration_memory/main.out
 paper_calibration_memory/main.pdf
 paper_calibration_memory/build-pass*.txt
+paper_routing_speed_limit/main.aux
+paper_routing_speed_limit/main.bbl
+paper_routing_speed_limit/main.blg
+paper_routing_speed_limit/main.log
+paper_routing_speed_limit/main.out
+paper_routing_speed_limit/main.pdf
+paper_routing_speed_limit/build-pass*.txt
 formal/.lake/
 pilot_primal_dual_equivalence.json

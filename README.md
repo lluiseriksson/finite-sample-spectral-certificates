@@ -7,6 +7,25 @@ noisy block moments.  The central method combines a Wishart--Loewner confidence
 band with truncated Hausdorff localizers.  The confidence set remains valid
 after the separating matrix witness is optimized on the same data.
 
+## New: every spectral switch costs memory
+
+The newest paper, `paper_routing_speed_limit/every_spectral_switch_costs_memory.pdf`,
+replaces exact calibration counts by a sharp finite-error speed limit.  If a
+fixed rank-`k` input subspace is routed from one output sector to its orthogonal
+complement with amplitude leakages `epsilon_p, epsilon_s`, then the transition
+must spend at least `2k alpha` of Wigner--Smith trace action and `2 alpha` of
+largest-proper-delay action, where
+`alpha = [pi/2 - asin(epsilon_p) - asin(epsilon_s)]_+`.  Disjoint transitions
+add.  A rational inner network of McMillan degree `n` therefore obeys
+`n >= (k/pi) sum alpha_l`; in particular `M` alternating pass/stop pairs give
+`n >= 2Mk alpha/pi` and recover the exact law `n >= Mk` at zero error.
+
+Every constant is sharp in every rank.  The repository includes finite-error
+equality cases, exact cyclic saturators, 2,048 adversarial positive-matrix
+tests, 512 random Blaschke--Potapov path tests, an independent verifier and a
+hash-locked release gate.  A measurement-error corollary turns operator-norm
+tomography error directly into certified leakage tolerances.
+
 ## New: topological calibration-memory law
 
 The newest paper, `paper_calibration_memory/lossless_calibration_memory.pdf`,
@@ -87,6 +106,9 @@ Gaussian scope.
 - `paper_noncommuting/`: new matrix-polynomial/MIMO FIR manuscript and PDF.
 - `paper_quantum_reservoir/`: passive six-port decoherence-filter manuscript.
 - `paper_calibration_memory/`: topological McMillan-degree/Wigner--Smith paper.
+- `paper_routing_speed_limit/`: sharp robust spectral-routing speed-limit paper.
+- `research/routing_speed_limit_certificate.py`: equality and adversarial replay.
+- `verification/verify_routing_speed_limit.py`: independent routing-law verifier.
 - `research/calibration_memory_certificate.py`: degree, delay and perturbation replay.
 - `verification/verify_calibration_memory.py`: fail-closed new-paper verifier.
 - `formal/`: Lean/mathlib proof of the scalar-branch root-count obstruction.
