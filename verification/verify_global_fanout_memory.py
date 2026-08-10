@@ -263,6 +263,8 @@ def verify_frozen_certificate() -> None:
             raise RuntimeError("published interpolation tolerance changed")
         if float(case["colligation_unitarity_error"]) > 2.0e-8:
             raise RuntimeError("published colligation tolerance changed")
+        if float(case["state_spectral_radius"]) >= 1.0e-2:
+            raise RuntimeError("frozen colligation lost its strict stability margin")
     noisy = payload["noisy_inertia"]
     if int(noisy["trials"]) < 1000:
         raise RuntimeError("noisy inertia campaign is too small")

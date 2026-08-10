@@ -15,8 +15,8 @@
     "programme/GLOBAL_FANOUT_MEMORY_RESEARCH_MEMO.md": "bae12467401c8a168f67bc2a921907a4f285264924e7f410f408264659ba99f5",
     "research/global_fanout_memory_certificate.py": "7155490838183a32588587ccb024f2f269dd17c9a58433afb71ca08672375750",
     "results/global_fanout_memory/certificate.json": "e11d934be8a871802fcf9b466db9da9de04dc26e64eade4124f4a6d619700791",
-    "verification/run_global_fanout_memory_release_checks.py": "2f9d7382179f90a0aa3f3e22ea8919bd7709b0c761175bbf93c532f89cf54b1e",
-    "verification/verify_global_fanout_memory.py": "c24797c58f06fac7bc2e0db1845e27e898e420e45b0c083064f42c4459ade98a"
+    "verification/run_global_fanout_memory_release_checks.py": "f728a6f63f06ea8070fe7fda167d4c00c80f9ce7c98475240a002e860648beca",
+    "verification/verify_global_fanout_memory.py": "389f2947e7df725607378d4d24a5892d8ebe6c3951e9744fe024b16a6729679d"
   },
   "replay": [
     "python verification/verify_global_fanout_memory.py",

@@ -32,7 +32,20 @@ def compare(expected: object, observed: object, location: str = "root") -> None:
         if observed != expected:
             raise RuntimeError(f"replay mismatch at {location}: {observed!r} != {expected!r}")
     elif isinstance(expected, (int, float)):
-        if not isinstance(observed, (int, float)) or not math.isclose(
+        if not isinstance(observed, (int, float)):
+            raise RuntimeError(f"numeric replay mismatch at {location}: {observed!r} != {expected!r}")
+        if location.endswith(".state_spectral_radius"):
+            # The synthesized state matrices are nilpotent in exact
+            # arithmetic.  Eigenvalues of a nearly nilpotent matrix are
+            # root-sensitive to BLAS/LAPACK roundoff, so equality of their
+            # computed radii is not a cross-platform invariant.  Enforce the
+            # frozen stability margin instead.
+            if max(abs(float(expected)), abs(float(observed))) >= 1.0e-2:
+                raise RuntimeError(
+                    f"spectral-radius replay margin failed at {location}: "
+                    f"{observed!r}, {expected!r}"
+                )
+        elif not math.isclose(
             float(observed), float(expected), rel_tol=3.0e-8, abs_tol=2.0e-9
         ):
             raise RuntimeError(f"numeric replay mismatch at {location}: {observed!r} != {expected!r}")
