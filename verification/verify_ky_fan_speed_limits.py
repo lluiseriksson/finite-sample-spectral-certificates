@@ -61,6 +61,19 @@ def main() -> None:
             raise RuntimeError("canonical-angle equality family failed")
         if not np.allclose(required, delays, rtol=TOL, atol=TOL):
             raise RuntimeError("proper-delay equality family failed")
+        for name, gauge in case["symmetric_gauge_costs"].items():
+            if not close(float(gauge["geometric_optimum"]), float(gauge["delay_action"])):
+                raise RuntimeError(f"symmetric-gauge variational equality failed: {name}")
+
+    separation = payload["scalar_endpoint_separation"]
+    if not separation["same_scalar_endpoints"] or not separation["strict_intermediate_separation"]:
+        raise RuntimeError("scalar endpoints failed to hide a strict intermediate-prefix gap")
+    first = np.asarray(separation["first_angles"], dtype=float)
+    second = np.asarray(separation["second_angles"], dtype=float)
+    if not close(float(first[0]), float(second[0])) or not close(float(np.sum(first)), float(np.sum(second))):
+        raise RuntimeError("separation example does not share max and total angle")
+    if not close(float(separation["r2_action_gap"]), 2.0 * float(first[:2].sum() - second[:2].sum())):
+        raise RuntimeError("intermediate-prefix separation arithmetic failed")
 
     for key, minimum in (
         ("signed_pointwise", 4000),

@@ -4,6 +4,9 @@ This directory contains the sixth paper's source, frozen figure and final PDF.
 It proves a sharp Ky Fan hierarchy connecting every prefix of a subspace's
 canonical-angle spectrum to the matching prefix of the generator's spectral
 spread and, for positive Wigner--Smith flows, to the leading proper delays.
+The definitive version lifts this hierarchy to an exact variational principle
+for every symmetric gauge: the minimum gauge action is `2 Phi(beta)`, attained
+by one common positive coupled-mode path for all gauges simultaneously.
 
 From the repository root, reproduce the computational certificate with:
 
@@ -23,6 +26,7 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-The proofs are analytic. The deterministic artifact audits sharp equality
-families, signed and positive matrix inequalities, noncommuting
-piecewise-constant paths, noisy tomography and the exact slack identity.
+The proofs are analytic. The deterministic artifact audits sharp equality and
+gauge-optimal families, a strict separation invisible to max and trace,
+signed and positive matrix inequalities, noncommuting piecewise-constant
+paths, noisy tomography and the exact slack identity.

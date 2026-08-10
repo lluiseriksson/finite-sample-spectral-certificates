@@ -6,7 +6,7 @@
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
-  pdftitle={Proper-Delay Spectra Majorize Subspace Rotation},
+  pdftitle={Proper-Delay Spectra Majorize Subspace Rotation: Exact Finsler Resource Laws},
   pdfauthor={Lluis Eriksson},
   pdfsubject={Sharp Ky Fan quantum speed limits for passive networks}
 }
@@ -38,7 +38,7 @@
 \newcommand{\pos}[1]{\left[#1\right]_{+}}
 
 \title{Proper-Delay Spectra Majorize Subspace Rotation:\\
-Sharp Ky Fan Quantum Speed Limits for Passive Networks}
+Exact Finsler Resource Laws for Passive Networks}
 \author{Lluis Eriksson}
 \date{10 August 2026}
 
@@ -61,10 +61,16 @@ $r\leq\min\{k,N-k\}$,
  \bigl(\lambda_j(Q)-\lambda_{N-j+1}(Q)\bigr)\,\dd t .
 \]
 Thus the integrated spectral-spread vector weakly majorizes twice the
-canonical-angle vector.  For a positive Wigner--Smith flow this yields a
-hierarchy in the $r$ leading proper delays; $r=1$ recovers the bandwidth-type
-subspace limit, while $r=k$ strengthens the trace-action law.  Every partial
-sum is simultaneously sharp for every prescribed angle spectrum.  An exact
+canonical-angle vector.  More strongly, for every symmetric gauge $\Phi$ and
+every pair of $k$-subspaces in $N\geq2k$ dimensions, we solve the variational
+problem exactly:
+\[
+ \inf_S\int\Phi(\Spr(Q(t)))\,\dd t=2\Phi(\beta).
+\]
+The same value holds for the leading-proper-delay action when $Q\succeq0$,
+and one constant coupled-mode path minimizes all gauges simultaneously.
+The Ky Fan members recover the bandwidth-type limit at $r=1$, strengthen the
+trace-action law at $r=k$, and expose every intermediate modal budget.  An exact
 nonnegative slack decomposition separates three causes of inefficiency:
 common-mode delay, failure to use the available spectral spread, and a
 nongeodesic subspace path.  Robust corollaries turn heterogeneous pass/stop
@@ -76,11 +82,11 @@ composition with Wigner--Smith positivity, robust routing data and realization
 degree.  A deterministic artifact tests 8,192 random generators, 1,536 random
 time-dependent paths, sharp equality families and 2,048 noisy tomography
 instances.  Source, frozen data and independent replay are available in the
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.4-ky-fan-speed-limits}{immutable companion release}.
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.5-exact-finsler-speed-limits}{immutable companion release}.
 \end{abstract}
 
 \noindent\textbf{Keywords:} quantum speed limit; Wigner--Smith time delay;
-canonical angles; weak majorization; Ky Fan norm; passive quantum network;
+canonical angles; weak majorization; Finsler metric; symmetric gauge; passive quantum network;
 McMillan degree; robust spectral routing.
 
 \section{One routing event, an entire Lorenz curve}
@@ -135,10 +141,13 @@ proved by Massey, Stojanoff and Z{\'a}rate
 known from Albeverio and Motovilov
 \cite{AlbeverioMotovilov2022a,AlbeverioMotovilov2022b}; geometric operator
 speed limits and bandwidth-constrained transformations provide neighboring
-frameworks \cite{AllanHornedalAndersson2021,CarabbaEtAl2022,HornedalEtAl2023}.
-The new result here is the complete time-dependent partial-sum law and its
-operational consequences for positive Wigner--Smith spectra, robust
-tomography, exact memory accounting and rational realization degree.
+frameworks \cite{AllanHornedalAndersson2021,CarabbaEtAl2022,HornedalEtAl2023};
+bi-invariant action functionals have also been used to derive exact gate-speed
+limits \cite{RussellStepney2017}.  The new result here is the complete
+time-dependent subspace majorization law, the exact symmetric-gauge
+variational value with a universal common minimizer, and its operational
+consequences for positive Wigner--Smith spectra, robust tomography, exact
+memory accounting and rational realization degree.
 
 \section{Geometry and generators}
 
@@ -273,6 +282,86 @@ For $Q\succeq0$, the same lower bound holds with
 $\sum_{j=1}^r\lambda_j(Q(t))$ on the left.
 \end{corollary}
 
+\section{An exact variational principle for every symmetric gauge}
+
+The prefix hierarchy is equivalent, by Ky Fan dominance, to a simultaneous
+family of norm inequalities.  It therefore solves a larger optimization
+problem.  Let $\Phi$ be any symmetric gauge on $\mathbb R^k$: a norm invariant
+under coordinate permutations and sign changes.  It induces a unitarily
+invariant matrix norm and a Finsler length on the Grassmannian
+\cite{QiuZhangLi2005}.  For an absolutely continuous unitary path define
+\begin{align}
+ \mathcal A_\Phi^{\rm spr}[S]
+ &=\int_a^b\Phi\!\left(\Spr_1(Q(t)),\ldots,\Spr_k(Q(t))\right)\,\dd t,
+ \label{eq:gaugeactionspread}\\
+ \mathcal A_\Phi^{+}[S]
+ &=\int_a^b\Phi\!\left(\lambda_1(Q(t)),\ldots,\lambda_k(Q(t))\right)\,\dd t,
+ \label{eq:gaugeactionpositive}
+\end{align}
+where the second action is restricted to $Q\succeq0$.
+
+\begin{theorem}[Universal gauge-optimal action]\label{thm:gaugeoptimal}
+Let $N\geq2k$, and let $\mathcal X,\mathcal Y\subset\C^N$ be rank-$k$
+subspaces with canonical-angle vector $\beta$.  Among all absolutely
+continuous unitary paths transporting $\mathcal X$ to $\mathcal Y$,
+\begin{equation}\label{eq:gaugeinfimum}
+ \boxed{\qquad
+ \inf_S\mathcal A_\Phi^{\rm spr}[S]=2\Phi(\beta).
+ \qquad}
+\end{equation}
+Restricting to positive generators gives the same exact value:
+\begin{equation}\label{eq:gaugeinfimumpositive}
+ \boxed{\qquad
+ \inf_{S:\,Q\succeq0}\mathcal A_\Phi^{+}[S]=2\Phi(\beta).
+ \qquad}
+\end{equation}
+One constant positive path attains both infima simultaneously for every
+symmetric gauge $\Phi$.
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:main} gives
+$2\beta\prec_w\int_a^b\Spr(Q(t))\dd t$.  Ky Fan dominance and the triangle
+inequality for $\Phi$ therefore imply
+\[
+ 2\Phi(\beta)
+ \leq\Phi\!\left(\int_a^b\Spr(Q(t))\,\dd t\right)
+ \leq\int_a^b\Phi(\Spr(Q(t)))\,\dd t.
+\]
+For $Q\succeq0$, use \cref{cor:positive} in the same way with the leading
+$k$ eigenvalues.  To attain both bounds, choose principal-vector pairs for
+$\mathcal X,\mathcal Y$ and use the constant coupled-plane generator in
+\eqref{eq:saturator} below, conjugated into those pairs.  Its spread and
+leading-delay vectors are both $2\beta/(b-a)$, so positive homogeneity gives
+action $2\Phi(\beta)$ for every $\Phi$.
+\end{proof}
+
+This theorem identifies an exact resource value, rather than only a lower
+bound for a chosen norm.  The same physical path is universally optimal:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Gauge $\Phi(x)$ & Exact cost & Interpretation\\
+\midrule
+$\lVert x\rVert_\infty$ & $2\beta_1$ & maximal-angle / bandwidth\\
+$\sum_{j=1}^r x_j^\downarrow$ & $2\sum_{j=1}^r\beta_j$ & Ky Fan $r$ modal budget\\
+$\lVert x\rVert_2$ & $2(\sum_j\beta_j^2)^{1/2}$ & Euclidean / Hilbert--Schmidt budget\\
+$\lVert x\rVert_1$ & $2\sum_j\beta_j$ & total angular action\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The intermediate prefixes contain strictly more information than the two
+scalar endpoints.  For example,
+\begin{equation}\label{eq:strictseparation}
+ \beta=(1,0.8,0.2),\qquad \widetilde\beta=(1,0.5,0.5)
+\end{equation}
+have the same largest angle and the same total angle.  Hence the $r=1$ and
+$r=3$ laws assign identical costs.  Yet the sharp $r=2$ costs are $3.6$ and
+$3.0$, respectively---a $20\%$ separation invisible to both scalar summaries.
+The construction below realizes both vectors, so this is an operational
+separation, not merely a comparison of unattained lower bounds.
+
 \section{Sharpness and the exact Pareto frontier}
 
 The hierarchy loses no constant, even when all prefixes are requested
@@ -339,6 +428,27 @@ All three terms are nonnegative.
 Insert \eqref{eq:delta}--\eqref{eq:g} and cancel $2\int\nu_r$.
 For \eqref{eq:psdslack}, split the leading-delay sum into the spectral
 spread sum and the corresponding bottom-eigenvalue sum.
+\end{proof}
+
+\begin{corollary}[Quantitative near-rigidity]\label{cor:stability}
+Assume $Q\succeq0$ and that the leading-delay surplus in
+\eqref{eq:psdslack} is at most $\varepsilon$.  Then
+\begin{equation}\label{eq:stability}
+ \int_a^b\sum_{j=1}^r\lambda_{N-j+1}(Q)\,\dd t\leq\varepsilon,
+ \qquad
+ \int_a^b\delta_r(t)\,\dd t\leq\varepsilon,
+ \qquad
+ g_r\leq\frac\varepsilon2.
+\end{equation}
+Moreover, for every $\tau>0$, the sets on which the bottom-delay density or
+$\delta_r(t)$ exceeds $\tau$ each have measure at most
+$\varepsilon/\tau$.
+\end{corollary}
+
+\begin{proof}
+Each term in \eqref{eq:psdslack} is nonnegative, so each is bounded by their
+sum.  The measure statements are Markov's inequality applied to the two
+nonnegative densities.
 \end{proof}
 
 Consequently, a sequence of devices can approach the Pareto frontier only if
@@ -521,7 +631,8 @@ mistakes and hidden ordering assumptions.  The immutable artifact runs six
 deterministic suites:
 \begin{enumerate}
  \item four coupled-mode equality families of ranks $1,2,4,6$, checking all
- prefixes to machine precision;
+ prefixes and the $\ell_\infty,\ell_2,\ell_1$ variational optima to machine
+ precision;
  \item $4{,}096$ random signed Hermitian generators, testing $11{,}697$
  pointwise partial-sum inequalities;
  \item $4{,}096$ random positive generators, testing $11{,}905$ inequalities;
@@ -530,7 +641,8 @@ deterministic suites:
  \item $2{,}048$ heterogeneous noisy tomography instances, verifying that the
  fail-closed certificate never exceeds the exact leakage certificate; and
  \item $4{,}096$ nonnegative slack decompositions, checking the identity
- independently of the matrix calculations.
+ independently of the matrix calculations, together with the strict
+ scalar-endpoint separation in \eqref{eq:strictseparation}.
 \end{enumerate}
 
 The largest observed pointwise ratios were $0.99435$ (signed) and $0.98134$
@@ -545,11 +657,13 @@ their action integrals are exact.
 
 \begin{figure}[t]
  \centering
- \includegraphics[width=0.78\linewidth]{figures/ky_fan_hierarchy.pdf}
- \caption{The required cumulative action $2\sum_{j\leq r}\beta_j$ is an
- exact lower Lorenz curve.  A coupled-mode family saturates every prefix;
- generic passive motion carries nonnegative surplus resolved by
- \cref{thm:slack}.}
+ \includegraphics[width=0.98\linewidth]{figures/ky_fan_hierarchy.pdf}
+ \caption{Left: the required cumulative action
+ $2\sum_{j\leq r}\beta_j$ is an exact lower Lorenz curve; generic passive
+ motion carries nonnegative surplus resolved by \cref{thm:slack}.  Right:
+ two angle spectra with equal maximum and total cost have different sharp
+ intermediate prefixes, proving strict information gain over the two scalar
+ endpoint laws.}
  \label{fig:lorenz}
 \end{figure}
 
@@ -575,7 +689,9 @@ identity.
 The coupled-mode construction proves all constants optimal but does not
 classify every saturating path or solve degree-minimal interpolation for
 arbitrary heterogeneous samples.  Equation \eqref{eq:psdslack} provides
-necessary near-rigidity conditions, not a complete stability theorem.
+the quantitative componentwise stability bounds in \cref{cor:stability}, but
+does not yet convert small slack into operator-norm distance from the complete
+set of optimizers.
 \end{limitation}
 
 Promising next questions are: a stability theorem converting small total
@@ -590,17 +706,20 @@ Subspace rotation consumes a spectrum, not a scalar.  The complete law is
 $2\beta\prec_w\int\Spr(Q)$: every prefix of canonical-angle motion must be
 paid for by the matching prefix of generator spectral spread.  Positive
 Wigner--Smith flows turn this into a hierarchy of leading proper-delay
-budgets.  The hierarchy is simultaneously sharp, admits an exact three-term
-slack decomposition, survives heterogeneous leakage and finite tomography
-error, adds over separated switches and closes to an integer McMillan-degree
-obstruction for rational passive networks.  It therefore upgrades a trace
-memory law into a mode-resolved, experimentally certifiable resource theory.
+budgets.  Equivalently, every symmetric-gauge action has the exact minimum
+$2\Phi(\beta)$, and one positive coupled-mode geodesic is optimal for all
+gauges at once.  The hierarchy admits an exact three-term slack decomposition
+and quantitative near-rigidity bounds, survives heterogeneous leakage and
+finite tomography error, adds over separated switches and closes to an integer
+McMillan-degree obstruction for rational passive networks.  It therefore
+upgrades a trace memory law into a mode-resolved, experimentally certifiable
+resource theory.
 
 \section*{Data and code availability}
 
 The manuscript source, frozen JSON certificate, generated figure, independent
 verifier, release manifest and continuous-integration workflow are archived at
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.4-ky-fan-speed-limits}{the immutable GitHub release}.  The principal claims are proved analytically
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.5-exact-finsler-speed-limits}{the immutable GitHub release}.  The principal claims are proved analytically
 in the text; numerical tests are adversarial audits, not substitutes for the
 proofs.
 

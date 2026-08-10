@@ -112,7 +112,27 @@ def sharp_family(angle_spectra: list[list[float]]) -> dict:
         observed = canonical_angles(unitary, rank)
         top_delay = partial_sums(np.linalg.eigvalsh(q)[::-1][:rank])
         required = 2.0 * partial_sums(angles)
+        delay_vector = np.linalg.eigvalsh(q)[::-1][:rank]
         error = max(float(np.max(np.abs(observed - angles))), float(np.max(np.abs(top_delay - required))))
+        gauge_costs = {
+            "operator": {
+                "geometric_optimum": 2.0 * float(np.max(angles)),
+                "delay_action": float(np.max(delay_vector)),
+            },
+            "euclidean": {
+                "geometric_optimum": 2.0 * float(np.linalg.norm(angles)),
+                "delay_action": float(np.linalg.norm(delay_vector)),
+            },
+            "trace": {
+                "geometric_optimum": 2.0 * float(np.sum(angles)),
+                "delay_action": float(np.sum(delay_vector)),
+            },
+        }
+        gauge_error = max(
+            abs(record["geometric_optimum"] - record["delay_action"])
+            for record in gauge_costs.values()
+        )
+        error = max(error, gauge_error)
         worst_error = max(worst_error, error)
         cases.append({
             "rank": int(rank),
@@ -120,9 +140,36 @@ def sharp_family(angle_spectra: list[list[float]]) -> dict:
             "observed_angles": observed.tolist(),
             "twice_angle_partial_sums": required.tolist(),
             "top_delay_partial_sums": top_delay.tolist(),
+            "symmetric_gauge_costs": gauge_costs,
             "maximum_error": error,
         })
     return {"cases": cases, "worst_error": worst_error, "all_pass": bool(worst_error <= TOL)}
+
+
+def scalar_endpoint_separation() -> dict:
+    """Two angle spectra invisible to max and trace, separated at r=2."""
+    first = np.array([1.0, 0.8, 0.2])
+    second = np.array([1.0, 0.5, 0.5])
+    first_prefix = 2.0 * partial_sums(first)
+    second_prefix = 2.0 * partial_sums(second)
+    return {
+        "first_angles": first.tolist(),
+        "second_angles": second.tolist(),
+        "common_largest_angle": float(first[0]),
+        "common_total_angle": float(np.sum(first)),
+        "first_optimal_action_prefixes": first_prefix.tolist(),
+        "second_optimal_action_prefixes": second_prefix.tolist(),
+        "r2_action_gap": float(first_prefix[1] - second_prefix[1]),
+        "same_scalar_endpoints": bool(
+            np.isclose(first[0], second[0]) and np.isclose(np.sum(first), np.sum(second))
+        ),
+        "strict_intermediate_separation": bool(first_prefix[1] > second_prefix[1]),
+        "all_pass": bool(
+            np.isclose(first[0], second[0])
+            and np.isclose(np.sum(first), np.sum(second))
+            and first_prefix[1] > second_prefix[1]
+        ),
+    }
 
 
 def random_path_audit(paths: int, seed: int, psd: bool) -> dict:
@@ -243,15 +290,25 @@ def make_figure(path: Path) -> None:
     surplus = partial_sums(rng.uniform(0.07, 0.20, angles.size))
     generic = ideal + surplus
     ranks = np.arange(1, angles.size + 1)
-    plt.figure(figsize=(6.8, 3.6))
-    plt.plot(ranks, ideal, "o-", lw=2.2, label="sharp coupled-mode family")
-    plt.plot(ranks, generic, "s--", lw=1.9, label="generic passive path")
-    plt.xlabel(r"Ky Fan index $r$")
-    plt.ylabel(r"cumulative proper-delay action")
-    plt.xticks(ranks)
-    plt.grid(alpha=0.25)
-    plt.legend(frameon=False)
-    plt.tight_layout()
+    figure, axes = plt.subplots(1, 2, figsize=(9.2, 3.45))
+    axes[0].plot(ranks, ideal, "o-", lw=2.2, label="gauge-optimal path")
+    axes[0].plot(ranks, generic, "s--", lw=1.9, label="generic passive path")
+    axes[0].set_xlabel(r"Ky Fan index $r$")
+    axes[0].set_ylabel(r"cumulative proper-delay action")
+    axes[0].set_xticks(ranks)
+    axes[0].grid(alpha=0.25)
+    axes[0].legend(frameon=False, fontsize=8.5)
+    first = 2.0 * partial_sums(np.array([1.0, 0.8, 0.2]))
+    second = 2.0 * partial_sums(np.array([1.0, 0.5, 0.5]))
+    short_ranks = np.arange(1, 4)
+    axes[1].plot(short_ranks, first, "o-", lw=2.2, label=r"$2(1,.8,.2)$")
+    axes[1].plot(short_ranks, second, "D--", lw=1.9, label=r"$2(1,.5,.5)$")
+    axes[1].set_xlabel(r"Ky Fan index $r$")
+    axes[1].set_ylabel(r"sharp cumulative action")
+    axes[1].set_xticks(short_ranks)
+    axes[1].grid(alpha=0.25)
+    axes[1].legend(frameon=False, fontsize=8.5)
+    figure.tight_layout()
     plt.savefig(path)
     plt.close()
 
@@ -278,6 +335,7 @@ def main() -> None:
             [1.49, 1.08, 0.63, 0.17],
             [1.51, 1.22, 0.94, 0.58, 0.31, 0.09],
         ]),
+        "scalar_endpoint_separation": scalar_endpoint_separation(),
         "signed_pointwise": pointwise_audit(args.pointwise_trials, 26081001, psd=False),
         "positive_pointwise": pointwise_audit(args.pointwise_trials, 26081002, psd=True),
         "signed_paths": random_path_audit(args.path_trials, 26081003, psd=False),

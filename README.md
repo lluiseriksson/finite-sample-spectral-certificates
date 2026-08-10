@@ -19,6 +19,13 @@ angle speed limit; `r=k` strengthens the earlier trace law; the intermediate
 members prevent one delayed mode from masquerading as collective rank-`k`
 transport.
 
+The definitive theorem solves the full variational problem: for every
+symmetric gauge `Phi`, the least spectral-spread action between two subspaces
+is exactly `2 Phi(beta)`. The same value holds for positive leading-delay
+action, and one constant coupled-mode path minimizes every gauge at once. Two
+angle spectra with identical maximum and trace but a 20% different `r=2` cost
+demonstrate that the intermediate hierarchy contains strictly new information.
+
 Every prefix is saturated simultaneously by an explicit positive coupled-mode
 family. An exact three-term slack identity separates common delay, inefficient
 spectral coupling and Grassmann detours. Heterogeneous leakage spectra and

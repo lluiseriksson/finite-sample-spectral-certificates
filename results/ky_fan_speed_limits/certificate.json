@@ -21,6 +21,20 @@
         "top_delay_partial_sums": [
           2.42
         ],
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 2.42,
+            "delay_action": 2.42
+          },
+          "euclidean": {
+            "geometric_optimum": 2.42,
+            "delay_action": 2.42
+          },
+          "trace": {
+            "geometric_optimum": 2.42,
+            "delay_action": 2.42
+          }
+        },
         "maximum_error": 0.0
       },
       {
@@ -41,7 +55,21 @@
           2.84,
           4.58
         ],
-        "maximum_error": 2.220446049250313e-16
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 2.84,
+            "delay_action": 2.84
+          },
+          "euclidean": {
+            "geometric_optimum": 3.330645583066442,
+            "delay_action": 3.3306455830664423
+          },
+          "trace": {
+            "geometric_optimum": 4.58,
+            "delay_action": 4.58
+          }
+        },
+        "maximum_error": 4.440892098500626e-16
       },
       {
         "rank": 4,
@@ -69,7 +97,21 @@
           6.4,
           6.74
         ],
-        "maximum_error": 4.440892098500626e-16
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 2.98,
+            "delay_action": 2.9800000000000004
+          },
+          "euclidean": {
+            "geometric_optimum": 3.905022407106008,
+            "delay_action": 3.9050224071060087
+          },
+          "trace": {
+            "geometric_optimum": 6.74,
+            "delay_action": 6.74
+          }
+        },
+        "maximum_error": 8.881784197001252e-16
       },
       {
         "rank": 6,
@@ -105,10 +147,52 @@
           9.119999999999997,
           9.299999999999997
         ],
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 3.02,
+            "delay_action": 3.02
+          },
+          "euclidean": {
+            "geometric_optimum": 4.513402264367757,
+            "delay_action": 4.513402264367756
+          },
+          "trace": {
+            "geometric_optimum": 9.299999999999999,
+            "delay_action": 9.299999999999997
+          }
+        },
         "maximum_error": 1.7763568394002505e-15
       }
     ],
     "worst_error": 1.7763568394002505e-15,
+    "all_pass": true
+  },
+  "scalar_endpoint_separation": {
+    "first_angles": [
+      1.0,
+      0.8,
+      0.2
+    ],
+    "second_angles": [
+      1.0,
+      0.5,
+      0.5
+    ],
+    "common_largest_angle": 1.0,
+    "common_total_angle": 2.0,
+    "first_optimal_action_prefixes": [
+      2.0,
+      3.6,
+      4.0
+    ],
+    "second_optimal_action_prefixes": [
+      2.0,
+      3.0,
+      4.0
+    ],
+    "r2_action_gap": 0.6000000000000001,
+    "same_scalar_endpoints": true,
+    "strict_intermediate_separation": true,
     "all_pass": true
   },
   "signed_pointwise": {
