@@ -1,0 +1,635 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=0.86in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Exact Memory of Direct-Sum Spectral Fan-Out},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={Direct-sum memory laws for passive rational-inner spectral routing}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\usepackage{microtype}
+\usepackage{etoolbox}
+\AtBeginEnvironment{thebibliography}{\scriptsize\setlength{\itemsep}{-1pt}\setlength{\parsep}{0pt}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{limitation}[theorem]{Limitation}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\D}{\mathbb D}
+\newcommand{\T}{\mathbb T}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\mcdeg}{\deg_{\mathrm{McM}}}
+\newcommand{\nminus}{\nu_{-}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf 1}
+
+\title{Exact Memory of Direct-Sum Spectral Fan-Out:\\
+Generic Maximality, Colliding Targets, and the Three-Line Phase Diagram}
+\author{Lluis Eriksson}
+\date{11 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+At $L$ boundary frequencies, a passive lossless network is required to send
+one fixed $k$-dimensional input channel to prescribed output $k$-planes.
+Previous exact fan-out laws used mutually orthogonal targets.  We show that
+orthogonality is inessential and that maximal memory is generic.  If the
+$L$ target planes are in direct-sum position, then every square finite
+rational-inner interpolant regular at the nodes has minimum McMillan degree
+\[
+                         d_{\min}=k(L-1).
+\]
+More generally, with $r$ the dimension of their linear span,
+\[
+                         r-k\le d_{\min}\le k(L-1).
+\]
+The upper bound is constructive: all free diagonal blocks of the boundary
+Pick matrix are completed by one positive leading block and a zero Schur
+complement, producing a conservative realization with at most $k(L-1)$
+states.  The lower bound follows from a Pick--Stein displacement and is
+independent of frame gauges and node spacing.
+
+The theorem exposes an exact-data discontinuity.  We construct $L$ direct-sum
+$k$-planes whose pairwise angles tend to zero.  Their minimum degree remains
+$k(L-1)$ for every nonzero opening but falls to zero at collision; the
+certifying Gram margin is exactly $\epsilon^2/(1+\epsilon^2)$.  A fail-closed
+noisy eigenvalue rule quantifies the precision needed to certify this cost.
+For three scalar target lines we also determine the complete phase diagram:
+degree zero for one line, degree one precisely for three distinct lines in a
+common two-plane, and degree two otherwise.  Thus a repeated target can cost
+more than three distinct targets, a rigidity invisible to span alone.
+Deterministic code replays 512 arbitrary-node completions, 1,024 noisy
+certificates, 20 collision fixtures, and five minimal unitary colligations,
+with an independent verifier and frozen machine-readable certificate.
+\end{abstract}
+
+\noindent\textbf{Keywords:} rational inner matrix; McMillan degree;
+boundary Nevanlinna--Pick interpolation; positive semidefinite completion;
+Stein displacement; spectral routing; passive network; Grassmannian.
+
+\section{The question and the answer}
+
+A finite passive lossless device is represented here by a square rational
+matrix $S$ that is analytic on the unit disk and unitary almost everywhere
+on its boundary.  Its McMillan degree counts the states of a minimal
+conservative realization.  Fix an isometric input frame
+$X\in\C^{N\times k}$ and distinct nodes
+$\zeta_1,\ldots,\zeta_L\in\T$.  At node $i$ only an output plane
+$\mathcal Y_i\in\operatorname{Gr}(k,N)$ is prescribed:
+\begin{equation}\label{eq:routing-task}
+                 S(\zeta_i)\ran X=\mathcal Y_i,
+                 \qquad i=1,\ldots,L.
+\end{equation}
+The interpolant is required to be regular at the nodes.  Define
+\begin{equation}\label{eq:dmin}
+d_{\min}(\zeta,\mathcal Y;X)
+=\min\{\mcdeg S:S\text{ is square rational inner and satisfies
+\eqref{eq:routing-task}}\}.
+\end{equation}
+The value is independent of the particular input frame: constant unitaries
+move one $k$-plane to another without changing degree.
+
+The orthogonal example treated in the preceding fan-out paper showed
+$d_{\min}=k(L-1)$ for mutually orthogonal targets.  It left open whether
+orthogonality creates the cost or merely makes it visible.  The answer is
+the latter.
+
+\begin{theorem}[Universal sandwich]\label{thm:sandwich}
+Let $\zeta_1,\ldots,\zeta_L$ be distinct points of $\T$ and let
+$\mathcal Y_1,\ldots,\mathcal Y_L$ be $k$-planes in $\C^N$.  Put
+\[
+                     r=\dim\Span(\mathcal Y_1,\ldots,\mathcal Y_L).
+\]
+Then
+\begin{equation}\label{eq:sandwich}
+                       r-k\le d_{\min}\le k(L-1).
+\end{equation}
+Both inequalities are independent of node separation.  The upper bound is
+attained by an explicit positive Pick completion.
+\end{theorem}
+
+\begin{corollary}[Generic maximality]\label{cor:generic}
+If the targets are in direct-sum position,
+\[
+                \dim\Span(\mathcal Y_1,\ldots,\mathcal Y_L)=Lk,
+\]
+then
+\begin{equation}\label{eq:exact-law}
+                            d_{\min}=k(L-1).
+\end{equation}
+When $N\ge Lk$, direct-sum position is open and dense in
+$\operatorname{Gr}(k,N)^L$.  Hence the largest possible minimum degree is
+the generic value, not an exceptional orthogonal value.
+\end{corollary}
+
+Every pair drawn from a direct-sum table has minimum degree $k$, by applying
+\cref{thm:sandwich} with $L=2$.  The ratio between the global minimum and
+the largest pairwise minimum is therefore $L-1$.  Pairwise feasibility does
+not aggregate into global economy.
+
+Three features distinguish the present result from a restatement of the
+orthogonal construction.  First, the target Gram matrix may be fully dense.
+Second, the upper bound now requires a block completion rather than a scalar
+Cauchy shift.  Third, direct-sum targets may be arbitrarily close in the
+Grassmannian, producing the discontinuity proved in \cref{sec:collision}.
+
+\section{The Pick--Stein interface}\label{sec:interface}
+
+Choose arbitrary isometric frames $W_i\in\C^{N\times k}$ with
+$\ran W_i=\mathcal Y_i$, and form the calibrated block Gram matrix
+\begin{equation}\label{eq:gram}
+ G=[W_i^*W_j]_{i,j=1}^L=W^*W,
+ \qquad W=[W_1\ \cdots\ W_L].
+\end{equation}
+Changing frames inside the planes conjugates $G$ by a block-diagonal unitary.
+In particular,
+\begin{equation}\label{eq:gram-rank}
+                      \rank G=\rank W=r
+\end{equation}
+is intrinsic.
+
+Let
+\[
+ Z=\diag(\zeta_1,\ldots,\zeta_L)\otimes I_k,
+ \qquad J_L=\one\one^*.
+\]
+The boundary Pick variables are the blocks of a Hermitian matrix
+$P=[P_{ij}]\in\C^{Lk\times Lk}$.  Its off-diagonal blocks are fixed:
+\begin{equation}\label{eq:pick-offdiag}
+ P_{ij}=\frac{I_k-W_i^*W_j}{1-\overline{\zeta_i}\zeta_j},
+ \qquad i\ne j.
+\end{equation}
+The diagonal blocks are free because both numerator and denominator vanish
+on the boundary.  Equivalently, every completion satisfies the displacement
+identity
+\begin{equation}\label{eq:stein}
+                 P-Z^*PZ=J_L\otimes I_k-G.
+\end{equation}
+
+We isolate the standard interpolation bridge in the precise form used below.
+
+\begin{proposition}[Rank--degree bridge]\label{prop:bridge}
+If a matrix $P\succeq0$ satisfies \eqref{eq:stein}, then there is a square
+rational-inner $S$, regular at the prescribed nodes after removal of
+decoupled unit-circle modes, such that
+$S(\zeta_i)X=W_i$ and
+\[
+                           \mcdeg S\le\rank P.
+\]
+Conversely, an interpolant of degree $d$ produces such a positive $P$ with
+$\rank P\le d$.
+\end{proposition}
+
+\begin{proof}
+Factor $P=F^*F$ with $F=[F_1\ \cdots\ F_L]$ and
+$F_i\in\C^{q\times k}$, where $q=\rank P$.  Identity \eqref{eq:stein}
+says that the two block-column families
+\[
+  \begin{bmatrix}\zeta_iF_i\\X\end{bmatrix}
+  \quad\text{and}\quad
+  \begin{bmatrix}F_i\\W_i\end{bmatrix}
+\]
+have the same Gram matrix.  The induced isometry extends to a unitary
+colligation
+\[
+ U=\begin{bmatrix}A&B\\C&D\end{bmatrix}
+ \quad\text{on }\C^q\oplus\C^N.
+\]
+Its transfer matrix
+\[
+                    S(z)=D+zC(I-zA)^{-1}B
+\]
+is rational inner and has degree at most $q$.  The interpolation equations
+give $(I-\zeta_iA)F_i=BX$ and then $S(\zeta_i)X=W_i$.  If the chosen unitary
+extension contains a unit-circle state mode, contractivity forces that mode
+to be reducing and decoupled from $B$ and $C$; deleting it leaves the
+transfer matrix and the interpolation data unchanged and makes all nodes
+regular.
+
+Conversely, the de Branges--Rovnyak kernel of a finite rational-inner matrix,
+\[
+ K_S(z,w)=\frac{I-S(z)^*S(w)}{1-\bar z w},
+\]
+has a finite Kolmogorov factor of dimension $d=\mcdeg S$.  Taking regular
+boundary limits and compressing by $X$ gives $P\succeq0$ with
+$\rank P\le d$, off-diagonal blocks \eqref{eq:pick-offdiag}, and hence
+\eqref{eq:stein}.  This is the finite-dimensional lurking-isometry form of
+matrix boundary Nevanlinna--Pick interpolation
+\cite{BolotnikovDym2006,BallKim1994,GombaniMichaletzky2007}.
+\end{proof}
+
+The proposition separates the new geometry from established realization
+machinery.  Our contribution is not the Schur complement or the
+rank--degree bridge individually, but the sharp completion and lower bound
+that make them meet for generic subspace data.
+
+\section{A universal rank-\texorpdfstring{$k(L-1)$}{k(L-1)} completion}\label{sec:upper}
+
+Partition the partially specified matrix in \eqref{eq:pick-offdiag} after its
+first $L-1$ block rows and columns.  Let $A_0$ be the Hermitian
+$k(L-1)\times k(L-1)$ matrix whose off-diagonal blocks are the corresponding
+blocks in \eqref{eq:pick-offdiag} and whose diagonal blocks are zero.  Let
+$B_0$ stack the prescribed blocks $P_{1L},\ldots,P_{L-1,L}$.
+
+\begin{lemma}[Zero-Schur completion]\label{lem:completion}
+For every $t>\norm{A_0}$, set
+\begin{equation}\label{eq:completion}
+ Q=tI+A_0,
+ \qquad
+ P=\begin{bmatrix}
+ Q&B_0\\ B_0^*&B_0^*Q^{-1}B_0
+ \end{bmatrix}.
+\end{equation}
+Then $P\succeq0$, it has all the prescribed off-diagonal blocks, and
+\[
+                         \rank P=k(L-1).
+\]
+\end{lemma}
+
+\begin{proof}
+The choice of $t$ gives $Q\succ0$.  The Schur complement of $Q$ in $P$ is
+zero, so $P\succeq0$ and $\rank P=\rank Q=k(L-1)$.  Only diagonal blocks
+were selected freely: the leading diagonal blocks are those of $tI$, and
+the final diagonal block is $B_0^*Q^{-1}B_0$.  Thus every off-diagonal block
+remains exactly \eqref{eq:pick-offdiag}.
+\end{proof}
+
+Positive semidefinite completion by a zero Schur complement is elementary
+and belongs to the general matrix-completion toolkit
+\cite{Dancis1992,LaurentVarvitsiotis2014}.  Its consequence here is less
+obvious: arbitrary boundary subspace data always admit a passive lossless
+interpolant with a state count linear in both $k$ and $L$.
+
+\begin{proof}[Proof of the upper bound in \cref{thm:sandwich}]
+Apply \cref{lem:completion}.  Its matrix obeys \eqref{eq:stein}; the diagonal
+blocks require no check because $|\zeta_i|=1$ and $W_i^*W_i=I_k$.
+\Cref{prop:bridge} produces an interpolant of degree at most $k(L-1)$.
+\end{proof}
+
+The construction is algorithmic.  It needs one Hermitian eigenvalue bound,
+one positive linear solve, a factorization of $P$, and a unitary completion
+of the lurking isometry.  It does not optimize conditioning: increasing $t$
+preserves rank but can enlarge stored-energy scales.  Degree and numerical
+conditioning are different resources.
+
+\section{The span obstruction and exact generic law}\label{sec:lower}
+
+We use two elementary inertia facts.  If $P\succeq0$ has rank $q$, then
+\begin{equation}\label{eq:displacement-inertia}
+                      \nminus(P-Z^*PZ)\le q,
+\end{equation}
+because the negative inertia of a difference $P-R$ cannot exceed
+$\rank R$, here $R=Z^*PZ$.  Also, adding a positive matrix of rank at most
+$k$ can remove at most $k$ negative directions.  Since $G\succeq0$,
+\begin{equation}\label{eq:rank-inertia}
+ \nminus(J_L\otimes I_k-G)
+ \ge \nminus(-G)-k
+ =\rank G-k.
+\end{equation}
+
+\begin{proof}[Proof of the lower bound in \cref{thm:sandwich}]
+Let $S(z)=D+zC(I-zA)^{-1}B$ be a minimal realization of degree $d$.
+The resolvent identity gives
+\[
+ S(z)-S(w)=(z-w)C(I-zA)^{-1}(I-wA)^{-1}B.
+\]
+Hence every column of $(S(\zeta_i)-S(\zeta_1))X$ lies in the common space
+$\ran C$, of dimension at most $d$.  Therefore
+\[
+ \mathcal Y_1+\cdots+\mathcal Y_L
+ \subseteq \mathcal Y_1+\ran C,
+ \qquad r\le k+d.
+\]
+This proves $d\ge r-k$ directly.  Equivalently, the Pick matrix from
+\cref{prop:bridge} obeys
+$\nminus(P-Z^*PZ)\le\rank P\le d$, while
+\eqref{eq:rank-inertia} gives
+$\nminus(P-Z^*PZ)\ge r-k$.  The two arguments audit the same obstruction
+from realization and interpolation viewpoints.
+\end{proof}
+
+\begin{proof}[Proof of \cref{cor:generic}]
+Direct-sum position gives $r=Lk$, so the two sides of
+\eqref{eq:sandwich} coincide.  Full column rank of the concatenated frame
+$W$ is an open condition.  Its failure is the zero set of all $Lk$-minors;
+when $N\ge Lk$, at least one such minor is nonzero for an orthogonal table,
+so the full-rank locus is dense.
+\end{proof}
+
+The conclusion is stronger than ``most targets need many states.''  It
+identifies the exact maximum and proves that this maximum occupies an open
+dense set.  Orthogonal targets supply a transparent point in that set, not
+the mechanism behind the law.
+
+\section{Colliding targets and exact-data discontinuity}\label{sec:collision}
+
+Let $E_0,E_1,\ldots,E_L$ be mutually orthogonal isometric $k$-frames in
+$\C^{(L+1)k}$.  For $\epsilon\ge0$ define
+\begin{equation}\label{eq:collision-family}
+ W_i(\epsilon)=\frac{E_0+\epsilon E_i}{\sqrt{1+\epsilon^2}},
+ \qquad \mathcal Y_i(\epsilon)=\ran W_i(\epsilon).
+\end{equation}
+For distinct $i,j$,
+\begin{equation}\label{eq:collision-overlap}
+ W_i(\epsilon)^*W_j(\epsilon)=\frac{1}{1+\epsilon^2}I_k.
+\end{equation}
+Thus all principal angles tend to zero as $\epsilon\downarrow0$.
+
+\begin{corollary}[Maximal memory at arbitrarily small angles]
+\label{cor:collision}
+For the family \eqref{eq:collision-family},
+\begin{equation}\label{eq:collision-degree}
+ d_{\min}(\epsilon)=
+ \begin{cases}
+ k(L-1),&\epsilon>0,\\
+ 0,&\epsilon=0.
+ \end{cases}
+\end{equation}
+The block Gram spectrum is
+\begin{equation}\label{eq:collision-spectrum}
+ \left\{\frac{L+\epsilon^2}{1+\epsilon^2}\right\}^{k}
+ \cup
+ \left\{\frac{\epsilon^2}{1+\epsilon^2}\right\}^{k(L-1)}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The private $E_i$ components make the $Lk$ columns of
+$[W_1(\epsilon)\ \cdots\ W_L(\epsilon)]$ independent for every
+$\epsilon>0$.  Apply \cref{cor:generic}.  At zero all targets equal
+$\ran E_0$, and a constant unitary realizes the table.  Finally,
+\[
+ G_\epsilon=\frac{J_L+\epsilon^2I_L}{1+\epsilon^2}\otimes I_k,
+\]
+whose spectrum is \eqref{eq:collision-spectrum}.
+\end{proof}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.94\linewidth]{figures/generic_fanout_memory.pdf}
+\caption{Left: six target lines approach coincidence while the exact minimum
+degree remains five for every positive opening.  The Gram margin closes
+quadratically.  Right: every pair costs one state, whereas the generic global
+task costs $L-1$.  Curves show exact formulas, not fitted asymptotics.}
+\label{fig:collision}
+\end{figure}
+
+There is no contradiction with continuity of approximate interpolation.
+The feasible set changes discontinuously only because equality at every node
+is exact.  If a tolerance is admitted, a constant device approximates
+\eqref{eq:collision-family} increasingly well.  The small Gram eigenvalue in
+\eqref{eq:collision-spectrum} is precisely the statistical price of
+distinguishing an expensive positive opening from a free collision.
+
+\section{A gauge-invariant finite-error certificate}\label{sec:noisy}
+
+Let $\Pi_i=W_iW_i^*$ be the orthogonal projector onto $\mathcal Y_i$ and set
+\begin{equation}\label{eq:projector-sum}
+                           H=\sum_{i=1}^L\Pi_i.
+\end{equation}
+This observable is independent of all frame gauges, and
+$\rank H=\dim\sum_i\mathcal Y_i$.  Suppose projector estimates satisfy
+$\norm{\widehat\Pi_i-\Pi_i}\le\epsilon_i$.  With
+$\widehat H=\sum_i\widehat\Pi_i$ and $\eta=\sum_i\epsilon_i$, one has
+\begin{equation}\label{eq:error-model}
+                         \norm{\widehat H-H}\le\eta.
+\end{equation}
+The error bound may come from deterministic calibration guarantees or a
+high-probability confidence event.  No distributional assumption is needed
+inside the theorem.
+
+\begin{theorem}[Noisy span certificate]\label{thm:noisy}
+Let
+\[
+ q_\eta=\#\{j:\lambda_j(\widehat H)>\eta\}.
+\]
+Every exact rational-inner interpolant satisfies
+\begin{equation}\label{eq:noisy-bound}
+                        \mcdeg S\ge\max\{0,q_\eta-k\}.
+\end{equation}
+In particular, if $q_\eta=Lk$, then $d_{\min}=k(L-1)$.
+\end{theorem}
+
+\begin{proof}
+Weyl's inequality and \eqref{eq:error-model} imply that each eigenvalue of
+$\widehat H$ above $\eta$ corresponds to a strictly positive eigenvalue of
+$H$.  Hence $\rank H\ge q_\eta$.  Apply the lower half of
+\cref{thm:sandwich}; when $q_\eta=Lk$, also apply its universal upper half.
+\end{proof}
+
+The rule is fail-closed: a large $\eta$ can make it abstain but cannot make it
+overstate the span on the event \eqref{eq:error-model}.  For
+\eqref{eq:collision-family}, certification requires an error smaller than a
+quantity of order $\epsilon^2$.  Nearly coincident planes are geometrically
+close but quadratically hard to certify as algebraically independent.
+
+Unlike a block Gram estimate, \eqref{eq:projector-sum} needs no relative
+$U(k)$ calibration between frames.  A significantly negative eigenvalue
+$\lambda_{\min}(\widehat H)<-\eta$ falsifies the declared projector/error
+model, because the exact $H$ is positive semidefinite.
+
+\section{The exact phase diagram for three target lines}\label{sec:three}
+
+The span lower bound is sharp on the open direct-sum stratum, but not on every
+singular stratum.  The smallest nontrivial example already contains a
+rigidity phenomenon.  Let $L=3$ and $k=1$.
+
+\begin{theorem}[Three-line phase diagram]\label{thm:three-lines}
+For three target lines $\mathcal Y_1,\mathcal Y_2,\mathcal Y_3$ at distinct
+boundary nodes,
+\begin{equation}\label{eq:three-lines}
+d_{\min}=
+\begin{cases}
+0,&\mathcal Y_1=\mathcal Y_2=\mathcal Y_3,\\
+1,&\text{the three lines are pairwise distinct and span a two-plane},\\
+2,&\text{otherwise}.
+\end{cases}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A constant unitary realizes, and is forced by, the first case.  A degree-one
+rational-inner matrix is, up to constant unitary factors, one rank-one
+Blaschke--Potapov factor
+\[
+                     \diag(1,b(z),I),
+\]
+where $b$ is a disk automorphism.  Applied to a fixed input line, its output
+is either constant or has the form
+\begin{equation}\label{eq:potapov-orbit}
+                        [u+\rho b(z)v],
+\end{equation}
+for orthogonal vectors $u,v$ and $\rho>0$.  The nonconstant orbit is
+injective on $\T$ and lies in $\Span\{u,v\}$.  Thus degree one cannot produce
+a repeated line followed by a different line, nor three lines spanning
+dimension three.
+
+Conversely, identify the common two-plane of three distinct targets with
+$\C^2$.  Under the Bloch-sphere representation the three points determine a
+circle.  A constant $U(2)$ rotation sends that circle to a latitude, so the
+three lines acquire the form $[u+\rho e^{i\theta_i}v]$.  Choose the circle
+orientation so that $(e^{i\theta_1},e^{i\theta_2},e^{i\theta_3})$ and
+$(\zeta_1,\zeta_2,\zeta_3)$ have the same cyclic order.  The disk automorphism
+group acts triply transitively on oriented boundary triples, hence some
+degree-one Blaschke factor satisfies $b(\zeta_i)=e^{i\theta_i}$.  Extending
+the two constant unitaries to $\C^N$ realizes \eqref{eq:potapov-orbit}.
+
+If the lines span dimension three, \cref{thm:sandwich} gives degree at least
+two.  If exactly two distinct lines occur, injectivity of every nonconstant
+degree-one orbit gives the same lower bound.  The universal upper bound with
+$L=3,k=1$ supplies degree at most two in both cases.
+\end{proof}
+
+The second obstruction is genuinely global but not a rank obstruction.
+Three distinct coplanar lines cost one state; replacing one by a repeated
+line can raise the cost to two.  Algebraic incidence and interpolation order
+therefore matter on the rank-deficient boundary of the generic stratum.
+For four or more scalar nodes, degree-one feasibility additionally imposes
+Möbius cross-ratio compatibility; the three-node case is special because an
+oriented boundary triple has no remaining modulus.
+
+\section{Reproducible synthesis and stress tests}\label{sec:computation}
+
+The proof is exact and does not depend on floating-point evidence.  The
+computation checks that the proposed completion and compiler behave as
+claimed away from the orthogonal case.  The producer is
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/generic-fanout-memory/research/generic_fanout_memory_certificate.py}{\texttt{research/generic\_fanout\_memory\_certificate.py}};
+the independent implementation is
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/generic-fanout-memory/verification/verify_generic_fanout_memory.py}{\texttt{verification/verify\_generic\_fanout\_memory.py}}.
+The verifier imports no producer functions.
+
+The deterministic campaign contains four blocks:
+\begin{enumerate}
+\item 512 random arbitrary-node, nonorthogonal target tables with
+      $3\le L\le8$ and $1\le k\le3$;
+\item 20 near-collision fixtures down to $\epsilon=10^{-3}$;
+\item five unitary colligations, checked for interpolation, unitarity,
+      controllability, observability, and the predicted state dimension;
+\item 1,024 noisy projector-sum trials, half direct-sum and half rank deficient;
+\item four clustered-node fixtures with gaps from $10^{-2}$ to $10^{-8}$.
+\end{enumerate}
+
+\begin{table}[t]
+\centering
+\caption{Representative colligations synthesized from dense target Gram
+matrices.  Errors are spectral norms.}
+\label{tab:colligations}
+\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$L$ & $k$ & states & interpolation & colligation unitary & $\rho(A)$\\
+\midrule
+3&1&2&$1.72\,10^{-14}$&$1.26\,10^{-14}$&0.7881\\
+4&1&3&$2.16\,10^{-14}$&$3.15\,10^{-14}$&0.9610\\
+3&2&4&$3.05\,10^{-13}$&$1.87\,10^{-13}$&0.9918\\
+4&2&6&$3.28\,10^{-14}$&$3.01\,10^{-14}$&0.8677\\
+5&2&8&$2.14\,10^{-14}$&$6.44\,10^{-14}$&0.8584\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across the 512 completion trials, the worst relative Stein residual was
+$4.23\times10^{-16}$ and the worst relative violation of positive
+semidefiniteness was $5.06\times10^{-16}$.  Every completion had rank
+$k(L-1)$.  All 512 direct-sum noisy fixtures were certified and none of the
+1,024 trials overcertified the true span bound.  These counts and exact
+floating-point outputs are frozen in a JSON certificate rather than copied
+from plotting code.
+
+Close nodes are an exact nonissue but a numerical stressor: the entries of
+the Pick completion scale inversely with the node gap.  The clustered-node
+fixtures retain relative Stein residuals below the declared tolerance down to
+$10^{-8}$, while recording the floating-point rank separately from the exact
+rank guaranteed by the zero Schur complement.  We do not claim reliable
+double-precision colligation synthesis at the smallest gaps.
+
+The release gate performs three distinct checks: hash verification of frozen
+artifacts, numerical replay in a temporary directory, and an independent
+formula-level audit.  The immutable bundle is linked at
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.2-generic-fanout-memory}{\texttt{v2.2-generic-fanout-memory}}.
+
+\section{Scope, relation to prior work, and limitations}\label{sec:scope}
+
+Boundary matrix Schur interpolation, minimal rational interpolation, and
+degree control have a substantial literature
+\cite{BolotnikovDym2006,AntoulasEtAl1990,BallKim1994,
+GombaniMichaletzky2007,BallBolotnikov2018}.  Subspace interpolation has also
+been used to design matrix all-pass filters
+\cite{RapisardaWillems1997,BharathEtAl2023}.  Positive semidefinite completion
+and rank questions are classical in their own right
+\cite{Dancis1992,LaurentVarvitsiotis2014}.  We do not claim any of these
+general mechanisms as new.
+
+The contribution is the following conjunction for passive spectral routing:
+the universal sharp sandwich \eqref{eq:sandwich}; the exact open-dense law
+\eqref{eq:exact-law}; a single explicit completion that proves the upper
+bound for arbitrary subspaces and nodes; the collision discontinuity
+\eqref{eq:collision-degree}; its finite-error certification threshold; and
+the complete singular-stratum classification \eqref{eq:three-lines}.
+Compared with the orthogonal fan-out theorem, the result replaces symmetry
+by a generic geometric condition and identifies what fails when that
+condition degenerates.
+
+Several boundaries should be kept explicit.
+\begin{itemize}
+\item The task is exact interpolation at finitely many distinct boundary
+      nodes.  Approximate, broadband, or derivative constraints define
+      different optimization problems.
+\item The transfer is finite-dimensional, square, rational, and inner.
+      Loss, gain, infinite delays, and nonrational distributed systems are
+      outside the theorem.
+\item McMillan degree counts dynamical states.  It does not by itself bound
+      dwell time, bandwidth, component sensitivity, or implementation loss.
+\item The noisy theorem is conditional on valid operator-norm error bounds
+      for the estimated projectors.  The simulations illustrate
+      the logic; they are not a substitute for an experimental noise model.
+\item Outside direct-sum position, $r-k$ need not be exact.  The repeated-line case in
+      \cref{thm:three-lines} is the smallest counterexample.  A complete
+      stratification for general $L$ and $k$ remains open.
+\end{itemize}
+
+\section{Conclusion}
+
+Generic spectral fan-out is maximally expensive.  The exact state count
+$k(L-1)$ does not require orthogonal destinations, large angles, or well
+separated frequencies.  It follows from the algebraic independence of the
+target planes, and it persists at arbitrarily small positive angles.  The
+universal completion proves that no routing table costs more; the span
+inertia proves that a direct-sum table costs no less.
+
+The collision family separates exact complexity from geometric distance.
+Its quadratic Gram margin also turns that separation into an operational
+statement about certification precision.  Finally, the three-line phase
+diagram shows that span is the complete story only on the generic stratum:
+at singular configurations, Möbius rigidity supplies an additional memory
+obstruction.  Together these results replace one symmetric example by a
+global law, a sharp boundary phenomenon, and a reproducible compiler.
+
+\paragraph{Data and code availability.}
+Source, producer, independent verifier, frozen certificate, figure, build
+logs, and artifact manifest are contained in the repository and immutable
+release linked in \cref{sec:computation}.  The numerical evidence is
+supporting material; all mathematical claims are proved in the text.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
