@@ -46,6 +46,11 @@ def main() -> None:
         cwd=ROOT,
         check=True,
     )
+    subprocess.run(
+        [sys.executable, "verification/verify_detector_rank_hierarchy.py"],
+        cwd=ROOT,
+        check=True,
+    )
     canonical = ROOT / "paper_unified_routing_table_memory/exact_memory_finite_spectral_routing_tables.pdf"
     submission = ROOT / "output/pdf/exact_memory_finite_spectral_routing_tables.pdf"
     if not canonical.read_bytes().startswith(b"%PDF-"):

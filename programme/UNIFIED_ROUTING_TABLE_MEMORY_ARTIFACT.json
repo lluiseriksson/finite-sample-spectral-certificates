@@ -1,18 +1,23 @@
 {
   "schema": "unified-routing-table-memory-artifact-v1",
   "title": "Exact Memory of Finite Spectral Routing Tables: The Direct-Sum Occupancy Law and Its Singular Strata",
-  "release_tag": "v2.6-unified-routing-table-memory",
-  "theorem": "d_min = k * (L - min_a n_a) on the direct-sum target locus",
+  "release_tag": "v2.7-detector-rank-hierarchy",
+  "theorem": "d_min = k * (L - min_a n_a) on the direct-sum locus; d_min >= max{r-k, Delta(Y,n)} for arbitrary equal-rank targets",
   "artifacts": {
-    ".github/workflows/verify-unified-routing-table.yml": "7f0cfbbc28f496d2e5f1963fd1d293ddb02eccf8fe56314732fd5be5f228af53",
-    "output/pdf/exact_memory_finite_spectral_routing_tables.pdf": "fb1f50d57737a8ec4fcbe7fc129b91fdc4582c29cf75b9f32ea5362145b3c8aa",
-    "paper_unified_routing_table_memory/exact_memory_finite_spectral_routing_tables.pdf": "fb1f50d57737a8ec4fcbe7fc129b91fdc4582c29cf75b9f32ea5362145b3c8aa",
+    ".github/workflows/verify-unified-routing-table.yml": "2e53ec8ed9bde5da3057c47426361f808fb1804af5359e0d1ee23dbd98558c49",
+    "output/pdf/exact_memory_finite_spectral_routing_tables.pdf": "8fe34b361ea1bd2d1f9f6394f9a78c485ceb0ee354ec75e62e4fe53d172febf2",
+    "paper_unified_routing_table_memory/exact_memory_finite_spectral_routing_tables.pdf": "8fe34b361ea1bd2d1f9f6394f9a78c485ceb0ee354ec75e62e4fe53d172febf2",
     "paper_unified_routing_table_memory/figures/unified_routing_table_memory.pdf": "341626480e54a934d683af7c671f45e45913248e07550e74fcef5d23eb2f4b1e",
-    "paper_unified_routing_table_memory/main.tex": "c5224d8037e186a432091ee4336e377350beaca41692ffba25e8086774576bce",
+    "paper_unified_routing_table_memory/main.tex": "6ce5a661b7d16c547d7a846437c19a9dd17b34871b67767f5b51b77381ceb4f3",
     "paper_unified_routing_table_memory/references.bib": "bc66e74471ebd558acbb27938e9ec69ea87a03ed69c1d9c84348012e025ae301",
+    "paper_unified_routing_table_memory/README.md": "f331241054cb4bdb1ec12df0cfccf74209cca02af5e6b07f78a1930a3fd9a7cb",
+    "paper_unified_routing_table_memory/SUBMISSION.md": "f47299b03f95a1cc77a0670f5636aa2b8823c1fe46e24250bd5b452cceeb99d7",
     "research/unified_routing_table_certificate.py": "052fc8a2d70ddb25b8b61955cefd4a58c27bbd0869dc8c1e86b4ce3d9684b2c0",
+    "research/detector_rank_hierarchy_certificate.py": "7be0f5fcb657f284269d8480b98a1ba7cacb378ed222b8e8b21746b2a2f301bf",
     "results/unified_routing_table_memory/certificate.json": "999735f96358ab08b47e042f5ef9dc07bfa0cadebf576666b2166cc6e6764b68",
-    "verification/run_unified_routing_table_release_checks.py": "853a3f4b7e4aeb17e34447041e28d304bc34e903237da1049e6d6ed8b1701646",
-    "verification/verify_unified_routing_table_memory.py": "a069954d33edf41183fb183f3f8dfcb2ecc772b55b53ad3ab8b1e9f62c66e337"
+    "results/unified_routing_table_memory/detector_rank_certificate.json": "7495ec84b7a1ef49eae5e23d3d21ec27ea40e6507b166e2b34d01843ab064790",
+    "verification/run_unified_routing_table_release_checks.py": "62166d454b993a8a0a9a2ac6f13441a0dc971e1bbd878a90bb98b46a4f33cc82",
+    "verification/verify_unified_routing_table_memory.py": "a069954d33edf41183fb183f3f8dfcb2ecc772b55b53ad3ab8b1e9f62c66e337",
+    "verification/verify_detector_rank_hierarchy.py": "465cfa6f088dc19de5cf2a4672d2e8cda64bc4e31df1728b508aa3ad47939a2b"
   }
 }

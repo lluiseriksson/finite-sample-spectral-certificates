@@ -55,14 +55,17 @@ degree at most the lower bound, and a degree-preserving lossless completion
 closes the network.
 
 The theorem strictly contains orthogonal fan-out, generic all-distinct
-fan-out, and repeated orthogonal routing as special cases.  We also give a
-universal span sandwich outside the direct-sum locus, an open-dense
-genericity statement, a fail-closed noisy certificate, an exact collision
-discontinuity, the complete three-line singular phase diagram, and the
-optimal integrated Wigner--Smith delay.  A producer and an independent
-verifier audit 512 nonorthogonal scalar tables, 256 block tables, and a
-near-collision sweep.  All source, frozen evidence, and release metadata are
-linked visibly in the paper.
+fan-out, and repeated orthogonal routing as special cases.  Beyond the
+direct-sum locus we prove a detector-rank hierarchy: every constant
+$k$-row detector contributes a weighted sum of its rank deficiencies to a
+universal degree lower bound.  For lines this becomes a maximum weighted
+hyperplane-occupancy bound and exactly resolves the complete three-line
+phase diagram.  We also give a span sandwich, open-dense genericity,
+fail-closed noisy certification, an exact collision discontinuity, and the
+optimal integrated Wigner--Smith delay.  A producer and independent
+verifiers audit 512 nonorthogonal scalar tables, 256 block tables, six
+near-collision openings, and exact singular-incidence fixtures.  All source,
+frozen evidence, and release metadata are linked visibly in the paper.
 \end{abstract}
 
 \noindent\textbf{Keywords:} rational inner matrix; McMillan degree;
@@ -320,8 +323,21 @@ unique dwell-time distribution.
 \section{Outside the generic stratum}
 
 Direct-sum failure does not make routing impossible, but the occupancy
-statistic alone ceases to be complete.  Put
-$r=\dim\sum_{a\in\A(w)}Y_a$.
+statistic alone ceases to be complete.  A larger family of constant detectors
+still gives rigorous information.  For $D\in\C^{k\times N}$ put
+\[
+ \rho_a(D)=\rank(DW_a),
+\]
+which is independent of the chosen frame of $Y_a$.  Call $D$ admissible if
+$\max_a\rho_a(D)=k$, and define
+\begin{equation}\label{eq:detector-rank-statistic}
+ \Delta(\mathcal Y,n)=
+ \max_{D\ {\rm admissible}}
+       \sum_{a\in\A(w)} n_a\bigl(k-\rho_a(D)\bigr).
+\end{equation}
+The maximum exists at the level of the finite rank patterns; at least one
+admissible detector exists because every individual $k$-plane has a left
+inverse.  Put $r=\dim\sum_{a\in\A(w)}Y_a$.
 
 \begin{theorem}[Universal span sandwich]\label{thm:sandwich}
 For arbitrary equal-rank targets at $L$ distinct nodes,
@@ -346,9 +362,94 @@ construction yields a regular square rational-inner interpolant of no
 larger degree \cite{BallKim1994,BolotnikovDym2006}.
 \end{proof}
 
-The lower bound is exact on the all-distinct direct-sum stratum, but need
-not be exact on singular strata.  The smallest complete example is useful
-enough to state.
+\begin{theorem}[Detector-rank hierarchy]\label{thm:detector-rank}
+For arbitrary equal-rank targets at distinct nodes,
+\begin{equation}\label{eq:detector-rank-bound}
+ \boxed{\qquad d_{\min}\ge
+ \max\{r-k,\Delta(\mathcal Y,n)\}.\qquad}
+\end{equation}
+On the direct-sum locus the second term equals the exact lower bound:
+$\Delta(\mathcal Y,n)=k(L-n_*)$.
+\end{theorem}
+
+\begin{proof}
+Fix an admissible $D$ and set $g_D(z)=\det(D S(z)X_0)$.  At a node labelled
+$a$, the endpoint gauge is invertible, hence
+$\rank(D S(\zeta_i)X_0)=\rho_a(D)$.  If an analytic $k\times k$ matrix has
+rank $q$ at $z_0$, constant row and column operations reduce its value to
+$\operatorname{diag}(I_q,0)$; every nonzero determinant term must then use
+at least $k-q$ entries vanishing at $z_0$.  Therefore
+\[
+ \operatorname{ord}_{\zeta_i}g_D\ge k-\rho_a(D).
+\]
+Admissibility makes $g_D$ nonzero at at least one interpolation node, so the
+compressed-minor budget in \cref{lem:budget} gives
+\[
+ \mcdeg S\ge\sum_a n_a\bigl(k-\rho_a(D)\bigr).
+\]
+Maximize over $D$ and combine with the realization-span argument in
+\cref{thm:sandwich}.  In direct-sum position, each block-dual $D_a$ has rank
+$k$ on $Y_a$ and rank zero on every $Y_b$, $b\ne a$.  Thus
+$\Delta\ge\max_a k(L-n_a)=k(L-n_*)$; the universal upper bound in
+\cref{thm:master} forces equality.
+\end{proof}
+
+\begin{corollary}[Weighted hyperplane occupancy]\label{cor:hyperplane}
+For line targets ($k=1$), let $V=\sum_aY_a$.  Then
+\begin{equation}\label{eq:hyperplane}
+ \Delta(\mathcal Y,n)=
+ \max_{\substack{H\subsetneq V\ {\rm hyperplane}\\
+                  \exists a:\,Y_a\not\subset H}}
+       \sum_{a:\,Y_a\subset H}n_a.
+\end{equation}
+Thus every proper hyperplane containing a heavily occupied part of the table
+spends that entire occupancy from the state budget.
+\end{corollary}
+
+\begin{proof}
+For $k=1$, an admissible detector is a nonzero functional on $V$ that does
+not annihilate every target.  Its rank deficiency is one exactly on the
+lines contained in its kernel.  Conversely every hyperplane in
+\eqref{eq:hyperplane} is the kernel of such a functional.
+\end{proof}
+
+The detector hierarchy is exact on the direct-sum locus and on several
+singular strata, but it is not a complete equality theory.  For example,
+four generic lines in a two-plane have hyperplane bound one while projective
+interpolation may require more than one state.  The smallest complete phase
+diagram is nevertheless fully controlled by \cref{cor:hyperplane}.
+
+\begin{lemma}[Three coplanar lines compile in one state]\label{lem:cp1}
+Let $\zeta_1,\zeta_2,\zeta_3\in\T$ be distinct and cyclically ordered.  If
+$Y_1,Y_2,Y_3$ are pairwise distinct lines in one two-plane, there is a square
+rational-inner matrix of McMillan degree one satisfying
+$S(\zeta_i)X=Y_i$ for $i=1,2,3$.
+\end{lemma}
+
+\begin{proof}
+Identify the projective lines in the target two-plane with
+$\mathbb{CP}^1$, hence with the Bloch sphere.  The three distinct target points lie
+on the intersection of the sphere with a unique non-tangent affine plane.
+A rotation of the Bloch sphere, lifted to a constant unitary in $SU(2)$,
+sends this circle to a latitude.  Reversing its normal if necessary makes
+the latitude phases $e^{it_1},e^{it_2},e^{it_3}$ have the same cyclic order
+as the nodes.  In a suitable orthonormal basis the rotated lines therefore
+have representatives
+\begin{equation}\label{eq:latitude}
+ y_i=\cos\alpha\,e_0+\sin\alpha\,e^{it_i}e_1,
+ \qquad 0<\alpha<\frac{\pi}{2}.
+\end{equation}
+The boundary action of $\operatorname{Aut}(\D)$ is triply transitive on
+oriented triples, so a degree-one Blaschke factor $b$ satisfies
+$b(\zeta_i)=e^{it_i}$.  With $P=e_1e_1^*$ and
+$x=\cos\alpha\,e_0+\sin\alpha\,e_1$, the elementary Potapov factor
+\[
+ E(z)=I+(b(z)-1)P
+\]
+obeys $E(\zeta_i)x=y_i$.  Undo the constant rotation and extend by the
+identity on the orthogonal complement.  Constant unitaries add no state, so
+the completed square interpolant has degree one.
+\end{proof}
 
 \begin{theorem}[Three-line phase diagram]\label{thm:three-lines}
 For three target lines at three distinct boundary nodes,
@@ -362,16 +463,14 @@ d_{\min}=\begin{cases}
 \end{theorem}
 
 \begin{proof}
-A degree-one rational-inner matrix is, up to constant unitaries, one
-rank-one Blaschke--Potapov factor.  Its orbit of an input line is constant or
-injective and contained in a two-plane.  This excludes repeated-but-not-
-constant triples and triples spanning dimension three.  Conversely, three
-distinct lines in a two-plane correspond on the Bloch sphere to three
-points on one non-tangent latitude after a rotation.  A disk automorphism
-maps the three boundary nodes, with matching cyclic orientation, to their
-three latitude phases; the associated degree-one Potapov factor realizes
-the data.  The universal upper bound supplies degree two in the remaining
-cases.
+If all lines coincide, a constant unitary gives degree zero.  For three
+pairwise distinct coplanar lines, \cref{cor:hyperplane} gives
+$d_{\min}\ge1$ and \cref{lem:cp1} attains one.  If the three lines span
+dimension three, a hyperplane contains any chosen pair but not the third,
+so \eqref{eq:hyperplane} gives $d_{\min}\ge2$.  If exactly two geometric
+lines occur, the repeated line is itself a hyperplane in their two-plane and
+has occupancy two, again giving $d_{\min}\ge2$.  The upper half of
+\cref{thm:sandwich} supplies degree two in both remaining cases.
 \end{proof}
 
 \section{Collision discontinuity and finite-error certification}
@@ -469,8 +568,10 @@ release printed below.}
 \begin{tabular}{@{}L{0.32\linewidth}L{0.60\linewidth}@{}}\toprule
 Claim & Executable witness\\\midrule
 Dual detectors and spectral compiler & \path{research/unified_routing_table_certificate.py}\\
+Exact detector-rank incidence fixtures & \path{research/detector_rank_hierarchy_certificate.py}\\
 Frozen campaign and digest & \path{results/unified_routing_table_memory/certificate.json}\\
-Independent fail-closed replay & \path{verification/verify_unified_routing_table_memory.py}\\
+Independent fail-closed replays & \path{verification/verify_unified_routing_table_memory.py},
+\path{verification/verify_detector_rank_hierarchy.py}\\
 Collision and occupancy figure & \path{paper_unified_routing_table_memory/figures/unified_routing_table_memory.pdf}\\
 Paper source and submission record & \path{paper_unified_routing_table_memory/}\\
 \bottomrule\end{tabular}
@@ -486,13 +587,16 @@ prescribe unitary data and group-delay blocks \cite{BharathEtAl2023}.
 Matrix Fej\'er--Riesz factorization and rectangular lossless completion are
 classical \cite{DritschelRovnyak2009,AlpayJorgensenLewkowicz2016}.
 
-The new result is not any one of those ingredients.  It is the exact
+The new results are not any one of those ingredients.  They are the exact
 direct-sum occupancy identity \eqref{eq:master}, including its dual-minor
-necessity and its target-weighted matrix spectral compiler.  A targeted
-search of the primary literature through 11 August 2026 did not locate this
-formula or the statement that the least occupancy is a complete generic
-state statistic.  This supports a priority claim for the precise theorem,
-not for rational-inner interpolation in general.
+necessity and target-weighted matrix spectral compiler, and the
+detector-rank hierarchy \eqref{eq:detector-rank-bound} on arbitrary
+equal-rank arrangements.  A targeted search of the primary literature
+through 11 August 2026 did not locate the occupancy formula, the statement
+that least occupancy is a complete generic state statistic, or the weighted
+rank-deficiency bound in this routing form.  This supports priority claims
+for these precise eliminations, not for rational-inner interpolation,
+Potapov factorization, or projective geometry in general.
 
 \begin{limitation}[Exact comparison class]
 The master theorem assumes distinct nodes, exact subspace data, equal target
@@ -503,10 +607,12 @@ architectures do not obey the inner-function zero and delay budgets.
 \end{limitation}
 
 \begin{limitation}[Singular geometry]
-Outside direct-sum position, \cref{eq:sandwich} remains valid but occupancy
-alone need not determine degree; \cref{thm:three-lines} is the smallest
-counterexample.  The paper does not claim a complete formula for every
-intersection lattice of target subspaces.
+Outside direct-sum position, \cref{eq:sandwich,eq:detector-rank-bound} remain
+valid but neither occupancy nor the detector-rank statistic alone need
+determine degree.  The paper does not claim a complete equality formula for
+every intersection lattice; the hierarchy captures all constant
+determinantal detectors, while compatibility of their upper constructions
+is a separate problem.
 \end{limitation}
 
 \begin{limitation}[Conditioning versus degree]
@@ -517,38 +623,45 @@ synthesis may require higher precision even though the exact degree is
 unchanged.
 \end{limitation}
 
-The next mathematical frontier is therefore sharply defined: replace the
-direct-sum hypothesis by an intersection lattice and identify which families
-of dual minors can share one state budget.  The next physical frontier is a
-robust approximate law coupling node separation, projector error, and
-allowed leakage.  Neither problem is concealed inside the present exact
-claim.
+The next mathematical frontier is therefore sharper than before: determine
+when the detector-rank lower hierarchy is attainable and which families of
+minors can share one state budget on a prescribed intersection lattice.  The
+next physical frontier is a robust approximate law coupling node separation,
+projector error, and allowed leakage.  Neither problem is concealed inside
+the present exact claims.
 
 \section{Conclusion}
 
-A finite spectral routing table has a simple generic memory law.  Direct-sum
-geometry creates a dual detector for every target; every absence consumes
-$k$ determinant zeros, so the least visited target asks for the largest
-budget.  A matrix Fej\'er--Riesz compiler shares exactly that budget across
+A finite spectral routing table has a simple generic memory law and a
+geometric singular lower theory.  Direct-sum geometry creates a dual
+detector for every target; every absence consumes $k$ determinant zeros, so
+the least visited target asks for the largest budget.  More generally, every
+constant detector charges the occupancy-weighted rank deficiency
+\[
+                 \sum_a n_a\bigl(k-\rank(D|_{Y_a})\bigr).
+\]
+A matrix Fej\'er--Riesz compiler shares exactly the direct-sum budget across
 all detectors.  The equality
 \[
                          d_{\min}=k(L-n_*)
 \]
 therefore unifies orthogonal fan-out, generic fan-out, and routing words,
-while the collision and three-line results show precisely why no universal
-occupancy formula survives on all singular strata.  The same integer is at
-once a state count, a determinant-winding count, and the optimal integrated
-Wigner--Smith action divided by $2\pi$.
+while the detector hierarchy, collision family, and constructive three-line
+lemma expose what survives on singular strata.  On the direct-sum locus the
+same integer is at once a state count, a determinant-winding count, and the
+optimal integrated Wigner--Smith action divided by $2\pi$.
 
 \paragraph{Immutable reproducibility record.}
 Full release URL (tag included):
 \begin{center}\small
-\url{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.6-unified-routing-table-memory}
+\url{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.7-detector-rank-hierarchy}
 \end{center}
-The release records the exact target commit, PDF SHA-256, producer command,
-independent verifier, and CI status.  The three predecessor preprints remain
-citable historical records; this article is the unified extension and does
-not silently replace their artifacts.
+The release records the exact target commit, PDF SHA-256, producer commands,
+independent verifiers, and CI status.  Release v2.7 supersedes v2.6 as the
+strengthened artifact of this same unified paper.  The three predecessor
+preprints remain citable historical records, but the present article absorbs
+their scientific scope rather than counting them as additional current
+results.
 
 \bibliographystyle{plain}
 \bibliography{references}
