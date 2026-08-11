@@ -14,7 +14,7 @@
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype}
 \usepackage{etoolbox}
-\AtBeginEnvironment{thebibliography}{\scriptsize\setlength{\itemsep}{-1pt}\setlength{\parsep}{0pt}}
+\AtBeginEnvironment{thebibliography}{\fontsize{7.5}{8.5}\selectfont\setlength{\itemsep}{-2pt}\setlength{\parsep}{0pt}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -38,6 +38,7 @@
 \newcommand{\nminus}{\nu_{-}}
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \newcommand{\one}{\mathbf 1}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Exact Memory of Direct-Sum Spectral Fan-Out:\\
 Generic Maximality, Colliding Targets, and the Three-Line Phase Diagram}
@@ -57,6 +58,9 @@ rational-inner interpolant regular at the nodes has minimum McMillan degree
 \[
                          d_{\min}=k(L-1).
 \]
+When $N\ge Lk$, this direct-sum locus is open and dense in
+$\operatorname{Gr}(k,N)^L$, which is the precise sense in which the maximum
+is generic.
 More generally, with $r$ the dimension of their linear span,
 \[
                          r-k\le d_{\min}\le k(L-1).
@@ -77,8 +81,9 @@ degree zero for one line, degree one precisely for three distinct lines in a
 common two-plane, and degree two otherwise.  Thus a repeated target can cost
 more than three distinct targets, a rigidity invisible to span alone.
 Deterministic code replays 512 arbitrary-node completions, 1,024 noisy
-certificates, 20 collision fixtures, and five minimal unitary colligations,
-with an independent verifier and frozen machine-readable certificate.
+certificates, 20 target-collision fixtures, four clustered-node fixtures, and
+five minimal unitary colligations, with an independent verifier and frozen
+machine-readable certificate.
 \end{abstract}
 
 \noindent\textbf{Keywords:} rational inner matrix; McMillan degree;
@@ -107,7 +112,8 @@ d_{\min}(\zeta,\mathcal Y;X)
 The value is independent of the particular input frame: constant unitaries
 move one $k$-plane to another without changing degree.
 
-The orthogonal example treated in the preceding fan-out paper showed
+The orthogonal example treated in the preceding fan-out paper
+\cite{ErikssonGlobalFanout2026} showed
 $d_{\min}=k(L-1)$ for mutually orthogonal targets.  It left open whether
 orthogonality creates the cost or merely makes it visible.  The answer is
 the latter.
@@ -150,6 +156,26 @@ orthogonal construction.  First, the target Gram matrix may be fully dense.
 Second, the upper bound now requires a block completion rather than a scalar
 Cauchy shift.  Third, direct-sum targets may be arbitrarily close in the
 Grassmannian, producing the discontinuity proved in \cref{sec:collision}.
+
+\begin{table}[t]
+\centering
+\caption{Logical relation to the orthogonal fan-out paper.  The present work
+strictly generalizes the exact degree law, but does not duplicate the earlier
+closed-form orthogonal spectral calculations.}
+\label{tab:comparison}
+\small
+\begin{tabular}{@{}L{0.23\linewidth}L{0.33\linewidth}L{0.36\linewidth}@{}}
+\toprule
+Feature & Orthogonal fan-out & Present direct-sum paper\\
+\midrule
+Target geometry & Mutually orthogonal $k$-planes & Arbitrary planes; exact law on the direct-sum locus\\
+Degree statement & $d_{\min}=k(L-1)$ at one symmetric stratum & $r-k\le d_{\min}\le k(L-1)$ and generic equality for $N\ge Lk$\\
+Upper construction & Canonical scalar Cauchy shift & Universal block completion with zero Schur complement\\
+Lower mechanism & Minor-zero budget and orthogonal Pick inertia & Common realization range plus gauge-invariant Pick--Stein span obstruction\\
+Exclusive result & Regular-polygon spectrum $\{0,\ldots,L-1\}$ and comparison with local Wigner--Smith bounds & Collision discontinuity, projector-error certificate, and exact three-line singular phase diagram\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{The Pick--Stein interface}\label{sec:interface}
 
@@ -274,7 +300,7 @@ remains exactly \eqref{eq:pick-offdiag}.
 
 Positive semidefinite completion by a zero Schur complement is elementary
 and belongs to the general matrix-completion toolkit
-\cite{Dancis1992,LaurentVarvitsiotis2014}.  Its consequence here is less
+\cite{Dancis1992}.  Its consequence here is less
 obvious: arbitrary boundary subspace data always admit a passive lossless
 interpolant with a state count linear in both $k$ and $L$.
 
@@ -452,6 +478,49 @@ The span lower bound is sharp on the open direct-sum stratum, but not on every
 singular stratum.  The smallest nontrivial example already contains a
 rigidity phenomenon.  Let $L=3$ and $k=1$.
 
+\begin{lemma}[Three-point $\mathbb{CP}^1$ compiler]
+\label{lem:cp1-compiler}
+Let $\ell_1,\ell_2,\ell_3$ be distinct lines in a complex two-plane $H$.
+There are an orthonormal basis $u,v$ of $H$, numbers
+$\alpha,\beta>0$ with $\alpha^2+\beta^2=1$, and distinct
+$\tau_1,\tau_2,\tau_3\in\T$ such that
+\begin{equation}\label{eq:latitude-normal-form}
+                 \ell_i=[\alpha u+\beta\tau_i v].
+\end{equation}
+Either cyclic orientation of the triple $(\tau_1,\tau_2,\tau_3)$ may be
+chosen.  Consequently, for any distinct boundary nodes
+$\zeta_1,\zeta_2,\zeta_3$, the orientation can be chosen so that a disk
+automorphism $b$ satisfies $b(\zeta_i)=\tau_i$ for all $i$.
+\end{lemma}
+
+\begin{proof}
+Identify $\mathbb P(H)$ with the Bloch sphere by sending a unit vector
+$c_1e_1+c_2e_2$ to
+\[
+ \bigl(2\operatorname{Re}(\overline{c_1}c_2),
+       2\operatorname{Im}(\overline{c_1}c_2),
+       |c_1|^2-|c_2|^2\bigr)\in S^2.
+\]
+Three distinct points of $S^2$ cannot lie on one Euclidean line, because a
+line meets the sphere in at most two points.  They therefore determine a
+unique affine plane $n\cdot x=h$.  This plane is not tangent, so $|h|<1$.
+A rotation in $SO(3)$ sends $n$ to the north pole; lifting it through
+$SU(2)\to SO(3)$ gives a constant unitary change of basis in $H$.  The three
+rotated points now have third coordinate $h$, hence representatives
+\[
+       \alpha u+\beta\tau_i v,
+ \qquad
+       \alpha=\sqrt{(1+h)/2},\quad
+       \beta=\sqrt{(1-h)/2},\quad |\tau_i|=1.
+\]
+They have distinct $\tau_i$ because the original lines were distinct.
+Replacing the oriented normal $n$ by $-n$ reverses the induced circle
+orientation.  Choose the orientation matching the cyclic order of the
+$\zeta_i$.  Finally, $\operatorname{Aut}(\D)$ acts simply transitively on
+ordered boundary triples with a fixed cyclic orientation, so a unique
+degree-one Blaschke factor maps $\zeta_i$ to $\tau_i$.
+\end{proof}
+
 \begin{theorem}[Three-line phase diagram]\label{thm:three-lines}
 For three target lines $\mathcal Y_1,\mathcal Y_2,\mathcal Y_3$ at distinct
 boundary nodes,
@@ -482,15 +551,15 @@ injective on $\T$ and lies in $\Span\{u,v\}$.  Thus degree one cannot produce
 a repeated line followed by a different line, nor three lines spanning
 dimension three.
 
-Conversely, identify the common two-plane of three distinct targets with
-$\C^2$.  Under the Bloch-sphere representation the three points determine a
-circle.  A constant $U(2)$ rotation sends that circle to a latitude, so the
-three lines acquire the form $[u+\rho e^{i\theta_i}v]$.  Choose the circle
-orientation so that $(e^{i\theta_1},e^{i\theta_2},e^{i\theta_3})$ and
-$(\zeta_1,\zeta_2,\zeta_3)$ have the same cyclic order.  The disk automorphism
-group acts triply transitively on oriented boundary triples, hence some
-degree-one Blaschke factor satisfies $b(\zeta_i)=e^{i\theta_i}$.  Extending
-the two constant unitaries to $\C^N$ realizes \eqref{eq:potapov-orbit}.
+Conversely, apply \cref{lem:cp1-compiler} to three distinct coplanar target
+lines.  It supplies the latitude form \eqref{eq:latitude-normal-form} and a
+degree-one Blaschke factor with $b(\zeta_i)=\tau_i$.  Choose constant
+unitaries $V,U\in U(N)$ so that a unit generator $x$ of the input line obeys
+$Vx=\alpha e_1+\beta e_2$, while $Ue_1=u$ and $Ue_2=v$.  Then
+\[
+             S(z)=U\diag(1,b(z),I_{N-2})V
+\]
+has McMillan degree one and maps $x$ into $\ell_i$ at $\zeta_i$.
 
 If the lines span dimension three, \cref{thm:sandwich} gives degree at least
 two.  If exactly two distinct lines occur, injectivity of every nonconstant
@@ -516,7 +585,7 @@ the independent implementation is
 \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/research/generic-fanout-memory/verification/verify_generic_fanout_memory.py}{\texttt{verification/verify\_generic\_fanout\_memory.py}}.
 The verifier imports no producer functions.
 
-The deterministic campaign contains four blocks:
+The deterministic campaign contains five blocks:
 \begin{enumerate}
 \item 512 random arbitrary-node, nonorthogonal target tables with
       $3\le L\le8$ and $1\le k\le3$;
@@ -564,7 +633,7 @@ double-precision colligation synthesis at the smallest gaps.
 The release gate performs three distinct checks: hash verification of frozen
 artifacts, numerical replay in a temporary directory, and an independent
 formula-level audit.  The immutable bundle is linked at
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.2-generic-fanout-memory}{\texttt{v2.2-generic-fanout-memory}}.
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.3-direct-sum-fanout-submission}{\texttt{v2.3-direct-sum-fanout-submission}}.
 
 \section{Scope, relation to prior work, and limitations}\label{sec:scope}
 
@@ -574,8 +643,8 @@ degree control have a substantial literature
 GombaniMichaletzky2007,BallBolotnikov2018}.  Subspace interpolation has also
 been used to design matrix all-pass filters
 \cite{RapisardaWillems1997,BharathEtAl2023}.  Positive semidefinite completion
-and rank questions are classical in their own right
-\cite{Dancis1992,LaurentVarvitsiotis2014}.  We do not claim any of these
+and rank questions are classical in their own right \cite{Dancis1992}.
+We do not claim any of these
 general mechanisms as new.
 
 The contribution is the following conjunction for passive spectral routing:
