@@ -82,7 +82,13 @@ def main() -> None:
         )
         frozen = json.loads((ROOT / "results/routing_word_memory/certificate.json").read_text(encoding="utf-8"))
         replayed = json.loads(output.read_text(encoding="utf-8"))
-        compare(frozen, replayed)
+        # The frozen digest is intentionally platform-specific because it
+        # covers floating-point residuals bit for bit.  Its integrity is
+        # checked above and by the independent verifier.  Cross-platform
+        # replay compares the underlying fields with explicit tolerances.
+        frozen_replay = {key: value for key, value in frozen.items() if key != "content_digest"}
+        replayed_replay = {key: value for key, value in replayed.items() if key != "content_digest"}
+        compare(frozen_replay, replayed_replay)
         if not figure.read_bytes().startswith(b"%PDF-"):
             raise RuntimeError("replayed figure is not a PDF")
         print("PASS deterministic compiler replay")

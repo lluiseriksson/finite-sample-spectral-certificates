@@ -15,7 +15,7 @@
     "programme/ROUTING_WORD_MEMORY_RESEARCH.md": "054de835777d9294ada53c28e83d754f300461bb426856a24775f35332d91e51",
     "research/routing_word_memory_certificate.py": "cfbd6cfc71a8715e207f913e3f456264f2d67733d3f29965532a07d14bd36df6",
     "results/routing_word_memory/certificate.json": "8db8fcc70696c2db21857bf4ce73cb7a618213ceee4091f8eb4b64c96f32e20f",
-    "verification/run_routing_word_memory_release_checks.py": "c0cfb47ccfd3f311b9871d0a81cf5d5a21976ae5aac6467bb9584e8fe55ab2e4",
+    "verification/run_routing_word_memory_release_checks.py": "932d297f23e99b14077b0107a6cee68350248df9c3019d9210e2d56c672ef589",
     "verification/verify_routing_word_memory.py": "10c63df6d559169ca5d67a2299dcf00967038961002a927301e82d49064d27e7"
   }
 }
