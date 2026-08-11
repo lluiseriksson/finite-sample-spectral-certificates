@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "input": "data/route_c/vbl_va001_calibration.json",
+  "dataset_doi": "10.5281/zenodo.7006575",
+  "problem": {
+    "degree": 2,
+    "channels": 3,
+    "training_calibrations": 5,
+    "stop_node_interval": [
+      -1.0,
+      -0.929
+    ],
+    "stop_frequency_interval_hz": [
+      1099.1629585051116,
+      1250.0
+    ]
+  },
+  "data_stability": {
+    "train_to_held_out_angles_degrees": [
+      0.14298645538749427,
+      0.12905487038434113,
+      0.2656451946046829,
+      0.34790763750204556,
+      0.45991230203785727
+    ],
+    "maximum_angle_degrees": 0.45991230203785727
+  },
+  "exact_rational_witness": {
+    "minimum_normalized_full_spark_minor": 0.009489456048583096,
+    "continuum_certificate": "verification/verify_vbl_va001_witness.py proves leakage < 24/25 by exact rational arithmetic",
+    "certified_leakage_upper_bound": 0.96,
+    "dense_validation_leakage": 0.9486950145170877,
+    "maximum_exact_rational_residual": 1.2586013583571652e-16,
+    "maximum_measured_training_residual": 3.499018873239933e-07,
+    "maximum_held_out_residual": 0.00384905282359036,
+    "held_out_residuals": [
+      0.0028413857194834833,
+      0.0002758582914846017,
+      0.0019178692970963822,
+      0.0009934766609753748,
+      0.00384905282359036
+    ],
+    "held_out_fdd_invariance": {
+      "per_frequency": [
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.18909692595743133,
+          "training_to_filtered_angle_degrees": 0.29070118683854,
+          "leading_eigenvalue_ratio": 1.0000181536725627,
+          "rayleigh_ratio_along_unfiltered_direction": 1.0000084652136763
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.01629392956477813,
+          "training_to_filtered_angle_degrees": 0.1341757827892286,
+          "leading_eigenvalue_ratio": 1.0000003954765644,
+          "rayleigh_ratio_along_unfiltered_direction": 1.00000031653474
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.22115909678789955,
+          "training_to_filtered_angle_degrees": 0.4463905876173343,
+          "leading_eigenvalue_ratio": 1.0000239060523342,
+          "rayleigh_ratio_along_unfiltered_direction": 1.0000148340638395
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.08110899976908785,
+          "training_to_filtered_angle_degrees": 0.37080270748157024,
+          "leading_eigenvalue_ratio": 0.9999982982161472,
+          "rayleigh_ratio_along_unfiltered_direction": 0.9999968471445074
+        },
+        {
+          "unfiltered_to_filtered_angle_degrees": 0.22165199146416692,
+          "training_to_filtered_angle_degrees": 0.3722675797865208,
+          "leading_eigenvalue_ratio": 0.9999785318546102,
+          "rayleigh_ratio_along_unfiltered_direction": 0.9999635776948861
+        }
+      ],
+      "maximum_unfiltered_to_filtered_angle_degrees": 0.22165199146416692,
+      "maximum_absolute_leading_eigenvalue_ratio_error": 2.3906052334154992e-05
+    },
+    "coefficient_frobenius_norms": [
+      2.622611116613623,
+      1.8407684323889553,
+      1.2942289552793405
+    ],
+    "maximum_commutator_norm": 0.6102180362076244,
+    "commuting_exact_calibration_lower_bound": 1.0
+  },
+  "numerical_symmetric_optimum": {
+    "status": "optimal",
+    "objective": 0.9486708420681204,
+    "validation_leakage": 0.9486708359573428,
+    "coefficients": [
+      [
+        [
+          1.0890127045205593,
+          -0.04551392122687171,
+          -0.22076194684418637
+        ],
+        [
+          -0.04551392122687171,
+          1.0963824285043533,
+          0.21808864039899561
+        ],
+        [
+          -0.22076194684418637,
+          0.21808864039899561,
+          2.0735430198947884
+        ]
+      ],
+      [
+        [
+          0.05541192200389747,
+          -0.06726804188718749,
+          -0.22550493734802918
+        ],
+        [
+          -0.06726804188718749,
+          0.21442995263242715,
+          0.41758798744648096
+        ],
+        [
+          -0.22550493734802918,
+          0.41758798744648096,
+          1.7005808129757798
+        ]
+      ],
+      [
+        [
+          -0.1434096393941387,
+          0.10362060340323345,
+          0.2539055235687074
+        ],
+        [
+          0.10362060340323345,
+          -0.3161983038441859,
+          -0.5374351457535029
+        ],
+        [
+          0.2539055235687074,
+          -0.5374351457535029,
+          -0.907150418436139
+        ]
+      ]
+    ],
+    "coefficient_frobenius_norms": [
+      2.6237994919651566,
+      1.8440553609157264,
+      1.2928855843317444
+    ],
+    "maximum_commutator_norm": 0.6128048259743487,
+    "training_residuals": [
+      4.488879820528887e-16,
+      1.2719202621569003e-16,
+      2.2887833992611187e-16,
+      1.2412670766236366e-16,
+      2.7194799110210365e-16
+    ],
+    "held_out_residuals": [
+      0.0028514866597125713,
+      0.00027645233504385616,
+      0.0019199312004592548,
+      0.0009937777908017884,
+      0.0038493092957383713
+    ]
+  },
+  "numerical_general_nonsymmetric_optimum": {
+    "status": "optimal",
+    "objective": 0.14514282935450692,
+    "validation_leakage": 0.1451428317767314,
+    "coefficients": [
+      [
+        [
+          2.731472960163211,
+          -0.5633747719994553,
+          -6.39986318775488
+        ],
+        [
+          1.9094574349871092,
+          0.3620198172255145,
+          -11.13145302004513
+        ],
+        [
+          -1.6092775260239485,
+          0.7693129923592297,
+          11.607459202073748
+        ]
+      ],
+      [
+        [
+          1.8976573450951824,
+          -0.8366179217867525,
+          -13.122309677823493
+        ],
+        [
+          2.5688859456310302,
+          -0.9329743688939441,
+          -22.99348750364497
+        ],
+        [
+          -2.6638927727824497,
+          1.4834349698316673,
+          24.044804770456103
+        ]
+      ],
+      [
+        [
+          -0.9667481614580976,
+          -0.2548783160939468,
+          -6.71448283453445
+        ],
+        [
+          0.606776741592937,
+          -1.3524123161420758,
+          -11.86536976494712
+        ],
+        [
+          -1.0303472304212333,
+          0.7096560728121075,
+          12.445855601446937
+        ]
+      ]
+    ],
+    "coefficient_frobenius_norms": [
+      17.729569724986465,
+      36.05711675170451,
+      18.588506939876893
+    ],
+    "maximum_commutator_norm": 39.743818881052036,
+    "training_residuals": [
+      2.482534153247273e-16,
+      7.792597201609329e-16,
+      2.306595211858756e-16,
+      1.4613251254722773e-15,
+      9.305364597889227e-16
+    ],
+    "held_out_residuals": [
+      0.1044746555798008,
+      0.004568346929311947,
+      0.027639585263344455,
+      0.0011736389883832763,
+      0.006903646449478046
+    ]
+  },
+  "scalar_one_percent": {
+    "status": "optimal",
+    "objective": 0.9752032680193419,
+    "validation_leakage": 0.9752032674076785,
+    "maximum_training_residual": 0.010000000042014512,
+    "coefficients": [
+      1.016018451827647,
+      0.009272536377407093,
+      -0.03731108733577809
+    ]
+  },
+  "fixed_basis_one_percent_stress": {
+    "label": "randomized stress test, not a global certificate over orthogonal bases",
+    "seed": 20260809,
+    "basis_count": 64,
+    "tolerance": 0.01,
+    "best_index": 38,
+    "best_objective": 0.9696584882941376,
+    "best_validation_leakage": 0.9696584766089866,
+    "median_validation_leakage": 0.9717683562821163,
+    "maximum_training_residual": 0.010000001422601757,
+    "maximum_held_out_residual": 0.01010544504353654,
+    "best_basis": [
+      [
+        -0.8487635957004738,
+        -0.41580734227354876,
+        0.32665672000589624
+      ],
+      [
+        -0.12459820942915154,
+        -0.44309614001320047,
+        -0.8877731111677418
+      ],
+      [
+        0.5138829096405638,
+        -0.7942103404116634,
+        0.32427502272382597
+      ]
+    ]
+  },
+  "interpretation": {
+    "supported": "The rationalized measured calibration has an exact reciprocal symmetric noncommuting degree-two witness below 0.96, whereas every exactly calibrated commuting symmetric filter is the identity. The six-record held-out split is not used in fitting.",
+    "not_supported": "The 64-basis search is not a global approximate-commuting optimum; no fault-classification, hardware, runtime, or deployment advantage is inferred."
+  },
+  "versions": {
+    "cvxpy": "1.9.2",
+    "numpy": "2.5.1"
+  }
+}

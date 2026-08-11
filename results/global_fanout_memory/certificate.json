@@ -1,0 +1,823 @@
+{
+  "all_pass": true,
+  "arbitrary_nodes": {
+    "all_pass": true,
+    "minimum_node_separation": 0.02506842414434196,
+    "rank_failures": 0,
+    "sample": [
+      {
+        "completion_rank": 10,
+        "lambda_min_cauchy": -33.4486685225572,
+        "minimum_completion_eigenvalue": 7.105427357601002e-15,
+        "nodes": 11,
+        "second_completion_eigenvalue": 27.678044891348666
+      },
+      {
+        "completion_rank": 4,
+        "lambda_min_cauchy": -4.169351706955565,
+        "minimum_completion_eigenvalue": 1.0648334704359746e-15,
+        "nodes": 5,
+        "second_completion_eigenvalue": 1.8961401910618978
+      },
+      {
+        "completion_rank": 5,
+        "lambda_min_cauchy": -7.4532240393529525,
+        "minimum_completion_eigenvalue": 3.4416913763379853e-15,
+        "nodes": 6,
+        "second_completion_eigenvalue": 5.004719228578795
+      },
+      {
+        "completion_rank": 10,
+        "lambda_min_cauchy": -20.46774188661754,
+        "minimum_completion_eigenvalue": 5.329070518200751e-15,
+        "nodes": 11,
+        "second_completion_eigenvalue": 7.103679486878823
+      },
+      {
+        "completion_rank": 6,
+        "lambda_min_cauchy": -11.49494952413734,
+        "minimum_completion_eigenvalue": 3.552713678800501e-15,
+        "nodes": 7,
+        "second_completion_eigenvalue": 8.998283529728038
+      },
+      {
+        "completion_rank": 8,
+        "lambda_min_cauchy": -18.857272331241177,
+        "minimum_completion_eigenvalue": 2.042810365310288e-14,
+        "nodes": 9,
+        "second_completion_eigenvalue": 14.661334824483012
+      },
+      {
+        "completion_rank": 2,
+        "lambda_min_cauchy": -11.01744565124324,
+        "minimum_completion_eigenvalue": 8.881784197001252e-16,
+        "nodes": 3,
+        "second_completion_eigenvalue": 11.01744565124324
+      },
+      {
+        "completion_rank": 5,
+        "lambda_min_cauchy": -13.647687121397421,
+        "minimum_completion_eigenvalue": -6.217248937900877e-15,
+        "nodes": 6,
+        "second_completion_eigenvalue": 10.520339669141443
+      }
+    ],
+    "trials": 384,
+    "worst_psd_violation": 6.056266599330229e-14,
+    "worst_stein_error": 1.182588614542226e-14
+  },
+  "artifact": "global-fanout-memory-certificate",
+  "clustered_nodes": {
+    "all_pass": true,
+    "cases": [
+      {
+        "all_pass": true,
+        "completion_rank": 4,
+        "completion_scale": 2000.0030576202894,
+        "minimum_gap": 0.001,
+        "rank_tolerance": 2.0000030576202893e-06,
+        "relative_stein_residual": 5.684345077663893e-17
+      },
+      {
+        "all_pass": true,
+        "completion_rank": 4,
+        "completion_scale": 200000.00003057954,
+        "minimum_gap": 1e-05,
+        "rank_tolerance": 0.00020000000003057955,
+        "relative_stein_residual": 7.275985368756579e-17
+      },
+      {
+        "all_pass": true,
+        "completion_rank": 4,
+        "completion_scale": 20000000.000000317,
+        "minimum_gap": 1e-07,
+        "rank_tolerance": 0.02000000000000032,
+        "relative_stein_residual": 9.385703304198647e-17
+      },
+      {
+        "all_pass": true,
+        "completion_rank": 4,
+        "completion_scale": 1999999999.9999998,
+        "minimum_gap": 1e-09,
+        "rank_tolerance": 1.9999999999999998,
+        "relative_stein_residual": 6.143906154658884e-17
+      }
+    ],
+    "failures": 0
+  },
+  "colligation_synthesis": {
+    "all_pass": true,
+    "cases": [
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "colligation_unitarity_error": 3.781560482118327e-15,
+        "controllability_rank": 2,
+        "global_degree": 2,
+        "local_action_degree_bound": 2,
+        "maximum_boundary_unitarity_error": 5.190601969411622e-15,
+        "maximum_interpolation_error": 3.1307833937040914e-15,
+        "nodes": 3,
+        "observability_rank": 2,
+        "pairwise_degree": 1,
+        "sample_gram_error": 1.1532633940201846e-15,
+        "state_dimension": 2,
+        "state_spectral_radius": 1.7442979065511136e-08
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "colligation_unitarity_error": 5.604357103730014e-15,
+        "controllability_rank": 3,
+        "global_degree": 3,
+        "local_action_degree_bound": 2,
+        "maximum_boundary_unitarity_error": 9.151709725778484e-15,
+        "maximum_interpolation_error": 7.60747964809397e-15,
+        "nodes": 4,
+        "observability_rank": 3,
+        "pairwise_degree": 1,
+        "sample_gram_error": 2.0452756637287064e-15,
+        "state_dimension": 3,
+        "state_spectral_radius": 6.183715994231854e-06
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "colligation_unitarity_error": 8.046273126385791e-15,
+        "controllability_rank": 4,
+        "global_degree": 4,
+        "local_action_degree_bound": 3,
+        "maximum_boundary_unitarity_error": 1.2693165818786047e-14,
+        "maximum_interpolation_error": 8.956262191102322e-15,
+        "nodes": 5,
+        "observability_rank": 4,
+        "pairwise_degree": 1,
+        "sample_gram_error": 4.210510765775049e-15,
+        "state_dimension": 4,
+        "state_spectral_radius": 0.00014049195632761044
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "colligation_unitarity_error": 9.044046953129367e-15,
+        "controllability_rank": 6,
+        "global_degree": 6,
+        "local_action_degree_bound": 4,
+        "maximum_boundary_unitarity_error": 1.4055789063075593e-14,
+        "maximum_interpolation_error": 1.0562542432774721e-14,
+        "nodes": 4,
+        "observability_rank": 6,
+        "pairwise_degree": 2,
+        "sample_gram_error": 2.689679291289654e-15,
+        "state_dimension": 6,
+        "state_spectral_radius": 6.578450305823586e-06
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "colligation_unitarity_error": 9.287741837852899e-15,
+        "controllability_rank": 8,
+        "global_degree": 8,
+        "local_action_degree_bound": 5,
+        "maximum_boundary_unitarity_error": 1.2904383867529618e-14,
+        "maximum_interpolation_error": 9.392927418497133e-15,
+        "nodes": 5,
+        "observability_rank": 8,
+        "pairwise_degree": 2,
+        "sample_gram_error": 9.480821939326535e-15,
+        "state_dimension": 8,
+        "state_spectral_radius": 0.00015555721576787347
+      }
+    ]
+  },
+  "deterministic_seeds": {
+    "near_orthogonal": 26081043,
+    "nodes": 26081041,
+    "noise": 26081042
+  },
+  "near_orthogonal": {
+    "all_pass": true,
+    "failures": 0,
+    "largest_gershgorin_bound": 0.21664827888548455,
+    "largest_gram_deviation": 0.11061628312868169,
+    "trials": 512
+  },
+  "noisy_inertia": {
+    "all_pass": true,
+    "alternative_trials": 512,
+    "false_certificates": 0,
+    "missed_full_certificates": 0,
+    "null_trials": 512,
+    "smallest_certification_margin": 0.1688981199619598,
+    "trials": 1024
+  },
+  "regular_polygon": {
+    "all_pass": true,
+    "cases": [
+      {
+        "completion_eigenvalues": [
+          0.0,
+          1.0
+        ],
+        "completion_rank": 1,
+        "minimum_degree": 1,
+        "nodes": 2
+      },
+      {
+        "completion_eigenvalues": [
+          -1.3877787807814457e-16,
+          0.9999999999999999,
+          1.9999999999999996
+        ],
+        "completion_rank": 2,
+        "minimum_degree": 2,
+        "nodes": 3
+      },
+      {
+        "completion_eigenvalues": [
+          -1.7694179454963432e-16,
+          1.0000000000000007,
+          2.0,
+          3.000000000000001
+        ],
+        "completion_rank": 3,
+        "minimum_degree": 3,
+        "nodes": 4
+      },
+      {
+        "completion_eigenvalues": [
+          -5.941369118528406e-19,
+          1.0,
+          2.000000000000001,
+          3.0000000000000013,
+          4.000000000000001
+        ],
+        "completion_rank": 4,
+        "minimum_degree": 4,
+        "nodes": 5
+      },
+      {
+        "completion_eigenvalues": [
+          6.245004513516506e-16,
+          0.9999999999999998,
+          1.9999999999999991,
+          2.9999999999999982,
+          4.000000000000002,
+          4.999999999999998
+        ],
+        "completion_rank": 5,
+        "minimum_degree": 5,
+        "nodes": 6
+      },
+      {
+        "completion_eigenvalues": [
+          1.5194833718307087e-17,
+          1.0000000000000004,
+          2.0000000000000004,
+          2.9999999999999996,
+          4.000000000000002,
+          5.000000000000003,
+          6.0
+        ],
+        "completion_rank": 6,
+        "minimum_degree": 6,
+        "nodes": 7
+      },
+      {
+        "completion_eigenvalues": [
+          1.5174542310495748e-15,
+          1.0000000000000013,
+          2.0000000000000018,
+          3.0000000000000018,
+          4.000000000000002,
+          5.000000000000002,
+          6.0,
+          7.000000000000001
+        ],
+        "completion_rank": 7,
+        "minimum_degree": 7,
+        "nodes": 8
+      },
+      {
+        "completion_eigenvalues": [
+          4.588343593958655e-16,
+          1.0000000000000013,
+          2.000000000000002,
+          3.000000000000001,
+          4.000000000000001,
+          5.000000000000002,
+          6.000000000000002,
+          7.000000000000002,
+          8.0
+        ],
+        "completion_rank": 8,
+        "minimum_degree": 8,
+        "nodes": 9
+      },
+      {
+        "completion_eigenvalues": [
+          1.5655282048060723e-16,
+          0.9999999999999994,
+          2.0,
+          3.0000000000000004,
+          3.9999999999999996,
+          5.0,
+          5.999999999999997,
+          6.999999999999997,
+          7.999999999999999,
+          9.0
+        ],
+        "completion_rank": 9,
+        "minimum_degree": 9,
+        "nodes": 10
+      },
+      {
+        "completion_eigenvalues": [
+          -5.10702591327572e-15,
+          0.9999999999999994,
+          1.999999999999999,
+          2.999999999999998,
+          3.9999999999999987,
+          4.999999999999998,
+          5.999999999999998,
+          6.999999999999999,
+          7.999999999999997,
+          9.000000000000004,
+          9.999999999999998
+        ],
+        "completion_rank": 10,
+        "minimum_degree": 10,
+        "nodes": 11
+      },
+      {
+        "completion_eigenvalues": [
+          -9.769962616701378e-15,
+          0.9999999999999996,
+          1.999999999999996,
+          2.999999999999997,
+          3.999999999999999,
+          4.999999999999997,
+          5.999999999999996,
+          6.999999999999999,
+          7.9999999999999964,
+          8.999999999999995,
+          10.000000000000002,
+          11.000000000000007
+        ],
+        "completion_rank": 11,
+        "minimum_degree": 11,
+        "nodes": 12
+      },
+      {
+        "completion_eigenvalues": [
+          -4.9960036108132044e-15,
+          0.9999999999999992,
+          1.9999999999999991,
+          2.9999999999999982,
+          3.999999999999999,
+          4.999999999999998,
+          5.999999999999998,
+          6.999999999999996,
+          7.999999999999996,
+          8.999999999999998,
+          9.999999999999998,
+          11.000000000000002,
+          12.000000000000004
+        ],
+        "completion_rank": 12,
+        "minimum_degree": 12,
+        "nodes": 13
+      },
+      {
+        "completion_eigenvalues": [
+          8.881784197001252e-16,
+          1.0000000000000007,
+          2.000000000000008,
+          3.000000000000003,
+          4.000000000000002,
+          5.000000000000002,
+          6.000000000000002,
+          7.000000000000002,
+          8.000000000000002,
+          9.000000000000004,
+          10.0,
+          11.000000000000002,
+          12.000000000000009,
+          13.000000000000004
+        ],
+        "completion_rank": 13,
+        "minimum_degree": 13,
+        "nodes": 14
+      },
+      {
+        "completion_eigenvalues": [
+          -3.736064007402059e-15,
+          0.9999999999999961,
+          1.999999999999996,
+          2.999999999999997,
+          3.999999999999996,
+          4.999999999999997,
+          5.999999999999993,
+          7.0,
+          7.999999999999995,
+          8.999999999999998,
+          9.999999999999996,
+          11.000000000000002,
+          11.999999999999998,
+          12.999999999999998,
+          13.999999999999998
+        ],
+        "completion_rank": 14,
+        "minimum_degree": 14,
+        "nodes": 15
+      },
+      {
+        "completion_eigenvalues": [
+          5.329070518200751e-15,
+          0.9999999999999972,
+          2.000000000000002,
+          3.000000000000003,
+          4.000000000000004,
+          4.999999999999999,
+          6.0,
+          6.999999999999997,
+          8.0,
+          9.0,
+          10.000000000000002,
+          11.000000000000005,
+          11.999999999999998,
+          13.000000000000004,
+          14.000000000000004,
+          14.99999999999999
+        ],
+        "completion_rank": 15,
+        "minimum_degree": 15,
+        "nodes": 16
+      },
+      {
+        "completion_eigenvalues": [
+          -8.279053792101575e-16,
+          1.0000000000000004,
+          2.000000000000005,
+          3.000000000000004,
+          4.0,
+          5.0,
+          6.0,
+          7.000000000000001,
+          8.000000000000004,
+          8.999999999999998,
+          9.999999999999998,
+          11.0,
+          12.000000000000002,
+          12.999999999999993,
+          14.0,
+          15.000000000000002,
+          15.999999999999993
+        ],
+        "completion_rank": 16,
+        "minimum_degree": 16,
+        "nodes": 17
+      },
+      {
+        "completion_eigenvalues": [
+          -8.881784197001252e-15,
+          0.9999999999999982,
+          1.9999999999999933,
+          2.9999999999999973,
+          3.9999999999999964,
+          4.999999999999996,
+          5.999999999999993,
+          6.999999999999995,
+          7.999999999999992,
+          8.999999999999996,
+          9.999999999999995,
+          10.99999999999999,
+          11.999999999999995,
+          12.999999999999993,
+          13.999999999999991,
+          14.999999999999996,
+          16.0,
+          16.999999999999982
+        ],
+        "completion_rank": 17,
+        "minimum_degree": 17,
+        "nodes": 18
+      },
+      {
+        "completion_eigenvalues": [
+          -3.2359098040002365e-15,
+          0.9999999999999968,
+          1.9999999999999978,
+          2.9999999999999916,
+          3.9999999999999956,
+          4.999999999999998,
+          5.999999999999996,
+          6.999999999999996,
+          7.999999999999998,
+          8.999999999999996,
+          9.999999999999998,
+          11.0,
+          11.999999999999998,
+          12.999999999999998,
+          13.999999999999995,
+          14.999999999999995,
+          15.999999999999995,
+          16.999999999999993,
+          18.0
+        ],
+        "completion_rank": 18,
+        "minimum_degree": 18,
+        "nodes": 19
+      },
+      {
+        "completion_eigenvalues": [
+          4.80107622584931e-15,
+          1.0000000000000036,
+          2.0000000000000013,
+          3.000000000000003,
+          4.000000000000002,
+          5.000000000000001,
+          6.000000000000005,
+          7.000000000000004,
+          8.000000000000002,
+          9.0,
+          10.000000000000005,
+          11.000000000000005,
+          12.000000000000009,
+          13.000000000000005,
+          14.000000000000009,
+          15.000000000000004,
+          16.00000000000001,
+          17.0,
+          18.000000000000007,
+          19.000000000000004
+        ],
+        "completion_rank": 19,
+        "minimum_degree": 19,
+        "nodes": 20
+      },
+      {
+        "completion_eigenvalues": [
+          -1.354472090042691e-14,
+          1.0000000000000133,
+          1.9999999999999902,
+          3.0000000000000098,
+          4.000000000000003,
+          4.999999999999999,
+          6.000000000000006,
+          7.000000000000004,
+          8.000000000000002,
+          8.999999999999996,
+          10.000000000000002,
+          10.999999999999996,
+          12.000000000000007,
+          13.000000000000007,
+          14.000000000000005,
+          15.000000000000005,
+          16.000000000000004,
+          17.000000000000007,
+          17.999999999999996,
+          19.000000000000004,
+          20.00000000000002
+        ],
+        "completion_rank": 20,
+        "minimum_degree": 20,
+        "nodes": 21
+      },
+      {
+        "completion_eigenvalues": [
+          -9.325873406851315e-15,
+          0.9999999999999964,
+          1.9999999999999953,
+          3.000000000000001,
+          3.9999999999999964,
+          5.000000000000009,
+          6.000000000000001,
+          7.000000000000003,
+          8.0,
+          9.000000000000002,
+          10.0,
+          10.999999999999998,
+          12.000000000000002,
+          13.000000000000004,
+          13.999999999999996,
+          15.000000000000004,
+          15.999999999999996,
+          17.000000000000007,
+          18.0,
+          19.000000000000014,
+          20.00000000000001,
+          21.00000000000001
+        ],
+        "completion_rank": 21,
+        "minimum_degree": 21,
+        "nodes": 22
+      },
+      {
+        "completion_eigenvalues": [
+          -7.993605777301127e-15,
+          1.000000000000003,
+          1.9999999999999942,
+          2.9999999999999956,
+          3.9999999999999942,
+          4.999999999999995,
+          6.000000000000003,
+          6.999999999999999,
+          8.000000000000002,
+          8.999999999999998,
+          9.999999999999998,
+          11.000000000000002,
+          11.999999999999995,
+          12.999999999999996,
+          14.0,
+          14.999999999999998,
+          16.000000000000004,
+          17.000000000000004,
+          18.0,
+          19.000000000000007,
+          20.000000000000004,
+          20.99999999999999,
+          22.000000000000007
+        ],
+        "completion_rank": 22,
+        "minimum_degree": 22,
+        "nodes": 23
+      },
+      {
+        "completion_eigenvalues": [
+          -1.7763568394002505e-15,
+          1.0000000000000013,
+          1.9999999999999833,
+          2.9999999999999947,
+          3.9999999999999853,
+          4.999999999999996,
+          5.999999999999995,
+          6.999999999999991,
+          7.999999999999995,
+          8.999999999999995,
+          9.999999999999998,
+          10.999999999999991,
+          11.999999999999991,
+          12.999999999999998,
+          13.999999999999991,
+          14.999999999999996,
+          16.0,
+          16.999999999999996,
+          17.999999999999996,
+          18.99999999999999,
+          19.999999999999993,
+          20.99999999999999,
+          21.99999999999999,
+          22.999999999999993
+        ],
+        "completion_rank": 23,
+        "minimum_degree": 23,
+        "nodes": 24
+      }
+    ],
+    "worst_spectrum_error": 7.993605777301127e-15,
+    "worst_stein_error": 2.4925912679786436e-15
+  },
+  "robust_boundary": {
+    "all_pass": true,
+    "cases": [
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 2,
+        "gram_deviation": 0.9,
+        "negative_inertia": 2,
+        "nodes": 3,
+        "overlap": 0.9
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 2,
+        "gram_deviation": 0.99,
+        "negative_inertia": 2,
+        "nodes": 3,
+        "overlap": 0.99
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 2,
+        "gram_deviation": 0.999,
+        "negative_inertia": 2,
+        "nodes": 3,
+        "overlap": 0.999
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 2,
+        "gram_deviation": 0.999999,
+        "negative_inertia": 2,
+        "nodes": 3,
+        "overlap": 0.999999
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 1,
+        "gram_deviation": 1.0,
+        "negative_inertia": 1,
+        "nodes": 3,
+        "overlap": 1.0
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 4,
+        "gram_deviation": 0.9,
+        "negative_inertia": 4,
+        "nodes": 5,
+        "overlap": 0.9
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 4,
+        "gram_deviation": 0.99,
+        "negative_inertia": 4,
+        "nodes": 5,
+        "overlap": 0.99
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 4,
+        "gram_deviation": 0.999,
+        "negative_inertia": 4,
+        "nodes": 5,
+        "overlap": 0.999
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 4,
+        "gram_deviation": 0.999999,
+        "negative_inertia": 4,
+        "nodes": 5,
+        "overlap": 0.999999
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "expected_negative_inertia": 3,
+        "gram_deviation": 1.0,
+        "negative_inertia": 3,
+        "nodes": 5,
+        "overlap": 1.0
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "expected_negative_inertia": 6,
+        "gram_deviation": 0.9,
+        "negative_inertia": 6,
+        "nodes": 4,
+        "overlap": 0.9
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "expected_negative_inertia": 6,
+        "gram_deviation": 0.99,
+        "negative_inertia": 6,
+        "nodes": 4,
+        "overlap": 0.99
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "expected_negative_inertia": 6,
+        "gram_deviation": 0.999,
+        "negative_inertia": 6,
+        "nodes": 4,
+        "overlap": 0.999
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "expected_negative_inertia": 6,
+        "gram_deviation": 0.999999,
+        "negative_inertia": 6,
+        "nodes": 4,
+        "overlap": 0.999999
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "expected_negative_inertia": 4,
+        "gram_deviation": 1.0,
+        "negative_inertia": 4,
+        "nodes": 4,
+        "overlap": 1.0
+      }
+    ],
+    "failures": 0
+  },
+  "schema_version": 1
+}

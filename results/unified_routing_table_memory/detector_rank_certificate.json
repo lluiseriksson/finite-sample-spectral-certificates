@@ -1,0 +1,132 @@
+{
+  "arithmetic": "exact rational Gaussian elimination",
+  "content_digest": "7725db1419799c8a3e9251655dbcc9f71c31ac9d440d064a0dc9bbea703c6380",
+  "rank_two_detector_witnesses": {
+    "direct_sum_AAAB": {
+      "detector_ranks": {
+        "A": 0,
+        "B": 2
+      },
+      "weighted_rank_deficiency": 6
+    },
+    "three_planes_with_common_line": {
+      "detector_ranks": {
+        "A": 1,
+        "B": 2,
+        "C": 1
+      },
+      "weighted_rank_deficiency": 4
+    }
+  },
+  "scalar_hyperplane_cases": {
+    "all_coincident": {
+      "maximizing_closures": [
+        []
+      ],
+      "occupancies": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "separator_bound": 0,
+      "span_rank": 1
+    },
+    "four_generic_lines_in_a_plane": {
+      "maximizing_closures": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ],
+        [
+          "C"
+        ],
+        [
+          "D"
+        ]
+      ],
+      "occupancies": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "separator_bound": 1,
+      "span_rank": 2
+    },
+    "rarest_target_word_AAAB": {
+      "maximizing_closures": [
+        [
+          "A"
+        ]
+      ],
+      "occupancies": {
+        "A": 3,
+        "B": 1
+      },
+      "separator_bound": 3,
+      "span_rank": 2
+    },
+    "three_distinct_coplanar": {
+      "maximizing_closures": [
+        [
+          "A"
+        ],
+        [
+          "B"
+        ],
+        [
+          "C"
+        ]
+      ],
+      "occupancies": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "separator_bound": 1,
+      "span_rank": 2
+    },
+    "three_independent": {
+      "maximizing_closures": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "B",
+          "C"
+        ]
+      ],
+      "occupancies": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "separator_bound": 2,
+      "span_rank": 3
+    },
+    "two_distinct_one_repeated": {
+      "maximizing_closures": [
+        [
+          "A",
+          "B"
+        ]
+      ],
+      "occupancies": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "separator_bound": 2,
+      "span_rank": 2
+    }
+  },
+  "schema": "detector-rank-hierarchy-certificate-v1",
+  "theorem": "d_min >= max_D sum_a n_a * (k - rank(D|Y_a))"
+}

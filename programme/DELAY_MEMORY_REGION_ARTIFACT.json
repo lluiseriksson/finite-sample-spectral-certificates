@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "artifact": "complete-continuous-delay-region-paper",
+  "title": "Complete Continuous Delay Regions, Quantized Passive Memory, and Pick Tomography for Quantum Networks",
+  "frozen_on": "2026-08-10",
+  "release_tag": "v1.7-complete-continuous-delay-regions",
+  "artifacts": {
+    ".github/workflows/verify.yml": "faf08c5b3c89e029b643fc732bfc9326dab6e00f02b2db21a2292a99fee9010a",
+    ".gitignore": "7e0cb2394d9adf3e43eba66e3665d103eca95b9e882482dc4b54a5f6811c590e",
+    "README.md": "93faf60d66d8b1a94897092219eaed3d9bd0d68999b1ddaba514cae3e24fa534",
+    "paper_delay_memory_regions/README.md": "f4b28e7fa5e06938bcddb30fab508697baa3f787b79b881b9ca475114f9f26e3",
+    "paper_delay_memory_regions/main.tex": "7c103a8fb2add19f776dd4603043bba6cb698d30e6bd1f5b01adf45e3ac07611",
+    "paper_delay_memory_regions/references.bib": "947390825687c3fc546118a5b7a3a4bffb45ead153e24e43c1a4946a9bb09080",
+    "paper_delay_memory_regions/figures/complete_region.pdf": "3bd8b4d7bb972314e9139e5e7a7001f95481a63ca0854fbe654d66148a4c4174",
+    "paper_delay_memory_regions/complete_delay_memory_regions.pdf": "214281ee142efa246f93f0ae2be72ec1e8243fefe665a24ad6a83bc791a72836",
+    "research/delay_memory_region_certificate.py": "cb5ad50099d1e7d36b8b955e01155c7c94d4fb20a1c6cf27ec6613104511d7a9",
+    "results/delay_memory_regions/certificate.json": "31fec2ea3a75fabb4a0d1f171d2afec40f3fe34900bfd6ccccb0744b27b7d5b1",
+    "verification/verify_delay_memory_regions.py": "b947a1ef00a6fb66f23b02807b98a1631413c15abc23317878522cf73c5e91a1",
+    "verification/run_delay_memory_region_release_checks.py": "645b6ae592062c6e73659c89fe66a3df759820800f992347583bfe3db4df6883"
+  },
+  "replay": [
+    "python research/delay_memory_region_certificate.py",
+    "python verification/verify_delay_memory_regions.py",
+    "python verification/run_delay_memory_region_release_checks.py"
+  ]
+}
