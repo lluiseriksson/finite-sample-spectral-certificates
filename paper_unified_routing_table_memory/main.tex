@@ -255,7 +255,7 @@ returns the disk-analytic convention used here and preserves degree.
 \end{proof}
 
 \begin{proof}[Completion of \cref{thm:master}]
-Apply \cref{lem:compiler-degree} with $d=L-n_*$.  The completed square
+Apply Lemma~\ref{lem:compiler-degree} with $d=L-n_*$.  The completed square
 network has degree at most $k(L-n_*)$, while \cref{eq:all-lower} gives the
 opposite inequality.  Equality follows.
 \end{proof}
@@ -324,16 +324,16 @@ unique dwell-time distribution.
 
 Direct-sum failure does not make routing impossible, but the occupancy
 statistic alone ceases to be complete.  A larger family of constant detectors
-still gives rigorous information.  For $D\in\C^{k\times N}$ put
+still gives rigorous information.  For $D_{\rm det}\in\C^{k\times N}$ put
 \[
- \rho_a(D)=\rank(DW_a),
+ \rho_a(D_{\rm det})=\rank(D_{\rm det}W_a),
 \]
-which is independent of the chosen frame of $Y_a$.  Call $D$ admissible if
-$\max_a\rho_a(D)=k$, and define
+which is independent of the chosen frame of $Y_a$.  Call $D_{\rm det}$ admissible if
+$\max_a\rho_a(D_{\rm det})=k$, and define
 \begin{equation}\label{eq:detector-rank-statistic}
  \Delta(\mathcal Y,n)=
- \max_{D\ {\rm admissible}}
-       \sum_{a\in\A(w)} n_a\bigl(k-\rho_a(D)\bigr).
+ \max_{D_{\rm det}\ {\rm admissible}}
+       \sum_{a\in\A(w)} n_a\bigl(k-\rho_a(D_{\rm det})\bigr).
 \end{equation}
 The maximum exists at the level of the finite rank patterns; at least one
 admissible detector exists because every individual $k$-plane has a left
@@ -347,7 +347,7 @@ For arbitrary equal-rank targets at $L$ distinct nodes,
 \end{theorem}
 
 \begin{proof}
-For a minimal realization $S(z)=D+zC(I-zA)^{-1}B$ of degree $q$, the
+For a minimal realization $S(z)=D_0+zC(I-zA)^{-1}B$ of degree $q$, the
 resolvent identity places every column of
 $(S(\zeta_i)-S(\zeta_1))X$ in $\ran C$.  Thus
 $\sum_iY_{w_i}\subseteq Y_{w_1}+\ran C$ and $r\le k+q$.
@@ -373,21 +373,22 @@ $\Delta(\mathcal Y,n)=k(L-n_*)$.
 \end{theorem}
 
 \begin{proof}
-Fix an admissible $D$ and set $g_D(z)=\det(D S(z)X_0)$.  At a node labelled
+Fix an admissible $D_{\rm det}$ and set
+$g_{D_{\rm det}}(z)=\det(D_{\rm det} S(z)X_0)$.  At a node labelled
 $a$, the endpoint gauge is invertible, hence
-$\rank(D S(\zeta_i)X_0)=\rho_a(D)$.  If an analytic $k\times k$ matrix has
-rank $q$ at $z_0$, constant row and column operations reduce its value to
+$\rank(D_{\rm det} S(\zeta_i)X_0)=\rho_a(D_{\rm det})$.  If an analytic
+$k\times k$ matrix has rank $q$ at $z_0$, constant row and column operations reduce its value to
 $\operatorname{diag}(I_q,0)$; every nonzero determinant term must then use
 at least $k-q$ entries vanishing at $z_0$.  Therefore
 \[
- \operatorname{ord}_{\zeta_i}g_D\ge k-\rho_a(D).
+ \operatorname{ord}_{\zeta_i}g_{D_{\rm det}}\ge k-\rho_a(D_{\rm det}).
 \]
-Admissibility makes $g_D$ nonzero at at least one interpolation node, so the
-compressed-minor budget in \cref{lem:budget} gives
+Admissibility makes $g_{D_{\rm det}}$ nonzero at at least one interpolation
+node, so the compressed-minor budget in Lemma~\ref{lem:budget} gives
 \[
- \mcdeg S\ge\sum_a n_a\bigl(k-\rho_a(D)\bigr).
+ \mcdeg S\ge\sum_a n_a\bigl(k-\rho_a(D_{\rm det})\bigr).
 \]
-Maximize over $D$ and combine with the realization-span argument in
+Maximize over $D_{\rm det}$ and combine with the realization-span argument in
 \cref{thm:sandwich}.  In direct-sum position, each block-dual $D_a$ has rank
 $k$ on $Y_a$ and rank zero on every $Y_b$, $b\ne a$.  Thus
 $\Delta\ge\max_a k(L-n_a)=k(L-n_*)$; the universal upper bound in
@@ -417,7 +418,7 @@ The detector hierarchy is exact on the direct-sum locus and on several
 singular strata, but it is not a complete equality theory.  For example,
 four generic lines in a two-plane have hyperplane bound one while projective
 interpolation may require more than one state.  The smallest complete phase
-diagram is nevertheless fully controlled by \cref{cor:hyperplane}.
+diagram is nevertheless fully controlled by Corollary~\ref{cor:hyperplane}.
 
 \begin{lemma}[Three coplanar lines compile in one state]\label{lem:cp1}
 Let $\zeta_1,\zeta_2,\zeta_3\in\T$ be distinct and cyclically ordered.  If
@@ -464,8 +465,8 @@ d_{\min}=\begin{cases}
 
 \begin{proof}
 If all lines coincide, a constant unitary gives degree zero.  For three
-pairwise distinct coplanar lines, \cref{cor:hyperplane} gives
-$d_{\min}\ge1$ and \cref{lem:cp1} attains one.  If the three lines span
+pairwise distinct coplanar lines, Corollary~\ref{cor:hyperplane} gives
+$d_{\min}\ge1$ and Lemma~\ref{lem:cp1} attains one.  If the three lines span
 dimension three, a hyperplane contains any chosen pair but not the third,
 so \eqref{eq:hyperplane} gives $d_{\min}\ge2$.  If exactly two geometric
 lines occur, the repeated line is itself a hyperplane in their two-plane and
@@ -638,7 +639,7 @@ detector for every target; every absence consumes $k$ determinant zeros, so
 the least visited target asks for the largest budget.  More generally, every
 constant detector charges the occupancy-weighted rank deficiency
 \[
-                 \sum_a n_a\bigl(k-\rank(D|_{Y_a})\bigr).
+                 \sum_a n_a\bigl(k-\rank(D_{\rm det}|_{Y_a})\bigr).
 \]
 A matrix Fej\'er--Riesz compiler shares exactly the direct-sum budget across
 all detectors.  The equality
@@ -654,11 +655,11 @@ optimal integrated Wigner--Smith action divided by $2\pi$.
 \paragraph{Immutable reproducibility record.}
 Full release URL (tag included):
 \begin{center}\small
-\url{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.7-detector-rank-hierarchy}
+\url{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.8-ai-vixra-submission}
 \end{center}
 The release records the exact target commit, PDF SHA-256, producer commands,
-independent verifiers, and CI status.  Release v2.7 supersedes v2.6 as the
-strengthened artifact of this same unified paper.  The three predecessor
+independent verifiers, and CI status.  Release v2.8 supersedes v2.7 as the
+submission artifact of this same unified paper.  The three predecessor
 preprints remain citable historical records, but the present article absorbs
 their scientific scope rather than counting them as additional current
 results.

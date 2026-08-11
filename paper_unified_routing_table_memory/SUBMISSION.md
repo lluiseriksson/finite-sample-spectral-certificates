@@ -12,7 +12,7 @@ Exact occupancy law plus a detector-rank hierarchy for singular target arrangeme
 
 ## Reproducibility
 
-Release tag: `v2.7-detector-rank-hierarchy`
+Release tag: `v2.8-ai-vixra-submission`
 
 The release record must contain the target commit, PDF SHA-256, producer
 command, independent verification command, and CI links before submission.
