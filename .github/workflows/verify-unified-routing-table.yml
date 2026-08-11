@@ -1,0 +1,24 @@
+name: verify-unified-routing-table
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unified-routing-table-memory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy matplotlib
+      - run: python -m compileall -q research/unified_routing_table_certificate.py verification/verify_unified_routing_table_memory.py verification/run_unified_routing_table_release_checks.py
+      - run: >-
+          python research/unified_routing_table_certificate.py
+          --output results/ci/unified_routing_table_memory_certificate.json
+          --figure results/ci/unified_routing_table_memory.pdf
+          --scalar-trials 512
+          --block-trials 256
+      - run: python verification/verify_unified_routing_table_memory.py
+      - run: python verification/run_unified_routing_table_release_checks.py

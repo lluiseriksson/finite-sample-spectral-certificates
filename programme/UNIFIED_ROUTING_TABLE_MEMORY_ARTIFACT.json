@@ -1,0 +1,18 @@
+{
+  "schema": "unified-routing-table-memory-artifact-v1",
+  "title": "Exact Memory of Finite Spectral Routing Tables: The Direct-Sum Occupancy Law and Its Singular Strata",
+  "release_tag": "v2.6-unified-routing-table-memory",
+  "theorem": "d_min = k * (L - min_a n_a) on the direct-sum target locus",
+  "artifacts": {
+    ".github/workflows/verify-unified-routing-table.yml": "7f0cfbbc28f496d2e5f1963fd1d293ddb02eccf8fe56314732fd5be5f228af53",
+    "output/pdf/exact_memory_finite_spectral_routing_tables.pdf": "fb1f50d57737a8ec4fcbe7fc129b91fdc4582c29cf75b9f32ea5362145b3c8aa",
+    "paper_unified_routing_table_memory/exact_memory_finite_spectral_routing_tables.pdf": "fb1f50d57737a8ec4fcbe7fc129b91fdc4582c29cf75b9f32ea5362145b3c8aa",
+    "paper_unified_routing_table_memory/figures/unified_routing_table_memory.pdf": "341626480e54a934d683af7c671f45e45913248e07550e74fcef5d23eb2f4b1e",
+    "paper_unified_routing_table_memory/main.tex": "c5224d8037e186a432091ee4336e377350beaca41692ffba25e8086774576bce",
+    "paper_unified_routing_table_memory/references.bib": "bc66e74471ebd558acbb27938e9ec69ea87a03ed69c1d9c84348012e025ae301",
+    "research/unified_routing_table_certificate.py": "052fc8a2d70ddb25b8b61955cefd4a58c27bbd0869dc8c1e86b4ce3d9684b2c0",
+    "results/unified_routing_table_memory/certificate.json": "999735f96358ab08b47e042f5ef9dc07bfa0cadebf576666b2166cc6e6764b68",
+    "verification/run_unified_routing_table_release_checks.py": "853a3f4b7e4aeb17e34447041e28d304bc34e903237da1049e6d6ed8b1701646",
+    "verification/verify_unified_routing_table_memory.py": "a069954d33edf41183fb183f3f8dfcb2ecc772b55b53ad3ab8b1e9f62c66e337"
+  }
+}
