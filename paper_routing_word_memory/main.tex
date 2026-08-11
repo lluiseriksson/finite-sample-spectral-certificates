@@ -5,6 +5,12 @@
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={The Rarest Target Sets Passive Memory},pdfauthor={Lluis Eriksson},pdfsubject={Exact McMillan degree of spectral routing words}}
 \usepackage[nameinlink,capitalise]{cleveref}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
 \usepackage{microtype,etoolbox}
 \AtBeginEnvironment{thebibliography}{\fontsize{8}{9}\selectfont\setlength{\itemsep}{-2pt}\setlength{\parsep}{0pt}}
 
@@ -47,8 +53,9 @@ Thus passive memory is governed by the rarest destination and, within this
 model, is invariant under every permutation of the routing word.  Switch
 count need not even order the cost: for scalar channels, the cyclic word
 \texttt{AAAB} has two switches and degree three, whereas \texttt{ABAB} has
-four switches and degree two.  The law recovers constant routing, a single
-switch, and fully distinct fan-out as exact limiting cases.  It also yields
+four switches and degree two.  The law recovers constant routing, one change
+along a linearly ordered node sequence, and fully distinct fan-out as exact
+limiting cases.  It also yields
 the optimal integrated Wigner--Smith delay.  A deterministic compiler and
 an independent verifier replay 1,024 random words, all 1,155 word classes
 through length seven modulo alphabet renaming, permutation tests, and
@@ -148,14 +155,19 @@ its boundary zeros at regular points of $S$ is at most $d$.
 
 \begin{proof}
 Factor $S$ into a constant unitary and $d$ elementary rank-one
-Blaschke--Potapov factors, counting multiplicity \cite{Potapov1955}.  On
-$\bigwedge^k\C^N$, $g$ is the matrix coefficient
-$\langle\bigwedge^kU,(\bigwedge^kS)\bigwedge^kV\rangle$.  Replacing one
-elementary factor by its scalar Blaschke coordinate changes
-$\bigwedge^kS$ affinely in that coordinate: an elementary rank-one factor
-has only one nonconstant invariant direction.  After clearing the $d$
-scalar denominators, every matrix coefficient is a polynomial of degree at
-most $d$.  A nonzero such numerator has at most $d$ zeros, with boundary
+Blaschke--Potapov factors, counting multiplicity \cite{Potapov1955}.  Write
+one factor as $E(z)=I+(b(z)-1)P$, where $P$ is rank one.  Its exterior-power
+action is explicitly
+\begin{equation}\label{eq:wedge-factor}
+ \bigwedge\nolimits^k E(z)=I+(b(z)-1)\Pi_P,
+\end{equation}
+where $\Pi_P$ projects onto the wedge subspace whose elementary wedges
+contain the direction $\ran P$.  Thus each factor is affine in its scalar
+Blaschke coordinate.  On $\bigwedge^k\C^N$, $g$ is the matrix coefficient
+$\langle\bigwedge^kU,(\bigwedge^kS)\bigwedge^kV\rangle$ and is therefore
+multiaffine in the $d$ scalar coordinates.  After clearing their $d$
+denominators, every matrix coefficient has a numerator of degree at most
+$d$.  A nonzero such numerator has at most $d$ zeros, with boundary
 multiplicity included.  Constant unitary factors and cancellations can only
 decrease this number.
 \end{proof}
@@ -174,7 +186,7 @@ Every interpolant of \eqref{eq:task} has degree at least $k(L-n_*)$.
 \begin{proof}
 For a fixed used symbol $a$, the minor \eqref{eq:minor} is nonzero at its
 $n_a$ own nodes and has a zero of order at least $k$ at each of the other
-$L-n_a$ nodes.  By \cref{lem:budget},
+$L-n_a$ nodes.  By Lemma~\ref{lem:budget},
 $\mcdeg S\ge k(L-n_a)$.  Taking an $a$ of minimum occupancy proves the
 claim.
 \end{proof}
@@ -200,19 +212,25 @@ is strictly positive.  Indeed, away from the interpolation nodes none of the
 $p_a$ vanishes; at $\zeta_i$, precisely the polynomial indexed by $w_i$ is
 nonzero.  Scalar Fej\'er--Riesz factorization gives an outer polynomial $h$
 of degree at most $d$, zero-free in $\D$, such that
-$|h|^2=R$ on $\T$ \cite{DritschelRovnyak2009}.  Therefore
+$|h|^2=R$ on $\T$ \cite{DritschelRovnyak2009}.  In particular,
+$h(\zeta_i)\ne0$ at every interpolation node, so the quotient below is
+regular at all prescribed points.  Therefore
 \begin{equation}\label{eq:f}
                        f(z)=\frac{1}{h(z)}(p_a(z))_{a\in\A(w)}
 \end{equation}
 is an $m\times1$ rational-inner column.  At $\zeta_i$ all its coordinates
 except $w_i$ vanish and the surviving coordinate has modulus one.
 
-Rectangular rational-inner functions admit square lossless completions with
-the same realization state dimension \cite[Theorem 2.1(ii)]{AlpayJorgensenLewkowicz2016};
+Rectangular paraunitary functions admit square lossless completions with the
+same realization state dimension \cite[Theorem 2.1(ii)]{AlpayJorgensenLewkowicz2016};
 related polynomial spectral completions appear in
-\cite{EphremidzeLagvilava2011}.  Complete $f$ to an $m\times m$
+\cite{EphremidzeLagvilava2011}.  The cited theorem uses the exterior-disk
+stability convention.  We apply it to the paraconjugate column
+$f^\sharp(z)=f(1/\overline z)^*$ and paraconjugate the completed matrix back;
+this returns the disk-analytic rational-inner convention used here without
+changing state dimension.  Complete $f$ in this way to an $m\times m$
 rational-inner $V$ without increasing its degree.  The scalar case of
-\cref{prop:lower} forces $\mcdeg V=d$, so no concealed cancellation is
+Proposition~\ref{prop:lower} forces $\mcdeg V=d$, so no concealed cancellation is
 possible.
 
 For rank $k$, take $V\otimes I_k$.  Its McMillan degree is $kd$: each scalar
@@ -421,6 +439,13 @@ unitary frame would turn those phases into data and can increase degree.
 The present theorem is consequently a statement about routing information,
 not waveform calibration.
 
+The three fan-out papers are complementary rather than duplicate statements:
+the orthogonal paper supplies the distinct-target extremum, the direct-sum
+paper identifies its generic geometric persistence and collision strata,
+and the present word law classifies repeated orthogonal targets.  A unified
+routing-table theory combining these strata is a natural future synthesis,
+but none of the three theorems alone subsumes the other two.
+
 Node positions do not alter exact degree, but they affect numerical
 conditioning and realization coefficients.  Likewise, an arbitrarily small
 generic perturbation of a repeated target can turn repetitions into distinct
@@ -448,7 +473,7 @@ can require less memory.
 \paragraph{Reproducibility.}
 The canonical paper, source, frozen JSON certificate, independent verifier,
 and CI release gate are archived at
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates}{the public repository}.
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v2.5-routing-word-memory-final}{the immutable public release}.
 
 \bibliographystyle{plain}
 \bibliography{references}
