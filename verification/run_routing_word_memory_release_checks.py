@@ -14,6 +14,18 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "programme" / "ROUTING_WORD_MEMORY_ARTIFACT.json"
 
+# Reciprocal-root ordering can change the worst floating-point residual across
+# otherwise identical LAPACK builds.  These four aggregate diagnostics are
+# therefore compared within the same fail-closed envelopes used by the
+# producer, while every discrete field and all case-level diagnostics retain
+# the tight generic replay tolerance below.
+REPLAY_ABSOLUTE_TOLERANCES = {
+    "root.random_summary.maximum_column_isometry_residual": 5.0e-5,
+    "root.random_summary.maximum_wrong_target_leakage": 5.0e-7,
+    "root.random_summary.maximum_spectral_factor_relative_residual": 5.0e-7,
+    "root.random_summary.minimum_desired_amplitude": 5.0e-5,
+}
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -33,7 +45,13 @@ def compare(expected: object, observed: object, location: str = "root") -> None:
     elif isinstance(expected, (int, float)):
         if not isinstance(observed, (int, float)):
             raise RuntimeError(f"numeric replay type mismatch at {location}")
-        if not math.isclose(float(observed), float(expected), rel_tol=2.0e-6, abs_tol=2.0e-8):
+        absolute_tolerance = REPLAY_ABSOLUTE_TOLERANCES.get(location, 2.0e-8)
+        if not math.isclose(
+            float(observed),
+            float(expected),
+            rel_tol=2.0e-6,
+            abs_tol=absolute_tolerance,
+        ):
             raise RuntimeError(f"numeric replay mismatch at {location}: {observed!r} != {expected!r}")
     elif isinstance(expected, list):
         if not isinstance(observed, list) or len(observed) != len(expected):
