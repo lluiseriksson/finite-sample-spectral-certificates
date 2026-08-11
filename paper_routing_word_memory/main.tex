@@ -1,0 +1,455 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=0.96in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,graphicx,xcolor,xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The Rarest Target Sets Passive Memory},pdfauthor={Lluis Eriksson},pdfsubject={Exact McMillan degree of spectral routing words}}
+\usepackage[nameinlink,capitalise]{cleveref}
+\usepackage{microtype,etoolbox}
+\AtBeginEnvironment{thebibliography}{\fontsize{8}{9}\selectfont\setlength{\itemsep}{-2pt}\setlength{\parsep}{0pt}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}\newtheorem{limitation}[theorem]{Limitation}
+\newcommand{\C}{\mathbb C}\newcommand{\D}{\mathbb D}\newcommand{\T}{\mathbb T}
+\newcommand{\ran}{\operatorname{ran}}\newcommand{\mcdeg}{\deg_{\mathrm{McM}}}
+\newcommand{\norm}[1]{\lVert#1\rVert}\newcommand{\A}{\mathcal A}
+
+\title{The Rarest Target Sets Passive Memory:\\An Exact Routing-Word Degree Law}
+\author{Lluis Eriksson}
+\date{11 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the exact passive memory required to route one fixed input
+subspace repeatedly among orthogonal spectral destinations.  Let a routing
+word $w$ of length $L$ use target $a$ exactly $n_a$ times, and let every
+target and the input have dimension $k$.  Among all square finite
+rational-inner transfer matrices, regular at the prescribed distinct
+boundary nodes and realizing the subspace routing constraints, we prove
+\[
+                  d_{\min}=k\bigl(L-\min_{a\in\A(w)}n_a\bigr).
+\]
+The lower bound is a zero budget: a compressed $k\times k$ minor vanishes to
+order at least $k$ whenever the route points elsewhere, while its total zero
+budget cannot exceed McMillan degree.  The matching construction is
+explicit.  Node polynomials are normalized by scalar Fej\'er--Riesz
+factorization to form a rational-inner routing column; a degree-preserving
+lossless completion and tensor amplification produce a square network of
+the asserted degree.
+
+Thus passive memory is governed by the rarest destination and, within this
+model, is invariant under every permutation of the routing word.  Switch
+count need not even order the cost: for scalar channels, the cyclic word
+\texttt{AAAB} has two switches and degree three, whereas \texttt{ABAB} has
+four switches and degree two.  The law recovers constant routing, a single
+switch, and fully distinct fan-out as exact limiting cases.  It also yields
+the optimal integrated Wigner--Smith delay.  A deterministic compiler and
+an independent verifier replay 1,024 random words, all 1,155 word classes
+through length seven modulo alphabet renaming, permutation tests, and
+clustered-node stress fixtures.  The machine-readable certificate and the
+paper are linked to an immutable public artifact.
+\end{abstract}
+
+\noindent\textbf{Keywords:} rational inner matrix; McMillan degree;
+spectral routing; Fej\'er--Riesz factorization; paraunitary completion;
+passive memory; Wigner--Smith delay; routing word.
+
+\section{A word, not a path length}
+
+A lossless finite-dimensional discrete-time network is represented by a
+square rational matrix $S$ analytic on $\D$ and unitary almost everywhere on
+$\T$.  Its McMillan degree is the dimension of a minimal conservative
+realization.  Fix distinct nodes $\zeta_1,\ldots,\zeta_L\in\T$, a
+$k$-plane $X\subset\C^N$, and mutually orthogonal $k$-planes
+$Y_a\subset\C^N$ indexed by a finite alphabet $\A$.  A word
+$w=w_1\cdots w_L\in\A^L$ prescribes
+\begin{equation}\label{eq:task}
+                         S(\zeta_i)X=Y_{w_i},\qquad 1\le i\le L.
+\end{equation}
+Only the subspaces are prescribed; bases and phases are free.  We minimize
+$\mcdeg S$ over square finite rational-inner $S$ regular at every node.
+Symbols not occurring in $w$ are discarded, and
+\[
+ n_a:=\#\{i:w_i=a\},\qquad n_*:=\min_{a\in\A(w)}n_a.
+\]
+
+Previous exact results isolated the cost of one switch and of fully
+distinct orthogonal fan-out \cite{ErikssonSwitch2026,ErikssonGlobalFanout2026};
+the direct-sum sequel showed that maximal fan-out is geometrically generic
+\cite{ErikssonDirectSum2026}.  Repeated targets create a different question:
+does memory count transitions, distinct targets, or interpolation
+constraints?  The answer is a sharp occupancy statistic.
+
+\begin{theorem}[Rarest-target law]\label{thm:main}
+Under the hypotheses above,
+\begin{equation}\label{eq:law}
+             d_{\min}(w;k)=k(L-n_*).
+\end{equation}
+The value is independent of the locations of the distinct nodes and of the
+order of the letters.
+\end{theorem}
+
+The order-independence in \cref{thm:main} concerns minimum state dimension,
+not every dynamical observable of a particular realization.  It is already
+strong enough to separate memory from switch count.
+
+\begin{table}[b]
+\centering\small
+\caption{Scalar examples.  Cyclic switches count changes across all four
+adjacencies, including the last-to-first edge.}
+\label{tab:words}
+\begin{tabular}{@{}lccccl@{}}\toprule
+Word & $L$ & occupancies & cyclic switches & $d_{\min}$ & interpretation\\\midrule
+\texttt{AAAA} &4&(4)&0&0&constant route\\
+\texttt{AAAB} &4&(3,1)&2&3&rare excursion\\
+\texttt{AABB} &4&(2,2)&2&2&two contiguous blocks\\
+\texttt{ABAB} &4&(2,2)&4&2&alternating route\\
+\texttt{ABCD} &4&(1,1,1,1)&4&3&full fan-out\\
+\texttt{AABBCC}&6&(2,2,2)&3&4&balanced three-target route\\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/routing_word_memory.pdf}
+\caption{Exact scalar memory at length four.  The law depends on the rarest
+occupancy, not monotonically on cyclic switch count.  In particular,
+\texttt{AAAB} costs more than \texttt{ABAB}.}
+\label{fig:separation}
+\end{figure}
+
+\section{A zero budget for compressed minors}
+
+Choose isometric frames $X_0$ for $X$ and $U_a$ for $Y_a$.  For an
+interpolant $S$, define the scalar compressed minor
+\begin{equation}\label{eq:minor}
+                         g_a(z)=\det(U_a^*S(z)X_0).
+\end{equation}
+At a node carrying $a$, the matrix inside the determinant is unitary, up to
+the freely chosen input and output gauges; hence $g_a(\zeta_i)\ne0$.  At a
+node carrying $b\ne a$, orthogonality gives
+$U_a^*S(\zeta_i)X_0=0$.  All $k^2$ entries therefore vanish there, and the
+determinant has a zero of order at least $k$.
+
+We record the degree fact that converts these forced zeros into states.
+
+\begin{lemma}[Minor zero budget]\label{lem:budget}
+Let $S$ be a square finite rational-inner matrix of McMillan degree $d$, and
+let $U,V$ be constant isometries with $k$ columns.  If
+$g(z)=\det(U^*S(z)V)$ is not identically zero, then the total multiplicity of
+its boundary zeros at regular points of $S$ is at most $d$.
+\end{lemma}
+
+\begin{proof}
+Factor $S$ into a constant unitary and $d$ elementary rank-one
+Blaschke--Potapov factors, counting multiplicity \cite{Potapov1955}.  On
+$\bigwedge^k\C^N$, $g$ is the matrix coefficient
+$\langle\bigwedge^kU,(\bigwedge^kS)\bigwedge^kV\rangle$.  Replacing one
+elementary factor by its scalar Blaschke coordinate changes
+$\bigwedge^kS$ affinely in that coordinate: an elementary rank-one factor
+has only one nonconstant invariant direction.  After clearing the $d$
+scalar denominators, every matrix coefficient is a polynomial of degree at
+most $d$.  A nonzero such numerator has at most $d$ zeros, with boundary
+multiplicity included.  Constant unitary factors and cancellations can only
+decrease this number.
+\end{proof}
+
+The exterior-power formulation is useful because it is insensitive to
+target-frame gauges.  Replacing $U_a$ by $U_aR_a$ and $X_0$ by $X_0R_0$
+multiplies $g_a$ by the nonzero constant
+$\overline{\det R_a}\det R_0$; it cannot create or remove zeros.  Nor can a
+pole be hidden at an interpolation node: regularity is explicitly part of
+the comparison class.  These two details prevent a calibrated-frame or
+removable-singularity loophole in the lower bound.
+
+\begin{proposition}[Lower bound]\label{prop:lower}
+Every interpolant of \eqref{eq:task} has degree at least $k(L-n_*)$.
+\end{proposition}
+\begin{proof}
+For a fixed used symbol $a$, the minor \eqref{eq:minor} is nonzero at its
+$n_a$ own nodes and has a zero of order at least $k$ at each of the other
+$L-n_a$ nodes.  By \cref{lem:budget},
+$\mcdeg S\ge k(L-n_a)$.  Taking an $a$ of minimum occupancy proves the
+claim.
+\end{proof}
+
+This proof also explains why counting adjacent changes loses information.
+The obstruction is global: every destination monitors all nodes at which it
+is absent.
+
+\section{The optimal compiler}
+
+The lower bound is attained by a construction that first solves the scalar
+alphabet problem.  Put $m=|\A(w)|$ and
+\begin{equation}\label{eq:pa}
+                 p_a(z)=\prod_{i:w_i\ne a}(z-\zeta_i),
+                 \qquad \deg p_a=L-n_a\le d:=L-n_*.
+\end{equation}
+The Laurent polynomial
+\begin{equation}\label{eq:R}
+                           R(z)=\sum_{a\in\A(w)}|p_a(z)|^2,
+                           \qquad z\in\T,
+\end{equation}
+is strictly positive.  Indeed, away from the interpolation nodes none of the
+$p_a$ vanishes; at $\zeta_i$, precisely the polynomial indexed by $w_i$ is
+nonzero.  Scalar Fej\'er--Riesz factorization gives an outer polynomial $h$
+of degree at most $d$, zero-free in $\D$, such that
+$|h|^2=R$ on $\T$ \cite{DritschelRovnyak2009}.  Therefore
+\begin{equation}\label{eq:f}
+                       f(z)=\frac{1}{h(z)}(p_a(z))_{a\in\A(w)}
+\end{equation}
+is an $m\times1$ rational-inner column.  At $\zeta_i$ all its coordinates
+except $w_i$ vanish and the surviving coordinate has modulus one.
+
+Rectangular rational-inner functions admit square lossless completions with
+the same realization state dimension \cite[Theorem 2.1(ii)]{AlpayJorgensenLewkowicz2016};
+related polynomial spectral completions appear in
+\cite{EphremidzeLagvilava2011}.  Complete $f$ to an $m\times m$
+rational-inner $V$ without increasing its degree.  The scalar case of
+\cref{prop:lower} forces $\mcdeg V=d$, so no concealed cancellation is
+possible.
+
+For rank $k$, take $V\otimes I_k$.  Its McMillan degree is $kd$: each scalar
+elementary factor is repeated in $k$ independent channels.  Constant
+unitaries align the first input $k$-plane and the $m$ coordinate target
+$k$-planes with $X$ and $Y_a$; an identity block embeds the construction if
+$N>mk$.  Constant operations change no degree.  We have proved the matching
+upper bound and hence \cref{thm:main}.
+
+For completeness, the compiler can be stated as finite exact algebra before
+any numerical realization step:
+\begin{enumerate}
+\item delete unused symbols and count $n_a$;
+\item form the node polynomials \eqref{eq:pa};
+\item compute the positive trigonometric polynomial $R$ in \eqref{eq:R};
+\item choose its outer Fej\'er--Riesz factor $h$ and form $f$ in
+      \eqref{eq:f};
+\item apply a degree-preserving square lossless completion to $f$;
+\item tensor by $I_k$ and conjugate by constant input/output unitaries.
+\end{enumerate}
+The first four steps already give a minimal scalar routing column.  The fifth
+does not add states: in realization language it appends input and output
+channels around the same state matrix.  The sixth repeats the scalar state
+space $k$ times.  This makes the upper proof constructive at the transfer,
+realization, and network-size levels.
+
+\begin{remark}[Algorithmic content]
+The proof is a compiler: construct the $p_a$, spectrally factor their summed
+energy, form $f$, complete losslessly, tensor, and align.  No nonlinear
+search over network parameters is required.
+\end{remark}
+
+\section{Consequences and separations}
+
+\begin{corollary}[Exact special cases]\label{cor:special}
+The law gives: (i) constant routing, $d_{\min}=0$; (ii) two distinct nodes
+routed to two targets, $d_{\min}=k$; (iii) $L$ distinct targets,
+$d_{\min}=k(L-1)$; and (iv) balanced use of $m$ targets when $m\mid L$,
+$d_{\min}=kL(1-1/m)$.
+\end{corollary}
+
+\begin{example}[More switches, less memory]\label{ex:switch}
+For $k=1$, \texttt{AAAB} has two cyclic switches, occupancies $(3,1)$, and
+degree $3$.  The alternating word \texttt{ABAB} has four cyclic switches,
+occupancies $(2,2)$, and degree $2$.  Thus switch count does not monotonically
+predict passive memory.  Both examples use the same two target lines, so
+target span alone also fails to determine the answer.
+\end{example}
+
+\begin{proposition}[Complete combinatorial quotient]\label{prop:quotient}
+For fixed $L$ and $k$, two routing words with orthogonal targets have the
+same minimum degree whenever their least nonzero occupancies agree.  Every
+integer in
+\[
+                 k\lceil L/2\rceil,\ k(\lceil L/2\rceil+1),
+                 \ldots,\ k(L-1)
+\]
+occurs among words using at least two targets, while the one-target word has
+degree zero.
+\end{proposition}
+\begin{proof}
+The first statement is \cref{thm:main}.  With two used letters, the smaller
+occupancy can be any $r\in\{1,\ldots,\lfloor L/2\rfloor\}$, giving degree
+$k(L-r)$.  These are precisely the displayed values.  More letters may
+repeat values but cannot fill a missing value because the degree is still
+$k(L-n_*)$.
+\end{proof}
+
+The discontinuity between one and two symbols is genuine.  A word may use a
+second target only once; that single rare visit changes the minimum from
+zero to $k(L-1)$.  Exact routing asks for a full $k$-plane zero at every
+other node, so rarity is expensive rather than cheap.
+
+The theorem may be read as a law for a labelled walk on any graph whose
+vertices are represented by mutually orthogonal output planes: once the
+word of visited vertices is fixed, the minimum state dimension depends only
+on the least visit count.  This is not a claim for nonorthogonal graph
+embeddings or edge-constrained internal dynamics.
+
+For a differentiable unitary boundary value, use the Wigner--Smith matrix
+\begin{equation}\label{eq:Q}
+                   Q(\theta)=-iS(e^{i\theta})^*\frac{d}{d\theta}S(e^{i\theta}).
+\end{equation}
+The argument principle for a finite rational-inner matrix yields
+$\int_0^{2\pi}\operatorname{tr}Q(\theta)d\theta=2\pi\mcdeg S$.  Hence:
+
+\begin{corollary}[Optimal integrated delay]\label{cor:delay}
+Among networks realizing the routing word,
+\begin{equation}\label{eq:delay}
+ \min_S\int_0^{2\pi}\operatorname{tr}Q(\theta)d\theta
+       =2\pi k(L-n_*).
+\end{equation}
+\end{corollary}
+
+The equality is topological and global.  It does not prescribe a unique
+pointwise delay profile, peak delay, or physical dwell-time distribution.
+
+\subsection{Conservative-state interpretation}
+
+If $S(z)=D+zC(I-zA)^{-1}B$ is a minimal conservative realization, then
+$\mcdeg S=\dim A$.  The theorem therefore counts internal lossless state
+coordinates, not merely polynomial coefficients.  In this representation
+the lower proof says that the same state space must supply $k(L-n_a)$
+independent boundary-zero multiplicities for every target monitor $a$.
+The upper construction supplies exactly the largest of these demands and
+shares those states among the other monitors.  This max-sharing mechanism is
+why the answer is
+\[
+                       \max_a k(L-n_a)=k(L-n_*)
+\]
+rather than the sum over targets.
+
+The identity also separates architecture from calibration.  Constant
+unitary pre- and post-networks can change the physical port basis at zero
+McMillan cost; only the frequency-dependent inner core contributes states.
+Conversely, allowing active gain or nonlossless cancellation would change
+the class and invalidate both the delay identity and the Potapov zero
+budget.
+
+\section{Executable certificate}
+
+The repository contains two deliberately separate programs.  The producer
+constructs $p_a$, performs scalar spectral factorization by reciprocal-root
+selection, evaluates the inner column on a dense boundary grid, checks every
+node, freezes a JSON certificate, and creates \cref{fig:separation}.  The
+verifier imports no producer code: it validates the schema and digest,
+recomputes the combinatorial law, and enforces numerical tolerances.
+
+The frozen campaign contains 1,024 seeded random words of lengths two
+through nine; every one of the 1,155 restricted-growth word classes through
+length seven (alphabet renaming removed); 256 permutation checks; ten
+curated cases; and four \texttt{ABAB} fixtures with a closest prescribed
+angular gap decreasing from $10^{-1}$ to $10^{-4}$.  All pass.  Across the
+full campaign the largest boundary column-isometry residual is
+$1.63\times10^{-5}$, the largest wrong-target leakage is
+$8.0\times10^{-11}$, and the smallest desired amplitude is $0.999996$.
+For the exhaustive exact-grid subcampaign the corresponding isometry and
+leakage maxima are $1.1\times10^{-13}$ and $4.4\times10^{-15}$.
+
+The larger residual in clustered random fixtures is a conditioning warning
+for root-based floating-point factorization, not an exception to the exact
+identity.  The certificate fails closed at stated tolerances; it is evidence
+that the constructive formulas were transcribed and replayed correctly, not
+a substitute for the proof.
+
+The producer additionally stores the word, node angles, occupancies,
+predicted degree, spectral-factor residual, boundary isometry residual,
+desired amplitude, and wrong-coordinate leakage for each curated and stress
+case.  A SHA-256 digest covers the canonical JSON payload before the final
+pass flag is appended.  The independent verifier recomputes that digest and
+the degree formula from the stored words.  This division catches both
+floating-point regression in the compiler and accidental mutation of the
+frozen evidence.
+
+\begin{table}[t]
+\centering\small
+\caption{Theorem-to-artifact map.  Paths are relative to the public repository.}
+\label{tab:artifacts}
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}\toprule
+Claim & Executable witness\\\midrule
+Occupancy law and compiler & \path{research/routing_word_memory_certificate.py}\\
+Frozen campaign and residuals & \path{results/routing_word_memory/certificate.json}\\
+Independent replay & \path{verification/verify_routing_word_memory.py}\\
+Release-wide integrity gate & \path{verification/run_routing_word_memory_release_checks.py}\\
+Switch-count separation & producer-generated \path{paper_routing_word_memory/figures/routing_word_memory.pdf}\\
+\bottomrule\end{tabular}
+\end{table}
+
+\section{Scope, conditioning, and relation to prior work}
+
+Boundary matrix interpolation and McMillan-degree minimization have a deep
+general theory \cite{AntoulasEtAl1990,BallKim1994}, and modern subspace
+all-pass design can prescribe unitary data and group-delay blocks
+\cite{BharathEtAl2023}.  Fej\'er--Riesz factorization and lossless completion
+used here are classical.  The contribution is their combination with the
+minor zero budget to expose a closed occupancy law for repeated orthogonal
+subspace routing.  A targeted search of these literatures did not locate the
+formula \eqref{eq:law}; we therefore state novelty for this precise theorem,
+not for rational-inner interpolation in general.
+
+\begin{limitation}[Exact hypotheses]
+The theorem assumes distinct boundary nodes, exact subspace interpolation,
+mutually orthogonal equal-rank targets, and no prescribed frame inside a
+target.  Repeated nodes require jet data.  Nonorthogonal targets remove the
+forced-zero mechanism.  Fully calibrated frames constrain phases discarded
+by \eqref{eq:task}.  Active, nonrational, or nonlossless devices lie outside
+the comparison class.
+\end{limitation}
+
+\subsection{Why the hypotheses are structural}
+
+Distinct nodes ensure that the polynomials \eqref{eq:pa} encode independent
+point constraints.  If two nodes collide, value interpolation becomes
+inconsistent unless their labels agree; a meaningful limit with changing
+labels requires derivatives and hence a jet problem.  Orthogonality is what
+makes the wrong-target compression identically zero.  For merely separated
+targets it is small but nonzero, so the discrete zero count disappears even
+though approximate lower bounds may survive.  Equal target ranks allow one
+tensor amplification; heterogeneous ranks would attach different
+determinant multiplicities to different absences and require a new packing
+argument.
+
+Free target gauges are equally important.  At a correct node the construction
+delivers the requested plane with a node-dependent phase.  Fixing a complete
+unitary frame would turn those phases into data and can increase degree.
+The present theorem is consequently a statement about routing information,
+not waveform calibration.
+
+Node positions do not alter exact degree, but they affect numerical
+conditioning and realization coefficients.  Likewise, an arbitrarily small
+generic perturbation of a repeated target can turn repetitions into distinct
+direct-sum constraints and raise the exact degree, as the collision analysis
+in the direct-sum paper shows \cite{ErikssonDirectSum2026}.  Robust
+approximate routing is therefore a different optimization problem.
+
+Three extensions are natural.  First, determine a stability law with
+explicit angular and subspace-error margins.  Second, replace orthogonality
+by a graph of prescribed intersections and identify which zero budgets
+survive.  Third, characterize local or peak delay among the degree-optimal
+completions.  None is needed for the exact word law proved here.
+
+\section{Conclusion}
+
+Repeated spectral routing has a complete state-counting law.  Each target
+asks the network to vanish, in a $k$-fold determinant sense, at every node
+assigned elsewhere.  The least visited target therefore imposes the largest
+zero budget.  Fej\'er--Riesz normalization realizes that budget without
+waste.  The resulting identity $d_{\min}=k(L-n_*)$ is simultaneously a
+minimal-degree theorem, an explicit compiler, and a global delay law.  Its
+most visible consequence is also the simplest: a route with more switches
+can require less memory.
+
+\paragraph{Reproducibility.}
+The canonical paper, source, frozen JSON certificate, independent verifier,
+and CI release gate are archived at
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates}{the public repository}.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
