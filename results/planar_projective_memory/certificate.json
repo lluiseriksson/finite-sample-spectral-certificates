@@ -3,6 +3,9 @@
   "base_point_deletion_law": {
     "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
     "border_memory": "min over B subset [L] of |B| + delta(B^c)",
+    "dense_elimination_field_operation_bound": "O(L^4)",
+    "linear_rank_formula": "min d with rank(M_d) < 2(d+1)",
+    "minimum_modulus_dichotomy": "E_d=0 iff inf_{||c||=1} ||M_d c||=0",
     "three_regimes": [
       "positive error",
       "zero unattained infimum",
@@ -34,6 +37,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          3,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          3,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1
       ]
@@ -62,6 +79,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          3,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          3,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1
       ]
@@ -91,6 +122,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          4,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          4,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2
@@ -122,6 +167,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          4,
+          4
+        ],
+        "border_nullity": 2,
+        "border_rank": 4,
+        "border_shape": [
+          4,
+          6
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -149,6 +208,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          4,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          4,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2
@@ -180,6 +253,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          5,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          5,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -213,6 +300,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          5,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          5,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2
       ]
@@ -244,6 +345,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          5,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          5,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2
       ]
@@ -274,6 +389,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          5,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          5,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -307,6 +436,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          6,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          6,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -342,6 +485,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          6,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          6,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3
@@ -376,6 +533,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          6,
+          6
+        ],
+        "border_nullity": 2,
+        "border_rank": 6,
+        "border_shape": [
+          6,
+          8
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -406,6 +577,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          6,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          6,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3
@@ -438,6 +623,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          6,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          6,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -473,6 +672,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          7,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          7,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -510,6 +723,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          7,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          7,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -546,6 +773,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          7,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          7,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3
       ]
@@ -580,6 +821,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          7,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          7,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3
       ]
@@ -613,6 +868,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          7,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          7,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -647,6 +916,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          7,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          7,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -684,6 +967,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          8,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          8,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -723,6 +1020,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          8,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          8,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -761,6 +1072,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          8,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          8,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4
@@ -798,6 +1123,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          8,
+          8
+        ],
+        "border_nullity": 2,
+        "border_rank": 8,
+        "border_shape": [
+          8,
+          10
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -831,6 +1170,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          8,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          8,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4
@@ -866,6 +1219,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          8,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          8,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -902,6 +1269,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          8,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          8,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -941,6 +1322,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          9,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          9,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -982,6 +1377,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          9,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          9,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -1022,6 +1431,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          9,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          9,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -1061,6 +1484,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          9,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          9,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4
       ]
@@ -1098,6 +1535,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          9,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          9,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4
       ]
@@ -1134,6 +1585,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          9,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          9,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -1171,6 +1636,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          9,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          9,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -1209,6 +1688,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          9,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          9,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -1250,6 +1743,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          10,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          10,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -1293,6 +1800,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          10,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          10,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -1335,6 +1856,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          10,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          10,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -1376,6 +1911,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          10,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          10,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5
@@ -1416,6 +1965,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          10,
+          10
+        ],
+        "border_nullity": 2,
+        "border_rank": 10,
+        "border_shape": [
+          10,
+          12
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -1452,6 +2015,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          10,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          10,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5
@@ -1490,6 +2067,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          10,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          10,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -1529,6 +2120,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          10,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          10,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -1569,6 +2174,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          10,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          10,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -1612,6 +2231,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          11,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          11,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -1657,6 +2290,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          11,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          11,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -1701,6 +2348,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          11,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          11,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -1744,6 +2405,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          11,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          11,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -1786,6 +2461,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          11,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          11,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5
       ]
@@ -1826,6 +2515,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          11,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          11,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5
       ]
@@ -1865,6 +2568,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          11,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          11,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -1905,6 +2622,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          11,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          11,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -1946,6 +2677,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          11,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          11,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -1988,6 +2733,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          11,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          11,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -2033,6 +2792,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          12,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          12,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -2080,6 +2853,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          12,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          12,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -2126,6 +2913,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          12,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          12,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -2171,6 +2972,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          12,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          12,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -2215,6 +3030,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          12,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          12,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6
@@ -2258,6 +3087,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          12,
+          12
+        ],
+        "border_nullity": 2,
+        "border_rank": 12,
+        "border_shape": [
+          12,
+          14
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -2297,6 +3140,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          12,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          12,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6
@@ -2338,6 +3195,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          12,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          12,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -2380,6 +3251,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          12,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          12,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -2423,6 +3308,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          12,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          12,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -2467,6 +3366,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          12,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          12,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -2514,6 +3427,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          13,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          13,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -2563,6 +3490,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          13,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          13,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -2611,6 +3552,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          13,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          13,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -2658,6 +3613,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          13,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          13,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -2704,6 +3673,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          13,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          13,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -2749,6 +3732,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          13,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          13,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6
       ]
@@ -2792,6 +3789,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          13,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          13,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6
       ]
@@ -2834,6 +3845,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          13,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          13,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -2877,6 +3902,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          13,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          13,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -2921,6 +3960,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          13,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          13,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -2966,6 +4019,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          13,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          13,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -3012,6 +4079,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          13,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          13,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -3061,6 +4142,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          14,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          14,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -3112,6 +4207,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          14,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          14,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -3162,6 +4271,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          14,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          14,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -3211,6 +4334,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          14,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          14,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -3259,6 +4396,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          14,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          14,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -3306,6 +4457,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          14,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          14,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6,
         7
@@ -3352,6 +4517,20 @@
         5,
         6
       ],
+      "rank_certificate": {
+        "before_border_degree": 6,
+        "before_border_rank": 14,
+        "before_border_shape": [
+          14,
+          14
+        ],
+        "border_nullity": 2,
+        "border_rank": 14,
+        "border_shape": [
+          14,
+          16
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -3394,6 +4573,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          14,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          14,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6,
         7
@@ -3438,6 +4631,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          14,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          14,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -3483,6 +4690,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          14,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          14,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -3529,6 +4750,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          14,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          14,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -3576,6 +4811,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          14,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          14,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -3624,6 +4873,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          14,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          14,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -3675,6 +4938,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          15,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          15,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -3728,6 +5005,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          15,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          15,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -3780,6 +5071,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          15,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          15,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -3831,6 +5136,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          15,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          15,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -3881,6 +5200,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          15,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          15,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -3930,6 +5263,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          15,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          15,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6,
         7,
@@ -3978,6 +5325,20 @@
         5,
         6
       ],
+      "rank_certificate": {
+        "before_border_degree": 6,
+        "before_border_rank": 14,
+        "before_border_shape": [
+          15,
+          14
+        ],
+        "border_nullity": 1,
+        "border_rank": 15,
+        "border_shape": [
+          15,
+          16
+        ]
+      },
       "zero_unattained_degrees": [
         7
       ]
@@ -4024,6 +5385,20 @@
         5,
         6
       ],
+      "rank_certificate": {
+        "before_border_degree": 6,
+        "before_border_rank": 14,
+        "before_border_shape": [
+          15,
+          14
+        ],
+        "border_nullity": 1,
+        "border_rank": 15,
+        "border_shape": [
+          15,
+          16
+        ]
+      },
       "zero_unattained_degrees": [
         7
       ]
@@ -4069,6 +5444,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          15,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          15,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6,
         7,
@@ -4115,6 +5504,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          15,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          15,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -4162,6 +5565,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          15,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          15,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -4210,6 +5627,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          15,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          15,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -4259,6 +5690,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          15,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          15,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -4309,6 +5754,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          15,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          15,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -4362,6 +5821,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          16,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          16,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -4417,6 +5890,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          16,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          16,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -4471,6 +5958,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          16,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          16,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -4524,6 +6025,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          16,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          16,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -4576,6 +6091,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          16,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          16,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -4627,6 +6156,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          16,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          16,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6,
         7,
@@ -4677,6 +6220,20 @@
         5,
         6
       ],
+      "rank_certificate": {
+        "before_border_degree": 6,
+        "before_border_rank": 14,
+        "before_border_shape": [
+          16,
+          14
+        ],
+        "border_nullity": 1,
+        "border_rank": 15,
+        "border_shape": [
+          16,
+          16
+        ]
+      },
       "zero_unattained_degrees": [
         7,
         8
@@ -4726,6 +6283,20 @@
         6,
         7
       ],
+      "rank_certificate": {
+        "before_border_degree": 7,
+        "before_border_rank": 16,
+        "before_border_shape": [
+          16,
+          16
+        ],
+        "border_nullity": 2,
+        "border_rank": 16,
+        "border_shape": [
+          16,
+          18
+        ]
+      },
       "zero_unattained_degrees": []
     },
     {
@@ -4771,6 +6342,20 @@
         5,
         6
       ],
+      "rank_certificate": {
+        "before_border_degree": 6,
+        "before_border_rank": 14,
+        "before_border_shape": [
+          16,
+          14
+        ],
+        "border_nullity": 1,
+        "border_rank": 15,
+        "border_shape": [
+          16,
+          16
+        ]
+      },
       "zero_unattained_degrees": [
         7,
         8
@@ -4818,6 +6403,20 @@
         4,
         5
       ],
+      "rank_certificate": {
+        "before_border_degree": 5,
+        "before_border_rank": 12,
+        "before_border_shape": [
+          16,
+          12
+        ],
+        "border_nullity": 1,
+        "border_rank": 13,
+        "border_shape": [
+          16,
+          14
+        ]
+      },
       "zero_unattained_degrees": [
         6,
         7,
@@ -4866,6 +6465,20 @@
         3,
         4
       ],
+      "rank_certificate": {
+        "before_border_degree": 4,
+        "before_border_rank": 10,
+        "before_border_shape": [
+          16,
+          10
+        ],
+        "border_nullity": 1,
+        "border_rank": 11,
+        "border_shape": [
+          16,
+          12
+        ]
+      },
       "zero_unattained_degrees": [
         5,
         6,
@@ -4915,6 +6528,20 @@
         2,
         3
       ],
+      "rank_certificate": {
+        "before_border_degree": 3,
+        "before_border_rank": 8,
+        "before_border_shape": [
+          16,
+          8
+        ],
+        "border_nullity": 1,
+        "border_rank": 9,
+        "border_shape": [
+          16,
+          10
+        ]
+      },
       "zero_unattained_degrees": [
         4,
         5,
@@ -4965,6 +6592,20 @@
         1,
         2
       ],
+      "rank_certificate": {
+        "before_border_degree": 2,
+        "before_border_rank": 6,
+        "before_border_shape": [
+          16,
+          6
+        ],
+        "border_nullity": 1,
+        "border_rank": 7,
+        "border_shape": [
+          16,
+          8
+        ]
+      },
       "zero_unattained_degrees": [
         3,
         4,
@@ -5016,6 +6657,20 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_degree": 1,
+        "before_border_rank": 4,
+        "before_border_shape": [
+          16,
+          4
+        ],
+        "border_nullity": 1,
+        "border_rank": 5,
+        "border_shape": [
+          16,
+          6
+        ]
+      },
       "zero_unattained_degrees": [
         2,
         3,
@@ -5068,6 +6723,20 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_degree": 0,
+        "before_border_rank": 2,
+        "before_border_shape": [
+          16,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          16,
+          4
+        ]
+      },
       "zero_unattained_degrees": [
         1,
         2,
@@ -5086,7 +6755,7 @@
       ]
     }
   ],
-  "content_sha256_without_hash_field": "99630fc9ec045848e6728156bc69d8d41beb4a43cf0925840eeb9e1fc168ec24",
+  "content_sha256_without_hash_field": "e36903ad9dac9d67bb266da0544c8cca8884eb29e8fb5dea1d4b5028af1934e7",
   "exact_zero_memory_family": {
     "asymptotic_ratio": "lim_(t->0+) B_0/E_0=1",
     "exact_law": "E_0^2=t^2/(1+t^2)",
@@ -5147,6 +6816,19 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_rank": 4,
+        "before_border_shape": [
+          4,
+          4
+        ],
+        "border_nullity": 2,
+        "border_rank": 4,
+        "border_shape": [
+          4,
+          6
+        ]
+      },
       "reason": "explicit normalized quadratic witness",
       "zero_unattained_degrees": []
     },
@@ -5170,6 +6852,19 @@
         0,
         1
       ],
+      "rank_certificate": {
+        "before_border_rank": 4,
+        "before_border_shape": [
+          4,
+          4
+        ],
+        "border_nullity": 2,
+        "border_rank": 4,
+        "border_shape": [
+          4,
+          6
+        ]
+      },
       "reason": "two double fibers",
       "zero_unattained_degrees": []
     },
@@ -5192,6 +6887,19 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_rank": 2,
+        "before_border_shape": [
+          4,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          4,
+          4
+        ]
+      },
       "reason": "a nonconstant degree-d fiber has at most d distinct preimages",
       "zero_unattained_degrees": [
         1,
@@ -5217,6 +6925,19 @@
       "positive_error_degrees": [
         0
       ],
+      "rank_certificate": {
+        "before_border_rank": 2,
+        "before_border_shape": [
+          4,
+          2
+        ],
+        "border_nullity": 1,
+        "border_rank": 3,
+        "border_shape": [
+          4,
+          4
+        ]
+      },
       "reason": "ordered cross-ratios agree",
       "zero_unattained_degrees": []
     },
@@ -5237,6 +6958,14 @@
       "expected_border_degree": 0,
       "expected_degree": 0,
       "positive_error_degrees": [],
+      "rank_certificate": {
+        "border_nullity": 1,
+        "border_rank": 1,
+        "border_shape": [
+          4,
+          2
+        ]
+      },
       "reason": "constant projective map",
       "zero_unattained_degrees": []
     }
@@ -5935,7 +7664,7 @@
       "[2:1]/sqrt(5)"
     ]
   },
-  "schema": "planar-projective-memory-certificate-v5",
+  "schema": "planar-projective-memory-certificate-v6",
   "strict_cross_ratio_gap": {
     "M1_rank": 4,
     "M1_shape": [

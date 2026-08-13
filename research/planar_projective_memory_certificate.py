@@ -312,11 +312,35 @@ def four_line_fixtures() -> dict:
         "certificate": {"degree": 2, "p": str(p), "q": str(q), "resultant": str(res), "values": [str(v) for v in values]},
     }
     border_degrees = {"all_same": 0, "all_distinct_compatible": 1, "2+2": 2, "2+1+1": 2, "3+1": 1}
+    rank_targets = {
+        "all_same": [sp.Integer(0)] * 4,
+        "all_distinct_compatible": nodes,
+        "2+2": [sp.Integer(0), sp.Integer(0), sp.oo, sp.oo],
+        "2+1+1": [sp.oo, sp.oo, sp.Integer(0), sp.Integer(1)],
+        "3+1": [sp.Integer(0), sp.Integer(0), sp.Integer(0), sp.oo],
+    }
     for label, border in border_degrees.items():
         exact = fixtures[label]["expected_degree"]
         fixtures[label]["expected_border_degree"] = border
         fixtures[label]["positive_error_degrees"] = list(range(border))
         fixtures[label]["zero_unattained_degrees"] = list(range(border, exact))
+        at_border = interpolation_matrix(nodes, rank_targets[label], border)
+        rank_cert = {
+            "border_shape": list(at_border.shape),
+            "border_rank": at_border.rank(),
+            "border_nullity": at_border.cols - at_border.rank(),
+        }
+        assert rank_cert["border_nullity"] > 0
+        if border > 0:
+            before = interpolation_matrix(nodes, rank_targets[label], border - 1)
+            rank_cert.update(
+                {
+                    "before_border_shape": list(before.shape),
+                    "before_border_rank": before.rank(),
+                }
+            )
+            assert rank_cert["before_border_rank"] == before.cols
+        fixtures[label]["rank_certificate"] = rank_cert
     return fixtures
 
 
@@ -360,6 +384,13 @@ def binary_collision_campaign(max_L: int) -> list[dict]:
             n_inf = L - n_zero
             expected = max(n_zero, n_inf)
             border = min(n_zero, n_inf)
+            targets = [sp.Integer(0)] * n_zero + [sp.oo] * n_inf
+            before = interpolation_matrix(nodes, targets, border - 1)
+            at_border = interpolation_matrix(nodes, targets, border)
+            before_rank = before.rank()
+            border_rank = at_border.rank()
+            assert before_rank == before.cols
+            assert border_rank < at_border.cols
             # The two displayed factor lists are disjoint because the nodes are
             # distinct.  They are therefore a coprime exact projective witness
             # without requiring costly expanded resultants.
@@ -376,6 +407,14 @@ def binary_collision_campaign(max_L: int) -> list[dict]:
                     "occupancies": [n_zero, n_inf],
                     "expected_degree": expected,
                     "expected_border_degree": border,
+                    "rank_certificate": {
+                        "before_border_degree": border - 1,
+                        "before_border_shape": list(before.shape),
+                        "before_border_rank": before_rank,
+                        "border_shape": list(at_border.shape),
+                        "border_rank": border_rank,
+                        "border_nullity": at_border.cols - border_rank,
+                    },
                     "positive_error_degrees": list(range(border)),
                     "zero_unattained_degrees": list(range(border, expected)),
                     "exact_zero_error_from_degree": expected,
@@ -463,10 +502,13 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = {
-        "schema": "planar-projective-memory-certificate-v5",
+        "schema": "planar-projective-memory-certificate-v6",
         "arithmetic": "SymPy exact Gaussian-rational arithmetic",
         "base_point_deletion_law": {
             "border_memory": "min over B subset [L] of |B| + delta(B^c)",
+            "linear_rank_formula": "min d with rank(M_d) < 2(d+1)",
+            "minimum_modulus_dichotomy": "E_d=0 iff inf_{||c||=1} ||M_d c||=0",
+            "dense_elimination_field_operation_bound": "O(L^4)",
             "three_regimes": ["positive error", "zero unattained infimum", "exact realization"],
             "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
         },

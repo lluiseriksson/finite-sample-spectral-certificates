@@ -10,7 +10,10 @@ universal threshold ceil((L-1)/2), it also proves that every planar table has
 zero approximation infimum, even when exceptional data require more states
 for exact realization.  Its base-point deletion theorem computes the exact
 border memory for every planar table; for binary occupancies this is the
-smaller occupancy, while exact memory is the larger one.
+smaller occupancy, while exact memory is the larger one.  Equivalently, border
+memory is the first degree at which the interpolation matrix loses full column
+rank, giving a polynomial-time exact algorithm and a linear-algebraic
+zero-error criterion.
 
 Build:
 

@@ -66,8 +66,15 @@ $\alpha$ is their Fubini--Study angle, and the singular-value obstruction is
 asymptotically sharp as the targets collide.
 
 There is also an exact positive-degree phenomenon.  Define the border memory
-$d_\partial=\min\{d:E_d=0\}$ and let $\delta(A)$ be the projective interpolation
-degree of the subtable indexed by $A$.  We prove the base-point deletion law
+$d_\partial=\min\{d:E_d=0\}$.  We prove the linear rank law
+\[
+ d_\partial=\min\{d:\rank M_d<2(d+1)\},
+ \]
+so it is computable in polynomially many exact field operations, without a
+subset search.  Equivalently, $E_d=0$ exactly when the minimum modulus
+$\inf_{\|c\|=1}\|M_dc\|$ vanishes.  Letting $\delta(A)$ denote the projective
+interpolation degree of a subtable, we identify the same integer geometrically
+by the base-point deletion law
 \[
  d_\partial=\min_{B\subseteq\{1,\ldots,L\}}
                  \bigl(|B|+\delta(B^c)\bigr).
@@ -136,9 +143,15 @@ context \cite{RapisardaWillems1997,BolotnikovDym2006,BharathEtAl2023}.
 Our contribution is not a new scalar interpolation algorithm.  It is the exact
 identification of that scalar projective degree with the physical state count of
 a square passive lossless router, together with a quantitative approximation
-barrier for low-state routers, exact zero-memory and base-point deletion laws,
+barrier for low-state routers, exact zero-memory, linear-rank and base-point deletion laws,
 the resulting generic law, unbounded detector gap, and complete four-line
 stratification.
+
+The rank formula is the computational hinge.  Exact memory asks whether a
+kernel pair is coprime, a nonlinear gcd condition; border memory asks only
+whether a nonzero kernel vector exists.  This separates exact realization from
+closure by one algebraic operation and turns the entire sign question for
+$E_d$ into linear algebra.
 
 \section{Projective degree equals passive memory}
 
@@ -246,6 +259,10 @@ $L\times2(d+1)$ matrix
 A coefficient vector in $\ker M_d$ is exactly a polynomial pair $(p,q)$ of
 degree at most $d$ satisfying $[p(\zeta_i):q(\zeta_i)]=[a_i:b_i]$, provided it
 has no base point at a node.
+Multiplying a homogeneous target representative by a nonzero scalar rescales
+one row, while changing the basis of $H$ acts by an invertible block change on
+the coefficient columns.  Hence every rank condition below is intrinsic to the
+ordered projective data.
 
 \begin{proposition}[Fail-closed degree certificate]\label{prop:certificate}
 The number $\delta$ is the least $d$ for which $\ker M_d$ contains a pair
@@ -575,12 +592,22 @@ Thus $d_\partial$ is the first state count at which exact target tables lie in
 the closure of the degree-bounded passive class; it need not be attained.
 \end{definition}
 
-\begin{theorem}[Exact base-point deletion law]\label{thm:border}
+\begin{theorem}[Linear rank and base-point deletion law]\label{thm:border}
 Every finite planar routing table satisfies
 \begin{equation}\label{eq:border}
  \boxed{\displaystyle
- d_\partial=\min_{B\subseteq[L]}
-                  \bigl\{|B|+\delta(B^c)\bigr\}.}
+ \begin{aligned}
+ d_\partial
+ &=\min\{d\ge0:\ker M_d\ne\{0\}\}
+  =\min\{d\ge0:\rank M_d<2(d+1)\}\\
+ &=\min_{B\subseteq[L]}
+                  \bigl\{|B|+\delta(B^c)\bigr\}.
+ \end{aligned}}
+\end{equation}
+Equivalently, for every $d\ge0$,
+\begin{equation}\label{eq:spectral-dichotomy}
+ \boxed{E_d=0\quad\Longleftrightarrow\quad
+        \mu_d:=\inf_{\norm{c}=1}\norm{M_dc}=0.}
 \end{equation}
 Consequently the complete sign-and-attainment diagram is
 \[
@@ -603,6 +630,11 @@ a scalar denominator.  For all large $n$ this pair is not identically zero,
 because its values at the routing nodes approach nonzero lines in $H$.
 Normalize its coefficient vector and pass to a convergent subsequence.  The
 limit is a nonzero pair $(p,q)$ of degree at most $d$.
+At each node, chordal convergence bounds the determinant of this pair with the
+normalized target vector by the routing error times its evaluation norm.  The
+latter is uniformly bounded after coefficient normalization, so the limiting
+determinant vanishes.  Hence its coefficient vector is a nonzero element of
+$\ker M_d$.
 
 Let $B$ be the set of nodes at which $p$ and $q$ both vanish.  Write
 $(p,q)=g(\widetilde p,\widetilde q)$ with the reduced pair coprime, and put
@@ -613,8 +645,8 @@ outside $B$.  Therefore
 \[
  |B|+\delta(B^c)\le b+r=\max(\deg p,\deg q)\le d.
 \]
-This proves that the right side of \eqref{eq:border} is no larger than
-$d_\partial$.
+This proves both that rank deficiency is necessary and that the subset minimum
+in \eqref{eq:border} is no larger than $d_\partial$.
 
 Conversely fix $B$, put $b=|B|$, and choose a coprime pair $(p_0,q_0)$ of
 degree $r=\delta(B^c)$ interpolating the complementary subtable.  If $b=0$,
@@ -632,31 +664,70 @@ nonzero constant, and $(a,c)=(a_0,gz^r)$ works.  Consider
 \]
 At every node in $B$, $[P_t:Q_t]=[a:c]$ for $t\ne0$; outside $B$ the values
 converge to $[p_0:q_0]$ as $t\to0$.  Coprimality with no common projective
-zero is detected by the homogeneous degree-$D$ resultant.  Since
+zero is detected by the homogeneous degree-$D$ resultant: it vanishes for a
+common finite root and also for a common root at infinity $[1:0]$.  Since
 $(P_1,Q_1)=(a,c)$ is coprime and has exact degree $D$, this resultant is a
 nonzero polynomial in $t$.  Hence a sequence $t_n\to0$, $t_n\ne0$, can be
 chosen away from its finitely many zeros, with every $(P_{t_n},Q_{t_n})$
 coprime.  Its degree is at most $b+r$.  Applying the exact same-degree
-lossless lift proves $E_{b+r}=0$, and then \eqref{eq:border}.
+lossless lift proves $E_{b+r}=0$, and hence equality with the subset minimum.
+
+It remains only to connect an arbitrary deficient $M_d$ back to the subset
+formula.  Take a nonzero kernel pair $(p,q)$, remove its gcd $g$, and let $B$
+be the interpolation nodes at which both coordinates vanish.  With
+$b=\deg g$ and reduced degree $r$, the same argument as above gives
+$|B|+\delta(B^c)\le b+r\le d$.  Conversely, the smoothing construction for
+any $B$ produces coprime approximating pairs of degree
+$|B|+\delta(B^c)$.  Thus the first deficient matrix, the subset minimum and
+$d_\partial$ coincide.  Since the minimum modulus $\mu_d$ vanishes exactly
+when $M_d$ has a nontrivial kernel, \eqref{eq:spectral-dichotomy} follows.
 
 Finally, $E_d=0$ is monotone in $d$.  Zero is attained exactly when an exact
 router of degree at most $d$ exists, which by \cref{thm:planar} is equivalent
 to $d\ge\delta$.  The three regimes follow.
 \end{proof}
 
-\begin{corollary}[Finite exact certificate for border memory]\label{cor:border-certificate}
-The integer $d_\partial$ is decidable by finite exact linear algebra and
-polynomial gcd tests.  Explicitly, for each $A\subseteq[L]$, compute
-$\delta(A)$ from the first interpolation matrix $M_d(A)$ whose kernel contains
-a coprime pair, and minimize $L-|A|+\delta(A)$.  A minimizing subset and its
-coprime kernel pair certify the upper bound; the rank/subresultant exclusions
-for all smaller subset costs certify the lower bound.
+\begin{corollary}[Polynomial-time exact border certificate]\label{cor:border-certificate}
+The integer $d_\partial$ is obtained by scanning
+$M_0,M_1,\ldots,M_{\lfloor L/2\rfloor}$ and stopping at the first loss of full
+column rank.  Dense exact elimination uses $O(L^4)$ field operations in this
+direct implementation.  A nonzero kernel vector at the stopping degree is an
+upper certificate for zero infimum, even when it has base points; full column
+rank at every preceding degree is the lower certificate.  Polynomial gcd and
+subresultant tests are needed for exact memory $\delta$, but not for border
+memory.
 \end{corollary}
 
 \begin{proof}
-Proposition~\ref{prop:certificate} computes every $\delta(A)$ using
-$0\le d\le |A|-1$, and \cref{thm:border} gives the stated minimum.  All tests
-are exact over the coefficient field of the data.
+For $d_0=\lfloor L/2\rfloor$, the matrix $M_{d_0}$ has $2(d_0+1)>L$
+columns and is automatically deficient, so the scan terminates.  Rank
+elimination on an $L\times O(L)$ matrix costs $O(L^3)$ field operations and
+there are $O(L)$ candidate degrees.  The certificate statements are exactly
+\cref{thm:border}.  All tests are exact over the coefficient field of the data.
+\end{proof}
+
+\begin{corollary}[Exact rank--error dichotomy]\label{cor:rank-error}
+With normalized homogeneous target representatives, let
+$\mu_d=\inf_{\norm{c}=1}\norm{M_dc}$.  Then precisely one of the following
+holds:
+\[
+ \begin{array}{ll}
+ \mu_d=0:& E_d=0,\\[1mm]
+ \mu_d>0:& \displaystyle
+ E_d\ge\frac{\mu_d}{\sqrt{L(d+1)+\mu_d^2}}>0.
+ \end{array}
+\]
+Moreover, the positive-error conclusion survives every calibrated perturbation
+$\widehat M_d$ with
+$\norm{\widehat M_d-M_d}_2<\mu_d$, replacing $\mu_d$ by the remaining margin.
+Thus one matrix supplies both the exact qualitative phase and a quantitative,
+stable error certificate.
+\end{corollary}
+
+\begin{proof}
+The zero case is \eqref{eq:spectral-dichotomy}.  In the positive case $M_d$
+has full column rank, so $\mu_d$ is its usual smallest singular value and
+\cref{thm:approx} applies, including its perturbation statement.
 \end{proof}
 
 \begin{corollary}[Complete binary approximation phase diagram]\label{cor:binary-border}
@@ -697,20 +768,10 @@ become dense in all planar routing data.
 \end{theorem}
 
 \begin{proof}
-By \cref{thm:generic}, the target tables admitting an exact degree-$d_0$
-projective interpolant contain a Zariski-open dense subset of $(\PP^1)^L$.
-Its complement is a proper complex algebraic set and therefore has empty
-Euclidean interior.  Given arbitrary targets $(Y_i)$, choose exact-routing
-tables $(Y_i^{(n)})$ in that open set converging to $(Y_i)$.  Apply the
-same-degree lossless lift in the proof of \cref{thm:planar} to each table.
-The resulting degree-$d_0$ routers satisfy
-\[
- \max_i\operatorname{dist}_{\rm ch}
-       \bigl(S_n(\zeta_i)X,Y_i\bigr)
- =\max_i\operatorname{dist}_{\rm ch}(Y_i^{(n)},Y_i)\longrightarrow0,
-\]
-which proves \eqref{eq:closure}.  Allowing more states cannot increase the
-infimum.  If the infimum at $d_0$ is attained with value zero, the attaining
+The matrix $M_{d_0}$ has $2(d_0+1)>L$ columns, so it has a nontrivial kernel
+for every target table.  The rank law \eqref{eq:border} therefore gives
+$E_{d_0}=0$ directly.  Allowing more states cannot increase the infimum.  If
+the infimum at $d_0$ is attained with value zero, the attaining
 router interpolates exactly, so \cref{thm:planar} gives $\delta\le d_0$; the
 converse is immediate.  Finally, for $d<d_0$ the full-column-rank condition on
 $M_d$ is a nonempty Zariski-open condition by the proof of
@@ -745,7 +806,7 @@ injective and cannot attain the repeated limiting target.
 \begin{remark}[Why rank deficiency is not exact feasibility]
 At $d_0$, the matrix $M_{d_0}$ always has a nonzero kernel, but exceptional
 tables may have only kernel pairs with a common factor or a base point.
-\Cref{thm:closure} shows that such defective pairs are limits of coprime pairs
+\Cref{thm:border} shows that such defective pairs are limits of coprime pairs
 even when no coprime pair exists at the limiting data.  Thus full column rank
 in \cref{thm:approx} is a structural separation condition, not a technical
 artifact: once it fails at the universal threshold, a positive error floor
@@ -920,6 +981,9 @@ every nontrivial binary occupancy split through $L=16$ (119 exact cases).
 For every $3\le L\le16$ it additionally checks the complete binary
 positive-error/nonattainment/exact phase partition and an explicit degree-one
 degeneration of the $1+(L-1)$ family, whose exact-to-border ratio is $L-1$.
+For all 119 binary tables it independently recomputes full column rank just
+below $d_\partial$ and a nontrivial kernel at $d_\partial$, directly auditing
+the polynomial-time rank formula rather than inferring it from occupancies.
 The frozen validator recomputes the content hash and checks declared coverage,
 phase degrees, ranks, and bounds.  In CI the producer is replayed from scratch
 and its byte-identical JSON is compared with the frozen record; this replay is
@@ -946,12 +1010,15 @@ Scalar minimal rational interpolation, the generic half-degree threshold,
 cross-ratio and fiber classifications, subspace Nevanlinna interpolation,
 Fej\'er--Riesz/paraunitary completion, and matrix all-pass construction predate
 this work; common-factor/base-point degeneration is likewise a standard
-algebraic mechanism.  We claim the passive-memory equality \eqref{eq:main}, obtained by
+algebraic mechanism, and rank deficiency of a coefficient matrix is elementary.
+We claim its exact identification with the passive zero-infimum boundary and
+the resulting polynomial state certificate, together with the passive-memory
+equality \eqref{eq:main}, obtained by
 combining a standard exact-degree lossless lift with the escape-from-the-plane
 lower bound, the quantitative low-degree obstruction \eqref{eq:approx}, and
 the exact zero-memory consequence \eqref{eq:zero-memory}, together with their
 physical/detector consequences, the exact base-point deletion law
-\eqref{eq:border}, and the sharp universal closure theorem
+and its polynomial-time rank form \eqref{eq:border}, and the sharp universal closure theorem
 \eqref{eq:closure}.  Bloch-sphere cap geometry itself is standard;
 we do not claim a new
 general rational interpolation algorithm or priority for the scalar strata.
@@ -961,7 +1028,7 @@ general rational interpolation algorithm or priority for the scalar strata.
 The tagged release containing the paper, exact producer, frozen validator,
 frozen JSON certificate, and figure is:
 \begin{center}\small
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.4-planar-projective-memory}{GitHub release: \texttt{v3.4-planar-projective-memory}}
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.5-planar-projective-memory}{GitHub release: \texttt{v3.5-planar-projective-memory}}
 \end{center}
 
 \section{Conclusion}
@@ -986,7 +1053,10 @@ $d_0=\lceil(L-1)/2\rceil$, every planar table has zero minimax infimum, even
 when exact interpolation needs more states; below that threshold generic data
 retain a positive error floor.  More generally, the base-point deletion
 formula computes the first zero-error boundary for every planar table and
-thereby classifies all three regimes exactly.  Its binary specialization gives
+thereby classifies all three regimes exactly.  The same boundary is the first
+degree at which the interpolation matrix loses full column rank, replacing an
+exponential subset formula by an $O(L^4)$ exact algorithm and unifying the
+qualitative transition with the quantitative singular-value obstruction.  Its binary specialization gives
 border memory $\min(n_0,n_\infty)$ against exact memory
 $\max(n_0,n_\infty)$, so approximation can save an unbounded factor of states.
 This sharp transition separates approximation from exact realization and gives

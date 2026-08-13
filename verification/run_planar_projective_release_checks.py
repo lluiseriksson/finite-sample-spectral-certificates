@@ -40,7 +40,7 @@ def main() -> None:
     if mismatches:
         raise RuntimeError(f"release manifest mismatch: {mismatches}")
     tex = (ROOT / "paper_planar_projective_memory" / "main.tex").read_text(encoding="utf-8")
-    forbidden = ["TODO", "TBD", "placeholder", "then\nthen", "certificate-v4", "v3.3-planar-projective-memory"]
+    forbidden = ["TODO", "TBD", "placeholder", "then\nthen", "certificate-v4", "certificate-v5", "v3.3-planar-projective-memory", "v3.4-planar-projective-memory"]
     body = tex.split("\\bibliographystyle", 1)[0]
     bad = [token for token in forbidden if token in body]
     if bad:
