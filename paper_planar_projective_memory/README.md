@@ -2,7 +2,8 @@
 
 This directory contains the source of the paper proving that passive memory on
 the coplanar line-target stratum equals the minimum projective rational
-interpolation degree.
+interpolation degree, and deriving a singular-value-controlled lower bound on
+the worst-node chordal error of every low-state lossless router.
 
 Build:
 

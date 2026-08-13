@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,array,graphicx,xcolor,xurl,float}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={Projective Bottlenecks in Passive Spectral Routing},pdfauthor={Lluis Eriksson},pdfsubject={Exact planar memory and unbounded detector gaps}}
+\hypersetup{pdftitle={Projective Bottlenecks in Passive Spectral Routing},pdfauthor={Lluis Eriksson},pdfsubject={Exact planar memory, quantitative approximation barriers, and projective strata}}
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype,etoolbox}
 \AtBeginEnvironment{thebibliography}{\fontsize{8}{9}\selectfont\setlength{\itemsep}{-2pt}\setlength{\parsep}{0pt}}
@@ -25,7 +25,7 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Projective Bottlenecks in Passive Spectral Routing:\\
-Exact Planar Memory, Cross-Ratio Strata, and an Unbounded Detector Gap}
+Exact Planar Memory, Quantitative Approximation Barriers, and Cross-Ratio Strata}
 \author{Lluis Eriksson}
 \date{13 August 2026}
 
@@ -48,6 +48,17 @@ same McMillan degree.  The lower bound uses a common state-space denominator:
 more boundary zeros than states force the routed column to remain identically
 inside the target plane, where it becomes a projective rational interpolant.
 
+The same denominator mechanism yields a quantitative result for approximate
+routing.  If the normalized interpolation matrix $M_d$ has smallest singular
+value $\sigma>0$, then every lossless router of degree at most $d$ has
+worst-node complex-projective chordal error at least
+\[
+                 \frac{\sigma}{\sqrt{L(d+1)+\sigma^2}}.
+\]
+Under a data-matrix perturbation of norm $\eta$, the bound survives with
+$\sigma$ replaced by $(\sigma-\eta)_+$.  Thus the algebraic obstruction has a
+finite-error consequence, not merely an exact-interpolation discontinuity.
+
 This reduction reveals two competing mechanisms.  For two target lines with
 occupancies $n_0,n_\infty$, the exact cost is $\max(n_0,n_\infty)$, a fiber
 multiplicity law.  By contrast, for $L$ distinct generic coplanar targets,
@@ -59,16 +70,17 @@ the preceding framework equal one.  Their
 multiplicative underestimate is therefore unbounded.  For four nodes we give the
 complete phase diagram: degree zero for one constant target, degree one exactly
 for four distinct targets with matching ordered cross-ratio, degree three for a
-$3+1$ collision, and degree two in every remaining case.  A singular-value
-margin makes the algebraic lower certificates stable under perturbation.  Exact
-Gaussian-rational fixtures verify all strata, a strict cross-ratio obstruction,
-and the generic law through $L=16$.  Exact producer, replay validator, frozen
+$3+1$ collision, and degree two in every remaining case.  For the strict
+four-node fixture, an exact Sylvester certificate forces more than $21\%$
+worst-node error on every one-state router.  Exact Gaussian-rational fixtures
+verify all strata, the quantitative obstruction, and the generic law through
+$L=16$.  Exact producer, replay validator, frozen
 evidence, and immutable release metadata are linked in the paper.
 \end{abstract}
 
 \noindent\textbf{Keywords:} rational inner matrix; projective interpolation;
-McMillan degree; passive memory; cross-ratio; Fej\'er--Riesz factorization;
-spectral routing; Wigner--Smith delay.
+McMillan degree; passive memory; approximate routing; chordal error;
+cross-ratio; Fej\'er--Riesz factorization; Wigner--Smith delay.
 
 \section{A singular stratum with hidden memory}
 
@@ -103,8 +115,9 @@ interpolation and boundary matrix all-pass construction provide the matrix
 context \cite{RapisardaWillems1997,BolotnikovDym2006,BharathEtAl2023}.
 Our contribution is not a new scalar interpolation algorithm.  It is the exact
 identification of that scalar projective degree with the physical state count of
-a square passive lossless router, together with the resulting generic law,
-unbounded detector gap, and complete four-line stratification.
+a square passive lossless router, together with a quantitative approximation
+barrier for low-state routers, the resulting generic law, unbounded detector
+gap, and complete four-line stratification.
 
 \section{Projective degree equals passive memory}
 
@@ -119,6 +132,22 @@ For the ordered data $(\zeta_i,Y_i)$, let
  \delta=\min\{\deg R:R:\PP^1\to\PP(H),\ R(\zeta_i)=Y_i\text{ for every }i\}.
 \]
 \end{definition}
+
+\paragraph{Common-denominator lemma.}
+Let $S$ be a rational-inner matrix of McMillan degree at most $d$, and let
+$F=Sx$ be any routed column.  There are a polynomial $\chi$ and vector
+polynomial $n$ such that
+\[
+                         F(z)=\frac{n(z)}{\chi(z)},
+ \qquad \deg\chi\le d,\qquad \deg n_j\le d.
+\]
+The denominator can be chosen nonzero at every regular interpolation node.
+Indeed, take a stable minimal realization
+$S(z)=D+zC(I-zA)^{-1}B$ of dimension at most $d$.  With
+$\chi(z)=\det(I-zA)$, the adjugate formula gives the stated degree bounds for
+every entry of $Sx$.  Stability makes $\chi$ zero-free on $\overline\D$; more
+generally, after cancelling any removable common factor, it is nonzero at each
+node where $S$ is regular.
 
 \begin{theorem}[Exact planar reduction]\label{thm:planar}
 If all target lines in \eqref{eq:routing} lie in one two-plane $H$, then
@@ -138,7 +167,9 @@ $\delta$.  For a polynomial $r$ of degree at most $\delta$, set
 \[
                    r^\sharp(z)=z^\delta\overline{r(1/\bar z)}.
 \]
-Scalar Fej\'er--Riesz factorization \cite{DritschelRovnyak2010} supplies an outer polynomial $h$, zero-free
+Because $p$ and $q$ are coprime, they have no common zero; in particular
+$|p|^2+|q|^2>0$ on $\T$.  Scalar Fej\'er--Riesz factorization
+\cite{DritschelRovnyak2010} supplies an outer polynomial $h$, zero-free
 in $\D$, such that on $\T$
 \[
                        |h|^2=|p|^2+|q|^2.
@@ -153,8 +184,10 @@ and
 \[
                    \det S_2=h^\sharp/h.
 \]
-With reversal taken at order $\delta$, this scalar Blaschke product has degree
-exactly $\delta$; if $\deg h<\delta$, the missing reversed zeros occur at zero.
+The strict positivity above also gives $h(\zeta_i)\ne0$ at every routing node.
+With reversal taken at the displayed order $\delta$, the scalar Blaschke
+product $h^\sharp/h$ has degree exactly $\delta$; if $\deg h<\delta$, the
+missing reversed zeros occur at zero.
 For a rational-inner matrix the determinant winding equals its McMillan degree
 \cite{Potapov1955}, so $\mcdeg S_2=\delta$.  Constant unitaries align the input
 line and the basis of $H$, while a block identity embeds $S_2$ into dimension
@@ -162,9 +195,9 @@ $N$ without adding states.  Hence $d_{\min}\le\delta$.
 
 Conversely, take a minimum-degree interpolant $S$ with degree $d$.  The upper
 construction already gives $d\le L-1<L$.  A stable conservative realization of
-$S$ gives every entry of the routed column $F=Sx$ a common denominator
-$\chi(z)=\det(I-zA)$ of degree at most $d$, nonzero at the boundary nodes; the
-corresponding numerators have degree at most $d$.  For every linear functional
+$S$ and the common-denominator lemma above give every entry of the routed column
+$F=Sx$ a common denominator of degree at most $d$, nonzero at the boundary
+nodes; the corresponding numerators have degree at most $d$.  For every linear functional
 $\ell$ annihilating $H$, the numerator of $\ell F$ vanishes at all $L>d$
 distinct nodes.  It is therefore zero identically.  Thus $F(z)\in H$ as a
 rational identity.  In a basis of $H$, cancel the common polynomial factor of
@@ -180,7 +213,7 @@ inner column.  Accordingly, pole tests on a chosen affine ratio cannot replace
 projective coprimality and Fej\'er--Riesz lifting.
 \end{remark}
 
-\section{An exact algebraic certificate}
+\section{Exact certificates and quantitative approximation barriers}
 
 Write $Y_i=[a_i:b_i]$ in the chosen basis of $H$.  For $d\ge0$, define the
 $L\times2(d+1)$ matrix
@@ -215,25 +248,92 @@ enough: a common factor can inflate its displayed degree or introduce a base
 point.  A B\'ezout identity $up+vq=1$ is an equivalent independently checkable
 coprimality certificate.
 
-\begin{proposition}[Coordinate-level stable exclusion]\label{prop:margin}
-Suppose $M_d$ has full column rank and let $\sigma=\sigma_{\min}(M_d)>0$.  Every
-perturbed data matrix $\widehat M_d$ satisfying
-$\norm{\widehat M_d-M_d}_2<\sigma$ also has full column rank.  Hence no
-projective interpolant, and therefore no passive router, of degree at most $d$
-can fit the perturbed data exactly.
-\end{proposition}
+We now normalize $(a_i,b_i)$ to unit norm and choose an orthonormal basis of
+$H$.  For a unit vector $u$ and a target line $Y=\C y$, $\norm y=1$, write
+\[
+ \operatorname{dist}_{\rm ch}(\C u,Y)
+ =\sqrt{1-|\langle u,y\rangle|^2}
+\]
+for complex-projective chordal distance.
+
+\begin{theorem}[Quantitative approximate-routing obstruction]\label{thm:approx}
+Suppose $M_d$ has full column rank and put
+$\sigma=\sigma_{\min}(M_d)>0$.  Every square rational-inner router $S$ of
+McMillan degree at most $d$ satisfies
+\begin{equation}\label{eq:approx}
+ \max_{1\le i\le L}\operatorname{dist}_{\rm ch}
+       \bigl(S(\zeta_i)X,Y_i\bigr)
+ \ \ge\ \boxed{\frac{\sigma}{\sqrt{L(d+1)+\sigma^2}}}.
+\end{equation}
+If a perturbed normalized data matrix $\widehat M_d$ obeys
+$\norm{\widehat M_d-M_d}_2\le\eta<\sigma$, the right-hand side remains valid
+with $\sigma$ replaced by $\sigma-\eta$.
+Equivalently, the degree-constrained minimax error
+$E_d=\inf_{\mcdeg S\le d}\max_i\operatorname{dist}_{\rm ch}(S(\zeta_i)X,Y_i)$
+obeys the same lower bound.
+\end{theorem}
 
 \begin{proof}
-Weyl's singular-value inequality gives
-$\sigma_{\min}(\widehat M_d)\ge\sigma-\norm{\widehat M_d-M_d}_2>0$.
-Apply \cref{prop:certificate,thm:planar}.
+Choose a unit input vector $x$ and write $F=Sx$.  On $\T$, $\norm{F}=1$.
+By the common-denominator lemma above, the two coordinates of $P_HF$ have the form
+$p/\chi,q/\chi$, with numerator degrees at most $d$.  Let $c$ collect their
+$2(d+1)$ coefficients.  If $c=0$, then $F$ is orthogonal to every $Y_i$ and
+the left-hand side of \eqref{eq:approx} is one, so assume $c\ne0$.
+
+Put $v_i=(p(\zeta_i),q(\zeta_i))$ and
+$e_i=\operatorname{dist}_{\rm ch}(\C F(\zeta_i),Y_i)$.  Since
+$v_i=\chi(\zeta_i)P_HF(\zeta_i)$ and $y_i\in H$, the two-dimensional wedge
+identity gives
+\[
+ |(M_dc)_i|=|\det(y_i,v_i)|\le |\chi(\zeta_i)|e_i,
+ \qquad
+ \norm{v_i}\ge |\chi(\zeta_i)|\sqrt{1-e_i^2}.
+\]
+Evaluation of two degree-$d$ polynomials at a unit-modulus node has operator
+norm $\sqrt{d+1}$, hence $\norm{v_i}\le\sqrt{d+1}\norm c$.  If
+$\varepsilon=\max_i e_i<1$, these inequalities imply
+\[
+ \norm{M_dc}_2
+ \le \sqrt{L(d+1)}\,\norm c\,
+       \frac{\varepsilon}{\sqrt{1-\varepsilon^2}}.
+\]
+The reverse inequality $\norm{M_dc}_2\ge\sigma\norm c$ and cancellation of
+$\norm c$ give \eqref{eq:approx}; the case $\varepsilon=1$ is immediate.
+Finally, Weyl's inequality gives
+$\sigma_{\min}(\widehat M_d)\ge\sigma-\eta$, proving the perturbative claim.
 \end{proof}
 
-This is an a posteriori matrix statement in a fixed basis of $H$ and fixed
-homogeneous representatives $[a_i:b_i]$.  For a physical perturbation margin we
-use unit-norm representatives and fix their phases by a stated local gauge.
-Without that convention $\sigma$ changes under coordinate rescaling.  The result
-does not claim that exact degree is continuous at collisions.
+\begin{corollary}[Exact-arithmetic coercivity certificate]\label{cor:coercive}
+Let $G_d=M_d^*M_d$, $m=2(d+1)$, and
+\[
+ \gamma_d=\det G_d\left(\frac{m-1}{\operatorname{tr}G_d}\right)^{m-1}.
+\]
+If $M_d$ has full column rank, then $\sigma^2\ge\gamma_d>0$, so the right-hand
+side of \eqref{eq:approx} is at least
+\[
+                       \sqrt{\frac{\gamma_d}{L(d+1)+\gamma_d}}.
+\]
+For Gaussian-rational nodes and targets, $\gamma_d$ is an exact arithmetic
+certificate.  Any stronger exact inequality $G_d\succeq\alpha I$ replaces
+$\gamma_d$ by $\alpha$.
+\end{corollary}
+
+\begin{proof}
+If $0<\lambda_1\le\cdots\le\lambda_m$ are the eigenvalues of $G_d$, then
+$\det G_d=\lambda_1\prod_{j>1}\lambda_j$.  By arithmetic--geometric mean,
+\[
+ \prod_{j>1}\lambda_j
+ \le\left(\frac{\sum_{j>1}\lambda_j}{m-1}\right)^{m-1}
+ \le\left(\frac{\operatorname{tr}G_d}{m-1}\right)^{m-1}.
+\]
+Thus
+$\sigma^2=\lambda_1\ge\gamma_d$.  Apply Theorem~\ref{thm:approx}.
+\end{proof}
+
+The normalization is essential: without unit homogeneous representatives and
+an orthonormal basis of $H$, $\sigma$ changes under coordinate rescaling.  The
+theorem now controls routing error itself, rather than only persistence of an
+exact rank obstruction.
 
 \section{Fiber multiplicity and binary routing}
 
@@ -243,9 +343,9 @@ This observation becomes a state lower bound after \cref{thm:planar}.
 
 \begin{proposition}[Fiber occupancy bound]\label{prop:fiber}
 Suppose at least two distinct target lines are used, and let
-$n_*=\max_Y\#\{i:Y_i=Y\}$.  Then
+$n_{\max}=\max_Y\#\{i:Y_i=Y\}$.  Then
 \[
-                              d_{\min}\ge n_*.
+                              d_{\min}\ge n_{\max}.
 \]
 \end{proposition}
 
@@ -299,6 +399,33 @@ Four targets, pattern $3+1$ & $3$ & triple fiber\\
 
 \section{The generic planar law and an unbounded gap}
 
+\begin{lemma}[Nonempty coprime threshold locus]\label{lem:zariski}
+Fix distinct nodes and put $d_0=\lceil(L-1)/2\rceil$.  There is a nonempty
+Zariski-open set of target data for which $M_{d_0}$ contains a coprime kernel
+pair.  This open set meets the locus of pairwise distinct targets.
+\end{lemma}
+
+\begin{proof}
+Work first in the affine target chart $a_i/b_i=y_i$ and use the witness
+$y_i=\zeta_i^{d_0}$.  At this point the columns of $M_{d_0}$ are evaluations
+of monomials with exponents $0,\ldots,2d_0$, with exponent $d_0$ duplicated.
+Because $L\le2d_0+1$, a Vandermonde $L\times L$ minor $D$ is nonzero.  On the
+principal open set $U=\{D\ne0\}$, this same pivot solves $L$ coefficients by
+Gaussian elimination and expresses the remaining coefficients as free
+parameters with entries in the localization $\C[y_1,\ldots,y_L]_D$.  Hence
+$\ker M_{d_0}$ has an algebraic frame on $U$.
+
+At the witness, $(z^{d_0},1)$ lies in the kernel.  Choose the constant linear
+combination of the local frame that equals this vector there.  Multiplying its
+two polynomial coordinates by a common power of $D$ clears every parameter
+denominator.  Their resultant is then a regular function of the target data;
+at the witness it is a nonzero scalar multiple of
+$\Res(z^{d_0},1)=1$.  Its nonvanishing and $D\ne0$ therefore define a nonempty
+Zariski-open coprime locus.  The pairwise target inequalities also define a
+nonempty Zariski-open subset of $(\PP^1)^L$.  Their intersection is nonempty
+because $(\PP^1)^L$ is irreducible.
+\end{proof}
+
 \begin{theorem}[Generic planar memory]\label{thm:generic}
 For fixed distinct nodes and $L$ target lines in a two-plane, there is a
 Zariski-open dense set of ordered target data on which
@@ -318,18 +445,10 @@ Thus the nonvanishing of a maximal minor supplies the required nonempty open
 set.
 
 At $d=d_0$, $M_{d_0}$ has more columns than rows, so it always has nonzero
-kernel.  For the witness $a_i/b_i=\zeta_i^{d_0}$, its columns are evaluations of
-monomials with exponents $0,\ldots,2d_0$, with exponent $d_0$ duplicated.
-Since $L\le2d_0+1$, a Vandermonde minor shows full row rank.  Fix a nonzero
-$L\times L$ pivot minor.  On its principal open neighborhood, Gaussian
-elimination gives an algebraic kernel frame.  Choose the constant linear
-combination whose value at the witness is the coprime pair $(z^{d_0},1)$.
-After multiplication by a power of the pivot minor, the resultant of this local
-pair is a regular function and is nonzero at the witness.  Its nonvanishing
-therefore defines a nonempty Zariski-open set of coprime threshold pairs.
-Intersecting it with the open rank conditions and pairwise target inequalities
-remains nonempty because $(\PP^1)^L$ is irreducible.  Apply
-\cref{prop:certificate,thm:planar}.  The scalar threshold itself is classical;
+kernel.  Lemma~\ref{lem:zariski} supplies a nonempty open locus on which that
+kernel contains a coprime pair, and the lower-rank open condition above can be
+intersected with it.  Apply Theorem~\ref{thm:planar} and
+Proposition~\ref{prop:certificate}.  The scalar threshold itself is classical;
 the new conclusion here is its exact conversion to passive state count.
 \end{proof}
 
@@ -351,10 +470,11 @@ factor on this single fixed-rank stratum.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.75\linewidth]{figures/unbounded_detector_gap.pdf}
-\caption{Generic exact memory on the coplanar distinct-target stratum versus
-the constant-detector lower bound.  The separation corresponds to an unbounded
-multiplicative ratio.}
+\includegraphics[width=0.98\linewidth]{figures/unbounded_detector_gap.pdf}
+\caption{Left: generic exact memory versus the constant-detector lower bound;
+the multiplicative ratio is unbounded.  Right: exact certified worst-node
+chordal-error barriers for the strict four-node fixture.  Degree two attains
+zero error, whereas degrees zero and one remain quantitatively separated.}
 \label{fig:gap}
 \end{figure}
 
@@ -416,7 +536,7 @@ degree one, completing the lower bounds and the classification via
 \cref{thm:planar}.
 \end{proof}
 
-\begin{example}[Strict detector failure]\label{ex:strict}
+\begin{example}[Strict exact and approximate detector failure]\label{ex:strict}
 Take
 \[
  (\zeta_1,\zeta_2,\zeta_3,\zeta_4)=(1,i,-1,-i),\qquad
@@ -429,6 +549,33 @@ $d_{\min}=2$, while both constant lower bounds equal one.  An exact witness is
  \qquad \Res(p,q)=-3-i\ne0.
 \]
 It takes the four requested projective values exactly.
+
+There is also a finite approximation gap below degree two.  Normalize the four
+target representatives to unit norm.  For $d=1$, exact arithmetic gives
+\[
+G_1=M_1^*M_1=
+\begin{pmatrix}
+17/10&1+3i/10&-9/10&-i/10\\
+1-3i/10&17/10&i/10&-9/10\\
+-9/10&-i/10&23/10&-1-3i/10\\
+i/10&-9/10&-1+3i/10&23/10
+\end{pmatrix}.
+\]
+The leading principal minors of $G_1-\frac38I$ are
+\[
+ \frac{53}{40},\quad\frac{213}{320},\quad
+ \frac{637}{2560},\quad\frac{213}{20480},
+\]
+all positive.  Sylvester's criterion yields $G_1\succ\frac38I$, and
+Theorem~\ref{thm:approx} therefore forces
+\[
+ \max_i\operatorname{dist}_{\rm ch}(S(\zeta_i)X,Y_i)
+ >\sqrt{\frac{3}{67}}\approx0.2116
+\]
+for every router with at most one state.  Likewise,
+$G_0-I\succ0$ gives the degree-zero barrier $1/\sqrt5\approx0.4472$.
+The degree-two witness above attains zero, producing a certified finite-error
+staircase rather than only an exact degree jump.
 \end{example}
 
 \section{Delay price and reproducibility}
@@ -460,6 +607,8 @@ The explicit completion \eqref{eq:completion} attains the infimum.
 The computational artifact uses exact arithmetic over $\mathbb Q(i)$.  It
 checks the strict witness in Example~\ref{ex:strict}; exact representatives of the
 constant, cross-ratio-compatible, $2+2$, $2+1+1$, and $3+1$ strata;
+the normalized Gram matrices and Sylvester coercivity certificates behind the
+degree-zero and degree-one approximation barriers;
 full-column-rank exclusions below the
 generic threshold; coprime threshold witnesses for every $3\le L\le16$; and
 every nontrivial binary occupancy split through $L=16$ (119 exact cases).
@@ -475,7 +624,10 @@ The theorem assumes distinct frequency nodes, one input line, target lines in
 one common two-plane, free endpoint phases, and square finite rational-inner
 competitors.  Repeated nodes require confluent interpolation.  Fixed frames,
 higher-rank subspaces, lossy or active architectures, and a complete equality
-theory for nonplanar singular arrangements are not claimed.
+theory for nonplanar singular arrangements are not claimed.  The quantitative
+obstruction is a computable lower bound, not a claim of sharpness for the full
+degree--error tradeoff; determining $E_d$ exactly beyond the exhibited strata
+remains open.
 \end{limitation}
 
 \begin{limitation}[Priority scope]
@@ -484,7 +636,8 @@ cross-ratio and fiber classifications, subspace Nevanlinna interpolation,
 Fej\'er--Riesz/paraunitary completion, and matrix all-pass construction predate
 this work.  We claim the passive-memory equality \eqref{eq:main}, obtained by
 combining a standard exact-degree lossless lift with the escape-from-the-plane
-lower bound, and its physical/detector consequences; we do not claim a new
+lower bound, the quantitative low-degree obstruction \eqref{eq:approx}, and
+their physical/detector consequences; we do not claim a new
 general rational interpolation algorithm or priority for the scalar strata.
 \end{limitation}
 
@@ -492,7 +645,7 @@ general rational interpolation algorithm or priority for the scalar strata.
 The tagged release containing the paper, exact producer, frozen validator,
 frozen JSON certificate, and figure is:
 \begin{center}\small
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.0-planar-projective-memory}{GitHub release: \texttt{v3.0-planar-projective-memory}}
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.1-planar-projective-memory}{GitHub release: \texttt{v3.1-planar-projective-memory}}
 \end{center}
 
 \section{Conclusion}
@@ -506,7 +659,11 @@ escape the plane.  The result exposes a generic half-linear memory law in a
 regime where the optimized constant-detector hierarchy reports one, classifies
 the first nontrivial
 cross-ratio strata completely, and identifies the same integer as optimal
-integrated delay divided by $2\pi$.  It also marks the next frontier precisely:
+integrated delay divided by $2\pi$.  More strongly, full-rank interpolation
+matrices impose an explicit nonzero chordal-error floor on every low-state
+lossless router, stable under calibrated perturbations.  The strict four-node
+fixture turns the exact jump into a certified $21\%$ one-state approximation
+barrier.  The analysis also marks the next frontier precisely:
 higher-dimensional singular target varieties motivate detectors that move with
 frequency, rather than merely more constant minors.
 

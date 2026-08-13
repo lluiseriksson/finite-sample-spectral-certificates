@@ -109,6 +109,60 @@ def strict_cross_ratio_fixture() -> dict:
     }
 
 
+def normalized_projective_gram(nodes: list[sp.Expr], targets: list[sp.Expr], d: int) -> sp.Matrix:
+    """Return M_d^* M_d for unit homogeneous target representatives.
+
+    Square roots from normalizing [a:b] cancel in each row outer product, so
+    Gaussian-rational data produce an exact Gaussian-rational Gram matrix.
+    """
+    size = 2 * (d + 1)
+    gram = sp.zeros(size, size)
+    for node, target in zip(nodes, targets, strict=True):
+        if target == sp.oo:
+            a, b = sp.Integer(1), sp.Integer(0)
+        else:
+            a, b = target, sp.Integer(1)
+        row = sp.Matrix([[b * node**j for j in range(d + 1)] + [-a * node**j for j in range(d + 1)]])
+        norm_squared = sp.simplify(sp.conjugate(a) * a + sp.conjugate(b) * b)
+        gram += sp.conjugate(row).T * row / norm_squared
+    return gram.applyfunc(sp.simplify)
+
+
+def quantitative_approximation_fixture() -> dict:
+    """Exact coercivity certificates for the strict four-node fixture."""
+    nodes = [sp.Integer(1), I, sp.Integer(-1), -I]
+    targets = [sp.Integer(0), sp.Integer(1), sp.oo, sp.Integer(2)]
+    certified = []
+    for d, alpha in ((0, sp.Integer(1)), (1, sp.Rational(3, 8))):
+        gram = normalized_projective_gram(nodes, targets, d)
+        shifted = gram - alpha * sp.eye(gram.rows)
+        leading_minors = [sp.factor(shifted[:k, :k].det()) for k in range(1, shifted.rows + 1)]
+        assert all(value > 0 for value in leading_minors)
+        # Sylvester's criterion proves M_d^*M_d > alpha I.  The quantitative
+        # routing theorem then yields epsilon_infty^2 > alpha/(L(d+1)+alpha).
+        error_squared = sp.factor(alpha / (len(nodes) * (d + 1) + alpha))
+        certified.append(
+            {
+                "degree_cap": d,
+                "gram": [[str(value) for value in gram.row(k)] for k in range(gram.rows)],
+                "gram_trace": str(sp.factor(sp.trace(gram))),
+                "gram_determinant": str(sp.factor(gram.det())),
+                "certified_lambda_lower": str(alpha),
+                "shifted_leading_principal_minors": [str(value) for value in leading_minors],
+                "certified_uniform_chordal_error_squared_lower": str(error_squared),
+                "certified_uniform_chordal_error_lower": str(sp.sqrt(error_squared)),
+            }
+        )
+    assert certified[0]["certified_uniform_chordal_error_squared_lower"] == "1/5"
+    assert certified[1]["certified_uniform_chordal_error_squared_lower"] == "3/67"
+    return {
+        "metric": "complex-projective chordal distance",
+        "target_representatives": ["[0:1]", "[1:1]/sqrt(2)", "[1:0]", "[2:1]/sqrt(5)"],
+        "certified_degree_caps": certified,
+        "degree_two_exact_error": "0",
+    }
+
+
 def four_line_fixtures() -> dict:
     nodes = [circle_node(t) for t in (0, 1, 2, 3)]
     x1, x2, x3, x4 = nodes
@@ -218,11 +272,12 @@ def binary_collision_campaign(max_L: int) -> list[dict]:
     return rows
 
 
-def make_figure(rows: list[dict], path: Path) -> None:
+def make_figure(rows: list[dict], approximation: dict, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     xs = [r["L"] for r in rows]
     ds = [r["generic_degree"] for r in rows]
-    fig, ax = plt.subplots(figsize=(6.2, 3.7))
+    fig, axes = plt.subplots(1, 2, figsize=(8.2, 3.25))
+    ax = axes[0]
     ax.step(xs, ds, where="mid", linewidth=2.2, label=r"generic $d_{\min}=\lceil(L-1)/2\rceil$")
     ax.plot(xs, [1] * len(xs), "--", linewidth=2, label="constant-detector bound")
     ax.fill_between(xs, 1, ds, step="mid", alpha=0.16, color="#2563eb")
@@ -231,6 +286,18 @@ def make_figure(rows: list[dict], path: Path) -> None:
     ax.set_xticks(xs[::2] if len(xs) > 8 else xs)
     ax.grid(alpha=0.22)
     ax.legend(frameon=False, loc="upper left")
+    ax = axes[1]
+    error_bounds = [
+        float(sp.sqrt(sp.Rational(item["certified_uniform_chordal_error_squared_lower"])))
+        for item in approximation["certified_degree_caps"]
+    ] + [0.0]
+    ax.bar([0, 1, 2], error_bounds, color=["#7c3aed", "#2563eb", "#94a3b8"], width=0.68)
+    ax.set_xticks([0, 1, 2])
+    ax.set_xlabel("router degree cap $d$")
+    ax.set_ylabel("certified worst-node error")
+    ax.set_title("strict four-node fixture")
+    ax.set_ylim(0, 0.5)
+    ax.grid(axis="y", alpha=0.22)
     fig.tight_layout()
     fig.savefig(path, bbox_inches="tight")
     plt.close(fig)
@@ -244,9 +311,10 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = {
-        "schema": "planar-projective-memory-certificate-v1",
+        "schema": "planar-projective-memory-certificate-v2",
         "arithmetic": "SymPy exact Gaussian-rational arithmetic",
         "strict_cross_ratio_gap": strict_cross_ratio_fixture(),
+        "quantitative_approximation_gap": quantitative_approximation_fixture(),
         "four_line_phase_fixtures": four_line_fixtures(),
         "generic_planar_campaign": generic_planar_campaign(args.max_L),
         "binary_collision_campaign": binary_collision_campaign(args.max_L),
@@ -255,7 +323,7 @@ def main() -> None:
     payload["content_sha256_without_hash_field"] = hashlib.sha256(canonical).hexdigest()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    make_figure(payload["generic_planar_campaign"], args.figure)
+    make_figure(payload["generic_planar_campaign"], payload["quantitative_approximation_gap"], args.figure)
     print(json.dumps({"output": str(args.output), "figure": str(args.figure), "cases": len(payload["generic_planar_campaign"]), "sha256": payload["content_sha256_without_hash_field"]}, sort_keys=True))
 
 
