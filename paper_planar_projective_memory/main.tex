@@ -1,9 +1,9 @@
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=0.92in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{booktabs,array,graphicx,xcolor,xurl,float}
+\usepackage{booktabs,array,graphicx,xcolor,xurl,float,multicol}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={Projective Bottlenecks in Passive Spectral Routing},pdfauthor={Lluis Eriksson},pdfsubject={Exact planar memory, dense low-state limits, and quantitative error barriers}}
+\hypersetup{pdftitle={Projective Bottlenecks in Passive Spectral Routing},pdfauthor={Lluis Eriksson},pdfsubject={Exact and border memory, dense low-state limits, and quantitative error barriers}}
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype,etoolbox}
 \AtBeginEnvironment{thebibliography}{\fontsize{8}{9}\selectfont\setlength{\itemsep}{-2pt}\setlength{\parsep}{0pt}}
@@ -25,7 +25,7 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Projective Bottlenecks in Passive Spectral Routing:\\
-Exact Memory, Dense Low-State Limits, and Quantitative Error Barriers}
+Exact and Border Memory, Dense Low-State Limits, and Error Barriers}
 \author{Lluis Eriksson}
 \date{13 August 2026}
 
@@ -65,15 +65,19 @@ active targets.  For two targets the formula is $E_0=\sin(\alpha/2)$, where
 $\alpha$ is their Fubini--Study angle, and the singular-value obstruction is
 asymptotically sharp as the targets collide.
 
-There is also an exact positive-degree phenomenon.  Put
-$d_0=\lceil(L-1)/2\rceil$.  Although exceptional tables can have
-$\delta>d_0$, every planar table is a limit of tables realized by degree-$d_0$
-lossless routers.  Hence $E_{d_0}=0$ universally, with nonattainment exactly
-when $\delta>d_0$.  Conversely, below $d_0$ an open dense set has a strictly
-positive certified error.  Thus exact realizability and arbitrarily accurate
-passive approximation separate at a sharp state threshold.  In particular,
-a nonconstant three-node $2+1$ collision has exact memory two but $E_1=0$
-without a minimizing one-state router.
+There is also an exact positive-degree phenomenon.  Define the border memory
+$d_\partial=\min\{d:E_d=0\}$ and let $\delta(A)$ be the projective interpolation
+degree of the subtable indexed by $A$.  We prove the base-point deletion law
+\[
+ d_\partial=\min_{B\subseteq\{1,\ldots,L\}}
+                 \bigl(|B|+\delta(B^c)\bigr).
+\]
+Thus every planar table has three rigorously separated regimes: positive error,
+zero but unattained infimum, and exact realization.  For binary occupancies
+$n_0,n_\infty$, border and exact memory are respectively
+$\min(n_0,n_\infty)$ and $\max(n_0,n_\infty)$; their ratio is unbounded.
+Universally, $E_{d_0}=0$ at $d_0=\lceil(L-1)/2\rceil$, whereas below $d_0$ an
+open dense set has positive error.
 
 This reduction reveals two competing mechanisms.  For two target lines with
 occupancies $n_0,n_\infty$, the exact cost is $\max(n_0,n_\infty)$, a fiber
@@ -95,7 +99,7 @@ evidence, and immutable release metadata are linked in the paper.
 \end{abstract}
 
 \noindent\textbf{Keywords:} rational inner matrix; projective interpolation;
-McMillan degree; passive memory; approximate routing; chordal error;
+McMillan degree; passive memory; border memory; approximate routing; chordal error;
 cross-ratio; Fej\'er--Riesz factorization; Wigner--Smith delay.
 
 \section{A singular stratum with hidden memory}
@@ -132,7 +136,7 @@ context \cite{RapisardaWillems1997,BolotnikovDym2006,BharathEtAl2023}.
 Our contribution is not a new scalar interpolation algorithm.  It is the exact
 identification of that scalar projective degree with the physical state count of
 a square passive lossless router, together with a quantitative approximation
-barrier for low-state routers, exact zero-memory and universal-closure laws,
+barrier for low-state routers, exact zero-memory and base-point deletion laws,
 the resulting generic law, unbounded detector gap, and complete four-line
 stratification.
 
@@ -394,7 +398,6 @@ $P_Hu\ne0$, then $v=P_Hu/\norm{P_Hu}$ satisfies, for every $y_i\in H$,
 If $P_Hu=0$, every chordal error is one and any target line is no worse.
 Thus projection and normalization never increase the objective.  If the
 resulting line has Bloch vector $\mathbf r$, then
-then
 \[
  |\langle y,y_i\rangle|^2=\operatorname{tr}(\rho\rho_i)
    =\frac{1+\mathbf r\boldsymbol\cdot\mathbf r_i}{2},
@@ -498,7 +501,7 @@ entry in the last column directly into passive state count.}
 \begin{tabular}{@{}L{0.25\linewidth}L{0.25\linewidth}L{0.36\linewidth}@{}}\toprule
 Target pattern & Exact or generic degree & Governing obstruction\\\midrule
 One target & $0$ & constant projective map\\
-Two targets, occupancies $n_0,n_\infty$ & $\max(n_0,n_\infty)$ & largest fiber\\
+Two targets, occupancies $n_0,n_\infty$ & exact $\max$; border $\min$ & fiber/base-point duality\\
 $L$ distinct, generic & $\lceil(L-1)/2\rceil$ & projective parameter count\\
 Exceptional table at $d_0=\lceil(L-1)/2\rceil$ & $E_{d_0}=0$, possibly unattained & dense exact-routing locus\\
 Four distinct, exceptional & $1$ or $2$ & ordered cross-ratio\\
@@ -559,6 +562,125 @@ kernel contains a coprime pair, and the lower-rank open condition above can be
 intersected with it.  Apply Theorem~\ref{thm:planar} and
 Proposition~\ref{prop:certificate}.  The scalar threshold itself is classical;
 the new conclusion here is its exact conversion to passive state count.
+\end{proof}
+
+\begin{definition}[Border memory]
+For $A\subseteq[L]=\{1,\ldots,L\}$, let $\delta(A)$ denote the exact
+projective interpolation degree of the subtable indexed by $A$, with
+$\delta(\varnothing)=0$.  Define
+\[
+ d_\partial:=\min\{d\ge0:E_d=0\}.
+\]
+Thus $d_\partial$ is the first state count at which exact target tables lie in
+the closure of the degree-bounded passive class; it need not be attained.
+\end{definition}
+
+\begin{theorem}[Exact base-point deletion law]\label{thm:border}
+Every finite planar routing table satisfies
+\begin{equation}\label{eq:border}
+ \boxed{\displaystyle
+ d_\partial=\min_{B\subseteq[L]}
+                  \bigl\{|B|+\delta(B^c)\bigr\}.}
+\end{equation}
+Consequently the complete sign-and-attainment diagram is
+\[
+ \begin{array}{c|c}
+ d<d_\partial&E_d>0,\\
+ d_\partial\le d<\delta&E_d=0\text{ and the infimum is not attained},\\
+ d\ge\delta&E_d=0\text{ and is attained}.
+ \end{array}
+\]
+In particular, the distinction between exact and approximate memory is itself
+an exactly computable projective invariant.
+\end{theorem}
+
+\begin{proof}
+First suppose $E_d=0$.  Choose degree-at-most-$d$ routers $S_n$ whose
+worst-node errors tend to zero, and fix a unit vector spanning $X$.  Project
+$S_nx$ orthogonally to $H$ and use the common-denominator lemma to write its
+two coordinates as a polynomial pair $(p_n,q_n)$ of degree at most $d$, up to
+a scalar denominator.  For all large $n$ this pair is not identically zero,
+because its values at the routing nodes approach nonzero lines in $H$.
+Normalize its coefficient vector and pass to a convergent subsequence.  The
+limit is a nonzero pair $(p,q)$ of degree at most $d$.
+
+Let $B$ be the set of nodes at which $p$ and $q$ both vanish.  Write
+$(p,q)=g(\widetilde p,\widetilde q)$ with the reduced pair coprime, and put
+$b=\deg g$ and $r=\max(\deg\widetilde p,\deg\widetilde q)$.  Distinctness of
+the nodes gives $|B|\le b$, while coefficient convergence and projective
+continuity show that $[\widetilde p:\widetilde q]$ interpolates every target
+outside $B$.  Therefore
+\[
+ |B|+\delta(B^c)\le b+r=\max(\deg p,\deg q)\le d.
+\]
+This proves that the right side of \eqref{eq:border} is no larger than
+$d_\partial$.
+
+Conversely fix $B$, put $b=|B|$, and choose a coprime pair $(p_0,q_0)$ of
+degree $r=\delta(B^c)$ interpolating the complementary subtable.  If $b=0$,
+the exact lift already gives $E_r=0$.  If $b>0$, let
+$g(z)=\prod_{i\in B}(z-\zeta_i)$ and first choose a coprime pair $(a_0,c_0)$
+of degree at most $b-1$ interpolating the data restricted to $B$; ordinary
+polynomial interpolation supplies such a pair.  Put $D=b+r$.  Without
+changing its values on $B$, extend it to a coprime pair $(a,c)$ of exact
+degree $D$.  If $c_0\ne0$, take $c=c_0$ and
+$a=a_0+\lambda gz^r$: only finitely many nonzero values of $\lambda$ can make
+$a$ vanish at a root of $c_0$.  If $c_0=0$, coprimality forces $a_0$ to be a
+nonzero constant, and $(a,c)=(a_0,gz^r)$ works.  Consider
+\[
+ P_t=(1-t)gp_0+ta,\qquad Q_t=(1-t)gq_0+tc.
+\]
+At every node in $B$, $[P_t:Q_t]=[a:c]$ for $t\ne0$; outside $B$ the values
+converge to $[p_0:q_0]$ as $t\to0$.  Coprimality with no common projective
+zero is detected by the homogeneous degree-$D$ resultant.  Since
+$(P_1,Q_1)=(a,c)$ is coprime and has exact degree $D$, this resultant is a
+nonzero polynomial in $t$.  Hence a sequence $t_n\to0$, $t_n\ne0$, can be
+chosen away from its finitely many zeros, with every $(P_{t_n},Q_{t_n})$
+coprime.  Its degree is at most $b+r$.  Applying the exact same-degree
+lossless lift proves $E_{b+r}=0$, and then \eqref{eq:border}.
+
+Finally, $E_d=0$ is monotone in $d$.  Zero is attained exactly when an exact
+router of degree at most $d$ exists, which by \cref{thm:planar} is equivalent
+to $d\ge\delta$.  The three regimes follow.
+\end{proof}
+
+\begin{corollary}[Finite exact certificate for border memory]\label{cor:border-certificate}
+The integer $d_\partial$ is decidable by finite exact linear algebra and
+polynomial gcd tests.  Explicitly, for each $A\subseteq[L]$, compute
+$\delta(A)$ from the first interpolation matrix $M_d(A)$ whose kernel contains
+a coprime pair, and minimize $L-|A|+\delta(A)$.  A minimizing subset and its
+coprime kernel pair certify the upper bound; the rank/subresultant exclusions
+for all smaller subset costs certify the lower bound.
+\end{corollary}
+
+\begin{proof}
+Proposition~\ref{prop:certificate} computes every $\delta(A)$ using
+$0\le d\le |A|-1$, and \cref{thm:border} gives the stated minimum.  All tests
+are exact over the coefficient field of the data.
+\end{proof}
+
+\begin{corollary}[Complete binary approximation phase diagram]\label{cor:binary-border}
+For two target lines with positive occupancies $n_0,n_\infty$,
+\begin{equation}\label{eq:binary-border}
+ d_\partial=\min(n_0,n_\infty),\qquad
+ d_{\min}=\max(n_0,n_\infty).
+\end{equation}
+Thus $E_d>0$ below the smaller occupancy, $E_d=0$ but is unattained between
+the two occupancies, and exact routing begins at the larger occupancy.  For a
+$1+(L-1)$ split the exact-to-border memory ratio is $L-1$ and is unbounded.
+\end{corollary}
+
+\begin{proof}
+Deleting all nodes carrying the less frequent target leaves a constant
+subtable, so \cref{thm:border} gives the upper bound
+$d_\partial\le\min(n_0,n_\infty)$.  For the reverse bound, fix $B$ in
+\eqref{eq:border}.  If the reduced interpolant on $B^c$ is constant, $B$ must
+contain every occurrence of the other target and therefore $|B|$ is at least
+the smaller occupancy.  If it is nonconstant of degree $r$, each of its two
+fibers has at most $r$ remaining nodes.  Adding the deleted nodes shows
+$|B|+r\ge\max(n_0,n_\infty)$, hence certainly at least the smaller occupancy.
+Minimizing over $B$ proves the first identity; the second is
+\cref{thm:binary}, and the phase statement follows from \cref{thm:border}.
 \end{proof}
 
 \begin{theorem}[Sharp universal closure threshold]\label{thm:closure}
@@ -649,8 +771,9 @@ factor on this single fixed-rank stratum.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\linewidth]{figures/unbounded_detector_gap.pdf}
-\caption{Left: generic exact memory versus the constant-detector lower bound;
-the multiplicative ratio is unbounded.  Right: exact certified worst-node
+\caption{Left: generic exact/border memory and the binary $1+(L-1)$ split,
+whose exact memory is $L-1$ while its border memory remains one; the shaded
+exact-to-border gap is unbounded.  Right: exact certified worst-node
 chordal-error barriers for the strict four-node fixture.  Degree two attains
 zero error, whereas degrees zero and one remain quantitatively separated.}
 \label{fig:gap}
@@ -794,6 +917,9 @@ $\varepsilon$;
 full-column-rank exclusions below the
 generic threshold; coprime threshold witnesses for every $3\le L\le16$; and
 every nontrivial binary occupancy split through $L=16$ (119 exact cases).
+For every $3\le L\le16$ it additionally checks the complete binary
+positive-error/nonattainment/exact phase partition and an explicit degree-one
+degeneration of the $1+(L-1)$ family, whose exact-to-border ratio is $L-1$.
 The frozen validator recomputes the content hash and checks declared coverage,
 phase degrees, ranks, and bounds.  In CI the producer is replayed from scratch
 and its byte-identical JSON is compared with the frozen record; this replay is
@@ -809,19 +935,23 @@ higher-rank subspaces, lossy or active architectures, and a complete equality
 theory for nonplanar singular arrangements are not claimed.  The quantitative
 obstruction is a computable lower bound, while \cref{thm:zero-memory} solves the
 full minimax problem at degree zero and \cref{thm:closure} solves the universal
-zero-infimum regime $d\ge\lceil(L-1)/2\rceil$.  Determining positive values of
-$E_d$ for $1\le d<\min\{\delta,\lceil(L-1)/2\rceil\}$ remains open.
+zero-infimum regime $d\ge\lceil(L-1)/2\rceil$.  More generally,
+\cref{thm:border} determines exactly whether $E_d$ is positive, zero but
+unattained, or attained for every planar table.  Determining the numerical
+positive values of $E_d$ for $1\le d<d_\partial$ remains open.
 \end{limitation}
 
 \begin{limitation}[Priority scope]
 Scalar minimal rational interpolation, the generic half-degree threshold,
 cross-ratio and fiber classifications, subspace Nevanlinna interpolation,
 Fej\'er--Riesz/paraunitary completion, and matrix all-pass construction predate
-this work.  We claim the passive-memory equality \eqref{eq:main}, obtained by
+this work; common-factor/base-point degeneration is likewise a standard
+algebraic mechanism.  We claim the passive-memory equality \eqref{eq:main}, obtained by
 combining a standard exact-degree lossless lift with the escape-from-the-plane
 lower bound, the quantitative low-degree obstruction \eqref{eq:approx}, and
 the exact zero-memory consequence \eqref{eq:zero-memory}, together with their
-physical/detector consequences, and the sharp closure/nonattainment theorem
+physical/detector consequences, the exact base-point deletion law
+\eqref{eq:border}, and the sharp universal closure theorem
 \eqref{eq:closure}.  Bloch-sphere cap geometry itself is standard;
 we do not claim a new
 general rational interpolation algorithm or priority for the scalar strata.
@@ -831,7 +961,7 @@ general rational interpolation algorithm or priority for the scalar strata.
 The tagged release containing the paper, exact producer, frozen validator,
 frozen JSON certificate, and figure is:
 \begin{center}\small
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.3-planar-projective-memory}{GitHub release: \texttt{v3.3-planar-projective-memory}}
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.4-planar-projective-memory}{GitHub release: \texttt{v3.4-planar-projective-memory}}
 \end{center}
 
 \section{Conclusion}
@@ -854,12 +984,20 @@ smallest Bloch-sphere cap, and the singular-value bound has the correct sharp
 collision asymptotics for two targets.  At the positive threshold
 $d_0=\lceil(L-1)/2\rceil$, every planar table has zero minimax infimum, even
 when exact interpolation needs more states; below that threshold generic data
-retain a positive error floor.  This sharp closure transition separates
-approximation from exact realization and gives an explicit nonattained
-one-state optimum for three-node collisions.  The analysis also marks the next frontier precisely:
+retain a positive error floor.  More generally, the base-point deletion
+formula computes the first zero-error boundary for every planar table and
+thereby classifies all three regimes exactly.  Its binary specialization gives
+border memory $\min(n_0,n_\infty)$ against exact memory
+$\max(n_0,n_\infty)$, so approximation can save an unbounded factor of states.
+This sharp transition separates approximation from exact realization and gives
+explicit nonattained low-state optima in arbitrarily large tables.  The
+analysis also marks the next frontier precisely:
 higher-dimensional singular target varieties motivate detectors that move with
 frequency, rather than merely more constant minors.
 
+\clearpage
+\begin{multicols}{2}
 \bibliographystyle{unsrt}
 \bibliography{references}
+\end{multicols}
 \end{document}

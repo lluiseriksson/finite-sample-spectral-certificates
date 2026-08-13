@@ -1,5 +1,14 @@
 {
   "arithmetic": "SymPy exact Gaussian-rational arithmetic",
+  "base_point_deletion_law": {
+    "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
+    "border_memory": "min over B subset [L] of |B| + delta(B^c)",
+    "three_regimes": [
+      "positive error",
+      "zero unattained infimum",
+      "exact realization"
+    ]
+  },
   "binary_collision_campaign": [
     {
       "L": 3,
@@ -15,10 +24,18 @@
           "-3/5 + 4*I/5"
         ]
       },
+      "exact_zero_error_from_degree": 2,
+      "expected_border_degree": 1,
       "expected_degree": 2,
       "occupancies": [
         1,
         2
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1
       ]
     },
     {
@@ -35,9 +52,17 @@
           "-3/5 + 4*I/5"
         ]
       },
+      "exact_zero_error_from_degree": 2,
+      "expected_border_degree": 1,
       "expected_degree": 2,
       "occupancies": [
         2,
+        1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
         1
       ]
     },
@@ -56,10 +81,19 @@
           "-4/5 + 3*I/5"
         ]
       },
+      "exact_zero_error_from_degree": 3,
+      "expected_border_degree": 1,
       "expected_degree": 3,
       "occupancies": [
         1,
         3
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2
       ]
     },
     {
@@ -77,11 +111,18 @@
           "-4/5 + 3*I/5"
         ]
       },
+      "exact_zero_error_from_degree": 2,
+      "expected_border_degree": 2,
       "expected_degree": 2,
       "occupancies": [
         2,
         2
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 4,
@@ -98,10 +139,19 @@
           "-4/5 + 3*I/5"
         ]
       },
+      "exact_zero_error_from_degree": 3,
+      "expected_border_degree": 1,
       "expected_degree": 3,
       "occupancies": [
         3,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2
       ]
     },
     {
@@ -120,10 +170,20 @@
           "-15/17 + 8*I/17"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 1,
       "expected_degree": 4,
       "occupancies": [
         1,
         4
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3
       ]
     },
     {
@@ -142,10 +202,19 @@
           "-15/17 + 8*I/17"
         ]
       },
+      "exact_zero_error_from_degree": 3,
+      "expected_border_degree": 2,
       "expected_degree": 3,
       "occupancies": [
         2,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2
       ]
     },
     {
@@ -164,9 +233,18 @@
           "-15/17 + 8*I/17"
         ]
       },
+      "exact_zero_error_from_degree": 3,
+      "expected_border_degree": 2,
       "expected_degree": 3,
       "occupancies": [
         3,
+        2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
         2
       ]
     },
@@ -186,10 +264,20 @@
           "-15/17 + 8*I/17"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 1,
       "expected_degree": 4,
       "occupancies": [
         4,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3
       ]
     },
     {
@@ -209,10 +297,21 @@
           "-12/13 + 5*I/13"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 1,
       "expected_degree": 5,
       "occupancies": [
         1,
         5
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4
       ]
     },
     {
@@ -232,10 +331,20 @@
           "-12/13 + 5*I/13"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 2,
       "expected_degree": 4,
       "occupancies": [
         2,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3
       ]
     },
     {
@@ -255,11 +364,19 @@
           "-12/13 + 5*I/13"
         ]
       },
+      "exact_zero_error_from_degree": 3,
+      "expected_border_degree": 3,
       "expected_degree": 3,
       "occupancies": [
         3,
         3
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 6,
@@ -278,10 +395,20 @@
           "-12/13 + 5*I/13"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 2,
       "expected_degree": 4,
       "occupancies": [
         4,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3
       ]
     },
     {
@@ -301,10 +428,21 @@
           "-12/13 + 5*I/13"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 1,
       "expected_degree": 5,
       "occupancies": [
         5,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4
       ]
     },
     {
@@ -325,10 +463,22 @@
           "-35/37 + 12*I/37"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 1,
       "expected_degree": 6,
       "occupancies": [
         1,
         6
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5
       ]
     },
     {
@@ -349,10 +499,21 @@
           "-35/37 + 12*I/37"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 2,
       "expected_degree": 5,
       "occupancies": [
         2,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4
       ]
     },
     {
@@ -373,10 +534,20 @@
           "-35/37 + 12*I/37"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 3,
       "expected_degree": 4,
       "occupancies": [
         3,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3
       ]
     },
     {
@@ -397,9 +568,19 @@
           "-35/37 + 12*I/37"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 3,
       "expected_degree": 4,
       "occupancies": [
         4,
+        3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
         3
       ]
     },
@@ -421,10 +602,21 @@
           "-35/37 + 12*I/37"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 2,
       "expected_degree": 5,
       "occupancies": [
         5,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4
       ]
     },
     {
@@ -445,10 +637,22 @@
           "-35/37 + 12*I/37"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 1,
       "expected_degree": 6,
       "occupancies": [
         6,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5
       ]
     },
     {
@@ -470,10 +674,23 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 1,
       "expected_degree": 7,
       "occupancies": [
         1,
         7
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -495,10 +712,22 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 2,
       "expected_degree": 6,
       "occupancies": [
         2,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5
       ]
     },
     {
@@ -520,10 +749,21 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 3,
       "expected_degree": 5,
       "occupancies": [
         3,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4
       ]
     },
     {
@@ -545,11 +785,20 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 4,
+      "expected_border_degree": 4,
       "expected_degree": 4,
       "occupancies": [
         4,
         4
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 8,
@@ -570,10 +819,21 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 3,
       "expected_degree": 5,
       "occupancies": [
         5,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4
       ]
     },
     {
@@ -595,10 +855,22 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 2,
       "expected_degree": 6,
       "occupancies": [
         6,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5
       ]
     },
     {
@@ -620,10 +892,23 @@
           "-24/25 + 7*I/25"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 1,
       "expected_degree": 7,
       "occupancies": [
         7,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -646,10 +931,24 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 1,
       "expected_degree": 8,
       "occupancies": [
         1,
         8
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -672,10 +971,23 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 2,
       "expected_degree": 7,
       "occupancies": [
         2,
         7
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -698,10 +1010,22 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 3,
       "expected_degree": 6,
       "occupancies": [
         3,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5
       ]
     },
     {
@@ -724,10 +1048,21 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 4,
       "expected_degree": 5,
       "occupancies": [
         4,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4
       ]
     },
     {
@@ -750,9 +1085,20 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 4,
       "expected_degree": 5,
       "occupancies": [
         5,
+        4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
         4
       ]
     },
@@ -776,10 +1122,22 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 3,
       "expected_degree": 6,
       "occupancies": [
         6,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5
       ]
     },
     {
@@ -802,10 +1160,23 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 2,
       "expected_degree": 7,
       "occupancies": [
         7,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -828,10 +1199,24 @@
           "-63/65 + 16*I/65"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 1,
       "expected_degree": 8,
       "occupancies": [
         8,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -855,10 +1240,25 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 1,
       "expected_degree": 9,
       "occupancies": [
         1,
         9
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -882,10 +1282,24 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 2,
       "expected_degree": 8,
       "occupancies": [
         2,
         8
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -909,10 +1323,23 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 3,
       "expected_degree": 7,
       "occupancies": [
         3,
         7
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -936,10 +1363,22 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 4,
       "expected_degree": 6,
       "occupancies": [
         4,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5
       ]
     },
     {
@@ -963,11 +1402,21 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 5,
+      "expected_border_degree": 5,
       "expected_degree": 5,
       "occupancies": [
         5,
         5
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 10,
@@ -990,10 +1439,22 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 4,
       "expected_degree": 6,
       "occupancies": [
         6,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5
       ]
     },
     {
@@ -1017,10 +1478,23 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 3,
       "expected_degree": 7,
       "occupancies": [
         7,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -1044,10 +1518,24 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 2,
       "expected_degree": 8,
       "occupancies": [
         8,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1071,10 +1559,25 @@
           "-40/41 + 9*I/41"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 1,
       "expected_degree": 9,
       "occupancies": [
         9,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1099,10 +1602,26 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 1,
       "expected_degree": 10,
       "occupancies": [
         1,
         10
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -1127,10 +1646,25 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 2,
       "expected_degree": 9,
       "occupancies": [
         2,
         9
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1155,10 +1689,24 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 3,
       "expected_degree": 8,
       "occupancies": [
         3,
         8
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1183,10 +1731,23 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 4,
       "expected_degree": 7,
       "occupancies": [
         4,
         7
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6
       ]
     },
     {
@@ -1211,10 +1772,22 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 5,
       "expected_degree": 6,
       "occupancies": [
         5,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5
       ]
     },
     {
@@ -1239,9 +1812,21 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 5,
       "expected_degree": 6,
       "occupancies": [
         6,
+        5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
         5
       ]
     },
@@ -1267,10 +1852,23 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 4,
       "expected_degree": 7,
       "occupancies": [
         7,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6
       ]
     },
     {
@@ -1295,10 +1893,24 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 3,
       "expected_degree": 8,
       "occupancies": [
         8,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1323,10 +1935,25 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 2,
       "expected_degree": 9,
       "occupancies": [
         9,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1351,10 +1978,26 @@
           "-99/101 + 20*I/101"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 1,
       "expected_degree": 10,
       "occupancies": [
         10,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -1380,10 +2023,27 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 1,
       "expected_degree": 11,
       "occupancies": [
         1,
         11
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -1409,10 +2069,26 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 2,
       "expected_degree": 10,
       "occupancies": [
         2,
         10
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -1438,10 +2114,25 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 3,
       "expected_degree": 9,
       "occupancies": [
         3,
         9
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1467,10 +2158,24 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 4,
       "expected_degree": 8,
       "occupancies": [
         4,
         8
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1496,10 +2201,23 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 5,
       "expected_degree": 7,
       "occupancies": [
         5,
         7
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6
       ]
     },
     {
@@ -1525,11 +2243,22 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 6,
+      "expected_border_degree": 6,
       "expected_degree": 6,
       "occupancies": [
         6,
         6
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 12,
@@ -1554,10 +2283,23 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 5,
       "expected_degree": 7,
       "occupancies": [
         7,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6
       ]
     },
     {
@@ -1583,10 +2325,24 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 4,
       "expected_degree": 8,
       "occupancies": [
         8,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1612,10 +2368,25 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 3,
       "expected_degree": 9,
       "occupancies": [
         9,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1641,10 +2412,26 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 2,
       "expected_degree": 10,
       "occupancies": [
         10,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -1670,10 +2457,27 @@
           "-60/61 + 11*I/61"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 1,
       "expected_degree": 11,
       "occupancies": [
         11,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -1700,10 +2504,28 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 1,
       "expected_degree": 12,
       "occupancies": [
         1,
         12
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -1730,10 +2552,27 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 2,
       "expected_degree": 11,
       "occupancies": [
         2,
         11
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -1760,10 +2599,26 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 3,
       "expected_degree": 10,
       "occupancies": [
         3,
         10
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -1790,10 +2645,25 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 4,
       "expected_degree": 9,
       "occupancies": [
         4,
         9
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1820,10 +2690,24 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 5,
       "expected_degree": 8,
       "occupancies": [
         5,
         8
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1850,10 +2734,23 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 6,
       "expected_degree": 7,
       "occupancies": [
         6,
         7
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6
       ]
     },
     {
@@ -1880,9 +2777,22 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 6,
       "expected_degree": 7,
       "occupancies": [
         7,
+        6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
         6
       ]
     },
@@ -1910,10 +2820,24 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 5,
       "expected_degree": 8,
       "occupancies": [
         8,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7
       ]
     },
     {
@@ -1940,10 +2864,25 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 4,
       "expected_degree": 9,
       "occupancies": [
         9,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -1970,10 +2909,26 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 3,
       "expected_degree": 10,
       "occupancies": [
         10,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -2000,10 +2955,27 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 2,
       "expected_degree": 11,
       "occupancies": [
         11,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -2030,10 +3002,28 @@
           "-143/145 + 24*I/145"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 1,
       "expected_degree": 12,
       "occupancies": [
         12,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -2061,10 +3051,29 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 13,
+      "expected_border_degree": 1,
       "expected_degree": 13,
       "occupancies": [
         1,
         13
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     {
@@ -2092,10 +3101,28 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 2,
       "expected_degree": 12,
       "occupancies": [
         2,
         12
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -2123,10 +3150,27 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 3,
       "expected_degree": 11,
       "occupancies": [
         3,
         11
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -2154,10 +3198,26 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 4,
       "expected_degree": 10,
       "occupancies": [
         4,
         10
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -2185,10 +3245,25 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 5,
       "expected_degree": 9,
       "occupancies": [
         5,
         9
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -2216,10 +3291,24 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 6,
       "expected_degree": 8,
       "occupancies": [
         6,
         8
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6,
+        7
       ]
     },
     {
@@ -2247,11 +3336,23 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 7,
+      "expected_border_degree": 7,
       "expected_degree": 7,
       "occupancies": [
         7,
         7
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 14,
@@ -2278,10 +3379,24 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 6,
       "expected_degree": 8,
       "occupancies": [
         8,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6,
+        7
       ]
     },
     {
@@ -2309,10 +3424,25 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 5,
       "expected_degree": 9,
       "occupancies": [
         9,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7,
+        8
       ]
     },
     {
@@ -2340,10 +3470,26 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 4,
       "expected_degree": 10,
       "occupancies": [
         10,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -2371,10 +3517,27 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 3,
       "expected_degree": 11,
       "occupancies": [
         11,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -2402,10 +3565,28 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 2,
       "expected_degree": 12,
       "occupancies": [
         12,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -2433,10 +3614,29 @@
           "-84/85 + 13*I/85"
         ]
       },
+      "exact_zero_error_from_degree": 13,
+      "expected_border_degree": 1,
       "expected_degree": 13,
       "occupancies": [
         13,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     {
@@ -2465,10 +3665,30 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 14,
+      "expected_border_degree": 1,
       "expected_degree": 14,
       "occupancies": [
         1,
         14
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
       ]
     },
     {
@@ -2497,10 +3717,29 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 13,
+      "expected_border_degree": 2,
       "expected_degree": 13,
       "occupancies": [
         2,
         13
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     {
@@ -2529,10 +3768,28 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 3,
       "expected_degree": 12,
       "occupancies": [
         3,
         12
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -2561,10 +3818,27 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 4,
       "expected_degree": 11,
       "occupancies": [
         4,
         11
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -2593,10 +3867,26 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 5,
       "expected_degree": 10,
       "occupancies": [
         5,
         10
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -2625,10 +3915,25 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 6,
       "expected_degree": 9,
       "occupancies": [
         6,
         9
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6,
+        7,
+        8
       ]
     },
     {
@@ -2657,10 +3962,24 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 7,
       "expected_degree": 8,
       "occupancies": [
         7,
         8
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero_unattained_degrees": [
+        7
       ]
     },
     {
@@ -2689,9 +4008,23 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 7,
       "expected_degree": 8,
       "occupancies": [
         8,
+        7
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero_unattained_degrees": [
         7
       ]
     },
@@ -2721,10 +4054,25 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 6,
       "expected_degree": 9,
       "occupancies": [
         9,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6,
+        7,
+        8
       ]
     },
     {
@@ -2753,10 +4101,26 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 5,
       "expected_degree": 10,
       "occupancies": [
         10,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -2785,10 +4149,27 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 4,
       "expected_degree": 11,
       "occupancies": [
         11,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -2817,10 +4198,28 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 3,
       "expected_degree": 12,
       "occupancies": [
         12,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -2849,10 +4248,29 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 13,
+      "expected_border_degree": 2,
       "expected_degree": 13,
       "occupancies": [
         13,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     {
@@ -2881,10 +4299,30 @@
           "-195/197 + 28*I/197"
         ]
       },
+      "exact_zero_error_from_degree": 14,
+      "expected_border_degree": 1,
       "expected_degree": 14,
       "occupancies": [
         14,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
       ]
     },
     {
@@ -2914,10 +4352,31 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 15,
+      "expected_border_degree": 1,
       "expected_degree": 15,
       "occupancies": [
         1,
         15
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
       ]
     },
     {
@@ -2947,10 +4406,30 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 14,
+      "expected_border_degree": 2,
       "expected_degree": 14,
       "occupancies": [
         2,
         14
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
       ]
     },
     {
@@ -2980,10 +4459,29 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 13,
+      "expected_border_degree": 3,
       "expected_degree": 13,
       "occupancies": [
         3,
         13
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     {
@@ -3013,10 +4511,28 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 4,
       "expected_degree": 12,
       "occupancies": [
         4,
         12
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -3046,10 +4562,27 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 5,
       "expected_degree": 11,
       "occupancies": [
         5,
         11
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -3079,10 +4612,26 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 6,
       "expected_degree": 10,
       "occupancies": [
         6,
         10
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -3112,10 +4661,25 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 7,
       "expected_degree": 9,
       "occupancies": [
         7,
         9
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero_unattained_degrees": [
+        7,
+        8
       ]
     },
     {
@@ -3145,11 +4709,24 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 8,
+      "expected_border_degree": 8,
       "expected_degree": 8,
       "occupancies": [
         8,
         8
-      ]
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "zero_unattained_degrees": []
     },
     {
       "L": 16,
@@ -3178,10 +4755,25 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 9,
+      "expected_border_degree": 7,
       "expected_degree": 9,
       "occupancies": [
         9,
         7
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "zero_unattained_degrees": [
+        7,
+        8
       ]
     },
     {
@@ -3211,10 +4803,26 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 10,
+      "expected_border_degree": 6,
       "expected_degree": 10,
       "occupancies": [
         10,
         6
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "zero_unattained_degrees": [
+        6,
+        7,
+        8,
+        9
       ]
     },
     {
@@ -3244,10 +4852,27 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 11,
+      "expected_border_degree": 5,
       "expected_degree": 11,
       "occupancies": [
         11,
         5
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "zero_unattained_degrees": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -3277,10 +4902,28 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 12,
+      "expected_border_degree": 4,
       "expected_degree": 12,
       "occupancies": [
         12,
         4
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_unattained_degrees": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
@@ -3310,10 +4953,29 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 13,
+      "expected_border_degree": 3,
       "expected_degree": 13,
       "occupancies": [
         13,
         3
+      ],
+      "positive_error_degrees": [
+        0,
+        1,
+        2
+      ],
+      "zero_unattained_degrees": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     {
@@ -3343,10 +5005,30 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 14,
+      "expected_border_degree": 2,
       "expected_degree": 14,
       "occupancies": [
         14,
         2
+      ],
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "zero_unattained_degrees": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
       ]
     },
     {
@@ -3376,14 +5058,35 @@
           "-112/113 + 15*I/113"
         ]
       },
+      "exact_zero_error_from_degree": 15,
+      "expected_border_degree": 1,
       "expected_degree": 15,
       "occupancies": [
         15,
         1
+      ],
+      "positive_error_degrees": [
+        0
+      ],
+      "zero_unattained_degrees": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
       ]
     }
   ],
-  "content_sha256_without_hash_field": "82b23fbe1a13048949d3f43c26783cf2d6759cc3eeba59b5f95e2cbe48bdd29f",
+  "content_sha256_without_hash_field": "99630fc9ec045848e6728156bc69d8d41beb4a43cf0925840eeb9e1fc168ec24",
   "exact_zero_memory_family": {
     "asymptotic_ratio": "lim_(t->0+) B_0/E_0=1",
     "exact_law": "E_0^2=t^2/(1+t^2)",
@@ -3438,8 +5141,14 @@
           "1"
         ]
       },
+      "expected_border_degree": 2,
       "expected_degree": 2,
-      "reason": "explicit normalized quadratic witness"
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "reason": "explicit normalized quadratic witness",
+      "zero_unattained_degrees": []
     },
     "2+2": {
       "certificate": {
@@ -3455,8 +5164,14 @@
           "oo"
         ]
       },
+      "expected_border_degree": 2,
       "expected_degree": 2,
-      "reason": "two double fibers"
+      "positive_error_degrees": [
+        0,
+        1
+      ],
+      "reason": "two double fibers",
+      "zero_unattained_degrees": []
     },
     "3+1": {
       "certificate": {
@@ -3472,8 +5187,16 @@
           "oo"
         ]
       },
+      "expected_border_degree": 1,
       "expected_degree": 3,
-      "reason": "a nonconstant degree-d fiber has at most d distinct preimages"
+      "positive_error_degrees": [
+        0
+      ],
+      "reason": "a nonconstant degree-d fiber has at most d distinct preimages",
+      "zero_unattained_degrees": [
+        1,
+        2
+      ]
     },
     "all_distinct_compatible": {
       "certificate": {
@@ -3489,8 +5212,13 @@
           "-4/5 + 3*I/5"
         ]
       },
+      "expected_border_degree": 1,
       "expected_degree": 1,
-      "reason": "ordered cross-ratios agree"
+      "positive_error_degrees": [
+        0
+      ],
+      "reason": "ordered cross-ratios agree",
+      "zero_unattained_degrees": []
     },
     "all_same": {
       "certificate": {
@@ -3506,8 +5234,11 @@
           "0"
         ]
       },
+      "expected_border_degree": 0,
       "expected_degree": 0,
-      "reason": "constant projective map"
+      "positive_error_degrees": [],
+      "reason": "constant projective map",
+      "zero_unattained_degrees": []
     }
   },
   "generic_planar_campaign": [
@@ -3708,6 +5439,428 @@
       "witness_role": "nonempty rank-and-coprimality open set; target-distinctness is intersected as a separate nonempty Zariski open condition"
     }
   ],
+  "one_vs_rest_border_gap_campaign": [
+    {
+      "L": 3,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 3/10 - 2*I/5",
+          "worst_node_chordal_error_squared": "(3 - I)*(3 + I)/14"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 27/50 - 18*I/25",
+          "worst_node_chordal_error_squared": "(3 - I)*(3 + I)/334"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 297/500 - 99*I/125",
+          "worst_node_chordal_error_squared": "(3 - I)*(3 + I)/39214"
+        }
+      ],
+      "exact_degree": 2,
+      "exact_to_border_ratio": 2,
+      "occupancies": [
+        2,
+        1
+      ]
+    },
+    {
+      "L": 4,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 2/5 - 3*I/10",
+          "worst_node_chordal_error_squared": "(1 - I)*(25 + 25*I)/54"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 18/25 - 27*I/50",
+          "worst_node_chordal_error_squared": "(1 - I)*(25 + 25*I)/374"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 99/125 - 297*I/500",
+          "worst_node_chordal_error_squared": "(1 - I)*(25 + 25*I)/39254"
+        }
+      ],
+      "exact_degree": 3,
+      "exact_to_border_ratio": 3,
+      "occupancies": [
+        3,
+        1
+      ]
+    },
+    {
+      "L": 5,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 15/34 - 4*I/17",
+          "worst_node_chordal_error_squared": "(7 - 11*I)*(7 + 11*I)/174"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 27/34 - 36*I/85",
+          "worst_node_chordal_error_squared": "(7 - 11*I)*(7 + 11*I)/494"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 297/340 - 198*I/425",
+          "worst_node_chordal_error_squared": "(7 - 11*I)*(7 + 11*I)/39374"
+        }
+      ],
+      "exact_degree": 4,
+      "exact_to_border_ratio": 4,
+      "occupancies": [
+        4,
+        1
+      ]
+    },
+    {
+      "L": 6,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 6/13 - 5*I/26",
+          "worst_node_chordal_error_squared": "(9 - 19*I)*(9 + 19*I)/446"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 54/65 - 9*I/26",
+          "worst_node_chordal_error_squared": "(9 - 19*I)*(9 + 19*I)/766"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 297/325 - 99*I/260",
+          "worst_node_chordal_error_squared": "(9 - 19*I)*(9 + 19*I)/39646"
+        }
+      ],
+      "exact_degree": 5,
+      "exact_to_border_ratio": 5,
+      "occupancies": [
+        5,
+        1
+      ]
+    },
+    {
+      "L": 7,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 35/74 - 6*I/37",
+          "worst_node_chordal_error_squared": "(11 - 29*I)*(11 + 29*I)/966"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 63/74 - 54*I/185",
+          "worst_node_chordal_error_squared": "(11 - 29*I)*(11 + 29*I)/1286"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 693/740 - 297*I/925",
+          "worst_node_chordal_error_squared": "(11 - 29*I)*(11 + 29*I)/40166"
+        }
+      ],
+      "exact_degree": 6,
+      "exact_to_border_ratio": 6,
+      "occupancies": [
+        6,
+        1
+      ]
+    },
+    {
+      "L": 8,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 12/25 - 7*I/50",
+          "worst_node_chordal_error_squared": "(13 - 41*I)*(13 + 41*I)/1854"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 108/125 - 63*I/250",
+          "worst_node_chordal_error_squared": "(13 - 41*I)*(13 + 41*I)/2174"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 594/625 - 693*I/2500",
+          "worst_node_chordal_error_squared": "(13 - 41*I)*(13 + 41*I)/41054"
+        }
+      ],
+      "exact_degree": 7,
+      "exact_to_border_ratio": 7,
+      "occupancies": [
+        7,
+        1
+      ]
+    },
+    {
+      "L": 9,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 63/130 - 8*I/65",
+          "worst_node_chordal_error_squared": "(3 + 11*I)*(75 - 275*I)/3254"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 567/650 - 72*I/325",
+          "worst_node_chordal_error_squared": "(3 + 11*I)*(75 - 275*I)/3574"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 6237/6500 - 396*I/1625",
+          "worst_node_chordal_error_squared": "(3 + 11*I)*(75 - 275*I)/42454"
+        }
+      ],
+      "exact_degree": 8,
+      "exact_to_border_ratio": 8,
+      "occupancies": [
+        8,
+        1
+      ]
+    },
+    {
+      "L": 10,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 20/41 - 9*I/82",
+          "worst_node_chordal_error_squared": "(17 - 71*I)*(17 + 71*I)/5334"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 36/41 - 81*I/410",
+          "worst_node_chordal_error_squared": "(17 - 71*I)*(17 + 71*I)/5654"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 198/205 - 891*I/4100",
+          "worst_node_chordal_error_squared": "(17 - 71*I)*(17 + 71*I)/44534"
+        }
+      ],
+      "exact_degree": 9,
+      "exact_to_border_ratio": 9,
+      "occupancies": [
+        9,
+        1
+      ]
+    },
+    {
+      "L": 11,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 99/202 - 10*I/101",
+          "worst_node_chordal_error_squared": "(19 - 89*I)*(19 + 89*I)/8286"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 891/1010 - 18*I/101",
+          "worst_node_chordal_error_squared": "(19 - 89*I)*(19 + 89*I)/8606"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 9801/10100 - 99*I/505",
+          "worst_node_chordal_error_squared": "(19 - 89*I)*(19 + 89*I)/47486"
+        }
+      ],
+      "exact_degree": 10,
+      "exact_to_border_ratio": 10,
+      "occupancies": [
+        10,
+        1
+      ]
+    },
+    {
+      "L": 12,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 30/61 - 11*I/122",
+          "worst_node_chordal_error_squared": "(21 - 109*I)*(21 + 109*I)/12326"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 54/61 - 99*I/610",
+          "worst_node_chordal_error_squared": "(21 - 109*I)*(21 + 109*I)/12646"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 297/305 - 1089*I/6100",
+          "worst_node_chordal_error_squared": "(21 - 109*I)*(21 + 109*I)/51526"
+        }
+      ],
+      "exact_degree": 11,
+      "exact_to_border_ratio": 11,
+      "occupancies": [
+        11,
+        1
+      ]
+    },
+    {
+      "L": 13,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 143/290 - 12*I/145",
+          "worst_node_chordal_error_squared": "(23 - 131*I)*(23 + 131*I)/17694"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 1287/1450 - 108*I/725",
+          "worst_node_chordal_error_squared": "(23 - 131*I)*(23 + 131*I)/18014"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 14157/14500 - 594*I/3625",
+          "worst_node_chordal_error_squared": "(23 - 131*I)*(23 + 131*I)/56894"
+        }
+      ],
+      "exact_degree": 12,
+      "exact_to_border_ratio": 12,
+      "occupancies": [
+        12,
+        1
+      ]
+    },
+    {
+      "L": 14,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 42/85 - 13*I/170",
+          "worst_node_chordal_error_squared": "(5 + 31*I)*(125 - 775*I)/24654"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 378/425 - 117*I/850",
+          "worst_node_chordal_error_squared": "(5 + 31*I)*(125 - 775*I)/24974"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 2079/2125 - 1287*I/8500",
+          "worst_node_chordal_error_squared": "(5 + 31*I)*(125 - 775*I)/63854"
+        }
+      ],
+      "exact_degree": 13,
+      "exact_to_border_ratio": 13,
+      "occupancies": [
+        13,
+        1
+      ]
+    },
+    {
+      "L": 15,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 195/394 - 14*I/197",
+          "worst_node_chordal_error_squared": "(27 - 181*I)*(27 + 181*I)/33494"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 351/394 - 126*I/985",
+          "worst_node_chordal_error_squared": "(27 - 181*I)*(27 + 181*I)/33814"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 3861/3940 - 693*I/4925",
+          "worst_node_chordal_error_squared": "(27 - 181*I)*(27 + 181*I)/72694"
+        }
+      ],
+      "exact_degree": 14,
+      "exact_to_border_ratio": 14,
+      "occupancies": [
+        14,
+        1
+      ]
+    },
+    {
+      "L": 16,
+      "border_degree": 1,
+      "degenerating_degree_one_sequence": [
+        {
+          "epsilon": "1/2",
+          "p": "1/2",
+          "q": "z/2 + 56/113 - 15*I/226",
+          "worst_node_chordal_error_squared": "(29 - 209*I)*(29 + 209*I)/44526"
+        },
+        {
+          "epsilon": "1/10",
+          "p": "1/10",
+          "q": "9*z/10 + 504/565 - 27*I/226",
+          "worst_node_chordal_error_squared": "(29 - 209*I)*(29 + 209*I)/44846"
+        },
+        {
+          "epsilon": "1/100",
+          "p": "1/100",
+          "q": "99*z/100 + 2772/2825 - 297*I/2260",
+          "worst_node_chordal_error_squared": "(29 - 209*I)*(29 + 209*I)/83726"
+        }
+      ],
+      "exact_degree": 15,
+      "exact_to_border_ratio": 15,
+      "occupancies": [
+        15,
+        1
+      ]
+    }
+  ],
   "quantitative_approximation_gap": {
     "certified_degree_caps": [
       {
@@ -3782,7 +5935,7 @@
       "[2:1]/sqrt(5)"
     ]
   },
-  "schema": "planar-projective-memory-certificate-v4",
+  "schema": "planar-projective-memory-certificate-v5",
   "strict_cross_ratio_gap": {
     "M1_rank": 4,
     "M1_shape": [

@@ -40,10 +40,9 @@ def main() -> None:
     if mismatches:
         raise RuntimeError(f"release manifest mismatch: {mismatches}")
     tex = (ROOT / "paper_planar_projective_memory" / "main.tex").read_text(encoding="utf-8")
-    forbidden = ["TODO", "TBD", "placeholder", "v2.8-ai-vixra-submission"]
-    # The prior release is allowed only as a bibliography URL.
+    forbidden = ["TODO", "TBD", "placeholder", "then\nthen", "certificate-v4", "v3.3-planar-projective-memory"]
     body = tex.split("\\bibliographystyle", 1)[0]
-    bad = [token for token in forbidden[:3] if token in body]
+    bad = [token for token in forbidden if token in body]
     if bad:
         raise RuntimeError(f"forbidden draft tokens: {bad}")
     print(

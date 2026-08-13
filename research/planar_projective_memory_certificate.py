@@ -311,6 +311,12 @@ def four_line_fixtures() -> dict:
         "reason": "explicit normalized quadratic witness",
         "certificate": {"degree": 2, "p": str(p), "q": str(q), "resultant": str(res), "values": [str(v) for v in values]},
     }
+    border_degrees = {"all_same": 0, "all_distinct_compatible": 1, "2+2": 2, "2+1+1": 2, "3+1": 1}
+    for label, border in border_degrees.items():
+        exact = fixtures[label]["expected_degree"]
+        fixtures[label]["expected_border_degree"] = border
+        fixtures[label]["positive_error_degrees"] = list(range(border))
+        fixtures[label]["zero_unattained_degrees"] = list(range(border, exact))
     return fixtures
 
 
@@ -353,6 +359,7 @@ def binary_collision_campaign(max_L: int) -> list[dict]:
         for n_zero in range(1, L):
             n_inf = L - n_zero
             expected = max(n_zero, n_inf)
+            border = min(n_zero, n_inf)
             # The two displayed factor lists are disjoint because the nodes are
             # distinct.  They are therefore a coprime exact projective witness
             # without requiring costly expanded resultants.
@@ -363,7 +370,56 @@ def binary_collision_campaign(max_L: int) -> list[dict]:
                 "coprime": True,
                 "construction": "p=product(z-p_root), q=product(z-q_root)",
             }
-            rows.append({"L": L, "occupancies": [n_zero, n_inf], "expected_degree": expected, "certificate": cert})
+            rows.append(
+                {
+                    "L": L,
+                    "occupancies": [n_zero, n_inf],
+                    "expected_degree": expected,
+                    "expected_border_degree": border,
+                    "positive_error_degrees": list(range(border)),
+                    "zero_unattained_degrees": list(range(border, expected)),
+                    "exact_zero_error_from_degree": expected,
+                    "certificate": cert,
+                }
+            )
+    return rows
+
+
+def one_vs_rest_border_gap_campaign(max_L: int) -> list[dict]:
+    """Exact degree L-1 but border degree one, with an explicit sequence."""
+    epsilons = [sp.Rational(1, 2), sp.Rational(1, 10), sp.Rational(1, 100)]
+    rows = []
+    for L in range(3, max_L + 1):
+        nodes = [circle_node(t) for t in range(L)]
+        exceptional = nodes[-1]
+        sequence = []
+        for epsilon in epsilons:
+            p = epsilon
+            q = sp.expand((1 - epsilon) * (z - exceptional))
+            assert sp.gcd(sp.Poly(p, z, extension=I), sp.Poly(q, z, extension=I)).degree() == 0
+            errors = []
+            for node in nodes[:-1]:
+                value = sp.cancel(p / q.subs(z, node))
+                errors.append(sp.factor(value * sp.conjugate(value) / (1 + value * sp.conjugate(value))))
+            assert projective_value(p, q, exceptional) == sp.oo
+            sequence.append(
+                {
+                    "epsilon": str(epsilon),
+                    "p": str(p),
+                    "q": str(q),
+                    "worst_node_chordal_error_squared": str(max(errors)),
+                }
+            )
+        rows.append(
+            {
+                "L": L,
+                "occupancies": [L - 1, 1],
+                "exact_degree": L - 1,
+                "border_degree": 1,
+                "exact_to_border_ratio": L - 1,
+                "degenerating_degree_one_sequence": sequence,
+            }
+        )
     return rows
 
 
@@ -373,11 +429,12 @@ def make_figure(rows: list[dict], approximation: dict, path: Path) -> None:
     ds = [r["generic_degree"] for r in rows]
     fig, axes = plt.subplots(1, 2, figsize=(8.2, 3.25))
     ax = axes[0]
-    ax.step(xs, ds, where="mid", linewidth=2.2, label=r"generic $d_{\min}=\lceil(L-1)/2\rceil$")
-    ax.plot(xs, [1] * len(xs), "--", linewidth=2, label="constant-detector bound")
-    ax.fill_between(xs, 1, ds, step="mid", alpha=0.16, color="#2563eb")
+    ax.step(xs, ds, where="mid", linewidth=2.2, label=r"generic exact $=$ border")
+    ax.plot(xs, [L - 1 for L in xs], linewidth=2.2, color="#dc2626", label=r"binary exact $L-1$")
+    ax.plot(xs, [1] * len(xs), "--", linewidth=2, color="#0f766e", label=r"binary border $=1$")
+    ax.fill_between(xs, 1, [L - 1 for L in xs], alpha=0.10, color="#dc2626")
     ax.set_xlabel("number of distinct coplanar target lines $L$")
-    ax.set_ylabel("state count and bound values")
+    ax.set_ylabel("passive state count")
     ax.set_xticks(xs[::2] if len(xs) > 8 else xs)
     ax.grid(alpha=0.22)
     ax.legend(frameon=False, loc="upper left")
@@ -406,8 +463,13 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = {
-        "schema": "planar-projective-memory-certificate-v4",
+        "schema": "planar-projective-memory-certificate-v5",
         "arithmetic": "SymPy exact Gaussian-rational arithmetic",
+        "base_point_deletion_law": {
+            "border_memory": "min over B subset [L] of |B| + delta(B^c)",
+            "three_regimes": ["positive error", "zero unattained infimum", "exact realization"],
+            "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
+        },
         "strict_cross_ratio_gap": strict_cross_ratio_fixture(),
         "quantitative_approximation_gap": quantitative_approximation_fixture(),
         "exact_zero_memory_family": exact_zero_memory_family(),
@@ -415,6 +477,7 @@ def main() -> None:
         "four_line_phase_fixtures": four_line_fixtures(),
         "generic_planar_campaign": generic_planar_campaign(args.max_L),
         "binary_collision_campaign": binary_collision_campaign(args.max_L),
+        "one_vs_rest_border_gap_campaign": one_vs_rest_border_gap_campaign(args.max_L),
     }
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
     payload["content_sha256_without_hash_field"] = hashlib.sha256(canonical).hexdigest()

@@ -8,7 +8,9 @@ the complete zero-memory minimax frontier through smallest caps on the Bloch
 sphere and proves sharp collision asymptotics for two targets.  At the sharp
 universal threshold ceil((L-1)/2), it also proves that every planar table has
 zero approximation infimum, even when exceptional data require more states
-for exact realization.
+for exact realization.  Its base-point deletion theorem computes the exact
+border memory for every planar table; for binary occupancies this is the
+smaller occupancy, while exact memory is the larger one.
 
 Build:
 

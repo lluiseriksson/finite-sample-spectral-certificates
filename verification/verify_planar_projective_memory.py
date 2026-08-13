@@ -21,8 +21,15 @@ def main() -> None:
     actual = hashlib.sha256(canonical).hexdigest()
     if actual != claimed:
         raise RuntimeError(f"certificate hash mismatch: {actual} != {claimed}")
-    if data["schema"] != "planar-projective-memory-certificate-v4":
+    if data["schema"] != "planar-projective-memory-certificate-v5":
         raise RuntimeError("unexpected schema")
+    law = data["base_point_deletion_law"]
+    if law != {
+        "border_memory": "min over B subset [L] of |B| + delta(B^c)",
+        "three_regimes": ["positive error", "zero unattained infimum", "exact realization"],
+        "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
+    }:
+        raise RuntimeError("base-point deletion law metadata mismatch")
     strict = data["strict_cross_ratio_gap"]
     expected = {
         "node_cross_ratio": "2",
@@ -120,9 +127,17 @@ def main() -> None:
         raise RuntimeError("universal-closure exact resultant mismatch")
     phase = data["four_line_phase_fixtures"]
     expected_phase = {"all_same": 0, "all_distinct_compatible": 1, "2+2": 2, "2+1+1": 2, "3+1": 3}
+    expected_border = {"all_same": 0, "all_distinct_compatible": 1, "2+2": 2, "2+1+1": 2, "3+1": 1}
     for key, degree in expected_phase.items():
         if phase[key]["expected_degree"] != degree or phase[key]["certificate"]["degree"] != degree:
             raise RuntimeError(f"phase fixture mismatch: {key}")
+        border = expected_border[key]
+        if phase[key]["expected_border_degree"] != border:
+            raise RuntimeError(f"phase border mismatch: {key}")
+        if phase[key]["positive_error_degrees"] != list(range(border)):
+            raise RuntimeError(f"phase positive-error mismatch: {key}")
+        if phase[key]["zero_unattained_degrees"] != list(range(border, degree)):
+            raise RuntimeError(f"phase nonattainment mismatch: {key}")
     rows = data["generic_planar_campaign"]
     if [r["L"] for r in rows] != list(range(3, 17)):
         raise RuntimeError("generic campaign does not cover L=3,...,16")
@@ -139,9 +154,49 @@ def main() -> None:
         raise RuntimeError("binary campaign coverage mismatch")
     for row in binary:
         expected = max(row["occupancies"])
+        border = min(row["occupancies"])
         if row["expected_degree"] != expected or row["certificate"]["degree"] != expected:
             raise RuntimeError(f"binary collision mismatch at {row['occupancies']}")
-    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"]), "universal_closure_fixtures": len(closure["degenerating_degree_one_sequence"])}, sort_keys=True))
+        if row["expected_border_degree"] != border:
+            raise RuntimeError(f"binary border mismatch at {row['occupancies']}")
+        if row["positive_error_degrees"] != list(range(border)):
+            raise RuntimeError(f"binary positive-error phase mismatch at {row['occupancies']}")
+        if row["zero_unattained_degrees"] != list(range(border, expected)):
+            raise RuntimeError(f"binary nonattainment phase mismatch at {row['occupancies']}")
+        if row["exact_zero_error_from_degree"] != expected:
+            raise RuntimeError(f"binary exact phase mismatch at {row['occupancies']}")
+
+    border_gap = data["one_vs_rest_border_gap_campaign"]
+    if [row["L"] for row in border_gap] != list(range(3, 17)):
+        raise RuntimeError("one-vs-rest border campaign coverage mismatch")
+    epsilons = [sp.Rational(1, 2), sp.Rational(1, 10), sp.Rational(1, 100)]
+    for row in border_gap:
+        L = row["L"]
+        if row["occupancies"] != [L - 1, 1] or row["exact_degree"] != L - 1:
+            raise RuntimeError(f"one-vs-rest exact law mismatch at L={L}")
+        if row["border_degree"] != 1 or row["exact_to_border_ratio"] != L - 1:
+            raise RuntimeError(f"one-vs-rest border law mismatch at L={L}")
+        circle_nodes = [sp.cancel((1 + sp.I * sp.Rational(t)) / (1 - sp.I * sp.Rational(t))) for t in range(L)]
+        exceptional = circle_nodes[-1]
+        if len(row["degenerating_degree_one_sequence"]) != len(epsilons):
+            raise RuntimeError(f"one-vs-rest sequence coverage mismatch at L={L}")
+        for item, epsilon in zip(row["degenerating_degree_one_sequence"], epsilons, strict=True):
+            p = epsilon
+            q = sp.expand((1 - epsilon) * (z - exceptional))
+            if sp.sympify(item["epsilon"]) != epsilon or sp.sympify(item["p"]) != p:
+                raise RuntimeError(f"one-vs-rest parameter mismatch at L={L}")
+            if sp.simplify(sp.sympify(item["q"]) - q) != 0:
+                raise RuntimeError(f"one-vs-rest denominator mismatch at L={L}")
+            if sp.simplify(q.subs(z, exceptional)) != 0:
+                raise RuntimeError(f"one-vs-rest exceptional value mismatch at L={L}")
+            errors = []
+            for node in circle_nodes[:-1]:
+                value = sp.cancel(p / q.subs(z, node))
+                errors.append(sp.factor(value * sp.conjugate(value) / (1 + value * sp.conjugate(value))))
+            if sp.sympify(item["worst_node_chordal_error_squared"]) != max(errors):
+                raise RuntimeError(f"one-vs-rest error mismatch at L={L}, epsilon={epsilon}")
+
+    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "border_gap_cases": len(border_gap), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"]), "universal_closure_fixtures": len(closure["degenerating_degree_one_sequence"])}, sort_keys=True))
 
 
 if __name__ == "__main__":
