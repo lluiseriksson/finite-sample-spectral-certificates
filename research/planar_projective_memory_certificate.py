@@ -163,6 +163,43 @@ def quantitative_approximation_fixture() -> dict:
     }
 
 
+def exact_zero_memory_family() -> dict:
+    """Exact two-target E_0 law and asymptotic sharpness of the singular bound.
+
+    The unit target representatives are y_0=(1,0) and
+    y_t=((1-t^2)/(1+t^2), 2t/(1+t^2)).  Their Fubini--Study angle alpha
+    obeys tan(alpha/2)=t.  The exact constant-router error is sin(alpha/2),
+    while Theorem 3.2 gives the recorded singular-value lower bound.
+    """
+    rows = []
+    for t in (sp.Rational(1, 100), sp.Rational(1, 10), sp.Rational(1, 2), sp.Integer(1)):
+        overlap = sp.factor((1 - t**2) / (1 + t**2))
+        exact_error_squared = sp.factor(t**2 / (1 + t**2))
+        sigma_squared = sp.factor(1 - overlap)
+        singular_bound_squared = sp.factor(sigma_squared / (2 + sigma_squared))
+        ratio_squared = sp.factor(singular_bound_squared / exact_error_squared)
+        assert sigma_squared == sp.factor(2 * t**2 / (1 + t**2))
+        assert singular_bound_squared == sp.factor(t**2 / (1 + 2 * t**2))
+        assert ratio_squared == sp.factor((1 + t**2) / (1 + 2 * t**2))
+        rows.append(
+            {
+                "t": str(t),
+                "target_overlap": str(overlap),
+                "exact_zero_memory_error_squared": str(exact_error_squared),
+                "interpolation_sigma_squared": str(sigma_squared),
+                "theorem_3_2_bound_squared": str(singular_bound_squared),
+                "bound_to_exact_ratio_squared": str(ratio_squared),
+            }
+        )
+    return {
+        "parameterization": "tan(Fubini-Study-angle/2)=t",
+        "exact_law": "E_0^2=t^2/(1+t^2)",
+        "singular_bound": "B_0^2=t^2/(1+2*t^2)",
+        "asymptotic_ratio": "lim_(t->0+) B_0/E_0=1",
+        "fixtures": rows,
+    }
+
+
 def four_line_fixtures() -> dict:
     nodes = [circle_node(t) for t in (0, 1, 2, 3)]
     x1, x2, x3, x4 = nodes
@@ -294,7 +331,7 @@ def make_figure(rows: list[dict], approximation: dict, path: Path) -> None:
     ax.bar([0, 1, 2], error_bounds, color=["#7c3aed", "#2563eb", "#94a3b8"], width=0.68)
     ax.set_xticks([0, 1, 2])
     ax.set_xlabel("router degree cap $d$")
-    ax.set_ylabel("certified worst-node error")
+    ax.set_ylabel("certified lower bound on worst-node error")
     ax.set_title("strict four-node fixture")
     ax.set_ylim(0, 0.5)
     ax.grid(axis="y", alpha=0.22)
@@ -311,10 +348,11 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = {
-        "schema": "planar-projective-memory-certificate-v2",
+        "schema": "planar-projective-memory-certificate-v3",
         "arithmetic": "SymPy exact Gaussian-rational arithmetic",
         "strict_cross_ratio_gap": strict_cross_ratio_fixture(),
         "quantitative_approximation_gap": quantitative_approximation_fixture(),
+        "exact_zero_memory_family": exact_zero_memory_family(),
         "four_line_phase_fixtures": four_line_fixtures(),
         "generic_planar_campaign": generic_planar_campaign(args.max_L),
         "binary_collision_campaign": binary_collision_campaign(args.max_L),

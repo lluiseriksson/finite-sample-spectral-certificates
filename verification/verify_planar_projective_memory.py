@@ -21,7 +21,7 @@ def main() -> None:
     actual = hashlib.sha256(canonical).hexdigest()
     if actual != claimed:
         raise RuntimeError(f"certificate hash mismatch: {actual} != {claimed}")
-    if data["schema"] != "planar-projective-memory-certificate-v2":
+    if data["schema"] != "planar-projective-memory-certificate-v3":
         raise RuntimeError("unexpected schema")
     strict = data["strict_cross_ratio_gap"]
     expected = {
@@ -63,6 +63,28 @@ def main() -> None:
             raise RuntimeError(f"unexpected quantitative lower bound at degree {d}")
         if item["certified_uniform_chordal_error_squared_lower"] != str(error_squared):
             raise RuntimeError(f"quantitative error record mismatch at degree {d}")
+    zero_memory = data["exact_zero_memory_family"]
+    expected_t = [sp.Rational(1, 100), sp.Rational(1, 10), sp.Rational(1, 2), sp.Integer(1)]
+    if len(zero_memory["fixtures"]) != len(expected_t):
+        raise RuntimeError("unexpected zero-memory fixture coverage")
+    for item, t in zip(zero_memory["fixtures"], expected_t, strict=True):
+        if sp.sympify(item["t"]) != t:
+            raise RuntimeError("zero-memory parameter mismatch")
+        overlap = sp.factor((1 - t**2) / (1 + t**2))
+        exact_error_squared = sp.factor((1 - overlap) / 2)
+        sigma_squared = sp.factor(1 - overlap)
+        theorem_bound_squared = sp.factor(sigma_squared / (2 + sigma_squared))
+        ratio_squared = sp.factor(theorem_bound_squared / exact_error_squared)
+        expected_values = {
+            "target_overlap": overlap,
+            "exact_zero_memory_error_squared": exact_error_squared,
+            "interpolation_sigma_squared": sigma_squared,
+            "theorem_3_2_bound_squared": theorem_bound_squared,
+            "bound_to_exact_ratio_squared": ratio_squared,
+        }
+        for key, expected_value in expected_values.items():
+            if sp.sympify(item[key]) != expected_value:
+                raise RuntimeError(f"zero-memory mismatch at t={t}, field={key}")
     phase = data["four_line_phase_fixtures"]
     expected_phase = {"all_same": 0, "all_distinct_compatible": 1, "2+2": 2, "2+1+1": 2, "3+1": 3}
     for key, degree in expected_phase.items():
@@ -86,7 +108,7 @@ def main() -> None:
         expected = max(row["occupancies"])
         if row["expected_degree"] != expected or row["certificate"]["degree"] != expected:
             raise RuntimeError(f"binary collision mismatch at {row['occupancies']}")
-    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "quantitative_degree_caps": len(approximation["certified_degree_caps"])}, sort_keys=True))
+    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"])}, sort_keys=True))
 
 
 if __name__ == "__main__":
