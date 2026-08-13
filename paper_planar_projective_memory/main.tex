@@ -70,9 +70,9 @@ $d_\partial=\min\{d:E_d=0\}$.  We prove the linear rank law
 \[
  d_\partial=\min\{d:\rank M_d<2(d+1)\},
  \]
-so it is computable in polynomially many exact field operations, without a
-subset search.  Equivalently, $E_d=0$ exactly when the minimum modulus
-$\inf_{\|c\|=1}\|M_dc\|$ vanishes.  Letting $\delta(A)$ denote the projective
+so it is computable in $O(L^3)$ exact field operations, without a
+subset search.  Equivalently, $E_d=0$ exactly when the attained minimum modulus
+$\min_{\|c\|=1}\|M_dc\|$ vanishes.  Letting $\delta(A)$ denote the projective
 interpolation degree of a subtable, we identify the same integer geometrically
 by the base-point deletion law
 \[
@@ -151,7 +151,9 @@ The rank formula is the computational hinge.  Exact memory asks whether a
 kernel pair is coprime, a nonlinear gcd condition; border memory asks only
 whether a nonzero kernel vector exists.  This separates exact realization from
 closure by one algebraic operation and turns the entire sign question for
-$E_d$ into linear algebra.
+$E_d$ into linear algebra.  In fact the degree-bounded planar tables have an
+exact determinantal closure, and a single incremental elimination over the
+nested matrices $M_d$ finds its first boundary in cubic field complexity.
 
 \section{Projective degree equals passive memory}
 
@@ -607,7 +609,7 @@ Every finite planar routing table satisfies
 Equivalently, for every $d\ge0$,
 \begin{equation}\label{eq:spectral-dichotomy}
  \boxed{E_d=0\quad\Longleftrightarrow\quad
-        \mu_d:=\inf_{\norm{c}=1}\norm{M_dc}=0.}
+        \mu_d:=\min_{\norm{c}=1}\norm{M_dc}=0.}
 \end{equation}
 Consequently the complete sign-and-attainment diagram is
 \[
@@ -679,36 +681,75 @@ $b=\deg g$ and reduced degree $r$, the same argument as above gives
 $|B|+\delta(B^c)\le b+r\le d$.  Conversely, the smoothing construction for
 any $B$ produces coprime approximating pairs of degree
 $|B|+\delta(B^c)$.  Thus the first deficient matrix, the subset minimum and
-$d_\partial$ coincide.  Since the minimum modulus $\mu_d$ vanishes exactly
-when $M_d$ has a nontrivial kernel, \eqref{eq:spectral-dichotomy} follows.
+$d_\partial$ coincide.  The unit coefficient sphere is compact, so the
+continuous function $c\mapsto\norm{M_dc}$ attains its minimum.  That minimum
+vanishes exactly when $M_d$ has a nontrivial kernel, and
+\eqref{eq:spectral-dichotomy} follows.
 
 Finally, $E_d=0$ is monotone in $d$.  Zero is attained exactly when an exact
 router of degree at most $d$ exists, which by \cref{thm:planar} is equivalent
 to $d\ge\delta$.  The three regimes follow.
 \end{proof}
 
-\begin{corollary}[Polynomial-time exact border certificate]\label{cor:border-certificate}
+\begin{corollary}[Cubic-time exact border certificate]\label{cor:border-certificate}
 The integer $d_\partial$ is obtained by scanning
 $M_0,M_1,\ldots,M_{\lfloor L/2\rfloor}$ and stopping at the first loss of full
-column rank.  Dense exact elimination uses $O(L^4)$ field operations in this
-direct implementation.  A nonzero kernel vector at the stopping degree is an
-upper certificate for zero infimum, even when it has base points; full column
-rank at every preceding degree is the lower certificate.  Polynomial gcd and
-subresultant tests are needed for exact memory $\delta$, but not for border
-memory.
+column rank.  After interleaving the two coefficient columns at each power,
+these matrices are successive column prefixes of one
+$L\times 2(\lfloor L/2\rfloor+1)$ matrix.  One left-to-right incremental exact
+elimination therefore records every prefix rank using $O(L^3)$ field
+operations and $O(L^2)$ storage.  A nonzero kernel vector at the stopping
+degree is an upper certificate for zero infimum, even when it has base points;
+full column rank at every preceding degree is the lower certificate.
+Polynomial gcd and subresultant tests are needed for exact memory $\delta$, but
+not for border memory.
 \end{corollary}
 
 \begin{proof}
 For $d_0=\lfloor L/2\rfloor$, the matrix $M_{d_0}$ has $2(d_0+1)>L$
 columns and is automatically deficient, so the scan terminates.  Rank
-elimination on an $L\times O(L)$ matrix costs $O(L^3)$ field operations and
-there are $O(L)$ candidate degrees.  The certificate statements are exactly
-\cref{thm:border}.  All tests are exact over the coefficient field of the data.
+elimination on the single $L\times O(L)$ maximal matrix costs $O(L^3)$ field
+operations.  Processing its columns in the interleaved order
+$(p_0,q_0,p_1,q_1,\ldots)$ preserves every prefix: after column $q_d$, the
+processed submatrix is $M_d$ up to a column permutation.  Hence the running
+pivot count gives all candidate ranks without restarting elimination.
+Storing the matrix and its row-echelon state costs $O(L^2)$.  The certificate
+statements are exactly \cref{thm:border}.  All tests are exact over the
+coefficient field of the data.
+\end{proof}
+
+\begin{corollary}[Determinantal closure of passive tables]\label{cor:determinantal-closure}
+Fix the nodes, input line and target plane, and give
+$\mathcal T=(\PP(H))^L$ its product Fubini--Study topology.  Let
+$\mathcal R_d\subseteq\mathcal T$ be the planar target tables realized exactly
+by a square rational-inner router of McMillan degree at most $d$.  Then
+\begin{equation}\label{eq:determinantal-closure}
+ \boxed{\displaystyle
+ \overline{\mathcal R_d}
+ =\mathcal D_d
+ :=\{(Y_i)\in\mathcal T:\rank M_d<2(d+1)\}.}
+\end{equation}
+In homogeneous target coordinates, $\mathcal D_d$ is the projective
+determinantal set cut out by all $2(d+1)$-column minors of $M_d$; if
+$2(d+1)>L$, it is all of $\mathcal T$.
+\end{corollary}
+
+\begin{proof}
+Every table in $\mathcal R_d$ has $E_d=0$, hence belongs to $\mathcal D_d$ by
+\cref{thm:border}.  The latter set is closed because its maximal minors are
+homogeneous polynomial equations in the target representatives.  This gives
+$\overline{\mathcal R_d}\subseteq\mathcal D_d$.  Conversely, if a table lies
+in $\mathcal D_d$, then $E_d=0$.  The smoothing construction in the proof of
+\cref{thm:border} produces coprime planar pairs of degree at most $d$ whose
+node values converge to that table; the same-degree lossless lift realizes
+each approximating table.  Thus it lies in $\overline{\mathcal R_d}$.
+Row rescaling and a target-plane basis change only apply invertible row and
+column transformations, so the determinantal condition is intrinsic.
 \end{proof}
 
 \begin{corollary}[Exact rank--error dichotomy]\label{cor:rank-error}
 With normalized homogeneous target representatives, let
-$\mu_d=\inf_{\norm{c}=1}\norm{M_dc}$.  Then precisely one of the following
+$\mu_d=\min_{\norm{c}=1}\norm{M_dc}$.  Then precisely one of the following
 holds:
 \[
  \begin{array}{ll}
@@ -983,7 +1024,7 @@ positive-error/nonattainment/exact phase partition and an explicit degree-one
 degeneration of the $1+(L-1)$ family, whose exact-to-border ratio is $L-1$.
 For all 119 binary tables it independently recomputes full column rank just
 below $d_\partial$ and a nontrivial kernel at $d_\partial$, directly auditing
-the polynomial-time rank formula rather than inferring it from occupancies.
+the cubic-time rank formula rather than inferring it from occupancies.
 The frozen validator recomputes the content hash and checks declared coverage,
 phase degrees, ranks, and bounds.  In CI the producer is replayed from scratch
 and its byte-identical JSON is compared with the frozen record; this replay is
@@ -1012,13 +1053,15 @@ Fej\'er--Riesz/paraunitary completion, and matrix all-pass construction predate
 this work; common-factor/base-point degeneration is likewise a standard
 algebraic mechanism, and rank deficiency of a coefficient matrix is elementary.
 We claim its exact identification with the passive zero-infimum boundary and
-the resulting polynomial state certificate, together with the passive-memory
+the resulting cubic-time state certificate and determinantal closure, together
+with the passive-memory
 equality \eqref{eq:main}, obtained by
 combining a standard exact-degree lossless lift with the escape-from-the-plane
 lower bound, the quantitative low-degree obstruction \eqref{eq:approx}, and
 the exact zero-memory consequence \eqref{eq:zero-memory}, together with their
 physical/detector consequences, the exact base-point deletion law
-and its polynomial-time rank form \eqref{eq:border}, and the sharp universal closure theorem
+and its rank form \eqref{eq:border}, the closure identity
+\eqref{eq:determinantal-closure}, and the sharp universal closure theorem
 \eqref{eq:closure}.  Bloch-sphere cap geometry itself is standard;
 we do not claim a new
 general rational interpolation algorithm or priority for the scalar strata.
@@ -1028,7 +1071,7 @@ general rational interpolation algorithm or priority for the scalar strata.
 The tagged release containing the paper, exact producer, frozen validator,
 frozen JSON certificate, and figure is:
 \begin{center}\small
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.5-planar-projective-memory}{GitHub release: \texttt{v3.5-planar-projective-memory}}
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.6-planar-projective-memory}{GitHub release: \texttt{v3.6-planar-projective-memory}}
 \end{center}
 
 \section{Conclusion}
@@ -1053,9 +1096,12 @@ $d_0=\lceil(L-1)/2\rceil$, every planar table has zero minimax infimum, even
 when exact interpolation needs more states; below that threshold generic data
 retain a positive error floor.  More generally, the base-point deletion
 formula computes the first zero-error boundary for every planar table and
-thereby classifies all three regimes exactly.  The same boundary is the first
-degree at which the interpolation matrix loses full column rank, replacing an
-exponential subset formula by an $O(L^4)$ exact algorithm and unifying the
+thereby classifies all three regimes exactly.  Its degree-bounded realizable
+tables have exactly the determinantal closure
+\eqref{eq:determinantal-closure}.  The same boundary is the first degree at
+which the interpolation matrix loses full column rank, replacing an
+exponential subset formula by a single $O(L^3)$ incremental exact elimination
+and unifying the
 qualitative transition with the quantitative singular-value obstruction.  Its binary specialization gives
 border memory $\min(n_0,n_\infty)$ against exact memory
 $\max(n_0,n_\infty)$, so approximation can save an unbounded factor of states.

@@ -12,8 +12,10 @@ for exact realization.  Its base-point deletion theorem computes the exact
 border memory for every planar table; for binary occupancies this is the
 smaller occupancy, while exact memory is the larger one.  Equivalently, border
 memory is the first degree at which the interpolation matrix loses full column
-rank, giving a polynomial-time exact algorithm and a linear-algebraic
-zero-error criterion.
+rank, giving a single $O(L^3)$ incremental exact elimination and a
+linear-algebraic zero-error criterion.  The same rank condition cuts out the
+exact projective determinantal closure of every degree-bounded realizable
+class.
 
 Build:
 

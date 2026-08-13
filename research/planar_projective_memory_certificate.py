@@ -502,13 +502,15 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = {
-        "schema": "planar-projective-memory-certificate-v6",
+        "schema": "planar-projective-memory-certificate-v7",
         "arithmetic": "SymPy exact Gaussian-rational arithmetic",
         "base_point_deletion_law": {
             "border_memory": "min over B subset [L] of |B| + delta(B^c)",
             "linear_rank_formula": "min d with rank(M_d) < 2(d+1)",
-            "minimum_modulus_dichotomy": "E_d=0 iff inf_{||c||=1} ||M_d c||=0",
-            "dense_elimination_field_operation_bound": "O(L^4)",
+            "minimum_modulus_dichotomy": "E_d=0 iff min_{||c||=1} ||M_d c||=0",
+            "incremental_elimination_field_operation_bound": "O(L^3)",
+            "incremental_column_order": "p0,q0,p1,q1,...; each M_d is a prefix up to permutation",
+            "determinantal_closure": "closure(R_d)={tables with rank(M_d)<2(d+1)}",
             "three_regimes": ["positive error", "zero unattained infimum", "exact realization"],
             "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
         },

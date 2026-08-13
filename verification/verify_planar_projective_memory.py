@@ -21,14 +21,16 @@ def main() -> None:
     actual = hashlib.sha256(canonical).hexdigest()
     if actual != claimed:
         raise RuntimeError(f"certificate hash mismatch: {actual} != {claimed}")
-    if data["schema"] != "planar-projective-memory-certificate-v6":
+    if data["schema"] != "planar-projective-memory-certificate-v7":
         raise RuntimeError("unexpected schema")
     law = data["base_point_deletion_law"]
     if law != {
         "border_memory": "min over B subset [L] of |B| + delta(B^c)",
         "linear_rank_formula": "min d with rank(M_d) < 2(d+1)",
-        "minimum_modulus_dichotomy": "E_d=0 iff inf_{||c||=1} ||M_d c||=0",
-        "dense_elimination_field_operation_bound": "O(L^4)",
+        "minimum_modulus_dichotomy": "E_d=0 iff min_{||c||=1} ||M_d c||=0",
+        "incremental_elimination_field_operation_bound": "O(L^3)",
+        "incremental_column_order": "p0,q0,p1,q1,...; each M_d is a prefix up to permutation",
+        "determinantal_closure": "closure(R_d)={tables with rank(M_d)<2(d+1)}",
         "three_regimes": ["positive error", "zero unattained infimum", "exact realization"],
         "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
     }:
@@ -185,9 +187,11 @@ def main() -> None:
         if row["lower_matrix_rank"] != row["lower_matrix_columns"]:
             raise RuntimeError(f"lower matrix is not full-column-rank at L={row['L']}")
     binary = data["binary_collision_campaign"]
+    incremental_prefix_checks = 0
     if len(binary) != sum(L - 1 for L in range(3, 17)):
         raise RuntimeError("binary campaign coverage mismatch")
     for row in binary:
+        L = row["L"]
         expected = max(row["occupancies"])
         border = min(row["occupancies"])
         if row["expected_degree"] != expected or row["certificate"]["degree"] != expected:
@@ -201,13 +205,23 @@ def main() -> None:
         if row["exact_zero_error_from_degree"] != expected:
             raise RuntimeError(f"binary exact phase mismatch at {row['occupancies']}")
         n_zero, n_inf = row["occupancies"]
-        circle_nodes = [sp.cancel((1 + sp.I * sp.Rational(t)) / (1 - sp.I * sp.Rational(t))) for t in range(row["L"])]
+        circle_nodes = [sp.cancel((1 + sp.I * sp.Rational(t)) / (1 - sp.I * sp.Rational(t))) for t in range(L)]
         binary_targets = [(0, 1)] * n_zero + [(1, 0)] * n_inf
         def binary_matrix(degree: int) -> sp.Matrix:
             return sp.Matrix([
                 [b * node**j for j in range(degree + 1)] + [-a * node**j for j in range(degree + 1)]
                 for node, (a, b) in zip(circle_nodes, binary_targets, strict=True)
             ])
+        maximal_degree = L // 2
+        maximal = binary_matrix(maximal_degree)
+        maximal_order = [index for j in range(maximal_degree + 1) for index in (j, maximal_degree + 1 + j)]
+        interleaved = maximal[:, maximal_order]
+        for degree in range(maximal_degree + 1):
+            expected_prefix = binary_matrix(degree)
+            expected_order = [index for j in range(degree + 1) for index in (j, degree + 1 + j)]
+            if interleaved[:, : 2 * (degree + 1)] != expected_prefix[:, expected_order]:
+                raise RuntimeError(f"nested-prefix identity failed at {row['occupancies']}, degree={degree}")
+            incremental_prefix_checks += 1
         before = binary_matrix(border - 1)
         at_border = binary_matrix(border)
         before_rank = before.rank()
@@ -256,7 +270,7 @@ def main() -> None:
             if sp.sympify(item["worst_node_chordal_error_squared"]) != max(errors):
                 raise RuntimeError(f"one-vs-rest error mismatch at L={L}, epsilon={epsilon}")
 
-    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "independent_border_rank_cases": len(binary), "border_gap_cases": len(border_gap), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"]), "universal_closure_fixtures": len(closure["degenerating_degree_one_sequence"])}, sort_keys=True))
+    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "independent_border_rank_cases": len(binary), "incremental_prefix_checks": incremental_prefix_checks, "border_gap_cases": len(border_gap), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"]), "universal_closure_fixtures": len(closure["degenerating_degree_one_sequence"])}, sort_keys=True))
 
 
 if __name__ == "__main__":

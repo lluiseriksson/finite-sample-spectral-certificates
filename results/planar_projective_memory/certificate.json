@@ -3,9 +3,11 @@
   "base_point_deletion_law": {
     "binary_specialization": "border=min(n0,n_infinity), exact=max(n0,n_infinity)",
     "border_memory": "min over B subset [L] of |B| + delta(B^c)",
-    "dense_elimination_field_operation_bound": "O(L^4)",
+    "determinantal_closure": "closure(R_d)={tables with rank(M_d)<2(d+1)}",
+    "incremental_column_order": "p0,q0,p1,q1,...; each M_d is a prefix up to permutation",
+    "incremental_elimination_field_operation_bound": "O(L^3)",
     "linear_rank_formula": "min d with rank(M_d) < 2(d+1)",
-    "minimum_modulus_dichotomy": "E_d=0 iff inf_{||c||=1} ||M_d c||=0",
+    "minimum_modulus_dichotomy": "E_d=0 iff min_{||c||=1} ||M_d c||=0",
     "three_regimes": [
       "positive error",
       "zero unattained infimum",
@@ -6755,7 +6757,7 @@
       ]
     }
   ],
-  "content_sha256_without_hash_field": "e36903ad9dac9d67bb266da0544c8cca8884eb29e8fb5dea1d4b5028af1934e7",
+  "content_sha256_without_hash_field": "0eb8a0c8de6aa55bab8991fa051061c6c14bc0b4298ae5ca3bc510c1d4f05e7e",
   "exact_zero_memory_family": {
     "asymptotic_ratio": "lim_(t->0+) B_0/E_0=1",
     "exact_law": "E_0^2=t^2/(1+t^2)",
@@ -7664,7 +7666,7 @@
       "[2:1]/sqrt(5)"
     ]
   },
-  "schema": "planar-projective-memory-certificate-v6",
+  "schema": "planar-projective-memory-certificate-v7",
   "strict_cross_ratio_gap": {
     "M1_rank": 4,
     "M1_shape": [
