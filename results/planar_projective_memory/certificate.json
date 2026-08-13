@@ -3383,7 +3383,7 @@
       ]
     }
   ],
-  "content_sha256_without_hash_field": "836aebb3a099293d66f3e2ef16ce4fe7fc639b5ef8cdbca5c81a18d8022ac5d2",
+  "content_sha256_without_hash_field": "82b23fbe1a13048949d3f43c26783cf2d6759cc3eeba59b5f95e2cbe48bdd29f",
   "exact_zero_memory_family": {
     "asymptotic_ratio": "lim_(t->0+) B_0/E_0=1",
     "exact_law": "E_0^2=t^2/(1+t^2)",
@@ -3782,7 +3782,7 @@
       "[2:1]/sqrt(5)"
     ]
   },
-  "schema": "planar-projective-memory-certificate-v3",
+  "schema": "planar-projective-memory-certificate-v4",
   "strict_cross_ratio_gap": {
     "M1_rank": 4,
     "M1_shape": [
@@ -3817,5 +3817,86 @@
       "oo",
       "2"
     ]
+  },
+  "universal_closure_family": {
+    "L": 3,
+    "degenerating_degree_one_sequence": [
+      {
+        "epsilon": "1/2",
+        "mobius_determinant": "1/4",
+        "p": "z/2",
+        "q": "z/2 + 1/2",
+        "resultant": "1/4",
+        "values_at_0_1_infinity": [
+          "0",
+          "1/2",
+          "1"
+        ],
+        "worst_node_chordal_error_squared": "1/5"
+      },
+      {
+        "epsilon": "1/10",
+        "mobius_determinant": "9/100",
+        "p": "z/10",
+        "q": "z/10 + 9/10",
+        "resultant": "9/100",
+        "values_at_0_1_infinity": [
+          "0",
+          "1/10",
+          "1"
+        ],
+        "worst_node_chordal_error_squared": "1/101"
+      },
+      {
+        "epsilon": "1/100",
+        "mobius_determinant": "99/10000",
+        "p": "z/100",
+        "q": "z/100 + 99/100",
+        "resultant": "99/10000",
+        "values_at_0_1_infinity": [
+          "0",
+          "1/100",
+          "1"
+        ],
+        "worst_node_chordal_error_squared": "1/10001"
+      },
+      {
+        "epsilon": "1/1000",
+        "mobius_determinant": "999/1000000",
+        "p": "z/1000",
+        "q": "z/1000 + 999/1000",
+        "resultant": "999/1000000",
+        "values_at_0_1_infinity": [
+          "0",
+          "1/1000",
+          "1"
+        ],
+        "worst_node_chordal_error_squared": "1/1000001"
+      }
+    ],
+    "degree_one_minimax_infimum": "0 (not attained)",
+    "exact_degree_two_witness": {
+      "p": "z**2 - z",
+      "q": "z**2 - z + 1",
+      "resultant": "1",
+      "values_at_0_1_infinity": [
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    "exact_interpolation_degree": 2,
+    "limiting_targets": [
+      "0",
+      "0",
+      "1"
+    ],
+    "normalized_nodes": [
+      "0",
+      "1",
+      "infinity"
+    ],
+    "threshold_degree": 1,
+    "universal_density_threshold": "ceil((L-1)/2)"
   }
 }

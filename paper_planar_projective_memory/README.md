@@ -5,7 +5,10 @@ the coplanar line-target stratum equals the minimum projective rational
 interpolation degree, and deriving a singular-value-controlled lower bound on
 the worst-node chordal error of every low-state lossless router.  It also solves
 the complete zero-memory minimax frontier through smallest caps on the Bloch
-sphere and proves sharp collision asymptotics for two targets.
+sphere and proves sharp collision asymptotics for two targets.  At the sharp
+universal threshold ceil((L-1)/2), it also proves that every planar table has
+zero approximation infimum, even when exceptional data require more states
+for exact realization.
 
 Build:
 

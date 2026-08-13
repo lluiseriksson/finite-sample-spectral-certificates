@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,array,graphicx,xcolor,xurl,float}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={Projective Bottlenecks in Passive Spectral Routing},pdfauthor={Lluis Eriksson},pdfsubject={Exact planar memory, quantitative approximation barriers, and projective strata}}
+\hypersetup{pdftitle={Projective Bottlenecks in Passive Spectral Routing},pdfauthor={Lluis Eriksson},pdfsubject={Exact planar memory, dense low-state limits, and quantitative error barriers}}
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{microtype,etoolbox}
 \AtBeginEnvironment{thebibliography}{\fontsize{8}{9}\selectfont\setlength{\itemsep}{-2pt}\setlength{\parsep}{0pt}}
@@ -25,7 +25,7 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Projective Bottlenecks in Passive Spectral Routing:\\
-Exact Planar Memory, Quantitative Approximation Barriers, and Cross-Ratio Strata}
+Exact Memory, Dense Low-State Limits, and Quantitative Error Barriers}
 \author{Lluis Eriksson}
 \date{13 August 2026}
 
@@ -64,6 +64,16 @@ spherical cap containing the targets.  A support certificate uses at most three
 active targets.  For two targets the formula is $E_0=\sin(\alpha/2)$, where
 $\alpha$ is their Fubini--Study angle, and the singular-value obstruction is
 asymptotically sharp as the targets collide.
+
+There is also an exact positive-degree phenomenon.  Put
+$d_0=\lceil(L-1)/2\rceil$.  Although exceptional tables can have
+$\delta>d_0$, every planar table is a limit of tables realized by degree-$d_0$
+lossless routers.  Hence $E_{d_0}=0$ universally, with nonattainment exactly
+when $\delta>d_0$.  Conversely, below $d_0$ an open dense set has a strictly
+positive certified error.  Thus exact realizability and arbitrarily accurate
+passive approximation separate at a sharp state threshold.  In particular,
+a nonconstant three-node $2+1$ collision has exact memory two but $E_1=0$
+without a minimizing one-state router.
 
 This reduction reveals two competing mechanisms.  For two target lines with
 occupancies $n_0,n_\infty$, the exact cost is $\max(n_0,n_\infty)$, a fiber
@@ -122,8 +132,9 @@ context \cite{RapisardaWillems1997,BolotnikovDym2006,BharathEtAl2023}.
 Our contribution is not a new scalar interpolation algorithm.  It is the exact
 identification of that scalar projective degree with the physical state count of
 a square passive lossless router, together with a quantitative approximation
-barrier for low-state routers, an exact zero-memory minimax law, the resulting
-generic law, unbounded detector gap, and complete four-line stratification.
+barrier for low-state routers, exact zero-memory and universal-closure laws,
+the resulting generic law, unbounded detector gap, and complete four-line
+stratification.
 
 \section{Projective degree equals passive memory}
 
@@ -372,7 +383,17 @@ together with a global containment check and the usual antipodal degeneracies.
 
 \begin{proof}
 Every constant unitary can send $X$ to an arbitrary output line, and every
-output line extends to a constant unitary.  If its Bloch vector is $\mathbf r$,
+output line extends to a constant unitary.  It is enough to optimize over
+output lines in $H$.  Indeed, if a unit output vector $u\notin H$ has
+$P_Hu\ne0$, then $v=P_Hu/\norm{P_Hu}$ satisfies, for every $y_i\in H$,
+\[
+ |\langle v,y_i\rangle|
+ =\frac{|\langle u,y_i\rangle|}{\norm{P_Hu}}
+ \ge |\langle u,y_i\rangle|.
+\]
+If $P_Hu=0$, every chordal error is one and any target line is no worse.
+Thus projection and normalization never increase the objective.  If the
+resulting line has Bloch vector $\mathbf r$, then
 then
 \[
  |\langle y,y_i\rangle|^2=\operatorname{tr}(\rho\rho_i)
@@ -479,6 +500,7 @@ Target pattern & Exact or generic degree & Governing obstruction\\\midrule
 One target & $0$ & constant projective map\\
 Two targets, occupancies $n_0,n_\infty$ & $\max(n_0,n_\infty)$ & largest fiber\\
 $L$ distinct, generic & $\lceil(L-1)/2\rceil$ & projective parameter count\\
+Exceptional table at $d_0=\lceil(L-1)/2\rceil$ & $E_{d_0}=0$, possibly unattained & dense exact-routing locus\\
 Four distinct, exceptional & $1$ or $2$ & ordered cross-ratio\\
 Four targets, pattern $3+1$ & $3$ & triple fiber\\
 \bottomrule\end{tabular}
@@ -538,6 +560,75 @@ intersected with it.  Apply Theorem~\ref{thm:planar} and
 Proposition~\ref{prop:certificate}.  The scalar threshold itself is classical;
 the new conclusion here is its exact conversion to passive state count.
 \end{proof}
+
+\begin{theorem}[Sharp universal closure threshold]\label{thm:closure}
+Fix distinct nodes and put $d_0=\lceil(L-1)/2\rceil$.  For every ordered
+planar target table,
+\begin{equation}\label{eq:closure}
+                              \boxed{E_{d_0}=0}.
+\end{equation}
+More generally $E_d=0$ for every $d\ge d_0$.  The infimum at $d_0$ is attained
+if and only if $\delta\le d_0$.  For every $d<d_0$, by contrast, there is a
+Euclidean-open dense set of target tables for which $E_d>0$.  Consequently
+$d_0$ is the sharp state threshold at which degree-bounded passive routers
+become dense in all planar routing data.
+\end{theorem}
+
+\begin{proof}
+By \cref{thm:generic}, the target tables admitting an exact degree-$d_0$
+projective interpolant contain a Zariski-open dense subset of $(\PP^1)^L$.
+Its complement is a proper complex algebraic set and therefore has empty
+Euclidean interior.  Given arbitrary targets $(Y_i)$, choose exact-routing
+tables $(Y_i^{(n)})$ in that open set converging to $(Y_i)$.  Apply the
+same-degree lossless lift in the proof of \cref{thm:planar} to each table.
+The resulting degree-$d_0$ routers satisfy
+\[
+ \max_i\operatorname{dist}_{\rm ch}
+       \bigl(S_n(\zeta_i)X,Y_i\bigr)
+ =\max_i\operatorname{dist}_{\rm ch}(Y_i^{(n)},Y_i)\longrightarrow0,
+\]
+which proves \eqref{eq:closure}.  Allowing more states cannot increase the
+infimum.  If the infimum at $d_0$ is attained with value zero, the attaining
+router interpolates exactly, so \cref{thm:planar} gives $\delta\le d_0$; the
+converse is immediate.  Finally, for $d<d_0$ the full-column-rank condition on
+$M_d$ is a nonempty Zariski-open condition by the proof of
+\cref{thm:generic}.  It is Euclidean open dense, and \cref{thm:approx} supplies
+a strictly positive error there.
+\end{proof}
+
+\begin{corollary}[Exact one-state infimum without a minimizer]\label{cor:eone}
+For three distinct nodes and any planar target table, $E_1=0$.  If the target
+multiplicity pattern is $2+1$, then $d_{\min}=2$ and this zero infimum is not
+attained by a one-state router.
+\end{corollary}
+
+\begin{proof}
+Here $d_0=1$, so \cref{thm:closure} gives $E_1=0$.  The binary collision law
+gives $d_{\min}=2$ for the $2+1$ pattern, and the attainment statement follows.
+For an explicit normalized example, choose a projective coordinate on the
+domain taking the nodes to $(0,1,\infty)$ and choose limiting targets
+$(0,0,1)$ in an orthonormal affine chart of $H$.  For
+$0<\varepsilon<1$,
+\[
+ R_\varepsilon(z)=\frac{\varepsilon z}
+                         {\varepsilon z+1-\varepsilon}
+\]
+is a degree-one M\"obius map with values $(0,\varepsilon,1)$ and worst-node
+chordal error $\varepsilon/\sqrt{1+\varepsilon^2}$.  Its determinant
+$\varepsilon(1-\varepsilon)$ is nonzero, so the same-degree lossless lift is
+valid.  The errors tend to zero, whereas a nonconstant degree-one map is
+injective and cannot attain the repeated limiting target.
+\end{proof}
+
+\begin{remark}[Why rank deficiency is not exact feasibility]
+At $d_0$, the matrix $M_{d_0}$ always has a nonzero kernel, but exceptional
+tables may have only kernel pairs with a common factor or a base point.
+\Cref{thm:closure} shows that such defective pairs are limits of coprime pairs
+even when no coprime pair exists at the limiting data.  Thus full column rank
+in \cref{thm:approx} is a structural separation condition, not a technical
+artifact: once it fails at the universal threshold, a positive error floor
+cannot hold for the full degree-bounded class.
+\end{remark}
 
 For distinct lines in a two-plane, the span bound is $\dim H-1=1$.  Likewise,
 the optimized constant-detector hierarchy from \cite{ErikssonUnified2026} equals one:
@@ -698,6 +789,8 @@ the normalized Gram matrices and Sylvester coercivity certificates behind the
 degree-zero and degree-one approximation barriers; the exact two-target
 zero-memory formulas and their sharp-collision ratios at four rational
 parameters;
+the explicit nonattained $E_1=0$ degeneration at four rational values of
+$\varepsilon$;
 full-column-rank exclusions below the
 generic threshold; coprime threshold witnesses for every $3\le L\le16$; and
 every nontrivial binary occupancy split through $L=16$ (119 exact cases).
@@ -715,8 +808,9 @@ competitors.  Repeated nodes require confluent interpolation.  Fixed frames,
 higher-rank subspaces, lossy or active architectures, and a complete equality
 theory for nonplanar singular arrangements are not claimed.  The quantitative
 obstruction is a computable lower bound, while \cref{thm:zero-memory} solves the
-full minimax problem only at degree zero; determining $E_d$ exactly for general
-$d\ge1$ below the exact-routing threshold remains open.
+full minimax problem at degree zero and \cref{thm:closure} solves the universal
+zero-infimum regime $d\ge\lceil(L-1)/2\rceil$.  Determining positive values of
+$E_d$ for $1\le d<\min\{\delta,\lceil(L-1)/2\rceil\}$ remains open.
 \end{limitation}
 
 \begin{limitation}[Priority scope]
@@ -727,7 +821,8 @@ this work.  We claim the passive-memory equality \eqref{eq:main}, obtained by
 combining a standard exact-degree lossless lift with the escape-from-the-plane
 lower bound, the quantitative low-degree obstruction \eqref{eq:approx}, and
 the exact zero-memory consequence \eqref{eq:zero-memory}, together with their
-physical/detector consequences.  Bloch-sphere cap geometry itself is standard;
+physical/detector consequences, and the sharp closure/nonattainment theorem
+\eqref{eq:closure}.  Bloch-sphere cap geometry itself is standard;
 we do not claim a new
 general rational interpolation algorithm or priority for the scalar strata.
 \end{limitation}
@@ -736,7 +831,7 @@ general rational interpolation algorithm or priority for the scalar strata.
 The tagged release containing the paper, exact producer, frozen validator,
 frozen JSON certificate, and figure is:
 \begin{center}\small
-\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.2-planar-projective-memory}{GitHub release: \texttt{v3.2-planar-projective-memory}}
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v3.3-planar-projective-memory}{GitHub release: \texttt{v3.3-planar-projective-memory}}
 \end{center}
 
 \section{Conclusion}
@@ -756,7 +851,12 @@ lossless router, stable under calibrated perturbations.  The strict four-node
 fixture turns the exact jump into a certified $21\%$ one-state approximation
 barrier.  At zero memory the approximation problem is solved exactly by the
 smallest Bloch-sphere cap, and the singular-value bound has the correct sharp
-collision asymptotics for two targets.  The analysis also marks the next frontier precisely:
+collision asymptotics for two targets.  At the positive threshold
+$d_0=\lceil(L-1)/2\rceil$, every planar table has zero minimax infimum, even
+when exact interpolation needs more states; below that threshold generic data
+retain a positive error floor.  This sharp closure transition separates
+approximation from exact realization and gives an explicit nonattained
+one-state optimum for three-node collisions.  The analysis also marks the next frontier precisely:
 higher-dimensional singular target varieties motivate detectors that move with
 frequency, rather than merely more constant minors.
 

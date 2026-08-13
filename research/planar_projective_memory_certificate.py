@@ -200,6 +200,64 @@ def exact_zero_memory_family() -> dict:
     }
 
 
+def universal_closure_family() -> dict:
+    """Exact degree-one degeneration for the normalized 2+1 three-node table.
+
+    After projective changes of the domain and target charts, use nodes
+    (0,1,infinity) and targets (0,0,1).  The degree-one maps
+
+        R_e(z) = e*z / (e*z + 1-e)
+
+    hit (0,e,1).  They therefore approach the repeated target table with
+    exact worst-node chordal error e/sqrt(1+e^2), although no degree-one map
+    realizes the limiting table.  A degree-two coprime pair realizes it.
+    """
+    rows = []
+    for epsilon in (sp.Rational(1, 2), sp.Rational(1, 10), sp.Rational(1, 100), sp.Rational(1, 1000)):
+        p = sp.expand(epsilon * z)
+        q = sp.expand(epsilon * z + 1 - epsilon)
+        determinant = sp.factor(epsilon * (1 - epsilon))
+        resultant = sp.factor(sp.resultant(p, q, z))
+        error_squared = sp.factor(epsilon**2 / (1 + epsilon**2))
+        assert determinant != 0
+        assert resultant != 0
+        assert projective_value(p, q, sp.Integer(0)) == 0
+        assert projective_value(p, q, sp.Integer(1)) == epsilon
+        assert sp.LC(sp.Poly(p, z)) / sp.LC(sp.Poly(q, z)) == 1
+        rows.append(
+            {
+                "epsilon": str(epsilon),
+                "p": str(p),
+                "q": str(q),
+                "mobius_determinant": str(determinant),
+                "resultant": str(resultant),
+                "values_at_0_1_infinity": ["0", str(epsilon), "1"],
+                "worst_node_chordal_error_squared": str(error_squared),
+            }
+        )
+
+    exact_p = sp.expand(z * (z - 1))
+    exact_q = sp.expand(z * (z - 1) + 1)
+    exact_resultant = sp.factor(sp.resultant(exact_p, exact_q, z))
+    assert exact_resultant != 0
+    return {
+        "normalized_nodes": ["0", "1", "infinity"],
+        "limiting_targets": ["0", "0", "1"],
+        "universal_density_threshold": "ceil((L-1)/2)",
+        "L": 3,
+        "threshold_degree": 1,
+        "exact_interpolation_degree": 2,
+        "degree_one_minimax_infimum": "0 (not attained)",
+        "exact_degree_two_witness": {
+            "p": str(exact_p),
+            "q": str(exact_q),
+            "resultant": str(exact_resultant),
+            "values_at_0_1_infinity": ["0", "0", "1"],
+        },
+        "degenerating_degree_one_sequence": rows,
+    }
+
+
 def four_line_fixtures() -> dict:
     nodes = [circle_node(t) for t in (0, 1, 2, 3)]
     x1, x2, x3, x4 = nodes
@@ -348,11 +406,12 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = {
-        "schema": "planar-projective-memory-certificate-v3",
+        "schema": "planar-projective-memory-certificate-v4",
         "arithmetic": "SymPy exact Gaussian-rational arithmetic",
         "strict_cross_ratio_gap": strict_cross_ratio_fixture(),
         "quantitative_approximation_gap": quantitative_approximation_fixture(),
         "exact_zero_memory_family": exact_zero_memory_family(),
+        "universal_closure_family": universal_closure_family(),
         "four_line_phase_fixtures": four_line_fixtures(),
         "generic_planar_campaign": generic_planar_campaign(args.max_L),
         "binary_collision_campaign": binary_collision_campaign(args.max_L),

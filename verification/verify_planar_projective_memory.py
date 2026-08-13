@@ -21,7 +21,7 @@ def main() -> None:
     actual = hashlib.sha256(canonical).hexdigest()
     if actual != claimed:
         raise RuntimeError(f"certificate hash mismatch: {actual} != {claimed}")
-    if data["schema"] != "planar-projective-memory-certificate-v3":
+    if data["schema"] != "planar-projective-memory-certificate-v4":
         raise RuntimeError("unexpected schema")
     strict = data["strict_cross_ratio_gap"]
     expected = {
@@ -85,6 +85,39 @@ def main() -> None:
         for key, expected_value in expected_values.items():
             if sp.sympify(item[key]) != expected_value:
                 raise RuntimeError(f"zero-memory mismatch at t={t}, field={key}")
+    closure = data["universal_closure_family"]
+    if closure["L"] != 3 or closure["threshold_degree"] != 1 or closure["exact_interpolation_degree"] != 2:
+        raise RuntimeError("unexpected universal-closure threshold fixture")
+    expected_epsilons = [sp.Rational(1, 2), sp.Rational(1, 10), sp.Rational(1, 100), sp.Rational(1, 1000)]
+    if len(closure["degenerating_degree_one_sequence"]) != len(expected_epsilons):
+        raise RuntimeError("unexpected universal-closure sequence coverage")
+    z = sp.Symbol("z")
+    for item, epsilon in zip(closure["degenerating_degree_one_sequence"], expected_epsilons, strict=True):
+        p = sp.expand(epsilon * z)
+        q = sp.expand(epsilon * z + 1 - epsilon)
+        determinant = sp.factor(epsilon * (1 - epsilon))
+        resultant = sp.factor(sp.resultant(p, q, z))
+        error_squared = sp.factor(epsilon**2 / (1 + epsilon**2))
+        expected_values = {
+            "epsilon": epsilon,
+            "p": p,
+            "q": q,
+            "mobius_determinant": determinant,
+            "resultant": resultant,
+            "worst_node_chordal_error_squared": error_squared,
+        }
+        for key, expected_value in expected_values.items():
+            if sp.sympify(item[key]) != expected_value:
+                raise RuntimeError(f"universal-closure mismatch at epsilon={epsilon}, field={key}")
+        if item["values_at_0_1_infinity"] != ["0", str(epsilon), "1"]:
+            raise RuntimeError(f"universal-closure values mismatch at epsilon={epsilon}")
+    exact_witness = closure["exact_degree_two_witness"]
+    exact_p = sp.expand(z * (z - 1))
+    exact_q = sp.expand(z * (z - 1) + 1)
+    if sp.sympify(exact_witness["p"]) != exact_p or sp.sympify(exact_witness["q"]) != exact_q:
+        raise RuntimeError("universal-closure exact witness mismatch")
+    if sp.sympify(exact_witness["resultant"]) != sp.resultant(exact_p, exact_q, z):
+        raise RuntimeError("universal-closure exact resultant mismatch")
     phase = data["four_line_phase_fixtures"]
     expected_phase = {"all_same": 0, "all_distinct_compatible": 1, "2+2": 2, "2+1+1": 2, "3+1": 3}
     for key, degree in expected_phase.items():
@@ -108,7 +141,7 @@ def main() -> None:
         expected = max(row["occupancies"])
         if row["expected_degree"] != expected or row["certificate"]["degree"] != expected:
             raise RuntimeError(f"binary collision mismatch at {row['occupancies']}")
-    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"])}, sort_keys=True))
+    print(json.dumps({"status": "PASS", "certificate": str(CERT), "sha256": actual, "phase_cases": len(phase), "generic_cases": len(rows), "binary_cases": len(binary), "quantitative_degree_caps": len(approximation["certified_degree_caps"]), "exact_zero_memory_fixtures": len(zero_memory["fixtures"]), "universal_closure_fixtures": len(closure["degenerating_degree_one_sequence"])}, sort_keys=True))
 
 
 if __name__ == "__main__":

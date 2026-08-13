@@ -2,15 +2,15 @@
   "schema": "planar-projective-memory-release-manifest-v1",
   "sha256": {
     ".github/workflows/verify-planar-projective-memory.yml": "fbba9016810822905d744081c23e09a32fba2c57b9e2e7e2f4da8259d4cd2141",
-    "output/pdf/projective_bottlenecks_passive_spectral_routing.pdf": "f323f8addae77ef4a1f7e6e3616dd38b8d1f63d08ebe4056e315b268ac887e99",
-    "paper_planar_projective_memory/SUBMISSION.md": "e9a5d25f1bf776b11e2937d2355e691a33feb83e171353373f80ccd46edc3634",
-    "paper_planar_projective_memory/figures/unbounded_detector_gap.pdf": "05fcf67e1673fa062aa2e17144957ee8541ee4a51a794c13d1d22062e969469c",
-    "paper_planar_projective_memory/main.pdf": "f323f8addae77ef4a1f7e6e3616dd38b8d1f63d08ebe4056e315b268ac887e99",
-    "paper_planar_projective_memory/main.tex": "acc93957e74d488702c113fa11199e72cdc73b3a88c74a6858cd97a84cc1bb28",
+    "output/pdf/projective_bottlenecks_passive_spectral_routing.pdf": "c62a5868a6e9f64f7dcddba4084faad4fb79aa42e190b9f2711ce788e808e686",
+    "paper_planar_projective_memory/SUBMISSION.md": "95d75e3b8eed452f779198b0d4123656dae1245150c64e3e8132ba55797680c7",
+    "paper_planar_projective_memory/figures/unbounded_detector_gap.pdf": "74df8be1a1b730335900eb72f62ce9a766d3cf578e34b30c9ac9e10c4caaed30",
+    "paper_planar_projective_memory/main.pdf": "c62a5868a6e9f64f7dcddba4084faad4fb79aa42e190b9f2711ce788e808e686",
+    "paper_planar_projective_memory/main.tex": "cd7741d43bc38e1b8e4c8d2a7bad0fe0f8b610604fd918bb5ac7c19cf7fdbdf0",
     "paper_planar_projective_memory/references.bib": "dbea40d66f1d3b28e8c322cc6ee198b1128ff72a453fd4c333432e57d02a1574",
-    "research/planar_projective_memory_certificate.py": "de6f01364c02bd2e8ea8acfd4eda5a5e44643748aa6a51c6f113f33a391ca225",
-    "results/planar_projective_memory/certificate.json": "7fa290f55e371cfeef6bb1b990e6f724915ea7004c587fd76d16e253aa0638d6",
+    "research/planar_projective_memory_certificate.py": "833ad673783b81f0c3e799606c0434f7098dfa74be741e7e386ee204555cb8fa",
+    "results/planar_projective_memory/certificate.json": "550f77e80f779a9c8e030187301caf95f5de08f05b6c569791919fda4771413d",
     "verification/run_planar_projective_release_checks.py": "986a68a78459d1ca5d8711905ca1e5fe80dc85544623f6bd531d1c390b5a4be9",
-    "verification/verify_planar_projective_memory.py": "4db0fb0abf1cafda61fe9b55b01bcca12c769979eed05dc7694fff50c901955b"
+    "verification/verify_planar_projective_memory.py": "054084b8a278f727034cb1644a8d0cae22dfa92e0440e1a288bd651ccb5d2105"
   }
 }
