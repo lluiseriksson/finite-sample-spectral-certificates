@@ -1,0 +1,297 @@
+{
+  "schema": "ky-fan-speed-limits/v1",
+  "theorem": {
+    "signed": "2 sum_{j<=r} beta_j <= integral sum_{j<=r}(lambda_j-lambda_{N-j+1})",
+    "positive": "2 sum_{j<=r} beta_j <= integral sum_{j<=r} lambda_j",
+    "indices": "r=1,...,min(k,N-k)"
+  },
+  "sharp_equalities": {
+    "cases": [
+      {
+        "rank": 1,
+        "angles": [
+          1.21
+        ],
+        "observed_angles": [
+          1.21
+        ],
+        "twice_angle_partial_sums": [
+          2.42
+        ],
+        "top_delay_partial_sums": [
+          2.42
+        ],
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 2.42,
+            "delay_action": 2.42
+          },
+          "euclidean": {
+            "geometric_optimum": 2.42,
+            "delay_action": 2.42
+          },
+          "trace": {
+            "geometric_optimum": 2.42,
+            "delay_action": 2.42
+          }
+        },
+        "maximum_error": 0.0
+      },
+      {
+        "rank": 2,
+        "angles": [
+          1.42,
+          0.87
+        ],
+        "observed_angles": [
+          1.4200000000000002,
+          0.87
+        ],
+        "twice_angle_partial_sums": [
+          2.84,
+          4.58
+        ],
+        "top_delay_partial_sums": [
+          2.84,
+          4.58
+        ],
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 2.84,
+            "delay_action": 2.84
+          },
+          "euclidean": {
+            "geometric_optimum": 3.330645583066442,
+            "delay_action": 3.3306455830664423
+          },
+          "trace": {
+            "geometric_optimum": 4.58,
+            "delay_action": 4.58
+          }
+        },
+        "maximum_error": 4.440892098500626e-16
+      },
+      {
+        "rank": 4,
+        "angles": [
+          1.49,
+          1.08,
+          0.63,
+          0.17
+        ],
+        "observed_angles": [
+          1.4900000000000002,
+          1.08,
+          0.6299999999999998,
+          0.1699999999999997
+        ],
+        "twice_angle_partial_sums": [
+          2.98,
+          5.140000000000001,
+          6.4,
+          6.74
+        ],
+        "top_delay_partial_sums": [
+          2.9800000000000004,
+          5.140000000000001,
+          6.4,
+          6.74
+        ],
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 2.98,
+            "delay_action": 2.9800000000000004
+          },
+          "euclidean": {
+            "geometric_optimum": 3.905022407106008,
+            "delay_action": 3.9050224071060087
+          },
+          "trace": {
+            "geometric_optimum": 6.74,
+            "delay_action": 6.74
+          }
+        },
+        "maximum_error": 8.881784197001252e-16
+      },
+      {
+        "rank": 6,
+        "angles": [
+          1.51,
+          1.22,
+          0.94,
+          0.58,
+          0.31,
+          0.09
+        ],
+        "observed_angles": [
+          1.51,
+          1.2200000000000002,
+          0.9400000000000001,
+          0.5799999999999998,
+          0.31000000000000044,
+          0.09000000000000101
+        ],
+        "twice_angle_partial_sums": [
+          3.02,
+          5.46,
+          7.34,
+          8.5,
+          9.12,
+          9.299999999999999
+        ],
+        "top_delay_partial_sums": [
+          3.02,
+          5.459999999999999,
+          7.339999999999999,
+          8.499999999999998,
+          9.119999999999997,
+          9.299999999999997
+        ],
+        "symmetric_gauge_costs": {
+          "operator": {
+            "geometric_optimum": 3.02,
+            "delay_action": 3.02
+          },
+          "euclidean": {
+            "geometric_optimum": 4.513402264367757,
+            "delay_action": 4.513402264367756
+          },
+          "trace": {
+            "geometric_optimum": 9.299999999999999,
+            "delay_action": 9.299999999999997
+          }
+        },
+        "maximum_error": 1.7763568394002505e-15
+      }
+    ],
+    "worst_error": 1.7763568394002505e-15,
+    "all_pass": true
+  },
+  "scalar_endpoint_separation": {
+    "first_angles": [
+      1.0,
+      0.8,
+      0.2
+    ],
+    "second_angles": [
+      1.0,
+      0.5,
+      0.5
+    ],
+    "common_largest_angle": 1.0,
+    "common_total_angle": 2.0,
+    "first_optimal_action_prefixes": [
+      2.0,
+      3.6,
+      4.0
+    ],
+    "second_optimal_action_prefixes": [
+      2.0,
+      3.0,
+      4.0
+    ],
+    "r2_action_gap": 0.6000000000000001,
+    "same_scalar_endpoints": true,
+    "strict_intermediate_separation": true,
+    "all_pass": true
+  },
+  "signed_pointwise": {
+    "seed": 26081001,
+    "matrices": 4096,
+    "partial_sum_inequalities": 11697,
+    "worst_lhs_over_rhs": 0.9943442353180024,
+    "smallest_absolute_slack": 0.020896705641741953,
+    "all_pass": true
+  },
+  "positive_pointwise": {
+    "seed": 26081002,
+    "matrices": 4096,
+    "partial_sum_inequalities": 11905,
+    "worst_lhs_over_rhs": 0.9813310330950205,
+    "smallest_absolute_slack": 0.044666079033403694,
+    "all_pass": true
+  },
+  "signed_paths": {
+    "seed": 26081003,
+    "piecewise_constant_paths": 768,
+    "partial_sum_inequalities": 2338,
+    "worst_lhs_over_rhs": 0.9806715821623933,
+    "smallest_absolute_slack": 0.002832932752615175,
+    "all_pass": true
+  },
+  "positive_paths": {
+    "seed": 26081004,
+    "piecewise_constant_paths": 768,
+    "partial_sum_inequalities": 2315,
+    "worst_lhs_over_rhs": 0.8867061951028952,
+    "smallest_absolute_slack": 0.014492198000177661,
+    "all_pass": true
+  },
+  "tomography": {
+    "seed": 26081005,
+    "trials": 2048,
+    "worst_certified_minus_actual": -0.0007018831756845367,
+    "examples": [
+      {
+        "rank": 5,
+        "eta_pass": 0.02102951549630085,
+        "eta_stop": 0.02392630497022886,
+        "actual_gamma": [
+          0.9030445989215807,
+          2.0551732764971016,
+          3.465874394748257,
+          4.919598370112467,
+          6.396507498849207
+        ],
+        "certified_gamma": [
+          0.8296012194400901,
+          1.942530580868152,
+          3.1333460051788053,
+          4.40521623364436,
+          5.692351262199535
+        ]
+      },
+      {
+        "rank": 3,
+        "eta_pass": 0.0021119376038349763,
+        "eta_stop": 0.011768084075512298,
+        "actual_gamma": [
+          1.0829598736425152,
+          2.4767715122887908,
+          3.933076853686767
+        ],
+        "certified_gamma": [
+          1.0558272030503193,
+          2.4298396390478274,
+          3.84962294711774
+        ]
+      },
+      {
+        "rank": 4,
+        "eta_pass": 0.01809841784639096,
+        "eta_stop": 0.01386495879152063,
+        "actual_gamma": [
+          0.9939820510897979,
+          2.071496344986447,
+          3.3007538559968737,
+          4.653242583186485
+        ],
+        "certified_gamma": [
+          0.8697961389154933,
+          1.85821617045699,
+          2.969528529023462,
+          4.16987456746595
+        ]
+      }
+    ],
+    "all_pass": true
+  },
+  "slack_decomposition": {
+    "seed": 26081006,
+    "trials": 4096,
+    "worst_identity_error": 3.552713678800501e-15,
+    "all_components_nonnegative": true,
+    "all_pass": true
+  },
+  "all_checks_pass": true
+}

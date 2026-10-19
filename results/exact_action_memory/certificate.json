@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "artifact": "exact-action-memory-certificate",
+  "deterministic_seeds": {
+    "diamond": 26081031,
+    "holonomy_noise": 26081032
+  },
+  "flagship_diamond": {
+    "angles": [
+      0.92,
+      0.47,
+      0.18
+    ],
+    "positive_angles": [
+      0.92,
+      0.47,
+      0.18
+    ],
+    "geometric_action": 3.14,
+    "action": 15.25,
+    "degree": 3,
+    "step_counts": [
+      1,
+      1,
+      1
+    ],
+    "subangles": [
+      0.92,
+      0.47,
+      0.18
+    ],
+    "gate_phases": [
+      4.443185307179586,
+      5.343185307179587,
+      5.463629385640827
+    ],
+    "observed_angles": [
+      0.92,
+      0.4699999999999999,
+      0.1799999999999998
+    ],
+    "endpoint_identity_error": 0.0,
+    "angle_error": 1.942890293094024e-16,
+    "arc_action_numeric": 15.25000000000001,
+    "arc_action_error": 1.0658141036401503e-14,
+    "circle_action_numeric": 18.84955592153877,
+    "circle_action_error": 1.0658141036401503e-14,
+    "quadrature_mode": "adaptive-analytic-derivative",
+    "minimum_delay_eigenvalue": -1.7763568394002505e-15,
+    "maximum_projector_commutator": 0.0,
+    "reversed_endpoint_projector_error": 0.0,
+    "all_pass": true
+  },
+  "deterministic_faces": {
+    "cases": {
+      "rank_one_lower": {
+        "angles": [
+          0.5235987755982988
+        ],
+        "positive_angles": [
+          0.5235987755982988
+        ],
+        "geometric_action": 1.0471975511965976,
+        "action": 1.0471975511965976,
+        "degree": 1,
+        "step_counts": [
+          1
+        ],
+        "subangles": [
+          0.5235987755982988
+        ],
+        "gate_phases": [
+          1.0471975511965976
+        ],
+        "observed_angles": [
+          0.5235987755982985
+        ],
+        "endpoint_identity_error": 4.8074067159589114e-17,
+        "angle_error": 3.3306690738754696e-16,
+        "arc_action_numeric": 1.0471975511965976,
+        "arc_action_error": 0.0,
+        "circle_action_numeric": 6.283185307179587,
+        "circle_action_error": 8.881784197001252e-16,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -1.1102230246251565e-16,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "rank_one_midpoint": {
+        "angles": [
+          0.5235987755982988
+        ],
+        "positive_angles": [
+          0.5235987755982988
+        ],
+        "geometric_action": 1.0471975511965976,
+        "action": 3.141592653589793,
+        "degree": 1,
+        "step_counts": [
+          1
+        ],
+        "subangles": [
+          0.5235987755982988
+        ],
+        "gate_phases": [
+          3.141592653589793
+        ],
+        "observed_angles": [
+          0.5235987755982989
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 1.1102230246251565e-16,
+        "arc_action_numeric": 3.141592653589795,
+        "arc_action_error": 1.7763568394002505e-15,
+        "circle_action_numeric": 6.28318530717959,
+        "circle_action_error": 3.552713678800501e-15,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -6.938893903907228e-17,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "rank_one_upper": {
+        "angles": [
+          0.5235987755982988
+        ],
+        "positive_angles": [
+          0.5235987755982988
+        ],
+        "geometric_action": 1.0471975511965976,
+        "action": 5.235987755982989,
+        "degree": 1,
+        "step_counts": [
+          1
+        ],
+        "subangles": [
+          0.5235987755982988
+        ],
+        "gate_phases": [
+          5.235987755982989
+        ],
+        "observed_angles": [
+          0.5235987755982985
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 3.3306690738754696e-16,
+        "arc_action_numeric": 5.2359877559829915,
+        "arc_action_error": 2.6645352591003757e-15,
+        "circle_action_numeric": 6.283185307179591,
+        "circle_action_error": 4.440892098500626e-15,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -6.661338147750939e-16,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "zero_angle_lower": {
+        "angles": [
+          1.0471975511965976,
+          0.5235987755982988,
+          0.0
+        ],
+        "positive_angles": [
+          1.0471975511965976,
+          0.5235987755982988
+        ],
+        "geometric_action": 3.141592653589793,
+        "action": 3.141592653589793,
+        "degree": 2,
+        "step_counts": [
+          1,
+          1
+        ],
+        "subangles": [
+          1.0471975511965976,
+          0.5235987755982988
+        ],
+        "gate_phases": [
+          2.0943951023931953,
+          1.0471975511965976
+        ],
+        "observed_angles": [
+          1.0471975511965979,
+          0.5235987755982985
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 3.3306690738754696e-16,
+        "arc_action_numeric": 3.141592653589795,
+        "arc_action_error": 1.7763568394002505e-15,
+        "circle_action_numeric": 12.566370614359192,
+        "circle_action_error": 1.9539925233402755e-14,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -4.591883469384086e-16,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "extra_degree_interior": {
+        "angles": [
+          1.0471975511965976,
+          0.5235987755982988,
+          0.0
+        ],
+        "positive_angles": [
+          1.0471975511965976,
+          0.5235987755982988
+        ],
+        "geometric_action": 3.141592653589793,
+        "action": 12.566370614359172,
+        "degree": 3,
+        "step_counts": [
+          2,
+          1
+        ],
+        "subangles": [
+          0.5235987755982988,
+          0.5235987755982988,
+          0.5235987755982988
+        ],
+        "gate_phases": [
+          5.235987755982989,
+          5.235987755982989,
+          2.094395102393194
+        ],
+        "observed_angles": [
+          1.0471975511965979,
+          0.5235987755982987
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 2.220446049250313e-16,
+        "arc_action_numeric": 12.566370614359187,
+        "arc_action_error": 1.4210854715202004e-14,
+        "circle_action_numeric": 18.849555921538773,
+        "circle_action_error": 1.4210854715202004e-14,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -2.496913548775667e-15,
+        "maximum_projector_commutator": 1.5824519851749512e-16,
+        "reversed_endpoint_projector_error": 7.109737278934241e-17,
+        "all_pass": true
+      },
+      "extra_degree_upper": {
+        "angles": [
+          1.0471975511965976,
+          0.5235987755982988,
+          0.0
+        ],
+        "positive_angles": [
+          1.0471975511965976,
+          0.5235987755982988
+        ],
+        "geometric_action": 3.141592653589793,
+        "action": 15.707963267948966,
+        "degree": 3,
+        "step_counts": [
+          2,
+          1
+        ],
+        "subangles": [
+          0.5235987755982988,
+          0.5235987755982988,
+          0.5235987755982988
+        ],
+        "gate_phases": [
+          5.235987755982989,
+          5.235987755982989,
+          5.235987755982987
+        ],
+        "observed_angles": [
+          1.0471975511965979,
+          0.5235987755982987
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 2.220446049250313e-16,
+        "arc_action_numeric": 15.707963267948971,
+        "arc_action_error": 5.329070518200751e-15,
+        "circle_action_numeric": 18.849555921538766,
+        "circle_action_error": 7.105427357601002e-15,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -3.5310081537422016e-15,
+        "maximum_projector_commutator": 1.5824519851749512e-16,
+        "reversed_endpoint_projector_error": 9.359960926516626e-17,
+        "all_pass": true
+      },
+      "orthogonal_collapse": {
+        "angles": [
+          1.5707963267948966
+        ],
+        "positive_angles": [
+          1.5707963267948966
+        ],
+        "geometric_action": 3.141592653589793,
+        "action": 3.141592653589793,
+        "degree": 1,
+        "step_counts": [
+          1
+        ],
+        "subangles": [
+          1.5707963267948966
+        ],
+        "gate_phases": [
+          3.141592653589793
+        ],
+        "observed_angles": [
+          1.5707963267948963
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 2.220446049250313e-16,
+        "arc_action_numeric": 3.141592653589796,
+        "arc_action_error": 2.6645352591003757e-15,
+        "circle_action_numeric": 6.283185307179592,
+        "circle_action_error": 5.329070518200751e-15,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": -2.220446049250313e-16,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "coincident_positive_action": {
+        "angles": [
+          0.0
+        ],
+        "positive_angles": [
+          0.0
+        ],
+        "geometric_action": 0.0,
+        "action": 5.8,
+        "degree": 1,
+        "step_counts": [
+          1
+        ],
+        "subangles": [
+          0.0
+        ],
+        "gate_phases": [
+          5.8
+        ],
+        "observed_angles": [
+          0.0
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 0.0,
+        "arc_action_numeric": 5.799999999999988,
+        "arc_action_error": 1.1546319456101628e-14,
+        "circle_action_numeric": 6.283185307179583,
+        "circle_action_error": 3.552713678800501e-15,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": 0.0,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "coincident_tiny_action": {
+        "angles": [
+          0.0
+        ],
+        "positive_angles": [
+          0.0
+        ],
+        "geometric_action": 0.0,
+        "action": 1e-08,
+        "degree": 1,
+        "step_counts": [
+          1
+        ],
+        "subangles": [
+          0.0
+        ],
+        "gate_phases": [
+          1e-08
+        ],
+        "observed_angles": [
+          0.0
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 0.0,
+        "arc_action_numeric": 1e-08,
+        "arc_action_error": 0.0,
+        "circle_action_numeric": 6.283185307179586,
+        "circle_action_error": 0.0,
+        "quadrature_mode": "exact-phase-antiderivative",
+        "minimum_delay_eigenvalue": 0.0,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "coincident_one_turn": {
+        "angles": [
+          0.0
+        ],
+        "positive_angles": [
+          0.0
+        ],
+        "geometric_action": 0.0,
+        "action": 6.283185307179586,
+        "degree": 2,
+        "step_counts": [
+          2
+        ],
+        "subangles": [
+          0.0,
+          0.0
+        ],
+        "gate_phases": [
+          3.141592653589793,
+          3.141592653589793
+        ],
+        "observed_angles": [
+          0.0
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 0.0,
+        "arc_action_numeric": 6.283185307179581,
+        "arc_action_error": 5.329070518200751e-15,
+        "circle_action_numeric": 12.566370614359162,
+        "circle_action_error": 1.0658141036401503e-14,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": 0.0,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "coincident_above_turn": {
+        "angles": [
+          0.0
+        ],
+        "positive_angles": [
+          0.0
+        ],
+        "geometric_action": 0.0,
+        "action": 6.383185307179586,
+        "degree": 2,
+        "step_counts": [
+          2
+        ],
+        "subangles": [
+          0.0,
+          0.0
+        ],
+        "gate_phases": [
+          3.191592653589793,
+          3.191592653589793
+        ],
+        "observed_angles": [
+          0.0
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 0.0,
+        "arc_action_numeric": 6.3831853071795805,
+        "arc_action_error": 5.329070518200751e-15,
+        "circle_action_numeric": 12.566370614359164,
+        "circle_action_error": 8.881784197001252e-15,
+        "quadrature_mode": "adaptive-analytic-derivative",
+        "minimum_delay_eigenvalue": 0.0,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      },
+      "coincident_near_two_turns": {
+        "angles": [
+          0.0
+        ],
+        "positive_angles": [
+          0.0
+        ],
+        "geometric_action": 0.0,
+        "action": 12.566270614359173,
+        "degree": 2,
+        "step_counts": [
+          2
+        ],
+        "subangles": [
+          0.0,
+          0.0
+        ],
+        "gate_phases": [
+          6.283135307179586,
+          6.283135307179586
+        ],
+        "observed_angles": [
+          0.0
+        ],
+        "endpoint_identity_error": 0.0,
+        "angle_error": 0.0,
+        "arc_action_numeric": 12.566270614359173,
+        "arc_action_error": 0.0,
+        "circle_action_numeric": 12.566370614359172,
+        "circle_action_error": 0.0,
+        "quadrature_mode": "exact-phase-antiderivative",
+        "minimum_delay_eigenvalue": 0.0,
+        "maximum_projector_commutator": 0.0,
+        "reversed_endpoint_projector_error": 0.0,
+        "all_pass": true
+      }
+    },
+    "all_pass": true
+  },
+  "noncommuting_order_control": {
+    "projector_commutator_norm": 0.4999999999999999,
+    "reversed_endpoint_projector_error": 0.4225907449128648,
+    "shared_trace_action": 3.3000000000000003,
+    "shared_degree": 2,
+    "all_pass": true
+  },
+  "random_diamond": {
+    "trials": 128,
+    "failures": 0,
+    "worst_arc_action_error": 3.126388037344441e-13,
+    "worst_circle_action_error": 1.502797886132612e-10,
+    "worst_angle_error": 1.970645868709653e-15,
+    "all_pass": true,
+    "sample": [
+      {
+        "rank": 4,
+        "requested_budget": 4,
+        "degree": 4,
+        "budget_slack": 0,
+        "arc_action_error": 7.105427357601002e-15,
+        "circle_action_error": 4.014566457044566e-13,
+        "angle_error": 5.828670879282072e-16
+      },
+      {
+        "rank": 1,
+        "requested_budget": 3,
+        "degree": 2,
+        "budget_slack": 1,
+        "arc_action_error": 4.618527782440651e-14,
+        "circle_action_error": 4.618527782440651e-14,
+        "angle_error": 1.1102230246251565e-16
+      },
+      {
+        "rank": 1,
+        "requested_budget": 2,
+        "degree": 2,
+        "budget_slack": 0,
+        "arc_action_error": 3.552713678800501e-15,
+        "circle_action_error": 8.881784197001252e-15,
+        "angle_error": 1.1102230246251565e-16
+      },
+      {
+        "rank": 2,
+        "requested_budget": 4,
+        "degree": 3,
+        "budget_slack": 1,
+        "arc_action_error": 5.329070518200751e-15,
+        "circle_action_error": 2.4868995751603507e-14,
+        "angle_error": 6.661338147750939e-16
+      },
+      {
+        "rank": 4,
+        "requested_budget": 5,
+        "degree": 5,
+        "budget_slack": 0,
+        "arc_action_error": 2.842170943040401e-14,
+        "circle_action_error": 3.552713678800501e-14,
+        "angle_error": 4.440892098500626e-16
+      },
+      {
+        "rank": 2,
+        "requested_budget": 3,
+        "degree": 2,
+        "budget_slack": 1,
+        "arc_action_error": 8.881784197001252e-16,
+        "circle_action_error": 3.375077994860476e-14,
+        "angle_error": 7.771561172376096e-16
+      },
+      {
+        "rank": 3,
+        "requested_budget": 6,
+        "degree": 3,
+        "budget_slack": 3,
+        "arc_action_error": 1.7763568394002505e-15,
+        "circle_action_error": 7.105427357601002e-15,
+        "angle_error": 3.3306690738754696e-16
+      },
+      {
+        "rank": 1,
+        "requested_budget": 1,
+        "degree": 1,
+        "budget_slack": 0,
+        "arc_action_error": 8.881784197001252e-16,
+        "circle_action_error": 0.0,
+        "angle_error": 8.049116928532385e-16
+      }
+    ]
+  },
+  "three_node_holonomy": {
+    "nodes": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        -0.4999999999999998,
+        0.8660254037844387
+      ],
+      [
+        -0.5000000000000003,
+        -0.8660254037844384
+      ]
+    ],
+    "pick_matrix": [
+      [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.2886751345948129
+        ],
+        [
+          0.5,
+          -0.2886751345948127
+        ]
+      ],
+      [
+        [
+          0.5,
+          -0.2886751345948129
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.5000000000000001,
+          0.288675134594813
+        ]
+      ],
+      [
+        [
+          0.5,
+          0.2886751345948127
+        ],
+        [
+          0.5000000000000001,
+          -0.288675134594813
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ]
+    ],
+    "pick_eigenvalues": [
+      8.153200337090993e-17,
+      0.9999999999999999,
+      1.9999999999999996
+    ],
+    "pick_rank": 2,
+    "cycle_product": [
+      4.163336342344337e-17,
+      0.19245008972987526
+    ],
+    "cycle_phase": 1.5707963267948963,
+    "pairwise_minimum_degree": 1,
+    "global_minimum_degree": 2,
+    "colligation_unitarity_error": 4.624231354168344e-15,
+    "maximum_interpolation_error": 5.0567469546736606e-15,
+    "maximum_boundary_unitarity_error": 8.046797178153966e-15,
+    "state_spectral_radius": 1.7470935050249128e-08,
+    "controllability_rank": 2,
+    "observability_rank": 2,
+    "all_pass": true
+  },
+  "noisy_holonomy": {
+    "trials": 2048,
+    "alternative_trials": 1024,
+    "rank_one_null_trials": 1024,
+    "certified_rank_two": 1024,
+    "false_certificates": 0,
+    "worst_witness_margin": -0.12413626121542609,
+    "all_pass": true
+  },
+  "all_pass": true
+}
