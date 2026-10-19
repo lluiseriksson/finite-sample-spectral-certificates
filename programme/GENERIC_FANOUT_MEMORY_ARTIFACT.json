@@ -1,0 +1,20 @@
+{
+  "artifact": "exact-memory-of-direct-sum-spectral-fan-out",
+  "release_tag": "v2.3-direct-sum-fanout-submission",
+  "schema_version": 1,
+  "date": "2026-08-11",
+  "artifacts": {
+    ".github/workflows/verify-generic-fanout.yml": "97d33b66f0d6071c051ef8cac8191f53e595bd87da48c0876b704c292c4256b3",
+    "output/pdf/generic_fanout_memory.pdf": "b58b7f1c2cee8ade1894556bebdc2ccd779da282609cf744cb432f7c02bc869f",
+    "paper_generic_fanout_memory/README.md": "a9e26dee20c2521942ef59a1a9c617f026852dcf917c108ee0eb818b2a083d9e",
+    "paper_generic_fanout_memory/figures/generic_fanout_memory.pdf": "e1e3ba0834bc76d9db17ebd02daa3c3061b3a8b6a619e363ae63fe4b269322e4",
+    "paper_generic_fanout_memory/generic_fanout_memory.pdf": "b58b7f1c2cee8ade1894556bebdc2ccd779da282609cf744cb432f7c02bc869f",
+    "paper_generic_fanout_memory/main.tex": "7b4d72bbbf3342eecf81c5eceb2c64719c4428e54824d15ac2fad8dcdc91235e",
+    "paper_generic_fanout_memory/references.bib": "6483ed9ab780dddf1c934dff36f731fd5d88d7018fa844bbc72649f0d704b279",
+    "programme/GENERIC_FANOUT_MEMORY_RESEARCH.md": "e27126354414cbdb7a09da0d87ce9742dfb899171874d38fec8beb1e1e9eb175",
+    "research/generic_fanout_memory_certificate.py": "e47a3b07f0f16e93a50a57f83349d54933537b0fbd2f2a6cf042aa3d7713d7b1",
+    "results/generic_fanout_memory/certificate.json": "7cd470e30ddec49b51deb0cf132c653bd6812db8f9f17be3a53f21e63c8273cb",
+    "verification/run_generic_fanout_memory_release_checks.py": "ff3aaeba99d9bf09565e3661274fd30735e5b573c62402a0f26d0f97bcb60873",
+    "verification/verify_generic_fanout_memory.py": "95060038bc5cffc88d140fd34a949369b2ea1a9efdef1f95ffe438585724d4df"
+  }
+}

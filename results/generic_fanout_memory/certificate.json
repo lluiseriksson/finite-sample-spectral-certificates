@@ -1,0 +1,480 @@
+{
+  "all_pass": true,
+  "clustered_nodes": {
+    "all_pass": true,
+    "cases": [
+      {
+        "all_pass": true,
+        "analytic_rank": 3,
+        "completion_scale": 165.56224591170383,
+        "floating_rank_at_1e-9_relative": 3,
+        "leading_condition_number": 165.56168754827792,
+        "minimum_node_gap": 0.01,
+        "relative_stein_residual": 3.049026063811445e-17
+      },
+      {
+        "all_pass": true,
+        "analytic_rank": 3,
+        "completion_scale": 16455.461944224535,
+        "floating_rank_at_1e-9_relative": 3,
+        "leading_condition_number": 16455.461938522025,
+        "minimum_node_gap": 0.0001,
+        "relative_stein_residual": 1.1053341643486669e-16
+      },
+      {
+        "all_pass": true,
+        "analytic_rank": 3,
+        "completion_scale": 1645447.176859826,
+        "floating_rank_at_1e-9_relative": 3,
+        "leading_condition_number": 1645447.1766687208,
+        "minimum_node_gap": 1e-06,
+        "relative_stein_residual": 8.040717018280154e-17
+      },
+      {
+        "all_pass": true,
+        "analytic_rank": 3,
+        "completion_scale": 164544618.68580696,
+        "floating_rank_at_1e-9_relative": 3,
+        "leading_condition_number": 164544622.96333048,
+        "minimum_node_gap": 1e-08,
+        "relative_stein_residual": 9.253331640783356e-17
+      }
+    ],
+    "failures": 0
+  },
+  "colligation_synthesis": {
+    "all_pass": true,
+    "cases": [
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "colligation_unitarity_error": 1.2569320613778262e-14,
+        "controllability_rank": 2,
+        "global_degree": 2,
+        "maximum_boundary_unitarity_error": 2.2762951657073747e-14,
+        "maximum_grid_unitarity_error": 2.4465932065555183e-14,
+        "maximum_interpolation_error": 1.7234029733464726e-14,
+        "nodes": 3,
+        "observability_rank": 2,
+        "pairwise_degree": 1,
+        "sample_gram_error": 8.96195152651761e-16,
+        "state_dimension": 2,
+        "state_spectral_radius": 0.7880507979762326
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "colligation_unitarity_error": 3.1510028468721716e-14,
+        "controllability_rank": 3,
+        "global_degree": 3,
+        "maximum_boundary_unitarity_error": 9.66000016847039e-14,
+        "maximum_grid_unitarity_error": 9.898898685455464e-14,
+        "maximum_interpolation_error": 2.1551546842229544e-14,
+        "nodes": 4,
+        "observability_rank": 3,
+        "pairwise_degree": 1,
+        "sample_gram_error": 7.490681418580682e-15,
+        "state_dimension": 3,
+        "state_spectral_radius": 0.9610225838017789
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "colligation_unitarity_error": 1.8675402736924686e-13,
+        "controllability_rank": 4,
+        "global_degree": 4,
+        "maximum_boundary_unitarity_error": 4.3631750681304875e-13,
+        "maximum_grid_unitarity_error": 3.810328285845116e-13,
+        "maximum_interpolation_error": 3.0460413819049694e-13,
+        "nodes": 3,
+        "observability_rank": 4,
+        "pairwise_degree": 2,
+        "sample_gram_error": 4.8503570124352344e-14,
+        "state_dimension": 4,
+        "state_spectral_radius": 0.9918009789233468
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "colligation_unitarity_error": 3.013292090280505e-14,
+        "controllability_rank": 6,
+        "global_degree": 6,
+        "maximum_boundary_unitarity_error": 7.073751234182943e-14,
+        "maximum_grid_unitarity_error": 7.337772840910923e-14,
+        "maximum_interpolation_error": 3.275393892479627e-14,
+        "nodes": 4,
+        "observability_rank": 6,
+        "pairwise_degree": 2,
+        "sample_gram_error": 7.210312265551691e-15,
+        "state_dimension": 6,
+        "state_spectral_radius": 0.8677416537133266
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "colligation_unitarity_error": 6.44106847640968e-14,
+        "controllability_rank": 8,
+        "global_degree": 8,
+        "maximum_boundary_unitarity_error": 1.1195320725214258e-13,
+        "maximum_grid_unitarity_error": 1.117522908729361e-13,
+        "maximum_interpolation_error": 2.1415744586230507e-14,
+        "nodes": 5,
+        "observability_rank": 8,
+        "pairwise_degree": 2,
+        "sample_gram_error": 1.3312102898244632e-14,
+        "state_dimension": 8,
+        "state_spectral_radius": 0.8584078086862329
+      }
+    ]
+  },
+  "near_collapse": {
+    "all_pass": true,
+    "cases": [
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 2,
+        "epsilon": 0.1,
+        "exact_degree": 2,
+        "maximum_pairwise_overlap": 0.9900990099009903,
+        "minimum_gram_eigenvalue": 0.009900990099009674,
+        "nodes": 3,
+        "predicted_minimum_gram_eigenvalue": 0.009900990099009903,
+        "spectrum_error": 2.2898349882893854e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 2,
+        "epsilon": 0.03,
+        "exact_degree": 2,
+        "maximum_pairwise_overlap": 0.9991008092716557,
+        "minimum_gram_eigenvalue": 0.0008991907283442124,
+        "nodes": 3,
+        "predicted_minimum_gram_eigenvalue": 0.00089919072834449,
+        "spectrum_error": 2.7755575615628914e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 2,
+        "epsilon": 0.01,
+        "exact_degree": 2,
+        "maximum_pairwise_overlap": 0.9999000099990004,
+        "minimum_gram_eigenvalue": 9.999000099951408e-05,
+        "nodes": 3,
+        "predicted_minimum_gram_eigenvalue": 9.999000099990002e-05,
+        "spectrum_error": 3.8593531582337137e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 2,
+        "epsilon": 0.003,
+        "exact_degree": 2,
+        "maximum_pairwise_overlap": 0.9999910000809994,
+        "minimum_gram_eigenvalue": 8.999919000327514e-06,
+        "nodes": 3,
+        "predicted_minimum_gram_eigenvalue": 8.999919000728994e-06,
+        "spectrum_error": 4.014800644713823e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 2,
+        "epsilon": 0.001,
+        "exact_degree": 2,
+        "maximum_pairwise_overlap": 0.999999000001,
+        "minimum_gram_eigenvalue": 9.999989998188715e-07,
+        "nodes": 3,
+        "predicted_minimum_gram_eigenvalue": 9.99999000001e-07,
+        "spectrum_error": 1.8212860080214603e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 4,
+        "epsilon": 0.1,
+        "exact_degree": 4,
+        "maximum_pairwise_overlap": 0.9900990099009903,
+        "minimum_gram_eigenvalue": 0.009900990099009799,
+        "nodes": 5,
+        "predicted_minimum_gram_eigenvalue": 0.009900990099009903,
+        "spectrum_error": 1.0408340855860843e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 4,
+        "epsilon": 0.03,
+        "exact_degree": 4,
+        "maximum_pairwise_overlap": 0.9991008092716557,
+        "minimum_gram_eigenvalue": 0.0008991907283441317,
+        "nodes": 5,
+        "predicted_minimum_gram_eigenvalue": 0.00089919072834449,
+        "spectrum_error": 3.583288180064592e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 4,
+        "epsilon": 0.01,
+        "exact_degree": 4,
+        "maximum_pairwise_overlap": 0.9999000099990004,
+        "minimum_gram_eigenvalue": 9.99900009992263e-05,
+        "nodes": 5,
+        "predicted_minimum_gram_eigenvalue": 9.999000099990002e-05,
+        "spectrum_error": 6.737096774553364e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 4,
+        "epsilon": 0.003,
+        "exact_degree": 4,
+        "maximum_pairwise_overlap": 0.9999910000809994,
+        "minimum_gram_eigenvalue": 8.99991900080401e-06,
+        "nodes": 5,
+        "predicted_minimum_gram_eigenvalue": 8.999919000728994e-06,
+        "spectrum_error": 7.501662594062986e-17
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 1,
+        "completion_rank": 4,
+        "epsilon": 0.001,
+        "exact_degree": 4,
+        "maximum_pairwise_overlap": 0.999999000001,
+        "minimum_gram_eigenvalue": 9.999989998358837e-07,
+        "nodes": 5,
+        "predicted_minimum_gram_eigenvalue": 9.99999000001e-07,
+        "spectrum_error": 1.6511636757301704e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "epsilon": 0.1,
+        "exact_degree": 6,
+        "maximum_pairwise_overlap": 0.9900990099009903,
+        "minimum_gram_eigenvalue": 0.00990099009900954,
+        "nodes": 4,
+        "predicted_minimum_gram_eigenvalue": 0.009900990099009903,
+        "spectrum_error": 3.625572064791527e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "epsilon": 0.03,
+        "exact_degree": 6,
+        "maximum_pairwise_overlap": 0.9991008092716557,
+        "minimum_gram_eigenvalue": 0.000899190728344337,
+        "nodes": 4,
+        "predicted_minimum_gram_eigenvalue": 0.00089919072834449,
+        "spectrum_error": 1.5298092653770468e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "epsilon": 0.01,
+        "exact_degree": 6,
+        "maximum_pairwise_overlap": 0.9999000099990004,
+        "minimum_gram_eigenvalue": 9.999000099910521e-05,
+        "nodes": 4,
+        "predicted_minimum_gram_eigenvalue": 9.999000099990002e-05,
+        "spectrum_error": 7.948015075948112e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "epsilon": 0.003,
+        "exact_degree": 6,
+        "maximum_pairwise_overlap": 0.9999910000809994,
+        "minimum_gram_eigenvalue": 8.999919000259125e-06,
+        "nodes": 4,
+        "predicted_minimum_gram_eigenvalue": 8.999919000728994e-06,
+        "spectrum_error": 4.698695046326945e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "epsilon": 0.001,
+        "exact_degree": 6,
+        "maximum_pairwise_overlap": 0.999999000001,
+        "minimum_gram_eigenvalue": 9.999989997084438e-07,
+        "nodes": 4,
+        "predicted_minimum_gram_eigenvalue": 9.99999000001e-07,
+        "spectrum_error": 2.9255628613568917e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 10,
+        "epsilon": 0.1,
+        "exact_degree": 10,
+        "maximum_pairwise_overlap": 0.9900990099009903,
+        "minimum_gram_eigenvalue": 0.009900990099008623,
+        "nodes": 6,
+        "predicted_minimum_gram_eigenvalue": 0.009900990099009903,
+        "spectrum_error": 1.2802259252708836e-15
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 10,
+        "epsilon": 0.03,
+        "exact_degree": 10,
+        "maximum_pairwise_overlap": 0.9991008092716557,
+        "minimum_gram_eigenvalue": 0.000899190728344256,
+        "nodes": 6,
+        "predicted_minimum_gram_eigenvalue": 0.00089919072834449,
+        "spectrum_error": 2.3397082882237186e-16
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 10,
+        "epsilon": 0.01,
+        "exact_degree": 10,
+        "maximum_pairwise_overlap": 0.9999000099990004,
+        "minimum_gram_eigenvalue": 9.999000099882617e-05,
+        "nodes": 6,
+        "predicted_minimum_gram_eigenvalue": 9.999000099990002e-05,
+        "spectrum_error": 1.0738480417382679e-15
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 10,
+        "epsilon": 0.003,
+        "exact_degree": 10,
+        "maximum_pairwise_overlap": 0.9999910000809994,
+        "minimum_gram_eigenvalue": 8.999918998887382e-06,
+        "nodes": 6,
+        "predicted_minimum_gram_eigenvalue": 8.999919000728994e-06,
+        "spectrum_error": 1.8416122576567218e-15
+      },
+      {
+        "all_pass": true,
+        "channel_rank": 2,
+        "completion_rank": 10,
+        "epsilon": 0.001,
+        "exact_degree": 10,
+        "maximum_pairwise_overlap": 0.999999000001,
+        "minimum_gram_eigenvalue": 9.999989997420062e-07,
+        "nodes": 6,
+        "predicted_minimum_gram_eigenvalue": 9.99999000001e-07,
+        "spectrum_error": 2.589938761501584e-16
+      }
+    ],
+    "failures": 0,
+    "worst_spectrum_error": 1.8416122576567218e-15
+  },
+  "noisy_projector_sum": {
+    "all_pass": true,
+    "direct_sum_certificates": 512,
+    "direct_sum_trials": 512,
+    "overcertificates": 0,
+    "trials": 1024
+  },
+  "schema_version": 1,
+  "theorem": {
+    "direct_sum_exact": "degree = k(L-1)",
+    "span_lower": "degree >= dim_span(Y_1,...,Y_L)-k",
+    "universal_upper": "degree <= k(L-1)"
+  },
+  "universal_completion": {
+    "all_pass": true,
+    "failures": 0,
+    "sample": [
+      {
+        "channel_rank": 2,
+        "completion_rank": 12,
+        "diagonal_shift": 6.82975800823579,
+        "exact_degree": 12,
+        "minimum_stacked_frame_singular_value": 0.1226244529385058,
+        "nodes": 7
+      },
+      {
+        "channel_rank": 1,
+        "completion_rank": 5,
+        "diagonal_shift": 7.563822994049331,
+        "exact_degree": 5,
+        "minimum_stacked_frame_singular_value": 0.21651590215520428,
+        "nodes": 6
+      },
+      {
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "diagonal_shift": 3.85542501368801,
+        "exact_degree": 6,
+        "minimum_stacked_frame_singular_value": 0.11657110266248935,
+        "nodes": 4
+      },
+      {
+        "channel_rank": 3,
+        "completion_rank": 21,
+        "diagonal_shift": 17.807876703200172,
+        "exact_degree": 21,
+        "minimum_stacked_frame_singular_value": 0.0838425462022182,
+        "nodes": 8
+      },
+      {
+        "channel_rank": 3,
+        "completion_rank": 15,
+        "diagonal_shift": 10.074380298051247,
+        "exact_degree": 15,
+        "minimum_stacked_frame_singular_value": 0.026497093425671518,
+        "nodes": 6
+      },
+      {
+        "channel_rank": 1,
+        "completion_rank": 2,
+        "diagonal_shift": 4.4729320703571736,
+        "exact_degree": 2,
+        "minimum_stacked_frame_singular_value": 0.24114901788368517,
+        "nodes": 3
+      },
+      {
+        "channel_rank": 2,
+        "completion_rank": 8,
+        "diagonal_shift": 5.390924517075377,
+        "exact_degree": 8,
+        "minimum_stacked_frame_singular_value": 0.011685059781967034,
+        "nodes": 5
+      },
+      {
+        "channel_rank": 3,
+        "completion_rank": 21,
+        "diagonal_shift": 13.844092196410996,
+        "exact_degree": 21,
+        "minimum_stacked_frame_singular_value": 0.06517904116820632,
+        "nodes": 8
+      },
+      {
+        "channel_rank": 2,
+        "completion_rank": 6,
+        "diagonal_shift": 2.4391039613966825,
+        "exact_degree": 6,
+        "minimum_stacked_frame_singular_value": 0.29243068111986814,
+        "nodes": 4
+      },
+      {
+        "channel_rank": 3,
+        "completion_rank": 15,
+        "diagonal_shift": 23.389613229916684,
+        "exact_degree": 15,
+        "minimum_stacked_frame_singular_value": 0.08515905656115409,
+        "nodes": 6
+      }
+    ],
+    "smallest_stacked_frame_singular_value": 0.004460002488712805,
+    "trials": 512,
+    "worst_relative_psd_violation": 5.050353383008284e-16,
+    "worst_relative_stein_residual": 4.2260122211701196e-16
+  }
+}
