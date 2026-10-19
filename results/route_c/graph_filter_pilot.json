@@ -1,0 +1,251 @@
+{
+  "experiment": "route_c_natural_mimo_graph_filter_pilot",
+  "graph": {
+    "type": "rectangular_4_neighbor_grid",
+    "rows": 18,
+    "cols": 23,
+    "nodes": 414,
+    "shift": "symmetric_normalized_adjacency"
+  },
+  "filter_degree": 2,
+  "feature_channels": 2,
+  "pass_eigenvalues": [
+    1.0000000000000002,
+    0.9949907954744421,
+    0.9917819726854522,
+    0.9864406639256829
+  ],
+  "minimum_full_spark_minor": 0.0271769184540319,
+  "stop_eigenvalue_count": 207,
+  "optimization_points": 121,
+  "validation_points": 20001,
+  "symmetric_mimo": {
+    "status": "optimal",
+    "objective": 0.9999999291081667,
+    "validation_maximum": 0.9999999201849141,
+    "maximum_pass_residual": 2.089363501260994e-11,
+    "maximum_commutator_norm": 1.2445189125661997e-14,
+    "coefficients": [
+      [
+        [
+          0.9999970676340871,
+          4.094126334734377e-06
+        ],
+        [
+          4.094126334734377e-06,
+          0.9999940440861312
+        ]
+      ],
+      [
+        [
+          5.900617435193903e-06,
+          -8.241267680235074e-06
+        ],
+        [
+          -8.241267680235074e-06,
+          1.1989905160960594e-05
+        ]
+      ],
+      [
+        [
+          -2.968367664341063e-06,
+          4.147308516188819e-06
+        ],
+        [
+          4.147308516188819e-06,
+          -6.0342104806381644e-06
+        ]
+      ]
+    ]
+  },
+  "general_mimo": {
+    "status": "optimal",
+    "objective": 0.6029069526769748,
+    "validation_maximum": 0.6029069527507683,
+    "maximum_pass_residual": 6.177720273529505e-15,
+    "coefficients": [
+      [
+        [
+          0.6029000847033024,
+          0.0003896214944684217
+        ],
+        [
+          -0.0005641053188416298,
+          0.6017672477365338
+        ]
+      ],
+      [
+        [
+          0.8014336189540627,
+          0.0008468261702165622
+        ],
+        [
+          -0.0010626399428173827,
+          0.7999942274150739
+        ]
+      ],
+      [
+        [
+          -0.4043527448475481,
+          -0.001238675437935085
+        ],
+        [
+          0.0016506085811852714,
+          -0.4017586832008746
+        ]
+      ]
+    ]
+  },
+  "scalar_chebyshev": {
+    "validation_maximum": 0.058823529411764684,
+    "pass_multipliers": [
+      1.0,
+      0.9929399899074374,
+      0.9884298607196698,
+      0.980943928174976
+    ]
+  },
+  "commuting_exact_tangential": {
+    "leakage": 1.0,
+    "reason": "For d=N=2 and four distinct full-spark pass signatures, every pairwise-commuting symmetric feasible polynomial is I_2."
+  },
+  "seed": 20260809,
+  "initial_stop_to_pass_ratio": 5.0,
+  "snapshots": {
+    "0": {
+      "symmetric_noncommuting_mimo": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      },
+      "general_mimo": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      }
+    },
+    "1": {
+      "symmetric_noncommuting_mimo": {
+        "pass_geometry_relative_error": 1.5008790368451036e-11,
+        "best_global_rescaled_pass_error": 1.3623580527524635e-11,
+        "stop_to_pass_frobenius_ratio": 4.9999542057862945,
+        "desired_subspace_largest_sine": 0.9971721235627531
+      },
+      "general_mimo": {
+        "pass_geometry_relative_error": 2.439433278113701e-15,
+        "best_global_rescaled_pass_error": 2.106858603853121e-15,
+        "stop_to_pass_frobenius_ratio": 1.9946948253248946,
+        "desired_subspace_largest_sine": 0.9821445974098224
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 0.0027355436884621102,
+        "best_global_rescaled_pass_error": 0.0026320298483695215,
+        "stop_to_pass_frobenius_ratio": 0.20164814284625465,
+        "desired_subspace_largest_sine": 0.4909127590456746
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      }
+    },
+    "2": {
+      "symmetric_noncommuting_mimo": {
+        "pass_geometry_relative_error": 3.001758073690207e-11,
+        "best_global_rescaled_pass_error": 2.724711868859272e-11,
+        "stop_to_pass_frobenius_ratio": 4.999908413098798,
+        "desired_subspace_largest_sine": 0.9971720221293817
+      },
+      "general_mimo": {
+        "pass_geometry_relative_error": 4.878866556227402e-15,
+        "best_global_rescaled_pass_error": 4.2078321997252926e-15,
+        "stop_to_pass_frobenius_ratio": 0.9963525595918216,
+        "desired_subspace_largest_sine": 0.9350471983620489
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 0.005442510696040494,
+        "best_global_rescaled_pass_error": 0.0052403091154811544,
+        "stop_to_pass_frobenius_ratio": 0.010092515419538912,
+        "desired_subspace_largest_sine": 0.029216054794866157
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      }
+    },
+    "5": {
+      "symmetric_noncommuting_mimo": {
+        "pass_geometry_relative_error": 7.504395184225518e-11,
+        "best_global_rescaled_pass_error": 6.811773328762631e-11,
+        "stop_to_pass_frobenius_ratio": 4.999771044193029,
+        "desired_subspace_largest_sine": 0.9971717178116773
+      },
+      "general_mimo": {
+        "pass_geometry_relative_error": 1.2197166390568505e-14,
+        "best_global_rescaled_pass_error": 1.0448547811586209e-14,
+        "stop_to_pass_frobenius_ratio": 0.1628013570065382,
+        "desired_subspace_largest_sine": 0.4035211165481165
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 0.013395126839783977,
+        "best_global_rescaled_pass_error": 0.012924134031504775,
+        "stop_to_pass_frobenius_ratio": 1.617538228295358e-06,
+        "desired_subspace_largest_sine": 0.012104535384317355
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      }
+    },
+    "20": {
+      "symmetric_noncommuting_mimo": {
+        "pass_geometry_relative_error": 3.0017580736902074e-10,
+        "best_global_rescaled_pass_error": 2.72470956736922e-10,
+        "stop_to_pass_frobenius_ratio": 4.999084405644812,
+        "desired_subspace_largest_sine": 0.9971701958273247
+      },
+      "general_mimo": {
+        "pass_geometry_relative_error": 4.878866556227402e-14,
+        "best_global_rescaled_pass_error": 4.180211879077466e-14,
+        "stop_to_pass_frobenius_ratio": 4.704966176874683e-05,
+        "desired_subspace_largest_sine": 0.00013120631045934826
+      },
+      "scalar_chebyshev_one_point_normalized": {
+        "pass_geometry_relative_error": 0.049627882012909144,
+        "best_global_rescaled_pass_error": 0.04830317541423363,
+        "stop_to_pass_frobenius_ratio": 3.8167434681567694e-25,
+        "desired_subspace_largest_sine": 0.048108571811793635
+      },
+      "commuting_exact_tangential": {
+        "pass_geometry_relative_error": 0.0,
+        "best_global_rescaled_pass_error": 0.0,
+        "stop_to_pass_frobenius_ratio": 4.999999999999998,
+        "desired_subspace_largest_sine": 0.9971722249931929
+      }
+    }
+  },
+  "limitations": [
+    "The MIMO leakage bounds use a finite optimization grid and dense validation, not exact arithmetic.",
+    "The grid graph and smooth fields are natural signal-processing objects, but the four exact pass constraints are task-designed.",
+    "No supervised learning or downstream classification claim is made."
+  ]
+}
