@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "construction": "three-channel Blaschke--Mach-Zehnder passive reservoir filter",
+  "alpha": 0.45,
+  "pass_arc": [
+    -0.5235987755982988,
+    0.5235987755982988
+  ],
+  "stop_arcs": [
+    [
+      -3.141592653589793,
+      -2.6179938779914944
+    ],
+    [
+      2.6179938779914944,
+      3.141592653589793
+    ]
+  ],
+  "records": [
+    {
+      "order": 5,
+      "radius": 0.8946007754381357,
+      "nodes_per_group": 5,
+      "calibration_count": 15,
+      "numerator_degree": 9,
+      "root_count_margin": 4,
+      "full_spark_minimum_minor": 0.000202657423563418,
+      "maximum_calibration_residual": 2.2980766901575646e-15,
+      "global_signal_norm": 1.0000000000000004,
+      "stopband_signal_norm": 0.12688304218311544,
+      "worst_case_rate_ratio_upper": 0.01609930639364225,
+      "reducible_stopband_lower_bound": 1.0,
+      "rate_separation_factor_lower": 62.11447720473897,
+      "peak_allpass_group_delay": 89.87735836358524,
+      "six_port_unitarity_error": 1.1856826983025982e-14,
+      "root_count_separation_valid": true
+    },
+    {
+      "order": 7,
+      "radius": 0.9571478731329598,
+      "nodes_per_group": 7,
+      "calibration_count": 21,
+      "numerator_degree": 11,
+      "root_count_margin": 8,
+      "full_spark_minimum_minor": 3.6089306006625105e-06,
+      "maximum_calibration_residual": 7.988595983946716e-15,
+      "global_signal_norm": 1.0000000000000002,
+      "stopband_signal_norm": 0.06245251499985568,
+      "worst_case_rate_ratio_upper": 0.0039003166298071986,
+      "reducible_stopband_lower_bound": 1.0,
+      "rate_separation_factor_lower": 256.38944088737543,
+      "peak_allpass_group_delay": 319.7049041331977,
+      "six_port_unitarity_error": 3.9149156375273145e-14,
+      "root_count_separation_valid": true
+    },
+    {
+      "order": 9,
+      "radius": 0.9825776253605065,
+      "nodes_per_group": 9,
+      "calibration_count": 27,
+      "numerator_degree": 13,
+      "root_count_margin": 12,
+      "full_spark_minimum_minor": 1.0075306403379754e-07,
+      "maximum_calibration_residual": 1.2567588569210856e-14,
+      "global_signal_norm": 1.0000000000000002,
+      "stopband_signal_norm": 0.029898699810755068,
+      "worst_case_rate_ratio_upper": 0.0008939322503736452,
+      "reducible_stopband_lower_bound": 1.0,
+      "rate_separation_factor_lower": 1118.6530070729864,
+      "peak_allpass_group_delay": 1024.1542268180335,
+      "six_port_unitarity_error": 4.483396883593031e-14,
+      "root_count_separation_valid": true
+    },
+    {
+      "order": 11,
+      "radius": 0.9929165910709479,
+      "nodes_per_group": 11,
+      "calibration_count": 33,
+      "numerator_degree": 15,
+      "root_count_margin": 16,
+      "full_spark_minimum_minor": 3.5001160499633353e-09,
+      "maximum_calibration_residual": 1.0352351574214795e-13,
+      "global_signal_norm": 1.0000000000000004,
+      "stopband_signal_norm": 0.014017310725432995,
+      "worst_case_rate_ratio_upper": 0.00019648499997333886,
+      "reducible_stopband_lower_bound": 1.0,
+      "rate_separation_factor_lower": 5089.447032270608,
+      "peak_allpass_group_delay": 3094.849206272488,
+      "six_port_unitarity_error": 5.935117726515733e-14,
+      "root_count_separation_valid": true
+    },
+    {
+      "order": 15,
+      "radius": 0.9988291203792088,
+      "nodes_per_group": 15,
+      "calibration_count": 45,
+      "numerator_degree": 19,
+      "root_count_margin": 24,
+      "full_spark_minimum_minor": 5.943898373662372e-12,
+      "maximum_calibration_residual": 8.272380632460831e-13,
+      "global_signal_norm": 1.0000000000000004,
+      "stopband_signal_norm": 0.002939835782200014,
+      "worst_case_rate_ratio_upper": 8.642634426303568e-06,
+      "reducible_stopband_lower_bound": 1.0,
+      "rate_separation_factor_lower": 115705.46093637068,
+      "peak_allpass_group_delay": 25606.76287578377,
+      "six_port_unitarity_error": 1.5032512620806515e-14,
+      "root_count_separation_valid": true
+    },
+    {
+      "order": 19,
+      "radius": 0.999806454900442,
+      "nodes_per_group": 19,
+      "calibration_count": 57,
+      "numerator_degree": 23,
+      "root_count_margin": 32,
+      "full_spark_minimum_minor": 1.2970577742499693e-14,
+      "maximum_calibration_residual": 6.221451753848657e-12,
+      "global_signal_norm": 0.9999999999999997,
+      "stopband_signal_norm": 0.0005894926019990597,
+      "worst_case_rate_ratio_upper": 3.475015278116218e-07,
+      "reducible_stopband_lower_bound": 1.0,
+      "rate_separation_factor_lower": 2877685.1897528726,
+      "peak_allpass_group_delay": 196317.66823273667,
+      "six_port_unitarity_error": 1.538106922851098e-14,
+      "root_count_separation_valid": true
+    }
+  ],
+  "interpretation": {
+    "proved_by_construction": "The signal block is globally contractive and is embedded in an explicitly unitary six-port scattering matrix. Exact delayed tangential calibrations are full spark, and the rational root count excludes every constant-channel reducing architecture of the stated bidegree.",
+    "resource_caveat": "Exponential stopband suppression uses poles exponentially close to the unit circle and therefore incurs exponential peak group delay; it moves the resource boundary rather than removing it."
+  }
+}
