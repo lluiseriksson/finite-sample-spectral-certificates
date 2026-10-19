@@ -1,0 +1,179 @@
+{
+  "all_pass": true,
+  "claims_not_tested": [
+    "floating-point campaigns do not prove minimality",
+    "the general matrix Fejer--Riesz theorem and degree-preserving lossless completion are cited analytic results",
+    "near-collision conditioning is not a counterexample to the exact theorem"
+  ],
+  "collision_family": [
+    {
+      "desired_dual_minor_floor": 3.582270525725804,
+      "dual_isolation_residual": 2.520554352747575e-16,
+      "epsilon": 1.0,
+      "inner_column_residual": 3.774758283725532e-15,
+      "length": 5,
+      "maximum_density_eigenvalue": 51.14424624579987,
+      "minimum_density_eigenvalue": 7.405999745008611,
+      "node_range_projector_error": 4.650819069982875e-16,
+      "normalized_node_projector_error": 7.228413981582783e-16,
+      "occupancies": {
+        "A": 2,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "predicted_degree": 4,
+      "rank": 1,
+      "spectral_factor_relative_residual": 1.6671342462688744e-15,
+      "stack_smallest_singular_value": 0.7071067811865475,
+      "symbols": 4,
+      "word": "AABCD",
+      "wrong_dual_minor": 9.031103035004412e-16
+    },
+    {
+      "desired_dual_minor_floor": 3.5822705257258076,
+      "dual_isolation_residual": 8.104360387073724e-16,
+      "epsilon": 0.3,
+      "inner_column_residual": 1.9095836023552692e-14,
+      "length": 5,
+      "maximum_density_eigenvalue": 66.51748012709095,
+      "minimum_density_eigenvalue": 6.3741741700170405,
+      "node_range_projector_error": 4.63013855919164e-16,
+      "normalized_node_projector_error": 5.246097213459562e-16,
+      "occupancies": {
+        "A": 2,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "predicted_degree": 4,
+      "rank": 1,
+      "spectral_factor_relative_residual": 4.1659976658312755e-15,
+      "stack_smallest_singular_value": 0.2873478855663454,
+      "symbols": 4,
+      "word": "AABCD",
+      "wrong_dual_minor": 1.6275349530944883e-15
+    },
+    {
+      "desired_dual_minor_floor": 3.582270525725798,
+      "dual_isolation_residual": 5.818190403668208e-15,
+      "epsilon": 0.1,
+      "inner_column_residual": 1.509903313490213e-14,
+      "length": 5,
+      "maximum_density_eigenvalue": 69.32592510086675,
+      "minimum_density_eigenvalue": 5.668486920162306,
+      "node_range_projector_error": 2.4416215573211534e-16,
+      "normalized_node_projector_error": 3.3382247191752776e-16,
+      "occupancies": {
+        "A": 2,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "predicted_degree": 4,
+      "rank": 1,
+      "spectral_factor_relative_residual": 4.560860139675858e-15,
+      "stack_smallest_singular_value": 0.09950371902099887,
+      "symbols": 4,
+      "word": "AABCD",
+      "wrong_dual_minor": 1.6079559794164083e-14
+    },
+    {
+      "desired_dual_minor_floor": 3.582270525725685,
+      "dual_isolation_residual": 1.632047043659571e-13,
+      "epsilon": 0.03,
+      "inner_column_residual": 1.709743457922741e-14,
+      "length": 5,
+      "maximum_density_eigenvalue": 69.67616711948786,
+      "minimum_density_eigenvalue": 5.579395895290122,
+      "node_range_projector_error": 3.3854266127700314e-16,
+      "normalized_node_projector_error": 1.1523625169839456e-16,
+      "occupancies": {
+        "A": 2,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "predicted_degree": 4,
+      "rank": 1,
+      "spectral_factor_relative_residual": 5.149844479145019e-15,
+      "stack_smallest_singular_value": 0.029986509105670998,
+      "symbols": 4,
+      "word": "AABCD",
+      "wrong_dual_minor": 4.58843054532141e-13
+    },
+    {
+      "desired_dual_minor_floor": 3.582270525728212,
+      "dual_isolation_residual": 1.0643673312059388e-12,
+      "epsilon": 0.01,
+      "inner_column_residual": 6.661338147750939e-15,
+      "length": 5,
+      "maximum_density_eigenvalue": 69.70726242216045,
+      "minimum_density_eigenvalue": 5.571486186470158,
+      "node_range_projector_error": 3.377083612359619e-16,
+      "normalized_node_projector_error": 5.553503162069625e-16,
+      "occupancies": {
+        "A": 2,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "predicted_degree": 4,
+      "rank": 1,
+      "spectral_factor_relative_residual": 2.03863388908728e-15,
+      "stack_smallest_singular_value": 0.009999500037496879,
+      "symbols": 4,
+      "word": "AABCD",
+      "wrong_dual_minor": 1.9499543646691203e-12
+    },
+    {
+      "desired_dual_minor_floor": 3.582270525701647,
+      "dual_isolation_residual": 1.168159555013265e-11,
+      "epsilon": 0.003,
+      "inner_column_residual": 1.0436096431476471e-14,
+      "length": 5,
+      "maximum_density_eigenvalue": 69.71080266435887,
+      "minimum_density_eigenvalue": 5.570585655440223,
+      "node_range_projector_error": 2.2888193006551266e-16,
+      "normalized_node_projector_error": 2.2213872728828253e-16,
+      "occupancies": {
+        "A": 2,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "predicted_degree": 4,
+      "rank": 1,
+      "spectral_factor_relative_residual": 2.0385304886039974e-15,
+      "stack_smallest_singular_value": 0.002999986500091125,
+      "symbols": 4,
+      "word": "AABCD",
+      "wrong_dual_minor": 1.787716772665579e-11
+    }
+  ],
+  "content_digest": "9e447e557a391329f9fa70858b2f1fe2fe66e55abd20882056ac7633ddc70b86",
+  "curated_degree_examples": {
+    "AAAA": 0,
+    "AAAB": 3,
+    "AABB": 2,
+    "AABBCC": 4,
+    "AABC": 3,
+    "ABAB": 2,
+    "ABCD": 3
+  },
+  "schema": "unified-routing-table-memory-certificate-v1",
+  "scope": "distinct boundary nodes; exact subspace routing; equal target rank; square finite rational-inner completion; regular node values; direct-sum target planes",
+  "seed": 26081117,
+  "summary": {
+    "block_trials": 256,
+    "maximum_dual_isolation_residual": 1.168159555013265e-11,
+    "maximum_node_range_projector_error": 8.721950446525468e-11,
+    "maximum_scalar_factor_residual": 2.362683313167375e-08,
+    "maximum_scalar_inner_residual": 1.7718159047830362e-05,
+    "maximum_scalar_node_projector_error": 8.721954295314817e-11,
+    "maximum_wrong_dual_minor": 1.787716772665579e-11,
+    "minimum_density_eigenvalue": 7.822126783172904e-09,
+    "scalar_trials": 512
+  },
+  "theorem": "d_min = k * (L - min_a n_a) on the direct-sum target locus"
+}

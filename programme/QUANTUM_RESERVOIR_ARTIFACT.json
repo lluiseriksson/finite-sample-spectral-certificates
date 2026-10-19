@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "title": "Architecture-Dependent Decoherence Suppression in Passive Quantum Networks: Irreducible Channel Mixing, Squared Rate Gaps, and the Price in Dwell Time",
+  "release_date": "2026-08-10",
+  "branch": "research/quantum-reservoir-boundary",
+  "artifacts": {
+    "paper_quantum_reservoir/architecture_dependent_decoherence.pdf": "b4ddfcc82b3b0c8b620f5a786083b0b951380b220d582fa3f51ff6d5c303f9d2",
+    "paper_quantum_reservoir/main.tex": "0be5af260afdc375edc9ef98c8a7394c557c4eb085a8755642bc618dc9b08047",
+    "paper_quantum_reservoir/references.bib": "b79fcfa466df02d138c95049e75ab9132774c53ba903aa8afbfc621f355ca6fe",
+    "paper_quantum_reservoir/README.md": "b1e6497315d8d319e4c7e207e93d70272b5bedb9e70b4bda29be44d527b23c5f",
+    "paper_quantum_reservoir/figures/passive_architecture.pdf": "1928ceae52deda5de66020d2cc6c8c5f194fc0ac56d160440c413aad11f92f86",
+    "paper_quantum_reservoir/figures/passive_scaling.pdf": "0d50c9432315928a4b5883662c3d41d89a37d312daf915df84784fbf6ae01295",
+    "paper_quantum_reservoir/figures/passive_tolerance.pdf": "cc6df1f57c5fb7d5754c68a6842ce3e76e3e6079de2270648e22f1040c7c5f2a",
+    "paper_quantum_reservoir/figures/closed_dephasing.pdf": "64f39882cac4d931dff81e0b66867e15592695d1246240ca03af371f7840f82b",
+    "results/quantum_reservoir/passive_filter_scaling.json": "16e853f7b69c35c14a5e7094aafdc43ea19687211acae30b7963efdff9b7d4dd",
+    "results/quantum_reservoir/passive_tolerance.json": "284cfe80310d75b4a422b982f8b6df808fcddd82ae7481c5a66b6452ea85c787",
+    "results/quantum_reservoir/robust_separation.json": "aa4ce5bd73a352c888bedad8b69ec2ec64da9db61584aa6e8b34cc1ecf965e2e",
+    "results/quantum_reservoir/closed_dephasing.json": "5fddf2ec87859effa80b9ecd8916bcb2f3311ca879ff1c4ce6801f6b038bd49b",
+    "research/quantum_reservoir_filter.py": "d221aa4b4c2e33ee77291991cfdb6e1799468a9352c850bf0e064b2968b67d6a",
+    "research/quantum_reservoir_robustness.py": "533cf88601cafb529efbf7d8f3ffc89c75a4f4773234bf34c84002ac7af73648",
+    "research/quantum_reservoir_robust_bound.py": "409d1850fb35a2938f9bae8e1d2c72c8fa6a1a288ad6cb6a71afcf7c21005c5e",
+    "research/quantum_reservoir_closed_dephasing.py": "5255f35328e4e1c841080b0b519bdb1efb36cece9cee3689aef516421048f81b",
+    "verification/verify_passive_quantum_filter.py": "680ed7864ba136639358e218ed4232fb2cb61834a34f29c7f6165451e5cd8808",
+    "verification/run_quantum_reservoir_release_checks.py": "1db42f3e2986eaa5ba80a324ce7cff4b84c12e1c54b2812e1bc6501f0310d1da",
+    "requirements.txt": "f001d095bd89569386438810c54e0c28cf56459f8def4e04cd602de4a372f32a"
+  },
+  "pdf": {
+    "pages": 17,
+    "paper_size": "A4",
+    "visual_inspection": "all pages rendered at 150 dpi and inspected",
+    "latex_warnings": 0
+  },
+  "new_results": {
+    "robust_obstruction": "finite-error stopband lower bound with explicit finite-matrix constant",
+    "robustness_barrier": "every constant of the same form grows at least as 2 exp(9S/20)(1+o(1))",
+    "closed_physical_model": "six-input vacuum-complete Markov Ramsey rate with independently measurable baseline"
+  }
+}

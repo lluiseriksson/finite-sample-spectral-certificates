@@ -1,0 +1,434 @@
+{
+  "all_pass": true,
+  "clustered_node_stress": [
+    {
+      "alphabet_size": 2,
+      "angles": [
+        0.0,
+        0.1,
+        1.7,
+        4.2
+      ],
+      "column_isometry_residual": 2.1449508835758024e-13,
+      "counts": {
+        "A": 2,
+        "B": 2
+      },
+      "length": 4,
+      "maximum_boundary_density": 11.39988812897737,
+      "minimum_boundary_density": 0.012627367996888784,
+      "minimum_desired_amplitude": 0.9999999999999452,
+      "minimum_exterior_root_modulus": 1.052385072463397,
+      "node_norm_residual": 1.0969003483296547e-13,
+      "node_separation": 0.09995833854135666,
+      "palindromic_residual": 0.0,
+      "prescribed_gap": 0.1,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 2,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 1.3244895883251612e-15,
+      "word": "ABAB",
+      "wrong_target_leakage": 3.8707615597080923e-16
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        0.0,
+        0.01,
+        1.7,
+        4.2
+      ],
+      "column_isometry_residual": 1.301603269610041e-11,
+      "counts": {
+        "A": 2,
+        "B": 2
+      },
+      "length": 4,
+      "maximum_boundary_density": 11.377356789821654,
+      "minimum_boundary_density": 0.0001288945733622812,
+      "minimum_desired_amplitude": 0.999999999996328,
+      "minimum_exterior_root_modulus": 1.0049794959007925,
+      "node_norm_residual": 7.343903263290485e-12,
+      "node_separation": 0.009999958333385416,
+      "palindromic_residual": 0.0,
+      "prescribed_gap": 0.01,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 2,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 1.6393743431153315e-15,
+      "word": "ABAB",
+      "wrong_target_leakage": 3.7107972236235434e-15
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        0.0,
+        0.001,
+        1.7,
+        4.2
+      ],
+      "column_isometry_residual": 5.110303291644414e-10,
+      "counts": {
+        "A": 2,
+        "B": 2
+      },
+      "length": 4,
+      "maximum_boundary_density": 11.37491828456832,
+      "minimum_boundary_density": 1.4891407944394805e-06,
+      "minimum_desired_amplitude": 0.9999999995608184,
+      "minimum_exterior_root_modulus": 1.0004954886791624,
+      "node_norm_residual": 8.783633820286241e-10,
+      "node_separation": 0.0009999999583333338,
+      "palindromic_residual": 0.0,
+      "prescribed_gap": 0.001,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 2,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 3.49027345668552e-14,
+      "word": "ABAB",
+      "wrong_target_leakage": 3.696060316224348e-14
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        0.0,
+        0.0001,
+        1.7,
+        4.2
+      ],
+      "column_isometry_residual": 1.0634735014836139e-07,
+      "counts": {
+        "A": 2,
+        "B": 2
+      },
+      "length": 4,
+      "maximum_boundary_density": 11.37467263268222,
+      "minimum_boundary_density": 2.980521640197612e-08,
+      "minimum_desired_amplitude": 0.9999999368349115,
+      "minimum_exterior_root_modulus": 1.0000495243899583,
+      "node_norm_residual": 1.2633017298924187e-07,
+      "node_separation": 9.999999995833334e-05,
+      "palindromic_residual": 0.0,
+      "prescribed_gap": 0.0001,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 2,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 2.352666898621275e-13,
+      "word": "ABAB",
+      "wrong_target_leakage": 3.694598302455836e-13
+    }
+  ],
+  "content_digest": "d223a843692292abf5d7d297a2c1c80db58494025691eb8f6bcec94186f599bd",
+  "curated_cases": [
+    {
+      "alphabet_size": 1,
+      "angles": [
+        -1.6807402395460056
+      ],
+      "column_isometry_residual": 0.0,
+      "counts": {
+        "A": 1
+      },
+      "length": 1,
+      "maximum_boundary_density": 1.0,
+      "minimum_boundary_density": 1.0,
+      "minimum_desired_amplitude": 1.0,
+      "minimum_exterior_root_modulus": null,
+      "node_norm_residual": 0.0,
+      "node_separation": null,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*0",
+      "rarest_occupancy": 1,
+      "scalar_degree": 0,
+      "spectral_factor_relative_residual": 0.0,
+      "word": "A",
+      "wrong_target_leakage": 0.0
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        -1.609390993350416,
+        0.7101541415905315
+      ],
+      "column_isometry_residual": 8.881784197001252e-16,
+      "counts": {
+        "A": 1,
+        "B": 1
+      },
+      "length": 2,
+      "maximum_boundary_density": 5.598192098720479,
+      "minimum_boundary_density": 2.40180790127952,
+      "minimum_desired_amplitude": 0.9999999999999999,
+      "minimum_exterior_root_modulus": 4.797201134027637,
+      "node_norm_residual": 4.440892098500626e-16,
+      "node_separation": 1.8334245245243246,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*1",
+      "rarest_occupancy": 1,
+      "scalar_degree": 1,
+      "spectral_factor_relative_residual": 7.932725458841677e-16,
+      "word": "AB",
+      "wrong_target_leakage": 0.0
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        -1.2417356541505187,
+        -1.1866051016428165,
+        2.189217264883358
+      ],
+      "column_isometry_residual": 3.9035441545820504e-13,
+      "counts": {
+        "A": 2,
+        "B": 1
+      },
+      "length": 3,
+      "maximum_boundary_density": 7.627658664158288,
+      "minimum_boundary_density": 0.002422121787857819,
+      "minimum_desired_amplitude": 1.0,
+      "minimum_exterior_root_modulus": 1.0223998307881097,
+      "node_norm_residual": 3.352873534367973e-13,
+      "node_separation": 0.055123570998846884,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 1,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 1.9795108564376627e-15,
+      "word": "ABA",
+      "wrong_target_leakage": 0.0
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        -1.2445802856308241,
+        -0.7263463072889511,
+        2.3096071133768614
+      ],
+      "column_isometry_residual": 3.4416913763379853e-15,
+      "counts": {
+        "A": 2,
+        "B": 1
+      },
+      "length": 3,
+      "maximum_boundary_density": 15.497230253647237,
+      "minimum_boundary_density": 3.448367594044181,
+      "minimum_desired_amplitude": 0.9999999999999991,
+      "minimum_exterior_root_modulus": 2.4758613508198284,
+      "node_norm_residual": 1.9984014443252818e-15,
+      "node_separation": 0.5124542379267294,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 1,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 1.2608656458985036e-15,
+      "word": "AAB",
+      "wrong_target_leakage": 0.0
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        -2.7911447165403014,
+        -1.5102397283556834,
+        0.39308726994116494,
+        3.0603336825212493
+      ],
+      "column_isometry_residual": 3.430589146091734e-14,
+      "counts": {
+        "A": 3,
+        "B": 1
+      },
+      "length": 4,
+      "maximum_boundary_density": 16.311034327124116,
+      "minimum_boundary_density": 0.1587062364747661,
+      "minimum_desired_amplitude": 0.9999999999999859,
+      "minimum_exterior_root_modulus": 1.150006381091497,
+      "node_norm_residual": 2.8199664825478976e-14,
+      "node_separation": 0.4283623099387147,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*3",
+      "rarest_occupancy": 1,
+      "scalar_degree": 3,
+      "spectral_factor_relative_residual": 3.049346258838791e-15,
+      "word": "AAAB",
+      "wrong_target_leakage": 5.795407522203368e-16
+    },
+    {
+      "alphabet_size": 2,
+      "angles": [
+        -2.1350331311702346,
+        -1.9406104412824465,
+        -0.19984892403786647,
+        2.2120150671202623
+      ],
+      "column_isometry_residual": 3.863576125695545e-14,
+      "counts": {
+        "A": 2,
+        "B": 2
+      },
+      "length": 4,
+      "maximum_boundary_density": 10.392830295199854,
+      "minimum_boundary_density": 0.05090533589295655,
+      "minimum_desired_amplitude": 0.9999999999999885,
+      "minimum_exterior_root_modulus": 1.1100024598486689,
+      "node_norm_residual": 2.3092638912203256e-14,
+      "node_separation": 0.1941166173298432,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 2,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 1.1964496217690464e-15,
+      "word": "ABAB",
+      "wrong_target_leakage": 3.4713609625592195e-16
+    },
+    {
+      "alphabet_size": 3,
+      "angles": [
+        -0.3251786933422709,
+        0.09635427491656001,
+        0.6177402286474751
+      ],
+      "column_isometry_residual": 2.4980018054066022e-14,
+      "counts": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "length": 3,
+      "maximum_boundary_density": 44.544163079038526,
+      "minimum_boundary_density": 0.042875435126640285,
+      "minimum_desired_amplitude": 0.999999999999988,
+      "minimum_exterior_root_modulus": 1.2548754900979247,
+      "node_norm_residual": 2.353672812205332e-14,
+      "node_separation": 0.4184189674240699,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*2",
+      "rarest_occupancy": 1,
+      "scalar_degree": 2,
+      "spectral_factor_relative_residual": 2.153441948329092e-15,
+      "word": "ABC",
+      "wrong_target_leakage": 0.0
+    },
+    {
+      "alphabet_size": 3,
+      "angles": [
+        -1.9962620797098116,
+        -0.27060640391567414,
+        0.5853440391627829,
+        1.024281791880692
+      ],
+      "column_isometry_residual": 3.26405569239796e-14,
+      "counts": {
+        "A": 2,
+        "B": 1,
+        "C": 1
+      },
+      "length": 4,
+      "maximum_boundary_density": 44.71629668667082,
+      "minimum_boundary_density": 0.19827103882913258,
+      "minimum_desired_amplitude": 0.9999999999999851,
+      "minimum_exterior_root_modulus": 1.1929855802009395,
+      "node_norm_residual": 2.9753977059954195e-14,
+      "node_separation": 0.43542254023642624,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*3",
+      "rarest_occupancy": 1,
+      "scalar_degree": 3,
+      "spectral_factor_relative_residual": 4.290304718199378e-15,
+      "word": "ABCA",
+      "wrong_target_leakage": 1.9477460637643697e-16
+    },
+    {
+      "alphabet_size": 3,
+      "angles": [
+        -2.9727986789635454,
+        -1.6911801324224838,
+        -0.5209506103681161,
+        2.0336024403527206,
+        2.3523799712089017,
+        2.5041465974625474
+      ],
+      "column_isometry_residual": 5.4067861299245124e-14,
+      "counts": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "length": 6,
+      "maximum_boundary_density": 135.3384512022958,
+      "minimum_boundary_density": 0.09489045578596675,
+      "minimum_desired_amplitude": 0.9999999999999809,
+      "minimum_exterior_root_modulus": 1.0671033576286915,
+      "node_norm_residual": 3.8191672047105385e-14,
+      "node_separation": 0.15162101579900997,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*4",
+      "rarest_occupancy": 2,
+      "scalar_degree": 4,
+      "spectral_factor_relative_residual": 2.415053929951443e-15,
+      "word": "AABBCC",
+      "wrong_target_leakage": 6.572049227022619e-16
+    },
+    {
+      "alphabet_size": 4,
+      "angles": [
+        -2.190483069149123,
+        -0.6609265903998103,
+        -0.21703366606992303,
+        2.64828635329817
+      ],
+      "column_isometry_residual": 8.326672684688674e-15,
+      "counts": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "length": 4,
+      "maximum_boundary_density": 58.49156681495152,
+      "minimum_boundary_density": 0.9323934770905882,
+      "minimum_desired_amplitude": 0.9999999999999969,
+      "minimum_exterior_root_modulus": 1.2604962072769395,
+      "node_norm_residual": 6.217248937900877e-15,
+      "node_separation": 0.4402575118771887,
+      "palindromic_residual": 0.0,
+      "rank_k_degree_formula": "k*3",
+      "rarest_occupancy": 1,
+      "scalar_degree": 3,
+      "spectral_factor_relative_residual": 9.718224687097593e-16,
+      "word": "ABCD",
+      "wrong_target_leakage": 3.0159724676108396e-16
+    }
+  ],
+  "exhaustive_modulo_renaming": {
+    "maximum_column_isometry_residual": 1.0635936575909e-13,
+    "maximum_length": 7,
+    "maximum_spectral_factor_relative_residual": 1.491149479630322e-14,
+    "maximum_wrong_target_leakage": 4.376603407267311e-15,
+    "word_classes": 1155
+  },
+  "permutation_invariance": {
+    "failures": 0,
+    "trials": 256
+  },
+  "random_summary": {
+    "maximum_column_isometry_residual": 1.6244124705910856e-05,
+    "maximum_spectral_factor_relative_residual": 4.335081109555811e-09,
+    "maximum_wrong_target_leakage": 7.990855930196947e-11,
+    "minimum_desired_amplitude": 0.9999962972581232,
+    "trials": 1024
+  },
+  "schema": "routing-word-memory-certificate-v1",
+  "scope": "distinct boundary nodes; square finite rational-inner matrices; regular node values; mutually orthogonal rank-k target planes; every listed symbol occurs",
+  "seed": 260811,
+  "separation_examples": {
+    "AAAB": {
+      "cyclic_switches": 2,
+      "scalar_degree": 3
+    },
+    "ABAB": {
+      "cyclic_switches": 4,
+      "scalar_degree": 2
+    }
+  },
+  "theorem": "d_min = k * (L - min_a n_a)"
+}

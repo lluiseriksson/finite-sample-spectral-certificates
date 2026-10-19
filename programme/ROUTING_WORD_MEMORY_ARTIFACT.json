@@ -1,0 +1,21 @@
+{
+  "artifact": "the-rarest-target-sets-passive-memory",
+  "release_tag": "v2.5-routing-word-memory-final",
+  "schema_version": 1,
+  "date": "2026-08-11",
+  "artifacts": {
+    ".github/workflows/verify-routing-word-memory.yml": "5a034fbc2aaa7ce28c9d2f0e7c73923e8f5063572018250415b87fdbd98473d5",
+    "output/pdf/routing_word_memory.pdf": "cd2c756e7a086012ecdf7287dea9f8dd1b82bff8c942919639b624fa97c96fc2",
+    "paper_routing_word_memory/README.md": "8aba5f2df4e8bc664dd9651d4467252dc887ef2f1aed790b136981038b4be5fc",
+    "paper_routing_word_memory/SUBMISSION.md": "7c1cf585cb2bd0b062f96f29b75052bbdd27ffe345053ee5872a67eb95c40eeb",
+    "paper_routing_word_memory/figures/routing_word_memory.pdf": "6bdaea1c166b85bcbcb7966b8d6b183b6cb25651f30be77595d12d7a53ab567d",
+    "paper_routing_word_memory/routing_word_memory.pdf": "cd2c756e7a086012ecdf7287dea9f8dd1b82bff8c942919639b624fa97c96fc2",
+    "paper_routing_word_memory/main.tex": "9ae84bc6278eadccf0e1f349a0c86ef6a8ba4a992520849dd449c74df4e84a8a",
+    "paper_routing_word_memory/references.bib": "27eaa00aadb044ea747597743a5d0212d4c002d671a50535f6604292fd0a7dd4",
+    "programme/ROUTING_WORD_MEMORY_RESEARCH.md": "054de835777d9294ada53c28e83d754f300461bb426856a24775f35332d91e51",
+    "research/routing_word_memory_certificate.py": "cfbd6cfc71a8715e207f913e3f456264f2d67733d3f29965532a07d14bd36df6",
+    "results/routing_word_memory/certificate.json": "8db8fcc70696c2db21857bf4ce73cb7a618213ceee4091f8eb4b64c96f32e20f",
+    "verification/run_routing_word_memory_release_checks.py": "671379ff55b25efedf7f450a46d669e61385fa8937cdfcfb38eaa3d44bbfc7a1",
+    "verification/verify_routing_word_memory.py": "10c63df6d559169ca5d67a2299dcf00967038961002a927301e82d49064d27e7"
+  }
+}
