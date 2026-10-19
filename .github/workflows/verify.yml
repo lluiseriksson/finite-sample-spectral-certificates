@@ -17,6 +17,13 @@ jobs:
       - run: python -m compileall -q .
       - run: python verification/check_localizer_adjoint.py --trials 1000
       - run: python verification/verify_rational_witness.py
+      - run: python verification/verify_quadratic_filter_witness.py
+      - run: python verification/verify_linear_dimension_scaling.py
+      - run: python verification/verify_constant_channel_scaling.py
+      - run: python verification/verify_vbl_va001_witness.py
+      - run: python research/route_c_block_krylov_benchmark.py
+      - run: python research/route_c_graph_filter_pilot.py
+      - run: python research/route_c_vibration_calibration.py
       - run: python pilot_primal_dual_equivalence.py
       - name: Safe Wishart dual smoke
         run: >-
@@ -24,3 +31,19 @@ jobs:
           --length 6 --degree 2 --sample-counts 500
           --gap-factors 1.0 1.35 --ensembles 3
           --output results/ci/wishart_safe_smoke.json
+
+  kernel-checked-core:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formal
+    steps:
+      - uses: actions/checkout@v7
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal
+          build: true
+      - name: Reject unproved declarations
+        run: >-
+          ! grep -R -n -E '^\s*(axiom|sorry)\b|\bsorry\b'
+          --include='*.lean' --exclude-dir='.lake' .
