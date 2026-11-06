@@ -1,0 +1,15 @@
+name: monomial-sign
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  exact-sign-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s verification -p test_monomial_sign.py -v
