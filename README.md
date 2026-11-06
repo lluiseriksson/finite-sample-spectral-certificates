@@ -68,3 +68,13 @@ A rejection proves that an asserted upper edge is incompatible with the
 simultaneous confidence set, hence the asserted *visible* gap is too large.
 Non-rejection is not a positive lower-gap certificate.  The finite ANNNI chain
 is a controlled interacting benchmark, not a thermodynamic mass-gap proof.
+
+## Optional fixed-monomial sign test
+
+A separate [opt-in sign test](MONOMIAL_SIGN_TEST.md) handles one fixed
+monomial/channel projection of raw 12D centred elliptical sketches with
+finite covariance. It uses exact binomial tails and certified rational
+intervals. Its declared-model and selection requirements are narrower than
+the existing adaptive SDP workflow; it does not extend the Wishart theorem
+or reinterpret prior misspecification results.
+
