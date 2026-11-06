@@ -78,3 +78,9 @@ intervals. Its declared-model and selection requirements are narrower than
 the existing adaptive SDP workflow; it does not extend the Wishart theorem
 or reinterpret prior misspecification results.
 
+The separate [separated-time entrypoint](SEPARATED_SIGN_TEST.md) also permits
+one preselected certified pair `[0,3]`, `[2,5]`, or `[0,5]`. Its exact SOS
+proof applies to the full-covariance null without half-Hankel identities.
+These options remain single tests, not an unadjusted scan across pairs, and
+the resulting family does not characterize the full PSD localizer.
+
